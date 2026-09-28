@@ -52,7 +52,7 @@ def _period_scores(match: dict[str, Any]) -> list[dict[str, Any]]:
 
 
 def normalize_match(payload: dict[str, Any], *, ingested_at_utc: str | None = None) -> dict[str, Any]:
-    """Return the stable KorisIQ envelope for one ``getMatch`` response."""
+    """Return the stable KorisLab envelope for one ``getMatch`` response."""
 
     match = payload.get("match")
     if not isinstance(match, dict):

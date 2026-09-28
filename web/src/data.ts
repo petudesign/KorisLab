@@ -95,7 +95,7 @@ export const match = {
 };
 
 // Basket.fi:n stats-sivulla tämän ottelun #-kenttä ei palauta numeroita.
-// Roolit ovat toistaiseksi KorisIQ:n karkea näyttöluokitus, eivät lähteen virallinen positio.
+// Roolit ovat toistaiseksi KorisLabin karkea näyttöluokitus, eivät lähteen virallinen positio.
 export const players: Player[] = [
   { name: "Lawrence Laila", team: "BC Nokia", teamColor: "mint", number: null, role: "SF", starter: true, stats: stats({ minutes: "24:44", points: 20, twoPM: 8, twoPA: 15, twoPct: 53.33, threePM: 0, threePA: 0, threePct: 0, ftm: 4, fta: 4, ftPct: 100, offensiveRebounds: 1, defensiveRebounds: 5, rebounds: 6, assists: 2, turnovers: 2, steals: 4, blocks: 0, blocksReceived: 0, fouls: 3, foulsDrawn: 7, plusMinus: 10, efficiency: 23 }) },
   { name: "Brown Raiana", team: "Kouvottaret", teamColor: "coral", number: null, role: "C", starter: true, stats: stats({ minutes: "30:47", points: 14, twoPM: 5, twoPA: 12, twoPct: 41.67, threePM: 0, threePA: 3, threePct: 0, ftm: 4, fta: 6, ftPct: 66.67, offensiveRebounds: 3, defensiveRebounds: 3, rebounds: 6, assists: 0, turnovers: 3, steals: 0, blocks: 0, blocksReceived: 0, fouls: 2, foulsDrawn: 5, plusMinus: -15, efficiency: 5 }) },

@@ -1,4 +1,4 @@
-# KorisIQ design QA
+# KorisLab design QA
 
 source visual truth: `C:\Users\petsk\AppData\Local\Temp\codex-clipboard-ab8e13bc-47e1-403c-b70a-f82912356e9f.png`
 implementation: `http://127.0.0.1:5173/`
@@ -7,7 +7,7 @@ state: ottelun tarina, historiallinen Women’s Korisliiga -näyte
 ## Comparison
 
 - Reference: tumma analytiikkatyökalu, ottelukortti, joukkuevertailu, kenttävisualisointi ja pelaajapoiminta.
-- Implementation: sama tiedon hierarkia KorisIQ:n omalla kielellä; lisäksi lähteen saatavuus ja koko 19 rivin pelaajamateriaali.
+- Implementation: sama tiedon hierarkia KorisLabin omalla kielellä; lisäksi lähteen saatavuus ja koko 19 rivin pelaajamateriaali.
 - Typography: Inter palautettu käyttöliittymän pääfontiksi; kontrollit, taulukot ja otsikot käyttävät samaa järjestelmää.
 - Layout rhythm: ottelukortin jälkeen vertailu + kenttä, rosteri sen alla; alle 900 px rosteri pinoutuu yhdeksi sarakkeeksi.
 - Color/tokens: musta-sininen pinta, hillityt coral/mint-joukkueaksentit ja matala kontrastihierarkia säilytetty ilman neon-palettia.

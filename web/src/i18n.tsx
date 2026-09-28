@@ -12,7 +12,7 @@ const I18nContext = createContext<I18nContextValue | null>(null);
 
 function getInitialLanguage(): Language {
   try {
-    const stored = window.localStorage.getItem("korisiq-language");
+    const stored = window.localStorage.getItem("korislab-language");
     if (stored === "en" || stored === "fi") return stored;
   } catch {
     // Storage can be unavailable in restricted browser contexts.
@@ -26,7 +26,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     document.documentElement.lang = language;
     try {
-      window.localStorage.setItem("korisiq-language", language);
+      window.localStorage.setItem("korislab-language", language);
     } catch {
       // Storage can be unavailable in restricted browser contexts.
     }

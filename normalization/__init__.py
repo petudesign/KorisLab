@@ -1,2 +1,2 @@
-"""Source-to-KorisIQ normalization functions."""
+"""Source-to-KorisLab normalization functions."""
 

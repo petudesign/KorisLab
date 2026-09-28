@@ -1,2 +1,2 @@
-"""Lightweight validation checks for KorisIQ source snapshots."""
+"""Lightweight validation checks for KorisLab source snapshots."""
 

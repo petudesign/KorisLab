@@ -128,7 +128,7 @@ def normalize_fixture_statistics(
     embed_url: str | None = None,
     ingested_at_utc: str | None = None,
 ) -> dict[str, Any]:
-    """Map the public widget response to the KorisIQ game/teams/players shape."""
+    """Map the public widget response to the KorisLab game/teams/players shape."""
 
     data = payload.get("data") if isinstance(payload.get("data"), dict) else payload
     fixture = data.get("fixture") if isinstance(data.get("fixture"), dict) else data.get("banner", {}).get("fixture", {})

@@ -1,6 +1,6 @@
-# KorisIQ
+# KorisLab
 
-KorisIQ is a small, evidence-first data foundation for Finnish basketball analysis.
+KorisLab is a small, evidence-first data foundation for Finnish basketball analysis.
 
 The current Phase 1 deliverable is intentionally narrow:
 
@@ -62,7 +62,7 @@ The current web snapshot is intentionally not a production season loader: the st
 ```text
 DATA_AUDIT.md
 ingestion/       public-source clients and CLI
-normalization/   source-specific to KorisIQ schema mapping
+normalization/   source-specific to KorisLab schema mapping
 validation/      small data-quality checks
 analytics/       deterministic metric helpers
 data/normalized/ compact, redacted source snapshots

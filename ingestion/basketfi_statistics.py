@@ -31,7 +31,7 @@ class BasketFiStatisticsClient:
             "Accept": "application/json",
             "Origin": "https://tulospalvelu.basket.fi",
             "Referer": "https://tulospalvelu.basket.fi/",
-            "User-Agent": "KorisIQ/0.1 (read-only research client)",
+            "User-Agent": "KorisLab/0.1 (read-only research client)",
         }
     )
 

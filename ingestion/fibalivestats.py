@@ -22,7 +22,7 @@ class FibaLiveStatsClient:
 
     def get_data(self, match_id: str) -> dict[str, Any]:
         url = FIBA_DATA_URL.format(match_id=match_id)
-        request = Request(url, headers={"Accept": "application/json", "User-Agent": "KorisIQ/0.1"})
+        request = Request(url, headers={"Accept": "application/json", "User-Agent": "KorisLab/0.1"})
         try:
             with urlopen(request, timeout=self.timeout_seconds) as response:
                 raw = response.read()

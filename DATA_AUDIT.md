@@ -1,8 +1,8 @@
-# KorisIQ Phase 1 data audit
+# KorisLab Phase 1 data audit
 
 Audit date: **2026-09-15** (Europe/Helsinki)
 
-This document records what was actually observed, what is a reasonable inference, and what remains unverified. It is a feasibility audit, not a claim that KorisIQ has permission to republish every field it can technically retrieve.
+This document records what was actually observed, what is a reasonable inference, and what remains unverified. It is a feasibility audit, not a claim that KorisLab has permission to republish every field it can technically retrieve.
 
 ## Executive result
 
@@ -89,9 +89,9 @@ The lineup payload contains source player IDs, names, team IDs, jersey numbers, 
 
 ### Statistics-page box score — **verified, adapter implemented**
 
-The separate public statistics page for match `968948` returned the full 24-column box score for both teams. It includes the raw fields used by the first KorisIQ dashboard: `MIN`, `PTS`, `2PM`, `2PA`, `2P%`, `3PM`, `3PA`, `3P%`, `FTM`, `FTA`, `FT%`, `OR`, `DR`, `REB`, `AST`, `TO`, `STL`, `BLK`, `BR`, `PF`, `FD`, `+/-`, and `Eff`. The team totals also reconcile with the final score and player rows for the inspected match.
+The separate public statistics page for match `968948` returned the full 24-column box score for both teams. It includes the raw fields used by the first KorisLab dashboard: `MIN`, `PTS`, `2PM`, `2PA`, `2P%`, `3PM`, `3PA`, `3P%`, `FTM`, `FTA`, `FT%`, `OR`, `DR`, `REB`, `AST`, `TO`, `STL`, `BLK`, `BR`, `PF`, `FD`, `+/-`, and `Eff`. The team totals also reconcile with the final score and player rows for the inspected match.
 
-The page embeds a Sportradar/Synergy fixture-detail widget. The widget receives Torneo's `match_external_id` and serves a public JSON response from its fixture-detail embed endpoint. `ingestion.basketfi_statistics.BasketFiStatisticsClient` resolves that ID through `getMatch`, fetches the response, and `normalization.basketfi_statistics.normalize_fixture_statistics` maps nested team/person rows into the KorisIQ schema. The adapter preserves source provenance, starter/DNP state, minute durations, team totals, and the full player stat set. It does not infer positions or shot coordinates that the response does not provide.
+The page embeds a Sportradar/Synergy fixture-detail widget. The widget receives Torneo's `match_external_id` and serves a public JSON response from its fixture-detail embed endpoint. `ingestion.basketfi_statistics.BasketFiStatisticsClient` resolves that ID through `getMatch`, fetches the response, and `normalization.basketfi_statistics.normalize_fixture_statistics` maps nested team/person rows into the KorisLab schema. The adapter preserves source provenance, starter/DNP state, minute durations, team totals, and the full player stat set. It does not infer positions or shot coordinates that the response does not provide.
 
 This is a verified implementation for the inspected public route, not a promise of a permanent API contract. Keep it behind caching, validation, rate limits, and a source-permission review before season-wide automation.
 
@@ -218,7 +218,7 @@ The included `analytics/metrics.py` implements only deterministic formulas for t
 
 ## Peluutin and KorisNext compatibility
 
-The existing [KorisNext notes](https://aapomontin.com/projects/korisnext) describe a Next.js UI backed by scraped Basket.fi data and [KorisAPI](https://github.com/apmnt/koris-api). KorisIQ should remain compatible at the data boundary by retaining source IDs, competition/category/season IDs, team IDs, and source event codes. Do not make KorisNext’s internal response shape the canonical model; use an adapter if integration is needed.
+The existing [KorisNext notes](https://aapomontin.com/projects/korisnext) describe a Next.js UI backed by scraped Basket.fi data and [KorisAPI](https://github.com/apmnt/koris-api). KorisLab should remain compatible at the data boundary by retaining source IDs, competition/category/season IDs, team IDs, and source event codes. Do not make KorisNext’s internal response shape the canonical model; use an adapter if integration is needed.
 
 Peluutin-style lineup analysis is a useful downstream consumer, but it requires reliable substitutions, stints, and score deltas. The inspected Women’s match exposed an empty `substitution_events` array even though it had normal event records, so lineup plus/minus should remain a later capability, not a v0.1 promise.
 

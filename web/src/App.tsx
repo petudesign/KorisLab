@@ -1064,7 +1064,7 @@ function SeasonView() {
       </section>
 
       <section className="panel season-read-panel">
-        <div className="panel-heading panel-heading--plain"><div><h3>{tr("KorisIQ lisää kontekstin, ei vain rankingia", "KorisIQ adds context, not just rankings")}</h3></div><span className="panel-context">{tr("metodologia näkyviin", "methodology visible")}</span></div>
+        <div className="panel-heading panel-heading--plain"><div><h3>{tr("KorisLab lisää kontekstin, ei vain rankingia", "KorisLab adds context, not just rankings")}</h3></div><span className="panel-context">{tr("metodologia näkyviin", "methodology visible")}</span></div>
         <div className="season-read-grid">
           <div><strong>{tr("Nykyinen havainto", "Current finding")}</strong><p>{tr(`Tarkistetuissa ${games} ottelussa kolmen pisteen yritykset muodostavat ${percent(totalThreePA, totalFga)} kaikista kenttäheittoyrityksistä.`, `Across ${games} verified games, three-point attempts account for ${percent(totalThreePA, totalFga)} of all field-goal attempts.`)}</p></div>
           <div><strong>{tr("Vuosivertailu odottaa toista kautta", "Year-over-year comparison needs another season")}</strong><p>{tr("Yhden kauden perusteella ei voi päätellä, onko kolmosten määrä noussut vuosien aikana.", "One season cannot tell us whether three-point volume has risen over time.")}</p></div>
@@ -1129,7 +1129,7 @@ type ThemeMode = "dark" | "light";
 
 function getInitialTheme(): ThemeMode {
   try {
-    const stored = window.localStorage.getItem("korisiq-theme");
+    const stored = window.localStorage.getItem("korislab-theme");
     if (stored === "light" || stored === "dark") return stored;
   } catch {
     // Storage can be unavailable in restricted browser contexts.
@@ -1153,7 +1153,7 @@ function App() {
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
     try {
-      window.localStorage.setItem("korisiq-theme", theme);
+      window.localStorage.setItem("korislab-theme", theme);
     } catch {
       // Storage can be unavailable in restricted browser contexts.
     }
@@ -1298,7 +1298,7 @@ function App() {
 
       <main className={`main-content main-content--${view}`}>
         <header className="topbar">
-          <div className="mobile-brand" aria-label="KorisIQ"><Mark /><span>Koris<span>IQ</span></span></div>
+          <div className="mobile-brand" aria-label="KorisLab"><Mark /><span>Koris<span>Lab</span></span></div>
           <div className="breadcrumbs">
             <button className={`crumb-link ${view === "overview" ? "crumb-current" : ""}`} onClick={() => setView("overview")}>{tr("Yleiskatsaus", "Overview")}</button>
             {isMatchDetail ? <><b>/</b><button className="crumb-link" onClick={() => setView("matches")}>{tr("Ottelut", "Games")}</button><b>/</b><span className="crumb-current">{view === "player-detail" ? tr("Pelaajat", "Players") : view === "data" ? tr("Data & saatavuus", "Data & availability") : tr("Ottelun tarina", "Game story")}</span></> : view !== "overview" ? <><b>/</b><span className="crumb-current">{view === "teams" ? tr("Joukkueprofiilit", "Team profiles") : view === "season" ? tr("Sarjan trendit", "League trends") : view === "players" ? tr("Pelaajat", "Players") : tr("Ottelut", "Games")}</span></> : null}
@@ -1416,7 +1416,7 @@ function App() {
 
           {view === "player-detail" && <section className="panel detail-panel"><div className="panel-heading"><div><span className="section-kicker">{tr("Pelaajavaikutus", "Player impact")}</span><h3>{tr("Koko ottelun box score", "Full-game box score")}</h3></div><button className="outline-button small" onClick={() => setShowAllPlayers(!showAllPlayers)}>{showAllPlayers ? tr("Näytä vähemmän", "Show less") : tr("Näytä kaikki", "Show all")}</button></div><p className="detail-intro">{tr("Samat Basket.fi:n viralliset kentät kuin lähdesivulla: minuutit, heittoyritykset, levypallot, syötöt, menetykset, puolustusluvut ja tehopisteet. `(A)` merkitsee avausviisikkoa.", "The same official Basket.fi fields as the source page: minutes, shot attempts, rebounds, assists, turnovers, defensive stats, and efficiency. `(A)` marks a starter.")}</p><BoxScoreTable rows={visiblePlayers} /></section>}
 
-          {view === "data" && <section className="panel detail-panel"><div className="panel-heading"><div><span className="section-kicker">{tr("Datan alkuperä", "Data source")}</span><h3>{tr("Ottelun datan saatavuus", "Game data availability")}</h3></div><span className="source-id">{tr("Lähde-ID", "Source ID")} {activeMatch.sourceMatchId}</span></div><p className="detail-intro">{tr("KorisIQ ei täytä puuttuvia arvoja nollilla. Jokainen analyysi rakentuu sen päälle, mitä lähde oikeasti palauttaa.", "KorisIQ does not fill missing values with zeros. Each analysis is built on what the source actually returns.")}</p><div className="availability-list">{displayedAvailability.map((item) => <div className="availability-row" key={item.label}><span className={`availability-icon ${item.tone}`}>{item.tone === "ready" ? "✓" : item.tone === "warning" ? "!" : "–"}</span><div><strong>{item.label}</strong><span>{item.detail}</span></div><em className={item.tone}>{item.value}</em></div>)}</div><div className="data-footnote"><span className="status-dot" /> {tr("Lähde", "Source")}: Basket.fi / statistics · {tr("haettu", "retrieved")} 15.9.2026 · {tr("historiallinen näyte", "historical sample")}</div></section>}
+          {view === "data" && <section className="panel detail-panel"><div className="panel-heading"><div><span className="section-kicker">{tr("Datan alkuperä", "Data source")}</span><h3>{tr("Ottelun datan saatavuus", "Game data availability")}</h3></div><span className="source-id">{tr("Lähde-ID", "Source ID")} {activeMatch.sourceMatchId}</span></div><p className="detail-intro">{tr("KorisLab ei täytä puuttuvia arvoja nollilla. Jokainen analyysi rakentuu sen päälle, mitä lähde oikeasti palauttaa.", "KorisLab does not fill missing values with zeros. Each analysis is built on what the source actually returns.")}</p><div className="availability-list">{displayedAvailability.map((item) => <div className="availability-row" key={item.label}><span className={`availability-icon ${item.tone}`}>{item.tone === "ready" ? "✓" : item.tone === "warning" ? "!" : "–"}</span><div><strong>{item.label}</strong><span>{item.detail}</span></div><em className={item.tone}>{item.value}</em></div>)}</div><div className="data-footnote"><span className="status-dot" /> {tr("Lähde", "Source")}: Basket.fi / statistics · {tr("haettu", "retrieved")} 15.9.2026 · {tr("historiallinen näyte", "historical sample")}</div></section>}
           </>}
           </div>
         </div>
