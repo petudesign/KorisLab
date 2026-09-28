@@ -341,11 +341,12 @@ function Mark({ className = "" }: { className?: string }) {
   );
 }
 
-type IconName = "overview" | "games" | "teams" | "players" | "season" | "matchup" | "health" | "settings" | "sun" | "moon" | "chevron" | "trophy" | "flag" | "target" | "bolt" | "sort" | "sortAsc" | "sortDesc";
+type IconName = "home" | "overview" | "games" | "teams" | "players" | "season" | "matchup" | "health" | "settings" | "sun" | "moon" | "chevron" | "trophy" | "flag" | "target" | "bolt" | "sort" | "sortAsc" | "sortDesc";
 
 function Icon({ name, size = 16 }: { name: IconName; size?: number }) {
   const common = { width: size, height: size, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.7, strokeLinecap: "round" as const, strokeLinejoin: "round" as const, "aria-hidden": true };
   const paths: Record<IconName, ReactNode> = {
+    home: <><path d="m3.5 10.5 8.5-7 8.5 7" /><path d="M5.5 9.5v10h13v-10M9.5 19.5v-6h5v6" /></>,
     overview: <><rect x="4" y="4" width="6" height="6" rx="1" /><rect x="14" y="4" width="6" height="6" rx="1" /><rect x="4" y="14" width="6" height="6" rx="1" /><rect x="14" y="14" width="6" height="6" rx="1" /></>,
     games: <><path d="M6 4.5h12a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-11a2 2 0 0 1 2-2Z" /><path d="M8 8h8M8 12h5M8 16h7" /></>,
     teams: <><circle cx="9" cy="9" r="3" /><circle cx="17" cy="11" r="2.5" /><path d="M3.8 19c.4-2.9 2.2-4.5 5.2-4.5s4.8 1.6 5.2 4.5M14.7 15.5c2.8-.2 4.7 1 5.5 3.5" /></>,
@@ -1169,12 +1170,13 @@ function ComparisonRow({ metric }: { metric: MatchComparison }) {
   </div>;
 }
 
-const mobileNavItems: Array<{ labelFi: string; labelEn: string; view: ViewKey; icon: IconName }> = [
-  { labelFi: "Yleiskatsaus", labelEn: "Overview", view: "overview", icon: "overview" },
-  { labelFi: "Ottelut", labelEn: "Games", view: "matches", icon: "games" },
-  { labelFi: "Joukkueet", labelEn: "Teams", view: "teams", icon: "teams" },
-  { labelFi: "Pelaajat", labelEn: "Players", view: "players", icon: "players" },
-  { labelFi: "Kausitrendit", labelEn: "Season", view: "season", icon: "season" },
+const mobileNavItems: Array<{ labelFi: string; labelEn: string; mobileLabelFi: string; mobileLabelEn: string; view: ViewKey; icon: IconName }> = [
+  { labelFi: "Etusivu", labelEn: "Home", mobileLabelFi: "Etusivu", mobileLabelEn: "Home", view: "home", icon: "home" },
+  { labelFi: "Yleiskatsaus", labelEn: "Overview", mobileLabelFi: "Yleisk.", mobileLabelEn: "Overview", view: "overview", icon: "overview" },
+  { labelFi: "Ottelut", labelEn: "Games", mobileLabelFi: "Ottelut", mobileLabelEn: "Games", view: "matches", icon: "games" },
+  { labelFi: "Joukkueet", labelEn: "Teams", mobileLabelFi: "Joukkueet", mobileLabelEn: "Teams", view: "teams", icon: "teams" },
+  { labelFi: "Pelaajat", labelEn: "Players", mobileLabelFi: "Pelaajat", mobileLabelEn: "Players", view: "players", icon: "players" },
+  { labelFi: "Kausitrendit", labelEn: "Season", mobileLabelFi: "Kausi", mobileLabelEn: "Season", view: "season", icon: "season" },
 ];
 
 type ThemeMode = "dark" | "light";
@@ -1189,10 +1191,42 @@ function getInitialTheme(): ThemeMode {
   return "dark";
 }
 
+function HomeView({ onNavigate }: { onNavigate: (view: ViewKey) => void }) {
+  const { language, tr } = useI18n();
+  const destinations: Array<{ view: ViewKey; titleFi: string; titleEn: string; detailFi: string; detailEn: string; icon: IconName }> = [
+    { view: "overview", titleFi: "Kauden yleiskatsaus", titleEn: "Season overview", detailFi: "Katso kauden kokonaisuus tilastojen kautta.", detailEn: "Explore the season through its statistics.", icon: "overview" },
+    { view: "teams", titleFi: "Joukkueet", titleEn: "Teams", detailFi: "Vertaa joukkueiden peliprofiileja.", detailEn: "Compare team profiles and playing styles.", icon: "teams" },
+    { view: "players", titleFi: "Pelaajat", titleEn: "Players", detailFi: "Tutki pelaajien kausitilastoja.", detailEn: "Explore player season statistics.", icon: "players" },
+  ];
+
+  return <div className="home-page">
+    <section className="home-hero" aria-labelledby="home-title">
+      <img className="home-hero-image" src="/korislab-home-illustration.png" alt={tr("Kuvituskuva naisten koripallo-ottelusta", "Illustrative women's basketball scene")} />
+      <div className="home-copy">
+        <h1 id="home-title" className="home-title"><span>{language === "fi" ? "Suomalainen koripallo," : "Finnish basketball,"}</span><em>{language === "fi" ? "datan kautta." : "through data."}</em></h1>
+        <p className="home-description">{tr("Naisten Korisliigan joukkueet, pelaajat ja pelin ilmiöt yhdessä paikassa.", "Women's Korisliiga teams, players, and the stories behind the game—all in one place.")}</p>
+        <button className="home-primary" type="button" onClick={() => onNavigate("overview")}>{tr("Katso kauden nostoja", "See season highlights")} <ArrowUpRight /></button>
+      </div>
+      <p className="home-image-note">{tr("Kuvituskuva · pelivideo lisätään myöhemmin", "Illustration · game footage coming later")}</p>
+    </section>
+
+    <section className="home-hub" aria-labelledby="home-hub-title">
+      <h2 id="home-hub-title">{tr("Aloita tutkiminen", "Start exploring")}</h2>
+      <div className="home-destinations">
+        {destinations.map((item) => <button className="home-destination" key={item.view} type="button" onClick={() => onNavigate(item.view)}>
+          <span className="home-destination-icon"><Icon name={item.icon} size={28} /></span>
+          <span className="home-destination-copy"><strong>{tr(item.titleFi, item.titleEn)}</strong><span>{tr(item.detailFi, item.detailEn)}</span></span>
+          <ArrowUpRight />
+        </button>)}
+      </div>
+    </section>
+  </div>;
+}
+
 function App() {
   const { language, setLanguage, tr } = useI18n();
   const [theme, setTheme] = useState<ThemeMode>(getInitialTheme);
-  const [view, setView] = useState<ViewKey>("overview");
+  const [view, setView] = useState<ViewKey>("home");
   const [profileTeamId, setProfileTeamId] = useState<string | undefined>();
   const [selectedMatchId, setSelectedMatchId] = useState(match.sourceMatchId);
   const [activeMatch, setActiveMatch] = useState<AppMatch>(match);
@@ -1310,10 +1344,10 @@ function App() {
   return (
     <div className={`app-shell app-shell--${view}`}>
       <aside className="sidebar">
-        <div className="brand-lockup">
+        <a className="brand-lockup brand-lockup--link" href="/" aria-label={tr("KorisLab – etusivu", "KorisLab – home")}>
           <Mark />
           <span>Koris<span>Lab</span></span>
-        </div>
+        </a>
 
         <div className="workspace-switcher">
           <div className="workspace-avatar">NK</div>
@@ -1326,7 +1360,8 @@ function App() {
 
         <nav className="main-nav" aria-label={tr("Päänavigaatio", "Main navigation")}>
           <p className="nav-label">{tr("Näkymä", "Views")}</p>
-          <button className={`nav-item ${view === "overview" ? "active" : ""}`} onClick={() => setView("overview")}><span className="nav-glyph"><Icon name="overview" /></span> {tr("Yleiskatsaus", "Overview")}</button>
+          <button className={`nav-item ${view === "home" ? "active" : ""}`} aria-current={view === "home" ? "page" : undefined} onClick={() => setView("home")}><span className="nav-glyph"><Icon name="home" /></span> {tr("Etusivu", "Home")}</button>
+          <button className={`nav-item ${view === "overview" ? "active" : ""}`} aria-current={view === "overview" ? "page" : undefined} onClick={() => setView("overview")}><span className="nav-glyph"><Icon name="overview" /></span> {tr("Yleiskatsaus", "Overview")}</button>
           <button className={`nav-item ${view === "matches" ? "active" : ""}`} onClick={() => setView("matches")}><span className="nav-glyph"><Icon name="games" /></span> {tr("Ottelut", "Games")} <span className="nav-count">{seasonData.aggregate.games}</span></button>
           <button className={`nav-item ${view === "teams" ? "active" : ""}`} onClick={() => setView("teams")}><span className="nav-glyph"><Icon name="teams" /></span> {tr("Joukkueet", "Teams")}</button>
           <button className={`nav-item ${view === "players" ? "active" : ""}`} onClick={() => setView("players")}><span className="nav-glyph"><Icon name="players" /></span> {tr("Pelaajat", "Players")}</button>
@@ -1343,18 +1378,19 @@ function App() {
       </aside>
 
       <nav className="mobile-nav" aria-label={tr("Mobiilinavigaatio", "Mobile navigation")}>
-        {mobileNavItems.map((item) => <button key={item.view} className={view === item.view ? "active" : ""} aria-current={view === item.view ? "page" : undefined} onClick={() => setView(item.view)}>
+        {mobileNavItems.map((item) => <button key={item.view} className={view === item.view ? "active" : ""} aria-label={tr(item.labelFi, item.labelEn)} aria-current={view === item.view ? "page" : undefined} onClick={() => setView(item.view)}>
           <span className="mobile-nav-icon"><Icon name={item.icon} size={18} /></span>
-          <span>{tr(item.labelFi, item.labelEn)}</span>
+          <span>{tr(item.mobileLabelFi, item.mobileLabelEn)}</span>
         </button>)}
       </nav>
 
       <main className={`main-content main-content--${view}`}>
         <header className="topbar">
-          <div className="mobile-brand" aria-label="KorisLab"><Mark /><span>Koris<span>Lab</span></span></div>
+          <a className="mobile-brand mobile-brand--link" href="/" aria-label={tr("KorisLab – etusivu", "KorisLab – home")}><Mark /><span>Koris<span>Lab</span></span></a>
           <div className="breadcrumbs">
-            <button className={`crumb-link ${view === "overview" ? "crumb-current" : ""}`} onClick={() => setView("overview")}>{tr("Yleiskatsaus", "Overview")}</button>
-            {isMatchDetail ? <><b>/</b><button className="crumb-link" onClick={() => setView("matches")}>{tr("Ottelut", "Games")}</button><b>/</b><span className="crumb-current">{view === "player-detail" ? tr("Pelaajat", "Players") : view === "data" ? tr("Data & saatavuus", "Data & availability") : tr("Ottelun tarina", "Game story")}</span></> : view !== "overview" ? <><b>/</b><span className="crumb-current">{view === "teams" ? tr("Joukkueprofiilit", "Team profiles") : view === "season" ? tr("Sarjan trendit", "League trends") : view === "players" ? tr("Pelaajat", "Players") : tr("Ottelut", "Games")}</span></> : null}
+            <button className={`crumb-link ${view === "home" ? "crumb-current" : ""}`} aria-current={view === "home" ? "page" : undefined} onClick={() => setView("home")}>{tr("Etusivu", "Home")}</button>
+            {isMatchDetail ? <><b>/</b><button className="crumb-link" onClick={() => setView("matches")}>{tr("Ottelut", "Games")}</button><b>/</b><span className="crumb-current">{view === "player-detail" ? tr("Pelaajat", "Players") : view === "data" ? tr("Data & saatavuus", "Data & availability") : tr("Ottelun tarina", "Game story")}</span></> : view !== "overview" && view !== "home" ? <><b>/</b><span className="crumb-current">{view === "teams" ? tr("Joukkueprofiilit", "Team profiles") : view === "season" ? tr("Sarjan trendit", "League trends") : view === "players" ? tr("Pelaajat", "Players") : tr("Ottelut", "Games")}</span></> : null}
+            {view === "overview" ? <><b>/</b><span className="crumb-current">{tr("Yleiskatsaus", "Overview")}</span></> : null}
           </div>
           <div className="topbar-actions">
             <button className="language-toggle" type="button" onClick={() => setLanguage(language === "fi" ? "en" : "fi")} aria-label={language === "fi" ? "Switch to English" : "Vaihda suomeen"} title={language === "fi" ? "Switch to English" : "Vaihda suomeen"}>{language === "fi" ? "EN" : "FI"}</button>
@@ -1366,10 +1402,11 @@ function App() {
 
         <div className={view === "overview" ? "page-with-outline" : undefined}>
           {view === "overview" && <OverviewSectionLinks tr={tr} />}
-          <div className="page-content">
+          <div className={`page-content ${view === "home" ? "page-content--home" : ""}`}>
+          {view === "home" ? <HomeView onNavigate={setView} /> : <>
           <section className={`intro-row intro-row--${view} ${view === "overview" ? "intro-row--overview" : ""}`}>
             <div>
-            <h1>{view === "overview" ? tr("Yleiskatsaus", "Overview") : view === "teams" ? tr("Joukkueen peliprofiili", "Team profile") : view === "season" ? tr("Kausitrendit", "Season trends") : view === "matches" ? tr("Ottelut", "Games") : view === "players" ? tr("Pelaajat", "Players") : tr("Pelin tarina", "Game story")}</h1>
+            <h1>{view === "overview" ? tr("Ymmärrä kausi numeroiden takaa.", "Understand the season behind the numbers.") : view === "teams" ? tr("Joukkueen peliprofiili", "Team profile") : view === "season" ? tr("Kausitrendit", "Season trends") : view === "matches" ? tr("Ottelut", "Games") : view === "players" ? tr("Pelaajat", "Players") : tr("Pelin tarina", "Game story")}</h1>
               <p className="intro-copy">{view === "overview" ? tr("Naisten Korisliigan kauden luvut, tehokkuus ja peliprofiili yhdellä sivulla.", "Women's Korisliiga season metrics, efficiency, and playing profile in one view.") : view === "teams" ? tr("Tutki joukkueen heittovalintoja ja tehokkuutta suhteessa sarjan tasoon.", "Explore a team's shot selection and efficiency relative to the league.") : view === "season" ? tr("Seuraa, miten suomalaisen koripallon heittoprofiili ja pelin tehokkuus muuttuvat kausien välillä.", "Track how shot profiles and efficiency change across Finnish basketball seasons.") : view === "matches" ? tr("Selaa kauden tarkistettuja box score -otteluita ja avaa yksittäisen ottelun analyysi.", "Browse verified season box scores and open an individual game analysis.") : view === "players" ? tr("Tutki koko kauden pelaajapoolia, rooleja ja tehokkuutta suhteessa peliaikaan.", "Explore the full player pool, roles, and efficiency relative to playing time.") : tr("Näe mitä tapahtui, milloin peli kääntyi ja mitä datasta voidaan oikeasti päätellä.", "See what happened, when the game shifted, and what the data can actually tell us.")}</p>
             </div>
             {view === "overview" ? <OverviewContext onOpenMatches={() => setView("matches")} /> : isMatchDetail ? <button className="outline-button" onClick={() => setView("matches")}>{tr("Palaa otteluihin", "Back to games")} <Icon name="chevron" size={13} /></button> : null}
@@ -1470,6 +1507,7 @@ function App() {
           {view === "player-detail" && <section className="panel detail-panel"><div className="panel-heading"><div><span className="section-kicker">{tr("Pelaajavaikutus", "Player impact")}</span><h3>{tr("Koko ottelun box score", "Full-game box score")}</h3></div><button className="outline-button small" onClick={() => setShowAllPlayers(!showAllPlayers)}>{showAllPlayers ? tr("Näytä vähemmän", "Show less") : tr("Näytä kaikki", "Show all")}</button></div><p className="detail-intro">{tr("Samat Basket.fi:n viralliset kentät kuin lähdesivulla: minuutit, heittoyritykset, levypallot, syötöt, menetykset, puolustusluvut ja tehopisteet. `(A)` merkitsee avausviisikkoa.", "The same official Basket.fi fields as the source page: minutes, shot attempts, rebounds, assists, turnovers, defensive stats, and efficiency. `(A)` marks a starter.")}</p><BoxScoreTable rows={visiblePlayers} /></section>}
 
           {view === "data" && <section className="panel detail-panel"><div className="panel-heading"><div><span className="section-kicker">{tr("Datan alkuperä", "Data source")}</span><h3>{tr("Ottelun datan saatavuus", "Game data availability")}</h3></div><span className="source-id">{tr("Lähde-ID", "Source ID")} {activeMatch.sourceMatchId}</span></div><p className="detail-intro">{tr("KorisLab ei täytä puuttuvia arvoja nollilla. Jokainen analyysi rakentuu sen päälle, mitä lähde oikeasti palauttaa.", "KorisLab does not fill missing values with zeros. Each analysis is built on what the source actually returns.")}</p><div className="availability-list">{displayedAvailability.map((item) => <div className="availability-row" key={item.label}><span className={`availability-icon ${item.tone}`}>{item.tone === "ready" ? "✓" : item.tone === "warning" ? "!" : "–"}</span><div><strong>{item.label}</strong><span>{item.detail}</span></div><em className={item.tone}>{item.value}</em></div>)}</div><div className="data-footnote"><span className="status-dot" /> {tr("Lähde", "Source")}: Basket.fi / statistics · {tr("haettu", "retrieved")} 15.9.2026 · {tr("historiallinen näyte", "historical sample")}</div></section>}
+          </>}
           </>}
           </div>
         </div>
