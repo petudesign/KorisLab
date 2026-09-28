@@ -1259,7 +1259,7 @@ function App() {
       <aside className="sidebar">
         <div className="brand-lockup">
           <Mark />
-          <span>Koris<span>IQ</span></span>
+          <span>Koris<span>Lab</span></span>
         </div>
 
         <div className="workspace-switcher">
