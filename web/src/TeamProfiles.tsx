@@ -52,10 +52,10 @@ function getStatusLabel(comparison: { status: ProfileStatus; intensity: "normal"
   return statusLabel[comparison.status];
 }
 
-export function TeamProfiles({ onOpenMatch }: { onOpenMatch: (id: string) => void }) {
+export function TeamProfiles({ onOpenMatch, initialTeamId }: { onOpenMatch: (id: string) => void; initialTeamId?: string }) {
   const { language, tr } = useI18n();
   const teams = season.aggregate.teams;
-  const [selected, setSelected] = useState(teams[0]?.source_team_id ?? "");
+  const [selected, setSelected] = useState(initialTeamId ?? teams[0]?.source_team_id ?? "");
   const team = teams.find(row => row.source_team_id === selected);
   if (!team) return <section className="panel detail-panel">Joukkueprofiilit avautuvat tarkistetuista ottelutilastoista.</section>;
   const profileMetrics = (row: typeof team): Metrics => ({ ...row.metrics, possessions_per_game: row.metrics.estimated_possessions === null ? null : row.metrics.estimated_possessions / row.games });

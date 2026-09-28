@@ -8,6 +8,7 @@ import { TeamGameSplit } from "./TeamGameSplit";
 import { scheduleByMatchId } from "./schedule";
 import { useI18n, type Language } from "./i18n";
 import { PaperLeaderShader } from "./PaperShaderBackdrop";
+import { ThreePointStory } from "./ThreePointStory";
 
 type SeasonMatchRecord = typeof import("../../data/normalized/season_verified.json")["matches"][number];
 type RawTeam = SeasonMatchRecord["teams"][number];
@@ -41,6 +42,17 @@ type MatchListItem = {
   awayScore: number;
   venue: string;
   scheduledAt: string | null;
+};
+
+type ThreePointGameRow = {
+  id: string;
+  date: string | null;
+  opponent: string;
+  home: boolean;
+  points: number;
+  opponentPoints: number;
+  threePM: number;
+  threePA: number;
 };
 
 type AppMatch = Omit<typeof match, "eventCount"> & { eventCount: number | null };
@@ -661,6 +673,7 @@ function PaperLeaderCard({ title, playerName, value, team, shaderColor, valueCol
 
 function OverviewSectionLinks({ tr }: { tr: (fi: string, en: string) => string }) {
   const links = [
+    { href: "#overview-featured", label: tr("Kausilöytö: kolmoset", "Season finding: threes") },
     { href: "#overview-summary", label: tr("Yhteenveto", "Summary") },
     { href: "#overview-leaders", label: tr("Kauden kärjet", "Season leaders") },
     { href: "#overview-scratchpad", label: tr("Rakenna analyysikysymys", "Build an analysis question") },
@@ -766,7 +779,7 @@ function OverviewScratchpad() {
   );
 }
 
-function OverviewView({ onOpenTeams }: { onOpenTeams: () => void }) {
+function OverviewView({ onOpenTeams, onOpenMatch }: { onOpenTeams: (teamId?: string) => void; onOpenMatch: (id: string) => void }) {
   const { tr } = useI18n();
   const league = seasonData.aggregate.league;
   const leaguePace = league.games > 0 ? league.metrics.estimated_possessions / (league.games * 2) : null;
@@ -778,6 +791,7 @@ function OverviewView({ onOpenTeams }: { onOpenTeams: () => void }) {
   const [standings, setStandings] = useState<StandingRow[]>([]);
   const [seasonPlayers, setSeasonPlayers] = useState<SeasonPlayerRow[]>([]);
   const [seasonMatches, setSeasonMatches] = useState<SeasonMatchRecord[]>([]);
+  const [seasonLoadStatus, setSeasonLoadStatus] = useState<"loading" | "ready" | "error">("loading");
 
   useEffect(() => {
     let cancelled = false;
@@ -786,6 +800,9 @@ function OverviewView({ onOpenTeams }: { onOpenTeams: () => void }) {
       setStandings(buildStandings(records));
       setSeasonPlayers(aggregateSeasonPlayers(records));
       setSeasonMatches(records);
+      setSeasonLoadStatus("ready");
+    }).catch(() => {
+      if (!cancelled) setSeasonLoadStatus("error");
     });
     return () => {
       cancelled = true;
@@ -809,9 +826,44 @@ function OverviewView({ onOpenTeams }: { onOpenTeams: () => void }) {
   const efficiencyLeader = [...qualifiedPlayers].sort((a, b) => (playerEfficiencyPer40(b) ?? -1) - (playerEfficiencyPer40(a) ?? -1))[0];
   const winner = standings[0];
   const lastPlace = standings[standings.length - 1];
+  const threePointTeams = [...seasonData.aggregate.teams].sort((a, b) => b.per_game.three_pa - a.per_game.three_pa);
+  const featuredThreePointTeam = threePointTeams[0];
+  const featuredThreePointGames = useMemo<ThreePointGameRow[]>(() => {
+    if (!featuredThreePointTeam) return [];
+    return seasonMatches.flatMap((record) => {
+      const team = record.teams.find((row) => row.source_id === featuredThreePointTeam.source_team_id);
+      const opponent = record.teams.find((row) => row.source_id !== featuredThreePointTeam.source_team_id);
+      if (!team || !opponent || record.teams.length !== 2 || team.stats.three_pa === null || team.stats.three_pm === null) return [];
+      return [{
+        id: record.game.source_id,
+        date: scheduledAtFor(record),
+        opponent: opponent.name,
+        home: team.home_away === "home",
+        points: team.score,
+        opponentPoints: opponent.score,
+        threePM: team.stats.three_pm,
+        threePA: team.stats.three_pa,
+      }];
+    }).sort((a, b) => {
+      const aDate = a.date && Number.isFinite(Date.parse(a.date)) ? Date.parse(a.date) : Number.POSITIVE_INFINITY;
+      const bDate = b.date && Number.isFinite(Date.parse(b.date)) ? Date.parse(b.date) : Number.POSITIVE_INFINITY;
+      return aDate - bDate || a.id.localeCompare(b.id);
+    });
+  }, [seasonMatches, featuredThreePointTeam?.source_team_id]);
 
   return (
     <>
+      {featuredThreePointTeam && <ThreePointStory
+        team={featuredThreePointTeam}
+        nextTeam={threePointTeams[1]}
+        league={seasonData.aggregate.league}
+        players={seasonPlayers}
+        games={featuredThreePointGames}
+        dataStatus={seasonLoadStatus}
+        onOpenTeamProfile={onOpenTeams}
+        onOpenMatch={onOpenMatch}
+      />}
+
       <section id="overview-summary" className="overview-metrics-grid overview-section-anchor" aria-label={tr("Liigan keskeiset tunnusluvut", "League key metrics")}>
         <div className="panel overview-metric"><strong>{overviewValue(league.metrics.offensive_rating)} <span className="overview-metric-unit">ORtg</span></strong><small>{tr("Sarjan hyökkäystehokkuus", "League offensive efficiency")}</small></div>
         <div className="panel overview-metric"><strong>{overviewValue(leaguePace)} <span className="overview-metric-unit">{tr("pallonhallintaa / ottelu", "possessions/game")}</span></strong><small>{tr("Pelin tempo", "Game pace")}</small></div>
@@ -863,7 +915,7 @@ function OverviewView({ onOpenTeams }: { onOpenTeams: () => void }) {
 
       <section id="overview-teams" className="overview-layout overview-section-anchor">
         <div className="panel overview-table-panel">
-          <div className="panel-heading panel-heading--plain"><div><h3>{tr("Joukkueiden tehokkuus", "Team efficiency")}</h3><p className="panel-subcopy">{tr("Net Rating yhdistää hyökkäyksen ja puolustuksen samaan vertailuun.", "Net Rating combines offense and defense in one comparison.")}</p></div><button className="outline-button small" onClick={onOpenTeams}>{tr("Joukkueprofiilit", "Team profiles")} <ArrowUpRight /></button></div>
+          <div className="panel-heading panel-heading--plain"><div><h3>{tr("Joukkueiden tehokkuus", "Team efficiency")}</h3><p className="panel-subcopy">{tr("Net Rating yhdistää hyökkäyksen ja puolustuksen samaan vertailuun.", "Net Rating combines offense and defense in one comparison.")}</p></div><button className="outline-button small" onClick={() => onOpenTeams()}>{tr("Joukkueprofiilit", "Team profiles")} <ArrowUpRight /></button></div>
           <div className="overview-table-wrap">
             <table className="overview-table">
               <caption className="sr-only">{tr("Naisten Korisliigan joukkueiden tehokkuusvertailu", "Women's Korisliiga team efficiency comparison")}</caption>
@@ -1141,6 +1193,7 @@ function App() {
   const { language, setLanguage, tr } = useI18n();
   const [theme, setTheme] = useState<ThemeMode>(getInitialTheme);
   const [view, setView] = useState<ViewKey>("overview");
+  const [profileTeamId, setProfileTeamId] = useState<string | undefined>();
   const [selectedMatchId, setSelectedMatchId] = useState(match.sourceMatchId);
   const [activeMatch, setActiveMatch] = useState<AppMatch>(match);
   const [activePlayers, setActivePlayers] = useState(players);
@@ -1322,7 +1375,7 @@ function App() {
             {view === "overview" ? <OverviewContext onOpenMatches={() => setView("matches")} /> : isMatchDetail ? <button className="outline-button" onClick={() => setView("matches")}>{tr("Palaa otteluihin", "Back to games")} <Icon name="chevron" size={13} /></button> : null}
           </section>
 
-          {view === "overview" ? <OverviewView onOpenTeams={() => setView("teams")} /> : view === "players" ? <PlayersView /> : view === "teams" ? <TeamProfiles onOpenMatch={(id) => { setSelectedMatchId(id); setView("story"); }} /> : view === "season" ? <SeasonView /> : view === "matches" ? <MatchesView onOpenMatch={(id) => { setSelectedMatchId(id); setView("story"); }} /> : <>
+          {view === "overview" ? <OverviewView onOpenTeams={(teamId) => { if (teamId) setProfileTeamId(teamId); setView("teams"); }} onOpenMatch={(id) => { setSelectedMatchId(id); setView("story"); }} /> : view === "players" ? <PlayersView /> : view === "teams" ? <TeamProfiles initialTeamId={profileTeamId} onOpenMatch={(id) => { setSelectedMatchId(id); setView("story"); }} /> : view === "season" ? <SeasonView /> : view === "matches" ? <MatchesView onOpenMatch={(id) => { setSelectedMatchId(id); setView("story"); }} /> : <>
           <section className="match-hero panel">
             <div className="match-hero-top">
               <div className="match-meta"><span>{tr(activeMatch.competition, "Women's Korisliiga")}</span><span className="meta-separator">·</span><span>{activeMatch.season}</span></div>
