@@ -1970,3 +1970,15 @@ body { font-size: 14px; line-height: 1.5; }
   .three-point-player { grid-template-columns: minmax(0, 1fr) minmax(86px, .8fr); gap: 8px; }
   .three-point-player-volume small { font-size: 9px; }
 }
+
+/* Give each overview story a clearer pause before the next section begins. */
+.main-content--overview :is(.overview-metrics-grid, .overview-leaders-panel, .three-point-story, .overview-scratchpad, .overview-layout, .style-map-panel, .game-split-panel) {
+  margin-top: 22px;
+}
+.main-content--overview .three-point-story { margin-bottom: 22px; }
+@media (max-width: 720px) {
+  .main-content--overview :is(.overview-metrics-grid, .overview-leaders-panel, .three-point-story, .overview-scratchpad, .overview-layout, .style-map-panel, .game-split-panel) {
+    margin-top: 18px;
+  }
+  .main-content--overview .three-point-story { margin-bottom: 18px; }
+}

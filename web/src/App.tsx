@@ -673,9 +673,9 @@ function PaperLeaderCard({ title, playerName, value, team, shaderColor, valueCol
 
 function OverviewSectionLinks({ tr }: { tr: (fi: string, en: string) => string }) {
   const links = [
-    { href: "#overview-featured", label: tr("Kausilöytö: kolmoset", "Season finding: threes") },
     { href: "#overview-summary", label: tr("Yhteenveto", "Summary") },
     { href: "#overview-leaders", label: tr("Kauden kärjet", "Season leaders") },
+    { href: "#overview-featured", label: tr("Kausilöytö: kolmoset", "Season finding: threes") },
     { href: "#overview-scratchpad", label: tr("Rakenna analyysikysymys", "Build an analysis question") },
     { href: "#overview-teams", label: tr("Joukkueet", "Teams") },
     { href: "#team-style-map", label: "Team Style Map" },
@@ -853,17 +853,6 @@ function OverviewView({ onOpenTeams, onOpenMatch }: { onOpenTeams: (teamId?: str
 
   return (
     <>
-      {featuredThreePointTeam && <ThreePointStory
-        team={featuredThreePointTeam}
-        nextTeam={threePointTeams[1]}
-        league={seasonData.aggregate.league}
-        players={seasonPlayers}
-        games={featuredThreePointGames}
-        dataStatus={seasonLoadStatus}
-        onOpenTeamProfile={onOpenTeams}
-        onOpenMatch={onOpenMatch}
-      />}
-
       <section id="overview-summary" className="overview-metrics-grid overview-section-anchor" aria-label={tr("Liigan keskeiset tunnusluvut", "League key metrics")}>
         <div className="panel overview-metric"><strong>{overviewValue(league.metrics.offensive_rating)} <span className="overview-metric-unit">ORtg</span></strong><small>{tr("Sarjan hyökkäystehokkuus", "League offensive efficiency")}</small></div>
         <div className="panel overview-metric"><strong>{overviewValue(leaguePace)} <span className="overview-metric-unit">{tr("pallonhallintaa / ottelu", "possessions/game")}</span></strong><small>{tr("Pelin tempo", "Game pace")}</small></div>
@@ -910,6 +899,17 @@ function OverviewView({ onOpenTeams, onOpenMatch }: { onOpenTeams: (teamId?: str
           />
         </div>
       </section>
+
+      {featuredThreePointTeam && <ThreePointStory
+        team={featuredThreePointTeam}
+        nextTeam={threePointTeams[1]}
+        league={seasonData.aggregate.league}
+        players={seasonPlayers}
+        games={featuredThreePointGames}
+        dataStatus={seasonLoadStatus}
+        onOpenTeamProfile={onOpenTeams}
+        onOpenMatch={onOpenMatch}
+      />}
 
       <OverviewScratchpad />
 
