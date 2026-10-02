@@ -1,0 +1,42 @@
+name: Refresh current-season data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 10-23/2 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: current-season-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - uses: actions/cache@v6
+        with:
+          path: |
+            data/cache/statistics
+            data/cache/pbp
+          key: season-2026-27-${{ github.run_id }}
+          restore-keys: season-2026-27-
+      - name: Verify ingestion
+        run: python -m unittest discover -s tests -v
+      - name: Refresh schedule and verified statistics
+        run: python -m ingestion.publish_season
+      - name: Commit the public snapshot
+        run: |
+          git add web/public/season-2026-27.json web/public/shots web/public/quarters-2026-27.json web/public/assists-2026-27.json
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update 2026–27 schedule and results"
+          git push

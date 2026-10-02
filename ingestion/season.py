@@ -32,6 +32,9 @@ def extract_season_matches(payload: dict[str, Any], *, group_id: str | None = No
     for row in rows:
         if not isinstance(row, dict):
             continue
+        # Knockout schedules also include series results (e.g. 3–0), not games.
+        if row.get("match_type") == "series":
+            continue
         if group_id is not None and str(row.get("group_id")) != str(group_id):
             continue
         status = _text(row.get("status"))
@@ -50,6 +53,7 @@ def extract_season_matches(payload: dict[str, Any], *, group_id: str | None = No
                 "group_name": _text(row.get("group_name")),
                 "scheduled_date": _text(row.get("date")),
                 "scheduled_time": _text(row.get("time")),
+                "venue": _text(row.get("venue_name")),
                 "status": status,
                 "home": {
                     "source_team_id": _text(row.get("team_A_id")),

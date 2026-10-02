@@ -1,0 +1,25 @@
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { parseQuarterStats, quarterValue } from "../src/quarterStats.ts";
+
+const historical = parseQuarterStats(JSON.parse(readFileSync(new URL("../public/quarters-2025-26.json", import.meta.url))), "2025-26");
+assert.equal(historical.verified_games, 108);
+const team = historical.teams.find(row => row.name === "BC Nokia");
+assert.ok(team);
+const first = quarterValue(historical, team.id, "q1", "points");
+const fourth = quarterValue(historical, team.id, "q4", "points");
+assert.equal(first.games, 24);
+assert.equal(fourth.games, 24);
+assert.equal(first.average, first.total / first.games);
+assert.notEqual(first.total, fourth.total);
+assert.deepEqual(quarterValue(historical, "missing", "q1", "steals"), {games: 0, total: null, average: null});
+assert.throws(() => parseQuarterStats(historical, "2026-27"));
+const duplicate = structuredClone(historical);
+duplicate.teams.push(duplicate.teams[0]);
+assert.throws(() => parseQuarterStats(duplicate, "2025-26"));
+const invalid = structuredClone(historical);
+invalid.teams[0].periods["1"].points.games = 0;
+assert.throws(() => parseQuarterStats(invalid, "2025-26"));
+const current = parseQuarterStats(JSON.parse(readFileSync(new URL("../public/quarters-2026-27.json", import.meta.url))), "2026-27");
+if (current.verified_games === 0) assert.deepEqual(quarterValue(current, team.id, "q4", "points"), {games: 0, total: null, average: null});
+console.log("Quarter summaries verified: season identity, totals, coverage and missing data.");

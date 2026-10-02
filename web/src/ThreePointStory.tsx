@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useI18n } from "./i18n";
+import { Icon } from "./Icon";
 
 type TeamSummary = {
   source_team_id: string;
@@ -85,10 +86,9 @@ export function ThreePointStory({ team, nextTeam, league, players, games, dataSt
   const selectedGameDate = activeGame ? formatDate(activeGame.date, language) : null;
 
   return (
-    <section id="overview-featured" className="panel three-point-story overview-section-anchor" aria-labelledby="three-point-story-heading">
+    <section className="panel three-point-story" aria-labelledby="three-point-story-heading">
       <div className="three-point-story-heading">
         <div>
-          <span className="section-kicker">{tr("Kausilöytö · kolmoset", "Season finding · threes")}</span>
           <h2 id="three-point-story-heading">{tr(`${team.name} yritti eniten kolmen pisteen heittoja`, `${team.name} attempted the most threes`)}</h2>
           <p>{tr(
             `${formatNumber(team.per_game.three_pa, language)} yritystä ottelua kohti${nextTeam ? `. Seuraava joukkue, ${nextTeam.name}, yritti ${formatNumber(nextTeam.per_game.three_pa, language)} ottelua kohti` : ""}. Tarkkuus oli ${teamThreePct === null ? "—" : `${formatNumber(teamThreePct, language)}%`}; sarjan yhteistulos oli ${leagueThreePct === null ? "—" : `${formatNumber(leagueThreePct, language)}%`}.`,
@@ -98,7 +98,7 @@ export function ThreePointStory({ team, nextTeam, league, players, games, dataSt
         <div className="three-point-story-actions">
           <span className="panel-context">{team.games} {tr("ottelun aineisto", "games in sample")}</span>
           <button className="outline-button small" type="button" onClick={() => onOpenTeamProfile(team.source_team_id)}>
-            {tr(`Avaa ${team.name} -profiili`, `Open ${team.name} profile`)} <span aria-hidden="true">↗</span>
+            {tr(`Avaa ${team.name} -profiili`, `Open ${team.name} profile`)} <Icon name="arrowOutward" size={14} />
           </button>
         </div>
       </div>
@@ -126,7 +126,7 @@ export function ThreePointStory({ team, nextTeam, league, players, games, dataSt
           <div className="three-point-subheading">
             <div>
               <h3 id="three-point-games-heading">{tr("Ottelut kauden järjestyksessä", "Games through the season")}</h3>
-              <p>{tr("Yritykset ja osumat ottelu ottelulta.", "Attempts and makes, one game at a time.")}</p>
+              <p>{tr("Pylväs näyttää kaikki yritykset, vihreä osa osumat.", "Each bar shows all attempts; the green part shows makes.")}</p>
             </div>
             <span className="panel-context">{games.length} / {team.games}</span>
           </div>
@@ -172,7 +172,7 @@ export function ThreePointStory({ team, nextTeam, league, players, games, dataSt
                     <title>{label}</title>
                     <rect className="three-point-game-hit" x={center - step / 2} y={chart.top - 4} width={step} height={chart.bottom - chart.top + 8} />
                     <rect className="three-point-game-attempts" x={center - barWidth / 2} y={attemptsY} width={barWidth} height={chart.bottom - attemptsY} rx="2" />
-                    <rect className="three-point-game-makes" x={center - barWidth / 2} y={makesY} width={barWidth} height={chart.bottom - makesY} rx="2" />
+                    <rect className="three-point-game-makes" x={center - barWidth / 2 + 2} y={makesY} width={barWidth - 4} height={chart.bottom - makesY} rx="2" />
                     {isSelected && <rect className="three-point-game-outline" x={center - barWidth / 2 - 3} y={attemptsY - 3} width={barWidth + 6} height={chart.bottom - attemptsY + 6} rx="4" />}
                   </g>;
                 })}
@@ -188,7 +188,7 @@ export function ThreePointStory({ team, nextTeam, league, players, games, dataSt
                 <strong>{selectedGameDate ?? tr("Ottelu", "Game")} · {activeGame.opponent}</strong>
                 <span>{activeGame.home ? tr("Koti", "Home") : tr("Vieras", "Away")} · {activeGame.points}–{activeGame.opponentPoints} · {activeGame.threePM}/{activeGame.threePA} {tr("kolmosta", "threes")}{activeGame.threePA > 0 ? ` (${formatNumber(100 * activeGame.threePM / activeGame.threePA, language)}%)` : ""}</span>
               </div>
-              <button className="outline-button small" type="button" onClick={() => onOpenMatch(activeGame.id)}>{tr("Avaa ottelun analyysi", "Open game analysis")} <span aria-hidden="true">↗</span></button>
+              <button className="outline-button small" type="button" onClick={() => onOpenMatch(activeGame.id)}>{tr("Avaa ottelun analyysi", "Open game analysis")} <Icon name="arrowOutward" size={14} /></button>
             </div>}
           </>}
         </section>

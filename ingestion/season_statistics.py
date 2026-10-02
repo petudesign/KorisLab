@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from time import sleep
+from time import sleep, time
 import json
 import hashlib
 from pathlib import Path
@@ -20,6 +20,7 @@ def hydrate_season_statistics(
     limit: int | None = None,
     delay_seconds: float = 0.0,
     cache_dir: Path | None = None,
+    cache_max_age_seconds: float | None = None,
 ) -> dict[str, Any]:
     """Fetch played-match statistics while keeping per-match failures visible."""
 
@@ -42,7 +43,7 @@ def hydrate_season_statistics(
         try:
             path = cache_dir / (hashlib.sha256(match_id.encode()).hexdigest() + ".json") if cache_dir else None
             snapshot = None
-            if path and path.exists():
+            if path and path.exists() and (cache_max_age_seconds is None or (cache_max_age_seconds > 0 and time() - path.stat().st_mtime < cache_max_age_seconds)):
                 try:
                     candidate = json.loads(path.read_text(encoding="utf-8"))
                     if candidate.get("game", {}).get("source_id") == match_id and validate_statistics_snapshot(candidate)["valid"]:

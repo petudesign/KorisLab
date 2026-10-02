@@ -5,6 +5,16 @@ from ingestion.season_statistics import hydrate_season_statistics
 
 
 class SeasonIngestionTests(unittest.TestCase):
+    def test_playoff_schedule_excludes_series_results_but_keeps_games(self):
+        payload = {"matches": [
+            {"match_id": "series", "match_type": "series", "status": "Played", "group_id": "302874", "fs_A": "3", "fs_B": "0"},
+            {"match_id": "game", "match_type": "match", "status": "Played", "group_id": "302874", "best_of_match": "series", "fs_A": "85", "fs_B": "53"},
+            {"match_id": "bronze", "status": "Played", "group_id": "302874", "fs_A": "70", "fs_B": "65"},
+        ]}
+        matches = extract_season_matches(payload, group_id="302874", played_only=True)
+        self.assertEqual([match["source_match_id"] for match in matches], ["game", "bronze"])
+        self.assertEqual(summarize_season_schedule(matches)["played_games"], 2)
+
     def test_cached_run_does_not_fetch_again(self):
         from tempfile import TemporaryDirectory
         from pathlib import Path

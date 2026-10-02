@@ -53,9 +53,9 @@ pnpm install
 pnpm run dev -- --port 5173
 ```
 
-The prototype currently presents a real 2025–26 Women’s Korisliiga match and makes source availability visible instead of hiding missing fields. Its player view uses the reviewed public statistics page for match `968948`, including the full 24-column box score. Derived eFG%, TS%, ORtg, DRtg, Net Rating, and other efficiency values are labeled as box-score estimates where exact possession data is not available. The `Kausitrendit` view is now in place with a clearly labeled test sample; it will become a real multi-season trend view once additional verified seasons have been ingested.
+The app presents verified 2025–26 regular-season analysis and a 2026–27 schedule. Derived eFG%, TS%, ORtg, DRtg, Net Rating, and other efficiency values are labeled as box-score estimates where exact possession data is not available. `Kausitrendit` includes verified regular-season statistics and the 2025–26 playoff comparison. Historical multi-season trend lines still require more complete seasons.
 
-The current web snapshot is intentionally not a production season loader: the statistics page embeds a Sportradar/Synergy widget, and the repeatable single-game adapter is now in the ingestion layer. Broad season-wide use still needs a respectful batch job, caching, retry/rate-limit policy, and a second verified season before trend lines are presented as historical facts.
+The current-season publisher reuses the validated single-game adapter, with caching and per-game failure reporting. Its scheduled job is prepared locally; deployment and remote activation remain separate from the local prototype. See the 2026–27 section below.
 
 ## Layout
 
@@ -68,3 +68,98 @@ analytics/       deterministic metric helpers
 data/normalized/ compact, redacted source snapshots
 tests/           standard-library regression tests
 ```
+## Pudotuspelivertailu (2025–26)
+
+Kausitrendit vertaa joukkueen runkosarjan ja pudotuspelien keskiarvoja. Runkosarja sisältää 108 ja pudotuspelit 30 tarkistettua ottelua, myös pronssiottelun. Joukkueet yhdistetään lähteen joukkue-ID:llä. FG% perustuu osumien ja yritysten summiin, muutoksen yksikkö on prosenttiyksikkö; laskettavat tapahtumat esitetään per joukkueen ottelu. Ottelusarjojen koontirivit (`match_type: series`, esimerkiksi 3–0) rajataan pois tuonnissa.
+
+Pudotuspelit voi päivittää samalla adapterilla (ryhmä `302874`):
+
+```powershell
+python -m ingestion.cli --season-statistics --competition-id huki2526 --category-id 1 --group-id 302874 --out data/normalized/season_playoffs_2025_2026.json
+```
+
+Tuonti tuottaa tarkistetun aineiston ja kompaktin `.summary.json`-tiedoston. Käyttöliittymä lataa vain yhteenvedon. Pääkortit kuvaavat yhden joukkueen keskimääräistä runkosarjaottelua (liigan tapahtumasummat / 2 / ottelut). Vastustajien vaihtuminen ja pienet pudotuspeliotokset on huomioitava vertailua tulkittaessa.
+
+## Kausi 2026–27 ja päivitykset
+
+Yhteinen kausivalinta vaihtaa ottelut ja analyysit valittuun kauteen. Oletus on 2026–27, ja valinta muistetaan selaimessa. Etusivun esimerkkianalyysi on erikseen merkitty kaudelle 2025–26; sen linkki valitsee kyseisen kauden. Ennen ensimmäisiä tarkistettuja box scoreja analyysinäkymät näyttävät otteluohjelman tilanteen, eivät edellisen kauden lukuja.
+
+Päivitä paikallinen ohjelma, tulokset ja tarkistetut tilastot:
+
+```powershell
+python -m ingestion.publish_season
+```
+
+Komento hakee sarjan `huki2627`, kategorian `1`, runkosarjaryhmän `303031` ja kirjoittaa atomisesti `web/public/season-2026-27.json`. Mukana ovat ohjelma ja ajat Suomen paikallisaikana, pelattujen otteluiden tulokset, tarkistetut box scoret, kausiaggregaatit ja virheiden kattavuus. Tulevan ottelun puuttuvaa tulosta ei korvata nollalla. Ohjelmahakuvirhe säilyttää edellisen tiedoston; epäonnistunut tilastohaku säilyttää aiemman tarkistetun box scoren ja yrittää uudelleen seuraavassa ajossa. Välimuisti päivitetään 24 tunnin jälkeen myös jälkikorjauksia varten. Muuttumaton aineisto säilyttää päivitysajan, jolloin ajastus ei tuota turhia committeja. Yksittäisen ottelun välimuistin voi poistaa sen lähde-ID:n SHA-256-tiedoston perusteella, jos korjaus tarvitaan heti.
+
+Selain lukee julkaistua tiedostoa viiden minuutin välein näkyvällä sivulla sekä **Lataa päivitykset** -painikkeesta. Tämä ei itsessään hae Basket.fi:n tietoja: yllä oleva komento pitää ajaa paikallisesti tai palvelimella.
+
+`.github/workflows/update-season.yml` sisältää ajettavan päivityksen GitHub Actionsille: manuaalinen ajo sekä kahden tunnin välein päivästä iltaan UTC-ajassa. Se testaa tuonnin, käyttää välimuistia ja committaa vain julkisen datatiedoston. **Ajastus ei ole vielä aktivoitu tai julkaistu tässä paikallisessa muutoksessa.** GitHub-ajastus tarvitsee tiedoston oletushaaraan ja toimivat Actionsin kirjoitusoikeudet. Sivuston julkaisu on kytkettävä datamuutokseen erikseen. `GITHUB_TOKEN`-tokenilla tehty push ei käynnistä tavallisia muita GitHub Actions -push-workfloweja; GitHubissa ajettava julkaisu pitää kytkeä samaan työhön tai `workflow_run`-tapahtumaan. Paikallinen localhost ei päivity etäkoneen commitista automaattisesti.
+
+CMS kannattaa lisätä vasta itse kirjoitettaville analyyseille ja artikkeleille. Ottelutulosten ja tilastojen lähde on Basket.fi, joten niiden ylläpito pysyy saman tarkistetun tuonnin kautta. Julkisen palvelun datan käyttöehdot ja automaattisen haun ehdot on käsitelty lähdeauditissa; ajastus ei muuta niitä.
+
+## Pelaajat, profiilit ja sivuosoitteet
+
+Pelaajat-sivu näyttää piste-, syöttö-, levypallo- ja riistokeskiarvojen kärjet sekä Eff/40- ja peliminuuttikärjet. Keskiarvot ja Eff/40 edellyttävät vähintään 8 pelattua ottelua ja 120 minuuttia; peliminuuttikortti käyttää kauden kokonaissummaa. Kortit koskevat koko liigaa, listan haku ja joukkuevalinta rajaavat pelaajataulukkoa ja syöttövertailua. Nimestä tai kortista avautuu pelaajaprofiili, jossa ovat runkosarjan keskiarvot, syöttöjen pistearvo ja otteluloki. DNP-rivejä ei lasketa peleihin tai summiin. Puuttuvat riisto- ja torjuntatilastot näkyvät puuttuvina, eivät nollina.
+
+Pääsivut avautuvat osoitteissa `/overview/`, `/matches/`, `/teams/`, `/players/` ja `/season/`. Pelaajan osoite on `/players/<source_player_id>/`, ottelun `/matches/<source_match_id>/`. Kausi kulkee query-parametrina, esimerkiksi `/players/?season=2025-26`; sama linkki avaa saman kauden myös toisessa selaimessa. Navigaatio käyttää tavallisia linkkejä ja History API:a, joten suorat avaukset, päivitys sekä selaimen takaisin/eteenpäin toimivat. Pelaajatunnisteet ovat lähteen tunnisteita: eri kausien eri tunnisteita ei yhdistetä pelkän nimen perusteella.
+
+Osoitteet, sivukohtaiset otsikot, kuvaukset ja canonical-linkit ovat SEO:n ensimmäinen vaihe. Sovellus on edelleen selaimessa renderöitävä SPA. Ennen julkaisua tarvitaan sisällön esirenderöinti tai palvelinrenderöinti, oikean domainin sitemap sekä julkaisupalvelun reititys: tunnetun suoran osoitteen pitää avata sovellus, tuntemattoman palauttaa HTTP 404. Paikallinen Vite-palvelin tukee suoria avauksia, mutta julkista hosting-asetusta ei ole tässä muutoksessa tehty. Tyhjät pelaajaprofiilit ja sovelluksen puuttuvat sivut merkitään `noindex`-tilaan.
+
+Pelaajalaskennan ja reittien pieni tarkistus (Node 22.14+):
+
+```powershell
+cd web
+pnpm run check:players
+pnpm run build
+```
+# Shot charts
+
+The Game story now loads a per-match field-goal chart from `web/public/shots/<match-id>.json`.
+The source's full-court percentage coordinates, player IDs, periods (including overtime),
+clock and made/missed outcome are preserved. Free throws are excluded. Missing coordinates
+remain missing and still count in the attempt totals. Each published chart compares 2P/3P
+attempts and makes against the verified box score; differences are labelled in the UI.
+
+Team, player, period and 2P/3P filters update the chart, totals and accessible table together.
+Filters persist in the URL for reload and sharing. The canonical URL remains the game page.
+The existing current-season publisher also refreshes charts, retaining previous data on errors.
+The prepared GitHub workflow includes these files; it still needs activation/deployment.
+
+Publish historical charts with `python -m ingestion.publish_shots`; use `--match-id` for one game
+or `--season-file` for another verified dataset. Check with `pnpm run check:shots` in `web`
+and `python -m unittest tests.test_basketfi_shots tests.test_publish_season`.
+
+Play-by-play is now imported for the quarter-level analysis question. Its raw events remain
+in the ingestion cache; a compact season summary is published for the frontend. Future analyses
+should answer a concrete question (shot-location changes, assisted scoring, or changes with
+a player on court), display attempt counts and scope, and distinguish association from causation.
+Season zone charts and reconstructed lineup statistics are not part of this first chart release.
+
+## Quarter-level analysis questions
+
+The Overview question builder supports quarters 1–4 for points, steals, turnovers, 3PA and FTA.
+`python -m ingestion.publish_quarters` imports historical play-by-play through the public
+`fixture_detail?sub=pbp` response and publishes `web/public/quarters-2025-26.json`.
+Fixture identity, team identities, unique events, completed periods and each period's points
+are checked against the verified box score. Each metric's complete-game totals must also
+match both teams' box scores before that game contributes to the metric's quarter sample.
+Team events count even without a player ID. Quarter four excludes overtime; full-game values
+continue to include overtime. Missing coverage is displayed as missing, with the verified
+game count beside the result, rather than converted to zero.
+
+The current-season publisher also refreshes `quarters-2026-27.json`; the prepared workflow
+caches raw events and includes the quarter summary. Raw event responses are not shipped to
+the browser. Failed refreshes use validated cached responses and retain a more complete
+published summary. Check with `pnpm run check:quarters` in `web` and
+`python -m unittest tests.test_basketfi_pbp`.
+
+## Syöttöjen pistearvo
+
+Pelaajat-sivun "Mitä syötöistä syntyy?" näyttää syöttöjen kokonaissumman, syötöistä tehdyt 2P/3P-korit, niiden pisteet, pisteet per tunnistettu pelitilannekorisyöttö sekä kolmosten osuuden. Vertailu on järjestettävä ja seuraa sivun hakua ja joukkuevalintaa. Osuuksien ja keskiarvojen järjestys edellyttää vähintään 10 tunnistettua korisyöttöä. Pelaajaprofiili näyttää saman pelaajan pistearvon ja jakauman.
+
+Syöttö yhdistetään onnistuneeseen pelitilanneheittoon pelaaja- ja joukkue-ID:n, erän ja kellon avulla. Jos samassa kellonajassa on useita koreja, tulostilanteen on erotettava yksi kori. Tapahtumajärjestys voi olla syöttö ennen koria. Yhtä koria ei käytetä kahdesti. Lähteen vapaaheittotilanteisiin kirjaamat syötöt eritellään, eikä niiden pisteitä lasketa 2P/3P-vertailuun. Epäselvä yhteys jää kohdistamatta; puutteellinen pistesumma merkitään ≥-merkillä. Ottelu otetaan mukaan vasta, kun tapahtumien syöttösummat täsmäävät sekä pelaajien että joukkueiden box scoreen ja PBP:n eräpisteet on tarkistettu. Näytettävä ottelukattavuus ei muutu puuttuvasta datasta nollatilastoiksi.
+
+`python -m ingestion.publish_assists` julkaisee historiallisen yhteenvedon olemassa olevasta `data/cache/pbp`-välimuistista tiedostoon `web/public/assists-2025-26.json` ilman verkkohakuja. Kausi 2026–27 päivittyy `ingestion.publish_season`-komennossa neljännesdatan jälkeen. Selain lataa syöttöyhteenvedon uudelleen nykykauden julkisen snapshotin päivittyessä. Valmisteltu GitHub-workflow sisältää myös syöttöyhteenvedon; ajastuksen käyttöönotto on yhä erillinen vaihe.
+
+Tarkistukset: `python -m unittest tests.test_basketfi_assists`, `pnpm run check:assists` ja `pnpm run build` (`web`-hakemistossa). Julkaistu 2025–26-aineisto kattaa 108 ottelua ja 3 763 syöttöä: 3 355 tunnistettua pelitilannekoria ja 408 erikseen kirjattua vapaaheittotilannetta, ei kohdistamattomia syöttöjä.

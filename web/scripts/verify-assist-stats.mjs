@@ -1,0 +1,20 @@
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { assistValues, parseAssistStats } from "../src/assistStats.ts";
+
+const stats = parseAssistStats(JSON.parse(readFileSync("public/assists-2025-26.json", "utf8")), "2025-26");
+assert.equal(stats.verified_games, 108);
+assert.equal(stats.players.reduce((sum, row) => sum + row.assists, 0), 3763);
+assert.equal(stats.players.reduce((sum, row) => sum + row.free_throw, 0), 408);
+assert.equal(stats.players.reduce((sum, row) => sum + row.unlinked, 0), 0);
+const row = { id: "a", games: 1, assists: 4, two: 1, three: 2, free_throw: 1, unlinked: 0 };
+assert.deepEqual(assistValues(row), { baskets: 3, points: 8, pointsPerAssist: 8 / 3, threeShare: 2 / 3 * 100 });
+assert.equal(assistValues({ ...row, assists: 0, two: 0, three: 0, free_throw: 0 }).pointsPerAssist, null);
+assert.equal(assistValues({ ...row, two: 0, three: 0 }).threeShare, null);
+assert.throws(() => parseAssistStats(stats, "2026-27"));
+assert.throws(() => parseAssistStats({ ...stats, players: [row, row] }, "2025-26"));
+assert.throws(() => parseAssistStats({ ...stats, players: [{ ...row, assists: 99 }] }, "2025-26"));
+assert.throws(() => parseAssistStats({ ...stats, players: [{ ...row, games: 109 }] }, "2025-26"));
+assert.throws(() => parseAssistStats({ ...stats, match_ids: ["1", "1"] }, "2025-26"));
+assert.equal(parseAssistStats(JSON.parse(readFileSync("public/assists-2026-27.json", "utf8")), "2026-27").players.length, 0);
+console.log("Assist links, point values, denominators, coverage and empty season verified.");

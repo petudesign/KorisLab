@@ -1,0 +1,2484 @@
+{
+  "schema_version": "0.1",
+  "season_id": "huki2627",
+  "updated_at": "2026-10-01T13:39:27.598405+00:00",
+  "source_url": "https://tulospalvelu.basket.fi/",
+  "schedule": [
+    {
+      "source_match_id": "1006239",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-10-02",
+      "scheduled_time": "18:30:00",
+      "venue": "MLL Areena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "48083",
+        "name": "Kouvottaret",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "34",
+        "name": "ToPo",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006161",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-10-03",
+      "scheduled_time": "16:00:00",
+      "venue": "Lapuan urheilutalo",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "45373",
+        "name": "Vimpelin Veto",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "8",
+        "name": "BC Nokia",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006180",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-10-03",
+      "scheduled_time": "17:00:00",
+      "venue": "Steveco Areena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "4",
+        "name": "Peli-Karhut",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "4615311",
+        "name": "HBA-Märsky",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006230",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-10-04",
+      "scheduled_time": "17:00:00",
+      "venue": "Pyynikin palloiluhalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "138",
+        "name": "Tampereen Pyrintö",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "31",
+        "name": "Tapiolan Honka",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006164",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-10-07",
+      "scheduled_time": "18:30:00",
+      "venue": "Urhea-halli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "4615311",
+        "name": "HBA-Märsky",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "1040",
+        "name": "Espoo Basket Team",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006199",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-10-07",
+      "scheduled_time": "18:30:00",
+      "venue": "AGCO Power Arena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "8",
+        "name": "BC Nokia",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "4",
+        "name": "Peli-Karhut",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006194",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-10-07",
+      "scheduled_time": "18:30:00",
+      "venue": "Tapiolan Liikuntahalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "31",
+        "name": "Tapiolan Honka",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "48083",
+        "name": "Kouvottaret",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006257",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-10-07",
+      "scheduled_time": "18:30:00",
+      "venue": "Töölön Kisahalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "34",
+        "name": "ToPo",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "45373",
+        "name": "Vimpelin Veto",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006233",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-10-10",
+      "scheduled_time": "16:00:00",
+      "venue": "Lapuan urheilutalo",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "45373",
+        "name": "Vimpelin Veto",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "31",
+        "name": "Tapiolan Honka",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006151",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-10-10",
+      "scheduled_time": "17:00:00",
+      "venue": "Espoonlahden urheiluhalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "1040",
+        "name": "Espoo Basket Team",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "8",
+        "name": "BC Nokia",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006215",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-10-10",
+      "scheduled_time": "17:00:00",
+      "venue": "MLL Areena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "48083",
+        "name": "Kouvottaret",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "138",
+        "name": "Tampereen Pyrintö",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006241",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-10-10",
+      "scheduled_time": "17:00:00",
+      "venue": "Steveco Areena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "4",
+        "name": "Peli-Karhut",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "34",
+        "name": "ToPo",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006207",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-10-17",
+      "scheduled_time": "14:00:00",
+      "venue": "Tapiolan Liikuntahalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "31",
+        "name": "Tapiolan Honka",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "4",
+        "name": "Peli-Karhut",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006171",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-10-17",
+      "scheduled_time": "17:00:00",
+      "venue": "Töölön Kisahalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "34",
+        "name": "ToPo",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "1040",
+        "name": "Espoo Basket Team",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006254",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-10-17",
+      "scheduled_time": "17:00:00",
+      "venue": "Pyynikin palloiluhalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "138",
+        "name": "Tampereen Pyrintö",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "45373",
+        "name": "Vimpelin Veto",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006175",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-10-18",
+      "scheduled_time": "17:00:00",
+      "venue": "AGCO Power Arena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "8",
+        "name": "BC Nokia",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "4615311",
+        "name": "HBA-Märsky",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006197",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-10-24",
+      "scheduled_time": "16:00:00",
+      "venue": "Lapuan urheilutalo",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "45373",
+        "name": "Vimpelin Veto",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "48083",
+        "name": "Kouvottaret",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006225",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-10-24",
+      "scheduled_time": "17:00:00",
+      "venue": "Espoonlahden urheiluhalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "1040",
+        "name": "Espoo Basket Team",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "31",
+        "name": "Tapiolan Honka",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006217",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-10-24",
+      "scheduled_time": "17:00:00",
+      "venue": "Steveco Areena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "4",
+        "name": "Peli-Karhut",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "138",
+        "name": "Tampereen Pyrintö",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006237",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-10-25",
+      "scheduled_time": "15:00:00",
+      "venue": "Urhea-halli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "4615311",
+        "name": "HBA-Märsky",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "34",
+        "name": "ToPo",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006168",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-10-28",
+      "scheduled_time": "18:30:00",
+      "venue": "Pyynikin palloiluhalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "138",
+        "name": "Tampereen Pyrintö",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "1040",
+        "name": "Espoo Basket Team",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006159",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-10-31",
+      "scheduled_time": "17:00:00",
+      "venue": "Munkkiniemen Yhteiskoulu",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "34",
+        "name": "ToPo",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "8",
+        "name": "BC Nokia",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006183",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-11-01",
+      "scheduled_time": "14:00:00",
+      "venue": "Tapiolan Liikuntahalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "31",
+        "name": "Tapiolan Honka",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "4615311",
+        "name": "HBA-Märsky",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006204",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-11-01",
+      "scheduled_time": "17:00:00",
+      "venue": "MLL Areena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "48083",
+        "name": "Kouvottaret",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "4",
+        "name": "Peli-Karhut",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006189",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-11-07",
+      "scheduled_time": "17:00:00",
+      "venue": "Espoonlahden urheiluhalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "1040",
+        "name": "Espoo Basket Team",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "48083",
+        "name": "Kouvottaret",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006223",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-11-07",
+      "scheduled_time": "17:00:00",
+      "venue": "AGCO Power Arena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "8",
+        "name": "BC Nokia",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "31",
+        "name": "Tapiolan Honka",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006213",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-11-08",
+      "scheduled_time": "15:00:00",
+      "venue": "Urhea-halli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "4615311",
+        "name": "HBA-Märsky",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "138",
+        "name": "Tampereen Pyrintö",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006178",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-11-18",
+      "scheduled_time": "18:30:00",
+      "venue": "MLL Areena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "48083",
+        "name": "Kouvottaret",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "4615311",
+        "name": "HBA-Märsky",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006252",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-11-18",
+      "scheduled_time": "18:30:00",
+      "venue": "Steveco Areena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "4",
+        "name": "Peli-Karhut",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "45373",
+        "name": "Vimpelin Veto",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006156",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-11-20",
+      "scheduled_time": "18:30:00",
+      "venue": "Pyynikin palloiluhalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "138",
+        "name": "Tampereen Pyrintö",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "8",
+        "name": "BC Nokia",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006244",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-11-21",
+      "scheduled_time": "13:00:00",
+      "venue": "Tapiolan Liikuntahalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "31",
+        "name": "Tapiolan Honka",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "34",
+        "name": "ToPo",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006173",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-11-21",
+      "scheduled_time": "16:00:00",
+      "venue": "Lapuan urheilutalo",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "45373",
+        "name": "Vimpelin Veto",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "1040",
+        "name": "Espoo Basket Team",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006201",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-11-28",
+      "scheduled_time": "17:00:00",
+      "venue": "Espoonlahden urheiluhalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "1040",
+        "name": "Espoo Basket Team",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "4",
+        "name": "Peli-Karhut",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006187",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-11-28",
+      "scheduled_time": "17:00:00",
+      "venue": "AGCO Power Arena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "8",
+        "name": "BC Nokia",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "48083",
+        "name": "Kouvottaret",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006249",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-11-29",
+      "scheduled_time": "15:00:00",
+      "venue": "Urhea-halli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "4615311",
+        "name": "HBA-Märsky",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "45373",
+        "name": "Vimpelin Veto",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006220",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-12-02",
+      "scheduled_time": "18:30:00",
+      "venue": "Töölön Kisahalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "34",
+        "name": "ToPo",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "138",
+        "name": "Tampereen Pyrintö",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006193",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-12-05",
+      "scheduled_time": "15:00:00",
+      "venue": "Pyynikin palloiluhalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "138",
+        "name": "Tampereen Pyrintö",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "48083",
+        "name": "Kouvottaret",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006167",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-12-05",
+      "scheduled_time": "17:00:00",
+      "venue": "Steveco Areena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "4",
+        "name": "Peli-Karhut",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "1040",
+        "name": "Espoo Basket Team",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006258",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-12-05",
+      "scheduled_time": "19:00:00",
+      "venue": "Töölön Kisahalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "34",
+        "name": "ToPo",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "45373",
+        "name": "Vimpelin Veto",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006184",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-12-06",
+      "scheduled_time": "15:00:00",
+      "venue": "Tapiolan Liikuntahalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "31",
+        "name": "Tapiolan Honka",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "4615311",
+        "name": "HBA-Märsky",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006214",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-12-09",
+      "scheduled_time": "18:30:00",
+      "venue": "Urhea-halli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "4615311",
+        "name": "HBA-Märsky",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "138",
+        "name": "Tampereen Pyrintö",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006226",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-12-09",
+      "scheduled_time": "18:30:00",
+      "venue": "Espoonlahden urheiluhalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "1040",
+        "name": "Espoo Basket Team",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "31",
+        "name": "Tapiolan Honka",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006235",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-12-09",
+      "scheduled_time": "18:30:00",
+      "venue": "AGCO Power Arena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "8",
+        "name": "BC Nokia",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "34",
+        "name": "ToPo",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006210",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-12-09",
+      "scheduled_time": "18:30:00",
+      "venue": "Lapuan urheilutalo",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "45373",
+        "name": "Vimpelin Veto",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "4",
+        "name": "Peli-Karhut",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006256",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-12-12",
+      "scheduled_time": "15:30:00",
+      "venue": "Tapiolan Liikuntahalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "31",
+        "name": "Tapiolan Honka",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "45373",
+        "name": "Vimpelin Veto",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006155",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-12-12",
+      "scheduled_time": "17:00:00",
+      "venue": "Steveco Areena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "4",
+        "name": "Peli-Karhut",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "8",
+        "name": "BC Nokia",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006179",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-12-13",
+      "scheduled_time": "17:00:00",
+      "venue": "MLL Areena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "48083",
+        "name": "Kouvottaret",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "4615311",
+        "name": "HBA-Märsky",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006169",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-12-13",
+      "scheduled_time": "17:00:00",
+      "venue": "Pyynikin palloiluhalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "138",
+        "name": "Tampereen Pyrintö",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "1040",
+        "name": "Espoo Basket Team",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006190",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-12-16",
+      "scheduled_time": "18:30:00",
+      "venue": "Espoonlahden urheiluhalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "1040",
+        "name": "Espoo Basket Team",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "48083",
+        "name": "Kouvottaret",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006224",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-12-16",
+      "scheduled_time": "18:30:00",
+      "venue": "AGCO Power Arena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "8",
+        "name": "BC Nokia",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "31",
+        "name": "Tapiolan Honka",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006222",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-12-16",
+      "scheduled_time": "18:30:00",
+      "venue": "Lapuan urheilutalo",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "45373",
+        "name": "Vimpelin Veto",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "138",
+        "name": "Tampereen Pyrintö",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006209",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-12-16",
+      "scheduled_time": "18:30:00",
+      "venue": "Töölön Kisahalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "34",
+        "name": "ToPo",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "4",
+        "name": "Peli-Karhut",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006165",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-12-18",
+      "scheduled_time": "18:30:00",
+      "venue": "Urhea-halli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "4615311",
+        "name": "HBA-Märsky",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "1040",
+        "name": "Espoo Basket Team",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006245",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-12-19",
+      "scheduled_time": "14:00:00",
+      "venue": "Tapiolan Liikuntahalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "31",
+        "name": "Tapiolan Honka",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "34",
+        "name": "ToPo",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006157",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-12-19",
+      "scheduled_time": "14:00:00",
+      "venue": "Pyynikin palloiluhalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "138",
+        "name": "Tampereen Pyrintö",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "8",
+        "name": "BC Nokia",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006251",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2026-12-20",
+      "scheduled_time": "17:00:00",
+      "venue": "MLL Areena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "48083",
+        "name": "Kouvottaret",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "45373",
+        "name": "Vimpelin Veto",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006221",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-01-08",
+      "scheduled_time": "18:30:00",
+      "venue": "Töölön Kisahalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "34",
+        "name": "ToPo",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "138",
+        "name": "Tampereen Pyrintö",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006186",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-01-09",
+      "scheduled_time": "16:00:00",
+      "venue": "Lapuan urheilutalo",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "45373",
+        "name": "Vimpelin Veto",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "4615311",
+        "name": "HBA-Märsky",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006188",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-01-09",
+      "scheduled_time": "17:00:00",
+      "venue": "AGCO Power Arena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "8",
+        "name": "BC Nokia",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "48083",
+        "name": "Kouvottaret",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006229",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-01-09",
+      "scheduled_time": "17:00:00",
+      "venue": "Steveco Areena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "4",
+        "name": "Peli-Karhut",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "31",
+        "name": "Tapiolan Honka",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006163",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-01-13",
+      "scheduled_time": "18:30:00",
+      "venue": "AGCO Power Arena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "8",
+        "name": "BC Nokia",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "1040",
+        "name": "Espoo Basket Team",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006219",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-01-13",
+      "scheduled_time": "18:30:00",
+      "venue": "Tapiolan Liikuntahalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "31",
+        "name": "Tapiolan Honka",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "138",
+        "name": "Tampereen Pyrintö",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006185",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-01-13",
+      "scheduled_time": "18:30:00",
+      "venue": "Töölön Kisahalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "34",
+        "name": "ToPo",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "4615311",
+        "name": "HBA-Märsky",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006192",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-01-13",
+      "scheduled_time": "18:30:00",
+      "venue": "Steveco Areena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "4",
+        "name": "Peli-Karhut",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "48083",
+        "name": "Kouvottaret",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006153",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-01-15",
+      "scheduled_time": "18:30:00",
+      "venue": "Urhea-halli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "4615311",
+        "name": "HBA-Märsky",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "8",
+        "name": "BC Nokia",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006248",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-01-16",
+      "scheduled_time": "17:00:00",
+      "venue": "Espoonlahden urheiluhalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "1040",
+        "name": "Espoo Basket Team",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "45373",
+        "name": "Vimpelin Veto",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006240",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-01-16",
+      "scheduled_time": "17:00:00",
+      "venue": "MLL Areena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "48083",
+        "name": "Kouvottaret",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "34",
+        "name": "ToPo",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006206",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-01-16",
+      "scheduled_time": "17:00:00",
+      "venue": "Pyynikin palloiluhalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "138",
+        "name": "Tampereen Pyrintö",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "4",
+        "name": "Peli-Karhut",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006203",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-01-22",
+      "scheduled_time": "18:30:00",
+      "venue": "Urhea-halli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "4615311",
+        "name": "HBA-Märsky",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "4",
+        "name": "Peli-Karhut",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006228",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-01-22",
+      "scheduled_time": "18:30:00",
+      "venue": "MLL Areena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "48083",
+        "name": "Kouvottaret",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "31",
+        "name": "Tapiolan Honka",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006162",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-01-23",
+      "scheduled_time": "16:00:00",
+      "venue": "Lapuan urheilutalo",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "45373",
+        "name": "Vimpelin Veto",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "8",
+        "name": "BC Nokia",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006236",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-01-23",
+      "scheduled_time": "17:00:00",
+      "venue": "Espoonlahden urheiluhalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "1040",
+        "name": "Espoo Basket Team",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "34",
+        "name": "ToPo",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006182",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-01-26",
+      "scheduled_time": "18:30:00",
+      "venue": "Pyynikin palloiluhalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "138",
+        "name": "Tampereen Pyrintö",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "4615311",
+        "name": "HBA-Märsky",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006170",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-01-27",
+      "scheduled_time": "18:30:00",
+      "venue": "Tapiolan Liikuntahalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "31",
+        "name": "Tapiolan Honka",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "1040",
+        "name": "Espoo Basket Team",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006160",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-01-27",
+      "scheduled_time": "18:30:00",
+      "venue": "Töölön Kisahalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "34",
+        "name": "ToPo",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "8",
+        "name": "BC Nokia",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006253",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-01-27",
+      "scheduled_time": "18:30:00",
+      "venue": "Steveco Areena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "4",
+        "name": "Peli-Karhut",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "45373",
+        "name": "Vimpelin Veto",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006227",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-01-29",
+      "scheduled_time": "18:30:00",
+      "venue": "Urhea-halli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "4615311",
+        "name": "HBA-Märsky",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "31",
+        "name": "Tapiolan Honka",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006246",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-01-30",
+      "scheduled_time": "16:00:00",
+      "venue": "Lapuan urheilutalo",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "45373",
+        "name": "Vimpelin Veto",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "34",
+        "name": "ToPo",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006202",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-01-30",
+      "scheduled_time": "17:00:00",
+      "venue": "Espoonlahden urheiluhalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "1040",
+        "name": "Espoo Basket Team",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "4",
+        "name": "Peli-Karhut",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006216",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-01-30",
+      "scheduled_time": "17:00:00",
+      "venue": "MLL Areena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "48083",
+        "name": "Kouvottaret",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "138",
+        "name": "Tampereen Pyrintö",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006212",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-02-03",
+      "scheduled_time": "18:30:00",
+      "venue": "Espoonlahden urheiluhalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "1040",
+        "name": "Espoo Basket Team",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "138",
+        "name": "Tampereen Pyrintö",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006200",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-02-03",
+      "scheduled_time": "18:30:00",
+      "venue": "AGCO Power Arena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "8",
+        "name": "BC Nokia",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "4",
+        "name": "Peli-Karhut",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006234",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-02-03",
+      "scheduled_time": "18:30:00",
+      "venue": "Lapuan urheilutalo",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "45373",
+        "name": "Vimpelin Veto",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "31",
+        "name": "Tapiolan Honka",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006191",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-02-05",
+      "scheduled_time": "18:30:00",
+      "venue": "Urhea-halli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "4615311",
+        "name": "HBA-Märsky",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "48083",
+        "name": "Kouvottaret",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006166",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-02-19",
+      "scheduled_time": "18:30:00",
+      "venue": "MLL Areena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "48083",
+        "name": "Kouvottaret",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "1040",
+        "name": "Espoo Basket Team",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006158",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-02-20",
+      "scheduled_time": "14:00:00",
+      "venue": "Tapiolan Liikuntahalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "31",
+        "name": "Tapiolan Honka",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "8",
+        "name": "BC Nokia",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006242",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-02-20",
+      "scheduled_time": "17:00:00",
+      "venue": "Steveco Areena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "4",
+        "name": "Peli-Karhut",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "34",
+        "name": "ToPo",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006255",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-02-20",
+      "scheduled_time": "17:00:00",
+      "venue": "Pyynikin palloiluhalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "138",
+        "name": "Tampereen Pyrintö",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "45373",
+        "name": "Vimpelin Veto",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006177",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-02-24",
+      "scheduled_time": "18:30:00",
+      "venue": "Espoonlahden urheiluhalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "1040",
+        "name": "Espoo Basket Team",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "4615311",
+        "name": "HBA-Märsky",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006211",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-02-24",
+      "scheduled_time": "18:30:00",
+      "venue": "AGCO Power Arena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "8",
+        "name": "BC Nokia",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "138",
+        "name": "Tampereen Pyrintö",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006198",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-02-24",
+      "scheduled_time": "18:30:00",
+      "venue": "Lapuan urheilutalo",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "45373",
+        "name": "Vimpelin Veto",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "48083",
+        "name": "Kouvottaret",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006232",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-02-24",
+      "scheduled_time": "18:30:00",
+      "venue": "Töölön Kisahalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "34",
+        "name": "ToPo",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "31",
+        "name": "Tapiolan Honka",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006250",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-02-26",
+      "scheduled_time": "18:30:00",
+      "venue": "Urhea-halli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "4615311",
+        "name": "HBA-Märsky",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "45373",
+        "name": "Vimpelin Veto",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006154",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-02-26",
+      "scheduled_time": "18:30:00",
+      "venue": "MLL Areena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "48083",
+        "name": "Kouvottaret",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "8",
+        "name": "BC Nokia",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006208",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-02-27",
+      "scheduled_time": "14:00:00",
+      "venue": "Tapiolan Liikuntahalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "31",
+        "name": "Tapiolan Honka",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "4",
+        "name": "Peli-Karhut",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006243",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-02-27",
+      "scheduled_time": "17:00:00",
+      "venue": "Pyynikin palloiluhalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "138",
+        "name": "Tampereen Pyrintö",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "34",
+        "name": "ToPo",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006174",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-03-06",
+      "scheduled_time": "16:00:00",
+      "venue": "Lapuan urheilutalo",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "45373",
+        "name": "Vimpelin Veto",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "1040",
+        "name": "Espoo Basket Team",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006176",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-03-06",
+      "scheduled_time": "17:00:00",
+      "venue": "AGCO Power Arena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "8",
+        "name": "BC Nokia",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "4615311",
+        "name": "HBA-Märsky",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006196",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-03-06",
+      "scheduled_time": "17:00:00",
+      "venue": "Töölön Kisahalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "34",
+        "name": "ToPo",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "48083",
+        "name": "Kouvottaret",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006218",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-03-06",
+      "scheduled_time": "17:00:00",
+      "venue": "Steveco Areena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "4",
+        "name": "Peli-Karhut",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "138",
+        "name": "Tampereen Pyrintö",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006238",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-03-10",
+      "scheduled_time": "18:30:00",
+      "venue": "Urhea-halli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "4615311",
+        "name": "HBA-Märsky",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "34",
+        "name": "ToPo",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006152",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-03-10",
+      "scheduled_time": "18:30:00",
+      "venue": "Espoonlahden urheiluhalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "1040",
+        "name": "Espoo Basket Team",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "8",
+        "name": "BC Nokia",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006205",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-03-10",
+      "scheduled_time": "18:30:00",
+      "venue": "MLL Areena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "48083",
+        "name": "Kouvottaret",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "4",
+        "name": "Peli-Karhut",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006231",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-03-10",
+      "scheduled_time": "18:30:00",
+      "venue": "Pyynikin palloiluhalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "138",
+        "name": "Tampereen Pyrintö",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "31",
+        "name": "Tapiolan Honka",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006247",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-03-13",
+      "scheduled_time": "17:00:00",
+      "venue": "AGCO Power Arena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "8",
+        "name": "BC Nokia",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "45373",
+        "name": "Vimpelin Veto",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006195",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-03-13",
+      "scheduled_time": "17:00:00",
+      "venue": "Tapiolan Liikuntahalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "31",
+        "name": "Tapiolan Honka",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "48083",
+        "name": "Kouvottaret",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006172",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-03-13",
+      "scheduled_time": "17:00:00",
+      "venue": "Töölön Kisahalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "34",
+        "name": "ToPo",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "1040",
+        "name": "Espoo Basket Team",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006181",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-03-13",
+      "scheduled_time": "17:00:00",
+      "venue": "Steveco Areena",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "4",
+        "name": "Peli-Karhut",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "4615311",
+        "name": "HBA-Märsky",
+        "score": null
+      }
+    }
+  ],
+  "schedule_summary": {
+    "games": 108,
+    "teams": [
+      "BC Nokia",
+      "Espoo Basket Team",
+      "HBA-Märsky",
+      "Kouvottaret",
+      "Peli-Karhut",
+      "Tampereen Pyrintö",
+      "Tapiolan Honka",
+      "ToPo",
+      "Vimpelin Veto"
+    ],
+    "team_count": 9,
+    "played_games": 0,
+    "date_range": {
+      "from": "2026-10-02",
+      "to": "2027-03-13"
+    }
+  },
+  "matches": [],
+  "summary": {
+    "available_played_games": 0,
+    "requested_games": 0,
+    "fetched_games": 0,
+    "failed_games": 0,
+    "cached_games": 0,
+    "valid_games": 0,
+    "invalid_games": 0
+  },
+  "aggregate": {
+    "schema_version": "0.1",
+    "season_id": "huki2627",
+    "competition": null,
+    "games": 0,
+    "teams": [],
+    "league": {
+      "games": 0,
+      "totals": {
+        "points": null,
+        "two_pm": null,
+        "two_pa": null,
+        "three_pm": null,
+        "three_pa": null,
+        "ftm": null,
+        "fta": null,
+        "offensive_rebounds": null,
+        "defensive_rebounds": null,
+        "rebounds": null,
+        "assists": null,
+        "turnovers": null,
+        "steals": null,
+        "blocks": null,
+        "blocks_received": null,
+        "fouls": null,
+        "fouls_drawn": null,
+        "efficiency": null
+      },
+      "per_game": {
+        "points": null,
+        "two_pm": null,
+        "two_pa": null,
+        "three_pm": null,
+        "three_pa": null,
+        "ftm": null,
+        "fta": null,
+        "offensive_rebounds": null,
+        "defensive_rebounds": null,
+        "rebounds": null,
+        "assists": null,
+        "turnovers": null,
+        "steals": null,
+        "blocks": null,
+        "blocks_received": null,
+        "fouls": null,
+        "fouls_drawn": null,
+        "efficiency": null
+      },
+      "metrics": {
+        "field_goals_made": null,
+        "field_goals_attempted": null,
+        "fg_pct": null,
+        "two_point_pct": null,
+        "three_point_pct": null,
+        "efg_pct": null,
+        "true_shooting_pct": null,
+        "estimated_possessions": null,
+        "offensive_rating": null,
+        "defensive_rating": null,
+        "net_rating": null,
+        "assist_turnover": null,
+        "turnover_pct": null,
+        "offensive_rebound_pct": null,
+        "defensive_rebound_pct": null,
+        "three_point_attempt_rate": null,
+        "free_throw_rate": null
+      }
+    }
+  },
+  "failures": []
+}

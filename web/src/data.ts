@@ -1,4 +1,4 @@
-export type ViewKey = "home" | "overview" | "story" | "matches" | "players" | "player-detail" | "season" | "data" | "teams";
+export type ViewKey = "home" | "overview" | "story" | "matches" | "players" | "player-profile" | "player-detail" | "season" | "data" | "teams" | "not-found";
 export type PlayerRole = "C" | "PF" | "SF" | "SG" | "PG" | null;
 
 export type BoxScore = {
@@ -80,7 +80,6 @@ export const match = {
   time: "18:30",
   venue: "MLL Areena · Kouvola",
   sourceMatchId: "968948",
-  source: "Basket.fi / statistics",
   status: "Lopputulos",
   home: { name: "Kouvottaret", score: 47, color: "coral" },
   away: { name: "BC Nokia", score: 70, color: "mint" },
