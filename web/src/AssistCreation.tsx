@@ -8,26 +8,28 @@ import { followLink, routeHref } from "./routing";
 
 type Sort = "points" | "assists" | "pointsPerAssist" | "threeShare";
 
-export function AssistCreation({ players, onOpenPlayer, profile = false }: {
-  players: SeasonPlayerRow[]; onOpenPlayer?: (id: string) => void; profile?: boolean;
+export function AssistCreation({ players, onOpenPlayer, profile = false, phase = "regular" }: {
+  players: SeasonPlayerRow[]; onOpenPlayer?: (id: string) => void; profile?: boolean; phase?: "regular" | "playoffs";
 }) {
-  const { seasonId, current } = useSeason();
+  const { leagueId, assetPath, seasonId, current } = useSeason();
   const { tr, language } = useI18n();
+  const assetSeason = phase === "playoffs" ? `${seasonId}-playoffs` : seasonId;
   const [state, setState] = useState<{ season: string; data: AssistStats | null; status: "loading" | "ready" | "error" }>({ season: "", data: null, status: "loading" });
   const [sort, setSort] = useState<Sort>("points");
   const [showAll, setShowAll] = useState(false);
   useEffect(() => {
     const controller = new AbortController();
-    void fetch(`/assists-${seasonId}.json`, { signal: controller.signal, cache: "no-cache" })
+    void fetch(assetPath(`assists-${assetSeason}.json`), { signal: controller.signal, cache: "no-cache" })
       .then(async response => {
+        if (response.status === 404) { if (!controller.signal.aborted) setState({ season: assetSeason, data: null, status: "ready" }); return; }
         if (!response.ok) throw new Error("Assist data unavailable");
-        const data = parseAssistStats(await response.json(), seasonId);
-        if (!controller.signal.aborted) setState({ season: seasonId, data, status: "ready" });
-      }).catch(() => { if (!controller.signal.aborted) setState({ season: seasonId, data: null, status: "error" }); });
+        const data = parseAssistStats(await response.json(), assetSeason);
+        if (!controller.signal.aborted) setState({ season: assetSeason, data, status: "ready" });
+      }).catch(() => { if (!controller.signal.aborted) setState({ season: assetSeason, data: null, status: "error" }); });
     return () => controller.abort();
-  }, [seasonId, current?.updated_at]);
-  const data = state.season === seasonId ? state.data : null;
-  const status = state.season === seasonId ? state.status : "loading";
+  }, [assetSeason, current?.updated_at, assetPath]);
+  const data = state.season === assetSeason ? state.data : null;
+  const status = state.season === assetSeason ? state.status : "loading";
   const byId = new Map(data?.players.map(row => [row.id, row]));
   const rows = players.flatMap(player => {
     const row = byId.get(player.id);
@@ -59,7 +61,7 @@ export function AssistCreation({ players, onOpenPlayer, profile = false }: {
           <div className="players-table-wrap" tabIndex={0} role="region" aria-label={tr("Syöttövertailu, vieritettävä taulukko", "Assist comparison, scrollable table")}>
             <table className="players-table assist-table"><caption className="sr-only">{tr("Syötöistä syntyneet pelitilannepisteet", "Field-goal points created by assists")}</caption>
               <thead><tr>{[tr("Pelaaja", "Player"), tr("Syötöt", "Assists"), "AST/TO", tr("2P-korit", "2P baskets"), tr("3P-korit", "3P baskets"), tr("Pisteet syötöistä", "Points from assists"), tr("Pisteet / korisyöttö", "Points / FG assist"), tr("Kolmosten osuus", "Three share"), tr("Vaparitilanteet", "FT situations")].map(label => <th key={label} scope="col">{label}</th>)}</tr></thead>
-              <tbody>{sorted.slice(0, showAll ? sorted.length : 10).map(row => <tr key={row.id}><th scope="row"><a className="player-name-link" href={routeHref("player-profile", seasonId, row.id)} onClick={event => { if (onOpenPlayer) followLink(event, () => onOpenPlayer(row.id)); }}>{playerDisplayName(row.player.name)}</a><small>{row.player.team} · {row.games} / {row.player.games} {tr("ottelua", "games")}{row.unlinked > 0 ? tr(` · ${row.unlinked} syöttöä kohdistamatta`, ` · ${row.unlinked} unlinked assists`) : ""}</small></th>
+              <tbody>{sorted.slice(0, showAll ? sorted.length : 10).map(row => <tr key={row.id}><th scope="row"><a className="player-name-link" href={routeHref("player-profile", seasonId, row.id, leagueId)} onClick={event => { if (onOpenPlayer) followLink(event, () => onOpenPlayer(row.id)); }}>{playerDisplayName(row.player.name)}</a><small>{row.player.team} · {row.games} / {row.player.games} {tr("ottelua", "games")}{row.unlinked > 0 ? tr(` · ${row.unlinked} syöttöä kohdistamatta`, ` · ${row.unlinked} unlinked assists`) : ""}</small></th>
                 <td>{row.assists}</td><td>{decimal(row.assistTurnover, 2)}</td><td>{row.two}</td><td>{row.three}</td><td className="assist-points">{row.unlinked ? "≥ " : ""}{row.points}</td><td>{decimal(row.pointsPerAssist, 2)}</td><td>{row.threeShare === null ? "—" : `${decimal(row.threeShare)}%`}</td><td>{row.free_throw}</td></tr>)}</tbody>
             </table>
           </div>

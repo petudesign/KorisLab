@@ -3,6 +3,7 @@ import { MetalFx } from "metal-fx";
 import { ThinkingOrb } from "thinking-orbs";
 import { Icon } from "./Icon";
 import { useI18n } from "./i18n";
+import { useSeason } from "./SeasonContext";
 import type { QueryFeedback, QueryTarget } from "./basketballQuery";
 
 type SearchMode = "hero" | "topbar";
@@ -26,6 +27,7 @@ export function QuerySearch({
   onAction: (target: QueryTarget) => void;
 }) {
   const { language, tr } = useI18n();
+  const { leagueId } = useSeason();
   const [reducedMotion, setReducedMotion] = useState(false);
   const inputId = `query-search-${mode}`;
   const submitButton = <button className="query-search-submit" type="submit" disabled={busy || !value.trim()} aria-label={tr("Hae", "Search")} title={tr("Hae", "Search")}>
@@ -52,7 +54,7 @@ export function QuerySearch({
         value={value}
         onChange={(event) => onChange(event.target.value)}
         placeholder={mode === "hero"
-          ? tr("Esim. ToPo tai kuka voitti kauden 2025–26?", "For example, ToPo or who won the 2025–26 season?")
+          ? leagueId === "korisliiga" ? tr("Esim. Kouvot tai kuka voitti kauden 2025–26?", "For example, Kouvot or who won the 2025–26 season?") : tr("Esim. ToPo tai kuka voitti kauden 2025–26?", "For example, ToPo or who won the 2025–26 season?")
           : tr("Hae tai kysy…", "Search or ask…")}
       />
       <MetalFx variant="circle" preset="chromatic" strength={1} theme={theme} paused={busy || reducedMotion} disableGlow className="query-search-metal">

@@ -1,3 +1,4 @@
+import { useSeason } from "./SeasonContext";
 import { useEffect, useMemo, useState } from "react";
 import { useI18n } from "./i18n";
 import { Icon } from "./Icon";
@@ -8,12 +9,13 @@ import { filterShots, parseShotChart, shotClock, summarizeShots, type ShotChartD
 type ShotState = { status: "loading" | "ready" | "missing" | "error"; data: ShotChartData | null };
 
 export function useMatchShots(matchId: string, enabled: boolean): ShotState {
+  const { assetPath } = useSeason();
   const [result, setResult] = useState<ShotState & { id: string }>({ id: "", status: "loading", data: null });
   useEffect(() => {
     if (!enabled) return;
     const controller = new AbortController();
     setResult({ id: matchId, status: "loading", data: null });
-    void fetch(`/shots/${encodeURIComponent(matchId)}.json`, { signal: controller.signal, cache: "no-cache" })
+    void fetch(assetPath(`shots/${encodeURIComponent(matchId)}.json`), { signal: controller.signal, cache: "no-cache" })
       .then(async (response) => {
         if (response.status === 404) {
           if (!controller.signal.aborted) setResult({ id: matchId, status: "missing", data: null });
@@ -26,7 +28,7 @@ export function useMatchShots(matchId: string, enabled: boolean): ShotState {
         if (!controller.signal.aborted) setResult({ id: matchId, status: "error", data: null });
       });
     return () => controller.abort();
-  }, [matchId, enabled]);
+  }, [matchId, enabled, assetPath]);
   return result.id === matchId ? result : { status: "loading", data: null };
 }
 
@@ -193,6 +195,7 @@ export function parsePlayerShotIndex(value: unknown, seasonId: string): PlayerSh
 }
 
 export function PlayerShotChart({ playerId, playerName, seasonId }: { playerId: string; playerName: string; seasonId: string }) {
+  const { assetPath } = useSeason();
   const { tr, language } = useI18n();
   const [state, setState] = useState<PlayerShotState>({ seasonId: "", status: "loading", data: null });
   const [shotType, setShotType] = useState<"all" | "2" | "3">("all");
@@ -200,7 +203,7 @@ export function PlayerShotChart({ playerId, playerName, seasonId }: { playerId: 
   useEffect(() => {
     const controller = new AbortController();
     setState({ seasonId, status: "loading", data: null });
-    void fetch(`/player-shots-${encodeURIComponent(seasonId)}.json`, { signal: controller.signal, cache: "no-cache" })
+    void fetch(assetPath(`player-shots-${encodeURIComponent(seasonId)}.json`), { signal: controller.signal, cache: "no-cache" })
       .then(async (response) => {
         if (response.status === 404) {
           if (!controller.signal.aborted) setState({ seasonId, status: "missing", data: null });
@@ -213,7 +216,7 @@ export function PlayerShotChart({ playerId, playerName, seasonId }: { playerId: 
         if (!controller.signal.aborted) setState({ seasonId, status: "error", data: null });
       });
     return () => controller.abort();
-  }, [seasonId]);
+  }, [seasonId, assetPath]);
 
   const data = state.seasonId === seasonId ? state.data : null;
   const player = data?.players.find((row) => row.id === playerId);

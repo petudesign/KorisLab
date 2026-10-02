@@ -32,9 +32,11 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Refresh schedule and verified statistics
         run: python -m ingestion.publish_season
+      - name: Refresh Korisliiga schedule and verified statistics
+        run: python -m ingestion.publish_season --category-id 4 --group-id 303022 --out web/public/korisliiga/season-2026-27.json
       - name: Commit the public snapshot
         run: |
-          git add web/public/season-2026-27.json web/public/shots web/public/quarters-2026-27.json web/public/assists-2026-27.json
+          git add web/public/season-2026-27.json web/public/shots web/public/quarters-2026-27.json web/public/assists-2026-27.json web/public/player-shots-2026-27.json web/public/replays web/public/korisliiga
           if git diff --cached --quiet; then exit 0; fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

@@ -1,3 +1,4 @@
+import { useSeason } from "./SeasonContext";
 import { useEffect, useRef, useState } from "react";
 import { Icon } from "./Icon";
 import { playerDisplayName } from "./playerName";
@@ -5,6 +6,7 @@ import { useI18n } from "./i18n";
 import { eventAtTime, parseReplay, replayIndex, replayMoments, type Replay, type ReplayEvent } from "./replayStats";
 
 export function useMatchReplay(matchId: string, seasonId: string, enabled = true) {
+  const { assetPath } = useSeason();
   const [data, setData] = useState<Replay | null>(null);
   const [status, setStatus] = useState("loading");
   const [retry, setRetry] = useState(0);
@@ -12,13 +14,13 @@ export function useMatchReplay(matchId: string, seasonId: string, enabled = true
     const controller = new AbortController();
     setStatus("loading"); setData(null);
     if (!enabled) return;
-    void fetch(`/replays/${encodeURIComponent(matchId)}.json`, { signal: controller.signal }).then(async response => {
+    void fetch(assetPath(`replays/${encodeURIComponent(matchId)}.json`), { signal: controller.signal }).then(async response => {
       if (response.status === 404) { if (!controller.signal.aborted) setStatus("missing"); return null; }
       if (!response.ok) throw new Error("Replay unavailable");
       return parseReplay(await response.json(), matchId, seasonId);
     }).then(replay => { if (replay && !controller.signal.aborted) { setData(replay); setStatus("ready"); } }).catch(() => { if (!controller.signal.aborted) setStatus("error"); });
     return () => controller.abort();
-  }, [matchId, seasonId, retry, enabled]);
+  }, [matchId, seasonId, retry, enabled, assetPath]);
   return { data, status, retry: () => setRetry(value => value + 1) };
 }
 

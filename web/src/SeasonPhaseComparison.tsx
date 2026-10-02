@@ -1,13 +1,11 @@
 import { useState } from "react";
-import playoff2025 from "../../data/normalized/season_playoffs_2025_2026.summary.json";
-import playoff2024 from "../../data/normalized/season_playoffs_2024_2025.summary.json";
 import { useSeason } from "./SeasonContext";
 import { useI18n } from "./i18n";
 
 export function SeasonPhaseComparison() {
   const { tr, language } = useI18n();
-  const { data: regularSeason, seasonId, seasonLabel } = useSeason();
-  const playoffs = seasonId === "2024-25" ? playoff2024 as unknown as typeof playoff2025 : playoff2025;
+  const { data: regularSeason, seasonId, seasonLabel, playoffSummaries } = useSeason();
+  const playoffs = playoffSummaries[seasonId === "2024-25" ? "2024-25" : "2025-26"];
   const [teamId, setTeamId] = useState((regularSeason.aggregate.teams.find((team) => team.name === "ToPo") ?? regularSeason.aggregate.teams[0]).source_team_id);
   const regular = regularSeason.aggregate.teams.find((team) => team.source_team_id === teamId) ?? regularSeason.aggregate.teams[0];
   const postseason = playoffs.aggregate.teams.find((team) => team.source_team_id === regular.source_team_id);

@@ -1,3 +1,4 @@
+import { useSeason } from "./SeasonContext";
 import { useEffect, useMemo, useState } from "react";
 import { useI18n } from "./i18n";
 import { parsePlayerShotIndex, type PlayerShotIndex } from "./ShotChart";
@@ -11,6 +12,7 @@ type ShotDistanceState = {
 };
 
 export function SeasonShotDistance({ seasonId }: { seasonId: string }) {
+  const { assetPath } = useSeason();
   const { tr, language } = useI18n();
   const [state, setState] = useState<ShotDistanceState>({ seasonId: "", status: "loading", data: null });
   const [selectedPlayer, setSelectedPlayer] = useState("all");
@@ -21,7 +23,7 @@ export function SeasonShotDistance({ seasonId }: { seasonId: string }) {
     setState({ seasonId, status: "loading", data: null });
     setSelectedPlayer("all");
     setShotType("all");
-    void fetch(`/player-shots-${encodeURIComponent(seasonId)}.json`, { signal: controller.signal, cache: "no-cache" })
+    void fetch(assetPath(`player-shots-${encodeURIComponent(seasonId)}.json`), { signal: controller.signal, cache: "no-cache" })
       .then(async (response) => {
         if (response.status === 404) {
           if (!controller.signal.aborted) setState({ seasonId, status: "missing", data: null });
@@ -34,7 +36,7 @@ export function SeasonShotDistance({ seasonId }: { seasonId: string }) {
         if (!controller.signal.aborted) setState({ seasonId, status: "error", data: null });
       });
     return () => controller.abort();
-  }, [seasonId]);
+  }, [seasonId, assetPath]);
 
   const data = state.seasonId === seasonId ? state.data : null;
   const players = useMemo(() => (data?.players ?? []).map((player) => ({

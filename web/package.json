@@ -13,7 +13,8 @@
     "check:quarters": "node --experimental-strip-types scripts/verify-quarter-stats.mjs",
     "check:profiles": "node --experimental-strip-types scripts/verify-team-profile.mjs",
     "check:assists": "node --experimental-strip-types scripts/verify-assist-stats.mjs",
-    "check:matchup": "node --experimental-strip-types scripts/verify-matchup.mjs"
+    "check:matchup": "node --experimental-strip-types scripts/verify-matchup.mjs",
+    "check:leagues": "node --experimental-strip-types scripts/verify-leagues.mjs"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useSeason } from "./SeasonContext";
 
 export function usePageMetadata(title: string, description: string, { noindex = false, enabled = true } = {}) {
-  const { seasonId } = useSeason();
+  const { leagueId, seasonId } = useSeason();
   useEffect(() => {
     if (!enabled) return;
     document.title = `${title} | KorisLab`;
@@ -19,7 +19,8 @@ export function usePageMetadata(title: string, description: string, { noindex = 
     url.pathname = url.pathname.replace(/\/?$/, "/");
     url.search = ""; // Chart filters share the underlying game's canonical page.
     url.searchParams.set("season", seasonId);
+    if (leagueId === "korisliiga") url.searchParams.set("league", leagueId);
     url.hash = "";
     canonical.href = url.href;
-  }, [title, description, noindex, enabled, seasonId]);
+  }, [title, description, noindex, enabled, seasonId, leagueId]);
 }

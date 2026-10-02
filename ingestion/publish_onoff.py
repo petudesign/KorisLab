@@ -5,7 +5,7 @@ from pathlib import Path
 from normalization.basketfi_onoff import STATS, empty_state, reconstruct_game
 
 
-def publish(records, cache):
+def publish(records, cache, *, season_id="2025-26"):
     players = {}
     for record in records:
         for team in record["teams"]:
@@ -40,7 +40,7 @@ def publish(records, cache):
                     for stat in STATS:
                         a, b = target[side][perspective][stat], pair[side][perspective][stat]
                         target[side][perspective][stat] = None if a is None or b is None else a + b
-    return {"schema_version": "0.1", "season_id": "2025-26", "expected_games": len(records),
+    return {"schema_version": "0.1", "season_id": season_id, "expected_games": len(records),
             "verified_games": len(verified), "match_ids": verified, "excluded": excluded,
             "players": [p for p in players.values() if p["on"]["seconds"] > 0]}
 

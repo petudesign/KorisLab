@@ -42,7 +42,8 @@ function Comparison({ sides, metrics, shooting }: { sides: [Side, Side]; metrics
 }
 
 export function MatchupLab() {
-  const { seasonId, current, loading: currentLoading, loadMatchesForSeason, refreshCurrent } = useSeason();
+  const { leagueId, assetPath, historicalSummaries, seasonId, current, loading: currentLoading, loadMatchesForSeason, refreshCurrent } = useSeason();
+  const supportsOnOff = seasonId === "2025-26" || leagueId === "korisliiga" && seasonId === "2024-25";
   const { tr, language } = useI18n();
   const [kind, setKind] = useState<ComparisonKind>("teams");
   const [mode, setMode] = useState<Mode>("entities");
@@ -74,12 +75,12 @@ export function MatchupLab() {
     return () => { cancelled = true; };
   }, [mode, seasonId, loadMatchesForSeason, retry]);
   useEffect(() => {
-    if (mode !== "onoff" || seasonId !== "2025-26") return;
+    if (mode !== "onoff" || !supportsOnOff) return;
     const controller = new AbortController();
     setOnoffStatus("loading"); setOnoff(null);
-    void fetch("/onoff-2025-26.json", { signal: controller.signal }).then(async (response) => { if (!response.ok) throw new Error("On/off unavailable"); return parseOnOff(await response.json(), "2025-26"); }).then((data) => { if (!controller.signal.aborted) { setOnoff(data); setOnoffStatus("ready"); } }).catch(() => { if (!controller.signal.aborted) setOnoffStatus("error"); });
+    void fetch(assetPath(`onoff-${seasonId}.json`), { signal: controller.signal }).then(async (response) => { if (!response.ok) throw new Error("On/off unavailable"); return parseOnOff(await response.json(), seasonId); }).then((data) => { if (!controller.signal.aborted) { setOnoff(data); setOnoffStatus("ready"); } }).catch(() => { if (!controller.signal.aborted) setOnoffStatus("error"); });
     return () => controller.abort();
-  }, [mode, seasonId, retry]);
+  }, [mode, seasonId, supportsOnOff, retry, assetPath]);
 
   const historical = Object.values(records ?? {}).flat();
   const matches = seasonId !== "2026-27" ? records?.[seasonId] ?? [] : current?.matches ?? [];
@@ -110,7 +111,7 @@ export function MatchupLab() {
     const aLabel = firstSeason === "earlier" ? tr("Aiempien kausien yhteistulos", "Combined earlier seasons") : firstSeason.replace("-", "–");
     sides = [side(sides[0].entry, `${first?.name ?? "A"} · ${aLabel}`), side(sides[1].entry, `${second?.name ?? "B"} · ${secondSeason.replace("-", "–")}`)];
     const included = firstSeason === "earlier" ? seasons.filter((season) => season < secondSeason && forSeason(season).length).map((season) => season.replace("-", "–")).join(", ") : "";
-    note = tr("Verrataan runkosarjoja. 2024–25 sisältää jatkosarjat: 129/130 ottelua tarkistettu. 2025–26: 108/108. Kauden 2026–27 luvut kertyvät tilastoitujen otteluiden myötä.", "Comparing regular seasons. 2024–25 includes continuation rounds: 129/130 games verified. 2025–26: 108/108. The 2026–27 statistics accumulate as games are recorded.") + (firstSeason === "earlier" ? ` ${tr("Aiempaan otokseen sisältyy", "Earlier sample includes")}: ${included || tr("ei tilastoituja kausia", "no recorded seasons")}.` : "");
+    note = tr("Verrataan runkosarja-aineistoja, mukana myös kauden jatkosarjat. Tarkistettuja otteluita", "Comparing regular-season datasets, including continuation rounds. Verified games") + `: ${(["2024-25", "2025-26"] as const).map(season => `${season.replace("-", "–")}: ${historicalSummaries[season].aggregate.games}/${historicalSummaries[season].summary.available_played_games}`).join(" · ")}. ` + tr("Kauden 2026–27 luvut kertyvät tilastoitujen otteluiden myötä.", "The 2026–27 statistics accumulate as games are recorded.") + (firstSeason === "earlier" ? ` ${tr("Aiempaan otokseen sisältyy", "Earlier sample includes")}: ${included || tr("ei tilastoituja kausia", "no recorded seasons")}.` : "");
     if (firstSeason === secondSeason && first?.id === second?.id) note += ` ${tr("Valitsit molemmille puolille saman kauden ja kohteen.", "Both sides use the same season and entity.")}`;
   }
   if (first && mode === "recent") {
@@ -143,7 +144,7 @@ export function MatchupLab() {
     if (appearance.absent.length === 0) note += ` ${tr("Penkkiminuutteja voi tarkastella valitsemalla kentällä / penkillä -vertailun.", "Use the on/off comparison to inspect minutes spent on the bench.")}`;
   }
   if (mode === "onoff") {
-    if (seasonId !== "2025-26") unavailable = tr("Tälle kaudelle ei ole vielä tarkistettua kentällä–penkillä-dataa.", "Verified on/off data is not yet available for this season.");
+    if (!supportsOnOff) unavailable = tr("Tälle kaudelle ei ole vielä tarkistettua kentällä–penkillä-dataa.", "Verified on/off data is not yet available for this season.");
     sides = ["on", "off"].map((key) => {
       const state = onoffRow?.[key as "on" | "off"];
       const entry = state && state.seconds > 0 ? { id: first?.id ?? "", name: first?.name ?? "", team: first?.name ?? "", games: onoffRow!.games, minutes: state.seconds / 60, shots: state.own, values: comparisonValues(state.own, state.seconds / 2400, state.opponent) } : undefined;
@@ -155,7 +156,7 @@ export function MatchupLab() {
         detail: entry ? `${number(totalMinutes!)} ${tr("min yhteensä", "min total")} · ${number(perGame!)} ${tr("min / ottelu", "min / game")} · ${onoffRow!.games}/${selectedTeamGames} · ${score}` : `0/${selectedTeamGames} ${tr("joukkueen ottelua tarkistettu", "team games verified")}`,
         emptyMessage: tr("Näistä otteluista ei ole riittävästi tarkistettua pelitapahtuma- ja kokoonpanodataa.", "There is not enough verified play-by-play and lineup data for this selection.") };
     }) as [Side, Side];
-    const coverage = seasonId === "2025-26"
+    const coverage = supportsOnOff
       ? `${tr("Käytettävissä oleva on/off-data kattaa", "Available on/off data covers")} ${verifiedTeamGames}/${selectedTeamGames} ${tr("joukkueen ottelua", "team games")} (${onoff ? `${onoff.verified_games}/${onoff.expected_games} ${tr("koko sarjassa", "league-wide")}` : ""}). ${excludedTeamGames} ${tr("muuta ottelua jäi pois, koska pelitapahtuma- tai kokoonpanotiedot eivät läpäisseet tarkistusta.", "other games were excluded because play-by-play or lineup data did not pass validation.")} ${tr("Tämä on datan kattavuus, ei otteluiden määrä, joissa pelaaja istui koko pelin penkillä.", "This is data coverage, not a count of games the player spent entirely on the bench.")}`
       : tr("Tälle kaudelle ei ole vielä tarkistettua on/off-dataa.", "Verified on/off data is not yet available for this season.");
     note = `${player?.name ?? ""}: ${tr("joukkueen luvut pelaajan ollessa kentällä tai penkillä. Määrät normalisoidaan 40 minuuttiin kyseistä jaksoa, tehokkuus 100 arvioituun pallonhallintaan. Luvut ovat kuvailevia, eivät osoitus pelaajan vaikutuksesta.", "team statistics while the player is on court or on the bench. Counts are normalized per 40 minutes in that state, ratings per 100 estimated possessions. These are descriptive, not proof of player impact.")} ${coverage}`;
@@ -174,8 +175,8 @@ export function MatchupLab() {
   const modeOptions = [{ id: "entities", name: kind === "teams" ? tr("Joukkue vs joukkue", "Team vs team") : tr("Pelaaja vs pelaaja", "Player vs player") }, { id: "seasons", name: tr("Kausien vertailu", "Across seasons") }, { id: "recent", name: tr("Viimeiset 5 vs aiemmat", "Last 5 vs earlier") }, ...(kind === "players" ? [{ id: "phase", name: tr("Runkosarja vs pudotuspelit", "Regular season vs playoffs") }] : [{ id: "appearance", name: tr("Kokonaiset ottelut: pelasi / poissa", "Whole games: played / absent") }, { id: "onoff", name: tr("Pelaaja kentällä / penkillä", "Player on / off court") }])];
   const seasonOptions = seasons.map((season) => ({ id: season, name: season.replace("-", "–") }));
   const needCurrent = mode === "seasons" ? firstSeason === "2026-27" || secondSeason === "2026-27" : seasonId === "2026-27";
-  const loading = !records && !failed || needCurrent && !current && currentLoading || mode === "onoff" && seasonId === "2025-26" && onoffStatus === "loading" || mode === "phase" && seasonId !== "2026-27" && playoffStatus === "loading";
-  const error = failed || needCurrent && !current && !currentLoading || mode === "onoff" && seasonId === "2025-26" && onoffStatus === "error" || mode === "phase" && seasonId !== "2026-27" && playoffStatus === "error";
+  const loading = !records && !failed || needCurrent && !current && currentLoading || mode === "onoff" && supportsOnOff && onoffStatus === "loading" || mode === "phase" && seasonId !== "2026-27" && playoffStatus === "loading";
+  const error = failed || needCurrent && !current && !currentLoading || mode === "onoff" && supportsOnOff && onoffStatus === "error" || mode === "phase" && seasonId !== "2026-27" && playoffStatus === "error";
   return <div className="matchup-lab">
     <div className="matchup-toolbar"><div className="profile-phase-toggle" role="group" aria-label={tr("Vertailun tyyppi", "Comparison type")}><button type="button" aria-pressed={kind === "teams"} onClick={() => changeKind("teams")}><Icon name="teams" size={17} />{tr("Joukkueet", "Teams")}</button><button type="button" aria-pressed={kind === "players"} onClick={() => changeKind("players")}><Icon name="players" size={17} />{tr("Pelaajat", "Players")}</button></div><Select label={tr("Vertailutapa", "Compare")} value={mode} options={modeOptions} onChange={(value) => setMode(value as Mode)} /></div>
     <div className="matchup-controls">

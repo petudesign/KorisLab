@@ -30,7 +30,7 @@ export function CurrentSeasonPending({ onOpenMatches }: { onOpenMatches: () => v
 }
 
 export function CurrentSeasonMatches({ onOpenMatch }: { onOpenMatch: (id: string) => void }) {
-  const { current, loading, error, refreshCurrent } = useSeason();
+  const { leagueName, leagueNameEn, current, loading, error, refreshCurrent } = useSeason();
   const { tr, language } = useI18n();
   const [query, setQuery] = useState("");
   const [team, setTeam] = useState("all");
@@ -43,7 +43,7 @@ export function CurrentSeasonMatches({ onOpenMatch }: { onOpenMatch: (id: string
   const verified = new Set(current?.matches.map((match) => match.game.source_id));
   return <>
     <section className="matches-toolbar panel">
-      <div><strong>{tr("Naisten Korisliiga", "Women's Korisliiga")} · 2026–27</strong><p>{tr("Otteluohjelma ja tulokset · ajat Suomen aikaa. Box score -analyysi avautuu tilastojen tarkistuksen jälkeen.", "Schedule and results · Finnish local time. Box score analysis opens after statistics are verified.")}</p></div>
+      <div><strong>{tr(leagueName, leagueNameEn)} · 2026–27</strong><p>{tr("Otteluohjelma ja tulokset · ajat Suomen aikaa. Box score -analyysi avautuu tilastojen tarkistuksen jälkeen.", "Schedule and results · Finnish local time. Box score analysis opens after statistics are verified.")}</p></div>
       <div className="matches-toolbar-controls"><label>{tr("Hae otteluista", "Search games")}<input value={query} onChange={(event) => setQuery(event.target.value)} placeholder={tr("Joukkue tai ottelu-ID", "Team or game ID")} /></label><label>{tr("Rajaa joukkueella", "Filter by team")}<select value={team} onChange={(event) => setTeam(event.target.value)}><option value="all">{tr("Kaikki joukkueet", "All teams")}</option>{current?.schedule_summary.teams.map((name) => <option key={name}>{name}</option>)}</select></label></div>
     </section>
     <section className="matches-panel panel" aria-labelledby="current-matches-heading">

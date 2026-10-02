@@ -59,7 +59,7 @@ export function TeamProfiles({ onOpenMatch, selectedTeamId, matches, matchStatus
   matchStatus: "loading" | "ready" | "error";
 }) {
   const { language, tr } = useI18n();
-  const { data: season, seasonLabel } = useSeason();
+  const { leagueName, leagueNameEn, data: season, seasonLabel } = useSeason();
   const teams = season.aggregate.teams;
   const team = teams.find(row => row.source_team_id === selectedTeamId);
   if (!team) return <section className="panel detail-panel">Joukkueprofiilit avautuvat tarkistetuista ottelutilastoista.</section>;
@@ -104,7 +104,7 @@ export function TeamProfiles({ onOpenMatch, selectedTeamId, matches, matchStatus
       <div className="team-profile-header">
         <div className="team-profile-identity">
           <h2 id="team-profile-heading">{team.name}</h2>
-          <p id="profile-team-context">{tr("Naisten Korisliiga", "Women's Korisliiga")} {seasonLabel} · {tr("runkosarja", "regular season")}<br /><strong>{team.games}</strong> {tr("tarkistettua ottelua", "verified games")}</p>
+          <p id="profile-team-context">{tr(leagueName, leagueNameEn)} {seasonLabel} · {tr("runkosarja", "regular season")}<br /><strong>{team.games}</strong> {tr("tarkistettua ottelua", "verified games")}</p>
         </div>
       </div>
       <section className="team-season-summary" aria-labelledby="team-season-summary-heading" aria-busy={matchStatus === "loading"}>

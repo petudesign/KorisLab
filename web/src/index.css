@@ -2536,7 +2536,7 @@ a.player-leader-card:hover { border-color: var(--mint); }
 .topbar-query-search--home .query-search-field:focus-within { border-color: #56d58a; }
 .topbar-query-search--home .query-search-field input { font-size: 14px; }
 .topbar-query-search { position: relative; justify-self: center; width: 100%; max-width: 420px; min-width: 0; }
-.topbar-query-search--home { position: fixed; z-index: 20; max-width: none; margin: 0; }
+.topbar-query-search--home { position: absolute; z-index: 20; max-width: none; margin: 0; }
 .topbar-actions { position: relative; z-index: 1; grid-column: 3; justify-self: end; }
 .query-search--topbar .query-search-field { min-height: 42px; gap: 7px; padding: 4px 5px 4px 13px; border-radius: 7px; }
 .query-search--topbar .query-search-field input { font-size: 12px; }
@@ -2756,9 +2756,7 @@ select.language-toggle { width: 58px; min-width: 58px; padding-left: 9px; paddin
 .live-season-action { display: inline-flex; align-items: center; gap: 7px; align-self: flex-start; min-height: 36px; padding: 0; border: 0; background: transparent; color: var(--soft); cursor: pointer; font: inherit; font-size: 12px; }
 .live-season-action:hover { color: var(--success-strong); }
 .live-season-action--secondary { color: var(--muted); }
-.live-season-empty, .live-season-archived { padding: 20px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--soft); }
-.live-season-archived { display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
-.live-season-archived p { margin: 0; font-size: 13px; }
+.live-season-empty { padding: 20px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--soft); }
 .live-season-footnote { margin: 12px 0 0; line-height: 1.7; }
 @media (max-width: 650px) {
   .replay-panel { padding: 18px; }
@@ -2775,4 +2773,22 @@ select.language-toggle { width: 58px; min-width: 58px; padding-left: 9px; paddin
   .live-season-heading { align-items: flex-start; flex-direction: column; gap: 9px; }
   .live-season-grid { grid-template-columns: minmax(0, 1fr); gap: 10px; }
   .live-season-card { min-height: 0; padding: 17px; }
+}
+
+/* League and season selectors share the same scope in the sidebar and mobile views. */
+.season-selector { display: flex; flex-direction: row; align-items: center; gap: 8px; }
+.season-selector label { min-width: 0; }
+.season-selector select { width: 100%; }
+.season-selector--sidebar { flex-direction: column; align-items: stretch; gap: 6px; }
+.workspace-switcher .season-selector--sidebar select { padding-right: 30px; }
+.workspace-switcher .season-selector--sidebar label:first-child select { font-weight: 650; border-color: transparent; background-color: transparent; }
+.home-competition-controls { display: none; }
+@media (max-width: 720px) {
+  .home-competition-controls { display: flex; justify-content: flex-start; padding: 12px 20px; }
+  .home-competition-controls .season-selector { width: 100%; }
+  .home-competition-controls .season-selector label:first-child { flex: 1; }
+  .intro-row .season-selector { align-items: stretch; flex-wrap: wrap; }
+  .intro-row .season-selector label:first-child { flex: 1; }
+  .teams-intro-controls .season-selector { flex-direction: column; }
+  .teams-intro-controls .season-selector label:first-child { flex: auto; }
 }

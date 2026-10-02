@@ -1,6 +1,7 @@
+import { leagues, type LeagueId } from "./leagues.ts";
 import type { SeasonMatchRecord, SeasonId } from "./SeasonContext";
 import type { ViewKey } from "./data";
-import { aggregateSeasonPlayers, type SeasonPlayerRow } from "./playerStats";
+import { aggregateSeasonPlayers, type SeasonPlayerRow } from "./playerStats.ts";
 
 export type QueryTarget = {
   view: ViewKey;
@@ -23,6 +24,7 @@ type PlayoffMatch = { game?: { source_id: string }; teams: PlayoffTeam[] };
 type Language = "fi" | "en";
 
 type ResolveOptions = {
+  leagueId?: LeagueId;
   language: Language;
   seasonId: SeasonId;
   selectedSeasonTeams: TeamLookup[];
@@ -98,6 +100,7 @@ function formatNumber(value: number, language: Language) {
 }
 
 export async function resolveBasketballQuery(rawQuery: string, options: ResolveOptions): Promise<QueryResolution> {
+  const league = leagues[options.leagueId ?? "naisten-korisliiga"];
   const query = normalize(rawQuery);
   const targetSeason = seasonFromQuery(query, options.seasonId);
   const historical = targetSeason !== "2026-27";
@@ -151,7 +154,7 @@ export async function resolveBasketballQuery(rawQuery: string, options: ResolveO
       }
       // These are the deciding games from the official finals schedules.
       // Total playoff wins alone do not establish the champion.
-      const decidingId = targetSeason === "2024-25" ? "965824" : "1003919";
+      const decidingId = league.decidingFinals[targetSeason === "2024-25" ? "2024-25" : "2025-26"];
       const final = playoffMatches.find(game => game.game?.source_id === decidingId);
       const championId = final?.teams.length === 2 && final.teams.every(row => row.score != null) && final.teams[0].score !== final.teams[1].score
         ? [...final.teams].sort((a, b) => b.score! - a.score!)[0].source_id : undefined;
@@ -164,8 +167,8 @@ export async function resolveBasketballQuery(rawQuery: string, options: ResolveO
         if (championTeam) actions.push({ label: options.language === "fi" ? "Avaa joukkueprofiili" : "Open team profile", target: viewTarget("teams", targetSeason, undefined, championTeam.source_team_id) });
         return {
           feedback: feedback(options.language, {
-            fi: [`${champion.team.name} voitti Naisten Korisliigan ${targetLabel}`, `${champion.count} voittoa tarkistetussa pudotuspeliaineistossa.`],
-            en: [`${champion.team.name} won the ${targetLabel} Women's Korisliiga`, `${champion.count} wins in the verified playoff data.`],
+            fi: [`${champion.team.name} voitti sarjan ${league.name} ${targetLabel}`, `${champion.count} voittoa tarkistetussa pudotuspeliaineistossa.`],
+            en: [`${champion.team.name} won the ${targetLabel} ${league.nameEn}`, `${champion.count} wins in the verified playoff data.`],
           }, "answer", actions),
         };
       }

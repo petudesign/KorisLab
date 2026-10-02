@@ -8,4 +8,5 @@ web/node_modules/
 web/dist/
 .pnpm-store/
 data/cache/pbp/
+data/cache/statistics/
 data/cache/pbp-probe.json

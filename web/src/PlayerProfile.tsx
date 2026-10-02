@@ -13,7 +13,7 @@ import { Icon } from "./Icon";
 import { getPlayerAwards } from "./playerAwards";
 
 export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: string; onOpenMatch: (id: string) => void; onBack: () => void }) {
-  const { seasonId, seasonLabel, loadMatches, loadMatchesForSeason, setSeasonId } = useSeason();
+  const { leagueId, leagueName, leagueNameEn, seasonId, seasonLabel, loadMatches, loadMatchesForSeason, setSeasonId } = useSeason();
   const { language, tr } = useI18n();
   const [phase, setPhase] = useState<"regular" | "playoffs">("regular");
   const activePhase = seasonId !== "2026-27" ? phase : "regular";
@@ -35,8 +35,8 @@ export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: str
       let identity = aggregateSeasonPlayers(regularMatches).find((player) => player.id === playerId)
         ?? aggregateSeasonPlayers(matches).find((player) => player.id === playerId);
       if (!identity && seasonId === "2026-27") {
-        const previous = await import("../../data/normalized/season_verified.json");
-        identity = aggregateSeasonPlayers(previous.default.matches).find((player) => player.id === playerId);
+        const previous = await loadMatchesForSeason("2025-26");
+        identity = aggregateSeasonPlayers(previous).find((player) => player.id === playerId);
       }
       if (!cancelled) { setRecords(matches); setKnownPlayer(identity); setLoaded(true); }
     }).catch(() => { if (!cancelled) { setError(true); setLoaded(true); } });
@@ -52,7 +52,7 @@ export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: str
   })).sort((a, b) => (b.date ?? "").localeCompare(a.date ?? "")), [records, playerId]);
   const decimal = (value: number | null | undefined) => value == null ? "—" : value.toLocaleString(language === "fi" ? "fi-FI" : "en-GB", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
   const name = knownPlayer?.name ?? tr("Pelaajaprofiili", "Player profile");
-  usePageMetadata(`${name} · ${seasonLabel}`, tr(`${name}: Naisten Korisliigan kauden ${seasonLabel} pelaajatilastot ja otteluloki.`, `${name}: Women's Korisliiga ${seasonLabel} player statistics and game log.`), { noindex: loaded && !knownPlayer });
+  usePageMetadata(`${name} · ${seasonLabel}`, tr(`${name}: ${leagueName} kauden ${seasonLabel} pelaajatilastot ja otteluloki.`, `${name}: ${leagueNameEn} ${seasonLabel} player statistics and game log.`), { noindex: loaded && !knownPlayer });
   const wins = games.filter((game) => game.outcome === "win").length;
   const losses = games.filter((game) => game.outcome === "loss").length;
   const awards = getPlayerAwards(playerId);
@@ -75,7 +75,7 @@ export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: str
   const outcomeMarks = { win: tr("V", "W"), loss: tr("H", "L"), draw: tr("T", "D"), unknown: "—" };
   return (
     <div className="player-profile">
-      <a className="profile-back" href={routeHref("players", seasonId)} onClick={(event) => followLink(event, onBack)}>
+      <a className="profile-back" href={routeHref("players", seasonId, undefined, leagueId)} onClick={(event) => followLink(event, onBack)}>
         <Icon name="arrowBack" size={15} /> {tr("Kaikki pelaajat", "All players")}
       </a>
       <section className="intro-row">
@@ -84,7 +84,7 @@ export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: str
           <div><h1>{name}</h1>
           <p className="intro-copy">{player
             ? `${player.team} · ${seasonLabel} · ${activePhase === "playoffs" ? tr("pudotuspelit", "playoffs") : tr("runkosarja", "regular season")}`
-            : `${tr("Naisten Korisliiga", "Women's Korisliiga")} · ${seasonLabel}`}</p></div>
+            : `${tr(leagueName, leagueNameEn)} · ${seasonLabel}`}</p></div>
         </div>
         <SeasonSelector />
       </section>
@@ -133,9 +133,9 @@ export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: str
               </div>
             ))}
           </section>
-          {activePhase === "regular" ? <>
-            <AssistCreation players={[player]} profile />
-            <PlayerShotChart playerId={playerId} playerName={name} seasonId={seasonId} />
+          {activePhase === "regular" || leagueId === "korisliiga" ? <>
+            <AssistCreation players={[player]} profile phase={activePhase} />
+            <PlayerShotChart playerId={playerId} playerName={name} seasonId={activePhase === "playoffs" ? `${seasonId}-playoffs` : seasonId} />
           </> : <>
             <p className="players-method-note">{tr("Pudotuspelien pelitilannekohtainen syöttöanalyysi ei ole vielä varmennettu. Box score -tilastot ja otteluloki ovat pudotuspelien omasta aineistosta.", "Play-by-play assist analysis is not yet verified for the playoffs. Box-score stats and game log use the playoff dataset.")}</p>
             <p className="players-method-note">{tr("Pudotuspelien pelaajakohtaisia heittokarttoja ei ole vielä tuotu aineistoon.", "Player shot charts have not yet been imported for the playoffs.")}</p>
@@ -160,7 +160,7 @@ export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: str
                     const plusMinusClass = plusMinus == null ? "" : plusMinus > 0 ? "profile-plus-minus--positive" : plusMinus < 0 ? "profile-plus-minus--negative" : "profile-plus-minus--even";
                     return <tr key={game.id}>
                       <th scope="row">
-                        <a className="player-name-link" href={routeHref("story", seasonId, game.id)} onClick={(event) => followLink(event, () => onOpenMatch(game.id))}>
+                        <a className="player-name-link" href={routeHref("story", seasonId, game.id, leagueId)} onClick={(event) => followLink(event, () => onOpenMatch(game.id))}>
                           {game.date ? new Date(game.date).toLocaleDateString(language === "fi" ? "fi-FI" : "en-GB") : `#${game.id}`}
                         </a>
                       </th>

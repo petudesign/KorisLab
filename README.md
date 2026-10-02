@@ -1,5 +1,38 @@
 # KorisLab
 
+## Sarjat ja kaudet
+
+Yhteinen sarjavalinta sisältää **Naisten Korisliigan** ja **Korisliigan**. Sivupalkin sarjan nimi on avattava valinta ilman sarjamerkkiä. Mobiilissa sama valinta on sivun yläosassa. Liiga ja kausi rajaavat myös hakua, pelaajaprofiileja, heittokarttoja ja Matchup Labia. Miesten linkit käyttävät `league=korisliiga`-parametria; vanhat naisten linkit säilyvät toimivina. Liigaa vaihtamalla avoin pelaaja tai ottelu palautuu listaan, jotta edellisen sarjan valinta ei jää näkyviin.
+
+Korisliigan tuotu aineisto:
+
+| Kausi | Runko- ja jatkosarjat | Pudotuspelit |
+| --- | --- | --- |
+| 2024–25 | 191/192 tarkistettua ottelua | 28/28 |
+| 2025–26 | 192/192 | 43/43 |
+| 2026–27 | Otteluohjelma ja tarkistetut pelatut ottelut | Kertyvät myöhemmin |
+
+Kauden 2024–25 ottelussa `929674` (Kouvot–Kobrat) lähteen box score on puutteellinen, joten sitä ei sisällytetä tilastoihin. Johdetut pelitapahtuma-analyysit tarkistetaan erikseen ja näyttävät oman kattavuutensa. Korisliigan julkiset kuvaaja-aineistot ovat hakemistossa `web/public/korisliiga/`; naisten aineiston polut säilyvät ennallaan. Paikalliset lähdevälimuistit eivät kuulu uusiin committeihin.
+
+Historialliset kaudet voi tuoda uudelleen samalla adapterilla:
+
+```powershell
+python -m ingestion.publish_historical_season --competition-id 2024-2025 --category-id 4 --regular-groups 301583 302073 302074 --playoff-groups 302096 --regular-out data/normalized/season_korisliiga_2024_2025.json --playoff-out data/normalized/season_korisliiga_playoffs_2024_2025.json
+python -m ingestion.publish_historical_season --competition-id huki2526 --category-id 4 --regular-groups 39344 302807 302808 --playoff-groups 302880 --regular-out data/normalized/season_korisliiga_2025_2026.json --playoff-out data/normalized/season_korisliiga_playoffs_2025_2026.json
+python -m ingestion.publish_derived --season-file data/normalized/season_korisliiga_2024_2025.json --season-id 2024-25 --out-dir web/public/korisliiga
+python -m ingestion.publish_derived --season-file data/normalized/season_korisliiga_2025_2026.json --season-id 2025-26 --out-dir web/public/korisliiga
+```
+
+Pudotuspelien kuvaajille käytetään vastaavaa `season_korisliiga_playoffs_…json`-tiedostoa ja `--season-id 2024-25-playoffs` tai `2025-26-playoffs`. Nykykauden molemmat sarjat päivitetään olemassa olevassa GitHub Actions -työssä; miesten paikallinen päivitys:
+
+```powershell
+python -m ingestion.publish_season --category-id 4 --group-id 303022 --out web/public/korisliiga/season-2026-27.json
+cd web
+pnpm check:leagues
+```
+
+Alla oleva alkuperäinen lähdeauditin kuvaus koskee projektin ensimmäistä naisten sarjan aineistoa.
+
 KorisLab is a small, evidence-first data foundation for Finnish basketball analysis.
 
 The current Phase 1 deliverable is intentionally narrow:
