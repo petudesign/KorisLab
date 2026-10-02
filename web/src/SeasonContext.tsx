@@ -174,11 +174,11 @@ export function useSeason() {
   if (!context) throw new Error("SeasonProvider missing");
   return context;
 }
-export function SeasonSelector({ sidebar = false }: { sidebar?: boolean }) {
+export function SeasonSelector({ sidebar = false, showLabels = false }: { sidebar?: boolean; showLabels?: boolean }) {
   const { seasonId, setSeasonId, leagueId, setLeagueId } = useSeason();
   const { tr } = useI18n();
   return <div className={`season-selector ${sidebar ? "season-selector--sidebar" : ""}`}>
-    <label><span className="sr-only">{tr("Valitse sarja", "Select league")}</span><select aria-label={tr("Valitse sarja", "Select league")} value={leagueId} onChange={event => setLeagueId(event.target.value as LeagueId)}>{leagueIds.map(id => <option key={id} value={id}>{tr(leagues[id].name, leagues[id].nameEn)}</option>)}</select></label>
-    <label><span className="sr-only">{tr("Valitse kausi", "Select season")}</span><select aria-label={tr("Valitse kausi", "Select season")} value={seasonId} onChange={event => setSeasonId(event.target.value as SeasonId)}>{seasonIds.map(season => <option key={season} value={season}>{season.replace("-", "–")}</option>)}</select></label>
+    <label><span className={showLabels ? undefined : "sr-only"}>{showLabels ? tr("Sarja", "League") : tr("Valitse sarja", "Select league")}</span><select aria-label={tr("Valitse sarja", "Select league")} value={leagueId} onChange={event => setLeagueId(event.target.value as LeagueId)}>{leagueIds.map(id => <option key={id} value={id}>{tr(leagues[id].name, leagues[id].nameEn)}</option>)}</select></label>
+    <label><span className={showLabels ? undefined : "sr-only"}>{showLabels ? tr("Kausi", "Season") : tr("Valitse kausi", "Select season")}</span><select aria-label={tr("Valitse kausi", "Select season")} value={seasonId} onChange={event => setSeasonId(event.target.value as SeasonId)}>{seasonIds.map(season => <option key={season} value={season}>{season.replace("-", "–")}</option>)}</select></label>
   </div>;
 }

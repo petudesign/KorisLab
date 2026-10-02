@@ -1109,6 +1109,7 @@ function AppearanceSettings({ theme, setTheme, view }: { theme: ThemeMode; setTh
     <summary className="icon-button settings-trigger" aria-label={tr("Asetukset", "Settings")} title={tr("Asetukset", "Settings")}><Icon name="settings" size={19} /></summary>
     <div className="appearance-settings-panel">
       <strong>{tr("Asetukset", "Settings")}</strong>
+      <div className="settings-competition"><SeasonSelector showLabels /></div>
       <label><span>{tr("Kieli", "Language")}</span><select value={language} onChange={(event) => setLanguage(event.target.value as Language)}><option value="fi">Suomi</option><option value="en">English</option></select></label>
       <fieldset><legend>{tr("Teema", "Theme")}</legend><div className="settings-theme-options">
         <button type="button" aria-pressed={theme === "light"} onClick={() => setTheme("light")}><Icon name="sun" size={17} />{tr("Vaalea", "Light")}</button>
