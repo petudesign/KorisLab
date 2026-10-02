@@ -43,14 +43,14 @@ const saraTeam = lastSaraGame.teams.find(team => team.players.some(player => pla
 const opponent = lastSaraGame.teams.find(team => team !== saraTeam);
 assert.equal(playerGameOutcome(saraTeam.score, opponent.score), "loss");
 
-for (const view of ["home", "overview", "matches", "teams", "players", "season"]) {
+for (const view of ["home", "overview", "matches", "teams", "players", "season", "matchup"]) {
   const url = new URL(routeHref(view, "2025-26"), "http://localhost");
   assert.deepEqual(parseRoute(url.pathname, url.search), { view, season: "2025-26" });
 }
 const profile = new URL(routeHref("player-profile", "2025-26", sara.id), "http://localhost");
 assert.deepEqual(parseRoute(profile.pathname, profile.search), { view: "player-profile", playerId: sara.id, season: "2025-26" });
 assert.deepEqual(parseRoute("/matches/969019/", "?season=2025-26"), { view: "story", matchId: "969019", season: "2025-26" });
-assert.equal(parseRoute("/matches/969019/players/").view, "player-detail");
+assert.equal(parseRoute("/matches/969019/players/").view, "story");
 assert.equal(parseRoute("/matches/969019/data/").view, "data");
 assert.equal(parseRoute("/unknown/").view, "not-found");
 assert.equal(parseRoute("/players/%E0%A4%A/").view, "not-found");

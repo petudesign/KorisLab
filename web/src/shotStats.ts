@@ -47,6 +47,45 @@ export function parseShotChart(value: unknown, matchId: string): ShotChartData {
 
 export type ShotFilters = { team: string; player: string; period: string; type: string };
 
+export const SHOT_DISTANCE_BINS = [
+  { key: "0-2", label: "0–2 m", min: 0, max: 2 },
+  { key: "2-4", label: "2–4 m", min: 2, max: 4 },
+  { key: "4-6", label: "4–6 m", min: 4, max: 6 },
+  { key: "6-8", label: "6–8 m", min: 6, max: 8 },
+  { key: "8+", label: "8+ m", min: 8, max: Number.POSITIVE_INFINITY },
+] as const;
+
+/** Approximate distance to the nearer basket from full-court percentage coordinates. */
+export function estimateShotDistanceMeters(shot: Pick<Shot, "x" | "y">): number | null {
+  if (shot.x === null || shot.y === null) return null;
+  const courtX = shot.x / 100 * 28;
+  const courtY = shot.y / 100 * 15;
+  const basketY = 7.5;
+  const leftBasketX = 1.575;
+  const rightBasketX = 28 - leftBasketX;
+  const leftDistance = Math.hypot(courtX - leftBasketX, courtY - basketY);
+  const rightDistance = Math.hypot(courtX - rightBasketX, courtY - basketY);
+  return Math.min(leftDistance, rightDistance);
+}
+
+export function summarizeShotDistances(shots: Array<Pick<Shot, "x" | "y" | "made">>) {
+  const bins = SHOT_DISTANCE_BINS.map((bin) => ({ ...bin, attempts: 0, made: 0, missed: 0, pct: null as number | null }));
+  let located = 0;
+  for (const shot of shots) {
+    const distance = estimateShotDistanceMeters(shot);
+    if (distance === null) continue;
+    located += 1;
+    const binIndex = SHOT_DISTANCE_BINS.findIndex((bin) => distance >= bin.min && distance < bin.max);
+    const bin = bins[binIndex];
+    if (!bin) continue;
+    bin.attempts += 1;
+    if (shot.made) bin.made += 1;
+    else bin.missed += 1;
+  }
+  for (const bin of bins) bin.pct = bin.attempts ? 100 * bin.made / bin.attempts : null;
+  return { bins, located, unlocated: shots.length - located };
+}
+
 export function filterShots(shots: Shot[], filters: ShotFilters): Shot[] {
   return shots.filter((shot) => (filters.team === "all" || shot.team_id === filters.team) &&
     (filters.player === "all" || shot.player_id === filters.player) &&

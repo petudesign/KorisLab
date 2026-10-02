@@ -29,8 +29,9 @@ const statusLabelEn: Record<ProfileStatus, string> = {
   level: "Near league level",
 };
 
-function ProfileStatusIcon({ status }: { status: ProfileStatus }) {
-  return <Icon className="profile-status-icon" size={16} name={status === "above" ? "check" : status === "below" ? "warning" : "minus"} />;
+function ProfileStatusIcon({ status, tone }: { status: ProfileStatus; tone?: ProfileComparison["tone"] }) {
+  const direction = tone === "positive" ? "above" : tone === "negative" ? "below" : status;
+  return <Icon className="profile-status-icon" size={16} name={direction === "above" ? "trendUp" : direction === "below" ? "trendDown" : "minus"} />;
 }
 
 type TeamSeasonSummary = { wins: number; losses: number; pointsFor: number; pointsAgainst: number; games: number };
@@ -117,8 +118,8 @@ export function TeamProfiles({ onOpenMatch, selectedTeamId, matches, matchStatus
       </section>
       <h3 className="profile-insight-heading">{threeStatus === null ? tr("Peliprofiili muodostuu aineiston mukana", "Playing profile builds with the dataset") : threeStatus.status === "level" ? tr("Kolmosten osuus on lähellä sarjan tasoa", "Three-point share is near the league level") : threeStatus.status === "above" ? tr("Kolmosia sarjan tasoa enemmän", "More threes than the league level") : tr("Kolmosia sarjan tasoa vähemmän", "Fewer threes than the league level")}</h3>
       <p role="status" aria-live="polite">{threeDelta !== null && <>{tr(`Kolmoset muodostavat ${format(metrics.three_point_attempt_rate, "%")} heittoyrityksistä, sarjan aineistossa ${format(threeBaseline, "%")}. Ero on ${format(Math.abs(threeDelta))} prosenttiyksikköä.`, `Threes account for ${displayValue(metrics.three_point_attempt_rate, "%")} of field-goal attempts, compared with ${displayValue(threeBaseline, "%")} for the league. The difference is ${displayValue(Math.abs(threeDelta))} percentage points.`)}</>}</p>
-      {threeStatus && <span className={`profile-status profile-status--${threeStatus.tone} profile-status--${threeStatus.intensity}`}><span><ProfileStatusIcon status={threeStatus.status} /></span>{localizedStatus(threeStatus)}</span>}
-      <div className="profile-legend" aria-label={tr("Väriprofiilin selite", "Color profile legend")}><span className="profile-legend-item profile-legend-item--positive"><i aria-hidden="true"><Icon name="check" size={16} /></i> {tr("parempi kuin sarjan taso", "better than league performance")}</span><span className="profile-legend-item profile-legend-item--level"><i aria-hidden="true"><ProfileStatusIcon status="level" /></i> {tr("lähellä sarjan tasoa", "near league level")}</span><span className="profile-legend-item profile-legend-item--negative"><i aria-hidden="true"><Icon name="warning" size={16} /></i> {tr("heikompi kuin sarjan taso", "worse than league performance")}</span><span className="profile-legend-item profile-legend-item--neutral"><i aria-hidden="true"><Icon name="minus" size={16} /></i> {tr("pelitapaa kuvaava mittari", "playing-style metric")}</span></div>
+      {threeStatus && <span className={`profile-status profile-status--${threeStatus.tone} profile-status--${threeStatus.intensity}`}><span><ProfileStatusIcon status={threeStatus.status} tone={threeStatus.tone} /></span>{localizedStatus(threeStatus)}</span>}
+      <div className="profile-legend" aria-label={tr("Väriprofiilin selite", "Color profile legend")}><span className="profile-legend-item profile-legend-item--positive"><i aria-hidden="true"><ProfileStatusIcon status="above" /></i> {tr("parempi kuin sarjan taso", "better than league performance")}</span><span className="profile-legend-item profile-legend-item--level"><i aria-hidden="true"><ProfileStatusIcon status="level" /></i> {tr("lähellä sarjan tasoa", "near league level")}</span><span className="profile-legend-item profile-legend-item--negative"><i aria-hidden="true"><ProfileStatusIcon status="below" /></i> {tr("heikompi kuin sarjan taso", "worse than league performance")}</span><span className="profile-legend-item profile-legend-item--neutral"><i aria-hidden="true"><ProfileStatusIcon status="level" /></i> {tr("pelitapaa kuvaava mittari", "playing-style metric")}</span></div>
       <small>{tr(`Vertailussa ${season.aggregate.games}/${season.summary.available_played_games} ottelua. Tulokset kuvaavat saatavilla olevaa aineistoa.`, `Comparison covers ${season.aggregate.games}/${season.summary.available_played_games} games. Results describe the available dataset.`)}</small>
     </section>
     <TeamTrend key={team.source_team_id} teamId={team.source_team_id} baseline={{ ORtg: team.metrics.offensive_rating, DRtg: team.metrics.defensive_rating, "Net Rating": team.metrics.net_rating }} onOpenMatch={onOpenMatch} />
@@ -132,7 +133,7 @@ export function TeamProfiles({ onOpenMatch, selectedTeamId, matches, matchStatus
         const max = Math.max(...values, baseline ?? -Infinity);
         const position = (number: number) => max === min ? 50 : 5 + (number - min) / (max - min) * 90;
         return <article className="panel profile-metric" key={definition.key}>
-          <div className="profile-metric-heading"><h3>{definition.label}</h3>{comparison && <span className={`profile-status profile-status--${comparison.tone} profile-status--${comparison.intensity}`}><span><ProfileStatusIcon status={comparison.status} /></span>{localizedStatus(comparison)}</span>}</div>
+          <div className="profile-metric-heading"><h3>{definition.label}</h3>{comparison && <span className={`profile-status profile-status--${comparison.tone} profile-status--${comparison.intensity}`}><span><ProfileStatusIcon status={comparison.status} tone={comparison.tone} /></span>{localizedStatus(comparison)}</span>}</div>
           <strong className={comparison ? `profile-value profile-value--${comparison.tone}` : "profile-value"}>{displayValue(value, definition.unit)}</strong>
           <p>{definition.explanation}</p>
           {value !== null && baseline !== null && <>

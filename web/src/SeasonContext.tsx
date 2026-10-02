@@ -1,8 +1,22 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import historical from "../../data/normalized/season_verified.summary.json";
+import historical2024 from "../../data/normalized/season_2024_2025.summary.json";
 import { useI18n } from "./i18n";
 
-export type SeasonId = "2025-26" | "2026-27";
+export type SeasonId = "2024-25" | "2025-26" | "2026-27";
+export const seasonIds: SeasonId[] = ["2024-25", "2025-26", "2026-27"];
+export const historicalSummaries = { "2024-25": historical2024 as unknown as typeof historical, "2025-26": historical };
+const seasonRequests = new Map<string, Promise<SeasonMatchRecord[]>>();
+function loadHistorical(season: "2024-25" | "2025-26", phase: "regular" | "playoffs") {
+  const key = `${season}-${phase}`;
+  if (!seasonRequests.has(key)) {
+    const request = season === "2024-25"
+      ? phase === "playoffs" ? import("../../data/normalized/season_playoffs_2024_2025.json") : import("../../data/normalized/season_2024_2025.json")
+      : phase === "playoffs" ? import("../../data/normalized/season_playoffs_2025_2026.json") : import("../../data/normalized/season_verified.json");
+    seasonRequests.set(key, request.then(module => module.default.matches as unknown as SeasonMatchRecord[]).catch(error => { seasonRequests.delete(key); throw error; }));
+  }
+  return seasonRequests.get(key)!;
+}
 export type SeasonMatchRecord = typeof import("../../data/normalized/season_verified.json")["matches"][number];
 export type ScheduleMatch = {
   source_match_id: string;
@@ -22,7 +36,6 @@ type CurrentSeason = typeof historical & {
   matches: SeasonMatchRecord[];
 };
 
-let historicalMatches: Promise<SeasonMatchRecord[]> | undefined;
 const SeasonContext = createContext<{
   seasonId: SeasonId;
   seasonLabel: string;
@@ -33,13 +46,14 @@ const SeasonContext = createContext<{
   error: string | null;
   refreshCurrent: () => Promise<void>;
   loadMatches: () => Promise<SeasonMatchRecord[]>;
+  loadMatchesForSeason: (season: SeasonId, phase?: "regular" | "playoffs") => Promise<SeasonMatchRecord[]>;
 } | null>(null);
 
 export function SeasonProvider({ children }: { children: ReactNode }) {
   const [seasonId, setSeasonId] = useState<SeasonId>(() => {
     const query = new URLSearchParams(window.location.search).get("season");
-    if (query === "2025-26" || query === "2026-27") return query;
-    try { return localStorage.getItem("korislab-season") === "2025-26" ? "2025-26" : "2026-27"; }
+    if (seasonIds.includes(query as SeasonId)) return query as SeasonId;
+    try { const saved = localStorage.getItem("korislab-season"); return seasonIds.includes(saved as SeasonId) ? saved as SeasonId : "2026-27"; }
     catch { return "2026-27"; }
   });
   const [current, setCurrent] = useState<CurrentSeason | null>(null);
@@ -75,17 +89,23 @@ export function SeasonProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const back = () => {
       const query = new URLSearchParams(window.location.search).get("season");
-      if (query === "2025-26" || query === "2026-27") setSeasonId(query);
+      if (seasonIds.includes(query as SeasonId)) setSeasonId(query as SeasonId);
     };
     window.addEventListener("popstate", back);
     return () => window.removeEventListener("popstate", back);
   }, []);
   const loadMatches = useCallback(() => {
     if (seasonId === "2026-27") return Promise.resolve(current?.matches ?? []);
-    historicalMatches ??= import("../../data/normalized/season_verified.json").then((module) => module.default.matches);
-    return historicalMatches;
+    return loadHistorical(seasonId, "regular");
   }, [seasonId, current]);
-  return <SeasonContext.Provider value={{ seasonId, seasonLabel: seasonId.replace("-", "–"), setSeasonId, data: seasonId === "2026-27" && current ? current : historical, current, loading, error, refreshCurrent, loadMatches }}>{children}</SeasonContext.Provider>;
+  const loadMatchesForSeason = useCallback((season: SeasonId, phase: "regular" | "playoffs" = "regular") => {
+    if (season === "2026-27") {
+      if (phase === "playoffs") return Promise.resolve([]);
+      return current ? Promise.resolve(current.matches) : Promise.reject(new Error("Current season unavailable"));
+    }
+    return loadHistorical(season, phase);
+  }, [current]);
+  return <SeasonContext.Provider value={{ seasonId, seasonLabel: seasonId.replace("-", "–"), setSeasonId, data: seasonId === "2026-27" ? current ?? historical : historicalSummaries[seasonId], current, loading, error, refreshCurrent, loadMatches, loadMatchesForSeason }}>{children}</SeasonContext.Provider>;
 }
 
 export function useSeason() {
@@ -97,5 +117,5 @@ export function useSeason() {
 export function SeasonSelector({ sidebar = false }: { sidebar?: boolean }) {
   const { seasonId, setSeasonId } = useSeason();
   const { tr } = useI18n();
-  return <label className={`season-selector ${sidebar ? "season-selector--sidebar" : ""}`}><span>{tr("Naisten Korisliiga", "Women's Korisliiga")}</span><select aria-label={tr("Valitse kausi", "Select season")} value={seasonId} onChange={(event) => setSeasonId(event.target.value as SeasonId)}><option value="2025-26">2025–26</option><option value="2026-27">2026–27</option></select></label>;
+  return <label className={`season-selector ${sidebar ? "season-selector--sidebar" : ""}`}><span>{tr("Naisten Korisliiga", "Women's Korisliiga")}</span><select aria-label={tr("Valitse kausi", "Select season")} value={seasonId} onChange={(event) => setSeasonId(event.target.value as SeasonId)}>{seasonIds.map(season => <option key={season} value={season}>{season.replace("-", "–")}</option>)}</select></label>;
 }

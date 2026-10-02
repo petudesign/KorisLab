@@ -1,4 +1,4 @@
-export type ViewKey = "home" | "overview" | "story" | "matches" | "players" | "player-profile" | "player-detail" | "season" | "data" | "teams" | "not-found";
+export type ViewKey = "home" | "overview" | "story" | "matches" | "players" | "player-profile" | "season" | "data" | "teams" | "matchup" | "not-found";
 export type PlayerRole = "C" | "PF" | "SF" | "SG" | "PG" | null;
 
 export type BoxScore = {

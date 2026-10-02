@@ -24,9 +24,14 @@ import TrendingDownOutlined from "@mui/icons-material/TrendingDownOutlined";
 import RemoveOutlined from "@mui/icons-material/RemoveOutlined";
 import CheckOutlined from "@mui/icons-material/CheckOutlined";
 import PriorityHighOutlined from "@mui/icons-material/PriorityHighOutlined";
+import PlayArrowOutlined from "@mui/icons-material/PlayArrowOutlined";
+import PauseOutlined from "@mui/icons-material/PauseOutlined";
+import SkipPreviousOutlined from "@mui/icons-material/SkipPreviousOutlined";
+import SkipNextOutlined from "@mui/icons-material/SkipNextOutlined";
 
 // Individual imports keep the unused icon catalogue out of the app bundle.
 const icons = {
+  play: PlayArrowOutlined, pause: PauseOutlined, previous: SkipPreviousOutlined, next: SkipNextOutlined,
   home: HomeOutlined,
   overview: GridViewOutlined,
   games: SportsBasketballOutlined,

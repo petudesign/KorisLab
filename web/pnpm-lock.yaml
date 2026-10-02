@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  metal-fx@2.0.11: 28505134ca755ba5ea948a4b5513343d9459beb98a6c1686dbdb2d5490a31fa4
+
 importers:
 
   .:
@@ -40,7 +43,7 @@ importers:
         version: 6.1.1(vite@8.3.0(@types/node@26.5.1))
       metal-fx:
         specifier: ^2.0.11
-        version: 2.0.11(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        version: 2.0.11(patch_hash=28505134ca755ba5ea948a4b5513343d9459beb98a6c1686dbdb2d5490a31fa4)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       react:
         specifier: latest
         version: 19.3.0
@@ -1389,7 +1392,7 @@ snapshots:
     dependencies:
       js-tokens: 4.0.0
 
-  metal-fx@2.0.11(react-dom@19.3.0(react@19.3.0))(react@19.3.0):
+  metal-fx@2.0.11(patch_hash=28505134ca755ba5ea948a4b5513343d9459beb98a6c1686dbdb2d5490a31fa4)(react-dom@19.3.0(react@19.3.0))(react@19.3.0):
     dependencies:
       react: 19.3.0
       react-dom: 19.3.0(react@19.3.0)

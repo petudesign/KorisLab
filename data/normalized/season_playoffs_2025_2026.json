@@ -31527,8 +31527,8 @@
       },
       "game": {
         "source_id": "1003919",
-        "upstream_fixture_id": null,
-        "scheduled_at": null,
+        "upstream_fixture_id": "c708b0cc-90de-11f1-9514-e91002e67d68",
+        "scheduled_at": "2026-04-26T17:00:00",
         "status": "CONFIRMED",
         "venue": {
           "name": "Urhea-halli"
@@ -31558,7 +31558,8 @@
         "final_score": {
           "home": 71,
           "away": 72
-        }
+        },
+        "competition_phase": "Finaalit"
       },
       "teams": [
         {

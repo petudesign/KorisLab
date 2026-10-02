@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useI18n } from "./i18n";
 import { Icon } from "./Icon";
+import { ShotCount } from "./ShotCount";
 
 type TeamSummary = {
   source_team_id: string;
@@ -112,7 +113,7 @@ export function ThreePointStory({ team, nextTeam, league, players, games, dataSt
         <article>
           <span>{tr("Osumatarkkuus", "Shooting accuracy")}</span>
           <strong>{teamThreePct === null ? "—" : `${formatNumber(teamThreePct, language)}%`}</strong>
-          <small>{team.totals.three_pm} / {team.totals.three_pa} {tr("osumaa / yritystä", "made / attempted")}</small>
+          <small><ShotCount made={team.totals.three_pm} attempted={team.totals.three_pa} /> {tr("osumaa / yritystä", "made / attempted")}</small>
         </article>
         <article>
           <span>{tr("Kolmosten osuus kenttäheittoyrityksistä", "Three-point share of field-goal attempts")}</span>
@@ -217,7 +218,7 @@ export function ThreePointStory({ team, nextTeam, league, players, games, dataSt
                   <div className="three-point-player-bar" role="img" aria-label={`${player.name}: ${formatNumber(attemptShare, language)}% ${tr("joukkueen kolmosyrityksistä", "of team three-point attempts")}`}><span style={{ width: `${(player.threePA / highestPlayerAttempts) * 100}%` }} /></div>
                   <small>{formatNumber(attemptShare, language)}% {tr("yrityksistä", "of attempts")} · {formatNumber(makeShare, language)}% {tr("osumista", "of makes")}</small>
                 </div>
-                <div className="three-point-player-shooting"><strong>{player.threePM}/{player.threePA}<small> 3PM/3PA</small></strong><span>{accuracy === null ? "—" : `${formatNumber(accuracy, language)}%`} · {tr("tarkkuus", "accuracy")}</span></div>
+                <div className="three-point-player-shooting"><strong><ShotCount made={player.threePM} attempted={player.threePA} /><small> 3PM/3PA</small></strong><span>{accuracy === null ? "—" : `${formatNumber(accuracy, language)}%`} · {tr("tarkkuus", "accuracy")}</span></div>
                 <div className="three-point-player-rate"><strong>{attemptsPer40 === null ? "—" : formatNumber(attemptsPer40, language)}</strong><span>3PA / 40 {tr("minuuttia", "min")}</span></div>
               </li>;
             })}

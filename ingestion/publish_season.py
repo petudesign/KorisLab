@@ -14,6 +14,7 @@ from ingestion.season_statistics import hydrate_season_statistics
 from ingestion.publish_shots import publish_shots, publish_player_shot_index
 from ingestion.publish_quarters import publish_quarters
 from ingestion.publish_assists import publish_assists
+from ingestion.publish_replays import publish_replays
 from validation.checks import validate_statistics_snapshot
 
 
@@ -83,6 +84,8 @@ def main():
         out=args.out.parent / f"quarters-{args.season_id}.json", cache_dir=args.cache_dir.parent / "pbp")
     assists = publish_assists(snapshot["matches"], season_id=args.season_id,
         out=args.out.parent / f"assists-{args.season_id}.json", cache_dir=args.cache_dir.parent / "pbp")
+    publish_replays(snapshot["matches"], season_id=args.season_id,
+        out_dir=args.out.parent / "replays", cache_dir=args.cache_dir.parent / "pbp")
     print(json.dumps({"out": str(args.out), "scheduled": len(schedule), "played": snapshot["schedule_summary"]["played_games"], "verified": len(snapshot["matches"]), "failures": len(snapshot["failures"]), "shots": shots, "player_shots": player_shots, "quarters": quarters, "assists": assists}))
     return 0
 

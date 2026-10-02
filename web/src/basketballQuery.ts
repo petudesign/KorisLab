@@ -19,7 +19,7 @@ export type QueryFeedback = {
 
 type TeamLookup = { source_team_id: string; name: string };
 type PlayoffTeam = { source_id: string; name: string; score: number | null };
-type PlayoffMatch = { teams: PlayoffTeam[] };
+type PlayoffMatch = { game?: { source_id: string }; teams: PlayoffTeam[] };
 type Language = "fi" | "en";
 
 type ResolveOptions = {
@@ -30,7 +30,8 @@ type ResolveOptions = {
   currentTeams: TeamLookup[];
   currentScheduleTeams: string[];
   loadMatches: (season: SeasonId) => Promise<SeasonMatchRecord[]>;
-  loadPlayoffMatches: () => Promise<PlayoffMatch[]>;
+  loadPlayoffMatches: (season?: SeasonId) => Promise<PlayoffMatch[]>;
+  historicalTeamsBySeason?: Partial<Record<SeasonId, { aggregate: { teams: TeamLookup[] } }>>;
 };
 
 export type QueryResolution = { feedback: QueryFeedback; navigate?: QueryTarget };
@@ -51,6 +52,7 @@ function mentionedTeam(query: string, teams: TeamLookup[]) {
 }
 
 function seasonFromQuery(query: string, fallback: SeasonId): SeasonId {
+  if (/\b(?:24\s+25|2024\s+2025)\b/.test(query)) return "2024-25";
   if (/\b(?:25\s+26|2025\s+2026)\b/.test(query)) return "2025-26";
   if (/\b(?:26\s+27|2026\s+2027)\b/.test(query)) return "2026-27";
   return fallback;
@@ -98,10 +100,10 @@ function formatNumber(value: number, language: Language) {
 export async function resolveBasketballQuery(rawQuery: string, options: ResolveOptions): Promise<QueryResolution> {
   const query = normalize(rawQuery);
   const targetSeason = seasonFromQuery(query, options.seasonId);
-  const historical = targetSeason === "2025-26";
+  const historical = targetSeason !== "2026-27";
   const seasonTeams = targetSeason === options.seasonId
     ? options.selectedSeasonTeams
-    : historical ? options.historicalTeams : options.currentTeams;
+    : historical ? options.historicalTeamsBySeason?.[targetSeason]?.aggregate.teams ?? options.historicalTeams : options.currentTeams;
   const team = mentionedTeam(query, seasonTeams);
   const asksWinner = /\b(voittaja|voitti|mestari|mestaruus|champion|winner|won)\b/.test(query);
   const asksSeason = /\b(kausi|season|runkosarja|playoff|pudotuspel|league|sarja)\b/.test(query);
@@ -136,8 +138,8 @@ export async function resolveBasketballQuery(rawQuery: string, options: ResolveO
   }
 
   if (asksWinner) {
-    if (targetSeason === "2025-26") {
-      const playoffMatches = await options.loadPlayoffMatches();
+    if (historical) {
+      const playoffMatches = await options.loadPlayoffMatches(targetSeason);
       const wins = new Map<string, { team: PlayoffTeam; count: number }>();
       for (const game of playoffMatches) {
         if (game.teams.length !== 2 || game.teams.some((row) => row.score == null)) continue;
@@ -147,17 +149,23 @@ export async function resolveBasketballQuery(rawQuery: string, options: ResolveO
         const previous = wins.get(winner.source_id);
         wins.set(winner.source_id, { team: winner, count: (previous?.count ?? 0) + 1 });
       }
-      const champion = [...wins.values()].sort((a, b) => b.count - a.count)[0];
+      // These are the deciding games from the official finals schedules.
+      // Total playoff wins alone do not establish the champion.
+      const decidingId = targetSeason === "2024-25" ? "965824" : "1003919";
+      const final = playoffMatches.find(game => game.game?.source_id === decidingId);
+      const championId = final?.teams.length === 2 && final.teams.every(row => row.score != null) && final.teams[0].score !== final.teams[1].score
+        ? [...final.teams].sort((a, b) => b.score! - a.score!)[0].source_id : undefined;
+      const champion = championId ? wins.get(championId) : undefined;
       if (champion) {
-        const championTeam = options.historicalTeams.find((row) => row.source_team_id === champion.team.source_id);
+        const championTeam = seasonTeams.find((row) => row.source_team_id === champion.team.source_id);
         const actions: QueryAction[] = [
-          { label: options.language === "fi" ? "Avaa kausitrendit" : "Open season trends", target: viewTarget("season", "2025-26") },
+          { label: options.language === "fi" ? "Avaa kausitrendit" : "Open season trends", target: viewTarget("season", targetSeason) },
         ];
-        if (championTeam) actions.push({ label: options.language === "fi" ? "Avaa joukkueprofiili" : "Open team profile", target: viewTarget("teams", "2025-26", undefined, championTeam.source_team_id) });
+        if (championTeam) actions.push({ label: options.language === "fi" ? "Avaa joukkueprofiili" : "Open team profile", target: viewTarget("teams", targetSeason, undefined, championTeam.source_team_id) });
         return {
           feedback: feedback(options.language, {
-            fi: [`${champion.team.name} voitti Naisten Korisliigan 2025–26`, `${champion.count} voittoa tarkistetussa pudotuspeliaineistossa.`],
-            en: [`${champion.team.name} won the 2025–26 Women's Korisliiga`, `${champion.count} wins in the verified playoff data.`],
+            fi: [`${champion.team.name} voitti Naisten Korisliigan ${targetLabel}`, `${champion.count} voittoa tarkistetussa pudotuspeliaineistossa.`],
+            en: [`${champion.team.name} won the ${targetLabel} Women's Korisliiga`, `${champion.count} wins in the verified playoff data.`],
           }, "answer", actions),
         };
       }

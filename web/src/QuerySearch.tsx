@@ -55,7 +55,7 @@ export function QuerySearch({
           ? tr("Esim. ToPo tai kuka voitti kauden 2025–26?", "For example, ToPo or who won the 2025–26 season?")
           : tr("Hae tai kysy…", "Search or ask…")}
       />
-      <MetalFx variant="circle" preset="chromatic" strength={0.3} theme={theme} paused={busy || reducedMotion} disableGlow className="query-search-metal">
+      <MetalFx variant="circle" preset="chromatic" strength={1} theme={theme} paused={busy || reducedMotion} disableGlow className="query-search-metal">
         {submitButton}
       </MetalFx>
     </form>

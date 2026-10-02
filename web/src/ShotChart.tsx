@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useI18n } from "./i18n";
 import { Icon } from "./Icon";
+import { ShotCount } from "./ShotCount";
 import { playerDisplayName } from "./playerName";
 import { filterShots, parseShotChart, shotClock, summarizeShots, type ShotChartData, type ShotFilters } from "./shotStats";
 
@@ -117,7 +118,7 @@ export function ShotChart({ state, matchId }: { state: ShotState; matchId: strin
             </select></label>
           </div>
           <div className="shot-summary" role="status" aria-live="polite">
-            <span><strong>{summary.made} / {summary.attempts}</strong>{tr("osumat / yritykset", "made / attempted")}</span>
+            <span><strong><ShotCount made={summary.made} attempted={summary.attempts} /></strong>{tr("osumat / yritykset", "made / attempted")}</span>
             <span><strong>{decimal(summary.pct)}</strong>{filters.type === "3" ? "3P%" : filters.type === "2" ? "2P%" : "FG%"}</span>
           </div>
           <div className="shot-legend" aria-label={tr("Joukkueiden ja heittotulosten selite", "Team and shot outcome legend")}>
@@ -161,8 +162,8 @@ export function ShotChart({ state, matchId }: { state: ShotState; matchId: strin
   );
 }
 
-type PlayerShot = { x: number | null; y: number | null; points: 2 | 3; made: boolean };
-type PlayerShotIndex = {
+export type PlayerShot = { x: number | null; y: number | null; points: 2 | 3; made: boolean };
+export type PlayerShotIndex = {
   schema_version: "0.1";
   season_id: string;
   expected_games: number;
@@ -172,7 +173,7 @@ type PlayerShotIndex = {
 };
 type PlayerShotState = { seasonId: string; status: "loading" | "ready" | "missing" | "error"; data: PlayerShotIndex | null };
 
-function parsePlayerShotIndex(value: unknown, seasonId: string): PlayerShotIndex {
+export function parsePlayerShotIndex(value: unknown, seasonId: string): PlayerShotIndex {
   const data = value as PlayerShotIndex | null;
   if (!data || data.schema_version !== "0.1" || data.season_id !== seasonId || !Array.isArray(data.players) ||
       !Number.isInteger(data.expected_games) || !Number.isInteger(data.games_with_data) || typeof data.box_score_matches !== "boolean") {
@@ -236,7 +237,7 @@ export function PlayerShotChart({ playerId, playerName, seasonId }: { playerId: 
       : !player || shots.length === 0 ? <p className="shot-state profile-shot-state" role="status">{player ? tr("Ei heittoja valitulla suodatuksella.", "No shots match this filter.") : tr("Pelaajalle ei ole kirjattu pelitilanneheittoja tällä kaudella.", "No field-goal attempts are recorded for this player this season.")}</p>
       : <>
         <div className="shot-summary" role="status" aria-live="polite">
-          <span><strong>{made} / {shots.length}</strong>{tr("osumat / yritykset", "made / attempted")}</span>
+          <span><strong><ShotCount made={made} attempted={shots.length} /></strong>{tr("osumat / yritykset", "made / attempted")}</span>
           <span><strong>{percent}</strong>{shotType === "3" ? "3P%" : shotType === "2" ? "2P%" : "FG%"}</span>
         </div>
         <div className="shot-legend profile-shot-legend">

@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { ShotCount } from "./ShotCount";
 import { SeasonSelector, useSeason, type SeasonMatchRecord } from "./SeasonContext";
 import { aggregateSeasonPlayers, playerPerGame, playerFgPctFromTotals, playerFtPctFromTotals, playerEfGPctFromTotals, playerAssistTurnoverRatio, playerEfficiencyPer40, playerGameOutcome, type SeasonPlayerRow } from "./playerStats";
 import { useI18n } from "./i18n";
@@ -9,12 +10,13 @@ import { PlayerPortrait } from "./PlayerPortrait";
 import { AssistCreation } from "./AssistCreation";
 import { PlayerShotChart } from "./ShotChart";
 import { Icon } from "./Icon";
+import { getPlayerAwards } from "./playerAwards";
 
 export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: string; onOpenMatch: (id: string) => void; onBack: () => void }) {
-  const { seasonId, seasonLabel, loadMatches, setSeasonId } = useSeason();
+  const { seasonId, seasonLabel, loadMatches, loadMatchesForSeason, setSeasonId } = useSeason();
   const { language, tr } = useI18n();
   const [phase, setPhase] = useState<"regular" | "playoffs">("regular");
-  const activePhase = seasonId === "2025-26" ? phase : "regular";
+  const activePhase = seasonId !== "2026-27" ? phase : "regular";
   const [records, setRecords] = useState<SeasonMatchRecord[]>([]);
   const [knownPlayer, setKnownPlayer] = useState<SeasonPlayerRow>();
   const [loaded, setLoaded] = useState(false);
@@ -27,9 +29,8 @@ export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: str
     setKnownPlayer(undefined);
     void loadMatches().then(async (regularMatches) => {
       let matches = regularMatches;
-      if (seasonId === "2025-26" && activePhase === "playoffs") {
-        const postseason = await import("../../data/normalized/season_playoffs_2025_2026.json");
-        matches = postseason.default.matches as unknown as SeasonMatchRecord[];
+      if (seasonId !== "2026-27" && activePhase === "playoffs") {
+        matches = await loadMatchesForSeason(seasonId, "playoffs");
       }
       let identity = aggregateSeasonPlayers(regularMatches).find((player) => player.id === playerId)
         ?? aggregateSeasonPlayers(matches).find((player) => player.id === playerId);
@@ -40,7 +41,7 @@ export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: str
       if (!cancelled) { setRecords(matches); setKnownPlayer(identity); setLoaded(true); }
     }).catch(() => { if (!cancelled) { setError(true); setLoaded(true); } });
     return () => { cancelled = true; };
-  }, [loadMatches, playerId, seasonId, activePhase]);
+  }, [loadMatches, loadMatchesForSeason, playerId, seasonId, activePhase]);
   const player = useMemo(() => aggregateSeasonPlayers(records).find((row) => row.id === playerId), [records, playerId]);
   const games = useMemo(() => records.flatMap((record) => record.teams.flatMap((team) => {
     const appearance = team.players.find((row) => row.source_player_id === playerId && (row.minutes ?? 0) > 0);
@@ -54,7 +55,8 @@ export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: str
   usePageMetadata(`${name} · ${seasonLabel}`, tr(`${name}: Naisten Korisliigan kauden ${seasonLabel} pelaajatilastot ja otteluloki.`, `${name}: Women's Korisliiga ${seasonLabel} player statistics and game log.`), { noindex: loaded && !knownPlayer });
   const wins = games.filter((game) => game.outcome === "win").length;
   const losses = games.filter((game) => game.outcome === "loss").length;
-  const metrics = player ? [
+  const awards = getPlayerAwards(playerId);
+  const metrics: [string, string, ReactNode][] = player ? [
     [tr("Pisteet", "Points"), decimal(playerPerGame(player, "points")), tr("per ottelu", "per game")],
     [tr("Syötöt", "Assists"), decimal(playerPerGame(player, "assists")), tr("per ottelu", "per game")],
     [tr("Levypallot", "Rebounds"), decimal(playerPerGame(player, "rebounds")), tr("per ottelu", "per game")],
@@ -63,9 +65,9 @@ export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: str
     [tr("Peliaika", "Playing time"), `${decimal(player.minutes / player.games)} min`, tr("per ottelu", "per game")],
     [tr("Ottelut", "Games"), String(player.games), `${wins} ${tr("V", "W")} · ${losses} ${tr("H", "L")}`],
     ["AST/TO", decimal(playerAssistTurnoverRatio(player)), tr("syötöt / menetykset", "assists / turnovers")],
-    ["FT%", playerFtPctFromTotals(player) == null ? "—" : `${decimal(playerFtPctFromTotals(player))}%`, `${player.ftm} / ${player.fta} ${tr("vapaaheittoa", "free throws")}`],
+    ["FT%", playerFtPctFromTotals(player) == null ? "—" : `${decimal(playerFtPctFromTotals(player))}%`, <><ShotCount made={player.ftm} attempted={player.fta} /> {tr("vapaaheittoa", "free throws")}</>],
     ["Eff/40", decimal(playerEfficiencyPer40(player)), tr("tehokkuus / 40 min", "efficiency / 40 min")],
-    ["FG%", playerFgPctFromTotals(player) == null ? "—" : `${decimal(playerFgPctFromTotals(player))}%`, `${player.twoPM + player.threePM} / ${player.twoPA + player.threePA} ${tr("heittoa", "shots")}`],
+    ["FG%", playerFgPctFromTotals(player) == null ? "—" : `${decimal(playerFgPctFromTotals(player))}%`, <><ShotCount made={player.twoPM + player.threePM} attempted={player.twoPA + player.threePA} /> {tr("heittoa", "shots")}</>],
     ["eFG%", playerEfGPctFromTotals(player) == null ? "—" : `${decimal(playerEfGPctFromTotals(player))}%`, tr("kolmosen lisäarvon huomioiva FG%", "FG% adjusted for the value of threes")],
   ] : [];
   const gameStatKeys = ["points", "rebounds", "assists", "steals", "blocks"] as const;
@@ -86,10 +88,23 @@ export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: str
         </div>
         <SeasonSelector />
       </section>
-      {seasonId === "2025-26" && <div className="profile-phase-toggle" role="group" aria-label={tr("Tilastojakso", "Statistics phase")}>
+      {seasonId !== "2026-27" && <div className="profile-phase-toggle" role="group" aria-label={tr("Tilastojakso", "Statistics phase")}>
         <button type="button" aria-pressed={activePhase === "regular"} onClick={() => setPhase("regular")}>{tr("Runkosarja", "Regular season")}</button>
         <button type="button" aria-pressed={activePhase === "playoffs"} onClick={() => setPhase("playoffs")}>{tr("Pudotuspelit", "Playoffs")}</button>
       </div>}
+      {awards.length > 0 && <section className="profile-awards" aria-label={tr("Pelaajan palkinnot", "Player awards")}>
+        <h2>{tr("Palkinnot", "Awards")}</h2>
+        <ul className="profile-awards-list">
+          {awards.map((award) => <li key={`${award.season}-${award.labelFi}`}>
+            <a className="profile-award-link" href={award.sourceUrl} target="_blank" rel="noreferrer">
+              <span className="profile-award-season">{award.season.replace("-", "–")}</span>
+              <strong>{language === "fi" ? award.labelFi : award.labelEn}</strong>
+              <Icon name="arrowOutward" size={12} />
+              <span className="sr-only"> · {tr("Basket.fi:n palkintolistaus", "Basket.fi awards list")}</span>
+            </a>
+          </li>)}
+        </ul>
+      </section>}
       {!loaded ? (
         <div className="panel match-list-empty" role="status">{tr("Ladataan pelaajaprofiilia…", "Loading player profile…")}</div>
       ) : error ? (
@@ -100,7 +115,7 @@ export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: str
       ) : !player ? (
         <div className="panel match-list-empty">
           <h2>{activePhase === "playoffs" ? tr("Ei pudotuspeliotteluita", "No playoff appearances") : tr("Ei ottelutilastoja tältä kaudelta", "No game statistics for this season")}</h2>
-          <p>{activePhase === "playoffs" ? tr("Pelaajalle ei löydy pelattuja otteluita kauden 2025–26 pudotuspeliaineistosta.", "No playoff appearances for this player in the 2025–26 dataset.") : tr("Pelaajalle ei löydy pelattuja otteluita valitun kauden aineistosta.", "No played games for this player in the selected season's dataset.")}</p>
+          <p>{activePhase === "playoffs" ? tr(`Pelaajalle ei löydy pelattuja otteluita kauden ${seasonLabel} pudotuspeliaineistosta.`, `No playoff appearances for this player in the ${seasonLabel} dataset.`) : tr("Pelaajalle ei löydy pelattuja otteluita valitun kauden aineistosta.", "No played games for this player in the selected season's dataset.")}</p>
           {knownPlayer && seasonId === "2026-27" && (
             <button className="outline-button" onClick={() => setSeasonId("2025-26")}>
               {tr("Näytä kausi 2025–26", "View season 2025–26")}
