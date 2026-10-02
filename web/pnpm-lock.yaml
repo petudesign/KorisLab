@@ -5,7 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 patchedDependencies:
-  metal-fx@2.0.11: 28505134ca755ba5ea948a4b5513343d9459beb98a6c1686dbdb2d5490a31fa4
+  metal-fx@2.0.11:
+    hash: 28505134ca755ba5ea948a4b5513343d9459beb98a6c1686dbdb2d5490a31fa4
+    path: patches/metal-fx@2.0.11.patch
 
 importers:
 
