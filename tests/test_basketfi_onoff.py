@@ -99,7 +99,13 @@ class OnOffTests(unittest.TestCase):
         root = Path(__file__).resolve().parents[1]
         records = json.loads((root / "data/normalized/season_verified.json").read_text(encoding="utf-8"))["matches"]
         snapshot = json.loads((root / "web/public/onoff-2025-26.json").read_text(encoding="utf-8"))
-        result = publish(records, root / "data/cache/pbp")
+        cache = root / "data/cache/pbp"
+        if not all(
+            (cache / f"{record['game']['source_id']}.json").is_file()
+            for record in records
+        ):
+            self.skipTest("The local-only play-by-play cache is unavailable in this environment")
+        result = publish(records, cache)
         self.assertEqual(result, snapshot)
         self.assertGreater(result["verified_games"], 0)
         self.assertNotIn("968921", result["match_ids"])
