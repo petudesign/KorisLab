@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "season_id": "huki2627",
-  "updated_at": "2026-10-02T20:48:43.354206+00:00",
+  "updated_at": "2026-10-03T14:43:45.200573+00:00",
   "source_url": "https://tulospalvelu.basket.fi/",
   "schedule": [
     {
@@ -146,16 +146,16 @@
       "scheduled_date": "2026-10-03",
       "scheduled_time": "16:00:00",
       "venue": "Äänekoski Areena Pankkari",
-      "status": "Fixture",
+      "status": "Break",
       "home": {
         "source_team_id": "5757257",
         "name": "Kipinä Basket",
-        "score": null
+        "score": 101
       },
       "away": {
         "source_team_id": "50",
         "name": "Korihait",
-        "score": null
+        "score": 78
       }
     },
     {
@@ -168,16 +168,16 @@
       "scheduled_date": "2026-10-03",
       "scheduled_time": "16:00:00",
       "venue": "IKH Areena",
-      "status": "Fixture",
+      "status": "Break",
       "home": {
         "source_team_id": "25",
         "name": "Kauhajoki",
-        "score": null
+        "score": 67
       },
       "away": {
         "source_team_id": "47",
         "name": "KTP-Basket",
-        "score": null
+        "score": 70
       }
     },
     {
@@ -190,16 +190,16 @@
       "scheduled_date": "2026-10-03",
       "scheduled_time": "17:00:00",
       "venue": "Tapiolan Liikuntahalli",
-      "status": "Fixture",
+      "status": "Break",
       "home": {
         "source_team_id": "641",
         "name": "Tapiolan Honka",
-        "score": null
+        "score": 51
       },
       "away": {
         "source_team_id": "41",
         "name": "Kouvot",
-        "score": null
+        "score": 30
       }
     },
     {
@@ -210,18 +210,18 @@
       "group_id": "303022",
       "group_name": "Runkosarja",
       "scheduled_date": "2026-10-03",
-      "scheduled_time": "17:00:00",
+      "scheduled_time": "17:30:00",
       "venue": "Loimaan liikuntahalli",
-      "status": "Fixture",
+      "status": "Live",
       "home": {
         "source_team_id": "4633129",
         "name": "Bisons Loimaa",
-        "score": null
+        "score": 11
       },
       "away": {
         "source_team_id": "42",
         "name": "Kataja Basket",
-        "score": null
+        "score": 16
       }
     },
     {
@@ -238,12 +238,12 @@
       "home": {
         "source_team_id": "43",
         "name": "Tampereen Pyrintö",
-        "score": null
+        "score": 0
       },
       "away": {
         "source_team_id": "23",
         "name": "Salon Vilpas",
-        "score": null
+        "score": 0
       }
     },
     {

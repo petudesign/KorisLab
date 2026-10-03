@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "season_id": "huki2627",
-  "updated_at": "2026-10-02T20:48:37.478478+00:00",
+  "updated_at": "2026-10-03T14:43:39.300850+00:00",
   "source_url": "https://tulospalvelu.basket.fi/",
   "schedule": [
     {
@@ -36,16 +36,16 @@
       "scheduled_date": "2026-10-03",
       "scheduled_time": "16:00:00",
       "venue": "Lapuan urheilutalo",
-      "status": "Fixture",
+      "status": "Break",
       "home": {
         "source_team_id": "45373",
         "name": "Vimpelin Veto",
-        "score": null
+        "score": 70
       },
       "away": {
         "source_team_id": "8",
         "name": "BC Nokia",
-        "score": null
+        "score": 79
       }
     },
     {
@@ -58,16 +58,16 @@
       "scheduled_date": "2026-10-03",
       "scheduled_time": "17:00:00",
       "venue": "Steveco Areena",
-      "status": "Fixture",
+      "status": "Break",
       "home": {
         "source_team_id": "4",
         "name": "Peli-Karhut",
-        "score": null
+        "score": 20
       },
       "away": {
         "source_team_id": "4615311",
         "name": "HBA-Märsky",
-        "score": null
+        "score": 39
       }
     },
     {
