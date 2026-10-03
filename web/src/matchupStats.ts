@@ -76,11 +76,12 @@ export function appearanceSplit(records: SeasonMatchRecord[], teamId: string, pl
 }
 
 export type OnOffState = { seconds: number; own: StatLine; opponent: StatLine };
-export type OnOffData = { schema_version: string; season_id: string; expected_games: number; verified_games: number; match_ids: string[]; players: { id: string; team_id: string; games: number; on: OnOffState; off: OnOffState }[] };
+export type OnOffData = { schema_version: string; season_id: string; expected_games: number; verified_games: number; match_ids: string[]; methodology?: { playing_time_tolerance_seconds: number; same_clock_policy: "unique_prior_lineup"; ambiguous_optional_stats: "unavailable" }; players: { id: string; team_id: string; games: number; on: OnOffState; off: OnOffState }[] };
 export function parseOnOff(value: unknown, season: string): OnOffData {
   const data = value as OnOffData;
   const integer = (n: unknown) => typeof n === "number" && Number.isInteger(n) && n >= 0;
   const stateValid = (state: OnOffState) => state && Number.isFinite(state.seconds) && state.seconds >= 0 && [state.own, state.opponent].every((stats) => stats && statKeys.every((key) => stats[key] === null || typeof stats[key] === "number" && Number.isFinite(stats[key]) && stats[key]! >= 0));
   if (!data || data.schema_version !== "0.1" || data.season_id !== season || !integer(data.expected_games) || !integer(data.verified_games) || data.verified_games > data.expected_games || !Array.isArray(data.match_ids) || data.match_ids.length !== data.verified_games || data.match_ids.some((id) => typeof id !== "string") || new Set(data.match_ids).size !== data.match_ids.length || !Array.isArray(data.players) || new Set(data.players.map((player) => `${player?.team_id}/${player?.id}`)).size !== data.players.length || data.players.some((player) => !player || typeof player.id !== "string" || typeof player.team_id !== "string" || !integer(player.games) || player.games <= 0 || player.games > data.verified_games || !stateValid(player.on) || !stateValid(player.off) || player.on.seconds <= 0)) throw new Error("Invalid on/off snapshot");
+  if (data.methodology != null && (!Number.isFinite(data.methodology.playing_time_tolerance_seconds) || data.methodology.playing_time_tolerance_seconds < 0 || data.methodology.same_clock_policy !== "unique_prior_lineup" || data.methodology.ambiguous_optional_stats !== "unavailable")) throw new Error("Invalid on/off methodology");
   return data;
 }

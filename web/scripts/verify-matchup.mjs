@@ -77,6 +77,9 @@ const malformed = structuredClone(onoff); malformed.players[0].on.seconds = -1;
 assert.throws(() => parseOnOff(malformed, "2025-26"));
 const duplicate = structuredClone(onoff); duplicate.match_ids[1] = duplicate.match_ids[0];
 assert.throws(() => parseOnOff(duplicate, "2025-26"));
+assert.equal(onoff.methodology.playing_time_tolerance_seconds, 30);
+const invalidMethod = structuredClone(onoff); invalidMethod.methodology.playing_time_tolerance_seconds = -1;
+assert.throws(() => parseOnOff(invalidMethod, "2025-26"));
 for (const row of onoff.players) {
   assert.ok(row.on.seconds + row.off.seconds >= row.games * 2400);
   const a = comparisonValues(row.on.own, row.on.seconds / 2400, row.on.opponent);

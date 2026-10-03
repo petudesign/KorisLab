@@ -37,6 +37,77 @@ def fixture():
 
 
 class OnOffTests(unittest.TestCase):
+    def test_same_clock_basket_after_out_uses_unique_earlier_lineup(self):
+        payload, record = fixture()
+        events = payload["data"]["pbp"]["1"]["events"]
+        basket = events.pop(0)
+        basket["clock"] = "PT05M0S"
+        events.insert(2, basket)  # Out, in, then a delayed basket at the same clock.
+        diagnostics = {}
+        states, _, _ = reconstruct_game(payload, record, diagnostics=diagnostics)
+        self.assertEqual(states["a"]["a1"]["on"]["own"]["points"], 2)
+        self.assertEqual(states["a"]["a6"]["on"]["own"]["points"], 0)
+        self.assertEqual(len(diagnostics["same_clock_events"]), 1)
+
+    def test_ambiguous_assist_is_missing_without_discarding_scoring(self):
+        payload, record = fixture()
+        events = payload["data"]["pbp"]["1"]["events"]
+        events[1]["personId"] = "a2"
+        events[3:3] = [
+            {"eventId": "out-a1", "periodId": 1, "clock": "PT05M0S", "entityId": "a", "personId": "a1", "eventType": "substitution", "eventSubType": "out"},
+            {"eventId": "in-a2", "periodId": 1, "clock": "PT05M0S", "entityId": "a", "personId": "a2", "eventType": "substitution", "eventSubType": "in"},
+            {"eventId": "assist-a1", "periodId": 1, "clock": "PT05M0S", "entityId": "a", "personId": "a1", "eventType": "assist"},
+        ]
+        record["teams"][0]["stats"]["assists"] = 1
+        diagnostics = {}
+        states, _, _ = reconstruct_game(payload, record, diagnostics=diagnostics)
+        self.assertIsNone(states["a"]["a1"]["on"]["own"]["assists"])
+        self.assertIsNone(states["b"]["b1"]["off"]["opponent"]["assists"])
+        self.assertEqual(states["a"]["a1"]["on"]["own"]["points"], 2)
+        self.assertIn("assists", diagnostics["unavailable_stats"])
+
+    def test_delayed_assist_does_not_move_free_throw_before_substitution(self):
+        payload, record = fixture()
+        events = payload["data"]["pbp"]["1"]["events"]
+        events[3:3] = [
+            {"eventId": "free-throw", "periodId": 1, "clock": "PT05M0S", "entityId": "a", "personId": "a6", "eventType": "freeThrow", "success": True},
+            {"eventId": "delayed-assist", "periodId": 1, "clock": "PT05M0S", "entityId": "a", "personId": "a1", "eventType": "assist"},
+        ]
+        record["teams"][0]["stats"].update(points=3, ftm=1, fta=1, assists=1)
+        for player in record["teams"][0]["players"]:
+            if player["source_player_id"] != "a1":
+                player["stats"]["plus_minus"] += 1
+        for player in record["teams"][1]["players"][:5]:
+            player["stats"]["plus_minus"] -= 1
+        states, _, _ = reconstruct_game(payload, record)
+        self.assertEqual(states["a"]["a6"]["on"]["own"]["ftm"], 1)
+        self.assertEqual(states["a"]["a1"]["on"]["own"]["ftm"], 0)
+        self.assertEqual(states["a"]["a1"]["on"]["own"]["assists"], 1)
+
+    def test_same_clock_context_does_not_leak_to_later_events(self):
+        payload, record = fixture()
+        events = payload["data"]["pbp"]["1"]["events"]
+        basket = events.pop(0)
+        basket["clock"] = "PT04M30S"
+        events.insert(2, basket)
+        with self.assertRaisesRegex(ValueError, "same-clock lineup is unresolved"):
+            reconstruct_game(payload, record)
+
+    def test_tolerance_boundary_rounding_and_diagnostics(self):
+        payload, record = fixture()
+        record["teams"][0]["players"][0]["minutes"] = 35.5
+        diagnostics = {}
+        reconstruct_game(payload, record, diagnostics=diagnostics)
+        self.assertEqual(diagnostics["playing_time_differences"][0]["difference_seconds"], 30)
+        record["teams"][0]["players"][0]["minutes"] = 35 + 31 / 60
+        with self.assertRaisesRegex(ValueError, "playing time"):
+            reconstruct_game(payload, record)
+        record["teams"][0]["players"][0]["minutes"] = 35.0333
+        reconstruct_game(payload, record, playing_time_tolerance_seconds=2)
+        for tolerance in (-1, float("nan"), float("inf")):
+            with self.assertRaisesRegex(ValueError, "tolerance"):
+                reconstruct_game(payload, record, playing_time_tolerance_seconds=tolerance)
+
     def test_lineup_changes_and_score_conservation(self):
         payload, record = fixture()
         states, totals, seconds = reconstruct_game(payload, record)
@@ -108,7 +179,7 @@ class OnOffTests(unittest.TestCase):
         result = publish(records, cache)
         self.assertEqual(result, snapshot)
         self.assertGreater(result["verified_games"], 0)
-        self.assertNotIn("968921", result["match_ids"])
+        self.assertEqual(result["methodology"]["playing_time_tolerance_seconds"], 30)
 
     def test_clock_validation(self):
         self.assertEqual(clock_seconds("PT9M3S"), 543)

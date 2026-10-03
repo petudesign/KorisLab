@@ -70,6 +70,33 @@ The API client sends the public request headers used by the existing [KorisAPI](
 
 ## Local web app
 
+### Kentällä / penkillä -vertailun menetelmä
+
+Kenttäjaksot lasketaan aloitusviisikoista ja pelitapahtumalokin vaihdoista.
+Box scoren peliminuutit ovat tarkistus, eivät kenttäjaksojen ajoituksen lähde.
+Sallittu kokonaispeliajan ero on oletuksena 30 sekuntia pelaajaa ja ottelua kohti;
+desimaaliminuuttien pyöristys huomioidaan ennen vertailua. Raja ei takaa yksittäisen
+vaihdon ajoituksen tarkkuutta. Joukkueiden pistetilastojen ja pelaajien plus/miinusten
+pitää edelleen täsmätä.
+
+Saman pelikellon ajan tapahtumien lähdejärjestys säilytetään, koska esimerkiksi
+vapaaheittojen välissä voi olla vaihto. Jos tapahtuman pelaaja on jo vaihtunut ulos,
+sen kohdistukseen käytetään saman kellonajan aiempaa täydellistä kentällistä vain,
+kun vaihtoehtoja on yksi. Epäselvä syöttö-, torjunta-, riisto- tai puolustuslevypallotieto
+merkitään on/off-vertailussa puuttuvaksi (`null`, näkymässä —), eikä se yksin hylkää
+muuten tarkistettua pistevertailua. Epäselvät heitto-, hyökkäyslevypallo- ja
+menetystapahtumat hylkäävät edelleen ottelun. Menetelmä on lähdelokin tulkinta,
+ei videolta vahvistettu kentällinen.
+
+Julkaistu JSON sisältää menetelmän sekä hyväksyttyjen otteluiden diagnostiikan:
+uudelleen kohdistetut tapahtumat, yli kahden sekunnin peliaikaerot ja puuttuvat
+lisätilastot. Käyttöliittymä näyttää toleranssin ja menetelmän vertailun yhteydessä.
+Päivitä naisten runkosarjan aineisto paikallisesta tapahtumavälimuistista:
+
+```powershell
+python -m ingestion.publish_onoff --playing-time-tolerance-seconds 30
+```
+
 The 2025–26 regular season is now loaded: 108 validated games, nine teams,
 24 games per team. `Joukkueet` compares each team's shooting profile, estimated
 offensive/defensive efficiency, rebounds, turnovers and possessions with the
