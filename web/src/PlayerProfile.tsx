@@ -12,8 +12,43 @@ import { PlayerShotChart } from "./ShotChart";
 import { Icon } from "./Icon";
 import { getPlayerAwards } from "./playerAwards";
 
+type ProfileMetric = { label: string; value: string; note: ReactNode; series?: Array<number | null> };
+type SparkPoint = { x: number; value: number };
+
+function MetricSparkline({ values, label, language }: { values: Array<number | null>; label: string; language: string }) {
+  const valid: Array<SparkPoint | null> = values.map((value, index) => value == null || !Number.isFinite(value)
+    ? null
+    : { x: values.length < 2 ? 50 : 4 + (index / (values.length - 1)) * 92, value });
+  const observed = valid.filter((point): point is SparkPoint => point !== null);
+  if (observed.length < 2) return null;
+
+  const min = Math.min(...observed.map((point) => point.value));
+  const max = Math.max(...observed.map((point) => point.value));
+  const y = (value: number) => max === min ? 14 : 25 - ((value - min) / (max - min)) * 20;
+  const segments: Array<Array<{ x: number; y: number }>> = [];
+  let segment: Array<{ x: number; y: number }> = [];
+  valid.forEach((point) => {
+    if (point) segment.push({ x: point.x, y: y(point.value) });
+    else if (segment.length > 0) { segments.push(segment); segment = []; }
+  });
+  if (segment.length > 0) segments.push(segment);
+  const chartSegments = segments.filter((points) => points.length > 1);
+  if (chartSegments.length === 0) return null;
+  const linePath = chartSegments.map((points) => points.map((point, index) => `${index === 0 ? "M" : "L"}${point.x.toFixed(1)},${point.y.toFixed(1)}`).join(" ")).join(" ");
+  const areaPath = chartSegments.map((points) => `${points.map((point, index) => `${index === 0 ? "M" : "L"}${point.x.toFixed(1)},${point.y.toFixed(1)}`).join(" ")} L${points.at(-1)!.x.toFixed(1)},32 L${points[0].x.toFixed(1)},32 Z`).join(" ");
+  const latest = observed.at(-1)!;
+  const number = (value: number) => value.toLocaleString(language === "fi" ? "fi-FI" : "en-GB", { maximumFractionDigits: 1 });
+  const description = `${label} · ${observed.length} ${language === "fi" ? "otteluhavaintoa, uusin oikealla" : "game values, latest on the right"}`;
+
+  return <svg className="profile-metric-sparkline" viewBox="0 0 100 34" preserveAspectRatio="none" role="img" aria-label={description}>
+    <path className="profile-metric-sparkline-area" d={areaPath} />
+    <path className="profile-metric-sparkline-line" d={linePath} />
+    <circle className="profile-metric-sparkline-latest" cx={latest.x} cy={y(latest.value)} r="2.2"><title>{language === "fi" ? "Uusin" : "Latest"}: {number(latest.value)}</title></circle>
+  </svg>;
+}
+
 export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: string; onOpenMatch: (id: string) => void; onBack: () => void }) {
-  const { leagueId, leagueName, leagueNameEn, seasonId, seasonLabel, loadMatches, loadMatchesForSeason, setSeasonId } = useSeason();
+  const { leagueId, leagueName, leagueNameEn, seasonId, seasonLabel, current, loadMatches, loadMatchesForSeason, setSeasonId } = useSeason();
   const { language, tr } = useI18n();
   const [phase, setPhase] = useState<"regular" | "playoffs">("regular");
   const activePhase = seasonId !== "2026-27" ? phase : "regular";
@@ -42,7 +77,20 @@ export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: str
     }).catch(() => { if (!cancelled) { setError(true); setLoaded(true); } });
     return () => { cancelled = true; };
   }, [loadMatches, loadMatchesForSeason, playerId, seasonId, activePhase]);
-  const player = useMemo(() => aggregateSeasonPlayers(records).find((row) => row.id === playerId), [records, playerId]);
+  const leaguePlayers = useMemo(() => aggregateSeasonPlayers(records), [records]);
+  const player = leaguePlayers.find((row) => row.id === playerId);
+  const maxTeamGames = useMemo(() => {
+    const counts = new Map<string, number>();
+    const countGame = (teamName: string) => counts.set(teamName, (counts.get(teamName) ?? 0) + 1);
+    if (seasonId === "2026-27" && activePhase === "regular" && current?.schedule.length) {
+      current.schedule.forEach((game) => { countGame(game.home.name); countGame(game.away.name); });
+    } else {
+      records.forEach((record) => record.teams.forEach((team) => countGame(team.source_id)));
+    }
+    return Math.max(0, ...counts.values());
+  }, [activePhase, current?.schedule, records, seasonId]);
+  const minimumLeagueGames = Math.max(2, Math.ceil(maxTeamGames / 2));
+  const qualifiedLeaguePlayers = useMemo(() => leaguePlayers.filter((row) => row.games >= minimumLeagueGames), [leaguePlayers, minimumLeagueGames]);
   const games = useMemo(() => records.flatMap((record) => record.teams.flatMap((team) => {
     const appearance = team.players.find((row) => row.source_player_id === playerId && (row.minutes ?? 0) > 0);
     if (!appearance) return [];
@@ -51,28 +99,78 @@ export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: str
     return [{ id: record.game.source_id, date, team, opponent, appearance, outcome: playerGameOutcome(team.score, opponent?.score) }];
   })).sort((a, b) => (b.date ?? "").localeCompare(a.date ?? "")), [records, playerId]);
   const decimal = (value: number | null | undefined) => value == null ? "—" : value.toLocaleString(language === "fi" ? "fi-FI" : "en-GB", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+  const leagueAverages = useMemo(() => {
+    const mean = (values: Array<number | null | undefined>) => {
+      const available = values.filter((value): value is number => typeof value === "number" && Number.isFinite(value));
+      return available.length > 0 ? available.reduce((sum, value) => sum + value, 0) / available.length : null;
+    };
+    const totals = qualifiedLeaguePlayers.reduce((sum, row) => ({
+      twoPM: sum.twoPM + row.twoPM,
+      twoPA: sum.twoPA + row.twoPA,
+      threePM: sum.threePM + row.threePM,
+      threePA: sum.threePA + row.threePA,
+      ftm: sum.ftm + row.ftm,
+      fta: sum.fta + row.fta,
+    }), { twoPM: 0, twoPA: 0, threePM: 0, threePA: 0, ftm: 0, fta: 0 });
+    const fieldGoalAttempts = totals.twoPA + totals.threePA;
+    return {
+      points: mean(qualifiedLeaguePlayers.map((row) => playerPerGame(row, "points"))),
+      assists: mean(qualifiedLeaguePlayers.map((row) => playerPerGame(row, "assists"))),
+      rebounds: mean(qualifiedLeaguePlayers.map((row) => playerPerGame(row, "rebounds"))),
+      steals: mean(qualifiedLeaguePlayers.map((row) => playerPerGame(row, "steals"))),
+      blocks: mean(qualifiedLeaguePlayers.map((row) => playerPerGame(row, "blocks"))),
+      minutes: mean(qualifiedLeaguePlayers.map((row) => row.games > 0 ? row.minutes / row.games : null)),
+      assistTurnover: mean(qualifiedLeaguePlayers.map(playerAssistTurnoverRatio)),
+      freeThrows: totals.fta > 0 ? (totals.ftm / totals.fta) * 100 : null,
+      efficiencyPer40: mean(qualifiedLeaguePlayers.map(playerEfficiencyPer40)),
+      fieldGoals: fieldGoalAttempts > 0 ? ((totals.twoPM + totals.threePM) / fieldGoalAttempts) * 100 : null,
+      effectiveFieldGoals: fieldGoalAttempts > 0 ? ((totals.twoPM + totals.threePM * 1.5) / fieldGoalAttempts) * 100 : null,
+    };
+  }, [qualifiedLeaguePlayers]);
+  const averageText = (value: number | null, unit = "") => value == null ? undefined : decimal(value) + unit;
   const name = knownPlayer?.name ?? tr("Pelaajaprofiili", "Player profile");
   usePageMetadata(`${name} · ${seasonLabel}`, tr(`${name}: ${leagueName} kauden ${seasonLabel} pelaajatilastot ja otteluloki.`, `${name}: ${leagueNameEn} ${seasonLabel} player statistics and game log.`), { noindex: loaded && !knownPlayer });
   const wins = games.filter((game) => game.outcome === "win").length;
   const losses = games.filter((game) => game.outcome === "loss").length;
   const awards = getPlayerAwards(playerId);
-  const metrics: [string, string, ReactNode][] = player ? [
-    [tr("Pisteet", "Points"), decimal(playerPerGame(player, "points")), tr("per ottelu", "per game")],
-    [tr("Syötöt", "Assists"), decimal(playerPerGame(player, "assists")), tr("per ottelu", "per game")],
-    [tr("Levypallot", "Rebounds"), decimal(playerPerGame(player, "rebounds")), tr("per ottelu", "per game")],
-    [tr("Riistot", "Steals"), decimal(playerPerGame(player, "steals")), tr("per ottelu", "per game")],
-    [tr("Torjunnat", "Blocks"), decimal(playerPerGame(player, "blocks")), tr("per ottelu", "per game")],
-    [tr("Peliaika", "Playing time"), `${decimal(player.minutes / player.games)} min`, tr("per ottelu", "per game")],
-    [tr("Ottelut", "Games"), String(player.games), `${wins} ${tr("V", "W")} · ${losses} ${tr("H", "L")}`],
-    ["AST/TO", decimal(playerAssistTurnoverRatio(player)), tr("syötöt / menetykset", "assists / turnovers")],
-    ["FT%", playerFtPctFromTotals(player) == null ? "—" : `${decimal(playerFtPctFromTotals(player))}%`, <><ShotCount made={player.ftm} attempted={player.fta} /> {tr("vapaaheittoa", "free throws")}</>],
-    ["Eff/40", decimal(playerEfficiencyPer40(player)), tr("tehokkuus / 40 min", "efficiency / 40 min")],
-    ["FG%", playerFgPctFromTotals(player) == null ? "—" : `${decimal(playerFgPctFromTotals(player))}%`, <><ShotCount made={player.twoPM + player.threePM} attempted={player.twoPA + player.threePA} /> {tr("heittoa", "shots")}</>],
-    ["eFG%", playerEfGPctFromTotals(player) == null ? "—" : `${decimal(playerEfGPctFromTotals(player))}%`, tr("kolmosen lisäarvon huomioiva FG%", "FG% adjusted for the value of threes")],
-  ] : [];
+  const leagueAverageByLabel: Record<string, string | undefined> = player ? {
+    [tr("Pisteet", "Points")]: averageText(leagueAverages.points),
+    [tr("Syötöt", "Assists")]: averageText(leagueAverages.assists),
+    [tr("Levypallot", "Rebounds")]: averageText(leagueAverages.rebounds),
+    [tr("Riistot", "Steals")]: averageText(leagueAverages.steals),
+    [tr("Torjunnat", "Blocks")]: averageText(leagueAverages.blocks),
+    [tr("Peliaika", "Playing time")]: averageText(leagueAverages.minutes, " min"),
+    ["AST/TO"]: averageText(leagueAverages.assistTurnover),
+    "FT%": averageText(leagueAverages.freeThrows, "%"),
+    "Eff/40": averageText(leagueAverages.efficiencyPer40),
+    "FG%": averageText(leagueAverages.fieldGoals, "%"),
+    "eFG%": averageText(leagueAverages.effectiveFieldGoals, "%"),
+  } : {};
   const gameStatKeys = ["points", "rebounds", "assists", "steals", "blocks"] as const;
   const outcomeLabels = { win: tr("Voitto", "Win"), loss: tr("Tappio", "Loss"), draw: tr("Tasapeli", "Draw"), unknown: tr("Tulos puuttuu", "Result unavailable") };
   const outcomeMarks = { win: tr("V", "W"), loss: tr("H", "L"), draw: tr("T", "D"), unknown: "—" };
+  const recentGamesOldestFirst = games.slice(0, 10).reverse();
+  const seriesFor = (read: (game: (typeof games)[number]) => number | null) => recentGamesOldestFirst.map(read);
+  const metrics: ProfileMetric[] = player ? [
+    { label: tr("Pisteet", "Points"), value: decimal(playerPerGame(player, "points")), note: tr("per ottelu", "per game"), series: seriesFor((game) => game.appearance.stats.points ?? 0) },
+    { label: tr("Syötöt", "Assists"), value: decimal(playerPerGame(player, "assists")), note: tr("per ottelu", "per game"), series: seriesFor((game) => game.appearance.stats.assists ?? 0) },
+    { label: tr("Levypallot", "Rebounds"), value: decimal(playerPerGame(player, "rebounds")), note: tr("per ottelu", "per game"), series: seriesFor((game) => game.appearance.stats.rebounds ?? 0) },
+    { label: tr("Riistot", "Steals"), value: decimal(playerPerGame(player, "steals")), note: tr("per ottelu", "per game"), series: seriesFor((game) => game.appearance.stats.steals ?? null) },
+    { label: tr("Torjunnat", "Blocks"), value: decimal(playerPerGame(player, "blocks")), note: tr("per ottelu", "per game"), series: seriesFor((game) => game.appearance.stats.blocks ?? null) },
+    { label: tr("Peliaika", "Playing time"), value: `${decimal(player.minutes / player.games)} min`, note: tr("per ottelu", "per game"), series: seriesFor((game) => game.appearance.minutes ?? 0) },
+    { label: tr("Ottelut", "Games"), value: String(player.games), note: `${wins} ${tr("V", "W")} · ${losses} ${tr("H", "L")}` },
+    { label: "AST/TO", value: decimal(playerAssistTurnoverRatio(player)), note: tr("syötöt / menetykset", "assists / turnovers"), series: seriesFor((game) => game.appearance.stats.turnovers ? (game.appearance.stats.assists ?? 0) / game.appearance.stats.turnovers : null) },
+    { label: "FT%", value: playerFtPctFromTotals(player) == null ? "—" : `${decimal(playerFtPctFromTotals(player))}%`, note: <><ShotCount made={player.ftm} attempted={player.fta} /> {tr("vapaaheittoa", "free throws")}</>, series: seriesFor((game) => game.appearance.stats.fta ? ((game.appearance.stats.ftm ?? 0) / game.appearance.stats.fta) * 100 : null) },
+    { label: "Eff/40", value: decimal(playerEfficiencyPer40(player)), note: tr("tehokkuus / 40 min", "efficiency / 40 min"), series: seriesFor((game) => game.appearance.minutes && game.appearance.stats.efficiency != null ? (game.appearance.stats.efficiency / game.appearance.minutes) * 40 : null) },
+    { label: "FG%", value: playerFgPctFromTotals(player) == null ? "—" : `${decimal(playerFgPctFromTotals(player))}%`, note: <><ShotCount made={player.twoPM + player.threePM} attempted={player.twoPA + player.threePA} /> {tr("heittoa", "shots")}</>, series: seriesFor((game) => {
+      const attempts = (game.appearance.stats.two_pa ?? 0) + (game.appearance.stats.three_pa ?? 0);
+      return attempts > 0 ? (((game.appearance.stats.two_pm ?? 0) + (game.appearance.stats.three_pm ?? 0)) / attempts) * 100 : null;
+    }) },
+    { label: "eFG%", value: playerEfGPctFromTotals(player) == null ? "—" : `${decimal(playerEfGPctFromTotals(player))}%`, note: tr("kolmosen lisäarvon huomioiva FG%", "FG% adjusted for the value of threes"), series: seriesFor((game) => {
+      const attempts = (game.appearance.stats.two_pa ?? 0) + (game.appearance.stats.three_pa ?? 0);
+      return attempts > 0 ? (((game.appearance.stats.two_pm ?? 0) + (game.appearance.stats.three_pm ?? 0) * 1.5) / attempts) * 100 : null;
+    }) },
+  ] : [];
   return (
     <div className="player-profile">
       <a className="profile-back" href={routeHref("players", seasonId, undefined, leagueId)} onClick={(event) => followLink(event, onBack)}>
@@ -125,11 +223,18 @@ export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: str
       ) : (
         <>
           <section className="profile-metrics" aria-label={tr("Pelaajan kauden luvut", "Player season metrics")}>
-            {metrics.map(([label, value, note]) => (
-              <div className="panel profile-metric" key={label}>
-                <span className="stat-label">{label}</span>
-                <strong>{value}</strong>
-                <small>{note}</small>
+            <small className="profile-metrics-context">{tr("Liigan keskiarvo", "League average")}: {qualifiedLeaguePlayers.length} {tr("pelaajaa, vähintään", "players with at least")} {minimumLeagueGames} {tr("ottelua", "games")} · {tr("Käyrät: 10 uusinta ottelua, uusin oikealla", "Charts: 10 latest games, newest on the right")}</small>
+            {metrics.map(({ label, value, note, series }) => (
+              <div className={`panel profile-metric${leagueAverageByLabel[label] ? "" : " profile-metric--no-average"}`} key={label}>
+                <div className="profile-metric-main">
+                  <span className="stat-label">{label}</span>
+                  <strong>{value}</strong>
+                  <small>{note}</small>
+                </div>
+                {leagueAverageByLabel[label] && <div className="profile-metric-aside">
+                  <div className="profile-metric-benchmark"><small>{tr("Liigan ka.", "League avg.")}</small><strong>{leagueAverageByLabel[label]}</strong></div>
+                  {series && <MetricSparkline values={series} label={label} language={language} />}
+                </div>}
               </div>
             ))}
           </section>

@@ -6,6 +6,8 @@ venv/
 raw/
 web/node_modules/
 web/dist/
+.env.local
+.env.*.local
 .pnpm-store/
 data/cache/pbp/
 data/cache/statistics/

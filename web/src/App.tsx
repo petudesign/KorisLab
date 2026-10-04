@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode, type RefObject } from "react";
+import { lazy, Suspense, useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode, type RefObject } from "react";
 import { availability, insights, match, players, teamSummary, type BoxScore, type Player, type PlayerRole, type TeamStats, type ViewKey } from "./data";
 import { deriveTeamMetrics, type DerivedTeamMetrics } from "./metrics";
 import { leagues } from "./leagues";
@@ -29,6 +29,9 @@ import { MatchupLab } from "./MatchupLab";
 import { MatchReplay, useMatchReplay } from "./MatchReplay";
 import { LiveSeason } from "./LiveSeason";
 import { resolveBasketballQuery, type QueryFeedback, type QueryTarget } from "./basketballQuery";
+import { AnalysesIndex, AnalysisArticlePage } from "./AnalysisArticles";
+
+const CustomImportPage = lazy(() => import("./CustomImport"));
 
 type SeasonMatchRecord = typeof import("../../data/normalized/season_verified.json")["matches"][number];
 
@@ -1082,7 +1085,13 @@ const mobileNavItems: Array<{ labelFi: string; labelEn: string; mobileLabelFi: s
   { labelFi: "Ottelut", labelEn: "Games", mobileLabelFi: "Ottelut", mobileLabelEn: "Games", view: "matches", icon: "games" },
   { labelFi: "Joukkueet", labelEn: "Teams", mobileLabelFi: "Joukkueet", mobileLabelEn: "Teams", view: "teams", icon: "teams" },
   { labelFi: "Pelaajat", labelEn: "Players", mobileLabelFi: "Pelaajat", mobileLabelEn: "Players", view: "players", icon: "players" },
-  { labelFi: "Kausitrendit", labelEn: "Season", mobileLabelFi: "Kausi", mobileLabelEn: "Season", view: "season", icon: "season" },
+];
+
+const mobileMoreItems: Array<{ labelFi: string; labelEn: string; view: ViewKey; icon: IconName }> = [
+  { labelFi: "Kausitrendit", labelEn: "Season", view: "season", icon: "season" },
+  { labelFi: "Analyysit", labelEn: "Analysis", view: "analyses", icon: "analyses" },
+  { labelFi: "Matchup Lab", labelEn: "Matchup Lab", view: "matchup", icon: "matchup" },
+  { labelFi: "Custom import", labelEn: "Custom import", view: "custom-import", icon: "import" },
 ];
 
 type ThemeMode = "dark" | "light";
@@ -1218,13 +1227,29 @@ function HomeView({
 }
 
 function App() {
-  const { leagueId, leagueName, leagueNameEn, historicalSummaries, data: seasonData, seasonId, seasonLabel, setSeasonId, current, loadMatches: loadSeasonMatches, loadMatchesForSeason } = useSeason();
+  const { leagueId, leagueName, leagueNameEn, historicalSummaries, data: seasonData, seasonId, seasonLabel, setSeasonId, setLeagueId, current, loadMatches: loadSeasonMatches, loadMatchesForSeason } = useSeason();
   const { language, setLanguage, tr } = useI18n();
   const [theme, setTheme] = useState<ThemeMode>(getInitialTheme);
+  const [mobileMoreOpen, setMobileMoreOpen] = useState(false);
+  const mobileMoreRef = useRef<HTMLDivElement>(null);
   const { route, navigate } = useAppRoute(seasonId, leagueId);
   const view = route.view;
   const selectedMatchId = route.matchId ?? match.sourceMatchId;
-  const setView = (next: ViewKey) => navigate(next, ["story", "data"].includes(next) ? selectedMatchId : undefined);
+  const setView = (next: ViewKey) => navigate(next, next === "analysis-article" ? route.articleSlug : ["story", "data"].includes(next) ? selectedMatchId : undefined);
+  useEffect(() => { setMobileMoreOpen(false); }, [view]);
+  useEffect(() => {
+    if (!mobileMoreOpen) return;
+    const dismissOutside = (event: PointerEvent) => {
+      if (!mobileMoreRef.current?.contains(event.target as Node)) setMobileMoreOpen(false);
+    };
+    document.addEventListener("pointerdown", dismissOutside);
+    return () => document.removeEventListener("pointerdown", dismissOutside);
+  }, [mobileMoreOpen]);
+  const openAnalysis = (slug: string, targetSeason: SeasonId, targetLeague: "naisten-korisliiga" | "korisliiga") => {
+    setSeasonId(targetSeason);
+    setLeagueId(targetLeague);
+    navigate("analysis-article", slug, targetSeason, targetLeague);
+  };
   const openMatch = (id: string) => navigate("story", id);
   const openPlayer = (id: string) => navigate("player-profile", id);
   const previousSeason = useRef(seasonId);
@@ -1505,12 +1530,12 @@ function App() {
       { href: "#match-availability", label: tr("Mitä tiedämme?", "What do we know?") },
     ],
   };
-  const pageNames: Partial<Record<ViewKey, string>> = { home: tr(`${leagueName}: tilastot ja analyysit`, `${leagueNameEn} statistics and analysis`), overview: tr("Yleiskatsaus", "Overview"), matches: tr("Ottelut", "Games"), teams: tr("Joukkueet", "Teams"), players: tr("Pelaajat", "Players"), season: tr("Kausitrendit", "Season trends"), matchup: "Matchup Lab", "not-found": tr("Sivua ei löytynyt", "Page not found") };
+  const pageNames: Partial<Record<ViewKey, string>> = { home: tr(`${leagueName}: tilastot ja analyysit`, `${leagueNameEn} statistics and analysis`), overview: tr("Yleiskatsaus", "Overview"), matches: tr("Ottelut", "Games"), teams: tr("Joukkueet", "Teams"), players: tr("Pelaajat", "Players"), season: tr("Kausitrendit", "Season trends"), analyses: tr("Analyysit", "Analysis"), "analysis-article": tr("Analyysi", "Analysis"), matchup: "Matchup Lab", "custom-import": "Custom import", "not-found": tr("Sivua ei löytynyt", "Page not found") };
   const pageName = pageNames[view] ?? (matchLoadState === "ready" ? `${activeMatch.home.name} – ${activeMatch.away.name} · ${activeMatch.date}` : tr("Otteluanalyysi", "Game analysis"));
   usePageMetadata(
-    view === "home" ? pageName : `${pageName} · ${seasonLabel}`,
-    tr(`${pageName}: ${leagueName} kauden ${seasonLabel} tilastot, tulokset ja varmennettuun otteludataan perustuva analyysi.`, `${pageName}: ${leagueNameEn} ${seasonLabel} statistics, results and analysis based on verified game data.`),
-    { enabled: view !== "player-profile", noindex: view === "not-found" || (isMatchDetail && ["missing", "error"].includes(matchLoadState)) },
+    view === "home" || view === "custom-import" || view === "analysis-article" ? pageName : `${pageName} · ${seasonLabel}`,
+    view === "custom-import" ? tr("Tuo joukkueesi ottelutilastot ja tutki niitä paikallisesti KorisLabissa.", "Import your team's game statistics and analyze them locally in KorisLab.") : tr(`${pageName}: ${leagueName} kauden ${seasonLabel} tilastot, tulokset ja varmennettuun otteludataan perustuva analyysi.`, `${pageName}: ${leagueNameEn} ${seasonLabel} statistics, results and analysis based on verified game data.`),
+    { enabled: view !== "player-profile" && view !== "analysis-article", noindex: view === "not-found" || view === "custom-import" || (isMatchDetail && ["missing", "error"].includes(matchLoadState)) },
   );
   const seasonPending = seasonId === "2026-27" && (!current || current.summary.valid_games === 0);
   const sectionLinks = seasonPending && ["overview", "teams", "season"].includes(view) ? [] : sectionsByView[view] ?? [];
@@ -1524,7 +1549,7 @@ function App() {
           <span>Koris<span>Lab</span></span>
         </a>
 
-        <div className="workspace-switcher"><SeasonSelector sidebar /></div>
+        {view !== "custom-import" && <div className="workspace-switcher"><SeasonSelector sidebar /></div>}
 
         <nav className="main-nav" aria-label={tr("Päänavigaatio", "Main navigation")}>
           <p className="nav-label">{tr("Näkymä", "Views")}</p>
@@ -1534,8 +1559,10 @@ function App() {
           <a className={`nav-item ${view === "teams" ? "active" : ""}`} href={routeHref("teams", seasonId, undefined, leagueId)} aria-current={view === "teams" ? "page" : undefined} onClick={(event) => followLink(event, () => setView("teams"))}><span className="nav-glyph"><Icon name="teams" /></span> {tr("Joukkueet", "Teams")}</a>
           <a className={`nav-item ${["players", "player-profile"].includes(view) ? "active" : ""}`} href={routeHref("players", seasonId, undefined, leagueId)} aria-current={["players", "player-profile"].includes(view) ? "page" : undefined} onClick={(event) => followLink(event, () => setView("players"))}><span className="nav-glyph"><Icon name="players" /></span> {tr("Pelaajat", "Players")}</a>
           <a className={`nav-item ${view === "season" ? "active" : ""}`} href={routeHref("season", seasonId, undefined, leagueId)} aria-current={view === "season" ? "page" : undefined} onClick={(event) => followLink(event, () => setView("season"))}><span className="nav-glyph"><Icon name="season" /></span> {tr("Kausitrendit", "Season trends")}</a>
+          <a className={`nav-item ${["analyses", "analysis-article"].includes(view) ? "active" : ""}`} href={routeHref("analyses", seasonId, undefined, leagueId)} aria-current={["analyses", "analysis-article"].includes(view) ? "page" : undefined} onClick={(event) => followLink(event, () => setView("analyses"))}><span className="nav-glyph"><Icon name="analyses" /></span> {tr("Analyysit", "Analysis")}</a>
           <p className="nav-label nav-label-lower">{tr("Työkalut", "Tools")}</p>
           <a className={`nav-item ${view === "matchup" ? "active" : ""}`} href={routeHref("matchup", seasonId, undefined, leagueId)} aria-current={view === "matchup" ? "page" : undefined} onClick={(event) => followLink(event, () => setView("matchup"))}><span className="nav-glyph"><Icon name="matchup" /></span> Matchup Lab</a>
+          <a className={`nav-item ${view === "custom-import" ? "active" : ""}`} href={routeHref("custom-import", seasonId, undefined, leagueId)} aria-current={view === "custom-import" ? "page" : undefined} onClick={(event) => followLink(event, () => setView("custom-import"))}><span className="nav-glyph"><Icon name="import" /></span> Custom import</a>
           <button className="nav-item"><span className="nav-glyph"><Icon name="health" /></span> {tr("Datan tila", "Data status")}</button>
         </nav>
 
@@ -1545,7 +1572,7 @@ function App() {
       </aside>
 
       <nav className="mobile-nav" aria-label={tr("Mobiilinavigaatio", "Mobile navigation")}>
-        {mobileNavItems.map((item) => <a key={item.view} href={routeHref(item.view, seasonId, undefined, leagueId)} className={view === item.view || (item.view === "players" && view === "player-profile") ? "active" : ""} aria-label={tr(item.labelFi, item.labelEn)} aria-current={view === item.view || (item.view === "players" && view === "player-profile") ? "page" : undefined} onClick={(event) => followLink(event, () => setView(item.view))}>
+        {mobileNavItems.map((item) => <a key={item.view} href={routeHref(item.view, seasonId, undefined, leagueId)} className={view === item.view || (item.view === "players" && view === "player-profile") || (item.view === "analyses" && view === "analysis-article") ? "active" : ""} aria-label={tr(item.labelFi, item.labelEn)} aria-current={view === item.view || (item.view === "players" && view === "player-profile") || (item.view === "analyses" && view === "analysis-article") ? "page" : undefined} onClick={(event) => followLink(event, () => setView(item.view))}>
           <span className="mobile-nav-icon"><Icon name={item.icon} size={18} /></span>
           <span>{tr(item.mobileLabelFi, item.mobileLabelEn)}</span>
         </a>)}
@@ -1556,12 +1583,31 @@ function App() {
           <a className="mobile-brand mobile-brand--link" href={routeHref("home", seasonId, undefined, leagueId)} aria-label={tr("KorisLab – etusivu", "KorisLab – home")}><Mark /><span>Koris<span>Lab</span></span></a>
           <div className="breadcrumbs">
             <button className={`crumb-link ${view === "home" ? "crumb-current" : ""}`} aria-current={view === "home" ? "page" : undefined} onClick={() => setView("home")}>{tr("Etusivu", "Home")}</button>
-            {view === "player-profile" ? <><b>/</b><a className="crumb-link" href={routeHref("players", seasonId, undefined, leagueId)} onClick={(event) => followLink(event, () => setView("players"))}>{tr("Pelaajat", "Players")}</a><b>/</b><span className="crumb-current">{tr("Profiili", "Profile")}</span></> : isMatchDetail ? <><b>/</b><button className="crumb-link" onClick={() => setView("matches")}>{tr("Ottelut", "Games")}</button><b>/</b><span className="crumb-current">{view === "data" ? tr("Data & saatavuus", "Data & availability") : tr("Ottelun tarina", "Game story")}</span></> : view !== "overview" && view !== "home" ? <><b>/</b><span className="crumb-current">{view === "teams" ? tr("Joukkueprofiilit", "Team profiles") : view === "season" ? tr("Sarjan trendit", "League trends") : view === "players" ? tr("Pelaajat", "Players") : view === "matchup" ? "Matchup Lab" : view === "not-found" ? tr("Sivua ei löytynyt", "Page not found") : tr("Ottelut", "Games")}</span></> : null}
+            {view === "player-profile" ? <><b>/</b><a className="crumb-link" href={routeHref("players", seasonId, undefined, leagueId)} onClick={(event) => followLink(event, () => setView("players"))}>{tr("Pelaajat", "Players")}</a><b>/</b><span className="crumb-current">{tr("Profiili", "Profile")}</span></> : isMatchDetail ? <><b>/</b><button className="crumb-link" onClick={() => setView("matches")}>{tr("Ottelut", "Games")}</button><b>/</b><span className="crumb-current">{view === "data" ? tr("Data & saatavuus", "Data & availability") : tr("Ottelun tarina", "Game story")}</span></> : view === "analysis-article" ? <><b>/</b><a className="crumb-link" href={routeHref("analyses", seasonId, undefined, leagueId)} onClick={(event) => followLink(event, () => setView("analyses"))}>{tr("Analyysit", "Analysis")}</a><b>/</b><span className="crumb-current">{tr("Juttu", "Story")}</span></> : view !== "overview" && view !== "home" ? <><b>/</b><span className="crumb-current">{view === "teams" ? tr("Joukkueprofiilit", "Team profiles") : view === "season" ? tr("Sarjan trendit", "League trends") : view === "players" ? tr("Pelaajat", "Players") : view === "analyses" ? tr("Analyysit", "Analysis") : view === "matchup" ? "Matchup Lab" : view === "custom-import" ? "Custom import" : view === "not-found" ? tr("Sivua ei löytynyt", "Page not found") : tr("Ottelut", "Games")}</span></> : null}
             {view === "overview" ? <><b>/</b><span className="crumb-current">{tr("Yleiskatsaus", "Overview")}</span></> : null}
           </div>
-          <div ref={topbarSearchRef} className={`topbar-query-search${view === "home" ? " topbar-query-search--home" : ""}`}><QuerySearch mode={view === "home" ? "hero" : "topbar"} value={searchQuery} busy={searchBusy} theme={theme} result={searchResult} onChange={handleSearchChange} onSubmit={handleSearch} onAction={handleSearchAction} /></div>
+          {view === "custom-import" ? <div className="topbar-query-search topbar-query-search--empty" aria-hidden="true" /> : <div ref={topbarSearchRef} className={`topbar-query-search${view === "home" ? " topbar-query-search--home" : ""}`}><QuerySearch mode={view === "home" ? "hero" : "topbar"} value={searchQuery} busy={searchBusy} theme={theme} result={searchResult} onChange={handleSearchChange} onSubmit={handleSearch} onAction={handleSearchAction} /></div>}
           <div className="topbar-actions">
-            <a className="mobile-matchup-link" href={routeHref("matchup", seasonId, undefined, leagueId)} aria-label="Matchup Lab" aria-current={view === "matchup" ? "page" : undefined} title="Matchup Lab" onClick={(event) => followLink(event, () => setView("matchup"))}><Icon name="matchup" size={17} /><span>Lab</span></a>
+            <div ref={mobileMoreRef} className="mobile-more-menu" onKeyDown={(event) => {
+              if (event.key === "Escape" && mobileMoreOpen) {
+                setMobileMoreOpen(false);
+                mobileMoreRef.current?.querySelector<HTMLButtonElement>(".mobile-more-trigger")?.focus();
+              }
+            }}>
+              <button className="icon-button mobile-more-trigger" type="button" aria-label={mobileMoreOpen ? tr("Sulje valikko", "Close menu") : tr("Avaa valikko", "Open menu")} aria-expanded={mobileMoreOpen} aria-controls="mobile-more-navigation" title={mobileMoreOpen ? tr("Sulje valikko", "Close menu") : tr("Avaa valikko", "Open menu")} onClick={() => setMobileMoreOpen((open) => !open)}>
+                <Icon name="menu" size={20} />
+              </button>
+              <nav id="mobile-more-navigation" className="mobile-more-panel" aria-label={tr("Muut osiot", "More sections")} hidden={!mobileMoreOpen}>
+                <span className="mobile-more-heading">{tr("Muut osiot", "More sections")}</span>
+                {mobileMoreItems.map((item) => {
+                  const active = view === item.view || (item.view === "analyses" && view === "analysis-article");
+                  return <a key={item.view} href={routeHref(item.view, seasonId, undefined, leagueId)} className={active ? "active" : ""} aria-current={active ? "page" : undefined} onClick={(event) => followLink(event, () => { setMobileMoreOpen(false); setView(item.view); })}>
+                    <span className="mobile-nav-icon"><Icon name={item.icon} size={18} /></span>
+                    <span>{tr(item.labelFi, item.labelEn)}</span>
+                  </a>;
+                })}
+              </nav>
+            </div>
             <select className="language-toggle" value={language} onChange={(event) => setLanguage(event.target.value as Language)} aria-label={tr("Kieli", "Language")} title={tr("Kieli", "Language")}><option value="fi">FI</option><option value="en">EN</option></select>
             <button className="icon-button theme-toggle" type="button" onClick={() => setTheme(theme === "dark" ? "light" : "dark")} aria-label={theme === "dark" ? tr("Tumma tila käytössä. Vaihda vaaleaan tilaan", "Dark mode active. Switch to light mode") : tr("Vaalea tila käytössä. Vaihda tummaan tilaan", "Light mode active. Switch to dark mode")} title={theme === "dark" ? tr("Tumma tila käytössä. Vaihda vaaleaan tilaan", "Dark mode active. Switch to light mode") : tr("Vaalea tila käytössä. Vaihda tummaan tilaan", "Light mode active. Switch to dark mode")}><Icon name={theme === "dark" ? "moon" : "sun"} size={15} /></button>
             <AppearanceSettings theme={theme} setTheme={setTheme} view={view} />
@@ -1571,11 +1617,11 @@ function App() {
         <div className={hasContents ? "page-with-outline" : undefined}>
           {hasContents && <PageSectionLinks key={view} links={sectionLinks} tr={tr} />}
           <div className={`page-content ${view === "home" ? "page-content--home" : ""}`}>
-          {view === "home" ? <HomeView onNavigate={(nextView, targetSeason) => { if (targetSeason) setSeasonId(targetSeason); navigate(nextView, undefined, targetSeason ?? seasonId); }} onOpenPlayer={(id, targetSeason) => { setSeasonId(targetSeason); navigate("player-profile", id, targetSeason); }} onOpenMatch={(id, targetSeason) => { setSeasonId(targetSeason); navigate("story", id, targetSeason); }} searchSlotRef={homeSearchSlotRef} copyRef={homeCopyRef} /> : view === "player-profile" ? <PlayerProfile key={`${route.playerId}-${seasonId}`} playerId={route.playerId!} onOpenMatch={openMatch} onBack={() => setView("players")} /> : view === "not-found" ? <section className="panel match-list-empty"><h1>{tr("Sivua ei löytynyt", "Page not found")}</h1><p>{tr("Tarkista osoite tai avaa sivu navigaatiosta.", "Check the address or open a page from the navigation.")}</p></section> : <>
+          {view === "custom-import" ? <Suspense fallback={<section className="panel custom-loading-state" role="status">{tr("Ladataan tuontityökalua…", "Loading import tool…")}</section>}><CustomImportPage /></Suspense> : view === "home" ? <HomeView onNavigate={(nextView, targetSeason) => { if (targetSeason) setSeasonId(targetSeason); navigate(nextView, undefined, targetSeason ?? seasonId); }} onOpenPlayer={(id, targetSeason) => { setSeasonId(targetSeason); navigate("player-profile", id, targetSeason); }} onOpenMatch={(id, targetSeason) => { setSeasonId(targetSeason); navigate("story", id, targetSeason); }} searchSlotRef={homeSearchSlotRef} copyRef={homeCopyRef} /> : view === "analysis-article" ? <AnalysisArticlePage slug={route.articleSlug ?? ""} onBack={() => setView("analyses")} /> : view === "player-profile" ? <PlayerProfile key={`${route.playerId}-${seasonId}`} playerId={route.playerId!} onOpenMatch={openMatch} onBack={() => setView("players")} /> : view === "not-found" ? <section className="panel match-list-empty"><h1>{tr("Sivua ei löytynyt", "Page not found")}</h1><p>{tr("Tarkista osoite tai avaa sivu navigaatiosta.", "Check the address or open a page from the navigation.")}</p></section> : <>
           <section className={`intro-row intro-row--${view} ${view === "overview" ? "intro-row--overview" : ""}`}>
             <div>
-            <h1>{view === "overview" ? tr("Ymmärrä kausi numeroiden takaa.", "Understand the season behind the numbers.") : view === "teams" ? tr("Joukkueet", "Teams") : view === "season" ? tr("Kausitrendit", "Season trends") : view === "matches" ? tr("Ottelut", "Games") : view === "players" ? tr("Pelaajat", "Players") : view === "matchup" ? "Matchup Lab" : tr("Ottelun tarina", "Game story")}</h1>
-              <p className="intro-copy">{view === "overview" ? tr("Valitun sarjan kauden pääluvut ja kärjet. Syvenny joukkueisiin, pelaajiin ja kausianalyyseihin omilla välilehdillään.", "Key metrics and leaders for the selected league. Explore teams, players and season analysis in their own views.") : view === "teams" ? tr("Tutki joukkueen heittovalintoja ja tehokkuutta suhteessa sarjan tasoon.", "Explore a team's shot selection and efficiency relative to the league.") : view === "season" ? tr("Tutki kauden pääluvut ja vertaa joukkueen runkosarjaa pudotuspeleihin.", "Explore season averages and compare a team’s regular season with its playoffs.") : view === "matches" ? tr("Selaa kauden otteluohjelmaa ja tuloksia. Avaa analyysi, kun ottelutilastot on tarkistettu.", "Browse the schedule and results. Open analysis once game statistics have been verified.") : view === "players" ? tr("Vertaa pelaajien pisteitä, syöttöjä, levypalloja ja tehokkuutta. Avaa profiili pelaajan nimestä.", "Compare scoring, passing, rebounding and efficiency. Open a player profile from a name.") : view === "matchup" ? tr("Vertaa joukkueita, pelaajia ja kausia. Tutki heittoprofiileja ja erilaisia ottelurajauksia.", "Compare teams, players and seasons. Explore shot profiles and different game samples.") : tr("Näe mitä tapahtui, milloin peli kääntyi ja mitä datasta voidaan oikeasti päätellä.", "See what happened, when the game shifted, and what the data can actually tell us.")}</p>
+            <h1>{view === "overview" ? tr("Ymmärrä kausi numeroiden takaa.", "Understand the season behind the numbers.") : view === "teams" ? tr("Joukkueet", "Teams") : view === "season" ? tr("Kausitrendit", "Season trends") : view === "analyses" ? tr("Analyysit", "Analysis") : view === "matches" ? tr("Ottelut", "Games") : view === "players" ? tr("Pelaajat", "Players") : view === "matchup" ? "Matchup Lab" : tr("Ottelun tarina", "Game story")}</h1>
+              <p className="intro-copy">{view === "overview" ? tr("Valitun sarjan kauden pääluvut ja kärjet. Syvenny joukkueisiin, pelaajiin ja kausianalyyseihin omilla välilehdillään.", "Key metrics and leaders for the selected league. Explore teams, players and season analysis in their own views.") : view === "teams" ? tr("Tutki joukkueen heittovalintoja ja tehokkuutta suhteessa sarjan tasoon.", "Explore a team's shot selection and efficiency relative to the league.") : view === "season" ? tr("Tutki kauden pääluvut ja vertaa joukkueen runkosarjaa pudotuspeleihin.", "Explore season averages and compare a team’s regular season with its playoffs.") : view === "analyses" ? tr("Ottelun tuloksen taakse katsovia juttuja, joissa data ja sen rajat näkyvät samassa paikassa.", "Stories that look behind the score and show both the data and its limits.") : view === "matches" ? tr("Selaa kauden otteluohjelmaa ja tuloksia. Avaa analyysi, kun ottelutilastot on tarkistettu.", "Browse the schedule and results. Open analysis once game statistics have been verified.") : view === "players" ? tr("Vertaa pelaajien pisteitä, syöttöjä, levypalloja ja tehokkuutta. Avaa profiili pelaajan nimestä.", "Compare scoring, passing, rebounding and efficiency. Open a player profile from a name.") : view === "matchup" ? tr("Vertaa joukkueita, pelaajia ja kausia. Tutki heittoprofiileja ja erilaisia ottelurajauksia.", "Compare teams, players and seasons. Explore shot profiles and different game samples.") : tr("Näe mitä tapahtui, milloin peli kääntyi ja mitä datasta voidaan oikeasti päätellä.", "See what happened, when the game shifted, and what the data can actually tell us.")}</p>
             </div>
             {view === "overview" ? <OverviewContext onOpenMatches={() => setView("matches")} /> : view === "teams" ? <div className="teams-intro-controls">
               <label className="team-page-select" htmlFor="team-page-select"><span>{tr("Valitse joukkue", "Select team")}</span><select id="team-page-select" value={selectedTeamId} onChange={(event) => setProfileTeamId(event.target.value)} aria-label={tr("Valitse joukkueprofiili", "Select team profile")}>{seasonData.aggregate.teams.map((team) => <option key={team.source_team_id} value={team.source_team_id}>{team.name}</option>)}</select></label>
@@ -1584,7 +1630,7 @@ function App() {
           </section>
 
           <div key={seasonId}>
-          {view === "matches" && seasonId === "2026-27" ? <CurrentSeasonMatches onOpenMatch={openMatch} /> : seasonId === "2026-27" && ["overview", "teams", "players", "season"].includes(view) && (!current || current.summary.valid_games === 0) ? <CurrentSeasonPending onOpenMatches={() => setView("matches")} /> : view === "overview" ? <OverviewView onOpenTeams={() => { setProfileTeamId(undefined); setView("teams"); }} /> : view === "matchup" ? <MatchupLab /> : view === "players" ? <PlayersView onOpenPlayer={openPlayer} /> : view === "teams" ? <TeamsView selectedTeamId={selectedTeamId} onOpenMatch={openMatch} /> : view === "season" ? <SeasonView onOpenTeams={(teamId) => { setProfileTeamId(teamId); setView("teams"); }} onOpenMatch={openMatch} /> : view === "matches" ? <MatchesView onOpenMatch={openMatch} /> : matchLoadState !== "ready" ? <div className="panel match-list-empty" role="status"><strong>{matchLoadState === "loading" ? tr("Ladataan ottelua…", "Loading game…") : matchLoadState === "missing" ? tr("Ottelua ei löydy tämän kauden aineistosta", "Game not found in this season’s dataset") : tr("Ottelun lataus epäonnistui", "Could not load game")}</strong><p>{tr("Valitse kausi ja ottelu Ottelut-sivulta.", "Select a season and game on the Games page.")}</p></div> : <>
+          {view === "analyses" ? <AnalysesIndex onOpenArticle={openAnalysis} /> : view === "matches" && seasonId === "2026-27" ? <CurrentSeasonMatches onOpenMatch={openMatch} /> : seasonId === "2026-27" && ["overview", "teams", "players", "season"].includes(view) && (!current || current.summary.valid_games === 0) ? <CurrentSeasonPending onOpenMatches={() => setView("matches")} /> : view === "overview" ? <OverviewView onOpenTeams={() => { setProfileTeamId(undefined); setView("teams"); }} /> : view === "matchup" ? <MatchupLab /> : view === "players" ? <PlayersView onOpenPlayer={openPlayer} /> : view === "teams" ? <TeamsView selectedTeamId={selectedTeamId} onOpenMatch={openMatch} /> : view === "season" ? <SeasonView onOpenTeams={(teamId) => { setProfileTeamId(teamId); setView("teams"); }} onOpenMatch={openMatch} /> : view === "matches" ? <MatchesView onOpenMatch={openMatch} /> : matchLoadState !== "ready" ? <div className="panel match-list-empty" role="status"><strong>{matchLoadState === "loading" ? tr("Ladataan ottelua…", "Loading game…") : matchLoadState === "missing" ? tr("Ottelua ei löydy tämän kauden aineistosta", "Game not found in this season’s dataset") : tr("Ottelun lataus epäonnistui", "Could not load game")}</strong><p>{tr("Valitse kausi ja ottelu Ottelut-sivulta.", "Select a season and game on the Games page.")}</p></div> : <>
           <section id="match-result" className="match-hero panel overview-section-anchor">
             <div className="match-hero-top">
               <div className="match-meta"><span>{tr(leagueName, leagueNameEn)}</span><span className="meta-separator">·</span><span>{activeMatch.season}</span></div>

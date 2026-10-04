@@ -1,14 +1,8 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import App from "./App";
-import "./index.css";
-import { LanguageProvider } from "./i18n";
-import { SeasonProvider } from "./SeasonContext";
+const root = document.getElementById("root")!;
+const isStudioRoute = window.location.pathname === "/studio" || window.location.pathname.startsWith("/studio/");
 
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <LanguageProvider>
-      <SeasonProvider><App /></SeasonProvider>
-    </LanguageProvider>
-  </StrictMode>,
-);
+if (isStudioRoute) {
+  void import("./studio-main").then(({ mountSanityStudio }) => mountSanityStudio(root));
+} else {
+  void import("./app-main").then(({ mountApp }) => mountApp(root));
+}

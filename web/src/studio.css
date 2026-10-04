@@ -1,0 +1,31 @@
+.sanity-studio-route,
+.sanity-studio-route body,
+.sanity-studio-route #root {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: auto;
+  overscroll-behavior: none;
+}
+
+.sanity-studio-route body { min-width: 320px; background: #fff; }
+
+.studio-setup-message {
+  display: grid;
+  min-height: 100vh;
+  align-content: center;
+  justify-items: start;
+  gap: 16px;
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 32px;
+  color: #17231e;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.studio-setup-message > span { color: #58685e; font-size: 11px; font-weight: 700; letter-spacing: .1em; }
+.studio-setup-message h1 { font-size: clamp(30px, 5vw, 48px); line-height: 1.05; }
+.studio-setup-message p { color: #58685e; line-height: 1.7; }
+.studio-setup-message code { font-size: .9em; }
+.studio-setup-message a { color: #31523b; }

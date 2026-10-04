@@ -7,6 +7,19 @@ function isPlayed(match: ScheduleMatch) {
   return ["played", "finished", "completed"].includes(match.status.toLowerCase());
 }
 
+function compareScheduleMatches(a: ScheduleMatch, b: ScheduleMatch) {
+  const aPlayed = isPlayed(a);
+  const bPlayed = isPlayed(b);
+  if (aPlayed !== bPlayed) return aPlayed ? -1 : 1;
+
+  const aDate = a.scheduled_date ? `${a.scheduled_date} ${a.scheduled_time ?? ""}` : null;
+  const bDate = b.scheduled_date ? `${b.scheduled_date} ${b.scheduled_time ?? ""}` : null;
+  if (!aDate && !bDate) return 0;
+  if (!aDate) return 1;
+  if (!bDate) return -1;
+  return aPlayed ? bDate.localeCompare(aDate) : aDate.localeCompare(bDate);
+}
+
 function scheduleDate(match: ScheduleMatch, language: string) {
   if (!match.scheduled_date) return language === "fi" ? "Aika vahvistetaan" : "Time to be confirmed";
   // Schedule dates and times are Finnish local wall time, not UTC timestamps.
@@ -39,7 +52,7 @@ export function CurrentSeasonMatches({ onOpenMatch }: { onOpenMatch: (id: string
     return (team === "all" || [row.home.name, row.away.name].includes(team)) &&
       (status === "all" || (status === "played" ? isPlayed(row) : !isPlayed(row))) &&
       `${row.home.name} ${row.away.name} ${row.source_match_id}`.toLocaleLowerCase("fi-FI").includes(query.trim().toLocaleLowerCase("fi-FI"));
-  }).sort((a, b) => `${a.scheduled_date ?? "9999"} ${a.scheduled_time ?? ""}`.localeCompare(`${b.scheduled_date ?? "9999"} ${b.scheduled_time ?? ""}`)), [current, team, status, query]);
+  }).sort(compareScheduleMatches), [current, team, status, query]);
   const verified = new Set(current?.matches.map((match) => match.game.source_id));
   return <>
     <section className="matches-toolbar panel">
@@ -52,8 +65,10 @@ export function CurrentSeasonMatches({ onOpenMatch }: { onOpenMatch: (id: string
       {error && <p role="status" className="current-schedule-error">{tr("Päivityksen lataus epäonnistui. Näytämme viimeksi ladatut tiedot.", "Could not load updates. Showing the last loaded data.")}</p>}
       {!current ? <div className="match-list-empty"><strong>{error ? tr("Otteluohjelmaa ei voitu ladata", "Could not load the schedule") : tr("Ladataan otteluohjelmaa…", "Loading schedule…")}</strong></div> : rows.length === 0 ? <div className="match-list-empty"><strong>{tr("Ei otteluita tässä rajauksessa", "No games with these filters")}</strong><p>{status === "played" && current.schedule_summary.played_games === 0 ? tr("Kautta ei ole vielä pelattu. Valitse Tulevat tai Kaikki ottelut.", "No games have been played yet. Select Upcoming or All games.") : tr("Muuta hakua tai rajausta.", "Change the search or filters.")}</p></div> : <div className="match-list" role="list">{rows.map((row) => {
         const played = isPlayed(row);
+        const homeWon = played && row.home.score != null && row.away.score != null && row.home.score > row.away.score;
+        const awayWon = played && row.home.score != null && row.away.score != null && row.away.score > row.home.score;
         const available = played && verified.has(row.source_match_id);
-        const content = <><span className="match-list-meta"><strong>#{row.source_match_id}</strong><small>{scheduleDate(row, language)}</small></span><span className="match-list-teams"><span className="match-team-side"><strong>{row.home.name}</strong><b>{played ? row.home.score ?? "—" : ""}</b></span><span className="match-list-vs">vs</span><span className="match-team-side match-team-side-away"><b>{played ? row.away.score ?? "—" : ""}</b><strong>{row.away.name}</strong></span><small>{row.venue ?? tr("Pelipaikka vahvistetaan", "Venue to be confirmed")} · {played ? available ? tr("Pelattu", "Final") : tr("Pelattu · tilastot odottavat", "Final · statistics pending") : tr("Tulossa", "Upcoming")}</small></span></>;
+        const content = <><span className="match-list-meta"><strong>#{row.source_match_id}</strong><small>{scheduleDate(row, language)}</small></span><span className="match-list-teams"><span className="match-team-side"><strong>{row.home.name}</strong><b className={homeWon ? "match-winner" : undefined}>{played ? row.home.score ?? "—" : ""}</b></span><span className="match-list-vs">vs</span><span className="match-team-side match-team-side-away"><b className={awayWon ? "match-winner" : undefined}>{played ? row.away.score ?? "—" : ""}</b><strong>{row.away.name}</strong></span><small>{row.venue ?? tr("Pelipaikka vahvistetaan", "Venue to be confirmed")} · {played ? available ? tr("Pelattu", "Final") : tr("Pelattu · tilastot odottavat", "Final · statistics pending") : tr("Tulossa", "Upcoming")}</small></span></>;
         return <div role="listitem" key={row.source_match_id}>{available ? <button className="match-list-row" onClick={() => onOpenMatch(row.source_match_id)}>{content}<span className="match-list-open">{tr("Avaa analyysi", "Open analysis")} <Icon name="arrowOutward" size={14} /></span></button> : <div className="match-list-row match-list-row--scheduled">{content}<a className="match-list-open" href={`https://tulospalvelu.basket.fi/match/${row.source_match_id}/statistics`} target="_blank" rel="noreferrer">{tr("Tilastosivu", "Game stats")} <Icon name="arrowOutward" size={14} /></a></div>}</div>;
       })}</div>}
     </section>

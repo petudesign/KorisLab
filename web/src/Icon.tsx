@@ -28,6 +28,9 @@ import PlayArrowOutlined from "@mui/icons-material/PlayArrowOutlined";
 import PauseOutlined from "@mui/icons-material/PauseOutlined";
 import SkipPreviousOutlined from "@mui/icons-material/SkipPreviousOutlined";
 import SkipNextOutlined from "@mui/icons-material/SkipNextOutlined";
+import FileUploadOutlined from "@mui/icons-material/FileUploadOutlined";
+import ArticleOutlined from "@mui/icons-material/ArticleOutlined";
+import MenuOutlined from "@mui/icons-material/MenuOutlined";
 
 // Individual imports keep the unused icon catalogue out of the app bundle.
 const icons = {
@@ -39,6 +42,7 @@ const icons = {
   players: PersonOutlined,
   season: BarChartOutlined,
   matchup: CompareArrowsOutlined,
+  analyses: ArticleOutlined,
   health: MonitorHeartOutlined,
   settings: SettingsOutlined,
   sun: LightModeOutlined,
@@ -58,6 +62,8 @@ const icons = {
   minus: RemoveOutlined,
   check: CheckOutlined,
   warning: PriorityHighOutlined,
+  import: FileUploadOutlined,
+  menu: MenuOutlined,
 };
 
 export type IconName = keyof typeof icons;

@@ -87,15 +87,12 @@ export function SeasonProvider({ children }: { children: ReactNode }) {
     const query = new URLSearchParams(window.location.search);
     const value = query.get("league");
     if (leagueIds.includes(value as LeagueId)) return value as LeagueId;
-    if (query.has("season")) return "naisten-korisliiga"; // Existing bookmarked links retain their league.
-    try { const saved = localStorage.getItem("korislab-league"); return leagueIds.includes(saved as LeagueId) ? saved as LeagueId : "naisten-korisliiga"; }
-    catch { return "naisten-korisliiga"; }
+    return "naisten-korisliiga";
   });
   const [seasonId, setSeasonId] = useState<SeasonId>(() => {
     const query = new URLSearchParams(window.location.search).get("season");
     if (seasonIds.includes(query as SeasonId)) return query as SeasonId;
-    try { const saved = localStorage.getItem("korislab-season"); return seasonIds.includes(saved as SeasonId) ? saved as SeasonId : "2026-27"; }
-    catch { return "2026-27"; }
+    return "2026-27";
   });
   const setLeagueId = useCallback((league: LeagueId) => {
     if (league === leagueId) return;
@@ -129,7 +126,6 @@ export function SeasonProvider({ children }: { children: ReactNode }) {
     return () => { requestId.current++; window.clearInterval(timer); };
   }, [refreshCurrent]);
   useEffect(() => {
-    try { localStorage.setItem("korislab-season", seasonId); localStorage.setItem("korislab-league", leagueId); } catch { /* Selection still works without storage. */ }
     const url = new URL(window.location.href);
     url.searchParams.set("season", seasonId);
     if (leagueId === "korisliiga") url.searchParams.set("league", leagueId); else url.searchParams.delete("league");

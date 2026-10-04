@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 70 70">
+  <g fill="#8299a3" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" font-weight="700" text-anchor="middle" opacity=".72">
+    <text x="5" y="9">1</text><text x="33" y="9">1</text><text x="61" y="9">1</text>
+    <text x="19" y="23">1</text><text x="47" y="23">1</text>
+    <text x="5" y="37">1</text><text x="33" y="37">1</text><text x="61" y="37">1</text>
+    <text x="19" y="51">1</text><text x="47" y="51">1</text>
+    <text x="5" y="65">1</text><text x="33" y="65">1</text><text x="61" y="65">1</text>
+  </g>
+  <g fill="#bd887c" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" font-weight="700" text-anchor="middle" opacity=".62">
+    <text x="19" y="9">0</text><text x="47" y="9">0</text>
+    <text x="5" y="23">0</text><text x="33" y="23">0</text><text x="61" y="23">0</text>
+    <text x="19" y="37">0</text><text x="47" y="37">0</text>
+    <text x="5" y="51">0</text><text x="33" y="51">0</text><text x="61" y="51">0</text>
+    <text x="19" y="65">0</text><text x="47" y="65">0</text>
+  </g>
+</svg>

@@ -2,5 +2,12 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "installCommand": "cd web && corepack pnpm install --frozen-lockfile",
   "buildCommand": "cd web && pnpm run build",
-  "outputDirectory": "web/dist"
+  "outputDirectory": "web/dist",
+  "rewrites": [
+    { "source": "/matches/:path*", "destination": "/index.html" },
+    { "source": "/studio", "destination": "/index.html" },
+    { "source": "/studio/:path*", "destination": "/index.html" },
+    { "source": "/analyysit", "destination": "/index.html" },
+    { "source": "/analyysit/:path*", "destination": "/index.html" }
+  ]
 }
