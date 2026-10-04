@@ -1209,7 +1209,13 @@ function HomeView({
       <section aria-labelledby="home-replay-title">
         <h2 id="home-replay-title">{tr("Kelattava ottelun tarina", "Game replay")}</h2>
         <p className="home-hub-description">{tr(`${leagueName}: kauden 2025–26 viimeinen finaaliottelu.`, `The final game of the 2025–26 ${leagueNameEn} finals.`)}</p>
-        <article className="home-featured-replay"><div><h3 className="home-featured-replay-score">{final.home} {final.homeScore}–{final.awayScore} {final.away}</h3><p>{tr("Seuraa finaalin etenemistä ja ratkaisuhetkiä aikajanalta.", "Explore the final and its decisive moments on the timeline.")}</p></div><a className="outline-button" href={`${routeHref("story", "2025-26", final.id, leagueId)}#match-replay`}>{tr("Kelaa finaalia", "Explore the final")}<Icon name="arrowOutward" size={16} /></a></article>
+        <article className="home-featured-replay"><div><h3 className="home-featured-replay-score">{final.home} {final.homeScore}–{final.awayScore} {final.away}</h3><p>{tr("Seuraa finaalin etenemistä ja ratkaisuhetkiä aikajanalta.", "Explore the final and its decisive moments on the timeline.")}</p></div><a className="outline-button" href={`${routeHref("story", "2025-26", final.id, leagueId)}#match-replay`} onClick={event => {
+          const targetHref = event.currentTarget.href;
+          followLink(event, () => {
+            onOpenMatch(final.id, "2025-26");
+            window.history.replaceState(window.history.state, "", targetHref);
+          });
+        }}>{tr("Kelaa finaalia", "Explore the final")}<Icon name="arrowOutward" size={16} /></a></article>
       </section>
       <section aria-labelledby="home-hub-title">
         <h2 id="home-hub-title">{tr("Mitä peli kertoo numeroiden takaa?", "What do the numbers tell you about the game?")}</h2>
