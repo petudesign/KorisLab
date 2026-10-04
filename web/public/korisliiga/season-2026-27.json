@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "season_id": "huki2627",
-  "updated_at": "2026-10-03T23:05:44.924932+00:00",
+  "updated_at": "2026-10-04T19:39:32.775747+00:00",
   "source_url": "https://tulospalvelu.basket.fi/",
   "schedule": [
     {
@@ -4526,8 +4526,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005902/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-03T19:14:16Z",
-        "payload_sha256": "f4bf41c8e596446d032dad738b90be90a1c0b23d17a06a25d851c8e82550460a"
+        "ingested_at_utc": "2026-10-04T19:38:59Z",
+        "payload_sha256": "5c64d782e53f29fcb11d3ff45053c2fd2f8626f77b5895543a29cd1ca093e04c"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -5605,8 +5605,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005936/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-03T19:14:19Z",
-        "payload_sha256": "bb936dc35f3e8623aa4b9423a35cc4daaa1b3a0ac8f2f9c6ea22471e630a2c50"
+        "ingested_at_utc": "2026-10-04T19:39:04Z",
+        "payload_sha256": "f4d019442e08d28e43003290ed0af368690c9b0df8ce41eeb989bbc27204345f"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -6724,8 +6724,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005953/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-03T19:14:21Z",
-        "payload_sha256": "bf2a31bc9d5ee5607a0ce3758b1fe3acbbcee2663ee22676835055bb0c73b597"
+        "ingested_at_utc": "2026-10-04T19:39:08Z",
+        "payload_sha256": "87445f1f818b0f41c7806d0318162019506014a930dbc33309a235aace092083"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -7843,8 +7843,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1006004/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-03T19:14:24Z",
-        "payload_sha256": "9021f673700ca6292ba0cffe7ae89569e55a163c9086493d8be3d8003b1dc9c5"
+        "ingested_at_utc": "2026-10-04T19:39:11Z",
+        "payload_sha256": "755d6f6756f6be07b229f912c09583ed1048823c0d879d8d562f8d499b03a456"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -8882,8 +8882,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005885/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-03T19:14:26Z",
-        "payload_sha256": "c0dbc17c259b5c829f480c14bbbeeae0430d51f8070dd3349ca6ebe5c3854204"
+        "ingested_at_utc": "2026-10-04T19:39:15Z",
+        "payload_sha256": "519a7b9b583736bfc859148104d4a4c87da013bc2da2f5c35e0a9f05ebdfd94c"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -9921,8 +9921,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005987/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-03T19:14:29Z",
-        "payload_sha256": "04a8f0c6c623b138f0efdc8649b95e46581c7faf5f91e725465aa4c34813e343"
+        "ingested_at_utc": "2026-10-04T19:39:19Z",
+        "payload_sha256": "d9d9132a2e42d06265e50481e8a541fb156228b1b503bc2b70c2696d3a4ca38f"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -10920,8 +10920,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1006021/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-03T15:36:32Z",
-        "payload_sha256": "dfe43da92107f03bc559a862388f04a3e934a449c3570d5853203582af45f4b7"
+        "ingested_at_utc": "2026-10-04T19:39:21Z",
+        "payload_sha256": "977df9ae00d4e631349a11fcf3129f75631eb85f4e0a597e81190b72e9a3f66a"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -12079,8 +12079,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005836/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-03T15:36:34Z",
-        "payload_sha256": "b5d148b1d69b57f078c8730b399ae6cf87007b2782262d981105e23bdd02ec3f"
+        "ingested_at_utc": "2026-10-04T19:39:24Z",
+        "payload_sha256": "cf800cf0f5e4daef5517130dcaee9bfb442f02c47b20def496353908b8ccb0f4"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -13158,8 +13158,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005970/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-03T19:14:34Z",
-        "payload_sha256": "a7d425f79c3d3b89f61f2801dea497317f4b05016fb54317c15e13b143b3b428"
+        "ingested_at_utc": "2026-10-04T19:39:26Z",
+        "payload_sha256": "854e7852423a1c41bd8871d9f5e22c5153f920b7b4cdeb08d01e479bcf553fa3"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -13225,14 +13225,14 @@
             "defensive_rebounds": 24,
             "rebounds": 37,
             "assists": 16,
-            "turnovers": 16,
+            "turnovers": 15,
             "steals": 10,
             "blocks": 1,
             "blocks_received": 2,
             "fouls": 17,
             "fouls_drawn": 15,
             "plus_minus": null,
-            "efficiency": 106
+            "efficiency": 107
           },
           "team_extra_stats": {
             "points": null,
@@ -13411,14 +13411,14 @@
                 "defensive_rebounds": 1,
                 "rebounds": 3,
                 "assists": 4,
-                "turnovers": 6,
+                "turnovers": 5,
                 "steals": 2,
                 "blocks": 0,
                 "blocks_received": 0,
                 "fouls": 3,
                 "fouls_drawn": 2,
                 "plus_minus": -5,
-                "efficiency": 12
+                "efficiency": 13
               },
               "source_fields": {
                 "active": false,
@@ -14157,8 +14157,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005853/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-03T19:14:36Z",
-        "payload_sha256": "eb86db8cdc8253dfb08eca3d33a6fb4739b0588ef2ae5d2c48f3b87796cca9e3"
+        "ingested_at_utc": "2026-10-04T19:39:30Z",
+        "payload_sha256": "8819d20cc40a374c484a2ad65a00d4f7c533b134401914a562dba7c7b2056ddd"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -15196,8 +15196,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005919/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-03T19:14:38Z",
-        "payload_sha256": "b188d95eec8d6be1ebbce5c5cd31a78983cc5aea89045ba42012740d28d5a491"
+        "ingested_at_utc": "2026-10-04T19:39:32Z",
+        "payload_sha256": "c0c948f66c3bd64a6ab713ac457bee5cfad692e141af0150482872ea031e31a3"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -16272,7 +16272,7 @@
     "requested_games": 11,
     "fetched_games": 11,
     "failed_games": 0,
-    "cached_games": 11,
+    "cached_games": 0,
     "valid_games": 11,
     "invalid_games": 0
   },
@@ -16783,8 +16783,8 @@
           "efg_pct": 55.1,
           "true_shooting_pct": 56.3,
           "estimated_possessions": 159.6,
-          "offensive_rating": 103.7,
-          "defensive_rating": 110.7,
+          "offensive_rating": 104.1,
+          "defensive_rating": 111.0,
           "net_rating": -6.9,
           "assist_turnover": 1.1,
           "turnover_pct": 20.7,
@@ -17002,13 +17002,13 @@
           "defensive_rebounds": 42.0,
           "rebounds": 64.0,
           "assists": 37.0,
-          "turnovers": 27.0,
+          "turnovers": 26.0,
           "steals": 19.0,
           "blocks": 2.0,
           "blocks_received": 4.0,
           "fouls": 38.0,
           "fouls_drawn": 36.0,
-          "efficiency": 217.0
+          "efficiency": 218.0
         },
         "per_game": {
           "points": 103.0,
@@ -17022,13 +17022,13 @@
           "defensive_rebounds": 21.0,
           "rebounds": 32.0,
           "assists": 18.5,
-          "turnovers": 13.5,
+          "turnovers": 13.0,
           "steals": 9.5,
           "blocks": 1.0,
           "blocks_received": 2.0,
           "fouls": 19.0,
           "fouls_drawn": 18.0,
-          "efficiency": 108.5
+          "efficiency": 109.0
         },
         "metrics": {
           "field_goals_made": 73.0,
@@ -17038,12 +17038,12 @@
           "three_point_pct": 45.5,
           "efg_pct": 63.3,
           "true_shooting_pct": 64.3,
-          "estimated_possessions": 165.1,
-          "offensive_rating": 125.2,
-          "defensive_rating": 118.5,
+          "estimated_possessions": 164.1,
+          "offensive_rating": 125.5,
+          "defensive_rating": 118.8,
           "net_rating": 6.7,
           "assist_turnover": 1.4,
-          "turnover_pct": 16.4,
+          "turnover_pct": 15.8,
           "offensive_rebound_pct": 30.1,
           "defensive_rebound_pct": 63.6,
           "three_point_attempt_rate": 47.5,
@@ -17065,13 +17065,13 @@
         "defensive_rebounds": 577.0,
         "rebounds": 829.0,
         "assists": 376.0,
-        "turnovers": 272.0,
+        "turnovers": 271.0,
         "steals": 151.0,
         "blocks": 56.0,
         "blocks_received": 50.0,
         "fouls": 393.0,
         "fouls_drawn": 380.0,
-        "efficiency": 2138.0
+        "efficiency": 2139.0
       },
       "per_game": {
         "points": 173.4,
@@ -17085,13 +17085,13 @@
         "defensive_rebounds": 52.5,
         "rebounds": 75.4,
         "assists": 34.2,
-        "turnovers": 24.7,
+        "turnovers": 24.6,
         "steals": 13.7,
         "blocks": 5.1,
         "blocks_received": 4.5,
         "fouls": 35.7,
         "fouls_drawn": 34.5,
-        "efficiency": 194.4
+        "efficiency": 194.5
       },
       "metrics": {
         "field_goals_made": 715.0,
@@ -17101,12 +17101,12 @@
         "three_point_pct": 34.0,
         "efg_pct": 54.0,
         "true_shooting_pct": 56.6,
-        "estimated_possessions": 1703.2,
+        "estimated_possessions": 1702.2,
         "offensive_rating": 112.0,
         "defensive_rating": null,
         "net_rating": null,
         "assist_turnover": 1.4,
-        "turnover_pct": 16.0,
+        "turnover_pct": 15.9,
         "offensive_rebound_pct": null,
         "defensive_rebound_pct": null,
         "three_point_attempt_rate": 41.3,
