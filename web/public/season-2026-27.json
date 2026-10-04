@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "season_id": "huki2627",
-  "updated_at": "2026-10-03T23:05:32.011480+00:00",
+  "updated_at": "2026-10-04T15:23:44.350947+00:00",
   "source_url": "https://tulospalvelu.basket.fi/",
   "schedule": [
     {
@@ -80,16 +80,16 @@
       "scheduled_date": "2026-10-04",
       "scheduled_time": "17:00:00",
       "venue": "Pyynikin palloiluhalli",
-      "status": "Fixture",
+      "status": "Live",
       "home": {
         "source_team_id": "138",
         "name": "Tampereen Pyrintö",
-        "score": null
+        "score": 54
       },
       "away": {
         "source_team_id": "31",
         "name": "Tapiolan Honka",
-        "score": null
+        "score": 42
       }
     },
     {
