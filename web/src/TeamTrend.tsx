@@ -63,7 +63,7 @@ export function TeamTrend({ teamId, baseline, onOpenMatch }: { teamId: string; b
   const difference = active ? active[metric] - baseline[metric] : 0;
   const dateLabel = (date: string) => new Date(date).toLocaleDateString(language === "fi" ? "fi-FI" : "en-GB", { timeZone: "Europe/Helsinki", day: "numeric", month: "numeric" });
   return <section id="team-season-development" className="panel team-trend overview-section-anchor" aria-labelledby="team-trend-heading">
-    <h3 id="team-trend-heading">{tr("Kauden kehitys", "Season development")}</h3>
+    <h3 id="team-trend-heading">{tr("Tehokkuuden kehitys", "Efficiency development")}</h3>
     <p className="panel-subcopy">{tr("Näkyykö viime otteluissa muutos? Valitse ottelu tutkiaksesi sen lukuja.", "Is recent form changing? Select a game to inspect its numbers.")}</p>
     <div className="team-trend-controls">
       <label>{tr("Mittari", "Metric")} <select value={metric} onChange={e => setMetric(e.target.value as Metric)}>{(["ORtg", "DRtg", "Net Rating"] as const).map(key => <option key={key}>{key}</option>)}</select></label>

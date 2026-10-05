@@ -4,7 +4,7 @@ import { ThinkingOrb } from "thinking-orbs";
 import { Icon } from "./Icon";
 import { useI18n } from "./i18n";
 import { useSeason } from "./SeasonContext";
-import type { QueryFeedback, QueryTarget } from "./basketballQuery";
+import { MAX_QUERY_LENGTH, type QueryFeedback, type QueryTarget } from "./basketballQuery";
 
 type SearchMode = "hero" | "topbar";
 export function QuerySearch({
@@ -50,6 +50,7 @@ export function QuerySearch({
       <input
         id={inputId}
         type="search"
+        maxLength={MAX_QUERY_LENGTH}
         autoComplete="off"
         value={value}
         onChange={(event) => onChange(event.target.value)}

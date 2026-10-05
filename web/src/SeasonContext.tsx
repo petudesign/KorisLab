@@ -64,8 +64,8 @@ export type ScheduleMatch = {
   scheduled_time: string | null;
   status: string;
   venue: string | null;
-  home: { name: string; score: number | null };
-  away: { name: string; score: number | null };
+  home: { source_team_id: string; name: string; score: number | null };
+  away: { source_team_id: string; name: string; score: number | null };
 };
 type CurrentSeason = Summary & {
   schema_version: string; season_id: string; updated_at: string; schedule: ScheduleMatch[];

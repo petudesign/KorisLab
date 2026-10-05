@@ -1,6 +1,9 @@
 import { useSeason, type SeasonMatchRecord } from "./SeasonContext";
+import { scheduleByMatchId } from "./schedule";
 import { useI18n } from "./i18n";
 import { TeamTrend } from "./TeamTrend";
+import { TeamShootingChart } from "./TeamShootingChart";
+import { MetricSparkline } from "./MetricSparkline";
 import { Icon } from "./Icon";
 import { getProfileComparison, type ProfileComparison, type ProfileStatus } from "./teamProfileComparison";
 
@@ -35,6 +38,29 @@ function ProfileStatusIcon({ status, tone }: { status: ProfileStatus; tone?: Pro
 }
 
 type TeamSeasonSummary = { wins: number; losses: number; pointsFor: number; pointsAgainst: number; games: number };
+type TeamGame = { id: string; date: string | null; homeName: string; awayName: string; homeScore: number; awayScore: number; opponent: string; won: boolean; verified: boolean };
+type TeamGameMetric = { date: string | null; won: boolean; pointsFor: number; pointsAgainst: number };
+
+function matchDate(match: SeasonMatchRecord) {
+  return scheduleByMatchId[match.game.source_id] || match.game.scheduled_at;
+}
+
+function gameDate(value: string | null, language: string) {
+  if (!value) return "—";
+  const dateOnly = value.slice(0, 10);
+  const date = new Date(`${dateOnly}T12:00:00Z`);
+  return Number.isNaN(date.valueOf()) ? "—" : date.toLocaleDateString(language === "fi" ? "fi-FI" : "en-GB", { timeZone: "UTC", day: "numeric", month: "short" });
+}
+
+function teamInitials(name: string) {
+  const words = name.trim().split(/\s+/).filter(Boolean);
+  return (words.length > 1 ? words.slice(0, 2).map((part) => part.slice(0, 1)).join("") : words[0]?.slice(0, 2) ?? "")
+    .toLocaleUpperCase("fi-FI");
+}
+
+function scheduleTimestamp(date: string | null, time: string | null) {
+  return date ? new Date(`${date}T${time ?? "23:59:00"}`).getTime() : NaN;
+}
 
 function summarizeTeamSeason(teamId: string, matches: SeasonMatchRecord[]): TeamSeasonSummary {
   const summary: TeamSeasonSummary = { wins: 0, losses: 0, pointsFor: 0, pointsAgainst: 0, games: 0 };
@@ -52,21 +78,82 @@ function summarizeTeamSeason(teamId: string, matches: SeasonMatchRecord[]): Team
   return summary;
 }
 
-export function TeamProfiles({ onOpenMatch, selectedTeamId, matches, matchStatus }: {
+export function TeamProfiles({ onOpenMatch, onOpenMatches, selectedTeamId, matches, matchStatus }: {
   onOpenMatch: (id: string) => void;
+  onOpenMatches: () => void;
   selectedTeamId: string;
   matches: SeasonMatchRecord[];
   matchStatus: "loading" | "ready" | "error";
 }) {
   const { language, tr } = useI18n();
-  const { leagueName, leagueNameEn, data: season, seasonLabel } = useSeason();
+  const { leagueName, leagueNameEn, data: season, seasonLabel, seasonId, current } = useSeason();
   const teams = season.aggregate.teams;
   const team = teams.find(row => row.source_team_id === selectedTeamId);
   if (!team) return <section className="panel detail-panel">Joukkueprofiilit avautuvat tarkistetuista ottelutilastoista.</section>;
   const seasonSummary = summarizeTeamSeason(team.source_team_id, matches);
+  const winPercentage = seasonSummary.games > 0 ? 100 * seasonSummary.wins / seasonSummary.games : null;
+  const teamGameMetrics: TeamGameMetric[] = matches.flatMap((match) => {
+    if (match.teams.length !== 2) return [];
+    const own = match.teams.find((row) => row.source_id === team.source_team_id);
+    const opponent = match.teams.find((row) => row.source_id !== team.source_team_id);
+    if (!own || !opponent) return [];
+    return [{ date: matchDate(match), won: own.score > opponent.score, pointsFor: own.score, pointsAgainst: opponent.score }];
+  }).sort((a, b) => (a.date ?? "").localeCompare(b.date ?? ""));
+  const recentTeamMetrics = teamGameMetrics.slice(-10);
+  const currentTeamSchedule = seasonId === "2026-27"
+    ? (current?.schedule ?? []).filter((fixture) => fixture.home.name === team.name || fixture.away.name === team.name)
+    : [];
+  const verifiedGameIds = new Set(matches.map((match) => match.game.source_id));
+  const recentGames: TeamGame[] = seasonId === "2026-27"
+    ? currentTeamSchedule
+      .filter((fixture) => ["played", "finished", "completed"].includes(fixture.status.toLowerCase()) && fixture.home.score !== null && fixture.away.score !== null)
+      .map((fixture) => {
+        const isHome = fixture.home.name === team.name;
+        const teamScore = (isHome ? fixture.home.score : fixture.away.score)!;
+        const opponentScore = (isHome ? fixture.away.score : fixture.home.score)!;
+        return { id: fixture.source_match_id, date: fixture.scheduled_date, homeName: fixture.home.name, awayName: fixture.away.name, homeScore: fixture.home.score!, awayScore: fixture.away.score!, opponent: isHome ? fixture.away.name : fixture.home.name, won: teamScore > opponentScore, verified: verifiedGameIds.has(fixture.source_match_id) };
+      })
+      .sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""))
+      .slice(0, 5)
+    : matches.flatMap((match): TeamGame[] => {
+        if (match.teams.length !== 2) return [];
+        const selected = match.teams.find((row) => row.source_id === team.source_team_id);
+        const opponent = match.teams.find((row) => row.source_id !== team.source_team_id);
+        if (!selected || !opponent) return [];
+        const home = match.teams.find((row) => row.home_away === "home") ?? match.teams[0];
+        const away = match.teams.find((row) => row.home_away === "away") ?? match.teams[1];
+        if (!home || !away) return [];
+        return [{ id: match.game.source_id, date: matchDate(match), homeName: home.name, awayName: away.name, homeScore: home.score, awayScore: away.score, opponent: opponent.name, won: selected.score > opponent.score, verified: true }];
+      }).sort((a, b) => (b.date ?? "").localeCompare(a.date ?? "")).slice(0, 5);
+  const nextFixture = currentTeamSchedule
+    .filter((fixture) => fixture.status.toLowerCase() !== "played" && fixture.home.score === null && fixture.away.score === null && scheduleTimestamp(fixture.scheduled_date, fixture.scheduled_time) >= Date.now())
+    .sort((a, b) => `${a.scheduled_date ?? "9999"} ${a.scheduled_time ?? ""}`.localeCompare(`${b.scheduled_date ?? "9999"} ${b.scheduled_time ?? ""}`))[0];
   const formatInteger = (value: number) => value.toLocaleString(language === "fi" ? "fi-FI" : "en-GB");
   const formatPerGame = (value: number) => (seasonSummary.games > 0 ? value / seasonSummary.games : 0).toLocaleString(language === "fi" ? "fi-FI" : "en-GB", { maximumFractionDigits: 1 });
+  const formatDecimal = (value: number) => value.toLocaleString(language === "fi" ? "fi-FI" : "en-GB", { maximumFractionDigits: 1 });
+  const formatSigned = (value: number) => `${value > 0 ? "+" : ""}${formatDecimal(value)}`;
   const pointDifference = seasonSummary.pointsFor - seasonSummary.pointsAgainst;
+  const pointsPerGame = seasonSummary.games > 0 ? seasonSummary.pointsFor / seasonSummary.games : null;
+  const pointsAllowedPerGame = seasonSummary.games > 0 ? seasonSummary.pointsAgainst / seasonSummary.games : null;
+  const pointDifferencePerGame = seasonSummary.games > 0 ? pointDifference / seasonSummary.games : null;
+  const leaguePointsPerTeamGame = season.aggregate.games > 0 ? season.aggregate.league.totals.points / (season.aggregate.games * 2) : null;
+  const winPercentageDelta = winPercentage === null ? null : winPercentage - 50;
+  const pointsDelta = pointsPerGame === null || leaguePointsPerTeamGame === null ? null : pointsPerGame - leaguePointsPerTeamGame;
+  const pointsAllowedDelta = pointsAllowedPerGame === null || leaguePointsPerTeamGame === null ? null : pointsAllowedPerGame - leaguePointsPerTeamGame;
+  const pointDifferenceDelta = pointDifferencePerGame;
+  const comparisonTone = (delta: number | null, lowerIsBetter = false) => delta === null || delta === 0 ? "neutral" : (delta < 0) === lowerIsBetter ? "positive" : "negative";
+  const comparison = (delta: number | null, label: string, lowerIsBetter = false, suffix = "") => {
+    if (matchStatus !== "ready" || delta === null) return null;
+    const tone = comparisonTone(delta, lowerIsBetter);
+    return <span className={`team-summary-comparison team-summary-comparison--${tone}`} aria-label={`${label}: ${formatSigned(delta)}${suffix} ${tr("verrattuna sarjan keskiarvoon", "compared with the league average")}`}>
+      <span className="team-summary-comparison-value"><Icon name={delta > 0 ? "trendUp" : delta < 0 ? "trendDown" : "minus"} size={14} /><b>{formatSigned(delta)}{suffix}</b></span>
+      <small>{tr("vs. sarjan ka.", "vs. league avg.")}</small>
+    </span>;
+  };
+  const sparklineColor = (delta: number | null, lowerIsBetter = false) => {
+    const tone = comparisonTone(delta, lowerIsBetter);
+    return tone === "positive" ? "var(--success-strong)" : tone === "negative" ? "var(--danger-strong)" : "var(--muted)";
+  };
   const profileMetrics = (row: typeof team): Metrics => ({ ...row.metrics, possessions_per_game: row.metrics.estimated_possessions === null ? null : row.metrics.estimated_possessions / row.games });
   const league: Metrics = { ...season.aggregate.league.metrics, possessions_per_game: season.aggregate.league.metrics.estimated_possessions / (2 * season.aggregate.games) };
   const teamMetricRows = teams.map(row => ({ row, metrics: profileMetrics(row) }));
@@ -100,29 +187,89 @@ export function TeamProfiles({ onOpenMatch, selectedTeamId, matches, matchStatus
   const threeDelta = metrics.three_point_attempt_rate === null || threeBaseline === null ? null : metrics.three_point_attempt_rate - threeBaseline;
   const threeStatus = getProfileComparison(metrics.three_point_attempt_rate, threeBaseline, 1, 2, "descriptive");
   return <>
-    <section id="team-profile" className="panel profile-intro overview-section-anchor" aria-labelledby="team-profile-heading">
-      <div className="team-profile-header">
-        <div className="team-profile-identity">
-          <h2 id="team-profile-heading">{team.name}</h2>
-          <p id="profile-team-context">{tr(leagueName, leagueNameEn)} {seasonLabel} · {tr("runkosarja", "regular season")}<br /><strong>{team.games}</strong> {tr("tarkistettua ottelua", "verified games")}</p>
+    <section id="team-profile" className="panel team-profile-banner overview-section-anchor" aria-labelledby="team-profile-heading">
+      <div className="team-profile-banner-art" aria-hidden="true" />
+      <div className="team-profile-banner-mark" aria-hidden="true">{teamInitials(team.name)}</div>
+      <div className="team-profile-banner-copy">
+        <h2 id="team-profile-heading">{team.name}</h2>
+        <div className="team-profile-banner-meta" id="profile-team-context">
+          <span><Icon name="games" size={14} />{tr(leagueName, leagueNameEn)} {seasonLabel}</span>
+          <span><Icon name="check" size={14} />{team.games} {tr("tarkistettua ottelua", "verified games")}</span>
         </div>
       </div>
-      <section className="team-season-summary" aria-labelledby="team-season-summary-heading" aria-busy={matchStatus === "loading"}>
-        <div className="team-season-summary-heading"><h3 id="team-season-summary-heading">{tr("Kauden saldo", "Season record")}</h3><span role="status">{matchStatus === "ready" ? tr(`${seasonSummary.games} tarkistettua ottelua`, `${seasonSummary.games} verified games`) : matchStatus === "error" ? tr("Ottelutietoja ei saatu ladattua", "Could not load game data") : tr("Ladataan ottelutietoja…", "Loading game data…")}</span></div>
-        <div className="team-season-summary-grid">
-          <article><span>{tr("Voitot–tappiot", "Wins–losses")}</span><strong>{matchStatus === "ready" ? `${seasonSummary.wins}–${seasonSummary.losses}` : "—"}</strong></article>
-          <article><span>{tr("Tehdyt pisteet", "Points scored")}</span><strong>{matchStatus === "ready" ? formatInteger(seasonSummary.pointsFor) : "—"}</strong>{matchStatus === "ready" && <small>{formatPerGame(seasonSummary.pointsFor)} {tr("ottelua kohti", "per game")}</small>}</article>
-          <article><span>{tr("Päästetyt pisteet", "Points allowed")}</span><strong>{matchStatus === "ready" ? formatInteger(seasonSummary.pointsAgainst) : "—"}</strong>{matchStatus === "ready" && <small>{formatPerGame(seasonSummary.pointsAgainst)} {tr("ottelua kohti", "per game")}</small>}</article>
-          <article><span>{tr("Piste-ero", "Point differential")}</span><strong className={matchStatus === "ready" ? pointDifference > 0 ? "metric-positive" : pointDifference < 0 ? "metric-negative" : "" : ""}>{matchStatus === "ready" ? `${pointDifference > 0 ? "+" : ""}${formatInteger(pointDifference)}` : "—"}</strong><small>{tr("tehdyt − päästetyt", "scored − allowed")}</small></article>
-        </div>
-      </section>
-      <h3 className="profile-insight-heading">{threeStatus === null ? tr("Peliprofiili muodostuu aineiston mukana", "Playing profile builds with the dataset") : threeStatus.status === "level" ? tr("Kolmosten osuus on lähellä sarjan tasoa", "Three-point share is near the league level") : threeStatus.status === "above" ? tr("Kolmosia sarjan tasoa enemmän", "More threes than the league level") : tr("Kolmosia sarjan tasoa vähemmän", "Fewer threes than the league level")}</h3>
-      <p role="status" aria-live="polite">{threeDelta !== null && <>{tr(`Kolmoset muodostavat ${format(metrics.three_point_attempt_rate, "%")} heittoyrityksistä, sarjan aineistossa ${format(threeBaseline, "%")}. Ero on ${format(Math.abs(threeDelta))} prosenttiyksikköä.`, `Threes account for ${displayValue(metrics.three_point_attempt_rate, "%")} of field-goal attempts, compared with ${displayValue(threeBaseline, "%")} for the league. The difference is ${displayValue(Math.abs(threeDelta))} percentage points.`)}</>}</p>
-      {threeStatus && <span className={`profile-status profile-status--${threeStatus.tone} profile-status--${threeStatus.intensity}`}><span><ProfileStatusIcon status={threeStatus.status} tone={threeStatus.tone} /></span>{localizedStatus(threeStatus)}</span>}
-      <div className="profile-legend" aria-label={tr("Väriprofiilin selite", "Color profile legend")}><span className="profile-legend-item profile-legend-item--positive"><i aria-hidden="true"><ProfileStatusIcon status="above" /></i> {tr("parempi kuin sarjan taso", "better than league performance")}</span><span className="profile-legend-item profile-legend-item--level"><i aria-hidden="true"><ProfileStatusIcon status="level" /></i> {tr("lähellä sarjan tasoa", "near league level")}</span><span className="profile-legend-item profile-legend-item--negative"><i aria-hidden="true"><ProfileStatusIcon status="below" /></i> {tr("heikompi kuin sarjan taso", "worse than league performance")}</span><span className="profile-legend-item profile-legend-item--neutral"><i aria-hidden="true"><ProfileStatusIcon status="level" /></i> {tr("pelitapaa kuvaava mittari", "playing-style metric")}</span></div>
-      <small>{tr(`Vertailussa ${season.aggregate.games}/${season.summary.available_played_games} ottelua. Tulokset kuvaavat saatavilla olevaa aineistoa.`, `Comparison covers ${season.aggregate.games}/${season.summary.available_played_games} games. Results describe the available dataset.`)}</small>
     </section>
-    <TeamTrend key={team.source_team_id} teamId={team.source_team_id} baseline={{ ORtg: team.metrics.offensive_rating, DRtg: team.metrics.defensive_rating, "Net Rating": team.metrics.net_rating }} onOpenMatch={onOpenMatch} />
+    <section className="team-season-summary" aria-label={tr("Kauden tilastot", "Season statistics")} aria-busy={matchStatus === "loading"}>
+      <div className="team-season-summary-grid">
+        <article className="team-summary-card">
+          <div className="team-summary-card-top"><div className="team-summary-card-label"><span className="team-summary-card-icon team-summary-card-icon--win"><Icon name="trophy" size={17} /></span><span>{tr("Voitot - tappiot", "Wins - losses")}</span></div>{comparison(winPercentageDelta, tr("Voittoprosentti", "Win percentage"), false, language === "fi" ? " %" : " pp")}</div>
+          <div className="team-summary-card-value-row"><strong>{matchStatus === "ready" ? `${seasonSummary.wins}-${seasonSummary.losses}` : "—"}</strong></div>
+          <div className="team-summary-card-bottom"><small>{matchStatus === "ready" ? winPercentage === null ? tr("Ei pelattuja otteluita", "No games played") : `${format(winPercentage, "%")} ${tr("voittoprosentti", "win rate")}` : "—"}</small><MetricSparkline values={recentTeamMetrics.map((game) => game.won ? 100 : 0)} label={tr("Voittoprosentti viime otteluissa", "Recent win percentage")} language={language} color={sparklineColor(winPercentageDelta)} /></div>
+        </article>
+        <article className="team-summary-card">
+          <div className="team-summary-card-top"><div className="team-summary-card-label"><span className="team-summary-card-icon team-summary-card-icon--win"><Icon name="trendUp" size={17} /></span><span>{tr("Tehdyt pisteet", "Points scored")}</span></div>{comparison(pointsDelta, tr("Tehdyt pisteet per ottelu", "Points scored per game"))}</div>
+          <div className="team-summary-card-value-row"><strong>{matchStatus === "ready" ? formatInteger(seasonSummary.pointsFor) : "—"}</strong></div>
+          <div className="team-summary-card-bottom"><small>{matchStatus === "ready" && seasonSummary.games > 0 ? `${formatPerGame(seasonSummary.pointsFor)} ${tr("ottelua kohti", "per game")}` : "—"}</small><MetricSparkline values={recentTeamMetrics.map((game) => game.pointsFor)} label={tr("Tehdyt pisteet otteluittain", "Points scored by game")} language={language} color={sparklineColor(pointsDelta)} /></div>
+        </article>
+        <article className="team-summary-card">
+          <div className="team-summary-card-top"><div className="team-summary-card-label"><span className="team-summary-card-icon team-summary-card-icon--defense"><Icon name="trendDown" size={17} /></span><span>{tr("Päästetyt pisteet", "Points allowed")}</span></div>{comparison(pointsAllowedDelta, tr("Päästetyt pisteet per ottelu", "Points allowed per game"), true)}</div>
+          <div className="team-summary-card-value-row"><strong>{matchStatus === "ready" ? formatInteger(seasonSummary.pointsAgainst) : "—"}</strong></div>
+          <div className="team-summary-card-bottom"><small>{matchStatus === "ready" && seasonSummary.games > 0 ? `${formatPerGame(seasonSummary.pointsAgainst)} ${tr("ottelua kohti", "per game")}` : "—"}</small><MetricSparkline values={recentTeamMetrics.map((game) => game.pointsAgainst)} label={tr("Päästetyt pisteet otteluittain", "Points allowed by game")} language={language} color={sparklineColor(pointsAllowedDelta, true)} /></div>
+        </article>
+        <article className="team-summary-card">
+          <div className="team-summary-card-top"><div className="team-summary-card-label"><span className="team-summary-card-icon team-summary-card-icon--win"><Icon name="target" size={17} /></span><span>{tr("Piste-ero", "Point differential")}</span></div>{comparison(pointDifferenceDelta, tr("Piste-ero per ottelu", "Point differential per game"))}</div>
+          <div className="team-summary-card-value-row"><strong className={matchStatus === "ready" ? pointDifference > 0 ? "metric-positive" : pointDifference < 0 ? "metric-negative" : "" : ""}>{matchStatus === "ready" ? `${pointDifference > 0 ? "+" : ""}${formatInteger(pointDifference)}` : "—"}</strong></div>
+          <div className="team-summary-card-bottom"><small>{matchStatus === "ready" && pointDifferencePerGame !== null ? `${tr("tehdyt − päästetyt", "scored − allowed")} · ${formatSigned(pointDifferencePerGame)} ${tr("per ottelu", "per game")}` : tr("tehdyt − päästetyt", "scored − allowed")}</small><MetricSparkline values={recentTeamMetrics.map((game) => game.pointsFor - game.pointsAgainst)} label={tr("Piste-ero otteluittain", "Point differential by game")} language={language} color={sparklineColor(pointDifferenceDelta)} /></div>
+        </article>
+      </div>
+    </section>
+    <section className="team-game-snapshot" aria-label={tr(`${team.name}: viimeiset ottelut, seuraava ottelu ja keskeinen havainto`, `${team.name}: recent games, next game, and key insight`)}>
+        <div className="team-game-snapshot-column">
+          <div className="team-game-snapshot-heading"><h3>{tr("Viimeiset pelit", "Recent games")}</h3><button type="button" className="team-game-all-link" onClick={onOpenMatches}>{tr("Katso kaikki", "See all")} <Icon name="arrowOutward" size={14} /></button></div>
+          {recentGames.length ? <div className="team-recent-games-wrap"><table className="team-recent-games" aria-label={tr(`${team.name}: viimeiset viisi ottelua`, `${team.name}: last five games`)}>
+            <thead><tr><th scope="col">{tr("Pvm", "Date")}</th><th scope="col">{tr("Vastustaja", "Opponent")}</th><th scope="col">{tr("Tulos", "Result")}</th><th scope="col">{tr("Tehdyt", "For")}</th><th scope="col">{tr("Päästetyt", "Against")}</th><th scope="col">{tr("Piste-ero", "Diff.")}</th></tr></thead>
+            <tbody>{recentGames.map((game) => {
+              const isHome = game.homeName === team.name;
+              const pointsFor = isHome ? game.homeScore : game.awayScore;
+              const pointsAgainst = isHome ? game.awayScore : game.homeScore;
+              const differential = pointsFor - pointsAgainst;
+              return <tr key={game.id}>
+                <td>{game.verified ? <button type="button" className="team-recent-match-open-text" onClick={() => onOpenMatch(game.id)} aria-label={`${tr("Avaa ottelu vastaan", "Open game against")} ${game.opponent}`}><time dateTime={game.date ?? undefined}>{gameDate(game.date, language)}</time></button> : <time dateTime={game.date ?? undefined}>{gameDate(game.date, language)}</time>}</td>
+                <td><div className="team-recent-opponent"><span className="team-recent-match-logo" aria-hidden="true">{teamInitials(game.opponent)}</span><span>{game.opponent}</span></div></td>
+                <td><span className={`team-recent-result${game.won ? " team-recent-result--win" : " team-recent-result--loss"}`}>{game.won ? tr("Voitto", "Win") : tr("Tappio", "Loss")}</span></td>
+                <td className="team-recent-score">{pointsFor}</td>
+                <td className="team-recent-score">{pointsAgainst}</td>
+                <td className={`team-recent-score team-recent-differential${differential > 0 ? " team-recent-differential--positive" : differential < 0 ? " team-recent-differential--negative" : ""}`}>{differential > 0 ? "+" : ""}{differential}</td>
+              </tr>;
+            })}</tbody>
+          </table></div> : <p className="team-game-empty">{matchStatus === "loading" ? tr("Ladataan otteluita…", "Loading games…") : matchStatus === "error" ? tr("Ottelutietoja ei saatu ladattua.", "Could not load game data.") : tr("Pelattuja otteluita ei vielä ole.", "There are no played games yet.")}</p>}
+        </div>
+        <div className="team-game-snapshot-column team-next-game">
+          <div className="team-game-snapshot-heading"><h3>{tr("Seuraava ottelu", "Next game")}</h3><button type="button" className="team-game-all-link" onClick={onOpenMatches}>{tr("Kaikki ottelut", "All games")} <Icon name="arrowOutward" size={14} /></button></div>
+          {nextFixture ? <>
+            <div className="team-next-game-scoreboard">
+              <div className="team-next-game-team"><span className="team-recent-match-logo" aria-hidden="true">{teamInitials(nextFixture.home.name)}</span><strong>{nextFixture.home.name}</strong></div>
+              <div className="team-next-game-time"><time dateTime={`${nextFixture.scheduled_date ?? ""}${nextFixture.scheduled_time ? `T${nextFixture.scheduled_time}` : ""}`}>{gameDate(nextFixture.scheduled_date, language)}</time><b>{nextFixture.scheduled_time?.slice(0, 5) ?? "—"}</b></div>
+              <div className="team-next-game-team"><span className="team-recent-match-logo" aria-hidden="true">{teamInitials(nextFixture.away.name)}</span><strong>{nextFixture.away.name}</strong></div>
+            </div>
+            {nextFixture.venue && <p className="team-next-game-venue">{nextFixture.venue}</p>}
+          </> : <p className="team-game-empty">{seasonId === "2026-27" ? tr("Seuraavaa ottelua ei ole vielä päivätty.", "No upcoming game with a confirmed date.") : tr("Seuraava ottelu näkyy kuluvan kauden ohjelmassa.", "Upcoming games appear in the current season schedule.")}</p>}
+        </div>
+        <section className="team-game-snapshot-column team-key-insight" aria-labelledby="team-key-insight-heading">
+          <div className="team-game-snapshot-heading"><h3 id="team-key-insight-heading">{tr("Keskeinen havainto", "Key insight")}</h3></div>
+          <strong className="team-key-insight-title">{threeStatus === null ? tr("Heittoprofiili tarkentuu datan karttuessa", "Shooting profile will sharpen as data grows") : threeStatus.status === "level" ? tr("Kolmosten osuus on lähellä sarjan tasoa", "Three-point share is near the league level") : threeStatus.status === "above" ? tr("Kolmosia sarjan tasoa enemmän", "More threes than the league level") : tr("Kolmosia sarjan tasoa vähemmän", "Fewer threes than the league level")}</strong>
+          <p>{threeDelta === null ? tr("Kolmosten osuudesta ei ole vielä riittävästi vertailukelpoista tietoa.", "There is not enough comparable data for three-point share yet.") : tr(`Kolmoset muodostavat ${format(metrics.three_point_attempt_rate, "%")} heittoyrityksistä, sarjan taso on ${format(threeBaseline, "%")}. Ero ${format(Math.abs(threeDelta))} prosenttiyksikköä.`, `Threes account for ${displayValue(metrics.three_point_attempt_rate, "%")} of attempts, compared with ${displayValue(threeBaseline, "%")} for the league. The difference is ${displayValue(Math.abs(threeDelta))} percentage points.`)}</p>
+          {threeDelta !== null && <div className="team-key-insight-comparison" aria-label={tr("Kolmosten yritysosuus verrattuna sarjan tasoon", "Three-point attempt share compared with the league")}>
+            <div><span>{team.name}</span><b>{format(metrics.three_point_attempt_rate, "%")}</b></div>
+            <span className="team-key-insight-track" aria-hidden="true"><i style={{ width: `${Math.max(0, Math.min(100, metrics.three_point_attempt_rate ?? 0))}%` }} /></span>
+            <div><span>{tr("Sarjan keskiarvo", "League average")}</span><b>{format(threeBaseline, "%")}</b></div>
+            <span className="team-key-insight-track team-key-insight-track--league" aria-hidden="true"><i style={{ width: `${Math.max(0, Math.min(100, threeBaseline ?? 0))}%` }} /></span>
+          </div>}
+          {threeStatus && <span className={`profile-status profile-status--${threeStatus.tone} profile-status--${threeStatus.intensity}`}><span><ProfileStatusIcon status={threeStatus.status} tone={threeStatus.tone} /></span>{localizedStatus(threeStatus)}</span>}
+        </section>
+      </section>
+    <div className="team-profile-analysis">
+      <TeamShootingChart teamName={team.name} teamTotals={team.totals} leagueTotals={season.aggregate.league.totals} />
+      <TeamTrend key={team.source_team_id} teamId={team.source_team_id} baseline={{ ORtg: team.metrics.offensive_rating, DRtg: team.metrics.defensive_rating, "Net Rating": team.metrics.net_rating }} onOpenMatch={onOpenMatch} />
     <section id="team-league-comparison" className="profile-grid overview-section-anchor" aria-label={`${team.name}: ${tr("vertailu sarjan tasoon", "comparison with league level")}`}>
       {localizedDefinitions.map(definition => {
         const value = metrics[definition.key] ?? null;
@@ -148,6 +295,7 @@ export function TeamProfiles({ onOpenMatch, selectedTeamId, matches, matchStatus
         </article>;
       })}
     </section>
+    </div>
     <section className="panel profile-intro">
       <h3>{tr("Näin luet profiilia", "How to read the profile")}</h3>
       <p>{tr("Asteikon pisteet ovat joukkueita, valkoinen viiva on sarjan taso ja korostettu rengas valitsemasi joukkue. Asteikko vaihtuu mittarin mukaan.", "The dots are teams, the white line is the league level, and the highlighted ring is the selected team. The scale changes by metric.")}</p>

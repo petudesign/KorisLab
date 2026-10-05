@@ -8,6 +8,7 @@
     { "source": "/studio", "destination": "/index.html" },
     { "source": "/studio/:path*", "destination": "/index.html" },
     { "source": "/analyysit", "destination": "/index.html" },
-    { "source": "/analyysit/:path*", "destination": "/index.html" }
+    { "source": "/analyysit/:path*", "destination": "/index.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
