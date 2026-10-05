@@ -451,7 +451,9 @@ h1 { margin-top: 9px; color: #f1f4f6; font-size: clamp(32px, 4vw, 46px); line-he
 .players-toolbar input, .players-toolbar select { width: 100%; border: 1px solid #303b45; border-radius: 6px; padding: 9px 10px; color: #dbe5e0; background: #10171e; font-size: 10px; outline: none; }
 .players-toolbar input::placeholder { color: #687681; }
 .players-toolbar input:focus, .players-toolbar select:focus { border-color: rgba(199, 219, 191, .6); box-shadow: 0 0 0 2px rgba(199, 219, 191, .08); }
-.players-leaders-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 12px; }
+.players-leaders-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 12px; }
+@media (max-width: 1400px) and (min-width: 901px) { .players-leaders-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 900px) and (min-width: 721px) { .players-leaders-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .player-leader-card { display: grid; grid-template-columns: minmax(0, 1fr) 78px; grid-template-rows: auto minmax(0, 1fr); column-gap: 12px; min-width: 0; min-height: 176px; padding: 16px 18px; }
 .player-leader-card-top { display: flex; grid-column: 1 / -1; align-items: flex-start; justify-content: space-between; gap: 10px; min-width: 0; }
 .player-leader-card-top .stat-label { min-width: 0; margin: 0; }
@@ -466,6 +468,7 @@ h1 { margin-top: 9px; color: #f1f4f6; font-size: clamp(32px, 4vw, 46px); line-he
 .player-leader-card .player-leader-card-benchmark > small { margin: 0; color: var(--muted); font-size: 8px; line-height: 1.2; }
 .player-leader-card .player-leader-card-benchmark > strong { margin: 2px 0 0; color: var(--soft); font-size: 11px; font-variant-numeric: tabular-nums; line-height: 1.2; }
 .player-leader-card .player-leader-card-team { margin-top: 4px; color: var(--muted); font-size: 9px; line-height: 1.3; }
+.player-leader-card .player-leader-card-volume { margin-top: 3px; color: var(--text-muted, #91a0ad); font-size: 9px; line-height: 1.3; white-space: normal; }
 .player-leader-card .player-leader-identity strong { display: block; overflow: hidden; color: #e5eee8; font-size: 14px; font-weight: 700; letter-spacing: -.03em; text-overflow: ellipsis; white-space: nowrap; }
 .player-leader-card small { display: block; overflow: hidden; color: #71808b; font-size: 9px; text-overflow: ellipsis; white-space: nowrap; }
 .players-table-panel { margin-top: 12px; padding: 22px; }

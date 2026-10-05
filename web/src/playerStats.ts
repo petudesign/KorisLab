@@ -100,6 +100,44 @@ export function playerEfGPctFromTotals(player: SeasonPlayerRow) {
   return attempts === 0 ? null : ((player.twoPM + player.threePM * 1.5) / attempts) * 100;
 }
 
+export function trueShootingPct(points: number | null | undefined, fieldGoalAttempts: number | null | undefined, freeThrowAttempts: number | null | undefined) {
+  if (points == null || fieldGoalAttempts == null || freeThrowAttempts == null) return null;
+  const attempts = fieldGoalAttempts + 0.44 * freeThrowAttempts;
+  return attempts <= 0 ? null : (points / (2 * attempts)) * 100;
+}
+
+export function playerTrueShootingPctFromTotals(player: SeasonPlayerRow) {
+  return trueShootingPct(player.points, player.twoPA + player.threePA, player.fta);
+}
+
+export type PlayerShotVolume = { fieldGoalAttempts: number; teamFieldGoalAttempts: number; complete: boolean };
+
+export function aggregatePlayerShotVolumes(records: SeasonMatchRecord[]) {
+  const volumes = new Map<string, PlayerShotVolume>();
+  for (const record of records) {
+    for (const team of record.teams) {
+      const teamAttempts = team.stats.two_pa == null || team.stats.three_pa == null
+        ? null
+        : team.stats.two_pa + team.stats.three_pa;
+      for (const player of team.players) {
+        if ((player.minutes ?? 0) <= 0) continue;
+        const current = volumes.get(player.source_player_id) ?? { fieldGoalAttempts: 0, teamFieldGoalAttempts: 0, complete: true };
+        const playerAttempts = player.stats.two_pa == null || player.stats.three_pa == null
+          ? null
+          : player.stats.two_pa + player.stats.three_pa;
+        if (teamAttempts == null || playerAttempts == null) {
+          current.complete = false;
+        } else {
+          current.fieldGoalAttempts += playerAttempts;
+          current.teamFieldGoalAttempts += teamAttempts;
+        }
+        volumes.set(player.source_player_id, current);
+      }
+    }
+  }
+  return volumes;
+}
+
 export function playerAssistTurnoverRatio(player: SeasonPlayerRow) {
   return player.turnovers === 0 ? null : player.assists / player.turnovers;
 }

@@ -12,7 +12,7 @@ import { PaperLeaderShader } from "./PaperShaderBackdrop";
 import { ThreePointStory } from "./ThreePointStory";
 import { SeasonPhaseComparison } from "./SeasonPhaseComparison";
 import { SeasonSelector, useSeason, type SeasonId } from "./SeasonContext";
-import { aggregateSeasonPlayers, playerPerGame, playerFgPctFromTotals, playerThreePctFromTotals, playerFtPctFromTotals, playerEfGPctFromTotals, playerAssistTurnoverRatio, playerEfficiencyPer40, playerAttemptsPer40, type SeasonPlayerRow } from "./playerStats";
+import { aggregateSeasonPlayers, aggregatePlayerShotVolumes, playerPerGame, playerFgPctFromTotals, playerThreePctFromTotals, playerFtPctFromTotals, playerEfGPctFromTotals, playerTrueShootingPctFromTotals, trueShootingPct, playerAssistTurnoverRatio, playerEfficiencyPer40, playerAttemptsPer40, type SeasonPlayerRow } from "./playerStats";
 import { PlayerProfile } from "./PlayerProfile";
 import { PlayerPortrait } from "./PlayerPortrait";
 import { MetricSparkline } from "./MetricSparkline";
@@ -36,7 +36,7 @@ import { AnalysesIndex, AnalysisArticlePage } from "./AnalysisArticles";
 const CustomImportPage = lazy(() => import("./CustomImport"));
 
 type SeasonMatchRecord = typeof import("../../data/normalized/season_verified.json")["matches"][number];
-type PlayerLeaderKey = "points" | "assists" | "rebounds" | "steals" | "efficiencyPer40" | "minutes";
+type PlayerLeaderKey = "points" | "assists" | "rebounds" | "steals" | "efficiencyPer40" | "trueShootingPct" | "attemptsPer40" | "minutes";
 type PlayerLeaderAppearance = SeasonMatchRecord["teams"][number]["players"][number];
 
 type MatchListItem = {
@@ -825,7 +825,7 @@ function SeasonThreePointStory({ onOpenTeams, onOpenMatch }: { onOpenTeams: (tea
   </>;
 }
 
-type PlayerSeasonSortKey = "games" | "minutes" | "pointsPerGame" | "fgPct" | "threePct" | "reboundsPerGame" | "assistsPerGame" | "assistTurnover" | "ftPct" | "efgPct" | "stealsPerGame" | "efficiencyPer40" | "attemptsPer40";
+type PlayerSeasonSortKey = "games" | "minutes" | "pointsPerGame" | "fgPct" | "threePct" | "reboundsPerGame" | "assistsPerGame" | "assistTurnover" | "ftPct" | "efgPct" | "trueShootingPct" | "stealsPerGame" | "efficiencyPer40" | "attemptsPer40";
 
 const playerSeasonSortLabels: Record<PlayerSeasonSortKey, string> = {
   games: "GP",
@@ -838,6 +838,7 @@ const playerSeasonSortLabels: Record<PlayerSeasonSortKey, string> = {
   assistTurnover: "AST/TO",
   ftPct: "FT%",
   efgPct: "eFG%",
+  trueShootingPct: "TS%",
   stealsPerGame: "STL/G",
   efficiencyPer40: "Eff/40",
   attemptsPer40: "FGA/40",
@@ -855,6 +856,7 @@ function playerSeasonSortValue(player: SeasonPlayerRow, key: PlayerSeasonSortKey
     case "assistTurnover": return playerAssistTurnoverRatio(player);
     case "ftPct": return playerFtPctFromTotals(player);
     case "efgPct": return playerEfGPctFromTotals(player);
+    case "trueShootingPct": return playerTrueShootingPctFromTotals(player);
     case "stealsPerGame": return playerPerGame(player, "steals");
     case "efficiencyPer40": return playerEfficiencyPer40(player);
     case "attemptsPer40": return playerAttemptsPer40(player);
@@ -867,6 +869,7 @@ function PlayersView({ onOpenPlayer }: { onOpenPlayer: (id: string) => void }) {
   const [loaded, setLoaded] = useState(false);
   const [seasonPlayers, setSeasonPlayers] = useState<SeasonPlayerRow[]>([]);
   const [seasonRecords, setSeasonRecords] = useState<SeasonMatchRecord[]>([]);
+  const playerShotVolumes = useMemo(() => aggregatePlayerShotVolumes(seasonRecords), [seasonRecords]);
   const [query, setQuery] = useState("");
   const [teamFilter, setTeamFilter] = useState("all");
   const [sort, setSort] = useState<{ key: PlayerSeasonSortKey; direction: SortDirection }>({ key: "pointsPerGame", direction: "desc" });
@@ -926,7 +929,13 @@ function PlayersView({ onOpenPlayer }: { onOpenPlayer: (id: string) => void }) {
     rebounds: mean(qualifiedPlayers.map((row) => playerPerGame(row, "rebounds"))),
     steals: mean(qualifiedPlayers.map((row) => playerPerGame(row, "steals"))),
     efficiencyPer40: mean(qualifiedPlayers.map(playerEfficiencyPer40)),
+    attemptsPer40: mean(qualifiedPlayers.map(playerAttemptsPer40)),
     minutes: mean(seasonPlayers.map((row) => row.minutes)),
+    trueShootingPct: trueShootingPct(
+      qualifiedPlayers.reduce((sum, row) => sum + row.points, 0),
+      qualifiedPlayers.reduce((sum, row) => sum + row.twoPA + row.threePA, 0),
+      qualifiedPlayers.reduce((sum, row) => sum + row.fta, 0),
+    ),
   };
   const gameAppearancesByPlayer = useMemo(() => {
     const byPlayer = new Map<string, Array<{ date: string; appearance: PlayerLeaderAppearance }>>();
@@ -949,6 +958,16 @@ function PlayersView({ onOpenPlayer }: { onOpenPlayer: (id: string) => void }) {
       if (key === "efficiencyPer40") {
         return appearance.minutes && appearance.stats.efficiency != null ? appearance.stats.efficiency / appearance.minutes * 40 : null;
       }
+      if (key === "attemptsPer40") {
+        const stats = appearance.stats;
+        const attempts = stats.two_pa == null || stats.three_pa == null ? null : stats.two_pa + stats.three_pa;
+        return appearance.minutes && attempts != null ? (attempts / appearance.minutes) * 40 : null;
+      }
+      if (key === "trueShootingPct") {
+        const stats = appearance.stats;
+        const attempts = stats.two_pa == null || stats.three_pa == null ? null : stats.two_pa + stats.three_pa;
+        return trueShootingPct(stats.points, attempts, stats.fta);
+      }
       return appearance.stats[key] ?? null;
     });
   };
@@ -958,8 +977,17 @@ function PlayersView({ onOpenPlayer }: { onOpenPlayer: (id: string) => void }) {
     { key: "rebounds", label: tr("Eniten levypalloja / ottelu", "Most rebounds / game"), player: best((row) => playerPerGame(row, "rebounds")), value: (row: SeasonPlayerRow) => decimal(playerPerGame(row, "rebounds")), average: leaderAverages.rebounds, seriesLabel: tr("Levypallot otteluittain", "Rebounds by game"), unit: "REB/G" },
     { key: "steals", label: tr("Eniten riistoja / ottelu", "Most steals / game"), player: best((row) => playerPerGame(row, "steals")), value: (row: SeasonPlayerRow) => decimal(playerPerGame(row, "steals")), average: leaderAverages.steals, seriesLabel: tr("Riistot otteluittain", "Steals by game"), unit: "STL/G" },
     { key: "efficiencyPer40", label: tr("Tehokkain peliaikaan nähden", "Most efficient per minute"), player: best(playerEfficiencyPer40), value: (row: SeasonPlayerRow) => decimal(playerEfficiencyPer40(row)), average: leaderAverages.efficiencyPer40, seriesLabel: tr("Tehokkuus ottelua kohden, suhteutettuna peliaikaan", "Efficiency per game, adjusted for playing time"), unit: "Eff/40" },
+    { key: "trueShootingPct", label: tr("Pisteiden tehokkuus (TS%)", "Scoring efficiency (TS%)"), player: best(playerTrueShootingPctFromTotals), value: (row: SeasonPlayerRow) => decimal(playerTrueShootingPctFromTotals(row)), average: leaderAverages.trueShootingPct, seriesLabel: tr("TS% otteluittain", "TS% by game"), unit: "TS%" },
+    { key: "attemptsPer40", label: tr("Heittomäärä / 40 min", "Shot volume / 40 min"), player: best(playerAttemptsPer40), value: (row: SeasonPlayerRow) => decimal(playerAttemptsPer40(row)), average: leaderAverages.attemptsPer40, seriesLabel: tr("Kenttäheittoyritykset per 40 minuuttia otteluittain", "Field-goal attempts per 40 minutes by game"), unit: "FGA/40" },
     { key: "minutes", label: tr("Eniten peliminuutteja", "Most minutes played"), player: best((row) => row.minutes, seasonPlayers), value: (row: SeasonPlayerRow) => decimal(row.minutes), average: leaderAverages.minutes, seriesLabel: tr("Peliaika otteluittain", "Playing time by game"), unit: "MIN" },
   ];
+
+  const teamShotShareNote = (player: SeasonPlayerRow) => {
+    const volume = playerShotVolumes.get(player.id);
+    return volume?.complete && volume.teamFieldGoalAttempts > 0
+      ? `${decimal((volume.fieldGoalAttempts / volume.teamFieldGoalAttempts) * 100)}% ${tr("joukkueen kenttäheittoyrityksistä", "of team field-goal attempts")}`
+      : null;
+  };
 
   const togglePlayerSort = (key: PlayerSeasonSortKey) => {
     setVisiblePlayerCount(10);
@@ -984,8 +1012,9 @@ function PlayersView({ onOpenPlayer }: { onOpenPlayer: (id: string) => void }) {
       </section>
 
       <section className="players-leaders-section" aria-labelledby="player-leaders-heading">
-        <div className="player-leaders-heading"><h2 id="player-leaders-heading">{tr("Kauden kärjet", "Season leaders")}</h2><p>{tr("Keskiarvot ja Eff/40: vähintään 8 ottelua ja 120 minuuttia. Peliminuutit ovat kauden summa.", "Averages and Eff/40: at least 8 games and 120 minutes. Playing time is the season total.")}</p></div>
+        <div className="player-leaders-heading"><h2 id="player-leaders-heading">{tr("Kauden kärjet", "Season leaders")}</h2><p>{tr("Kärkikorttien vertailussa vähintään 8 ottelua ja 120 minuuttia. TS% ja muut keskiarvot perustuvat koko kauden lukuihin.", "Leader cards require at least 8 games and 120 minutes. TS% and other averages use full-season totals.")}</p></div>
         <div className="players-leaders-grid">{leaders.map((leader) => {
+          const volumeContext = leader.player && leader.key === "attemptsPer40" ? teamShotShareNote(leader.player) : null;
           const content = <>
             <div className="player-leader-card-top">
               <span className="stat-label">{leader.label}</span>
@@ -995,6 +1024,7 @@ function PlayersView({ onOpenPlayer }: { onOpenPlayer: (id: string) => void }) {
               <div className="player-leader-identity"><PlayerPortrait className="player-list-portrait" /><strong>{leader.player?.name ?? (loadError ? tr("Data ei saatavilla", "Data unavailable") : loaded ? tr("Ei vielä riittävää otosta", "Not enough games yet") : tr("Ladataan…", "Loading…"))}</strong></div>
               <div className="player-leader-card-values"><b>{leader.player ? `${leader.value(leader.player)} ${leader.unit}` : "—"}</b></div>
               <small className="player-leader-card-team">{leader.player ? `${leader.player.team} · ${leader.player.games} ${tr("ottelua", "games")}` : ""}</small>
+              {volumeContext && <small className="player-leader-card-volume">{volumeContext}</small>}
             </div>
             {leader.player && <div className="player-leader-card-chart"><MetricSparkline values={leaderSeries(leader.player.id, leader.key)} label={leader.seriesLabel} language={language} /></div>}
           </>;
@@ -1011,7 +1041,7 @@ function PlayersView({ onOpenPlayer }: { onOpenPlayer: (id: string) => void }) {
           <table id="player-pool-table" className="players-table player-pool-table">
             <caption className="sr-only">{leagueName} · {seasonLabel}</caption>
             <thead><tr><th scope="col">#</th><th scope="col">{tr("Pelaaja", "Player")}</th><th scope="col">{tr("Joukkue", "Team")}</th>{(Object.keys(playerSeasonSortLabels) as PlayerSeasonSortKey[]).map(sortableHeader)}</tr></thead>
-            <tbody>{sortedPlayers.slice(0, visiblePlayerCount).map((player, index) => <tr key={player.id}><td className="rank">{index + 1}</td><th scope="row" className="players-table-player"><div className="player-list-identity"><PlayerPortrait className="player-list-portrait" /><div><a className="player-name-link" href={routeHref("player-profile", seasonId, player.id, leagueId)} onClick={(event) => followLink(event, () => onOpenPlayer(player.id))}>{player.name}</a><small>{player.starts > 0 ? `${player.starts} ${tr("aloitusta", "starts")}` : tr("Ei avausmerkintää", "No start data")}</small></div></div></th><td className="players-table-team">{player.team}</td><td>{player.games}</td><td>{decimal(player.minutes)}</td><td className="players-table-emphasis">{decimal(playerPerGame(player, "points"))}</td><td>{playerFgPctFromTotals(player) == null ? "—" : `${decimal(playerFgPctFromTotals(player))}%`}</td><td>{playerThreePctFromTotals(player) == null ? "—" : `${decimal(playerThreePctFromTotals(player))}%`}</td><td>{decimal(playerPerGame(player, "rebounds"))}</td><td>{decimal(playerPerGame(player, "assists"))}</td><td>{decimal(playerAssistTurnoverRatio(player))}</td><td>{playerFtPctFromTotals(player) == null ? "—" : `${decimal(playerFtPctFromTotals(player))}%`}</td><td>{playerEfGPctFromTotals(player) == null ? "—" : `${decimal(playerEfGPctFromTotals(player))}%`}</td><td>{decimal(playerPerGame(player, "steals"))}</td><td className="players-table-emphasis">{decimal(playerEfficiencyPer40(player))}</td><td>{decimal(playerAttemptsPer40(player))}</td></tr>)}</tbody>
+            <tbody>{sortedPlayers.slice(0, visiblePlayerCount).map((player, index) => <tr key={player.id}><td className="rank">{index + 1}</td><th scope="row" className="players-table-player"><div className="player-list-identity"><PlayerPortrait className="player-list-portrait" /><div><a className="player-name-link" href={routeHref("player-profile", seasonId, player.id, leagueId)} onClick={(event) => followLink(event, () => onOpenPlayer(player.id))}>{player.name}</a><small>{player.starts > 0 ? `${player.starts} ${tr("aloitusta", "starts")}` : tr("Ei avausmerkintää", "No start data")}</small></div></div></th><td className="players-table-team">{player.team}</td><td>{player.games}</td><td>{decimal(player.minutes)}</td><td className="players-table-emphasis">{decimal(playerPerGame(player, "points"))}</td><td>{playerFgPctFromTotals(player) == null ? "—" : `${decimal(playerFgPctFromTotals(player))}%`}</td><td>{playerThreePctFromTotals(player) == null ? "—" : `${decimal(playerThreePctFromTotals(player))}%`}</td><td>{decimal(playerPerGame(player, "rebounds"))}</td><td>{decimal(playerPerGame(player, "assists"))}</td><td>{decimal(playerAssistTurnoverRatio(player))}</td><td>{playerFtPctFromTotals(player) == null ? "—" : `${decimal(playerFtPctFromTotals(player))}%`}</td><td>{playerEfGPctFromTotals(player) == null ? "—" : `${decimal(playerEfGPctFromTotals(player))}%`}</td><td>{playerTrueShootingPctFromTotals(player) == null ? "—" : `${decimal(playerTrueShootingPctFromTotals(player))}%`}</td><td>{decimal(playerPerGame(player, "steals"))}</td><td className="players-table-emphasis">{decimal(playerEfficiencyPer40(player))}</td><td>{decimal(playerAttemptsPer40(player))}</td></tr>)}</tbody>
           </table>
           </div>
           <div className="player-pool-pagination">
@@ -1019,7 +1049,7 @@ function PlayersView({ onOpenPlayer }: { onOpenPlayer: (id: string) => void }) {
             {visiblePlayerCount < sortedPlayers.length && <button className="outline-button" type="button" aria-controls="player-pool-table" onClick={() => setVisiblePlayerCount((count) => Math.min(count + 10, sortedPlayers.length))}>{sortedPlayers.length - visiblePlayerCount > 10 ? tr("Näytä seuraavat 10", "Show next 10") : tr(`Näytä loput ${sortedPlayers.length - visiblePlayerCount}`, `Show remaining ${sortedPlayers.length - visiblePlayerCount}`)}</button>}
           </div>
         </>}
-        <p className="players-method-note">{tr("Kosketuksia ei ole mukana saatavilla olevissa ottelutilastoissa. Eff/40 normalisoi tehokkuusluvun peliaikaan; FGA/40 kertoo samalla, kuinka aktiivisesti pelaaja käytti heittoja. Nämä eivät väitä mittaavansa kosketuksia.", "Touches are not included in the available game statistics. Eff/40 normalizes the efficiency figure to playing time; FGA/40 adds a shot-activity context. Neither claims to measure touches.")}</p>
+        <p className="players-method-note">{tr("TS% huomioi kenttäheitot ja vapaaheitot. FGA/40 kuvaa heittomäärää suhteessa peliaikaan; joukkueen FGA-osuus kertoo pelaajan osuuden joukkueen kenttäheittoyrityksistä hänen pelaamissaan otteluissa. Se ei ole Usage%, sillä vapaaheitot ja menetykset eivät sisälly osuuteen. Kosketuksia ei ole saatavilla.", "TS% accounts for field goals and free throws. FGA/40 describes shot volume relative to playing time; team FGA share is the player's share of team field-goal attempts in games they played. It is not Usage%, since free throws and turnovers are excluded. Touch data is unavailable.")}</p>
       </section>
     </>
   );

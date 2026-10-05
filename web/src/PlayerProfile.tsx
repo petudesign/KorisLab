@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { ShotCount } from "./ShotCount";
 import { SeasonSelector, useSeason, type SeasonMatchRecord } from "./SeasonContext";
-import { aggregateSeasonPlayers, playerPerGame, playerFgPctFromTotals, playerFtPctFromTotals, playerEfGPctFromTotals, playerAssistTurnoverRatio, playerEfficiencyPer40, playerGameOutcome, type SeasonPlayerRow } from "./playerStats";
+import { aggregateSeasonPlayers, aggregatePlayerShotVolumes, playerPerGame, playerFgPctFromTotals, playerFtPctFromTotals, playerEfGPctFromTotals, playerTrueShootingPctFromTotals, trueShootingPct, playerAttemptsPer40, playerAssistTurnoverRatio, playerEfficiencyPer40, playerGameOutcome, type SeasonPlayerRow } from "./playerStats";
 import { useI18n } from "./i18n";
 import { scheduleByMatchId } from "./schedule";
 import { followLink, routeHref } from "./routing";
@@ -47,6 +47,10 @@ export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: str
   }, [loadMatches, loadMatchesForSeason, playerId, seasonId, activePhase]);
   const leaguePlayers = useMemo(() => aggregateSeasonPlayers(records), [records]);
   const player = leaguePlayers.find((row) => row.id === playerId);
+  const playerShotVolume = useMemo(() => aggregatePlayerShotVolumes(records).get(playerId), [records, playerId]);
+  const playerTeamShotShare = playerShotVolume?.complete && playerShotVolume.teamFieldGoalAttempts > 0
+    ? (playerShotVolume.fieldGoalAttempts / playerShotVolume.teamFieldGoalAttempts) * 100
+    : null;
   const maxTeamGames = useMemo(() => {
     const counts = new Map<string, number>();
     const countGame = (teamName: string) => counts.set(teamName, (counts.get(teamName) ?? 0) + 1);
@@ -73,13 +77,14 @@ export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: str
       return available.length > 0 ? available.reduce((sum, value) => sum + value, 0) / available.length : null;
     };
     const totals = qualifiedLeaguePlayers.reduce((sum, row) => ({
+      points: sum.points + row.points,
       twoPM: sum.twoPM + row.twoPM,
       twoPA: sum.twoPA + row.twoPA,
       threePM: sum.threePM + row.threePM,
       threePA: sum.threePA + row.threePA,
       ftm: sum.ftm + row.ftm,
       fta: sum.fta + row.fta,
-    }), { twoPM: 0, twoPA: 0, threePM: 0, threePA: 0, ftm: 0, fta: 0 });
+    }), { points: 0, twoPM: 0, twoPA: 0, threePM: 0, threePA: 0, ftm: 0, fta: 0 });
     const fieldGoalAttempts = totals.twoPA + totals.threePA;
     return {
       points: mean(qualifiedLeaguePlayers.map((row) => playerPerGame(row, "points"))),
@@ -88,11 +93,13 @@ export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: str
       steals: mean(qualifiedLeaguePlayers.map((row) => playerPerGame(row, "steals"))),
       blocks: mean(qualifiedLeaguePlayers.map((row) => playerPerGame(row, "blocks"))),
       minutes: mean(qualifiedLeaguePlayers.map((row) => row.games > 0 ? row.minutes / row.games : null)),
+      attemptsPer40: mean(qualifiedLeaguePlayers.map(playerAttemptsPer40)),
       assistTurnover: mean(qualifiedLeaguePlayers.map(playerAssistTurnoverRatio)),
       freeThrows: totals.fta > 0 ? (totals.ftm / totals.fta) * 100 : null,
       efficiencyPer40: mean(qualifiedLeaguePlayers.map(playerEfficiencyPer40)),
       fieldGoals: fieldGoalAttempts > 0 ? ((totals.twoPM + totals.threePM) / fieldGoalAttempts) * 100 : null,
       effectiveFieldGoals: fieldGoalAttempts > 0 ? ((totals.twoPM + totals.threePM * 1.5) / fieldGoalAttempts) * 100 : null,
+      trueShooting: trueShootingPct(totals.points, fieldGoalAttempts, totals.fta),
     };
   }, [qualifiedLeaguePlayers]);
   const averageText = (value: number | null, unit = "") => value == null ? undefined : decimal(value) + unit;
@@ -113,6 +120,8 @@ export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: str
     "Eff/40": averageText(leagueAverages.efficiencyPer40),
     "FG%": averageText(leagueAverages.fieldGoals, "%"),
     "eFG%": averageText(leagueAverages.effectiveFieldGoals, "%"),
+    "TS%": averageText(leagueAverages.trueShooting, "%"),
+    "FGA/40": averageText(leagueAverages.attemptsPer40),
   } : {};
   const gameStatKeys = ["points", "rebounds", "assists", "steals", "blocks"] as const;
   const outcomeLabels = { win: tr("Voitto", "Win"), loss: tr("Tappio", "Loss"), draw: tr("Tasapeli", "Draw"), unknown: tr("Tulos puuttuu", "Result unavailable") };
@@ -137,6 +146,16 @@ export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: str
     { label: "eFG%", value: playerEfGPctFromTotals(player) == null ? "—" : `${decimal(playerEfGPctFromTotals(player))}%`, note: tr("kolmosen lisäarvon huomioiva FG%", "FG% adjusted for the value of threes"), series: seriesFor((game) => {
       const attempts = (game.appearance.stats.two_pa ?? 0) + (game.appearance.stats.three_pa ?? 0);
       return attempts > 0 ? (((game.appearance.stats.two_pm ?? 0) + (game.appearance.stats.three_pm ?? 0) * 1.5) / attempts) * 100 : null;
+    }) },
+    { label: "TS%", value: playerTrueShootingPctFromTotals(player) == null ? "—" : `${decimal(playerTrueShootingPctFromTotals(player))}%`, note: tr("2P-, 3P- ja vapaaheitot huomioiva", "Includes 2P, 3P, and free throws"), series: seriesFor((game) => {
+      const stats = game.appearance.stats;
+      const attempts = stats.two_pa == null || stats.three_pa == null ? null : stats.two_pa + stats.three_pa;
+      return trueShootingPct(stats.points, attempts, stats.fta);
+    }) },
+    { label: "FGA/40", value: decimal(playerAttemptsPer40(player)), note: <>{tr("kenttäheittoyritystä / 40 min", "field-goal attempts / 40 min")}{playerTeamShotShare == null ? "" : <><br />{decimal(playerTeamShotShare)}% {tr("joukkueen kenttäheittoyrityksistä", "of team field-goal attempts")}</>}</>, series: seriesFor((game) => {
+      const stats = game.appearance.stats;
+      const attempts = stats.two_pa == null || stats.three_pa == null ? null : stats.two_pa + stats.three_pa;
+      return game.appearance.minutes && attempts != null ? (attempts / game.appearance.minutes) * 40 : null;
     }) },
   ] : [];
   return (
