@@ -1,0 +1,543 @@
+{
+  "schema_version": "0.1",
+  "league_id": "naisten-korisliiga",
+  "season_id": "2024-25",
+  "source_url": "https://tulospalvelu.basket.fi/",
+  "updated_at": "2026-10-06T09:06:43Z",
+  "coverage": {
+    "matched_appearances": 879,
+    "total_appearances": 3002,
+    "matched_player_rate": 0.2928,
+    "profiles_with_data": 59,
+    "roster_fetch_failures": {},
+    "players_in_season": 151
+  },
+  "players": {
+    "36cc6dd8-90bc-11f1-9be0-05157c8829f2": {
+      "positions_fi": [
+        "Laitahyökkääjä"
+      ],
+      "positions_en": [
+        "Forward"
+      ],
+      "height_cm": 175,
+      "nationality": "FI"
+    },
+    "7d178d78-90bd-11f1-b25f-59500384dde4": {
+      "positions_fi": [
+        "Laitahyökkääjä"
+      ],
+      "positions_en": [
+        "Forward"
+      ],
+      "height_cm": 184,
+      "nationality": "FI"
+    },
+    "8ca9f24f-90bd-11f1-8c77-95de893ea309": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 173,
+      "nationality": "FI"
+    },
+    "f3ee9fc8-90bd-11f1-a9fa-4f8fabaf4a0e": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 177,
+      "nationality": "FI"
+    },
+    "24afa711-90bc-11f1-ae99-b9351c62770e": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 172,
+      "nationality": "FI"
+    },
+    "295fd067-90bd-11f1-bcf0-d1b26dd8807a": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 163,
+      "nationality": "FI"
+    },
+    "e68d85b2-90bd-11f1-ba0f-d7c486996b5f": {
+      "positions_fi": [
+        "Sentteri"
+      ],
+      "positions_en": [
+        "Center"
+      ],
+      "height_cm": 183,
+      "nationality": "FI"
+    },
+    "0ff1d72f-90bf-11f1-be89-31ded31f16e5": {
+      "positions_fi": [
+        "Sentteri"
+      ],
+      "positions_en": [
+        "Center"
+      ],
+      "height_cm": 191,
+      "nationality": "FI"
+    },
+    "1f9bbb22-90bf-11f1-a972-7104566eb116": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 177,
+      "nationality": "FI"
+    },
+    "2c6d50fe-90bf-11f1-9c4e-515875ef95f7": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 181,
+      "nationality": "FI"
+    },
+    "a0c836be-90be-11f1-911e-f55c6a1f11ab": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 182,
+      "nationality": "FI"
+    },
+    "b5fa7db0-90be-11f1-88d4-6b2027ef299b": {
+      "positions_fi": [
+        "Sentteri"
+      ],
+      "positions_en": [
+        "Center"
+      ],
+      "height_cm": 197,
+      "nationality": "FI"
+    },
+    "c470e1d1-90be-11f1-bdec-99f5e03a6b84": {
+      "positions_fi": [
+        "Laitahyökkääjä"
+      ],
+      "positions_en": [
+        "Forward"
+      ],
+      "height_cm": 188,
+      "nationality": "FI"
+    },
+    "d5d80bed-90be-11f1-92a8-2dc165e7f1b2": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 177,
+      "nationality": "FI"
+    },
+    "45d4e94b-90bd-11f1-bfd6-c73957d2f288": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 172,
+      "nationality": "FI"
+    },
+    "02439126-90bd-11f1-9900-e9a336bf1467": {
+      "positions_fi": [
+        "Laitahyökkääjä"
+      ],
+      "positions_en": [
+        "Forward"
+      ],
+      "height_cm": 178,
+      "nationality": "FI"
+    },
+    "164ac9ef-90bf-11f1-9b48-1f5ab6163e2c": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 171,
+      "nationality": "FI"
+    },
+    "a7cfdab7-90be-11f1-8a54-13228fe003c9": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 179,
+      "nationality": "FI"
+    },
+    "ec7ed40e-90bd-11f1-889f-5bafc2773088": {
+      "positions_fi": [
+        "Laitahyökkääjä"
+      ],
+      "positions_en": [
+        "Forward"
+      ],
+      "height_cm": 183,
+      "nationality": "FI"
+    },
+    "30ca37fe-90bd-11f1-a430-df0c7c693a34": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 175,
+      "nationality": "US"
+    },
+    "7268df59-90bc-11f1-82ce-fdb6131f8409": {
+      "positions_fi": [
+        "Laitahyökkääjä"
+      ],
+      "positions_en": [
+        "Forward"
+      ],
+      "height_cm": 173,
+      "nationality": "FI"
+    },
+    "1f88c5bf-90bf-11f1-9595-7104566eb116": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 160,
+      "nationality": "FI"
+    },
+    "3f014d7d-90bd-11f1-a152-b9351c62770e": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 172,
+      "nationality": "FI"
+    },
+    "5abd665b-90bd-11f1-bba0-6dc09d38f92b": {
+      "positions_fi": [
+        "Sentteri"
+      ],
+      "positions_en": [
+        "Center"
+      ],
+      "height_cm": 185,
+      "nationality": "FI"
+    },
+    "e0ff4b1d-90bd-11f1-939f-6be1da1f835c": {
+      "positions_fi": [
+        "Sentteri"
+      ],
+      "positions_en": [
+        "Center"
+      ],
+      "height_cm": 180,
+      "nationality": "FI"
+    },
+    "9b18fc96-90bb-11f1-8441-35d7afbe70b8": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 165,
+      "nationality": "FI"
+    },
+    "aee15430-90bd-11f1-9f98-37aaf0479419": {
+      "positions_fi": [
+        "Laitahyökkääjä"
+      ],
+      "positions_en": [
+        "Forward"
+      ],
+      "height_cm": 176,
+      "nationality": "FI"
+    },
+    "f1bb247c-90bd-11f1-ac51-4f8fabaf4a0e": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 177,
+      "nationality": "FI"
+    },
+    "b68fc847-90be-11f1-9da8-6b2027ef299b": {
+      "positions_fi": [
+        "Laitahyökkääjä"
+      ],
+      "positions_en": [
+        "Forward"
+      ],
+      "height_cm": 190,
+      "nationality": "FI"
+    },
+    "93dacbdf-90be-11f1-8ee4-b9d3b0a6c9e2": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 180,
+      "nationality": "FI"
+    },
+    "cadfb0d4-90be-11f1-94a8-699532503340": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 173,
+      "nationality": "FI"
+    },
+    "bb4c762b-90be-11f1-80a5-6b2027ef299b": {
+      "positions_fi": [
+        "Sentteri"
+      ],
+      "positions_en": [
+        "Center"
+      ],
+      "height_cm": 188,
+      "nationality": "FI"
+    },
+    "517a716f-90be-11f1-b1eb-699532503340": {
+      "positions_fi": [
+        "Laitahyökkääjä"
+      ],
+      "positions_en": [
+        "Forward"
+      ],
+      "height_cm": 185,
+      "nationality": "FI"
+    },
+    "da2b5a61-90bd-11f1-ae42-23575df7f55b": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 173,
+      "nationality": "FI"
+    },
+    "57fddf41-90be-11f1-8d52-174497ca91c8": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 171,
+      "nationality": "FI"
+    },
+    "28ab307c-90bc-11f1-b7c8-d1ba813aa822": {
+      "positions_fi": [
+        "Laitahyökkääjä"
+      ],
+      "positions_en": [
+        "Forward"
+      ],
+      "height_cm": 183,
+      "nationality": "US"
+    },
+    "51299fe5-90bc-11f1-99e8-2d9b7177c7c3": {
+      "positions_fi": [
+        "Laitahyökkääjä"
+      ],
+      "positions_en": [
+        "Forward"
+      ],
+      "height_cm": 178,
+      "nationality": "US"
+    },
+    "1e92d90a-90bf-11f1-bc2e-7104566eb116": {
+      "positions_fi": [
+        "Sentteri"
+      ],
+      "positions_en": [
+        "Center"
+      ],
+      "height_cm": 183,
+      "nationality": "FI"
+    },
+    "4c0e43ae-90bf-11f1-aa9e-85b9a01ea999": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 176,
+      "nationality": "FI"
+    },
+    "119b31d8-90bd-11f1-b34c-7b8c3a749dc5": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 173,
+      "nationality": "FI"
+    },
+    "4e4313fa-90bd-11f1-aa24-d925956b0a39": {
+      "positions_fi": [
+        "Sentteri"
+      ],
+      "positions_en": [
+        "Center"
+      ],
+      "height_cm": 185,
+      "nationality": "FI"
+    },
+    "a88d047f-90be-11f1-abb8-13228fe003c9": {
+      "positions_fi": [
+        "Laitahyökkääjä"
+      ],
+      "positions_en": [
+        "Forward"
+      ],
+      "height_cm": 178,
+      "nationality": "FI"
+    },
+    "d07fac4d-90be-11f1-a798-1550020fb2b2": {
+      "positions_fi": [
+        "Laitahyökkääjä"
+      ],
+      "positions_en": [
+        "Forward"
+      ],
+      "height_cm": 182,
+      "nationality": "FI"
+    },
+    "a08bb81c-90bd-11f1-842e-277bedfa33ca": {
+      "positions_fi": [],
+      "positions_en": [],
+      "height_cm": 170,
+      "nationality": "FI"
+    },
+    "c570bb13-90bd-11f1-8a85-7b525a68ccc9": {
+      "positions_fi": [],
+      "positions_en": [],
+      "height_cm": 175,
+      "nationality": "FI"
+    },
+    "19c35381-90be-11f1-8d32-5d5f4f976a20": {
+      "positions_fi": [],
+      "positions_en": [],
+      "height_cm": 189,
+      "nationality": "FI"
+    },
+    "10cdb07f-90bd-11f1-9539-7b8c3a749dc5": {
+      "positions_fi": [],
+      "positions_en": [],
+      "height_cm": 176,
+      "nationality": "FI"
+    },
+    "68451ce5-90bd-11f1-b9da-73575e376a6e": {
+      "positions_fi": [],
+      "positions_en": [],
+      "height_cm": 174,
+      "nationality": "FI"
+    },
+    "02f00705-90bf-11f1-8a81-afaea9d0f10f": {
+      "positions_fi": [],
+      "positions_en": [],
+      "height_cm": 186,
+      "nationality": "FI"
+    },
+    "09f19008-90bf-11f1-ac74-af23f238c982": {
+      "positions_fi": [],
+      "positions_en": [],
+      "height_cm": 175,
+      "nationality": "FI"
+    },
+    "c55056c3-90bd-11f1-8e05-7b525a68ccc9": {
+      "positions_fi": [],
+      "positions_en": [],
+      "height_cm": 185,
+      "nationality": "FI"
+    },
+    "3eb16fdc-90bd-11f1-a2bc-b9351c62770e": {
+      "positions_fi": [],
+      "positions_en": [],
+      "height_cm": 172,
+      "nationality": "FI"
+    },
+    "688f4311-90bd-11f1-8224-73575e376a6e": {
+      "positions_fi": [],
+      "positions_en": [],
+      "height_cm": 181,
+      "nationality": "FI"
+    },
+    "9b566fe8-90bc-11f1-9632-d14817461866": {
+      "positions_fi": [],
+      "positions_en": [],
+      "height_cm": 177,
+      "nationality": "FI"
+    },
+    "eedffa14-90bb-11f1-8d0f-51139916104b": {
+      "positions_fi": [],
+      "positions_en": [],
+      "height_cm": 185,
+      "nationality": "FI"
+    },
+    "dfe80f45-90bd-11f1-be7c-6be1da1f835c": {
+      "positions_fi": [],
+      "positions_en": [],
+      "height_cm": 180,
+      "nationality": "FI"
+    },
+    "e3d248a5-90be-11f1-82ef-73883e79fac1": {
+      "positions_fi": [],
+      "positions_en": [],
+      "height_cm": 184,
+      "nationality": "FI"
+    },
+    "072bebf0-90be-11f1-9991-63f25f046c80": {
+      "positions_fi": [],
+      "positions_en": [],
+      "height_cm": 185,
+      "nationality": "FI"
+    },
+    "5f19357c-90bc-11f1-9f21-9f45eff23255": {
+      "positions_fi": [],
+      "positions_en": [],
+      "height_cm": 173,
+      "nationality": "US"
+    }
+  }
+}

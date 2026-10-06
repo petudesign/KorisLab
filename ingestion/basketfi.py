@@ -60,3 +60,6 @@ class BasketFiClient:
 
     def get_match(self, match_id: str) -> dict[str, Any]:
         return self._get_json("getMatch", match_id=match_id)
+
+    def get_team(self, team_id: str) -> dict[str, Any]:
+        return self._get_json("getTeam", team_id=team_id)

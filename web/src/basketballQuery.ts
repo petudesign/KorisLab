@@ -1,7 +1,7 @@
 import { leagues, type LeagueId } from "./leagues.ts";
-import type { ScheduleMatch, SeasonMatchRecord, SeasonId } from "./SeasonContext";
+import { isCompletedScheduleStatus, isLiveScheduleStatus, type ScheduleMatch, type SeasonMatchRecord, type SeasonId } from "./SeasonContext";
 import type { ViewKey } from "./data";
-import { aggregateSeasonPlayers, type SeasonPlayerRow } from "./playerStats.ts";
+import { aggregateSeasonPlayers, progressivePlayerQualification, type SeasonPlayerRow } from "./playerStats.ts";
 
 export type QueryTarget = {
   view: ViewKey;
@@ -125,7 +125,7 @@ function uniqueTeams(teams: TeamLookup[]) {
 function upcomingFixtures(schedule: ScheduleMatch[]) {
   const now = Date.now();
   return schedule.filter((fixture) => {
-    if (fixture.status.toLocaleLowerCase() === "played" || fixture.home.score !== null || fixture.away.score !== null) return false;
+    if (isCompletedScheduleStatus(fixture.status) || isLiveScheduleStatus(fixture.status) || fixture.home.score !== null || fixture.away.score !== null) return false;
     const scheduledAt = fixture.scheduled_date ? new Date(`${fixture.scheduled_date}T${fixture.scheduled_time ?? "23:59:00"}`).getTime() : NaN;
     return Number.isFinite(scheduledAt) && scheduledAt >= now;
   }).sort((a, b) => `${a.scheduled_date ?? "9999"} ${a.scheduled_time ?? ""}`.localeCompare(`${b.scheduled_date ?? "9999"} ${b.scheduled_time ?? ""}`));
@@ -427,6 +427,7 @@ export async function resolveBasketballQuery(rawQuery: string, options: ResolveO
 
   const matches = await options.loadMatches(targetSeason);
   const seasonPlayers = aggregateSeasonPlayers(matches);
+  const qualification = progressivePlayerQualification(matches);
   const foundPlayers = mentionedPlayers(query, seasonPlayers);
   if (foundPlayers.length > 1) {
     const suggestions = foundPlayers.slice(0, 3).map((player) => options.language === "fi" ? `${player.name} pisteet` : `${player.name} points`);
@@ -479,7 +480,7 @@ export async function resolveBasketballQuery(rawQuery: string, options: ResolveO
       const requestedPlayer = foundPlayers.length === 1 ? foundPlayers[0] : undefined;
       const selectedTeam = mentionedTeam(query, seasonTeams);
       const pool = requestedPlayer ? [requestedPlayer] : selectedTeam ? seasonPlayers.filter((player) => player.team === selectedTeam.name) : seasonPlayers;
-      const eligible = requestedPlayer ? pool : perGame ? pool.filter((player) => player.games >= 8 && player.minutes >= 120) : pool;
+      const eligible = requestedPlayer ? pool : perGame ? pool.filter((player) => player.games >= qualification.minimumGames && player.minutes >= qualification.minimumMinutes) : pool;
       const ranked = eligible
         .map((player) => ({ player, value: stat.value(player) }))
         .filter((row): row is { player: SeasonPlayerRow; value: number } => row.value != null)

@@ -29,6 +29,7 @@ export type BoxScore = {
 
 export type Player = {
   name: string;
+  sourcePlayerId?: string;
   team: string;
   teamColor: "coral" | "mint";
   number: number | null;

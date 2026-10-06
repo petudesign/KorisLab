@@ -1,2 +1,7 @@
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /studio
+
 User-agent: *
+Allow: /
 Disallow: /studio

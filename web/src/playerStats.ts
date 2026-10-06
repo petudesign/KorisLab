@@ -2,6 +2,19 @@ import type { SeasonMatchRecord } from "./SeasonContext";
 import { playerDisplayName } from "./playerName.ts";
 type RawSeasonPlayer = SeasonMatchRecord["teams"][number]["players"][number];
 
+export function progressivePlayerQualification(records: SeasonMatchRecord[]) {
+  const teamGames = new Map<string, number>();
+  for (const record of records) {
+    for (const team of record.teams) {
+      teamGames.set(team.source_id, (teamGames.get(team.source_id) ?? 0) + 1);
+    }
+  }
+
+  const mostPlayedTeamGames = Math.max(0, ...teamGames.values());
+  const minimumGames = Math.max(2, Math.ceil(mostPlayedTeamGames / 3));
+  return { minimumGames, minimumMinutes: minimumGames * 15, mostPlayedTeamGames };
+}
+
 export function playerGameOutcome(teamScore: number | null | undefined, opponentScore: number | null | undefined): "win" | "loss" | "draw" | "unknown" {
   if (teamScore == null || opponentScore == null || !Number.isFinite(teamScore) || !Number.isFinite(opponentScore)) return "unknown";
   return teamScore > opponentScore ? "win" : teamScore < opponentScore ? "loss" : "draw";
@@ -26,6 +39,8 @@ export type SeasonPlayerRow = {
   turnovers: number;
   steals: number | null;
   blocks: number | null;
+  blocksReceived: number | null;
+  plusMinus: number | null;
   efficiency: number;
 };
 
@@ -56,6 +71,8 @@ export function aggregateSeasonPlayers(records: SeasonMatchRecord[]) {
           turnovers: 0,
           steals: 0,
           blocks: 0,
+          blocksReceived: 0,
+          plusMinus: 0,
           efficiency: 0,
         };
         const stats = player.stats;
@@ -74,6 +91,8 @@ export function aggregateSeasonPlayers(records: SeasonMatchRecord[]) {
         row.turnovers += stats.turnovers ?? 0;
         row.steals = row.steals == null || stats.steals == null ? null : row.steals + stats.steals;
         row.blocks = row.blocks == null || stats.blocks == null ? null : row.blocks + stats.blocks;
+        row.blocksReceived = row.blocksReceived == null || stats.blocks_received == null ? null : row.blocksReceived + stats.blocks_received;
+        row.plusMinus = row.plusMinus == null || stats.plus_minus == null ? null : row.plusMinus + stats.plus_minus;
         row.efficiency += stats.efficiency ?? 0;
         rows.set(id, row);
       }
@@ -82,7 +101,7 @@ export function aggregateSeasonPlayers(records: SeasonMatchRecord[]) {
   return Array.from(rows.values()).filter((player) => player.games > 0);
 }
 
-export function playerPerGame(player: SeasonPlayerRow, stat: keyof Pick<SeasonPlayerRow, "points" | "rebounds" | "assists" | "steals" | "blocks">) {
+export function playerPerGame(player: SeasonPlayerRow, stat: keyof Pick<SeasonPlayerRow, "points" | "rebounds" | "assists" | "steals" | "blocks" | "blocksReceived" | "plusMinus">) {
   return player.games === 0 || player[stat] == null ? null : player[stat] / player.games;
 }
 

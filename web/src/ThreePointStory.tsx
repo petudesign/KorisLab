@@ -2,6 +2,9 @@ import { useState } from "react";
 import { useI18n } from "./i18n";
 import { Icon } from "./Icon";
 import { ShotCount } from "./ShotCount";
+import { followLink, routeHref } from "./routing";
+import type { LeagueId } from "./leagues";
+import type { SeasonId } from "./SeasonContext";
 
 type TeamSummary = {
   source_team_id: string;
@@ -46,8 +49,11 @@ type Props = {
   players: PlayerRow[];
   games: GameRow[];
   dataStatus: "loading" | "ready" | "error";
+  seasonId: SeasonId;
+  leagueId: LeagueId;
   onOpenTeamProfile: (teamId: string) => void;
   onOpenMatch: (matchId: string) => void;
+  onOpenPlayer: (playerId: string) => void;
 };
 
 function formatNumber(value: number, language: "fi" | "en", digits = 1) {
@@ -67,7 +73,7 @@ function formatDate(value: string | null, language: "fi" | "en") {
   }).format(new Date(value));
 }
 
-export function ThreePointStory({ team, nextTeam, league, players, games, dataStatus, onOpenTeamProfile, onOpenMatch }: Props) {
+export function ThreePointStory({ team, nextTeam, league, players, games, dataStatus, seasonId, leagueId, onOpenTeamProfile, onOpenMatch, onOpenPlayer }: Props) {
   const { language, tr } = useI18n();
   const [selectedGameId, setSelectedGameId] = useState<string | null>(null);
   const activeGame = games.find((game) => game.id === selectedGameId) ?? games.at(-1);
@@ -213,7 +219,7 @@ export function ThreePointStory({ team, nextTeam, league, players, games, dataSt
               const makeShare = team.totals.three_pm > 0 ? 100 * player.threePM / team.totals.three_pm : 0;
               const attemptsPer40 = player.minutes > 0 ? 40 * player.threePA / player.minutes : null;
               return <li className="three-point-player" key={player.id}>
-                <div className="three-point-player-identity"><span>{String(index + 1).padStart(2, "0")}</span><div><strong>{player.name}</strong><small>{player.games} {tr("ottelua", "games")} · {formatNumber(player.minutes, language, 0)} {tr("min", "min")}</small></div></div>
+                <div className="three-point-player-identity"><span>{String(index + 1).padStart(2, "0")}</span><div><strong><a className="three-point-player-link" href={routeHref("player-profile", seasonId, player.id, leagueId)} onClick={(event) => followLink(event, () => onOpenPlayer(player.id))}>{player.name}</a></strong><small>{player.games} {tr("ottelua", "games")} · {formatNumber(player.minutes, language, 0)} {tr("min", "min")}</small></div></div>
                 <div className="three-point-player-volume">
                   <div className="three-point-player-bar" role="img" aria-label={`${player.name}: ${formatNumber(attemptShare, language)}% ${tr("joukkueen kolmosyrityksistä", "of team three-point attempts")}`}><span style={{ width: `${(player.threePA / highestPlayerAttempts) * 100}%` }} /></div>
                   <small>{formatNumber(attemptShare, language)}% {tr("yrityksistä", "of attempts")} · {formatNumber(makeShare, language)}% {tr("osumista", "of makes")}</small>

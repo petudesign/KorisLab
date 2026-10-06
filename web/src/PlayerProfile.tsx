@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { ShotCount } from "./ShotCount";
 import { SeasonSelector, useSeason, type SeasonMatchRecord } from "./SeasonContext";
-import { aggregateSeasonPlayers, aggregatePlayerShotVolumes, playerPerGame, playerFgPctFromTotals, playerFtPctFromTotals, playerEfGPctFromTotals, playerTrueShootingPctFromTotals, trueShootingPct, playerAttemptsPer40, playerAssistTurnoverRatio, playerEfficiencyPer40, playerGameOutcome, type SeasonPlayerRow } from "./playerStats";
+import { aggregateSeasonPlayers, aggregatePlayerShotVolumes, playerPerGame, playerFgPctFromTotals, playerFtPctFromTotals, playerEfGPctFromTotals, playerTrueShootingPctFromTotals, trueShootingPct, playerAttemptsPer40, playerAssistTurnoverRatio, playerEfficiencyPer40, playerGameOutcome, progressivePlayerQualification, type SeasonPlayerRow } from "./playerStats";
 import { useI18n } from "./i18n";
 import { scheduleByMatchId } from "./schedule";
 import { followLink, routeHref } from "./routing";
@@ -12,18 +12,46 @@ import { AssistCreation } from "./AssistCreation";
 import { PlayerShotChart } from "./ShotChart";
 import { Icon } from "./Icon";
 import { getPlayerAwards } from "./playerAwards";
+import { PlayerSeasonComparison } from "./PlayerSeasonComparison";
+import { leagueAssetPath } from "./leagues";
+import { PlayerStrengths } from "./PlayerStrengths";
 
 type ProfileMetric = { label: string; value: string; note: ReactNode; series?: Array<number | null> };
+type PlayerBio = { positions_fi?: string[]; positions_en?: string[]; height_cm?: number | null; nationality?: string | null };
+type PlayerBioSnapshot = { schema_version: string; league_id: string; season_id: string; players: Record<string, PlayerBio> };
+
+function nationalityLabel(code: string, language: string) {
+  try {
+    return new Intl.DisplayNames([language === "fi" ? "fi-FI" : "en"], { type: "region" }).of(code) ?? code;
+  } catch {
+    return code;
+  }
+}
 
 export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: string; onOpenMatch: (id: string) => void; onBack: () => void }) {
   const { leagueId, leagueName, leagueNameEn, seasonId, seasonLabel, current, loadMatches, loadMatchesForSeason, setSeasonId } = useSeason();
   const { language, tr } = useI18n();
   const [phase, setPhase] = useState<"regular" | "playoffs">("regular");
+  const [profileView, setProfileView] = useState<"season" | "comparison">("season");
   const activePhase = seasonId !== "2026-27" ? phase : "regular";
   const [records, setRecords] = useState<SeasonMatchRecord[]>([]);
   const [knownPlayer, setKnownPlayer] = useState<SeasonPlayerRow>();
+  const [playerBios, setPlayerBios] = useState<Record<string, PlayerBio>>({});
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
+  useEffect(() => {
+    let cancelled = false;
+    setPlayerBios({});
+    void fetch(leagueAssetPath(leagueId, `player-profiles-${seasonId}.json`), { cache: "no-cache" })
+      .then(response => response.ok ? response.json() as Promise<PlayerBioSnapshot> : null)
+      .then(snapshot => {
+        if (!cancelled && snapshot?.schema_version === "0.1" && snapshot.league_id === leagueId && snapshot.season_id === seasonId) {
+          setPlayerBios(snapshot.players ?? {});
+        }
+      })
+      .catch(() => { /* Bio fields are optional when the source has no roster data. */ });
+    return () => { cancelled = true; };
+  }, [leagueId, seasonId]);
   useEffect(() => {
     let cancelled = false;
     setLoaded(false);
@@ -47,6 +75,7 @@ export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: str
   }, [loadMatches, loadMatchesForSeason, playerId, seasonId, activePhase]);
   const leaguePlayers = useMemo(() => aggregateSeasonPlayers(records), [records]);
   const player = leaguePlayers.find((row) => row.id === playerId);
+  const strengthsQualification = useMemo(() => progressivePlayerQualification(records), [records]);
   const playerShotVolume = useMemo(() => aggregatePlayerShotVolumes(records).get(playerId), [records, playerId]);
   const playerTeamShotShare = playerShotVolume?.complete && playerShotVolume.teamFieldGoalAttempts > 0
     ? (playerShotVolume.fieldGoalAttempts / playerShotVolume.teamFieldGoalAttempts) * 100
@@ -71,6 +100,7 @@ export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: str
     return [{ id: record.game.source_id, date, team, opponent, appearance, outcome: playerGameOutcome(team.score, opponent?.score) }];
   })).sort((a, b) => (b.date ?? "").localeCompare(a.date ?? "")), [records, playerId]);
   const decimal = (value: number | null | undefined) => value == null ? "—" : value.toLocaleString(language === "fi" ? "fi-FI" : "en-GB", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+  const signedDecimal = (value: number | null | undefined) => value == null ? "—" : `${value > 0 ? "+" : value < 0 ? "−" : ""}${decimal(Math.abs(value))}`;
   const leagueAverages = useMemo(() => {
     const mean = (values: Array<number | null | undefined>) => {
       const available = values.filter((value): value is number => typeof value === "number" && Number.isFinite(value));
@@ -92,6 +122,8 @@ export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: str
       rebounds: mean(qualifiedLeaguePlayers.map((row) => playerPerGame(row, "rebounds"))),
       steals: mean(qualifiedLeaguePlayers.map((row) => playerPerGame(row, "steals"))),
       blocks: mean(qualifiedLeaguePlayers.map((row) => playerPerGame(row, "blocks"))),
+      blocksReceived: mean(qualifiedLeaguePlayers.map((row) => playerPerGame(row, "blocksReceived"))),
+      plusMinus: mean(qualifiedLeaguePlayers.map((row) => playerPerGame(row, "plusMinus"))),
       minutes: mean(qualifiedLeaguePlayers.map((row) => row.games > 0 ? row.minutes / row.games : null)),
       attemptsPer40: mean(qualifiedLeaguePlayers.map(playerAttemptsPer40)),
       assistTurnover: mean(qualifiedLeaguePlayers.map(playerAssistTurnoverRatio)),
@@ -104,7 +136,32 @@ export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: str
   }, [qualifiedLeaguePlayers]);
   const averageText = (value: number | null, unit = "") => value == null ? undefined : decimal(value) + unit;
   const name = knownPlayer?.name ?? tr("Pelaajaprofiili", "Player profile");
-  usePageMetadata(`${name} · ${seasonLabel}`, tr(`${name}: ${leagueName} kauden ${seasonLabel} pelaajatilastot ja otteluloki.`, `${name}: ${leagueNameEn} ${seasonLabel} player statistics and game log.`), { noindex: loaded && !knownPlayer });
+  const phaseDescription = activePhase === "playoffs" ? tr("pudotuspeleissä", "in the playoffs") : tr("runkosarjassa", "in the regular season");
+  const playerBio = playerBios[playerId];
+  const profilePositions = language === "fi" ? playerBio?.positions_fi : playerBio?.positions_en;
+  const nationality = playerBio?.nationality ? nationalityLabel(playerBio.nationality, language) : null;
+  const discoverySummary = player
+    ? tr(
+      `${name} pelasi ${leagueName}n ${seasonLabel} kauden ${phaseDescription} ${player.games} ottelua. Hän teki keskimäärin ${decimal(playerPerGame(player, "points"))} pistettä, ${decimal(playerPerGame(player, "rebounds"))} levypalloa ja ${decimal(playerPerGame(player, "assists"))} syöttöä ottelua kohti. Keskiarvot perustuvat pelattuihin otteluihin eivätkä yksin kuvaa pelaajan roolia tai kokonaisvaikutusta.`,
+      `${name} appeared in ${player.games} ${leagueNameEn} games ${phaseDescription} in ${seasonLabel}, averaging ${decimal(playerPerGame(player, "points"))} points, ${decimal(playerPerGame(player, "rebounds"))} rebounds and ${decimal(playerPerGame(player, "assists"))} assists per game. These box-score averages do not describe the player's role or overall impact on their own.`,
+    )
+    : tr(`${name}: ${leagueName} kauden ${seasonLabel} varmennettuja pelaajatilastoja ei ole saatavilla.`, `${name}: verified ${leagueNameEn} player statistics for ${seasonLabel} are unavailable.`);
+  const profileUrl = new URL(routeHref("player-profile", seasonId, playerId, leagueId), window.location.origin).href;
+  const profileStructuredData = player ? {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    name: `${name} · ${leagueName} ${seasonLabel}`,
+    description: discoverySummary,
+    url: profileUrl,
+    mainEntity: {
+      "@type": "Person",
+      "@id": `${profileUrl}#player`,
+      name,
+      description: discoverySummary,
+      memberOf: { "@type": "SportsTeam", name: player.team },
+    },
+  } : null;
+  usePageMetadata(`${name} · ${seasonLabel}`, discoverySummary, { noindex: loaded && !knownPlayer, structuredData: profileStructuredData });
   const wins = games.filter((game) => game.outcome === "win").length;
   const losses = games.filter((game) => game.outcome === "loss").length;
   const awards = getPlayerAwards(playerId);
@@ -114,6 +171,8 @@ export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: str
     [tr("Levypallot", "Rebounds")]: averageText(leagueAverages.rebounds),
     [tr("Riistot", "Steals")]: averageText(leagueAverages.steals),
     [tr("Torjunnat", "Blocks")]: averageText(leagueAverages.blocks),
+    [tr("Blokatut heitot", "Blocked shots received")]: averageText(leagueAverages.blocksReceived),
+    ["+/−"]: leagueAverages.plusMinus == null ? undefined : signedDecimal(leagueAverages.plusMinus),
     [tr("Peliaika", "Playing time")]: averageText(leagueAverages.minutes, " min"),
     ["AST/TO"]: averageText(leagueAverages.assistTurnover),
     "FT%": averageText(leagueAverages.freeThrows, "%"),
@@ -123,7 +182,14 @@ export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: str
     "TS%": averageText(leagueAverages.trueShooting, "%"),
     "FGA/40": averageText(leagueAverages.attemptsPer40),
   } : {};
-  const gameStatKeys = ["points", "rebounds", "assists", "steals", "blocks"] as const;
+  const gameStatColumns = [
+    { key: "points", label: "PTS" },
+    { key: "rebounds", label: "REB" },
+    { key: "assists", label: "AST" },
+    { key: "steals", label: "STL" },
+    { key: "blocks", label: "BLK" },
+    { key: "blocks_received", label: "BR" },
+  ] as const;
   const outcomeLabels = { win: tr("Voitto", "Win"), loss: tr("Tappio", "Loss"), draw: tr("Tasapeli", "Draw"), unknown: tr("Tulos puuttuu", "Result unavailable") };
   const outcomeMarks = { win: tr("V", "W"), loss: tr("H", "L"), draw: tr("T", "D"), unknown: "—" };
   const recentGamesOldestFirst = games.slice(0, 10).reverse();
@@ -134,6 +200,8 @@ export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: str
     { label: tr("Levypallot", "Rebounds"), value: decimal(playerPerGame(player, "rebounds")), note: tr("per ottelu", "per game"), series: seriesFor((game) => game.appearance.stats.rebounds ?? 0) },
     { label: tr("Riistot", "Steals"), value: decimal(playerPerGame(player, "steals")), note: tr("per ottelu", "per game"), series: seriesFor((game) => game.appearance.stats.steals ?? null) },
     { label: tr("Torjunnat", "Blocks"), value: decimal(playerPerGame(player, "blocks")), note: tr("per ottelu", "per game"), series: seriesFor((game) => game.appearance.stats.blocks ?? null) },
+    { label: tr("Blokatut heitot", "Blocked shots received"), value: decimal(playerPerGame(player, "blocksReceived")), note: tr("vastustajan torjumat / ottelu", "blocked by opponents per game"), series: seriesFor((game) => game.appearance.stats.blocks_received ?? null) },
+    { label: "+/−", value: signedDecimal(playerPerGame(player, "plusMinus")), note: tr("joukkueen piste-ero kentällä / ottelu", "team margin while on court per game"), series: seriesFor((game) => game.appearance.stats.plus_minus ?? null) },
     { label: tr("Peliaika", "Playing time"), value: `${decimal(player.minutes / player.games)} min`, note: tr("per ottelu", "per game"), series: seriesFor((game) => game.appearance.minutes ?? 0) },
     { label: tr("Ottelut", "Games"), value: String(player.games), note: `${wins} ${tr("V", "W")} · ${losses} ${tr("H", "L")}` },
     { label: "AST/TO", value: decimal(playerAssistTurnoverRatio(player)), note: tr("syötöt / menetykset", "assists / turnovers"), series: seriesFor((game) => game.appearance.stats.turnovers ? (game.appearance.stats.assists ?? 0) / game.appearance.stats.turnovers : null) },
@@ -168,15 +236,24 @@ export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: str
           <PlayerPortrait className="player-profile-portrait" />
           <div><h1>{name}</h1>
           <p className="intro-copy">{player
-            ? `${player.team} · ${seasonLabel} · ${activePhase === "playoffs" ? tr("pudotuspelit", "playoffs") : tr("runkosarja", "regular season")}`
-            : `${tr(leagueName, leagueNameEn)} · ${seasonLabel}`}</p></div>
+            ? `${player.team} · ${seasonLabel} · ${profileView === "comparison" ? tr("kausivertailu", "season comparison") : activePhase === "playoffs" ? tr("pudotuspelit", "playoffs") : tr("runkosarja", "regular season")}`
+            : profileView === "comparison"
+              ? `${tr(leagueName, leagueNameEn)} · ${seasonLabel} · ${tr("kausivertailu", "season comparison")}`
+              : `${tr(leagueName, leagueNameEn)} · ${seasonLabel}`}</p>
+          {(profilePositions?.length || playerBio?.height_cm || nationality) ? <dl className="player-profile-bio">
+            {profilePositions?.length ? <div><dt>{tr("Pelipaikka", "Position")}</dt><dd>{profilePositions.join(" / ")}</dd></div> : null}
+            {playerBio?.height_cm ? <div><dt>{tr("Pituus", "Height")}</dt><dd>{playerBio.height_cm} cm</dd></div> : null}
+            {nationality ? <div><dt>{tr("Kansalaisuus", "Nationality")}</dt><dd>{nationality}</dd></div> : null}
+          </dl> : null}</div>
         </div>
         <SeasonSelector />
       </section>
-      {seasonId !== "2026-27" && <div className="profile-phase-toggle" role="group" aria-label={tr("Tilastojakso", "Statistics phase")}>
-        <button type="button" aria-pressed={activePhase === "regular"} onClick={() => setPhase("regular")}>{tr("Runkosarja", "Regular season")}</button>
-        <button type="button" aria-pressed={activePhase === "playoffs"} onClick={() => setPhase("playoffs")}>{tr("Pudotuspelit", "Playoffs")}</button>
-      </div>}
+      {player && <p className="profile-discovery-summary panel">{discoverySummary}</p>}
+      <div className="profile-phase-toggle" role="group" aria-label={tr("Profiilinäkymä", "Profile view")}>
+        <button type="button" aria-pressed={profileView === "season" && activePhase === "regular"} onClick={() => { setPhase("regular"); setProfileView("season"); }}>{tr("Runkosarja", "Regular season")}</button>
+        {seasonId !== "2026-27" && <button type="button" aria-pressed={profileView === "season" && activePhase === "playoffs"} onClick={() => { setPhase("playoffs"); setProfileView("season"); }}>{tr("Pudotuspelit", "Playoffs")}</button>}
+        <button type="button" aria-pressed={profileView === "comparison"} onClick={() => setProfileView("comparison")}>{tr("Kausivertailu", "Season comparison")}</button>
+      </div>
       {awards.length > 0 && <section className="profile-awards" aria-label={tr("Pelaajan palkinnot", "Player awards")}>
         <h2>{tr("Palkinnot", "Awards")}</h2>
         <ul className="profile-awards-list">
@@ -197,6 +274,8 @@ export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: str
           <strong>{tr("Profiilin lataus epäonnistui", "Could not load profile")}</strong>
           <p>{tr("Yritä päivittää sivu.", "Try refreshing the page.")}</p>
         </div>
+      ) : profileView === "comparison" && knownPlayer ? (
+        <PlayerSeasonComparison playerId={playerId} playerName={name} seasonLimit={seasonId} phase={activePhase} />
       ) : !player ? (
         <div className="panel match-list-empty">
           <h2>{activePhase === "playoffs" ? tr("Ei pudotuspeliotteluita", "No playoff appearances") : tr("Ei ottelutilastoja tältä kaudelta", "No game statistics for this season")}</h2>
@@ -225,9 +304,10 @@ export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: str
               </div>
             ))}
           </section>
+          <PlayerStrengths player={player} players={leaguePlayers} minimumGames={strengthsQualification.minimumGames} minimumMinutes={strengthsQualification.minimumMinutes} teamShotShare={playerTeamShotShare} />
           {activePhase === "regular" || leagueId === "korisliiga" ? <>
             <AssistCreation players={[player]} profile phase={activePhase} />
-            <PlayerShotChart playerId={playerId} playerName={name} seasonId={activePhase === "playoffs" ? `${seasonId}-playoffs` : seasonId} />
+            <PlayerShotChart playerId={playerId} playerName={name} seasonId={activePhase === "playoffs" ? `${seasonId}-playoffs` : seasonId} playerGameIds={games.map((game) => game.id)} />
           </> : <>
             <p className="players-method-note">{tr("Pudotuspelien pelitilannekohtainen syöttöanalyysi ei ole vielä varmennettu. Box score -tilastot ja otteluloki ovat pudotuspelien omasta aineistosta.", "Play-by-play assist analysis is not yet verified for the playoffs. Box-score stats and game log use the playoff dataset.")}</p>
             <p className="players-method-note">{tr("Pudotuspelien pelaajakohtaisia heittokarttoja ei ole vielä tuotu aineistoon.", "Player shot charts have not yet been imported for the playoffs.")}</p>
@@ -244,7 +324,7 @@ export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: str
               <table className="players-table">
                 <caption className="sr-only">{name} · {tr("ottelukohtaiset tilastot", "game statistics")}</caption>
                 <thead>
-                  <tr>{[tr("Ottelu", "Game"), tr("Vastustaja", "Opponent"), "MIN", "PTS", "REB", "AST", "STL", "BLK", "+/−"].map((label) => <th scope="col" key={label}>{label}</th>)}</tr>
+                  <tr>{[tr("Ottelu", "Game"), tr("Vastustaja", "Opponent"), "MIN", ...gameStatColumns.map((column) => column.label), "+/−"].map((label) => <th scope="col" key={label}>{label === "BR" ? <abbr title={tr("Vastustajan torjumat heitot", "Blocked shots received")}>{label}</abbr> : label}</th>)}</tr>
                 </thead>
                 <tbody>
                   {games.map((game) => {
@@ -264,7 +344,7 @@ export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: str
                         <small>{game.team.name} · {game.team.stats.points ?? "—"}–{game.opponent?.stats.points ?? "—"}</small>
                       </td>
                       <td>{decimal(game.appearance.minutes)}</td>
-                      {gameStatKeys.map((key) => <td key={key}>{game.appearance.stats[key] ?? "—"}</td>)}
+                      {gameStatColumns.map(({ key }) => <td key={key}>{game.appearance.stats[key] ?? "—"}</td>)}
                       <td className={`profile-plus-minus ${plusMinusClass}`}>
                         {plusMinus == null ? "—" : `${plusMinus > 0 ? "+" : plusMinus < 0 ? "−" : ""}${Math.abs(plusMinus)}`}
                       </td>
@@ -274,8 +354,8 @@ export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: str
               </table>
             </div>
             <p className="players-method-note">{tr(
-              "Keskiarvot lasketaan otteluista, joissa pelaaja pelasi. FG%, FT% ja eFG% lasketaan kauden osumista ja yrityksistä yhteensä. AST/TO = syötöt / menetykset. +/- kuvaa joukkueen piste-eroa pelaajan kentälläoloaikana. Eff/40 normalisoi tehokkuusluvun 40 minuuttiin.",
-              "Averages include games in which the player played. FG%, FT% and eFG% use season makes and attempts. AST/TO = assists / turnovers. +/- is the team's score margin while the player was on court. Eff/40 normalizes the efficiency figure to 40 minutes.",
+              "Keskiarvot lasketaan otteluista, joissa pelaaja pelasi. FG%, FT% ja eFG% lasketaan kauden osumista ja yrityksistä yhteensä. BR = vastustajan torjumat heitot. AST/TO = syötöt / menetykset. +/− kuvaa joukkueen piste-eroa pelaajan kentälläoloaikana. Eff/40 normalisoi tehokkuusluvun 40 minuuttiin.",
+              "Averages include games in which the player played. FG%, FT% and eFG% use season makes and attempts. BR = blocked shots received. AST/TO = assists / turnovers. +/- is the team's score margin while the player was on court. Eff/40 normalizes the efficiency figure to 40 minutes.",
             )}</p>
           </section>
         </>

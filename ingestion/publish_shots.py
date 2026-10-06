@@ -69,6 +69,8 @@ def publish_player_shot_index(records, *, season_id, out_dir, out):
     players = {}
     failures = []
     games_with_data = 0
+    games_with_data_ids = []
+    box_score_mismatch_ids = []
     all_box_scores_match = bool(records)
     match_ids = [str(record["game"]["source_id"]) for record in records]
     if len(match_ids) != len(set(match_ids)):
@@ -85,7 +87,10 @@ def publish_player_shot_index(records, *, season_id, out_dir, out):
             continue
 
         games_with_data += 1
+        games_with_data_ids.append(match_id)
         all_box_scores_match = all_box_scores_match and chart.get("box_score_matches") is True
+        if chart.get("box_score_matches") is not True:
+            box_score_mismatch_ids.append(match_id)
         for shot in chart["shots"]:
             player_id = shot.get("player_id")
             if not isinstance(player_id, str) or not player_id:
@@ -105,6 +110,8 @@ def publish_player_shot_index(records, *, season_id, out_dir, out):
         "source_url": "https://tulospalvelu.basket.fi/",
         "expected_games": len(records),
         "games_with_data": games_with_data,
+        "games_with_data_ids": games_with_data_ids,
+        "box_score_mismatch_ids": box_score_mismatch_ids,
         "box_score_matches": all_box_scores_match and games_with_data == len(records),
         "players": sorted(players.values(), key=lambda row: row["id"]),
         "failures": failures,

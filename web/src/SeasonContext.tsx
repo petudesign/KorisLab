@@ -7,7 +7,7 @@ import men2024 from "../../data/normalized/season_korisliiga_2024_2025.summary.j
 import men2025 from "../../data/normalized/season_korisliiga_2025_2026.summary.json";
 import menPlayoffs2024 from "../../data/normalized/season_korisliiga_playoffs_2024_2025.summary.json";
 import menPlayoffs2025 from "../../data/normalized/season_korisliiga_playoffs_2025_2026.summary.json";
-import { leagueIds, leagues, leagueAssetPath, type LeagueId } from "./leagues";
+import { leagueFromRouteSlug, leagueIds, leagues, leagueAssetPath, type LeagueId } from "./leagues";
 import { useI18n } from "./i18n";
 
 export type SeasonId = "2024-25" | "2025-26" | "2026-27";
@@ -67,6 +67,12 @@ export type ScheduleMatch = {
   home: { source_team_id: string; name: string; score: number | null };
   away: { source_team_id: string; name: string; score: number | null };
 };
+export function isCompletedScheduleStatus(status: string) {
+  return ["played", "finished", "completed"].includes(status.trim().toLowerCase());
+}
+export function isLiveScheduleStatus(status: string) {
+  return ["live", "break", "playing", "in progress"].includes(status.trim().toLowerCase());
+}
 type CurrentSeason = Summary & {
   schema_version: string; season_id: string; updated_at: string; schedule: ScheduleMatch[];
   schedule_summary: { games: number; played_games: number; teams: string[]; team_count: number };
@@ -87,6 +93,11 @@ export function SeasonProvider({ children }: { children: ReactNode }) {
     const query = new URLSearchParams(window.location.search);
     const value = query.get("league");
     if (leagueIds.includes(value as LeagueId)) return value as LeagueId;
+    const pathLeague = window.location.pathname.split("/").filter(Boolean)[0] === "teams"
+      ? window.location.pathname.split("/").filter(Boolean)[1]
+      : undefined;
+    const pathLeagueId = leagueFromRouteSlug(pathLeague);
+    if (pathLeagueId) return pathLeagueId;
     return "naisten-korisliiga";
   });
   const [seasonId, setSeasonId] = useState<SeasonId>(() => {
@@ -97,7 +108,7 @@ export function SeasonProvider({ children }: { children: ReactNode }) {
   const setLeagueId = useCallback((league: LeagueId) => {
     if (league === leagueId) return;
     const url = new URL(window.location.href);
-    if (/^\/(players|matches)\/[^/]+/.test(url.pathname)) { url.pathname = `/${url.pathname.split("/")[1]}/`; url.hash = ""; }
+    if (/^\/(players|matches)\/[^/]+/.test(url.pathname) || /^\/teams\/[^/]+(?:\/[^/]+)?\/?$/.test(url.pathname)) { url.pathname = `/${url.pathname.split("/")[1]}/`; url.hash = ""; }
     if (league === "korisliiga") url.searchParams.set("league", league); else url.searchParams.delete("league");
     window.history.pushState(null, "", url);
     updateLeague(league);
@@ -136,7 +147,10 @@ export function SeasonProvider({ children }: { children: ReactNode }) {
       const query = new URLSearchParams(window.location.search);
       const season = query.get("season");
       if (seasonIds.includes(season as SeasonId)) setSeasonId(season as SeasonId);
-      updateLeague(query.get("league") === "korisliiga" ? "korisliiga" : "naisten-korisliiga");
+      const pathParts = window.location.pathname.split("/").filter(Boolean);
+      const pathLeague = pathParts[0] === "teams" ? pathParts[1] : undefined;
+      const league = query.get("league");
+      updateLeague(leagueIds.includes(league as LeagueId) ? league as LeagueId : leagueFromRouteSlug(pathLeague) ?? "naisten-korisliiga");
     };
     window.addEventListener("popstate", back);
     return () => window.removeEventListener("popstate", back);

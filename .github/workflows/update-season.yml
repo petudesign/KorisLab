@@ -13,7 +13,9 @@ on:
       - "tests/**"
       - "validation/**"
   schedule:
-    - cron: "17 10-23/2 * * *"
+    # Poll during Finnish game hours. Offset from the hour to avoid GitHub's busiest minute.
+    - cron: "7,37 12-23 * * *"
+      timezone: "Europe/Helsinki"
 
 permissions:
   contents: write
@@ -39,6 +41,7 @@ jobs:
           key: season-2026-27-${{ github.run_id }}
           restore-keys: season-2026-27-
       - name: Verify ingestion
+        if: github.event_name != 'schedule'
         run: python -m unittest discover -s tests -v
       - name: Refresh schedule and verified statistics
         run: python -m ingestion.publish_season

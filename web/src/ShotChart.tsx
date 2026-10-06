@@ -170,6 +170,8 @@ export type PlayerShotIndex = {
   season_id: string;
   expected_games: number;
   games_with_data: number;
+  games_with_data_ids: string[];
+  box_score_mismatch_ids: string[];
   box_score_matches: boolean;
   players: { id: string; name: string | null; shots: PlayerShot[] }[];
 };
@@ -178,7 +180,10 @@ type PlayerShotState = { seasonId: string; status: "loading" | "ready" | "missin
 export function parsePlayerShotIndex(value: unknown, seasonId: string): PlayerShotIndex {
   const data = value as PlayerShotIndex | null;
   if (!data || data.schema_version !== "0.1" || data.season_id !== seasonId || !Array.isArray(data.players) ||
-      !Number.isInteger(data.expected_games) || !Number.isInteger(data.games_with_data) || typeof data.box_score_matches !== "boolean") {
+      !Number.isInteger(data.expected_games) || !Number.isInteger(data.games_with_data) ||
+      !Array.isArray(data.games_with_data_ids) || data.games_with_data_ids.some((id) => typeof id !== "string") ||
+      !Array.isArray(data.box_score_mismatch_ids) || data.box_score_mismatch_ids.some((id) => typeof id !== "string") ||
+      typeof data.box_score_matches !== "boolean") {
     throw new Error("Invalid player shot index");
   }
   for (const player of data.players) {
@@ -194,7 +199,7 @@ export function parsePlayerShotIndex(value: unknown, seasonId: string): PlayerSh
   return data;
 }
 
-export function PlayerShotChart({ playerId, playerName, seasonId }: { playerId: string; playerName: string; seasonId: string }) {
+export function PlayerShotChart({ playerId, playerName, seasonId, playerGameIds }: { playerId: string; playerName: string; seasonId: string; playerGameIds: string[] }) {
   const { assetPath } = useSeason();
   const { tr, language } = useI18n();
   const [state, setState] = useState<PlayerShotState>({ seasonId: "", status: "loading", data: null });
@@ -220,6 +225,10 @@ export function PlayerShotChart({ playerId, playerName, seasonId }: { playerId: 
 
   const data = state.seasonId === seasonId ? state.data : null;
   const player = data?.players.find((row) => row.id === playerId);
+  const playedGameIds = [...new Set(playerGameIds)];
+  const coveredGameIds = new Set(data?.games_with_data_ids ?? []);
+  const coveredGames = playedGameIds.filter((id) => coveredGameIds.has(id)).length;
+  const hasBoxScoreMismatch = playedGameIds.some((id) => data?.box_score_mismatch_ids.includes(id));
   const shots = (player?.shots ?? []).filter((shot) => shotType === "all" || String(shot.points) === shotType);
   const made = shots.filter((shot) => shot.made).length;
   const located = shots.filter((shot) => shot.x !== null && shot.y !== null).length;
@@ -259,8 +268,8 @@ export function PlayerShotChart({ playerId, playerName, seasonId }: { playerId: 
             })}
           </svg>
         </div>
-        <p className="shot-method-note">{tr(`${data!.games_with_data}/${data!.expected_games} ottelun heittodata. Vapaaheitot eivät sisälly. Sama pelaaja näkyy molemmissa päädyissä, koska joukkueet vaihtavat hyökkäyssuuntaa tauolla.`, `Shot data from ${data!.games_with_data}/${data!.expected_games} games. Free throws are excluded. The player appears at both ends because teams switch direction at halftime.`)}
-          {!data!.box_score_matches && ` ${tr("Heittoloki ei täsmää kaikkien otteluiden box scoreen.", "Shot logs do not match the box scores for every game.")}`}
+        <p className="shot-method-note">{tr(`Heittodata pelaajan otteluista: ${coveredGames}/${playedGameIds.length}. Vapaaheitot eivät sisälly. Sama pelaaja näkyy molemmissa päädyissä, koska joukkueet vaihtavat hyökkäyssuuntaa tauolla.`, `Shot data for the player's games: ${coveredGames}/${playedGameIds.length}. Free throws are excluded. The player appears at both ends because teams switch direction at halftime.`)}
+          {hasBoxScoreMismatch && ` ${tr("Heittoloki ei täsmää box scoreen vähintään yhdessä pelaajan ottelussa.", "Shot logs do not match the box score in at least one of the player's games.")}`}
           {located < shots.length && ` ${tr(`${shots.length - located} heitosta puuttuu sijainti; ne sisältyvät lukuihin.`, `${shots.length - located} shots have no location; they remain included in the totals.`)}`}
         </p>
       </>}

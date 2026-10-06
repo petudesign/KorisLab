@@ -1,4 +1,4 @@
-import { useSeason, type SeasonMatchRecord } from "./SeasonContext";
+import { isCompletedScheduleStatus, isLiveScheduleStatus, useSeason, type SeasonMatchRecord } from "./SeasonContext";
 import { scheduleByMatchId } from "./schedule";
 import { useI18n } from "./i18n";
 import { TeamTrend } from "./TeamTrend";
@@ -6,6 +6,7 @@ import { TeamShootingChart } from "./TeamShootingChart";
 import { MetricSparkline } from "./MetricSparkline";
 import { Icon } from "./Icon";
 import { getProfileComparison, type ProfileComparison, type ProfileStatus } from "./teamProfileComparison";
+import { TeamLogo, teamInitials } from "./TeamLogo";
 
 type Metrics = Record<string, number | null>;
 
@@ -50,12 +51,6 @@ function gameDate(value: string | null, language: string) {
   const dateOnly = value.slice(0, 10);
   const date = new Date(`${dateOnly}T12:00:00Z`);
   return Number.isNaN(date.valueOf()) ? "—" : date.toLocaleDateString(language === "fi" ? "fi-FI" : "en-GB", { timeZone: "UTC", day: "numeric", month: "short" });
-}
-
-function teamInitials(name: string) {
-  const words = name.trim().split(/\s+/).filter(Boolean);
-  return (words.length > 1 ? words.slice(0, 2).map((part) => part.slice(0, 1)).join("") : words[0]?.slice(0, 2) ?? "")
-    .toLocaleUpperCase("fi-FI");
 }
 
 function scheduleTimestamp(date: string | null, time: string | null) {
@@ -126,7 +121,7 @@ export function TeamProfiles({ onOpenMatch, onOpenMatches, selectedTeamId, match
         return [{ id: match.game.source_id, date: matchDate(match), homeName: home.name, awayName: away.name, homeScore: home.score, awayScore: away.score, opponent: opponent.name, won: selected.score > opponent.score, verified: true }];
       }).sort((a, b) => (b.date ?? "").localeCompare(a.date ?? "")).slice(0, 5);
   const nextFixture = currentTeamSchedule
-    .filter((fixture) => fixture.status.toLowerCase() !== "played" && fixture.home.score === null && fixture.away.score === null && scheduleTimestamp(fixture.scheduled_date, fixture.scheduled_time) >= Date.now())
+    .filter((fixture) => !isCompletedScheduleStatus(fixture.status) && !isLiveScheduleStatus(fixture.status) && fixture.home.score === null && fixture.away.score === null && scheduleTimestamp(fixture.scheduled_date, fixture.scheduled_time) >= Date.now())
     .sort((a, b) => `${a.scheduled_date ?? "9999"} ${a.scheduled_time ?? ""}`.localeCompare(`${b.scheduled_date ?? "9999"} ${b.scheduled_time ?? ""}`))[0];
   const formatInteger = (value: number) => value.toLocaleString(language === "fi" ? "fi-FI" : "en-GB");
   const formatPerGame = (value: number) => (seasonSummary.games > 0 ? value / seasonSummary.games : 0).toLocaleString(language === "fi" ? "fi-FI" : "en-GB", { maximumFractionDigits: 1 });
@@ -234,7 +229,7 @@ export function TeamProfiles({ onOpenMatch, onOpenMatches, selectedTeamId, match
               const differential = pointsFor - pointsAgainst;
               return <tr key={game.id}>
                 <td>{game.verified ? <button type="button" className="team-recent-match-open-text" onClick={() => onOpenMatch(game.id)} aria-label={`${tr("Avaa ottelu vastaan", "Open game against")} ${game.opponent}`}><time dateTime={game.date ?? undefined}>{gameDate(game.date, language)}</time></button> : <time dateTime={game.date ?? undefined}>{gameDate(game.date, language)}</time>}</td>
-                <td><div className="team-recent-opponent"><span className="team-recent-match-logo" aria-hidden="true">{teamInitials(game.opponent)}</span><span>{game.opponent}</span></div></td>
+                <td><div className="team-recent-opponent"><TeamLogo teamName={game.opponent} /><span>{game.opponent}</span></div></td>
                 <td><span className={`team-recent-result${game.won ? " team-recent-result--win" : " team-recent-result--loss"}`}>{game.won ? tr("Voitto", "Win") : tr("Tappio", "Loss")}</span></td>
                 <td className="team-recent-score">{pointsFor}</td>
                 <td className="team-recent-score">{pointsAgainst}</td>
@@ -247,9 +242,9 @@ export function TeamProfiles({ onOpenMatch, onOpenMatches, selectedTeamId, match
           <div className="team-game-snapshot-heading"><h3>{tr("Seuraava ottelu", "Next game")}</h3><button type="button" className="team-game-all-link" onClick={onOpenMatches}>{tr("Kaikki ottelut", "All games")} <Icon name="arrowOutward" size={14} /></button></div>
           {nextFixture ? <>
             <div className="team-next-game-scoreboard">
-              <div className="team-next-game-team"><span className="team-recent-match-logo" aria-hidden="true">{teamInitials(nextFixture.home.name)}</span><strong>{nextFixture.home.name}</strong></div>
+              <div className="team-next-game-team"><TeamLogo teamName={nextFixture.home.name} /><strong>{nextFixture.home.name}</strong></div>
               <div className="team-next-game-time"><time dateTime={`${nextFixture.scheduled_date ?? ""}${nextFixture.scheduled_time ? `T${nextFixture.scheduled_time}` : ""}`}>{gameDate(nextFixture.scheduled_date, language)}</time><b>{nextFixture.scheduled_time?.slice(0, 5) ?? "—"}</b></div>
-              <div className="team-next-game-team"><span className="team-recent-match-logo" aria-hidden="true">{teamInitials(nextFixture.away.name)}</span><strong>{nextFixture.away.name}</strong></div>
+              <div className="team-next-game-team"><TeamLogo teamName={nextFixture.away.name} /><strong>{nextFixture.away.name}</strong></div>
             </div>
             {nextFixture.venue && <p className="team-next-game-venue">{nextFixture.venue}</p>}
           </> : <p className="team-game-empty">{seasonId === "2026-27" ? tr("Seuraavaa ottelua ei ole vielä päivätty.", "No upcoming game with a confirmed date.") : tr("Seuraava ottelu näkyy kuluvan kauden ohjelmassa.", "Upcoming games appear in the current season schedule.")}</p>}
@@ -268,7 +263,7 @@ export function TeamProfiles({ onOpenMatch, onOpenMatches, selectedTeamId, match
         </section>
       </section>
     <div className="team-profile-analysis">
-      <TeamShootingChart teamName={team.name} teamTotals={team.totals} leagueTotals={season.aggregate.league.totals} />
+      <TeamShootingChart teamName={team.name} teamTotals={team.totals} leagueTotals={season.aggregate.league.totals} teamGames={team.games} leagueTeamGames={season.aggregate.games * 2} />
       <TeamTrend key={team.source_team_id} teamId={team.source_team_id} baseline={{ ORtg: team.metrics.offensive_rating, DRtg: team.metrics.defensive_rating, "Net Rating": team.metrics.net_rating }} onOpenMatch={onOpenMatch} />
     <section id="team-league-comparison" className="profile-grid overview-section-anchor" aria-label={`${team.name}: ${tr("vertailu sarjan tasoon", "comparison with league level")}`}>
       {localizedDefinitions.map(definition => {

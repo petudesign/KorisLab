@@ -4,6 +4,7 @@ import { useI18n } from "./i18n";
 import { assistValues, parseAssistStats, type AssistStats } from "./assistStats";
 import { playerAssistTurnoverRatio, type SeasonPlayerRow } from "./playerStats";
 import { playerDisplayName } from "./playerName";
+import { PlayerPortrait } from "./PlayerPortrait";
 import { followLink, routeHref } from "./routing";
 
 type Sort = "points" | "assists" | "pointsPerAssist" | "threeShare";
@@ -61,7 +62,7 @@ export function AssistCreation({ players, onOpenPlayer, profile = false, phase =
           <div className="players-table-wrap" tabIndex={0} role="region" aria-label={tr("Syöttövertailu, vieritettävä taulukko", "Assist comparison, scrollable table")}>
             <table className="players-table assist-table"><caption className="sr-only">{tr("Syötöistä syntyneet pelitilannepisteet", "Field-goal points created by assists")}</caption>
               <thead><tr>{[tr("Pelaaja", "Player"), tr("Syötöt", "Assists"), "AST/TO", tr("2P-korit", "2P baskets"), tr("3P-korit", "3P baskets"), tr("Pisteet syötöistä", "Points from assists"), tr("Pisteet / korisyöttö", "Points / FG assist"), tr("Kolmosten osuus", "Three share"), tr("Heittovirhetilanteen syötöt", "Shooting-foul assists")].map(label => <th key={label} scope="col">{label}</th>)}</tr></thead>
-              <tbody>{sorted.slice(0, showAll ? sorted.length : 10).map(row => <tr key={row.id}><th scope="row"><a className="player-name-link" href={routeHref("player-profile", seasonId, row.id, leagueId)} onClick={event => { if (onOpenPlayer) followLink(event, () => onOpenPlayer(row.id)); }}>{playerDisplayName(row.player.name)}</a><small>{row.player.team} · {row.games} / {row.player.games} {tr("ottelua", "games")}{row.unlinked > 0 ? tr(` · ${row.unlinked} syöttöä kohdistamatta`, ` · ${row.unlinked} unlinked assists`) : ""}</small></th>
+              <tbody>{sorted.slice(0, showAll ? sorted.length : 10).map(row => <tr key={row.id}><th scope="row" className="players-table-player"><div className="player-list-identity"><PlayerPortrait className="player-list-portrait" /><div><a className="player-name-link" href={routeHref("player-profile", seasonId, row.id, leagueId)} onClick={event => { if (onOpenPlayer) followLink(event, () => onOpenPlayer(row.id)); }}>{playerDisplayName(row.player.name)}</a><small>{row.player.team} · {row.games} / {row.player.games} {tr("ottelua", "games")}{row.unlinked > 0 ? tr(` · ${row.unlinked} syöttöä kohdistamatta`, ` · ${row.unlinked} unlinked assists`) : ""}</small></div></div></th>
                 <td>{row.assists}</td><td>{decimal(row.assistTurnover, 2)}</td><td>{row.two}</td><td>{row.three}</td><td className="assist-points">{row.unlinked ? "≥ " : ""}{row.points}</td><td>{decimal(row.pointsPerAssist, 2)}</td><td>{row.threeShare === null ? "—" : `${decimal(row.threeShare)}%`}</td><td>{row.free_throw}</td></tr>)}</tbody>
             </table>
           </div>

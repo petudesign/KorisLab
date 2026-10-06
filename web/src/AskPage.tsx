@@ -40,14 +40,14 @@ export function AskPage({ query, resolution, loading, leagueId, seasonId, sugges
   const answer = resolution?.answer;
   const isPlayerAnswer = answer?.kind === "player-stat" || answer?.kind === "player-leader";
   const displayedSuggestions = resolution?.feedback.suggestions?.length ? resolution.feedback.suggestions : suggestions;
-  const teamHref = answer?.kind === "team-games" ? routeHref("teams", answer.season, answer.teamId, leagueId) : undefined;
+  const teamHref = answer?.kind === "team-games" ? routeHref("teams", answer.season, answer.teamId, leagueId, answer.teamName) : undefined;
 
   return <article className="ask-page" aria-labelledby="ask-question-heading">
     <div className="ask-page-crumb"><span>{tr("Kysymys", "Question")}</span><span aria-hidden="true">/</span><span>{tr("Vastaus", "Answer")}</span></div>
-    <h1 id="ask-question-heading">{query || tr("Kysy KorisIQ:lta", "Ask KorisIQ")}</h1>
+    <h1 id="ask-question-heading">{query || tr("Kysy KorisLabilta", "Ask KorisLab")}</h1>
 
     {loading ? <section className="panel ask-state" role="status"><span className="ask-kicker">{tr("HAETAAN AINEISTOSTA", "SEARCHING THE DATA")}</span><strong>{tr("Etsitään vastausta…", "Finding an answer…")}</strong></section>
-      : !resolution ? <section className="panel ask-state"><span className="ask-kicker">{tr("KORISIQ-KYSYMYS", "KORISIQ QUESTION")}</span><strong>{tr("Kirjoita kysymys hakukenttään.", "Enter a question in the search field.")}</strong></section>
+      : !resolution ? <section className="panel ask-state"><span className="ask-kicker">{tr("KORISLAB-KYSYMYS", "KORISLAB QUESTION")}</span><strong>{tr("Kirjoita kysymys hakukenttään.", "Enter a question in the search field.")}</strong></section>
         : <>
           <section className={`panel ask-answer ask-answer--${resolution.feedback.tone}`} aria-live="polite">
             {resolution.feedback.tone !== "answer" && <span className="ask-kicker">{tr("HAUN TULOS", "SEARCH RESULT")}</span>}

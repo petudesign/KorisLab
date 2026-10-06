@@ -1,5 +1,12 @@
 export type LeagueId = "naisten-korisliiga" | "korisliiga";
 export const leagueIds: LeagueId[] = ["naisten-korisliiga", "korisliiga"];
+export const leagueRouteSlugs: Record<LeagueId, string> = {
+  "naisten-korisliiga": "korisliiga-women",
+  korisliiga: "korisliiga",
+};
+export function leagueFromRouteSlug(slug: string | undefined): LeagueId | undefined {
+  return leagueIds.find(id => id === slug || leagueRouteSlugs[id] === slug);
+}
 export const leagues = {
   "naisten-korisliiga": {
     name: "Naisten Korisliiga", nameEn: "Women's Korisliiga", categoryId: "1",
