@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "season_id": "huki2627",
-  "updated_at": "2026-10-04T23:11:18.927932+00:00",
+  "updated_at": "2026-10-06T01:19:59.223971+00:00",
   "source_url": "https://tulospalvelu.basket.fi/",
   "schedule": [
     {
@@ -4526,8 +4526,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005902/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-04T19:38:59Z",
-        "payload_sha256": "5c64d782e53f29fcb11d3ff45053c2fd2f8626f77b5895543a29cd1ca093e04c"
+        "ingested_at_utc": "2026-10-06T01:19:06Z",
+        "payload_sha256": "058d5f7296caadb4f19426a3af5a9a9d6d61fca7a6b7b960e62487b3a98d65e8"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -4545,28 +4545,7 @@
         "venue": {
           "name": "Motonet Areena"
         },
-        "periods": [
-          {
-            "period": 1,
-            "home_score": 25,
-            "away_score": 26
-          },
-          {
-            "period": 2,
-            "home_score": 31,
-            "away_score": 24
-          },
-          {
-            "period": 3,
-            "home_score": 23,
-            "away_score": 16
-          },
-          {
-            "period": 4,
-            "home_score": 23,
-            "away_score": 17
-          }
-        ],
+        "periods": [],
         "final_score": {
           "home": 102,
           "away": 83
@@ -5605,8 +5584,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005936/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-04T19:39:04Z",
-        "payload_sha256": "f4d019442e08d28e43003290ed0af368690c9b0df8ce41eeb989bbc27204345f"
+        "ingested_at_utc": "2026-10-06T01:19:12Z",
+        "payload_sha256": "e35910abb8aa2430e354d623aed76691cd3073dc8e39960109343978b9c8de4b"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -5624,28 +5603,7 @@
         "venue": {
           "name": "Salohalli"
         },
-        "periods": [
-          {
-            "period": 1,
-            "home_score": 28,
-            "away_score": 20
-          },
-          {
-            "period": 2,
-            "home_score": 25,
-            "away_score": 29
-          },
-          {
-            "period": 3,
-            "home_score": 33,
-            "away_score": 29
-          },
-          {
-            "period": 4,
-            "home_score": 18,
-            "away_score": 29
-          }
-        ],
+        "periods": [],
         "final_score": {
           "home": 104,
           "away": 107
@@ -6724,8 +6682,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005953/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-04T19:39:08Z",
-        "payload_sha256": "87445f1f818b0f41c7806d0318162019506014a930dbc33309a235aace092083"
+        "ingested_at_utc": "2026-10-06T01:19:17Z",
+        "payload_sha256": "8f972517491ca83928f95f941c4c51a1f551d886476f51dadafce44b45bf4a80"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -6743,28 +6701,7 @@
         "venue": {
           "name": "Steveco Areena"
         },
-        "periods": [
-          {
-            "period": 1,
-            "home_score": 20,
-            "away_score": 17
-          },
-          {
-            "period": 2,
-            "home_score": 23,
-            "away_score": 12
-          },
-          {
-            "period": 3,
-            "home_score": 22,
-            "away_score": 18
-          },
-          {
-            "period": 4,
-            "home_score": 22,
-            "away_score": 17
-          }
-        ],
+        "periods": [],
         "final_score": {
           "home": 87,
           "away": 64
@@ -7843,8 +7780,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1006004/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-04T19:39:11Z",
-        "payload_sha256": "755d6f6756f6be07b229f912c09583ed1048823c0d879d8d562f8d499b03a456"
+        "ingested_at_utc": "2026-10-06T01:19:23Z",
+        "payload_sha256": "1c30d8224f27083ad360a034b3da45daa07891648e553aa64c6a579a9e4db1d5"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -7862,28 +7799,7 @@
         "venue": {
           "name": "Wintteri"
         },
-        "periods": [
-          {
-            "period": 1,
-            "home_score": 17,
-            "away_score": 23
-          },
-          {
-            "period": 2,
-            "home_score": 31,
-            "away_score": 27
-          },
-          {
-            "period": 3,
-            "home_score": 19,
-            "away_score": 27
-          },
-          {
-            "period": 4,
-            "home_score": 22,
-            "away_score": 18
-          }
-        ],
+        "periods": [],
         "final_score": {
           "home": 89,
           "away": 95
@@ -8882,8 +8798,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005885/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-04T19:39:15Z",
-        "payload_sha256": "519a7b9b583736bfc859148104d4a4c87da013bc2da2f5c35e0a9f05ebdfd94c"
+        "ingested_at_utc": "2026-10-06T01:19:27Z",
+        "payload_sha256": "7755738ba9ff26068e3b4cc79a3b9bbb4c7e86915ab683fb49e3bd73c557d0c0"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -8901,28 +8817,7 @@
         "venue": {
           "name": "MLL Areena"
         },
-        "periods": [
-          {
-            "period": 1,
-            "home_score": 25,
-            "away_score": 12
-          },
-          {
-            "period": 2,
-            "home_score": 23,
-            "away_score": 19
-          },
-          {
-            "period": 3,
-            "home_score": 13,
-            "away_score": 28
-          },
-          {
-            "period": 4,
-            "home_score": 13,
-            "away_score": 18
-          }
-        ],
+        "periods": [],
         "final_score": {
           "home": 74,
           "away": 77
@@ -9921,8 +9816,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005987/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-04T19:39:19Z",
-        "payload_sha256": "d9d9132a2e42d06265e50481e8a541fb156228b1b503bc2b70c2696d3a4ca38f"
+        "ingested_at_utc": "2026-10-06T01:19:33Z",
+        "payload_sha256": "dacae345a39506096cbcf843a1ef407ab0629e6a10c19c5eaae9eb559c6a44a8"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -9940,28 +9835,7 @@
         "venue": {
           "name": "Töölön Kisahalli"
         },
-        "periods": [
-          {
-            "period": 1,
-            "home_score": 23,
-            "away_score": 14
-          },
-          {
-            "period": 2,
-            "home_score": 21,
-            "away_score": 11
-          },
-          {
-            "period": 3,
-            "home_score": 16,
-            "away_score": 20
-          },
-          {
-            "period": 4,
-            "home_score": 16,
-            "away_score": 25
-          }
-        ],
+        "periods": [],
         "final_score": {
           "home": 76,
           "away": 70
@@ -10920,8 +10794,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1006021/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-04T19:39:21Z",
-        "payload_sha256": "977df9ae00d4e631349a11fcf3129f75631eb85f4e0a597e81190b72e9a3f66a"
+        "ingested_at_utc": "2026-10-06T01:19:38Z",
+        "payload_sha256": "0ff68a345c5c42980faecba2a5ad7308eac2768ffd6810b6af1ce57dfe2191d2"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -10939,28 +10813,7 @@
         "venue": {
           "name": "Äänekoski Areena Pankkari"
         },
-        "periods": [
-          {
-            "period": 1,
-            "home_score": 29,
-            "away_score": 24
-          },
-          {
-            "period": 2,
-            "home_score": 25,
-            "away_score": 29
-          },
-          {
-            "period": 3,
-            "home_score": 33,
-            "away_score": 19
-          },
-          {
-            "period": 4,
-            "home_score": 22,
-            "away_score": 13
-          }
-        ],
+        "periods": [],
         "final_score": {
           "home": 109,
           "away": 85
@@ -12079,8 +11932,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005836/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-04T19:39:24Z",
-        "payload_sha256": "cf800cf0f5e4daef5517130dcaee9bfb442f02c47b20def496353908b8ccb0f4"
+        "ingested_at_utc": "2026-10-06T01:19:43Z",
+        "payload_sha256": "ca1f45d1d10494d32801fce67b3bf37f84687e928060fe431e16db42b8b17420"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -12098,28 +11951,7 @@
         "venue": {
           "name": "IKH Areena"
         },
-        "periods": [
-          {
-            "period": 1,
-            "home_score": 15,
-            "away_score": 27
-          },
-          {
-            "period": 2,
-            "home_score": 20,
-            "away_score": 19
-          },
-          {
-            "period": 3,
-            "home_score": 19,
-            "away_score": 18
-          },
-          {
-            "period": 4,
-            "home_score": 24,
-            "away_score": 20
-          }
-        ],
+        "periods": [],
         "final_score": {
           "home": 78,
           "away": 84
@@ -13158,8 +12990,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005970/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-04T19:39:26Z",
-        "payload_sha256": "854e7852423a1c41bd8871d9f5e22c5153f920b7b4cdeb08d01e479bcf553fa3"
+        "ingested_at_utc": "2026-10-06T01:19:49Z",
+        "payload_sha256": "1361b5b55c84ac220b328cb3909204c71276a765cd4e45730d80ba3c494a2f7a"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -13177,28 +13009,7 @@
         "venue": {
           "name": "Tapiolan Liikuntahalli"
         },
-        "periods": [
-          {
-            "period": 1,
-            "home_score": 26,
-            "away_score": 18
-          },
-          {
-            "period": 2,
-            "home_score": 34,
-            "away_score": 18
-          },
-          {
-            "period": 3,
-            "home_score": 21,
-            "away_score": 30
-          },
-          {
-            "period": 4,
-            "home_score": 18,
-            "away_score": 25
-          }
-        ],
+        "periods": [],
         "final_score": {
           "home": 99,
           "away": 91
@@ -14157,8 +13968,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005853/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-04T19:39:30Z",
-        "payload_sha256": "8819d20cc40a374c484a2ad65a00d4f7c533b134401914a562dba7c7b2056ddd"
+        "ingested_at_utc": "2026-10-06T01:19:54Z",
+        "payload_sha256": "da10c3737a90f8a09a9fd991c4630c8efe23f2ba00058d9d8bcf8efd7a6d4f32"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -14176,28 +13987,7 @@
         "venue": {
           "name": "Loimaan Liikuntahalli"
         },
-        "periods": [
-          {
-            "period": 1,
-            "home_score": 18,
-            "away_score": 20
-          },
-          {
-            "period": 2,
-            "home_score": 23,
-            "away_score": 16
-          },
-          {
-            "period": 3,
-            "home_score": 14,
-            "away_score": 29
-          },
-          {
-            "period": 4,
-            "home_score": 16,
-            "away_score": 21
-          }
-        ],
+        "periods": [],
         "final_score": {
           "home": 71,
           "away": 86
@@ -15196,8 +14986,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005919/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-04T19:39:32Z",
-        "payload_sha256": "c0c948f66c3bd64a6ab713ac457bee5cfad692e141af0150482872ea031e31a3"
+        "ingested_at_utc": "2026-10-06T01:19:59Z",
+        "payload_sha256": "c9323cb256aab3b3d99b81219a933679571f49544a79fe405311b47130616949"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -15215,28 +15005,7 @@
         "venue": {
           "name": "Pyynikin palloiluhalli"
         },
-        "periods": [
-          {
-            "period": 1,
-            "home_score": 25,
-            "away_score": 22
-          },
-          {
-            "period": 2,
-            "home_score": 21,
-            "away_score": 28
-          },
-          {
-            "period": 3,
-            "home_score": 18,
-            "away_score": 22
-          },
-          {
-            "period": 4,
-            "home_score": 15,
-            "away_score": 25
-          }
-        ],
+        "periods": [],
         "final_score": {
           "home": 79,
           "away": 97
@@ -16272,7 +16041,7 @@
     "requested_games": 11,
     "fetched_games": 11,
     "failed_games": 0,
-    "cached_games": 11,
+    "cached_games": 0,
     "valid_games": 11,
     "invalid_games": 0
   },

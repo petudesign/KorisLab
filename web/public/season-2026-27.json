@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "season_id": "huki2627",
-  "updated_at": "2026-10-04T23:11:04.980512+00:00",
+  "updated_at": "2026-10-06T01:18:51.672505+00:00",
   "source_url": "https://tulospalvelu.basket.fi/",
   "schedule": [
     {
@@ -2411,8 +2411,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1006239/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-04T19:38:32Z",
-        "payload_sha256": "9c1fb37c2658c2553033559f60ac82ea4ecba62ad5947a5f9e079090cdf329f5"
+        "ingested_at_utc": "2026-10-06T01:18:38Z",
+        "payload_sha256": "7f1c02b2c9d60ab52526784a7cae3c54dd865158f8e22c53c583337e12d751d2"
       },
       "competition": {
         "source_id": "8e536942-90dc-11f1-947f-814ab4ec9e3e",
@@ -2430,28 +2430,7 @@
         "venue": {
           "name": "MLL Areena"
         },
-        "periods": [
-          {
-            "period": 1,
-            "home_score": 26,
-            "away_score": 23
-          },
-          {
-            "period": 2,
-            "home_score": 18,
-            "away_score": 23
-          },
-          {
-            "period": 3,
-            "home_score": 26,
-            "away_score": 20
-          },
-          {
-            "period": 4,
-            "home_score": 26,
-            "away_score": 23
-          }
-        ],
+        "periods": [],
         "final_score": {
           "home": 96,
           "away": 89
@@ -3410,8 +3389,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1006161/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-04T19:38:37Z",
-        "payload_sha256": "7f1512427002d8a40f6cb184451fe68cb791e7d61ea0a15637afa202be7bd35d"
+        "ingested_at_utc": "2026-10-06T01:18:44Z",
+        "payload_sha256": "9bef74c73fe2a6e9b4eb86a5aed3d3aaf643607af0f3465f65fc14776a7fc9d1"
       },
       "competition": {
         "source_id": "8e536942-90dc-11f1-947f-814ab4ec9e3e",
@@ -3429,28 +3408,7 @@
         "venue": {
           "name": "Lapuan Urheilutalo"
         },
-        "periods": [
-          {
-            "period": 1,
-            "home_score": 15,
-            "away_score": 23
-          },
-          {
-            "period": 2,
-            "home_score": 23,
-            "away_score": 29
-          },
-          {
-            "period": 3,
-            "home_score": 26,
-            "away_score": 15
-          },
-          {
-            "period": 4,
-            "home_score": 16,
-            "away_score": 36
-          }
-        ],
+        "periods": [],
         "final_score": {
           "home": 80,
           "away": 103
@@ -4529,8 +4487,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1006180/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-04T19:38:39Z",
-        "payload_sha256": "78ecfb98cfc3643f5634dfef10f41c082f4fdbdc9841cd78de9dbc3010718300"
+        "ingested_at_utc": "2026-10-06T01:18:46Z",
+        "payload_sha256": "a83db85a1cad1d117e0a9472303969c924a2a516d149f11d4cb947b4ce518165"
       },
       "competition": {
         "source_id": "8e536942-90dc-11f1-947f-814ab4ec9e3e",
@@ -4548,28 +4506,7 @@
         "venue": {
           "name": "Steveco Areena"
         },
-        "periods": [
-          {
-            "period": 1,
-            "home_score": 13,
-            "away_score": 21
-          },
-          {
-            "period": 2,
-            "home_score": 16,
-            "away_score": 23
-          },
-          {
-            "period": 3,
-            "home_score": 18,
-            "away_score": 28
-          },
-          {
-            "period": 4,
-            "home_score": 11,
-            "away_score": 10
-          }
-        ],
+        "periods": [],
         "final_score": {
           "home": 58,
           "away": 82
@@ -5528,8 +5465,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1006230/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-04T19:38:41Z",
-        "payload_sha256": "da4185e5fba7bb7f0527958c5cfe9423e69c9fbb0174b7cda221c182491d5798"
+        "ingested_at_utc": "2026-10-06T01:18:51Z",
+        "payload_sha256": "5f6ba8a578e7ee3956aacbc706dfe6204ce31f678202bc8f5759250644a6f5a5"
       },
       "competition": {
         "source_id": "8e536942-90dc-11f1-947f-814ab4ec9e3e",
@@ -5547,28 +5484,7 @@
         "venue": {
           "name": "Pyynikin palloiluhalli"
         },
-        "periods": [
-          {
-            "period": 1,
-            "home_score": 18,
-            "away_score": 21
-          },
-          {
-            "period": 2,
-            "home_score": 24,
-            "away_score": 12
-          },
-          {
-            "period": 3,
-            "home_score": 12,
-            "away_score": 14
-          },
-          {
-            "period": 4,
-            "home_score": 26,
-            "away_score": 27
-          }
-        ],
+        "periods": [],
         "final_score": {
           "home": 80,
           "away": 74
@@ -6219,7 +6135,7 @@
             },
             {
               "source_player_id": "2aabf0c9-90bf-11f1-8a9b-515875ef95f7",
-              "display_name": "Lotta Tyynilä",
+              "display_name": "LOTTA TYYNILÄ",
               "team_source_id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
               "jersey_number": "6",
               "starter": false,
@@ -6339,7 +6255,7 @@
             },
             {
               "source_player_id": "540c2922-90bf-11f1-a71e-0d6fa49bbe21",
-              "display_name": "Ida Riihijärvi",
+              "display_name": "IDA RIIHIJÄRVI",
               "team_source_id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
               "jersey_number": "10",
               "starter": true,
@@ -6379,7 +6295,7 @@
             },
             {
               "source_player_id": "6c0d90ce-90be-11f1-b03f-8b7b745739af",
-              "display_name": "Ella Sahuri",
+              "display_name": "ELLA SAHURI",
               "team_source_id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
               "jersey_number": "4",
               "starter": false,
@@ -6539,7 +6455,7 @@
             },
             {
               "source_player_id": "f1ed659b-90bd-11f1-8508-4f8fabaf4a0e",
-              "display_name": "Mette Nurminen",
+              "display_name": "METTE NURMINEN",
               "team_source_id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
               "jersey_number": "9",
               "starter": false,
@@ -6644,7 +6560,7 @@
     "requested_games": 4,
     "fetched_games": 4,
     "failed_games": 0,
-    "cached_games": 4,
+    "cached_games": 0,
     "valid_games": 4,
     "invalid_games": 0
   },
