@@ -30,6 +30,7 @@ import { playerDisplayName } from "./playerName";
 import { QuerySearch } from "./QuerySearch";
 import { MatchupLab } from "./MatchupLab";
 import { MatchReplay, useMatchReplay } from "./MatchReplay";
+import { MatchStory } from "./MatchStory";
 import { LiveSeason } from "./LiveSeason";
 import { resolveBasketballQuery, type QueryFeedback, type QueryResolution, type QueryTarget } from "./basketballQuery";
 import { AnalysesIndex, AnalysisArticlePage } from "./AnalysisArticles";
@@ -1497,6 +1498,7 @@ function App() {
   const [activePlayers, setActivePlayers] = useState(players);
   const [activeTeamSummary, setActiveTeamSummary] = useState(teamSummary);
   const [activeInsights, setActiveInsights] = useState(insights);
+  const [storySeek, setStorySeek] = useState<{ matchId: string; index: number; request: number } | null>(null);
   const [activeAvailability, setActiveAvailability] = useState(availability);
   const [playerFilter, setPlayerFilter] = useState<"all" | "home" | "away">("all");
   const shotState = useMatchShots(selectedMatchId, ["story", "data"].includes(view) && matchLoadState === "ready");
@@ -1709,18 +1711,14 @@ function App() {
   ];
   const firstQuarter = activeMatch.periods[0] ?? { home: null, away: null };
   const displayedInsights = useMemo(() => {
-    if (language === "fi") return activeInsights;
-    const strongestStart = firstQuarter.home !== null && firstQuarter.away !== null && firstQuarter.home > firstQuarter.away ? activeMatch.home.name : activeMatch.away.name;
-    const biggestQuarter = activeMatch.periods.reduce((best, period) => Math.abs(period.home - period.away) > Math.abs(best.home - best.away) ? period : best, activeMatch.periods[0] ?? { label: "game", home: 0, away: 0 });
-    const winner = activeMatch.home.score >= activeMatch.away.score ? activeMatch.home : activeMatch.away;
-    const loser = winner === activeMatch.home ? activeMatch.away : activeMatch.home;
-    const margin = Math.abs(activeMatch.home.score - activeMatch.away.score);
-    return [
-      { eyebrow: "Opening", title: `${strongestStart} started stronger`, body: `The first quarter ended ${firstQuarter.home}–${firstQuarter.away}. ${winner.name} led the game by ${margin} points at the final buzzer.`, accent: "mint" },
-      { eyebrow: "Separation", title: `${winner.name} created separation in ${biggestQuarter.label}`, body: `The biggest quarter margin was ${biggestQuarter.home}–${biggestQuarter.away}. That stretch helped ${winner.name} control the game.`, accent: "amber" },
-      { eyebrow: "Finish", title: `${winner.name} won by ${margin}`, body: `${winner.name} scored ${winner.score} points and ${loser.name} ${loser.score}. The game box score is available in the source data.`, accent: "coral" },
-    ] as typeof insights;
-  }, [activeInsights, activeMatch, firstQuarter.away, firstQuarter.home, language]);
+    const winnerTeam = activeMatch.home.score >= activeMatch.away.score ? activeMatch.home : activeMatch.away;
+    return [{
+      eyebrow: tr("Lopputulos", "Final score"),
+      title: `${activeMatch.home.name} ${activeMatch.home.score}–${activeMatch.away.score} ${activeMatch.away.name}`,
+      body: tr(`${winnerTeam.name} voitti ${Math.abs(activeMatch.home.score - activeMatch.away.score)} pisteellä. Tarkempi ottelun tarina vaatii tarkistetun tapahtumalokin.`, `${winnerTeam.name} won by ${Math.abs(activeMatch.home.score - activeMatch.away.score)} points. A detailed game story requires a verified event log.`),
+      accent: "mint",
+    }] as typeof insights;
+  }, [activeInsights, activeMatch, firstQuarter.away, firstQuarter.home, language, tr]);
   const displayedAvailability = useMemo(() => {
     const items = activeAvailability.map((item) => {
       if (item.label === "Laukaisukoordinaatit") {
@@ -1960,7 +1958,7 @@ function App() {
 
           {view === "story" && (
             <>
-              <MatchReplay key={`${seasonId}-${selectedMatchId}`} matchId={selectedMatchId} state={replayState} />
+              <MatchReplay key={`${seasonId}-${selectedMatchId}`} matchId={selectedMatchId} state={replayState} seek={storySeek?.matchId === selectedMatchId ? storySeek : null} />
               <section id="match-key-metrics" className="stat-strip overview-section-anchor" aria-label={tr("Ottelun avainluvut", "Game key metrics")}>
                 {storyStats.map((stat) => <div className="stat-item" key={stat.label}><span className="stat-label">{stat.label}</span><strong className={`stat-value${stat.label === "eFG%" ? " stat-value--percent-pair" : ""}`}>{stat.value}</strong><span className="stat-note">{stat.note}</span></div>)}
               </section>
@@ -2020,10 +2018,15 @@ function App() {
 
               <section className="bottom-grid">
                 <div id="match-observations" className="panel narrative-panel overview-section-anchor">
-                  <div className="panel-heading panel-heading--plain"><div><h3>{tr("Kolme havaintoa", "Three observations")}</h3></div><ArrowUpRight /></div>
-                  <div className="insight-list">
+                  <div className="panel-heading panel-heading--plain"><div><h3>{tr("Ottelun tarina", "Game story")}</h3></div><ArrowUpRight /></div>
+                  {replayState.data?.match_id === selectedMatchId ? <MatchStory replay={replayState.data} onSelect={index => {
+                    setStorySeek(previous => ({ matchId: selectedMatchId, index, request: (previous?.request ?? 0) + 1 }));
+                    const panel = document.getElementById("match-replay");
+                    panel?.scrollIntoView({ block: "start" });
+                    panel?.focus({ preventScroll: true });
+                  }} /> : <div className="insight-list">
                     {displayedInsights.map((insight, index) => <article className="insight" key={insight.title}><div className={`insight-index ${insight.accent}`}>0{index + 1}</div><div><span className="insight-eyebrow">{insight.eyebrow}</span><h4>{insight.title}</h4><p>{insight.body}</p></div></article>)}
-                  </div>
+                  </div>}
                 </div>
                 <div id="match-availability" className="panel signal-panel overview-section-anchor">
                   <div className="panel-heading panel-heading--plain"><div><h3>{tr("Mitä tiedämme?", "What do we know?")}</h3></div><span className="signal-count">{displayedAvailability.filter((item) => item.tone === "ready").length}/{displayedAvailability.length}</span></div>

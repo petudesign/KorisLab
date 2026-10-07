@@ -24,7 +24,7 @@ export function useMatchReplay(matchId: string, seasonId: string, enabled = true
   return { data, status, retry: () => setRetry(value => value + 1) };
 }
 
-export function MatchReplay({ matchId, state }: { matchId: string; state: ReturnType<typeof useMatchReplay> }) {
+export function MatchReplay({ matchId, state, seek }: { matchId: string; state: ReturnType<typeof useMatchReplay>; seek?: { index: number; request: number } | null }) {
   const { tr } = useI18n();
   const { data, status } = state;
   const [index, setIndex] = useState(0);
@@ -62,6 +62,11 @@ export function MatchReplay({ matchId, state }: { matchId: string; state: Return
     document.addEventListener("visibilitychange", hide);
     return () => { window.clearInterval(timer); document.removeEventListener("visibilitychange", hide); };
   }, [playing, data, speed]);
+  useEffect(() => {
+    if (!data || !seek) return;
+    const next = Math.max(0, Math.min(data.events.length - 1, seek.index));
+    setPlaying(false); setIndex(next); time.current = data.events[next].elapsed; setPosition(time.current);
+  }, [data, seek]);
   const choose = (next: number) => { if (!data) return; const bounded = Math.max(0, Math.min(data.events.length - 1, next)); setPlaying(false); setIndex(bounded); time.current = data.events[bounded].elapsed; setPosition(time.current); };
   const chooseTime = (seconds: number) => { if (!data) return; setPlaying(false); time.current = seconds; setPosition(seconds); setIndex(eventAtTime(data.events, seconds)); };
   const clock = (event: ReplayEvent) => `${event.period <= 4 ? `${event.period}. ${tr("neljännes", "quarter")}` : `${tr("Jatkoaika", "Overtime")} ${event.period - 4}`} · ${Math.floor(event.remaining / 60)}:${String(Math.floor(event.remaining % 60)).padStart(2, "0")}`;
@@ -83,7 +88,7 @@ export function MatchReplay({ matchId, state }: { matchId: string; state: Return
   progress.push({ ...event, elapsed: position });
   const visible = data.events.map((item, n) => ({ item, n })).filter(({ item }) => item.points || ["turnover", "steal", "block", "timeOut", "periodEnd", "start"].includes(item.kind));
   const active = Math.max(0, visible.reduce((last, item, n) => item.n <= index ? n : last, 0));
-  return <section id="match-replay" className="panel replay-panel overview-section-anchor" aria-labelledby="replay-heading">
+  return <section id="match-replay" className="panel replay-panel overview-section-anchor" tabIndex={-1} aria-labelledby="replay-heading">
     <div className="panel-heading panel-heading--plain"><div><h2 id="replay-heading">{tr("Kelaa ottelun tarinaa", "Explore the game timeline")}</h2><p className="panel-subcopy">{tr("Milloin peli kääntyi? Valitse hetki tai toista ottelun kulku.", "When did the game turn? Select a moment or play through the game.")}</p></div><span className="replay-coverage">{data.event_count} {tr("tarkistettua tapahtumaa", "verified events")}</span></div>
     <div className="replay-score" aria-live={playing ? "off" : "polite"}>
       <div className="replay-home"><span>{data.teams[0].name}<small>{tr("koti", "home")}</small></span></div>
