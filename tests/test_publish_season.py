@@ -1,12 +1,16 @@
 import unittest
 from copy import deepcopy
+import json
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest.mock import Mock, patch
 
-from ingestion.publish_season import build_snapshot
+from ingestion.publish_season import build_snapshot, verify_publication_coverage
 from ingestion.season_statistics import hydrate_season_statistics
+from ingestion.publish_shots import publish_shots
+from normalization.basketfi_replay import normalize_replay
 from normalization.basketfi_statistics import normalize_fixture_statistics
+from tests.basketfi_fixtures import basketfi_payload
 from tests.test_basketfi_statistics import fixture_payload
 
 
@@ -55,3 +59,78 @@ class PublishSeasonTests(unittest.TestCase):
         previous["updated_at"] = "2026-10-01T12:00:00Z"
         refreshed = build_snapshot(self.schedule("Fixture"), hydration, previous=previous)
         self.assertEqual(refreshed, previous)
+
+    def _completed_publication(self, root):
+        payload = basketfi_payload("current")
+        record = normalize_fixture_statistics(payload, match_id="1005837")
+        schedule = [{"source_match_id": "1005837", "status": "Played"}]
+        snapshot = {"matches": [record]}
+        quarter_teams = []
+        for team in record["teams"]:
+            quarter_teams.append({
+                "id": team["source_id"],
+                "name": team["name"],
+                "periods": {
+                    str(period["period"]): {"points": {"games": 1, "total": period[f"{team['home_away']}_score"]}}
+                    for period in record["game"]["periods"]
+                },
+            })
+        quarters_path = root / "quarters.json"
+        quarters_path.write_text(json.dumps({
+            "season_id": "2026-27",
+            "expected_games": 1,
+            "verified_games": 1,
+            "teams": quarter_teams,
+        }), encoding="utf-8")
+        shots_dir = root / "shots"
+        client = Mock()
+        client.get_fixture.return_value = payload
+        shot_summary = publish_shots([record], out_dir=shots_dir, client=client, delay_seconds=0)
+        replays_dir = root / "replays"
+        replay = normalize_replay(payload, record, season_id="2026-27")
+        replays_dir.mkdir(parents=True)
+        (replays_dir / "1005837.json").write_text(json.dumps(replay), encoding="utf-8")
+        return schedule, snapshot, quarters_path, shots_dir, replays_dir, shot_summary
+
+    def test_publication_coverage_accepts_verified_current_schema_outputs(self):
+        with TemporaryDirectory() as directory:
+            args = self._completed_publication(Path(directory))
+
+            coverage = verify_publication_coverage(
+                args[0], args[1], season_id="2026-27", quarters_path=args[2],
+                shots_dir=args[3], replays_dir=args[4], shot_summary=args[5],
+            )
+
+        self.assertEqual(coverage, {
+            "played_games": 1,
+            "statistics_verified": 1,
+            "quarter_scores_verified": 1,
+            "replays_verified": 1,
+            "shot_charts_available": 1,
+            "shot_charts_unavailable": 0,
+        })
+
+    def test_publication_coverage_allows_explicitly_unavailable_shot_coordinates(self):
+        with TemporaryDirectory() as directory:
+            args = self._completed_publication(Path(directory))
+            (args[3] / "1005837.json").unlink()
+            args[5]["unavailable"] = [{"match_id": "1005837", "reason": "No shot chart in source response"}]
+
+            coverage = verify_publication_coverage(
+                args[0], args[1], season_id="2026-27", quarters_path=args[2],
+                shots_dir=args[3], replays_dir=args[4], shot_summary=args[5],
+            )
+
+        self.assertEqual(coverage["shot_charts_available"], 0)
+        self.assertEqual(coverage["shot_charts_unavailable"], 1)
+
+    def test_publication_coverage_fails_when_replay_is_missing(self):
+        with TemporaryDirectory() as directory:
+            args = self._completed_publication(Path(directory))
+            (args[4] / "1005837.json").unlink()
+
+            with self.assertRaisesRegex(ValueError, "verified replay is missing"):
+                verify_publication_coverage(
+                    args[0], args[1], season_id="2026-27", quarters_path=args[2],
+                    shots_dir=args[3], replays_dir=args[4], shot_summary=args[5],
+                )

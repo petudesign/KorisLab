@@ -9,10 +9,18 @@ from ingestion.basketfi_statistics import BasketFiStatisticsClient
 from normalization.basketfi_shots import normalize_shot_chart
 
 
+def _has_coordinates(chart):
+    return any(
+        isinstance(shot.get("x"), (int, float)) and not isinstance(shot.get("x"), bool)
+        and isinstance(shot.get("y"), (int, float)) and not isinstance(shot.get("y"), bool)
+        for shot in chart.get("shots", []) if isinstance(shot, dict)
+    )
+
+
 def publish_shots(records, *, out_dir, client=None, max_age_seconds=86400, delay_seconds=1):
     client = client or BasketFiStatisticsClient()
     out_dir.mkdir(parents=True, exist_ok=True)
-    summary = {"published": 0, "cached": 0, "failures": []}
+    summary = {"published": 0, "cached": 0, "unavailable": [], "failures": []}
     for index, record in enumerate(records):
         match_id = str(record["game"]["source_id"])
         if not match_id.isdigit():
@@ -26,7 +34,7 @@ def publish_shots(records, *, out_dir, client=None, max_age_seconds=86400, delay
                     previous = None
             except (ValueError, AttributeError):
                 pass
-        if previous and time() - target.stat().st_mtime < max_age_seconds:
+        if previous and previous.get("shots") and _has_coordinates(previous) and time() - target.stat().st_mtime < max_age_seconds:
             summary["cached"] += 1
             continue
         try:
@@ -39,6 +47,10 @@ def publish_shots(records, *, out_dir, client=None, max_age_seconds=86400, delay
             fixture_id = str(fixture_id)
             payload = client.get_fixture(fixture_id, sub="shot_chart")
             snapshot = normalize_shot_chart(payload, match_id=match_id, fixture_id=fixture_id)
+            if not snapshot["shots"]:
+                raise ValueError("No shot attempts in source response")
+            if not _has_coordinates(snapshot):
+                raise ValueError("No shot coordinates in source response")
             # Compare field-goal totals with the verified box score, per team.
             checks = []
             for team in record["teams"]:
@@ -58,7 +70,15 @@ def publish_shots(records, *, out_dir, client=None, max_age_seconds=86400, delay
             temporary.replace(target)
             summary["published"] += 1
         except Exception as exc:
-            summary["failures"].append({"match_id": match_id, "error": str(exc)})
+            error = str(exc)
+            if error in {"No shot chart in source response", "No shot attempts in source response", "No shot coordinates in source response"}:
+                summary["unavailable"].append({
+                    "match_id": match_id,
+                    "reason": error,
+                    "retained_previous": bool(previous and previous.get("shots") and _has_coordinates(previous)),
+                })
+            else:
+                summary["failures"].append({"match_id": match_id, "error": error})
         if delay_seconds and index < len(records) - 1:
             sleep(delay_seconds)
     return summary

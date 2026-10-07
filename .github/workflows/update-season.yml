@@ -41,7 +41,6 @@ jobs:
           key: season-2026-27-${{ github.run_id }}
           restore-keys: season-2026-27-
       - name: Verify ingestion
-        if: github.event_name != 'schedule'
         run: python -m unittest discover -s tests -v
       - name: Refresh schedule and verified statistics
         run: python -m ingestion.publish_season
