@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "season_id": "huki2627",
-  "updated_at": "2026-10-07T16:20:20.508694+00:00",
+  "updated_at": "2026-10-07T21:31:51.661360+00:00",
   "source_url": "https://tulospalvelu.basket.fi/",
   "schedule": [
     {
@@ -344,16 +344,16 @@
       "scheduled_date": "2026-10-07",
       "scheduled_time": "18:30:00",
       "venue": "Luhta Areena",
-      "status": "Break",
+      "status": "Played",
       "home": {
         "source_team_id": "5753683",
         "name": "Lahti Basketball",
-        "score": 48
+        "score": 91
       },
       "away": {
         "source_team_id": "42",
         "name": "Kataja Basket",
-        "score": 45
+        "score": 85
       }
     },
     {
@@ -4510,7 +4510,7 @@
       "Tapiolan Honka"
     ],
     "team_count": 12,
-    "played_games": 15,
+    "played_games": 16,
     "date_range": {
       "from": "2026-09-29",
       "to": "2027-03-20"
@@ -16044,8 +16044,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005837/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-06T18:17:34Z",
-        "payload_sha256": "dea3acc34e000ae452b96fe8f92571e9b971872fd944ee2bfbffd3d24d9d5426"
+        "ingested_at_utc": "2026-10-07T21:31:38Z",
+        "payload_sha256": "97f87bb66ae9261ac081977f5770f82ca2bd8b08e6559b7ef0e0b860c460e8ce"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -16063,7 +16063,28 @@
         "venue": {
           "name": "IKH Areena"
         },
-        "periods": [],
+        "periods": [
+          {
+            "period": 1,
+            "home_score": 24,
+            "away_score": 18
+          },
+          {
+            "period": 2,
+            "home_score": 20,
+            "away_score": 19
+          },
+          {
+            "period": 3,
+            "home_score": 12,
+            "away_score": 14
+          },
+          {
+            "period": 4,
+            "home_score": 16,
+            "away_score": 22
+          }
+        ],
         "final_score": {
           "home": 72,
           "away": 73
@@ -17062,8 +17083,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1006005/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-06T18:17:37Z",
-        "payload_sha256": "2b779b491583a6d5e3cce806ec7a40c993435f1c993cc76415f55a0cbe37e4ea"
+        "ingested_at_utc": "2026-10-07T21:31:45Z",
+        "payload_sha256": "73967ee09d9125372858572e1fa000650fd3322fe33e9814cc474e463410f2f9"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -17081,7 +17102,28 @@
         "venue": {
           "name": "Wintteri"
         },
-        "periods": [],
+        "periods": [
+          {
+            "period": 1,
+            "home_score": 21,
+            "away_score": 23
+          },
+          {
+            "period": 2,
+            "home_score": 16,
+            "away_score": 15
+          },
+          {
+            "period": 3,
+            "home_score": 26,
+            "away_score": 11
+          },
+          {
+            "period": 4,
+            "home_score": 25,
+            "away_score": 18
+          }
+        ],
         "final_score": {
           "home": 88,
           "away": 67
@@ -18160,8 +18202,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005971/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-06T18:17:39Z",
-        "payload_sha256": "0eb9790b3af3d2e33bc2322935e14b2348e16a9a53e962f2c6a97ba1911b0456"
+        "ingested_at_utc": "2026-10-07T21:31:47Z",
+        "payload_sha256": "b3e72619f33c6dcf43de85b5b16fe7cb37715171bc8d7b0af39f58e8e9d3ad86"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -18179,7 +18221,33 @@
         "venue": {
           "name": "Tapiolan Liikuntahalli"
         },
-        "periods": [],
+        "periods": [
+          {
+            "period": 1,
+            "home_score": 23,
+            "away_score": 19
+          },
+          {
+            "period": 2,
+            "home_score": 25,
+            "away_score": 22
+          },
+          {
+            "period": 3,
+            "home_score": 17,
+            "away_score": 25
+          },
+          {
+            "period": 4,
+            "home_score": 20,
+            "away_score": 19
+          },
+          {
+            "period": 11,
+            "home_score": 12,
+            "away_score": 11
+          }
+        ],
         "final_score": {
           "home": 97,
           "away": 96
@@ -19298,8 +19366,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005886/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-06T18:17:41Z",
-        "payload_sha256": "001a165bcaf60bfd890f6fa3b381671501f331a6f8300d11b2b41d68fb804a0c"
+        "ingested_at_utc": "2026-10-07T21:31:49Z",
+        "payload_sha256": "f7e1776e131e42471932b5a1d694d8fb8e1a63f82e583d84409e0d17079d884b"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -19317,7 +19385,28 @@
         "venue": {
           "name": "MLL Areena"
         },
-        "periods": [],
+        "periods": [
+          {
+            "period": 1,
+            "home_score": 17,
+            "away_score": 25
+          },
+          {
+            "period": 2,
+            "home_score": 29,
+            "away_score": 26
+          },
+          {
+            "period": 3,
+            "home_score": 14,
+            "away_score": 11
+          },
+          {
+            "period": 4,
+            "home_score": 20,
+            "away_score": 27
+          }
+        ],
         "final_score": {
           "home": 80,
           "away": 89
@@ -20266,22 +20355,1021 @@
           }
         ]
       }
+    },
+    {
+      "schema_version": "0.1",
+      "source": {
+        "system": "basketfi_sportradar_embed",
+        "entity": "fixture_statistics",
+        "source_entity_id": "1005869",
+        "source_url": "https://tulospalvelu.basket.fi/match/1005869/statistics",
+        "upstream_fixture_id": null,
+        "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
+        "ingested_at_utc": "2026-10-07T21:31:51Z",
+        "payload_sha256": "49d22230892acb9c9f06b10b1730c383782e2fc01b67d1f19566255a13b09882"
+      },
+      "competition": {
+        "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
+        "name": "Korisliiga"
+      },
+      "season": {
+        "source_id": "12a43729-9bb6-11f1-9fef-97a68955b80f",
+        "name": "Korisliiga 26/27"
+      },
+      "game": {
+        "source_id": "1005869",
+        "upstream_fixture_id": null,
+        "scheduled_at": "2026-10-07",
+        "status": "CONFIRMED",
+        "venue": {
+          "name": "Luhta Areena"
+        },
+        "periods": [
+          {
+            "period": 1,
+            "home_score": 27,
+            "away_score": 23
+          },
+          {
+            "period": 2,
+            "home_score": 21,
+            "away_score": 22
+          },
+          {
+            "period": 3,
+            "home_score": 19,
+            "away_score": 23
+          },
+          {
+            "period": 4,
+            "home_score": 24,
+            "away_score": 17
+          }
+        ],
+        "final_score": {
+          "home": 91,
+          "away": 85
+        }
+      },
+      "teams": [
+        {
+          "source_id": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+          "name": "Lahti Basketball",
+          "home_away": "home",
+          "score": 91,
+          "stats": {
+            "points": 91,
+            "two_pm": 24,
+            "two_pa": 44,
+            "two_p_pct": 54.55,
+            "three_pm": 7,
+            "three_pa": 23,
+            "three_p_pct": 30.43,
+            "ftm": 22,
+            "fta": 30,
+            "ft_pct": 73.33,
+            "offensive_rebounds": 9,
+            "defensive_rebounds": 28,
+            "rebounds": 37,
+            "assists": 13,
+            "turnovers": 14,
+            "steals": 9,
+            "blocks": 2,
+            "blocks_received": 3,
+            "fouls": 21,
+            "fouls_drawn": 21,
+            "plus_minus": null,
+            "efficiency": 94
+          },
+          "team_extra_stats": {
+            "points": null,
+            "two_pm": null,
+            "two_pa": null,
+            "two_p_pct": null,
+            "three_pm": null,
+            "three_pa": null,
+            "three_p_pct": null,
+            "ftm": null,
+            "fta": null,
+            "ft_pct": null,
+            "offensive_rebounds": 1,
+            "defensive_rebounds": 5,
+            "rebounds": 6,
+            "assists": null,
+            "turnovers": 2,
+            "steals": null,
+            "blocks": null,
+            "blocks_received": null,
+            "fouls": 0,
+            "fouls_drawn": null,
+            "plus_minus": null,
+            "efficiency": null
+          },
+          "team_flow": {
+            "biggestLead": 12,
+            "biggestScoringRun": 8,
+            "leadChanges": 33,
+            "timeInLead": "PT27M28S"
+          },
+          "players": [
+            {
+              "source_player_id": "208a9d7b-90be-11f1-a8b1-f772deacbe7d",
+              "display_name": "TINO YLI-JUNNILA",
+              "team_source_id": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+              "jersey_number": "2",
+              "starter": false,
+              "position": null,
+              "participated": true,
+              "dnp_reason": null,
+              "minutes": 2.3167,
+              "minutes_display": "2:19",
+              "stats": {
+                "points": 0,
+                "two_pm": 0,
+                "two_pa": 0,
+                "two_p_pct": null,
+                "three_pm": 0,
+                "three_pa": 0,
+                "three_p_pct": null,
+                "ftm": 0,
+                "fta": 0,
+                "ft_pct": null,
+                "offensive_rebounds": 0,
+                "defensive_rebounds": 0,
+                "rebounds": 0,
+                "assists": 0,
+                "turnovers": 1,
+                "steals": 0,
+                "blocks": 0,
+                "blocks_received": 0,
+                "fouls": 0,
+                "fouls_drawn": 0,
+                "plus_minus": 1,
+                "efficiency": -1
+              },
+              "source_fields": {
+                "active": false,
+                "person_link": null
+              }
+            },
+            {
+              "source_player_id": "2f03b2d2-b116-11f1-80e6-6965d9955a48",
+              "display_name": "D'Maurian Williams",
+              "team_source_id": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+              "jersey_number": "4",
+              "starter": true,
+              "position": null,
+              "participated": true,
+              "dnp_reason": null,
+              "minutes": 31.5667,
+              "minutes_display": "31:34",
+              "stats": {
+                "points": 27,
+                "two_pm": 9,
+                "two_pa": 16,
+                "two_p_pct": 56.25,
+                "three_pm": 1,
+                "three_pa": 4,
+                "three_p_pct": 25,
+                "ftm": 6,
+                "fta": 8,
+                "ft_pct": 75,
+                "offensive_rebounds": 0,
+                "defensive_rebounds": 1,
+                "rebounds": 1,
+                "assists": 5,
+                "turnovers": 3,
+                "steals": 3,
+                "blocks": 0,
+                "blocks_received": 0,
+                "fouls": 3,
+                "fouls_drawn": 5,
+                "plus_minus": 10,
+                "efficiency": 21
+              },
+              "source_fields": {
+                "active": false,
+                "person_link": null
+              }
+            },
+            {
+              "source_player_id": "4a05a759-90bc-11f1-9c13-f9d3ff21d24a",
+              "display_name": "VILI NYMAN",
+              "team_source_id": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+              "jersey_number": "10",
+              "starter": true,
+              "position": null,
+              "participated": true,
+              "dnp_reason": null,
+              "minutes": 32.45,
+              "minutes_display": "32:27",
+              "stats": {
+                "points": 8,
+                "two_pm": 1,
+                "two_pa": 3,
+                "two_p_pct": 33.33,
+                "three_pm": 1,
+                "three_pa": 1,
+                "three_p_pct": 100,
+                "ftm": 3,
+                "fta": 6,
+                "ft_pct": 50,
+                "offensive_rebounds": 1,
+                "defensive_rebounds": 10,
+                "rebounds": 11,
+                "assists": 3,
+                "turnovers": 0,
+                "steals": 0,
+                "blocks": 2,
+                "blocks_received": 0,
+                "fouls": 1,
+                "fouls_drawn": 3,
+                "plus_minus": 7,
+                "efficiency": 19
+              },
+              "source_fields": {
+                "active": false,
+                "person_link": null
+              }
+            },
+            {
+              "source_player_id": "70b53173-b116-11f1-a2f1-735644110542",
+              "display_name": "Jackson Threadgill",
+              "team_source_id": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+              "jersey_number": "12",
+              "starter": true,
+              "position": null,
+              "participated": true,
+              "dnp_reason": null,
+              "minutes": 31.25,
+              "minutes_display": "31:15",
+              "stats": {
+                "points": 16,
+                "two_pm": 4,
+                "two_pa": 4,
+                "two_p_pct": 100,
+                "three_pm": 2,
+                "three_pa": 6,
+                "three_p_pct": 33.33,
+                "ftm": 2,
+                "fta": 2,
+                "ft_pct": 100,
+                "offensive_rebounds": 2,
+                "defensive_rebounds": 1,
+                "rebounds": 3,
+                "assists": 1,
+                "turnovers": 2,
+                "steals": 3,
+                "blocks": 0,
+                "blocks_received": 0,
+                "fouls": 2,
+                "fouls_drawn": 2,
+                "plus_minus": -3,
+                "efficiency": 17
+              },
+              "source_fields": {
+                "active": false,
+                "person_link": null
+              }
+            },
+            {
+              "source_player_id": "79046d3d-90bc-11f1-a7b5-4554ddfa8cbf",
+              "display_name": "KALLE PELTONEN",
+              "team_source_id": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+              "jersey_number": "95",
+              "starter": false,
+              "position": null,
+              "participated": true,
+              "dnp_reason": null,
+              "minutes": 18.75,
+              "minutes_display": "18:45",
+              "stats": {
+                "points": 5,
+                "two_pm": 1,
+                "two_pa": 1,
+                "two_p_pct": 100,
+                "three_pm": 1,
+                "three_pa": 2,
+                "three_p_pct": 50,
+                "ftm": 0,
+                "fta": 2,
+                "ft_pct": 0,
+                "offensive_rebounds": 1,
+                "defensive_rebounds": 0,
+                "rebounds": 1,
+                "assists": 0,
+                "turnovers": 2,
+                "steals": 0,
+                "blocks": 0,
+                "blocks_received": 0,
+                "fouls": 4,
+                "fouls_drawn": 1,
+                "plus_minus": 7,
+                "efficiency": 1
+              },
+              "source_fields": {
+                "active": false,
+                "person_link": null
+              }
+            },
+            {
+              "source_player_id": "8077c0b9-90be-11f1-8f51-9528bf057578",
+              "display_name": "JONAS KAIVOS",
+              "team_source_id": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+              "jersey_number": "16",
+              "starter": false,
+              "position": null,
+              "participated": true,
+              "dnp_reason": null,
+              "minutes": 5.2667,
+              "minutes_display": "5:16",
+              "stats": {
+                "points": 0,
+                "two_pm": 0,
+                "two_pa": 1,
+                "two_p_pct": 0,
+                "three_pm": 0,
+                "three_pa": 0,
+                "three_p_pct": null,
+                "ftm": 0,
+                "fta": 0,
+                "ft_pct": null,
+                "offensive_rebounds": 0,
+                "defensive_rebounds": 0,
+                "rebounds": 0,
+                "assists": 0,
+                "turnovers": 0,
+                "steals": 0,
+                "blocks": 0,
+                "blocks_received": 0,
+                "fouls": 1,
+                "fouls_drawn": 0,
+                "plus_minus": -2,
+                "efficiency": -1
+              },
+              "source_fields": {
+                "active": false,
+                "person_link": null
+              }
+            },
+            {
+              "source_player_id": "8a49a8f9-90bd-11f1-984c-95de893ea309",
+              "display_name": "EEMI LUUKKONEN",
+              "team_source_id": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+              "jersey_number": "7",
+              "starter": true,
+              "position": null,
+              "participated": true,
+              "dnp_reason": null,
+              "minutes": 28.8,
+              "minutes_display": "28:48",
+              "stats": {
+                "points": 4,
+                "two_pm": 1,
+                "two_pa": 2,
+                "two_p_pct": 50,
+                "three_pm": 0,
+                "three_pa": 4,
+                "three_p_pct": 0,
+                "ftm": 2,
+                "fta": 2,
+                "ft_pct": 100,
+                "offensive_rebounds": 0,
+                "defensive_rebounds": 3,
+                "rebounds": 3,
+                "assists": 1,
+                "turnovers": 3,
+                "steals": 0,
+                "blocks": 0,
+                "blocks_received": 1,
+                "fouls": 3,
+                "fouls_drawn": 1,
+                "plus_minus": -2,
+                "efficiency": 0
+              },
+              "source_fields": {
+                "active": false,
+                "person_link": null
+              }
+            },
+            {
+              "source_player_id": "a72d3f59-b116-11f1-b60c-558507beef60",
+              "display_name": "Jalen Barr",
+              "team_source_id": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+              "jersey_number": "33",
+              "starter": false,
+              "position": null,
+              "participated": true,
+              "dnp_reason": null,
+              "minutes": 13.7833,
+              "minutes_display": "13:47",
+              "stats": {
+                "points": 8,
+                "two_pm": 3,
+                "two_pa": 8,
+                "two_p_pct": 37.5,
+                "three_pm": 0,
+                "three_pa": 1,
+                "three_p_pct": 0,
+                "ftm": 2,
+                "fta": 2,
+                "ft_pct": 100,
+                "offensive_rebounds": 4,
+                "defensive_rebounds": 3,
+                "rebounds": 7,
+                "assists": 2,
+                "turnovers": 1,
+                "steals": 3,
+                "blocks": 0,
+                "blocks_received": 1,
+                "fouls": 5,
+                "fouls_drawn": 2,
+                "plus_minus": 3,
+                "efficiency": 13
+              },
+              "source_fields": {
+                "active": false,
+                "person_link": null
+              }
+            },
+            {
+              "source_player_id": "f40148a4-90bd-11f1-baec-4f8fabaf4a0e",
+              "display_name": "RIKU KORHONEN",
+              "team_source_id": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+              "jersey_number": "8",
+              "starter": true,
+              "position": null,
+              "participated": true,
+              "dnp_reason": null,
+              "minutes": 35.8167,
+              "minutes_display": "35:49",
+              "stats": {
+                "points": 23,
+                "two_pm": 5,
+                "two_pa": 9,
+                "two_p_pct": 55.56,
+                "three_pm": 2,
+                "three_pa": 5,
+                "three_p_pct": 40,
+                "ftm": 7,
+                "fta": 8,
+                "ft_pct": 87.5,
+                "offensive_rebounds": 0,
+                "defensive_rebounds": 5,
+                "rebounds": 5,
+                "assists": 1,
+                "turnovers": 0,
+                "steals": 0,
+                "blocks": 0,
+                "blocks_received": 1,
+                "fouls": 2,
+                "fouls_drawn": 7,
+                "plus_minus": 9,
+                "efficiency": 21
+              },
+              "source_fields": {
+                "active": false,
+                "person_link": null
+              }
+            }
+          ]
+        },
+        {
+          "source_id": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+          "name": "Kataja Basket",
+          "home_away": "away",
+          "score": 85,
+          "stats": {
+            "points": 85,
+            "two_pm": 20,
+            "two_pa": 37,
+            "two_p_pct": 54.05,
+            "three_pm": 8,
+            "three_pa": 33,
+            "three_p_pct": 24.24,
+            "ftm": 21,
+            "fta": 28,
+            "ft_pct": 75,
+            "offensive_rebounds": 16,
+            "defensive_rebounds": 26,
+            "rebounds": 42,
+            "assists": 18,
+            "turnovers": 13,
+            "steals": 4,
+            "blocks": 3,
+            "blocks_received": 2,
+            "fouls": 23,
+            "fouls_drawn": 21,
+            "plus_minus": null,
+            "efficiency": 90
+          },
+          "team_extra_stats": {
+            "points": null,
+            "two_pm": null,
+            "two_pa": null,
+            "two_p_pct": null,
+            "three_pm": null,
+            "three_pa": null,
+            "three_p_pct": null,
+            "ftm": null,
+            "fta": null,
+            "ft_pct": null,
+            "offensive_rebounds": 1,
+            "defensive_rebounds": 1,
+            "rebounds": 2,
+            "assists": null,
+            "turnovers": 1,
+            "steals": null,
+            "blocks": null,
+            "blocks_received": null,
+            "fouls": 1,
+            "fouls_drawn": null,
+            "plus_minus": null,
+            "efficiency": null
+          },
+          "team_flow": {
+            "biggestLead": 4,
+            "biggestScoringRun": 9,
+            "leadChanges": 33,
+            "timeInLead": "PT7M59S"
+          },
+          "players": [
+            {
+              "source_player_id": "00017500-a83a-11f1-8b00-41f92683b540",
+              "display_name": "Richie Springs",
+              "team_source_id": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+              "jersey_number": "3",
+              "starter": true,
+              "position": null,
+              "participated": true,
+              "dnp_reason": null,
+              "minutes": 31.2,
+              "minutes_display": "31:12",
+              "stats": {
+                "points": 27,
+                "two_pm": 7,
+                "two_pa": 8,
+                "two_p_pct": 87.5,
+                "three_pm": 0,
+                "three_pa": 0,
+                "three_p_pct": null,
+                "ftm": 13,
+                "fta": 14,
+                "ft_pct": 92.86,
+                "offensive_rebounds": 7,
+                "defensive_rebounds": 4,
+                "rebounds": 11,
+                "assists": 0,
+                "turnovers": 1,
+                "steals": 0,
+                "blocks": 1,
+                "blocks_received": 1,
+                "fouls": 0,
+                "fouls_drawn": 9,
+                "plus_minus": -3,
+                "efficiency": 36
+              },
+              "source_fields": {
+                "active": false,
+                "person_link": null
+              }
+            },
+            {
+              "source_player_id": "00b8b2c2-a83a-11f1-ac95-dbfd521311a7",
+              "display_name": "Stevie Strong",
+              "team_source_id": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+              "jersey_number": "2",
+              "starter": true,
+              "position": null,
+              "participated": true,
+              "dnp_reason": null,
+              "minutes": 33.3833,
+              "minutes_display": "33:23",
+              "stats": {
+                "points": 25,
+                "two_pm": 4,
+                "two_pa": 6,
+                "two_p_pct": 66.67,
+                "three_pm": 5,
+                "three_pa": 12,
+                "three_p_pct": 41.67,
+                "ftm": 2,
+                "fta": 6,
+                "ft_pct": 33.33,
+                "offensive_rebounds": 1,
+                "defensive_rebounds": 2,
+                "rebounds": 3,
+                "assists": 5,
+                "turnovers": 2,
+                "steals": 1,
+                "blocks": 0,
+                "blocks_received": 0,
+                "fouls": 5,
+                "fouls_drawn": 4,
+                "plus_minus": -1,
+                "efficiency": 19
+              },
+              "source_fields": {
+                "active": false,
+                "person_link": null
+              }
+            },
+            {
+              "source_player_id": "037a0c46-90bd-11f1-ad46-e9a336bf1467",
+              "display_name": "JOONAS TIMONEN",
+              "team_source_id": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+              "jersey_number": "5",
+              "starter": true,
+              "position": null,
+              "participated": true,
+              "dnp_reason": null,
+              "minutes": 19.95,
+              "minutes_display": "19:57",
+              "stats": {
+                "points": 0,
+                "two_pm": 0,
+                "two_pa": 0,
+                "two_p_pct": null,
+                "three_pm": 0,
+                "three_pa": 2,
+                "three_p_pct": 0,
+                "ftm": 0,
+                "fta": 0,
+                "ft_pct": null,
+                "offensive_rebounds": 0,
+                "defensive_rebounds": 2,
+                "rebounds": 2,
+                "assists": 5,
+                "turnovers": 2,
+                "steals": 1,
+                "blocks": 1,
+                "blocks_received": 0,
+                "fouls": 3,
+                "fouls_drawn": 0,
+                "plus_minus": -1,
+                "efficiency": 5
+              },
+              "source_fields": {
+                "active": false,
+                "person_link": null
+              }
+            },
+            {
+              "source_player_id": "21838fb7-90bd-11f1-8f7a-ebd35007e794",
+              "display_name": "TEEMU SUOKAS",
+              "team_source_id": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+              "jersey_number": "10",
+              "starter": false,
+              "position": null,
+              "participated": true,
+              "dnp_reason": null,
+              "minutes": 24.7333,
+              "minutes_display": "24:44",
+              "stats": {
+                "points": 10,
+                "two_pm": 3,
+                "two_pa": 5,
+                "two_p_pct": 60,
+                "three_pm": 1,
+                "three_pa": 4,
+                "three_p_pct": 25,
+                "ftm": 1,
+                "fta": 1,
+                "ft_pct": 100,
+                "offensive_rebounds": 2,
+                "defensive_rebounds": 1,
+                "rebounds": 3,
+                "assists": 5,
+                "turnovers": 1,
+                "steals": 1,
+                "blocks": 0,
+                "blocks_received": 0,
+                "fouls": 1,
+                "fouls_drawn": 1,
+                "plus_minus": -5,
+                "efficiency": 13
+              },
+              "source_fields": {
+                "active": false,
+                "person_link": null
+              }
+            },
+            {
+              "source_player_id": "370699bb-90bf-11f1-8fe8-dbbd8242dc7e",
+              "display_name": "AATU AROPELTO",
+              "team_source_id": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+              "jersey_number": "13",
+              "starter": false,
+              "position": null,
+              "participated": false,
+              "dnp_reason": null,
+              "minutes": null,
+              "minutes_display": null,
+              "stats": {
+                "points": 0,
+                "two_pm": null,
+                "two_pa": null,
+                "two_p_pct": null,
+                "three_pm": null,
+                "three_pa": null,
+                "three_p_pct": null,
+                "ftm": 0,
+                "fta": null,
+                "ft_pct": null,
+                "offensive_rebounds": null,
+                "defensive_rebounds": null,
+                "rebounds": null,
+                "assists": null,
+                "turnovers": null,
+                "steals": null,
+                "blocks": null,
+                "blocks_received": null,
+                "fouls": 0,
+                "fouls_drawn": null,
+                "plus_minus": null,
+                "efficiency": 0
+              },
+              "source_fields": {
+                "active": false,
+                "person_link": null
+              }
+            },
+            {
+              "source_player_id": "61f2db99-90bb-11f1-bce6-27f2444e308f",
+              "display_name": "TOPIAS PALMI",
+              "team_source_id": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+              "jersey_number": "31",
+              "starter": true,
+              "position": null,
+              "participated": true,
+              "dnp_reason": null,
+              "minutes": 23.25,
+              "minutes_display": "23:15",
+              "stats": {
+                "points": 5,
+                "two_pm": 1,
+                "two_pa": 2,
+                "two_p_pct": 50,
+                "three_pm": 1,
+                "three_pa": 7,
+                "three_p_pct": 14.29,
+                "ftm": 0,
+                "fta": 0,
+                "ft_pct": null,
+                "offensive_rebounds": 0,
+                "defensive_rebounds": 2,
+                "rebounds": 2,
+                "assists": 0,
+                "turnovers": 0,
+                "steals": 0,
+                "blocks": 0,
+                "blocks_received": 0,
+                "fouls": 3,
+                "fouls_drawn": 1,
+                "plus_minus": -1,
+                "efficiency": 0
+              },
+              "source_fields": {
+                "active": false,
+                "person_link": null
+              }
+            },
+            {
+              "source_player_id": "794bb8b2-90bc-11f1-84b6-4554ddfa8cbf",
+              "display_name": "TEEMU KNIHTINEN",
+              "team_source_id": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+              "jersey_number": "21",
+              "starter": false,
+              "position": null,
+              "participated": true,
+              "dnp_reason": null,
+              "minutes": 16.6667,
+              "minutes_display": "16:40",
+              "stats": {
+                "points": 2,
+                "two_pm": 1,
+                "two_pa": 3,
+                "two_p_pct": 33.33,
+                "three_pm": 0,
+                "three_pa": 2,
+                "three_p_pct": 0,
+                "ftm": 0,
+                "fta": 0,
+                "ft_pct": null,
+                "offensive_rebounds": 4,
+                "defensive_rebounds": 3,
+                "rebounds": 7,
+                "assists": 1,
+                "turnovers": 2,
+                "steals": 0,
+                "blocks": 1,
+                "blocks_received": 0,
+                "fouls": 3,
+                "fouls_drawn": 1,
+                "plus_minus": -15,
+                "efficiency": 5
+              },
+              "source_fields": {
+                "active": false,
+                "person_link": null
+              }
+            },
+            {
+              "source_player_id": "c416fd86-90bd-11f1-b262-7b525a68ccc9",
+              "display_name": "THOMAS RÖNNHOLM",
+              "team_source_id": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+              "jersey_number": "1",
+              "starter": false,
+              "position": null,
+              "participated": true,
+              "dnp_reason": null,
+              "minutes": 4.8667,
+              "minutes_display": "4:52",
+              "stats": {
+                "points": 0,
+                "two_pm": 0,
+                "two_pa": 1,
+                "two_p_pct": 0,
+                "three_pm": 0,
+                "three_pa": 1,
+                "three_p_pct": 0,
+                "ftm": 0,
+                "fta": 0,
+                "ft_pct": null,
+                "offensive_rebounds": 0,
+                "defensive_rebounds": 0,
+                "rebounds": 0,
+                "assists": 0,
+                "turnovers": 0,
+                "steals": 0,
+                "blocks": 0,
+                "blocks_received": 1,
+                "fouls": 1,
+                "fouls_drawn": 0,
+                "plus_minus": -1,
+                "efficiency": -2
+              },
+              "source_fields": {
+                "active": false,
+                "person_link": null
+              }
+            },
+            {
+              "source_player_id": "fe07789e-a839-11f1-9e43-33a5e0826522",
+              "display_name": "Josiah Harris",
+              "team_source_id": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+              "jersey_number": "7",
+              "starter": true,
+              "position": null,
+              "participated": true,
+              "dnp_reason": null,
+              "minutes": 32.95,
+              "minutes_display": "32:57",
+              "stats": {
+                "points": 13,
+                "two_pm": 4,
+                "two_pa": 11,
+                "two_p_pct": 36.36,
+                "three_pm": 0,
+                "three_pa": 1,
+                "three_p_pct": 0,
+                "ftm": 5,
+                "fta": 7,
+                "ft_pct": 71.43,
+                "offensive_rebounds": 1,
+                "defensive_rebounds": 8,
+                "rebounds": 9,
+                "assists": 2,
+                "turnovers": 2,
+                "steals": 0,
+                "blocks": 0,
+                "blocks_received": 0,
+                "fouls": 4,
+                "fouls_drawn": 5,
+                "plus_minus": 6,
+                "efficiency": 12
+              },
+              "source_fields": {
+                "active": false,
+                "person_link": null
+              }
+            },
+            {
+              "source_player_id": "fea72430-a839-11f1-9aac-d745ed5fb394",
+              "display_name": "Jalen Lake",
+              "team_source_id": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+              "jersey_number": "4",
+              "starter": false,
+              "position": null,
+              "participated": true,
+              "dnp_reason": null,
+              "minutes": 13.0,
+              "minutes_display": "13:00",
+              "stats": {
+                "points": 3,
+                "two_pm": 0,
+                "two_pa": 1,
+                "two_p_pct": 0,
+                "three_pm": 1,
+                "three_pa": 4,
+                "three_p_pct": 25,
+                "ftm": 0,
+                "fta": 0,
+                "ft_pct": null,
+                "offensive_rebounds": 0,
+                "defensive_rebounds": 3,
+                "rebounds": 3,
+                "assists": 0,
+                "turnovers": 2,
+                "steals": 1,
+                "blocks": 0,
+                "blocks_received": 0,
+                "fouls": 1,
+                "fouls_drawn": 0,
+                "plus_minus": -9,
+                "efficiency": 1
+              },
+              "source_fields": {
+                "active": false,
+                "person_link": null
+              }
+            }
+          ]
+        }
+      ],
+      "availability": {
+        "box_score": true,
+        "advanced_stats": false,
+        "shot_coordinates": false
+      },
+      "validation": {
+        "valid": true,
+        "failure_count": 0,
+        "warning_count": 0,
+        "checks": [
+          {
+            "name": "game_identity",
+            "status": "pass",
+            "detail": "source and game IDs are present and agree"
+          },
+          {
+            "name": "two_teams",
+            "status": "pass",
+            "detail": "two distinct teams with source IDs are present"
+          },
+          {
+            "name": "score_reconciliation",
+            "status": "pass",
+            "detail": "team scores agree with game final score"
+          },
+          {
+            "name": "complete_box_score",
+            "status": "pass",
+            "detail": "Lahti Basketball"
+          },
+          {
+            "name": "box_score_arithmetic",
+            "status": "pass",
+            "detail": "Lahti Basketball"
+          },
+          {
+            "name": "complete_box_score",
+            "status": "pass",
+            "detail": "Kataja Basket"
+          },
+          {
+            "name": "box_score_arithmetic",
+            "status": "pass",
+            "detail": "Kataja Basket"
+          },
+          {
+            "name": "unique_players",
+            "status": "pass",
+            "detail": "player IDs are unique in the fixture"
+          },
+          {
+            "name": "box_score_present",
+            "status": "pass",
+            "detail": "full box-score totals are present"
+          }
+        ]
+      }
     }
   ],
   "summary": {
-    "available_played_games": 15,
-    "requested_games": 15,
-    "fetched_games": 15,
+    "available_played_games": 16,
+    "requested_games": 16,
+    "fetched_games": 16,
     "failed_games": 0,
-    "cached_games": 15,
-    "valid_games": 15,
+    "cached_games": 11,
+    "valid_games": 16,
     "invalid_games": 0
   },
   "aggregate": {
     "schema_version": "0.1",
     "season_id": "huki2627",
     "competition": null,
-    "games": 15,
+    "games": 16,
     "teams": [
       {
         "source_team_id": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
@@ -20478,65 +21566,65 @@
       {
         "source_team_id": "d31984cb-90a6-11f1-997e-e7d7c2463142",
         "name": "Kataja Basket",
-        "games": 2,
+        "games": 3,
         "totals": {
-          "points": 188.0,
-          "two_pm": 48.0,
-          "two_pa": 80.0,
-          "three_pm": 25.0,
-          "three_pa": 73.0,
-          "ftm": 17.0,
-          "fta": 22.0,
-          "offensive_rebounds": 32.0,
-          "defensive_rebounds": 53.0,
-          "rebounds": 85.0,
-          "assists": 36.0,
-          "turnovers": 14.0,
-          "steals": 9.0,
-          "blocks": 5.0,
-          "blocks_received": 3.0,
-          "fouls": 38.0,
-          "fouls_drawn": 26.0,
-          "efficiency": 224.0
+          "points": 273.0,
+          "two_pm": 68.0,
+          "two_pa": 117.0,
+          "three_pm": 33.0,
+          "three_pa": 106.0,
+          "ftm": 38.0,
+          "fta": 50.0,
+          "offensive_rebounds": 48.0,
+          "defensive_rebounds": 79.0,
+          "rebounds": 127.0,
+          "assists": 54.0,
+          "turnovers": 27.0,
+          "steals": 13.0,
+          "blocks": 8.0,
+          "blocks_received": 5.0,
+          "fouls": 61.0,
+          "fouls_drawn": 47.0,
+          "efficiency": 314.0
         },
         "per_game": {
-          "points": 94.0,
-          "two_pm": 24.0,
-          "two_pa": 40.0,
-          "three_pm": 12.5,
-          "three_pa": 36.5,
-          "ftm": 8.5,
-          "fta": 11.0,
+          "points": 91.0,
+          "two_pm": 22.7,
+          "two_pa": 39.0,
+          "three_pm": 11.0,
+          "three_pa": 35.3,
+          "ftm": 12.7,
+          "fta": 16.7,
           "offensive_rebounds": 16.0,
-          "defensive_rebounds": 26.5,
-          "rebounds": 42.5,
+          "defensive_rebounds": 26.3,
+          "rebounds": 42.3,
           "assists": 18.0,
-          "turnovers": 7.0,
-          "steals": 4.5,
-          "blocks": 2.5,
-          "blocks_received": 1.5,
-          "fouls": 19.0,
-          "fouls_drawn": 13.0,
-          "efficiency": 112.0
+          "turnovers": 9.0,
+          "steals": 4.3,
+          "blocks": 2.7,
+          "blocks_received": 1.7,
+          "fouls": 20.3,
+          "fouls_drawn": 15.7,
+          "efficiency": 104.7
         },
         "metrics": {
-          "field_goals_made": 73.0,
-          "field_goals_attempted": 153.0,
-          "fg_pct": 47.7,
-          "two_point_pct": 60.0,
-          "three_point_pct": 34.2,
-          "efg_pct": 55.9,
-          "true_shooting_pct": 57.8,
-          "estimated_possessions": 144.7,
-          "offensive_rating": 128.7,
-          "defensive_rating": 105.4,
-          "net_rating": 23.3,
-          "assist_turnover": 2.6,
-          "turnover_pct": 9.7,
-          "offensive_rebound_pct": 38.1,
-          "defensive_rebound_pct": 80.3,
-          "three_point_attempt_rate": 47.7,
-          "free_throw_rate": 14.4
+          "field_goals_made": 101.0,
+          "field_goals_attempted": 223.0,
+          "fg_pct": 45.3,
+          "two_point_pct": 58.1,
+          "three_point_pct": 31.1,
+          "efg_pct": 52.7,
+          "true_shooting_pct": 55.7,
+          "estimated_possessions": 224.0,
+          "offensive_rating": 119.5,
+          "defensive_rating": 107.3,
+          "net_rating": 12.3,
+          "assist_turnover": 2.0,
+          "turnover_pct": 12.1,
+          "offensive_rebound_pct": 37.5,
+          "defensive_rebound_pct": 78.2,
+          "three_point_attempt_rate": 47.5,
+          "free_throw_rate": 22.4
         }
       },
       {
@@ -20798,65 +21886,65 @@
       {
         "source_team_id": "d296e502-90a6-11f1-bf89-e7d7c2463142",
         "name": "Lahti Basketball",
-        "games": 1,
+        "games": 2,
         "totals": {
-          "points": 70.0,
-          "two_pm": 20.0,
-          "two_pa": 40.0,
-          "three_pm": 4.0,
-          "three_pa": 25.0,
-          "ftm": 18.0,
-          "fta": 22.0,
-          "offensive_rebounds": 10.0,
-          "defensive_rebounds": 24.0,
-          "rebounds": 34.0,
-          "assists": 14.0,
-          "turnovers": 13.0,
-          "steals": 8.0,
-          "blocks": 3.0,
-          "blocks_received": 2.0,
-          "fouls": 18.0,
-          "fouls_drawn": 16.0,
-          "efficiency": 71.0
+          "points": 161.0,
+          "two_pm": 44.0,
+          "two_pa": 84.0,
+          "three_pm": 11.0,
+          "three_pa": 48.0,
+          "ftm": 40.0,
+          "fta": 52.0,
+          "offensive_rebounds": 19.0,
+          "defensive_rebounds": 52.0,
+          "rebounds": 71.0,
+          "assists": 27.0,
+          "turnovers": 27.0,
+          "steals": 17.0,
+          "blocks": 5.0,
+          "blocks_received": 5.0,
+          "fouls": 39.0,
+          "fouls_drawn": 37.0,
+          "efficiency": 165.0
         },
         "per_game": {
-          "points": 70.0,
-          "two_pm": 20.0,
-          "two_pa": 40.0,
-          "three_pm": 4.0,
-          "three_pa": 25.0,
-          "ftm": 18.0,
-          "fta": 22.0,
-          "offensive_rebounds": 10.0,
-          "defensive_rebounds": 24.0,
-          "rebounds": 34.0,
-          "assists": 14.0,
-          "turnovers": 13.0,
-          "steals": 8.0,
-          "blocks": 3.0,
-          "blocks_received": 2.0,
-          "fouls": 18.0,
-          "fouls_drawn": 16.0,
-          "efficiency": 71.0
+          "points": 80.5,
+          "two_pm": 22.0,
+          "two_pa": 42.0,
+          "three_pm": 5.5,
+          "three_pa": 24.0,
+          "ftm": 20.0,
+          "fta": 26.0,
+          "offensive_rebounds": 9.5,
+          "defensive_rebounds": 26.0,
+          "rebounds": 35.5,
+          "assists": 13.5,
+          "turnovers": 13.5,
+          "steals": 8.5,
+          "blocks": 2.5,
+          "blocks_received": 2.5,
+          "fouls": 19.5,
+          "fouls_drawn": 18.5,
+          "efficiency": 82.5
         },
         "metrics": {
-          "field_goals_made": 24.0,
-          "field_goals_attempted": 65.0,
-          "fg_pct": 36.9,
-          "two_point_pct": 50.0,
-          "three_point_pct": 16.0,
-          "efg_pct": 40.0,
-          "true_shooting_pct": 46.9,
-          "estimated_possessions": 77.7,
-          "offensive_rating": 91.0,
-          "defensive_rating": 98.8,
-          "net_rating": -7.8,
-          "assist_turnover": 1.1,
-          "turnover_pct": 16.7,
-          "offensive_rebound_pct": 23.3,
-          "defensive_rebound_pct": 55.8,
-          "three_point_attempt_rate": 38.5,
-          "free_throw_rate": 33.8
+          "field_goals_made": 55.0,
+          "field_goals_attempted": 132.0,
+          "fg_pct": 41.7,
+          "two_point_pct": 52.4,
+          "three_point_pct": 22.9,
+          "efg_pct": 45.8,
+          "true_shooting_pct": 52.0,
+          "estimated_possessions": 162.9,
+          "offensive_rating": 101.1,
+          "defensive_rating": 101.1,
+          "net_rating": 0.0,
+          "assist_turnover": 1.0,
+          "turnover_pct": 16.6,
+          "offensive_rebound_pct": 24.4,
+          "defensive_rebound_pct": 59.8,
+          "three_point_attempt_rate": 36.4,
+          "free_throw_rate": 39.4
         }
       },
       {
@@ -21053,65 +22141,65 @@
       }
     ],
     "league": {
-      "games": 15,
+      "games": 16,
       "totals": {
-        "points": 2569.0,
-        "two_pm": 670.0,
-        "two_pa": 1216.0,
-        "three_pm": 273.0,
-        "three_pa": 837.0,
-        "ftm": 410.0,
-        "fta": 545.0,
-        "offensive_rebounds": 351.0,
-        "defensive_rebounds": 788.0,
-        "rebounds": 1139.0,
-        "assists": 506.0,
-        "turnovers": 397.0,
-        "steals": 229.0,
-        "blocks": 76.0,
-        "blocks_received": 67.0,
-        "fouls": 548.0,
-        "fouls_drawn": 530.0,
-        "efficiency": 2877.0
+        "points": 2745.0,
+        "two_pm": 714.0,
+        "two_pa": 1297.0,
+        "three_pm": 288.0,
+        "three_pa": 893.0,
+        "ftm": 453.0,
+        "fta": 603.0,
+        "offensive_rebounds": 376.0,
+        "defensive_rebounds": 842.0,
+        "rebounds": 1218.0,
+        "assists": 537.0,
+        "turnovers": 424.0,
+        "steals": 242.0,
+        "blocks": 81.0,
+        "blocks_received": 72.0,
+        "fouls": 592.0,
+        "fouls_drawn": 572.0,
+        "efficiency": 3061.0
       },
       "per_game": {
-        "points": 171.3,
-        "two_pm": 44.7,
+        "points": 171.6,
+        "two_pm": 44.6,
         "two_pa": 81.1,
-        "three_pm": 18.2,
+        "three_pm": 18.0,
         "three_pa": 55.8,
-        "ftm": 27.3,
-        "fta": 36.3,
-        "offensive_rebounds": 23.4,
-        "defensive_rebounds": 52.5,
-        "rebounds": 75.9,
-        "assists": 33.7,
+        "ftm": 28.3,
+        "fta": 37.7,
+        "offensive_rebounds": 23.5,
+        "defensive_rebounds": 52.6,
+        "rebounds": 76.1,
+        "assists": 33.6,
         "turnovers": 26.5,
-        "steals": 15.3,
+        "steals": 15.1,
         "blocks": 5.1,
         "blocks_received": 4.5,
-        "fouls": 36.5,
-        "fouls_drawn": 35.3,
-        "efficiency": 191.8
+        "fouls": 37.0,
+        "fouls_drawn": 35.8,
+        "efficiency": 191.3
       },
       "metrics": {
-        "field_goals_made": 943.0,
-        "field_goals_attempted": 2053.0,
-        "fg_pct": 45.9,
+        "field_goals_made": 1002.0,
+        "field_goals_attempted": 2190.0,
+        "fg_pct": 45.8,
         "two_point_pct": 55.1,
-        "three_point_pct": 32.6,
-        "efg_pct": 52.6,
-        "true_shooting_pct": 56.0,
-        "estimated_possessions": 2338.8,
-        "offensive_rating": 109.8,
+        "three_point_pct": 32.3,
+        "efg_pct": 52.3,
+        "true_shooting_pct": 55.9,
+        "estimated_possessions": 2503.3,
+        "offensive_rating": 109.7,
         "defensive_rating": null,
         "net_rating": null,
         "assist_turnover": 1.3,
-        "turnover_pct": 17.0,
+        "turnover_pct": 16.9,
         "offensive_rebound_pct": null,
         "defensive_rebound_pct": null,
         "three_point_attempt_rate": 40.8,
-        "free_throw_rate": 26.5
+        "free_throw_rate": 27.5
       }
     }
   },
