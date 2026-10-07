@@ -3,7 +3,7 @@ import type { ViewKey } from "./data";
 import { leagueFromRouteSlug, leagueRouteSlugs, type LeagueId } from "./leagues";
 import type { SeasonId } from "./SeasonContext";
 
-export type AppRoute = { view: ViewKey; matchId?: string; playerId?: string; teamId?: string; articleSlug?: string; askQuery?: string; comparePlayerA?: string; comparePlayerB?: string; season?: SeasonId; league?: LeagueId };
+export type AppRoute = { view: ViewKey; matchId?: string; previewPanel?: boolean; playerId?: string; teamId?: string; articleSlug?: string; askQuery?: string; comparePlayerA?: string; comparePlayerB?: string; season?: SeasonId; league?: LeagueId };
 const paths: Partial<Record<ViewKey, string>> = {
   home: "/", overview: "/overview/", matches: "/matches/", teams: "/teams/",
   players: "/players/", season: "/season/", data: "/data/", matchup: "/matchup/", analyses: "/analyysit/", ask: "/ask/", "custom-import": "/custom-import/",
@@ -55,8 +55,8 @@ export function parseRoute(pathname: string, search = ""): AppRoute {
     try { return { view: "analysis-article", articleSlug: decodeURIComponent(article[1]), ...scope }; }
     catch { return { view: "not-found", ...scope }; }
   }
-  const match = path.match(/^\/matches\/(\d+)(?:\/(players|data))?$/);
-  if (match) return { view: match[2] === "data" ? "data" : "story", matchId: match[1], ...scope };
+  const match = path.match(/^\/matches\/(\d+)(?:\/(players|data|preview))?$/);
+  if (match) return { view: match[2] === "data" ? "data" : "story", matchId: match[1], previewPanel: match[2] === "preview" || new URLSearchParams(search).get("panel") === "preview", ...scope };
   return { view: "not-found", ...scope };
 }
 
