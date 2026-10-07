@@ -113,7 +113,29 @@ def _periods(data: dict[str, Any], team_ids: dict[str, str | None]) -> list[dict
     away_scores = scores.get(team_ids.get("away"), []) if isinstance(scores, dict) else []
     home_by_period = {row.get("periodId"): row.get("score") for row in home_scores if isinstance(row, dict)}
     away_by_period = {row.get("periodId"): row.get("score") for row in away_scores if isinstance(row, dict)}
-    period_ids = sorted(set(home_by_period) | set(away_by_period))
+
+    # New Sportradar responses expose period totals directly on data.periodData.
+    # Only retain completed periods so a live quarter is not treated as final.
+    if not home_by_period and not away_by_period:
+        rows = data.get("periodData")
+        if isinstance(rows, list):
+            for row in rows:
+                if not isinstance(row, dict) or row.get("ended") is not True:
+                    continue
+                period_id = row.get("periodId")
+                team_scores = row.get("teamScore")
+                if period_id is None or not isinstance(team_scores, dict):
+                    continue
+                home_by_period[period_id] = team_scores.get(team_ids.get("home"))
+                away_by_period[period_id] = team_scores.get(team_ids.get("away"))
+
+    def period_sort_key(value: Any) -> tuple[int, int | str]:
+        try:
+            return (0, int(value))
+        except (TypeError, ValueError):
+            return (1, str(value))
+
+    period_ids = sorted(set(home_by_period) | set(away_by_period), key=period_sort_key)
     return [
         {"period": period_id, "home_score": _number(home_by_period.get(period_id)), "away_score": _number(away_by_period.get(period_id))}
         for period_id in period_ids
