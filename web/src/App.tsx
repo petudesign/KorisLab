@@ -128,6 +128,17 @@ function scheduledAtFor(record: SeasonMatchRecord) {
   return scheduleByMatchId[record.game.source_id] ?? record.game.scheduled_at;
 }
 
+function formatScheduledTime(value: string | null, scheduledTime: string | null | undefined, language: Language) {
+  if (scheduledTime) return scheduledTime.slice(0, 5);
+  // A date-only source value is not a game time. Parsing YYYY-MM-DD as a Date
+  // turns midnight UTC into 03:00 in Finland during summer time.
+  if (!value || !value.includes("T")) return "—";
+  const date = new Date(value);
+  return Number.isNaN(date.valueOf())
+    ? "—"
+    : new Intl.DateTimeFormat(language === "fi" ? "fi-FI" : "en-GB", { hour: "2-digit", minute: "2-digit", timeZone: "Europe/Helsinki" }).format(date);
+}
+
 function toMatchListItem(record: SeasonMatchRecord): MatchListItem {
   const home = record.teams.find((team) => team.home_away === "home") ?? record.teams[0];
   const away = record.teams.find((team) => team.home_away === "away") ?? record.teams[1];
@@ -142,7 +153,7 @@ function toMatchListItem(record: SeasonMatchRecord): MatchListItem {
   };
 }
 
-function buildMatchViewModel(record: SeasonMatchRecord, language: Language = "fi", seasonLabel = "2025–26"): { match: AppMatch; players: Player[]; teamSummary: typeof teamSummary; insights: typeof insights; availability: typeof availability } {
+function buildMatchViewModel(record: SeasonMatchRecord, language: Language = "fi", seasonLabel = "2025–26", scheduledTime?: string | null): { match: AppMatch; players: Player[]; teamSummary: typeof teamSummary; insights: typeof insights; availability: typeof availability } {
   const home = record.teams.find((team) => team.home_away === "home") ?? record.teams[0];
   const away = record.teams.find((team) => team.home_away === "away") ?? record.teams[1];
   const winner = home.score >= away.score ? home : away;
@@ -179,7 +190,7 @@ function buildMatchViewModel(record: SeasonMatchRecord, language: Language = "fi
     competition: record.competition.name,
     season: seasonLabel,
     date: formatScheduledDate(scheduledAt, language),
-    time: scheduledAt ? new Intl.DateTimeFormat(language === "fi" ? "fi-FI" : "en-GB", { hour: "2-digit", minute: "2-digit" }).format(new Date(scheduledAt)) : "—",
+    time: formatScheduledTime(scheduledAt, scheduledTime, language),
     venue: record.game.venue.name,
     sourceMatchId: record.game.source_id,
     status: "Lopputulos",
@@ -1658,7 +1669,8 @@ function App() {
       if (cancelled) return;
       if (!selectedRecord) { setMatchLoadState("missing"); return; }
       setMatchLoadState("ready");
-      const viewModel = buildMatchViewModel(selectedRecord, language, seasonLabel);
+      const scheduledTime = current?.schedule.find((fixture) => fixture.source_match_id === selectedMatchId)?.scheduled_time;
+      const viewModel = buildMatchViewModel(selectedRecord, language, seasonLabel, scheduledTime);
       setActiveMatch(viewModel.match);
       setActivePlayers(viewModel.players);
       setActiveTeamSummary(viewModel.teamSummary);
@@ -1668,7 +1680,7 @@ function App() {
     return () => {
       cancelled = true;
     };
-  }, [view, leagueId, selectedMatchId, language, loadSeasonMatches, loadMatchesForSeason, seasonId, seasonLabel]);
+  }, [view, leagueId, selectedMatchId, language, loadSeasonMatches, loadMatchesForSeason, seasonId, seasonLabel, current?.schedule]);
   useEffect(() => {
     if (view !== "story" || matchLoadState !== "ready" || window.location.hash !== "#match-replay") return;
     document.getElementById("match-replay")?.scrollIntoView({ block: "start" });
