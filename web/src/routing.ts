@@ -3,7 +3,7 @@ import type { ViewKey } from "./data";
 import { leagueFromRouteSlug, leagueRouteSlugs, type LeagueId } from "./leagues";
 import type { SeasonId } from "./SeasonContext";
 
-export type AppRoute = { view: ViewKey; matchId?: string; playerId?: string; teamId?: string; articleSlug?: string; askQuery?: string; season?: SeasonId; league?: LeagueId };
+export type AppRoute = { view: ViewKey; matchId?: string; playerId?: string; teamId?: string; articleSlug?: string; askQuery?: string; comparePlayerA?: string; comparePlayerB?: string; season?: SeasonId; league?: LeagueId };
 const paths: Partial<Record<ViewKey, string>> = {
   home: "/", overview: "/overview/", matches: "/matches/", teams: "/teams/",
   players: "/players/", season: "/season/", data: "/data/", matchup: "/matchup/", analyses: "/analyysit/", ask: "/ask/", "custom-import": "/custom-import/",
@@ -21,7 +21,15 @@ export function parseRoute(pathname: string, search = ""): AppRoute {
   const scope = { season, ...(leagueValue === "korisliiga" ? { league: "korisliiga" as const } : {}) };
   const path = pathname.replace(/\/+$/, "") || "/";
   const page = Object.entries(paths).find(([, value]) => (value?.replace(/\/+$/, "") || "/") === path);
-  if (page) return { view: page[0] as ViewKey, ...(page[0] === "ask" ? { askQuery: new URLSearchParams(search).get("q") ?? "" } : {}), ...scope };
+  if (page) return {
+    view: page[0] as ViewKey,
+    ...(page[0] === "ask" ? { askQuery: new URLSearchParams(search).get("q") ?? "" } : {}),
+    ...(page[0] === "matchup" ? {
+      comparePlayerA: new URLSearchParams(search).get("playerA") || undefined,
+      comparePlayerB: new URLSearchParams(search).get("playerB") || undefined,
+    } : {}),
+    ...scope,
+  };
   const ask = path.match(/^\/ask\/([^/]+)$/);
   if (ask) {
     try { return { view: "ask", askQuery: new URLSearchParams(search).get("q") ?? decodeURIComponent(ask[1]).replaceAll("-", " "), ...scope }; }
@@ -52,7 +60,7 @@ export function parseRoute(pathname: string, search = ""): AppRoute {
   return { view: "not-found", ...scope };
 }
 
-export function routeHref(view: ViewKey, season: SeasonId, id?: string, league: LeagueId = "naisten-korisliiga", teamName?: string) {
+export function routeHref(view: ViewKey, season: SeasonId, id?: string, league: LeagueId = "naisten-korisliiga", teamName?: string, extraParams?: Record<string, string | undefined>) {
   const askSlug = view === "ask" && id ? id.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("fi-FI").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 90) : "";
   const path = view === "ask" && askSlug ? `/ask/${askSlug}/`
     : view === "player-profile" && id ? `/players/${encodeURIComponent(id)}/`
@@ -64,6 +72,10 @@ export function routeHref(view: ViewKey, season: SeasonId, id?: string, league: 
   const query = new URLSearchParams({ season });
   if (league === "korisliiga") query.set("league", league);
   if (view === "ask" && id) query.set("q", id);
+  for (const [key, value] of Object.entries(extraParams ?? {})) {
+    if (value) query.set(key, value);
+    else query.delete(key);
+  }
   return `${path}?${query.toString()}`;
 }
 
@@ -81,8 +93,8 @@ export function useAppRoute(season: SeasonId, league: LeagueId = "naisten-korisl
     window.addEventListener("popstate", back);
     return () => window.removeEventListener("popstate", back);
   }, []);
-  const navigate = useCallback((view: ViewKey, id?: string, targetSeason = season, targetLeague = league, replace = false, teamName?: string) => {
-    const href = routeHref(view, targetSeason, id, targetLeague, teamName);
+  const navigate = useCallback((view: ViewKey, id?: string, targetSeason = season, targetLeague = league, replace = false, teamName?: string, extraParams?: Record<string, string | undefined>) => {
+    const href = routeHref(view, targetSeason, id, targetLeague, teamName, extraParams);
     if (window.location.pathname + window.location.search !== href) {
       if (replace) window.history.replaceState(null, "", href);
       else window.history.pushState(null, "", href);

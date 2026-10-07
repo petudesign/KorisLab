@@ -41,16 +41,16 @@ function Comparison({ sides, metrics, shooting }: { sides: [Side, Side]; metrics
   </>;
 }
 
-export function MatchupLab() {
+export function MatchupLab({ initialPlayerA, initialPlayerB }: { initialPlayerA?: string; initialPlayerB?: string } = {}) {
   const { leagueId, assetPath, historicalSummaries, seasonId, current, loading: currentLoading, loadMatchesForSeason, refreshCurrent } = useSeason();
   const supportsOnOff = seasonId === "2025-26" || leagueId === "korisliiga" && seasonId === "2024-25";
   const { tr, language } = useI18n();
-  const [kind, setKind] = useState<ComparisonKind>("teams");
+  const [kind, setKind] = useState<ComparisonKind>(initialPlayerA || initialPlayerB ? "players" : "teams");
   const [mode, setMode] = useState<Mode>("entities");
   const [basis, setBasis] = useState<"game" | "40">("game");
   const [shooting, setShooting] = useState(false);
-  const [firstId, setFirstId] = useState("");
-  const [secondId, setSecondId] = useState("");
+  const [firstId, setFirstId] = useState(initialPlayerA ?? "");
+  const [secondId, setSecondId] = useState(initialPlayerB ?? "");
   const [playerId, setPlayerId] = useState("");
   const [firstSeason, setFirstSeason] = useState<SeasonId | "earlier">(seasonId === "2026-27" ? "2025-26" : "2024-25");
   const [secondSeason, setSecondSeason] = useState<SeasonId>(seasonId === "2026-27" ? "2026-27" : "2025-26");
@@ -92,6 +92,28 @@ export function MatchupLab() {
   const optionsA = aEntries.length ? aEntries : catalog, optionsB = bEntries.length ? bEntries : catalog;
   const first = optionsA.find((entry) => entry.id === firstId) ?? optionsA[0];
   const second = optionsB.find((entry) => entry.id === secondId && (mode !== "entities" || entry.id !== first?.id)) ?? optionsB.find((entry) => mode !== "entities" || entry.id !== first?.id);
+  useEffect(() => {
+    if (initialPlayerA || initialPlayerB) {
+      setKind("players");
+      setMode("entities");
+      setFirstId(initialPlayerA ?? "");
+      setSecondId(initialPlayerB ?? "");
+    }
+  }, [initialPlayerA, initialPlayerB]);
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    if (kind === "players" && mode === "entities" && first?.id && second?.id) {
+      url.searchParams.set("playerA", first.id);
+      url.searchParams.set("playerB", second.id);
+    } else if (kind === "teams") {
+      url.searchParams.delete("playerA");
+      url.searchParams.delete("playerB");
+    }
+    const nextUrl = `${url.pathname}${url.search}${url.hash}`;
+    if (`${window.location.pathname}${window.location.search}${window.location.hash}` !== nextUrl) {
+      window.history.replaceState(window.history.state, "", nextUrl);
+    }
+  }, [first?.id, kind, mode, second?.id]);
   const teamPlayers = new Map<string, string>();
   for (const record of firstRecords.length ? firstRecords : historical) for (const team of record.teams) if (team.source_id === first?.id) for (const player of team.players) if (player.minutes != null && player.minutes > 0) teamPlayers.set(player.source_player_id, playerDisplayName(player.display_name));
   const playerOptions = [...teamPlayers].map(([id, name]) => ({ id, name })).sort((a, b) => a.name.localeCompare(b.name, "fi"));

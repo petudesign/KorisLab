@@ -28,7 +28,7 @@ function nationalityLabel(code: string, language: string) {
   }
 }
 
-export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: string; onOpenMatch: (id: string) => void; onBack: () => void }) {
+export function PlayerProfile({ playerId, onOpenMatch, onBack, onComparePlayer }: { playerId: string; onOpenMatch: (id: string) => void; onBack: () => void; onComparePlayer: (id: string) => void }) {
   const { leagueId, leagueName, leagueNameEn, seasonId, seasonLabel, current, loadMatches, loadMatchesForSeason, setSeasonId } = useSeason();
   const { language, tr } = useI18n();
   const [phase, setPhase] = useState<"regular" | "playoffs">("regular");
@@ -249,6 +249,9 @@ export function PlayerProfile({ playerId, onOpenMatch, onBack }: { playerId: str
         <SeasonSelector />
       </section>
       {player && <p className="profile-discovery-summary panel">{discoverySummary}</p>}
+      {player && activePhase === "regular" && <div className="player-profile-actions">
+        <button className="outline-button" type="button" onClick={() => onComparePlayer(playerId)}>{tr("Vertaa toiseen pelaajaan", "Compare with another player")} <Icon name="arrowOutward" size={14} /></button>
+      </div>}
       <div className="profile-phase-toggle" role="group" aria-label={tr("Profiilinäkymä", "Profile view")}>
         <button type="button" aria-pressed={profileView === "season" && activePhase === "regular"} onClick={() => { setPhase("regular"); setProfileView("season"); }}>{tr("Runkosarja", "Regular season")}</button>
         {seasonId !== "2026-27" && <button type="button" aria-pressed={profileView === "season" && activePhase === "playoffs"} onClick={() => { setPhase("playoffs"); setProfileView("season"); }}>{tr("Pudotuspelit", "Playoffs")}</button>}
