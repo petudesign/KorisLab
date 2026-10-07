@@ -1,3 +1,5 @@
+import "./index.css";
+
 const root = document.getElementById("root")!;
 const isStudioRoute = window.location.pathname === "/studio" || window.location.pathname.startsWith("/studio/");
 
