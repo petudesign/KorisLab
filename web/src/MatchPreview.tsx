@@ -5,6 +5,10 @@ import { useI18n } from "./i18n";
 type PreviewMetric = "points" | "rebounds" | "turnovers" | "threePct";
 type TeamPreview = { average: Partial<Record<PreviewMetric, number>>; samples: Partial<Record<PreviewMetric, number>>; games: ScheduleMatch[] };
 
+function teamNameKey(name: string) {
+  return name.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("fi-FI").replace(/\s+/g, " ").trim();
+}
+
 function isBeforeFixture(game: ScheduleMatch, fixture: ScheduleMatch) {
   if (!game.scheduled_date || !fixture.scheduled_date) return false;
   if (game.scheduled_date !== fixture.scheduled_date) return game.scheduled_date < fixture.scheduled_date;
@@ -16,10 +20,15 @@ function summarizeTeam(teamId: string, fixture: ScheduleMatch, schedule: Schedul
   const previousGames = schedule.filter((game) => game.source_match_id !== fixture.source_match_id && isBeforeFixture(game, fixture) &&
     isCompletedScheduleStatus(game.status) && game.home.score !== null && game.away.score !== null &&
     (game.home.source_team_id === teamId || game.away.source_team_id === teamId));
-  const previousIds = new Set(previousGames.map((game) => game.source_match_id));
-  const stats = matches.filter((record) => previousIds.has(record.game.source_id))
-    .map((record) => record.teams.find((gameTeam) => gameTeam.source_id === teamId)?.stats)
-    .filter((value): value is NonNullable<typeof value> => Boolean(value));
+  const previousGamesById = new Map(previousGames.map((game) => [game.source_match_id, game]));
+  const stats = matches.flatMap((record) => {
+    const scheduleGame = previousGamesById.get(record.game.source_id);
+    if (!scheduleGame) return [];
+    const scheduleTeam = scheduleGame.home.source_team_id === teamId ? scheduleGame.home : scheduleGame.away;
+    const statsTeam = record.teams.find((gameTeam) => gameTeam.source_id === teamId)
+      ?? record.teams.find((gameTeam) => teamNameKey(gameTeam.name) === teamNameKey(scheduleTeam.name));
+    return statsTeam ? [statsTeam.stats] : [];
+  });
   const sum = (key: string) => {
     const values = stats.map((row) => row[key as keyof typeof row]).filter((value): value is number => typeof value === "number" && Number.isFinite(value));
     return { total: values.reduce((total, value) => total + value, 0), count: values.length };
@@ -65,11 +74,17 @@ export function MatchPreview({ fixture, schedule, matches, onOpenMatch }: {
     </section>
 
     <section className="panel match-preview-context" aria-labelledby="match-preview-context-title">
-      <div className="panel-heading panel-heading--plain"><div><h2 id="match-preview-context-title">{tr("Joukkueiden tilanne ennen tätä ottelua", "Team form before this game")}</h2><p className="panel-subcopy">{tr("Keskiarvot lasketaan vain aiemmista tarkistetuista box scoreista.", "Averages use verified box scores from earlier games only.")}</p></div></div>
+      <div className="panel-heading panel-heading--plain"><div><h2 id="match-preview-context-title">{tr("Joukkueiden tilanne ennen tätä ottelua", "Team form before this game")}</h2><p className="panel-subcopy">{tr("Keskiarvot lasketaan aiempien otteluiden tarkistetuista box scoreista. Rivin alla näkyy, monesta ottelusta kyseinen luku löytyy.", "Averages use verified box scores from earlier games. The count below each figure shows how many games have that statistic available.")}</p></div></div>
       <div className="match-preview-table-wrap"><table className="match-preview-table">
         <thead><tr><th scope="col">{tr("Mittari", "Metric")}</th><th scope="col">{fixture.home.name}</th><th scope="col">{fixture.away.name}</th></tr></thead>
         <tbody>{rows.map((row) => <tr key={row.key}><th scope="row">{row.label}</th>
-          {[home, away].map((team, index) => <td key={index}>{format(team.average[row.key], row.suffix)}<small>{team.samples[row.key] ?? 0} {tr("ottelua", "games")}</small></td>)}
+          {[home, away].map((team, index) => {
+            const sample = team.samples[row.key] ?? 0;
+            const sampleLabel = language === "fi"
+              ? `${sample} ${sample === 1 ? "ottelu, josta luku löytyy" : "ottelua, joista luku löytyy"}`
+              : `${sample} ${sample === 1 ? "game with data" : "games with data"}`;
+            return <td key={index}>{format(team.average[row.key], row.suffix)}<small>{sampleLabel}</small></td>;
+          })}
         </tr>)}</tbody>
       </table></div>
       <div className="match-preview-recent"><h3>{tr("Viimeisimmät tulokset ennen ottelua", "Recent results before this game")}</h3>
