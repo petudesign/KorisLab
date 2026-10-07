@@ -4,6 +4,7 @@ import { useI18n } from "./i18n";
 import { playerDisplayName } from "./playerName";
 import { Icon } from "./Icon";
 import { ShotCount } from "./ShotCount";
+import { scheduleByMatchId } from "./schedule";
 import { appearanceSplit, buildComparisonEntries, comparisonValues, entityGames, parseOnOff, recentSplit, type ComparisonEntry, type ComparisonKind, type OnOffData } from "./matchupStats";
 
 type Mode = "entities" | "seasons" | "recent" | "phase" | "appearance" | "onoff";
@@ -41,6 +42,60 @@ function Comparison({ sides, metrics, shooting }: { sides: [Side, Side]; metrics
   </>;
 }
 
+type HeadToHeadSource = { season: SeasonId; phase: "regular" | "playoffs"; records: SeasonMatchRecord[] };
+type HeadToHeadMeeting = { record: SeasonMatchRecord; season: SeasonId; phase: HeadToHeadSource["phase"]; date: string | null; home: SeasonMatchRecord["teams"][number]; away: SeasonMatchRecord["teams"][number] };
+
+function teamNameKey(name: string) {
+  return name.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("fi-FI").replace(/\s+/g, " ").trim();
+}
+
+function headToHeadDate(record: SeasonMatchRecord, currentDates: Map<string, string>) {
+  return record.game.scheduled_at ?? scheduleByMatchId[record.game.source_id] ?? currentDates.get(record.game.source_id) ?? null;
+}
+
+function latestHeadToHeadMeetings(sources: HeadToHeadSource[], first: ComparisonEntry, second: ComparisonEntry, currentDates: Map<string, string>) {
+  const meetings = sources.flatMap((source) => {
+    const inSource = source.records.flatMap((record, index) => {
+      const teamMatches = (team: SeasonMatchRecord["teams"][number], entry: ComparisonEntry) => team.source_id === entry.id || teamNameKey(team.name) === teamNameKey(entry.name);
+      const teamA = record.teams.find((team) => teamMatches(team, first));
+      const teamB = record.teams.find((team) => teamMatches(team, second));
+      const home = record.teams[0], away = record.teams[1];
+      if (!teamA || !teamB || !home || !away || teamA === teamB || teamA.score == null || teamB.score == null) return [];
+      return [{ record, season: source.season, phase: source.phase, date: headToHeadDate(record, currentDates), home, away, index }];
+    });
+    const allHaveDates = inSource.every((meeting) => meeting.date && Number.isFinite(Date.parse(meeting.date)));
+    return allHaveDates
+      ? inSource.sort((a, b) => Date.parse(a.date!) - Date.parse(b.date!) || a.index - b.index)
+      : inSource;
+  });
+  return meetings.slice(-5).reverse();
+}
+
+function HeadToHeadPanel({ sources, first, second, currentDates, loading, partial }: {
+  sources: HeadToHeadSource[]; first: ComparisonEntry; second: ComparisonEntry; currentDates: Map<string, string>; loading: boolean; partial: boolean;
+}) {
+  const { tr, language } = useI18n();
+  const meetings = useMemo(() => latestHeadToHeadMeetings(sources, first, second, currentDates), [sources, first.id, first.name, second.id, second.name, currentDates]);
+  const formatDate = (value: string | null) => {
+    if (!value) return null;
+    const day = value.slice(0, 10);
+    const date = new Date(`${day}T12:00:00Z`);
+    return Number.isFinite(date.getTime()) ? new Intl.DateTimeFormat(language === "fi" ? "fi-FI" : "en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }).format(date) : null;
+  };
+  return <section className="panel matchup-head-to-head" aria-labelledby="matchup-head-to-head-title">
+    <div className="panel-heading panel-heading--plain"><div><h2 id="matchup-head-to-head-title">{tr("Viimeisimmät keskinäiset kohtaamiset", "Recent head-to-head meetings")}</h2><p className="panel-subcopy">{tr("Näytetään enintään viisi viimeisintä tarkistettua ottelua käytettävissä olevilta kausilta.", "Up to five most recent verified meetings from the available seasons.")}</p></div></div>
+    {loading ? <p role="status">{tr("Ladataan keskinäisiä otteluita…", "Loading head-to-head games…")}</p> : meetings.length === 0 ? <p>{tr("Näiden joukkueiden väliltä ei löytynyt aiempia tarkistettuja otteluita.", "No earlier verified meetings were found for these teams.")}</p> : <ol className="matchup-head-to-head-list">{meetings.map((meeting) => {
+      const date = formatDate(meeting.date);
+      const phase = meeting.phase === "playoffs" ? tr("Pudotuspelit", "Playoffs") : meeting.season === "2024-25" ? tr("Runkosarja / jatkosarja", "Regular / continuation season") : tr("Runkosarja", "Regular season");
+      return <li className="matchup-head-to-head-row" key={`${meeting.record.game.source_id}-${meeting.season}`}>
+        <div className="matchup-head-to-head-meta"><strong>{meeting.season.replace("-", "–")}</strong><small>{phase}{date ? ` · ${date}` : ""}</small></div>
+        <div className="matchup-head-to-head-scoreline"><span className={meeting.home.score! > meeting.away.score! ? "matchup-head-to-head-winner" : undefined}>{meeting.home.name}</span><strong>{meeting.home.score}–{meeting.away.score}</strong><span className={meeting.away.score! > meeting.home.score! ? "matchup-head-to-head-winner" : undefined}>{meeting.away.name}</span></div>
+      </li>;
+    })}</ol>}
+    {partial && <p className="matchup-head-to-head-note">{tr("Osa pudotuspeliaineistosta ei latautunut, joten lista voi olla vajaa.", "Some playoff data did not load, so this list may be incomplete.")}</p>}
+  </section>;
+}
+
 export function MatchupLab({ initialPlayerA, initialPlayerB }: { initialPlayerA?: string; initialPlayerB?: string } = {}) {
   const { leagueId, assetPath, historicalSummaries, seasonId, current, loading: currentLoading, loadMatchesForSeason, refreshCurrent } = useSeason();
   const supportsOnOff = seasonId === "2025-26" || leagueId === "korisliiga" && seasonId === "2024-25";
@@ -57,6 +112,8 @@ export function MatchupLab({ initialPlayerA, initialPlayerB }: { initialPlayerA?
   const [records, setRecords] = useState<Partial<Record<SeasonId, SeasonMatchRecord[]>> | null>(null);
   const [playoffs, setPlayoffs] = useState<SeasonMatchRecord[] | null>(null);
   const [playoffStatus, setPlayoffStatus] = useState<"loading" | "ready" | "error">("loading");
+  const [headToHeadPlayoffs, setHeadToHeadPlayoffs] = useState<Partial<Record<"2024-25" | "2025-26", SeasonMatchRecord[]>>>({});
+  const [headToHeadStatus, setHeadToHeadStatus] = useState<"idle" | "loading" | "ready" | "partial" | "error">("idle");
   const [failed, setFailed] = useState(false);
   const [retry, setRetry] = useState(0);
   const [onoff, setOnoff] = useState<OnOffData | null>(null);
@@ -67,6 +124,27 @@ export function MatchupLab({ initialPlayerA, initialPlayerB }: { initialPlayerA?
     void Promise.all([loadMatchesForSeason("2024-25"), loadMatchesForSeason("2025-26")]).then(([older, regular]) => { if (!cancelled) setRecords({ "2024-25": older, "2025-26": regular }); }).catch(() => { if (!cancelled) setFailed(true); });
     return () => { cancelled = true; };
   }, [loadMatchesForSeason, retry]);
+  useEffect(() => {
+    if (kind !== "teams" || mode !== "entities" && mode !== "seasons") {
+      setHeadToHeadStatus("idle");
+      return;
+    }
+    let cancelled = false;
+    setHeadToHeadStatus("loading");
+    void Promise.allSettled([
+      loadMatchesForSeason("2024-25", "playoffs"),
+      loadMatchesForSeason("2025-26", "playoffs"),
+    ]).then(([older, recent]) => {
+      if (cancelled) return;
+      const next: Partial<Record<"2024-25" | "2025-26", SeasonMatchRecord[]>> = {};
+      if (older.status === "fulfilled") next["2024-25"] = older.value;
+      if (recent.status === "fulfilled") next["2025-26"] = recent.value;
+      setHeadToHeadPlayoffs(next);
+      const successes = Number(older.status === "fulfilled") + Number(recent.status === "fulfilled");
+      setHeadToHeadStatus(successes === 2 ? "ready" : successes === 0 ? "error" : "partial");
+    });
+    return () => { cancelled = true; };
+  }, [kind, mode, loadMatchesForSeason, retry]);
   useEffect(() => {
     if (mode !== "phase" || seasonId === "2026-27") return;
     let cancelled = false;
@@ -87,6 +165,18 @@ export function MatchupLab({ initialPlayerA, initialPlayerB }: { initialPlayerA?
   const forSeason = (season: SeasonId) => season !== "2026-27" ? records?.[season] ?? [] : current?.matches ?? [];
   const firstRecords = mode === "seasons" ? firstSeason === "earlier" ? seasons.filter((season) => season < secondSeason).flatMap(forSeason) : forSeason(firstSeason) : matches;
   const secondRecords = mode === "seasons" ? forSeason(secondSeason) : matches;
+  const headToHeadSources = useMemo<HeadToHeadSource[]>(() => [
+    { season: "2024-25", phase: "regular", records: records?.["2024-25"] ?? [] },
+    { season: "2024-25", phase: "playoffs", records: headToHeadPlayoffs["2024-25"] ?? [] },
+    { season: "2025-26", phase: "regular", records: records?.["2025-26"] ?? [] },
+    { season: "2025-26", phase: "playoffs", records: headToHeadPlayoffs["2025-26"] ?? [] },
+    { season: "2026-27", phase: "regular", records: current?.matches ?? [] },
+  ], [records, headToHeadPlayoffs, current]);
+  const currentMatchDates = useMemo(() => {
+    const dates = new Map<string, string>();
+    for (const game of current?.schedule ?? []) if (game.scheduled_date) dates.set(game.source_match_id, `${game.scheduled_date}T${game.scheduled_time ?? "12:00:00"}`);
+    return dates;
+  }, [current]);
   const catalog = useMemo(() => buildComparisonEntries([...Object.values(records ?? {}).flat(), ...(current?.matches ?? [])], kind, basis), [records, current, kind, basis]);
   const aEntries = buildComparisonEntries(firstRecords, kind, basis), bEntries = buildComparisonEntries(secondRecords, kind, basis);
   const optionsA = aEntries.length ? aEntries : catalog, optionsB = bEntries.length ? bEntries : catalog;
@@ -203,6 +293,7 @@ export function MatchupLab({ initialPlayerA, initialPlayerB }: { initialPlayerA?
   const needCurrent = mode === "seasons" ? firstSeason === "2026-27" || secondSeason === "2026-27" : seasonId === "2026-27";
   const loading = !records && !failed || needCurrent && !current && currentLoading || mode === "onoff" && supportsOnOff && onoffStatus === "loading" || mode === "phase" && seasonId !== "2026-27" && playoffStatus === "loading";
   const error = failed || needCurrent && !current && !currentLoading || mode === "onoff" && supportsOnOff && onoffStatus === "error" || mode === "phase" && seasonId !== "2026-27" && playoffStatus === "error";
+  const headToHeadLoading = !records || currentLoading && !current || headToHeadStatus === "loading" || headToHeadStatus === "idle";
   return <div className="matchup-lab">
     <div className="matchup-toolbar"><div className="profile-phase-toggle" role="group" aria-label={tr("Vertailun tyyppi", "Comparison type")}><button type="button" aria-pressed={kind === "teams"} onClick={() => changeKind("teams")}><Icon name="teams" size={17} />{tr("Joukkueet", "Teams")}</button><button type="button" aria-pressed={kind === "players"} onClick={() => changeKind("players")}><Icon name="players" size={17} />{tr("Pelaajat", "Players")}</button></div><Select label={tr("Vertailutapa", "Compare")} value={mode} options={modeOptions} onChange={(value) => setMode(value as Mode)} /></div>
     <div className="matchup-controls">
@@ -215,6 +306,7 @@ export function MatchupLab({ initialPlayerA, initialPlayerB }: { initialPlayerA?
     <p className="players-method-note">{note}</p>
     {appearance && appearance.absent.length === 0 && <button className="outline-button matchup-mode-suggestion" type="button" onClick={() => setMode("onoff")}>{tr("Katso penkkiminuutit ja joukkueen luvut niiden aikana", "See bench minutes and team performance during them")} <Icon name="arrowOutward" size={14} /></button>}
     {loading || error || unavailable ? <div className="panel match-list-empty" role={error ? "alert" : "status"}>{error ? <><p>{tr("Vertailun lataus epäonnistui.", "Could not load comparison.")}</p><button className="outline-button" onClick={() => { setRetry((value) => value + 1); if (needCurrent && !current) void refreshCurrent(); }}>{tr("Yritä uudelleen", "Try again")}</button></> : unavailable || tr("Ladataan vertailua…", "Loading comparison…")}</div> : <Comparison sides={sides} metrics={metrics} shooting={shooting} />}
+    {kind === "teams" && (mode === "entities" || mode === "seasons") && first && second && first.id !== second.id && <HeadToHeadPanel sources={headToHeadSources} first={first} second={second} currentDates={currentMatchDates} loading={headToHeadLoading} partial={headToHeadStatus === "partial" || headToHeadStatus === "error"} />}
     <p className="players-method-note">{tr("Heittoprosentit lasketaan yhteenlasketuista osumista ja yrityksistä. ORtg, DRtg ja Net Rating perustuvat arvioituihin pallonhallintoihin. Viiva tarkoittaa puuttuvaa tai määrittelemätöntä arvoa. Pieni otos voi nostaa lukuja paljon.", "Shooting percentages use total makes and attempts. ORtg, DRtg and Net Rating use estimated possessions. A dash means missing or undefined data. Small samples can produce high values.")}</p>
   </div>;
 }
