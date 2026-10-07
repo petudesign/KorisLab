@@ -1,7 +1,7 @@
 """Link recorded assists to made field goals without guessing from player names."""
 from collections import Counter
 
-from normalization.basketfi_pbp import normalize_quarter_stats
+from normalization.basketfi_pbp import normalize_quarter_stats, play_by_play_periods
 
 
 def normalize_assists(payload, record, *, fixture_id):
@@ -18,7 +18,7 @@ def normalize_assists(payload, record, *, fixture_id):
                 "games": int((player.get("minutes") or 0) > 0), "assists": 0,
                 "two": 0, "three": 0, "free_throw": 0, "unlinked": 0}
     used_shots = set()
-    for period in payload["data"]["pbp"].values():
+    for period in play_by_play_periods(payload).values():
         events = period["events"]
         for index, event in enumerate(events):
             if event.get("eventType") != "assist":

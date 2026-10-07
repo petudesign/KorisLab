@@ -1,18 +1,20 @@
 """Publish a chronological score replay only after reconciling every period."""
-from normalization.basketfi_pbp import normalize_quarter_stats
+from normalization.basketfi_pbp import fixture_data, normalize_quarter_stats, play_by_play_periods
 from normalization.basketfi_onoff import clock_seconds
 
 
 def normalize_replay(payload, record, *, season_id):
-    fixture = payload["data"]["banner"]["fixture"]
-    verified = normalize_quarter_stats(payload, record, fixture_id=fixture["id"])
+    fixture = fixture_data(payload)
+    fixture_id = fixture.get("id") or fixture.get("fixtureId")
+    verified = normalize_quarter_stats(payload, record, fixture_id=fixture_id)
     teams = sorted(record["teams"], key=lambda team: team["home_away"] != "home")
     score = dict.fromkeys([team["source_id"] for team in teams], 0)
     events = [{"id": "start", "elapsed": 0, "period": 1, "remaining": 600,
                "kind": "start", "team_id": None, "player": None, "points": 0, "home": 0, "away": 0}]
     periods = []
     offset = 0
-    for number, (key, period) in enumerate(sorted(payload["data"]["pbp"].items(), key=lambda item: int(item[0])), 1):
+    periods_data = play_by_play_periods(payload)
+    for number, (key, period) in enumerate(sorted(periods_data.items(), key=lambda item: int(item[0])), 1):
         duration = 600 if number <= 4 else 300
         previous = duration
         periods.append({"number": number, "start": offset, "end": offset + duration})
