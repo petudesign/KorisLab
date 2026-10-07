@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "season_id": "huki2627",
-  "updated_at": "2026-10-07T08:02:49.785688+00:00",
+  "updated_at": "2026-10-07T16:20:20.508694+00:00",
   "source_url": "https://tulospalvelu.basket.fi/",
   "schedule": [
     {
@@ -344,16 +344,16 @@
       "scheduled_date": "2026-10-07",
       "scheduled_time": "18:30:00",
       "venue": "Luhta Areena",
-      "status": "Fixture",
+      "status": "Break",
       "home": {
         "source_team_id": "5753683",
         "name": "Lahti Basketball",
-        "score": null
+        "score": 48
       },
       "away": {
         "source_team_id": "42",
         "name": "Kataja Basket",
-        "score": null
+        "score": 45
       }
     },
     {

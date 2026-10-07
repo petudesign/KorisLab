@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "season_id": "huki2627",
-  "updated_at": "2026-10-07T08:02:17.308484+00:00",
+  "updated_at": "2026-10-07T16:20:02.410499+00:00",
   "source_url": "https://tulospalvelu.basket.fi/",
   "schedule": [
     {
@@ -102,16 +102,16 @@
       "scheduled_date": "2026-10-07",
       "scheduled_time": "18:30:00",
       "venue": "Urhea-halli",
-      "status": "Fixture",
+      "status": "Break",
       "home": {
         "source_team_id": "4615311",
         "name": "HBA-Märsky",
-        "score": null
+        "score": 45
       },
       "away": {
         "source_team_id": "1040",
         "name": "Espoo Basket Team",
-        "score": null
+        "score": 34
       }
     },
     {
@@ -124,16 +124,16 @@
       "scheduled_date": "2026-10-07",
       "scheduled_time": "18:30:00",
       "venue": "AGCO Power Arena",
-      "status": "Fixture",
+      "status": "Break",
       "home": {
         "source_team_id": "8",
         "name": "BC Nokia",
-        "score": null
+        "score": 31
       },
       "away": {
         "source_team_id": "4",
         "name": "Peli-Karhut",
-        "score": null
+        "score": 32
       }
     },
     {
@@ -146,16 +146,16 @@
       "scheduled_date": "2026-10-07",
       "scheduled_time": "18:30:00",
       "venue": "Tapiolan Liikuntahalli",
-      "status": "Fixture",
+      "status": "Live",
       "home": {
         "source_team_id": "31",
         "name": "Tapiolan Honka",
-        "score": null
+        "score": 33
       },
       "away": {
         "source_team_id": "48083",
         "name": "Kouvottaret",
-        "score": null
+        "score": 44
       }
     },
     {
@@ -168,16 +168,16 @@
       "scheduled_date": "2026-10-07",
       "scheduled_time": "18:30:00",
       "venue": "Töölön Kisahalli",
-      "status": "Fixture",
+      "status": "Break",
       "home": {
         "source_team_id": "34",
         "name": "ToPo",
-        "score": null
+        "score": 59
       },
       "away": {
         "source_team_id": "45373",
         "name": "Vimpelin Veto",
-        "score": null
+        "score": 35
       }
     },
     {
