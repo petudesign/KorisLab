@@ -3077,6 +3077,18 @@ select.language-toggle { width: 58px; min-width: 58px; padding-left: 9px; paddin
 .matchup-table .matchup-weaker { color: var(--danger-strong); }
 .matchup-difference { color: var(--muted); }
 .matchup-table tbody tr:last-child > * { border-bottom: 0; }
+.matchup-head-to-head { padding: 22px; }
+.matchup-head-to-head .panel-heading { margin-bottom: 18px; }
+.matchup-head-to-head-list { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.matchup-head-to-head-row { display: grid; grid-template-columns: minmax(140px, .7fr) minmax(0, 2fr); align-items: center; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.matchup-head-to-head-row:last-child { border-bottom: 0; }
+.matchup-head-to-head-meta { display: grid; gap: 4px; color: var(--soft); font-size: 13px; }
+.matchup-head-to-head-meta small { color: var(--muted); font-size: 11px; }
+.matchup-head-to-head-scoreline { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 12px; font-size: 13px; }
+.matchup-head-to-head-scoreline > :last-child { text-align: right; }
+.matchup-head-to-head-scoreline strong { color: var(--soft); font-size: 16px; font-variant-numeric: tabular-nums; }
+.matchup-head-to-head-winner { color: var(--success-strong); font-weight: 650; }
+.matchup-head-to-head-note { margin: 14px 0 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
 @media (max-width: 720px) {
   .topbar { height: 64px; padding-inline: 12px; gap: 12px; }
   .topbar-actions > .language-toggle, .topbar-actions > .theme-toggle { display: none; }
@@ -3117,6 +3129,10 @@ select.language-toggle { width: 58px; min-width: 58px; padding-left: 9px; paddin
   .matchup-controls { grid-template-columns: 1fr; gap: 12px; }
   .matchup-toolbar > .matchup-control { width: 100%; }
   .matchup-scroll-hint { display: block; margin: 0 0 10px; color: var(--muted); font-size: 11px; }
+  .matchup-head-to-head { padding: 16px; }
+  .matchup-head-to-head-row { grid-template-columns: 1fr; gap: 8px; }
+  .matchup-head-to-head-scoreline { gap: 8px; font-size: 12px; }
+  .matchup-head-to-head-scoreline strong { font-size: 14px; }
 }
 /* The replay is deliberately static until playback is requested. */
 .replay-panel { margin-bottom: 24px; min-width: 0; padding: 24px; }
