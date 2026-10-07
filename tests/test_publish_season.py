@@ -124,6 +124,31 @@ class PublishSeasonTests(unittest.TestCase):
         self.assertEqual(coverage["shot_charts_available"], 0)
         self.assertEqual(coverage["shot_charts_unavailable"], 1)
 
+    def test_publication_coverage_uses_verified_replay_when_box_score_omits_period_rows(self):
+        with TemporaryDirectory() as directory:
+            args = self._completed_publication(Path(directory))
+            args[1]["matches"][0]["game"]["periods"] = []
+
+            coverage = verify_publication_coverage(
+                args[0], args[1], season_id="2026-27", quarters_path=args[2],
+                shots_dir=args[3], replays_dir=args[4], shot_summary=args[5],
+            )
+
+        self.assertEqual(coverage["quarter_scores_verified"], 1)
+
+    def test_publication_coverage_fails_when_quarter_total_disagrees_with_replay(self):
+        with TemporaryDirectory() as directory:
+            args = self._completed_publication(Path(directory))
+            quarter_snapshot = json.loads(args[2].read_text(encoding="utf-8"))
+            quarter_snapshot["teams"][0]["periods"]["1"]["points"]["total"] += 1
+            args[2].write_text(json.dumps(quarter_snapshot), encoding="utf-8")
+
+            with self.assertRaisesRegex(ValueError, "quarter summary: period 1 point coverage or totals"):
+                verify_publication_coverage(
+                    args[0], args[1], season_id="2026-27", quarters_path=args[2],
+                    shots_dir=args[3], replays_dir=args[4], shot_summary=args[5],
+                )
+
     def test_publication_coverage_fails_when_replay_is_missing(self):
         with TemporaryDirectory() as directory:
             args = self._completed_publication(Path(directory))

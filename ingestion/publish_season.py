@@ -15,7 +15,7 @@ from ingestion.publish_shots import publish_shots, publish_player_shot_index
 from ingestion.publish_quarters import publish_quarters
 from ingestion.publish_assists import publish_assists
 from ingestion.publish_replays import publish_replays
-from validation.checks import validate_completed_statistics_snapshot, validate_statistics_snapshot
+from validation.checks import validate_statistics_snapshot
 
 
 def build_snapshot(schedule, hydration, *, previous=None, competition_id="huki2627"):
@@ -68,10 +68,68 @@ def verify_publication_coverage(schedule, snapshot, *, season_id, quarters_path,
         if record is None:
             errors.append(f"{match_id}: missing verified box score")
             continue
-        validation = validate_completed_statistics_snapshot(record)
+        # The statistics endpoint may omit period rows even when the separate
+        # play-by-play feed contains complete, verified period scores. Validate
+        # the box score here; period coverage is checked against the replay below.
+        validation = validate_statistics_snapshot(record)
         if not validation["valid"]:
             failed = [check["name"] for check in validation["checks"] if check["status"] == "fail"]
             errors.append(f"{match_id}: invalid completed-game statistics ({', '.join(failed)})")
+
+    replay_period_totals = dict.fromkeys(range(1, 5), 0)
+    available_replay_ids = []
+    for match_id in played_ids:
+        record = records.get(match_id)
+        if record is None:
+            continue
+        replay_path = replays_dir / f"{match_id}.json"
+        try:
+            replay = json.loads(replay_path.read_text(encoding="utf-8"))
+        except (OSError, ValueError) as exc:
+            errors.append(f"{match_id}: verified replay is missing ({exc})")
+            continue
+        period_numbers = {row.get("number") for row in replay.get("periods", []) if isinstance(row, dict)}
+        events = replay.get("events", [])
+        final_event = events[-1] if isinstance(events, list) and events else {}
+        home = next((team for team in record.get("teams", []) if team.get("home_away") == "home"), None)
+        away = next((team for team in record.get("teams", []) if team.get("home_away") == "away"), None)
+        replay_valid = (
+            replay.get("schema_version") == "0.1"
+            and str(replay.get("match_id")) == match_id
+            and replay.get("verified") is True
+            and replay.get("event_count", 0) > 0
+            and {1, 2, 3, 4}.issubset(period_numbers)
+            and home is not None and away is not None
+            and final_event.get("home") == home.get("score")
+            and final_event.get("away") == away.get("score")
+        )
+        period_ends = {}
+        if replay_valid:
+            for period in range(1, 5):
+                endings = [event for event in events if isinstance(event, dict)
+                           and event.get("kind") == "periodEnd" and event.get("period") == period]
+                if len(endings) != 1:
+                    replay_valid = False
+                    break
+                ending = endings[0]
+                scores = (ending.get("home"), ending.get("away"))
+                if any(isinstance(score, bool) or not isinstance(score, int) or score < 0 for score in scores):
+                    replay_valid = False
+                    break
+                period_ends[period] = scores
+        if replay_valid:
+            previous = (0, 0)
+            for period in range(1, 5):
+                current = period_ends[period]
+                if current[0] < previous[0] or current[1] < previous[1]:
+                    replay_valid = False
+                    break
+                replay_period_totals[period] += current[0] - previous[0] + current[1] - previous[1]
+                previous = current
+        if not replay_valid:
+            errors.append(f"{match_id}: replay does not reconcile with the completed game")
+        else:
+            available_replay_ids.append(match_id)
 
     try:
         quarter_snapshot = json.loads(quarters_path.read_text(encoding="utf-8"))
@@ -89,15 +147,7 @@ def verify_publication_coverage(schedule, snapshot, *, season_id, quarters_path,
             for team in quarter_teams
         ]
         games_covered = sum(row.get("games", 0) for row in points_rows)
-        expected_points = 0
-        for match_id in played_ids:
-            record = records.get(match_id)
-            if not record:
-                continue
-            period_row = next((row for row in record.get("game", {}).get("periods", [])
-                               if str(row.get("period")) == str(period)), None)
-            if period_row:
-                expected_points += period_row["home_score"] + period_row["away_score"]
+        expected_points = replay_period_totals[period]
         if games_covered != 2 * len(played_ids) or sum(row.get("total", 0) for row in points_rows) != expected_points:
             errors.append(f"quarter summary: period {period} point coverage or totals do not match completed games")
 
@@ -151,37 +201,6 @@ def verify_publication_coverage(schedule, snapshot, *, season_id, quarters_path,
             errors.append(f"{match_id}: shot chart does not reconcile with the box score")
         else:
             available_shot_ids.append(match_id)
-
-    available_replay_ids = []
-    for match_id in played_ids:
-        record = records.get(match_id)
-        if record is None:
-            continue
-        replay_path = replays_dir / f"{match_id}.json"
-        try:
-            replay = json.loads(replay_path.read_text(encoding="utf-8"))
-        except (OSError, ValueError) as exc:
-            errors.append(f"{match_id}: verified replay is missing ({exc})")
-            continue
-        period_numbers = {row.get("number") for row in replay.get("periods", []) if isinstance(row, dict)}
-        events = replay.get("events", [])
-        final_event = events[-1] if isinstance(events, list) and events else {}
-        home = next((team for team in record.get("teams", []) if team.get("home_away") == "home"), None)
-        away = next((team for team in record.get("teams", []) if team.get("home_away") == "away"), None)
-        replay_valid = (
-            replay.get("schema_version") == "0.1"
-            and str(replay.get("match_id")) == match_id
-            and replay.get("verified") is True
-            and replay.get("event_count", 0) > 0
-            and {1, 2, 3, 4}.issubset(period_numbers)
-            and home is not None and away is not None
-            and final_event.get("home") == home.get("score")
-            and final_event.get("away") == away.get("score")
-        )
-        if not replay_valid:
-            errors.append(f"{match_id}: replay does not reconcile with the completed game")
-        else:
-            available_replay_ids.append(match_id)
 
     if errors:
         raise ValueError("Publication coverage check failed:\n- " + "\n- ".join(errors))
