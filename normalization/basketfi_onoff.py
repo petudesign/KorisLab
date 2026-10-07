@@ -2,6 +2,7 @@
 from collections import defaultdict
 from math import isfinite
 import re
+from normalization.basketfi_pbp import fixture_data, period_number, play_by_play_periods
 
 STATS = ("points", "two_pm", "two_pa", "three_pm", "three_pa", "ftm", "fta",
          "offensive_rebounds", "defensive_rebounds", "rebounds", "assists", "turnovers", "steals", "blocks")
@@ -27,7 +28,7 @@ def reconstruct_game(payload, record, *, playing_time_tolerance_seconds=PLAYING_
     diagnostics.update({"same_clock_events": [], "playing_time_differences": [], "unavailable_stats": []})
     unavailable_stats = set()
     teams = {t["source_id"]: t for t in record["teams"]}
-    fixture = payload.get("data", {}).get("banner", {}).get("fixture", {})
+    fixture = fixture_data(payload)
     if len(teams) != 2 or {t["entityId"] for t in fixture.get("competitors", [])} != set(teams):
         raise ValueError("Event teams differ from box score")
     roster = {tid: {p["source_player_id"]: p for p in t["players"]} for tid, t in teams.items()}
@@ -35,7 +36,7 @@ def reconstruct_game(payload, record, *, playing_time_tolerance_seconds=PLAYING_
     if any(len(players) != 5 for players in lineups.values()):
         raise ValueError("Five starters are required for both teams")
     states = {tid: {pid: {"on": empty_state(), "off": empty_state()} for pid in players} for tid, players in roster.items()}
-    periods = payload.get("data", {}).get("pbp", {})
+    periods = play_by_play_periods(payload) or {}
     keys = sorted(periods, key=int)
     if keys[:4] != ["1", "2", "3", "4"] or len(keys) != len(record["game"]["periods"]):
         raise ValueError("Incomplete periods")
@@ -74,7 +75,7 @@ def reconstruct_game(payload, record, *, playing_time_tolerance_seconds=PLAYING_
         # Stable sorting retains the source event order at identical clocks.
         for event in sorted(period["events"], key=lambda e: -clock_seconds(e.get("clock"))):
             event_id = event.get("eventId")
-            if not event_id or event_id in seen or event.get("periodId") != int(key):
+            if not event_id or event_id in seen or period_number(event.get("periodId")) != int(key):
                 raise ValueError("Duplicate or misplaced event")
             seen.add(event_id)
             seconds = clock_seconds(event.get("clock"))

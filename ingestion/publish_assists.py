@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 from normalization.basketfi_assists import normalize_assists
+from normalization.basketfi_pbp import fixture_data
 
 
 def publish_assists(records, *, season_id, out, cache_dir):
@@ -19,7 +20,8 @@ def publish_assists(records, *, season_id, out, cache_dir):
             raise ValueError("Match ID must be numeric")
         try:
             payload = json.loads((cache_dir / f"{match_id}.json").read_text(encoding="utf-8"))
-            fixture_id = payload["data"]["banner"]["fixture"]["id"]
+            fixture = fixture_data(payload)
+            fixture_id = fixture.get("id") or fixture.get("fixtureId")
             rows = normalize_assists(payload, record, fixture_id=fixture_id)
         except (OSError, ValueError, KeyError, TypeError, AttributeError) as exc:
             failures.append({"match_id": match_id, "error": str(exc)})

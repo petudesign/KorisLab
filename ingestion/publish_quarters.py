@@ -6,7 +6,7 @@ from pathlib import Path
 from time import sleep, time
 
 from ingestion.basketfi_statistics import BasketFiStatisticsClient
-from normalization.basketfi_pbp import METRICS, normalize_quarter_stats
+from normalization.basketfi_pbp import METRICS, fixture_data, normalize_quarter_stats
 
 
 def publish_quarters(records, *, season_id, out, cache_dir, client=None, delay_seconds=1, max_age_seconds=86400):
@@ -38,8 +38,8 @@ def publish_quarters(records, *, season_id, out, cache_dir, client=None, delay_s
             cached = previous and max_age_seconds > 0 and time() - target.stat().st_mtime < max_age_seconds
             if cached:
                 payload = previous
-                fixture = payload.get("data", {}).get("banner", {}).get("fixture", {})
-                fixture_id = fixture.get("id")
+                fixture = fixture_data(payload)
+                fixture_id = fixture.get("id") or fixture.get("fixtureId")
             else:
                 fixture_id = record["game"].get("upstream_fixture_id") or record.get("source", {}).get("upstream_fixture_id")
                 shot_file = out.parent / "shots" / f"{match_id}.json"
@@ -62,8 +62,9 @@ def publish_quarters(records, *, season_id, out, cache_dir, client=None, delay_s
             if not previous:
                 continue
             try:
-                fixture = previous.get("data", {}).get("banner", {}).get("fixture", {})
-                normalized = normalize_quarter_stats(previous, record, fixture_id=fixture.get("id"))
+                fixture = fixture_data(previous)
+                fixture_id = fixture.get("id") or fixture.get("fixtureId")
+                normalized = normalize_quarter_stats(previous, record, fixture_id=fixture_id)
             except (ValueError, KeyError, TypeError, AttributeError):
                 continue
         verified_games += 1

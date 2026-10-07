@@ -9,8 +9,20 @@ def normalize_shot_chart(payload, *, match_id, fixture_id):
     if str(fixture.get("id") or fixture.get("fixtureId")) != str(fixture_id):
         raise ValueError("Shot chart fixture differs from requested fixture")
     chart = data.get("shotChart")
-    if not isinstance(chart, dict) or not isinstance(chart.get("shots"), list):
+    if not isinstance(chart, dict):
         raise ValueError("No shot chart in source response")
+    shot_rows = chart.get("shots")
+    if not isinstance(shot_rows, list):
+        # New Sportradar responses group attempts under each period instead of
+        # exposing the legacy shotChart.shots array.
+        period_data = data.get("periodData")
+        if not isinstance(period_data, list):
+            raise ValueError("No shot chart in source response")
+        shot_rows = []
+        for period in period_data:
+            rows = period.get("shots") if isinstance(period, dict) else None
+            if isinstance(rows, list):
+                shot_rows.extend(shot for shot in rows if isinstance(shot, dict))
     teams = [{"id": row["entityId"], "name": row["name"], "home": row.get("isHome") is True}
              for row in fixture.get("competitors", [])]
     team_ids = {team["id"] for team in teams}
@@ -18,7 +30,7 @@ def normalize_shot_chart(payload, *, match_id, fixture_id):
         raise ValueError("Shot chart must identify two teams")
     shots = []
     seen = set()
-    for row in chart["shots"]:
+    for row in shot_rows:
         if row.get("eventType") not in {"2pt", "3pt"}:
             continue  # Free throws have no field-goal location.
         shot_id = row.get("eventId")
@@ -27,6 +39,8 @@ def normalize_shot_chart(payload, *, match_id, fixture_id):
         if not isinstance(row.get("success"), bool):
             raise ValueError("Shot outcome unavailable")
         period = row.get("periodId")
+        if isinstance(period, str) and period.isdigit():
+            period = int(period)
         if not isinstance(period, int) or isinstance(period, bool) or period < 1:
             raise ValueError("Shot period unavailable")
         seen.add(shot_id)
@@ -37,7 +51,7 @@ def normalize_shot_chart(payload, *, match_id, fixture_id):
                       "player_id": row.get("personId"), "player_name": row.get("name"),
                       "period": period, "clock": row.get("clock"),
                       "points": 3 if row["eventType"] == "3pt" else 2,
-                      "made": row["success"], "type": row.get("subType"),
+                      "made": row["success"], "type": row.get("subType") or row.get("eventSubType"),
                       "x": coordinate("x"), "y": coordinate("y")})
     return {"schema_version": "0.1", "match_id": str(match_id),
             "fixture_id": str(fixture_id), "coordinate_system": "full_court_percent",
