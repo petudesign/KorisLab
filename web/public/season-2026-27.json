@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "season_id": "huki2627",
-  "updated_at": "2026-10-07T21:30:58.145354+00:00",
+  "updated_at": "2026-10-08T16:22:31.750174+00:00",
   "source_url": "https://tulospalvelu.basket.fi/",
   "schedule": [
     {
@@ -2411,8 +2411,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1006239/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-07T07:39:23Z",
-        "payload_sha256": "641833de6ae1a55d7f87c059dd393fbc56e14b7de108900a432728f1b6937c5c"
+        "ingested_at_utc": "2026-10-08T16:22:13Z",
+        "payload_sha256": "3a005cc2da8eb3e6cdec978ca1e2bcc9835a087b49b56500611df57d2825397f"
       },
       "competition": {
         "source_id": "8e536942-90dc-11f1-947f-814ab4ec9e3e",
@@ -2430,7 +2430,28 @@
         "venue": {
           "name": "MLL Areena"
         },
-        "periods": [],
+        "periods": [
+          {
+            "period": 1,
+            "home_score": 26,
+            "away_score": 23
+          },
+          {
+            "period": 2,
+            "home_score": 18,
+            "away_score": 23
+          },
+          {
+            "period": 3,
+            "home_score": 26,
+            "away_score": 20
+          },
+          {
+            "period": 4,
+            "home_score": 26,
+            "away_score": 23
+          }
+        ],
         "final_score": {
           "home": 96,
           "away": 89
@@ -2921,7 +2942,7 @@
           "players": [
             {
               "source_player_id": "1df670a7-90bc-11f1-98ff-e9ae9e26fc7d",
-              "display_name": "LOTTA VESILUOMA",
+              "display_name": "Lotta Vesiluoma",
               "team_source_id": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
               "jersey_number": "32",
               "starter": false,
@@ -3001,7 +3022,7 @@
             },
             {
               "source_player_id": "295fd067-90bd-11f1-bcf0-d1b26dd8807a",
-              "display_name": "MERI DAMOISEAUX",
+              "display_name": "Meri Damoiseaux",
               "team_source_id": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
               "jersey_number": "15",
               "starter": true,
@@ -3121,7 +3142,7 @@
             },
             {
               "source_player_id": "6aa00ee4-90bf-11f1-a4cd-4fc2adf4ab8e",
-              "display_name": "Eva Tauriainen",
+              "display_name": "EVA TAURIAINEN",
               "team_source_id": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
               "jersey_number": "1",
               "starter": false,
@@ -3201,7 +3222,7 @@
             },
             {
               "source_player_id": "a7972221-90be-11f1-a4ca-13228fe003c9",
-              "display_name": "Lilli Laine",
+              "display_name": "LILLI LAINE",
               "team_source_id": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
               "jersey_number": "4",
               "starter": false,
@@ -3389,8 +3410,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1006161/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-07T07:39:26Z",
-        "payload_sha256": "dc72ea76e61426633cfb18ef06d0e675e5181bf01a1891d875e104e2365f5a7b"
+        "ingested_at_utc": "2026-10-08T16:22:23Z",
+        "payload_sha256": "db911072c96d0e21a23967203fff4324cb2e6aac45cf00326a561bb172e787f3"
       },
       "competition": {
         "source_id": "8e536942-90dc-11f1-947f-814ab4ec9e3e",
@@ -3408,7 +3429,28 @@
         "venue": {
           "name": "Lapuan Urheilutalo"
         },
-        "periods": [],
+        "periods": [
+          {
+            "period": 1,
+            "home_score": 15,
+            "away_score": 23
+          },
+          {
+            "period": 2,
+            "home_score": 23,
+            "away_score": 29
+          },
+          {
+            "period": 3,
+            "home_score": 26,
+            "away_score": 15
+          },
+          {
+            "period": 4,
+            "home_score": 16,
+            "away_score": 36
+          }
+        ],
         "final_score": {
           "home": 80,
           "away": 103
@@ -3557,7 +3599,7 @@
             },
             {
               "source_player_id": "68451ce5-90bd-11f1-b9da-73575e376a6e",
-              "display_name": "Elli Leppänen",
+              "display_name": "ELLI LEPPÄNEN",
               "team_source_id": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
               "jersey_number": "17",
               "starter": false,
@@ -4019,7 +4061,7 @@
             },
             {
               "source_player_id": "72f884e7-90bf-11f1-9198-f3e0ee38e95c",
-              "display_name": "Maija Honkonen",
+              "display_name": "MAIJA HONKONEN",
               "team_source_id": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
               "jersey_number": "14",
               "starter": true,
@@ -4059,7 +4101,7 @@
             },
             {
               "source_player_id": "84fd45d0-90bf-11f1-9edc-df5a7344780a",
-              "display_name": "Elli Riihelä",
+              "display_name": "ELLI RIIHELÄ",
               "team_source_id": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
               "jersey_number": "2",
               "starter": false,
@@ -4139,7 +4181,7 @@
             },
             {
               "source_player_id": "93dacbdf-90be-11f1-8ee4-b9d3b0a6c9e2",
-              "display_name": "Venla Patrikainen",
+              "display_name": "VENLA PATRIKAINEN",
               "team_source_id": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
               "jersey_number": "73",
               "starter": false,
@@ -4179,7 +4221,7 @@
             },
             {
               "source_player_id": "a10da6f8-90be-11f1-9492-f55c6a1f11ab",
-              "display_name": "Alina Ahonen",
+              "display_name": "ALINA AHONEN",
               "team_source_id": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
               "jersey_number": "16",
               "starter": false,
@@ -4219,7 +4261,7 @@
             },
             {
               "source_player_id": "cadfb0d4-90be-11f1-94a8-699532503340",
-              "display_name": "Mona Etu-Seppälä",
+              "display_name": "MONA ETU-SEPPÄLÄ",
               "team_source_id": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
               "jersey_number": "68",
               "starter": false,
@@ -4339,7 +4381,7 @@
             },
             {
               "source_player_id": "da2b5a61-90bd-11f1-ae42-23575df7f55b",
-              "display_name": "Viivi Niskanen",
+              "display_name": "VIIVI NISKANEN",
               "team_source_id": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
               "jersey_number": "15",
               "starter": false,
@@ -4487,8 +4529,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1006180/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-07T07:39:28Z",
-        "payload_sha256": "1e68c1fd0ae48f73bee07d67fba32da287a72807cd34ee23190ba275dd613c83"
+        "ingested_at_utc": "2026-10-08T16:22:25Z",
+        "payload_sha256": "2c3347e9d9e4dbb8ca0bebd31ff6f980760f86d086b342720235de9b695516bc"
       },
       "competition": {
         "source_id": "8e536942-90dc-11f1-947f-814ab4ec9e3e",
@@ -4506,7 +4548,28 @@
         "venue": {
           "name": "Steveco Areena"
         },
-        "periods": [],
+        "periods": [
+          {
+            "period": 1,
+            "home_score": 13,
+            "away_score": 21
+          },
+          {
+            "period": 2,
+            "home_score": 16,
+            "away_score": 23
+          },
+          {
+            "period": 3,
+            "home_score": 18,
+            "away_score": 28
+          },
+          {
+            "period": 4,
+            "home_score": 11,
+            "away_score": 10
+          }
+        ],
         "final_score": {
           "home": 58,
           "away": 82
@@ -4735,7 +4798,7 @@
             },
             {
               "source_player_id": "c570bb13-90bd-11f1-8a85-7b525a68ccc9",
-              "display_name": "EMMA LAMPÉN",
+              "display_name": "Emma Lampèn",
               "team_source_id": "d231065a-90a6-11f1-9f40-e7d7c2463142",
               "jersey_number": "6",
               "starter": true,
@@ -4855,7 +4918,7 @@
             },
             {
               "source_player_id": "f0d1592d-90be-11f1-a323-713ca2bbccaa",
-              "display_name": "Helli Suvanto",
+              "display_name": "HELLI SUVANTO",
               "team_source_id": "d231065a-90a6-11f1-9f40-e7d7c2463142",
               "jersey_number": "45",
               "starter": true,
@@ -5465,8 +5528,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1006230/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-07T07:39:30Z",
-        "payload_sha256": "3c850ec274d850fcc8456cc1acdf8953c2f9ffc7c5f4da09b3f560a4e456ca96"
+        "ingested_at_utc": "2026-10-08T16:22:27Z",
+        "payload_sha256": "9ec8c162856fac8a8038f01cba3f2c86599d34fdab9a1d3ad3b0daab7d2032cb"
       },
       "competition": {
         "source_id": "8e536942-90dc-11f1-947f-814ab4ec9e3e",
@@ -5484,7 +5547,28 @@
         "venue": {
           "name": "Pyynikin palloiluhalli"
         },
-        "periods": [],
+        "periods": [
+          {
+            "period": 1,
+            "home_score": 18,
+            "away_score": 21
+          },
+          {
+            "period": 2,
+            "home_score": 24,
+            "away_score": 12
+          },
+          {
+            "period": 3,
+            "home_score": 12,
+            "away_score": 14
+          },
+          {
+            "period": 4,
+            "home_score": 26,
+            "away_score": 27
+          }
+        ],
         "final_score": {
           "home": 80,
           "away": 74
