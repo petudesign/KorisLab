@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "season_id": "huki2627",
-  "updated_at": "2026-10-08T16:23:20.367246+00:00",
+  "updated_at": "2026-10-08T21:28:05.415482+00:00",
   "source_url": "https://tulospalvelu.basket.fi/",
   "schedule": [
     {
@@ -21592,7 +21592,7 @@
     "requested_games": 16,
     "fetched_games": 16,
     "failed_games": 0,
-    "cached_games": 5,
+    "cached_games": 16,
     "valid_games": 16,
     "invalid_games": 0
   },
