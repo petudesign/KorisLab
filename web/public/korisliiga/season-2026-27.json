@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "season_id": "huki2627",
-  "updated_at": "2026-10-08T21:28:05.415482+00:00",
+  "updated_at": "2026-10-09T16:06:11.889952+00:00",
   "source_url": "https://tulospalvelu.basket.fi/",
   "schedule": [
     {
@@ -366,16 +366,16 @@
       "scheduled_date": "2026-10-09",
       "scheduled_time": "18:30:00",
       "venue": "Töölön Kisahalli",
-      "status": "Fixture",
+      "status": "Live",
       "home": {
         "source_team_id": "4638571",
         "name": "Helsinki Seagulls",
-        "score": null
+        "score": 32
       },
       "away": {
         "source_team_id": "4633129",
         "name": "Bisons Loimaa",
-        "score": null
+        "score": 28
       }
     },
     {
@@ -388,16 +388,16 @@
       "scheduled_date": "2026-10-09",
       "scheduled_time": "18:30:00",
       "venue": "Steveco Areena",
-      "status": "Fixture",
+      "status": "Break",
       "home": {
         "source_team_id": "47",
         "name": "KTP-Basket",
-        "score": null
+        "score": 34
       },
       "away": {
         "source_team_id": "43",
         "name": "Tampereen Pyrintö",
-        "score": null
+        "score": 26
       }
     },
     {
@@ -16275,8 +16275,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005837/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-07T21:31:38Z",
-        "payload_sha256": "97f87bb66ae9261ac081977f5770f82ca2bd8b08e6559b7ef0e0b860c460e8ce"
+        "ingested_at_utc": "2026-10-09T16:06:01Z",
+        "payload_sha256": "32e1af990e68013a86b5e7fc9eb6240a2bf2b2e3d2a122ff940713f4a45e89c0"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -16424,7 +16424,7 @@
             },
             {
               "source_player_id": "19400c2f-90bd-11f1-8c95-916f627ff7ec",
-              "display_name": "Erik SAJANTILA",
+              "display_name": "Erik Sajantila",
               "team_source_id": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
               "jersey_number": "5",
               "starter": true,
@@ -16464,7 +16464,7 @@
             },
             {
               "source_player_id": "20cbf6b3-90bd-11f1-adc7-ebd35007e794",
-              "display_name": "ANTTI AHONEN",
+              "display_name": "Antti Ahonen",
               "team_source_id": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
               "jersey_number": "8",
               "starter": false,
@@ -16744,7 +16744,7 @@
             },
             {
               "source_player_id": "60115ef2-90bd-11f1-b2b7-3f7cdc8d4fd3",
-              "display_name": "HUGO BOMAN",
+              "display_name": "Hugo Boman",
               "team_source_id": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
               "jersey_number": "3",
               "starter": false,
@@ -16784,7 +16784,7 @@
             },
             {
               "source_player_id": "7c4c77d3-90bd-11f1-bca8-59500384dde4",
-              "display_name": "KALLE KOIVUNEN",
+              "display_name": "Kalle Koivunen",
               "team_source_id": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
               "jersey_number": "25",
               "starter": false,
@@ -17046,7 +17046,7 @@
             },
             {
               "source_player_id": "c8b53068-90bb-11f1-831f-1d8434d82986",
-              "display_name": "AAPELI ALANEN",
+              "display_name": "Aapeli Alanen",
               "team_source_id": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
               "jersey_number": "28",
               "starter": true,
@@ -17126,7 +17126,7 @@
             },
             {
               "source_player_id": "ce9eae2b-90bb-11f1-9cdf-e9ae9e26fc7d",
-              "display_name": "FIIFI AIDOO",
+              "display_name": "Fiifi Aidoo",
               "team_source_id": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
               "jersey_number": "88",
               "starter": false,
@@ -17166,7 +17166,7 @@
             },
             {
               "source_player_id": "d36d484b-90bd-11f1-af79-2feb4d029b30",
-              "display_name": "VILLE KARHU",
+              "display_name": "Ville Karhu",
               "team_source_id": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
               "jersey_number": "21",
               "starter": true,
@@ -17314,8 +17314,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1006005/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-07T21:31:45Z",
-        "payload_sha256": "73967ee09d9125372858572e1fa000650fd3322fe33e9814cc474e463410f2f9"
+        "ingested_at_utc": "2026-10-09T16:06:03Z",
+        "payload_sha256": "9e03c3eed8a86b9052b384b02cdbd4675d31c53ef3dc1fe51f6ea4f34bca117a"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -17543,7 +17543,7 @@
             },
             {
               "source_player_id": "43b817ee-90bc-11f1-b5b8-8793bc36545e",
-              "display_name": "TREY NIEMI",
+              "display_name": "Trey Niemi",
               "team_source_id": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
               "jersey_number": "2",
               "starter": true,
@@ -17583,7 +17583,7 @@
             },
             {
               "source_player_id": "63fc2a25-90bb-11f1-aa48-27f2444e308f",
-              "display_name": "JONI HERRALA",
+              "display_name": "Joni Herrala",
               "team_source_id": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
               "jersey_number": "8",
               "starter": false,
@@ -17623,7 +17623,7 @@
             },
             {
               "source_player_id": "6d86faaf-90bd-11f1-9067-31ded31f16e5",
-              "display_name": "RONI AHVENJÄRVI",
+              "display_name": "Roni Ahvenjärvi",
               "team_source_id": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
               "jersey_number": "6",
               "starter": true,
@@ -17663,7 +17663,7 @@
             },
             {
               "source_player_id": "8c05f590-90bd-11f1-bab5-95de893ea309",
-              "display_name": "KION WILLIAMS",
+              "display_name": "Kion Williams",
               "team_source_id": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
               "jersey_number": "51",
               "starter": false,
@@ -17823,7 +17823,7 @@
             },
             {
               "source_player_id": "fe6ebefa-90b9-11f1-a987-1f9f65ff4cc1",
-              "display_name": "Bojan Sarcevic",
+              "display_name": "Bojan Sarcévic",
               "team_source_id": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
               "jersey_number": "7",
               "starter": true,
@@ -17925,7 +17925,7 @@
           "players": [
             {
               "source_player_id": "0289786d-90bc-11f1-a8d5-797de5732515",
-              "display_name": "LASSI NIKKARINEN",
+              "display_name": "Lassi Nikkarinen",
               "team_source_id": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
               "jersey_number": "13",
               "starter": true,
@@ -17965,7 +17965,7 @@
             },
             {
               "source_player_id": "10c3564c-90bd-11f1-bf3b-7b8c3a749dc5",
-              "display_name": "SAMATAR ABOKAR",
+              "display_name": "Samatar Abokar",
               "team_source_id": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
               "jersey_number": "1",
               "starter": false,
@@ -18045,7 +18045,7 @@
             },
             {
               "source_player_id": "6a27d731-90bb-11f1-b94b-e9ae9e26fc7d",
-              "display_name": "TIMI PUITTINEN",
+              "display_name": "Timi Puittinen",
               "team_source_id": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
               "jersey_number": "30",
               "starter": false,
@@ -18165,7 +18165,7 @@
             },
             {
               "source_player_id": "a977a6d2-90bd-11f1-92f4-83767142611d",
-              "display_name": "LENNI HERVOLA",
+              "display_name": "Lenni Hervola",
               "team_source_id": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
               "jersey_number": "25",
               "starter": false,
@@ -18205,7 +18205,7 @@
             },
             {
               "source_player_id": "b8bf2a4b-90bc-11f1-9c48-b19807192607",
-              "display_name": "RICKY WAXLAX",
+              "display_name": "Ricky Waxlax",
               "team_source_id": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
               "jersey_number": "47",
               "starter": false,
@@ -18433,8 +18433,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005971/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-07T21:31:47Z",
-        "payload_sha256": "b3e72619f33c6dcf43de85b5b16fe7cb37715171bc8d7b0af39f58e8e9d3ad86"
+        "ingested_at_utc": "2026-10-09T16:06:06Z",
+        "payload_sha256": "281c4daa4126ae389ba8d5fd6ad6c888b4c13cdf7c1d82099ecb04cc6aa5265d"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -18547,7 +18547,7 @@
           "players": [
             {
               "source_player_id": "1fd5a811-90bd-11f1-9904-ebd35007e794",
-              "display_name": "ALVAR PELTONIEMI",
+              "display_name": "Alvar Peltoniemi",
               "team_source_id": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
               "jersey_number": "2",
               "starter": true,
@@ -18587,7 +18587,7 @@
             },
             {
               "source_player_id": "21c584c6-90bd-11f1-929d-ebd35007e794",
-              "display_name": "JAAKKO JUUSELA",
+              "display_name": "Jaakko Juusela",
               "team_source_id": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
               "jersey_number": "10",
               "starter": false,
@@ -18707,7 +18707,7 @@
             },
             {
               "source_player_id": "8979cd83-90bd-11f1-b1db-95de893ea309",
-              "display_name": "IIRO TUOMI",
+              "display_name": "Iiro Tuomi",
               "team_source_id": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
               "jersey_number": "25",
               "starter": false,
@@ -18827,7 +18827,7 @@
             },
             {
               "source_player_id": "9aac90bf-90bd-11f1-a3d9-a1f0b16090d5",
-              "display_name": "LAURI KALLIO",
+              "display_name": "Lauri Kallio",
               "team_source_id": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
               "jersey_number": "1",
               "starter": false,
@@ -18907,7 +18907,7 @@
             },
             {
               "source_player_id": "c57708a2-90bc-11f1-b2ee-af3c0b98eadb",
-              "display_name": "TOMAS PIHLAJAMÄKI",
+              "display_name": "Tomas Pihlajamäki",
               "team_source_id": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
               "jersey_number": "3",
               "starter": false,
@@ -18947,7 +18947,7 @@
             },
             {
               "source_player_id": "d5e9ce9f-90be-11f1-b0fb-2dc165e7f1b2",
-              "display_name": "VEETI ULANDER",
+              "display_name": "Veeti Ulander",
               "team_source_id": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
               "jersey_number": "4",
               "starter": false,
@@ -18987,7 +18987,7 @@
             },
             {
               "source_player_id": "e1d14260-90bb-11f1-b001-a19776e4ef59",
-              "display_name": "ELIAS EERIKINHARJU",
+              "display_name": "Elias Eerikinharju",
               "team_source_id": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
               "jersey_number": "12",
               "starter": false,
@@ -19129,7 +19129,7 @@
             },
             {
               "source_player_id": "27296292-90bd-11f1-8c85-d1b26dd8807a",
-              "display_name": "JOONA HAKAMAA",
+              "display_name": "Joona Hakamaa",
               "team_source_id": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
               "jersey_number": "23",
               "starter": true,
@@ -19169,7 +19169,7 @@
             },
             {
               "source_player_id": "52d0fe47-90bd-11f1-903d-fdb6131f8409",
-              "display_name": "VALTTERI MERVOLA",
+              "display_name": "Valtteri Mervola",
               "team_source_id": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
               "jersey_number": "5",
               "starter": true,
@@ -19209,7 +19209,7 @@
             },
             {
               "source_player_id": "9122b8a8-90bd-11f1-a737-9d9b6f578d5a",
-              "display_name": "OTTO RÄISÄNEN",
+              "display_name": "Otto Räisänen",
               "team_source_id": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
               "jersey_number": "12",
               "starter": false,
@@ -19249,7 +19249,7 @@
             },
             {
               "source_player_id": "94247e57-90be-11f1-b7c8-b9d3b0a6c9e2",
-              "display_name": "JAAKKO NIEMINEN",
+              "display_name": "Jaakko Nieminen",
               "team_source_id": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
               "jersey_number": "40",
               "starter": false,
@@ -19369,7 +19369,7 @@
             },
             {
               "source_player_id": "a84338ea-90be-11f1-b8de-13228fe003c9",
-              "display_name": "VILLE-PEKKA ESKELINEN",
+              "display_name": "Ville-Pekka Eskelinen",
               "team_source_id": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
               "jersey_number": "44",
               "starter": false,
@@ -19489,7 +19489,7 @@
             },
             {
               "source_player_id": "fa6bf28d-90bd-11f1-87bb-a1f0b16090d5",
-              "display_name": "ERIK MUHONEN",
+              "display_name": "Erik Muhonen",
               "team_source_id": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
               "jersey_number": "15",
               "starter": false,
@@ -19597,8 +19597,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005886/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-07T21:31:49Z",
-        "payload_sha256": "f7e1776e131e42471932b5a1d694d8fb8e1a63f82e583d84409e0d17079d884b"
+        "ingested_at_utc": "2026-10-09T16:06:09Z",
+        "payload_sha256": "bb072120850a7cd6f84da3905b776084a5566c00e8436045b9486448edcd57b0"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -19706,7 +19706,7 @@
           "players": [
             {
               "source_player_id": "0d1f5ccc-90be-11f1-9bea-053db5cf498e",
-              "display_name": "PATRIK EN",
+              "display_name": "Patrik En",
               "team_source_id": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
               "jersey_number": "6",
               "starter": false,
@@ -19866,7 +19866,7 @@
             },
             {
               "source_player_id": "73a88aa6-90bd-11f1-aec5-bf766ef3e20b",
-              "display_name": "TEEMU KRISTERI",
+              "display_name": "Teemu Kristeri",
               "team_source_id": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
               "jersey_number": "3",
               "starter": false,
@@ -19906,7 +19906,7 @@
             },
             {
               "source_player_id": "7c4054c8-90bd-11f1-a503-59500384dde4",
-              "display_name": "AARNI KORKIATUPA",
+              "display_name": "Aarni Korkiatupa",
               "team_source_id": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
               "jersey_number": "22",
               "starter": true,
@@ -20026,7 +20026,7 @@
             },
             {
               "source_player_id": "ebf4ab5f-90bd-11f1-af64-5bafc2773088",
-              "display_name": "EINO PÄLLIJEFF",
+              "display_name": "Eino Pällijeff",
               "team_source_id": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
               "jersey_number": "82",
               "starter": true,
@@ -20128,7 +20128,7 @@
           "players": [
             {
               "source_player_id": "35e6a4bc-90be-11f1-855b-8fd4205740a9",
-              "display_name": "ROOPE FILTNESS",
+              "display_name": "Roope Filtness",
               "team_source_id": "815439d4-b169-11f1-bc74-593eff165a09",
               "jersey_number": "0",
               "starter": false,
@@ -20328,7 +20328,7 @@
             },
             {
               "source_player_id": "ae42289d-90ba-11f1-8f7c-e7350f4a6e12",
-              "display_name": "TOPIAS KUUKKANEN",
+              "display_name": "Topias Kuukkanen",
               "team_source_id": "815439d4-b169-11f1-bc74-593eff165a09",
               "jersey_number": "23",
               "starter": false,
@@ -20368,7 +20368,7 @@
             },
             {
               "source_player_id": "c4a0048c-90bc-11f1-a1be-af3c0b98eadb",
-              "display_name": "EEMELI LAAKSONEN",
+              "display_name": "Eemeli Laaksonen",
               "team_source_id": "815439d4-b169-11f1-bc74-593eff165a09",
               "jersey_number": "11",
               "starter": false,
@@ -20596,8 +20596,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005869/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-07T21:31:51Z",
-        "payload_sha256": "49d22230892acb9c9f06b10b1730c383782e2fc01b67d1f19566255a13b09882"
+        "ingested_at_utc": "2026-10-09T16:06:11Z",
+        "payload_sha256": "2bc3396ce4b447e49176d65aa8ad70f18d63bafacdefe938d08d53500cb9afa9"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -20785,7 +20785,7 @@
             },
             {
               "source_player_id": "4a05a759-90bc-11f1-9c13-f9d3ff21d24a",
-              "display_name": "VILI NYMAN",
+              "display_name": "Vili Nyman",
               "team_source_id": "d296e502-90a6-11f1-bf89-e7d7c2463142",
               "jersey_number": "10",
               "starter": true,
@@ -20865,7 +20865,7 @@
             },
             {
               "source_player_id": "79046d3d-90bc-11f1-a7b5-4554ddfa8cbf",
-              "display_name": "KALLE PELTONEN",
+              "display_name": "Kalle Peltonen",
               "team_source_id": "d296e502-90a6-11f1-bf89-e7d7c2463142",
               "jersey_number": "95",
               "starter": false,
@@ -20905,7 +20905,7 @@
             },
             {
               "source_player_id": "8077c0b9-90be-11f1-8f51-9528bf057578",
-              "display_name": "JONAS KAIVOS",
+              "display_name": "Jonas Kaivos",
               "team_source_id": "d296e502-90a6-11f1-bf89-e7d7c2463142",
               "jersey_number": "16",
               "starter": false,
@@ -20945,7 +20945,7 @@
             },
             {
               "source_player_id": "8a49a8f9-90bd-11f1-984c-95de893ea309",
-              "display_name": "EEMI LUUKKONEN",
+              "display_name": "Eemi Luukkonen",
               "team_source_id": "d296e502-90a6-11f1-bf89-e7d7c2463142",
               "jersey_number": "7",
               "starter": true,
@@ -21207,7 +21207,7 @@
             },
             {
               "source_player_id": "037a0c46-90bd-11f1-ad46-e9a336bf1467",
-              "display_name": "JOONAS TIMONEN",
+              "display_name": "Joonas Timonen",
               "team_source_id": "d31984cb-90a6-11f1-997e-e7d7c2463142",
               "jersey_number": "5",
               "starter": true,
@@ -21287,7 +21287,7 @@
             },
             {
               "source_player_id": "370699bb-90bf-11f1-8fe8-dbbd8242dc7e",
-              "display_name": "AATU AROPELTO",
+              "display_name": "Aatu Aropelto",
               "team_source_id": "d31984cb-90a6-11f1-997e-e7d7c2463142",
               "jersey_number": "13",
               "starter": false,
@@ -21327,7 +21327,7 @@
             },
             {
               "source_player_id": "61f2db99-90bb-11f1-bce6-27f2444e308f",
-              "display_name": "TOPIAS PALMI",
+              "display_name": "Topias Palmi",
               "team_source_id": "d31984cb-90a6-11f1-997e-e7d7c2463142",
               "jersey_number": "31",
               "starter": true,
@@ -21367,7 +21367,7 @@
             },
             {
               "source_player_id": "794bb8b2-90bc-11f1-84b6-4554ddfa8cbf",
-              "display_name": "TEEMU KNIHTINEN",
+              "display_name": "Teemu Knihtinen",
               "team_source_id": "d31984cb-90a6-11f1-997e-e7d7c2463142",
               "jersey_number": "21",
               "starter": false,
@@ -21592,7 +21592,7 @@
     "requested_games": 16,
     "fetched_games": 16,
     "failed_games": 0,
-    "cached_games": 16,
+    "cached_games": 11,
     "valid_games": 16,
     "invalid_games": 0
   },
