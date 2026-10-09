@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "season_id": "huki2627",
-  "updated_at": "2026-10-09T16:05:33.260585+00:00",
+  "updated_at": "2026-10-09T20:49:24.884841+00:00",
   "source_url": "https://tulospalvelu.basket.fi/",
   "schedule": [
     {
@@ -2411,8 +2411,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1006239/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-08T16:22:13Z",
-        "payload_sha256": "3a005cc2da8eb3e6cdec978ca1e2bcc9835a087b49b56500611df57d2825397f"
+        "ingested_at_utc": "2026-10-09T20:49:02Z",
+        "payload_sha256": "2dfc20ab50f6e87121bba145a7f1b8a99b961297c3e09bf8fb694056b4addd1e"
       },
       "competition": {
         "source_id": "8e536942-90dc-11f1-947f-814ab4ec9e3e",
@@ -2982,7 +2982,7 @@
             },
             {
               "source_player_id": "24afa711-90bc-11f1-ae99-b9351c62770e",
-              "display_name": "Claudia Kärnä",
+              "display_name": "CLAUDIA KÄRNÄ",
               "team_source_id": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
               "jersey_number": "22",
               "starter": false,
@@ -3142,7 +3142,7 @@
             },
             {
               "source_player_id": "6aa00ee4-90bf-11f1-a4cd-4fc2adf4ab8e",
-              "display_name": "EVA TAURIAINEN",
+              "display_name": "Eva Tauriainen",
               "team_source_id": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
               "jersey_number": "1",
               "starter": false,
@@ -3410,8 +3410,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1006161/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-08T16:22:23Z",
-        "payload_sha256": "db911072c96d0e21a23967203fff4324cb2e6aac45cf00326a561bb172e787f3"
+        "ingested_at_utc": "2026-10-09T20:49:11Z",
+        "payload_sha256": "87e449545c7e213b925e88e994300dfd52c245416373e51109c17f25106b2e50"
       },
       "competition": {
         "source_id": "8e536942-90dc-11f1-947f-814ab4ec9e3e",
@@ -3519,7 +3519,7 @@
           "players": [
             {
               "source_player_id": "250bf49e-90bf-11f1-bc38-3b6494574767",
-              "display_name": "Helmi Hietala",
+              "display_name": "HELMI HIETALA",
               "team_source_id": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
               "jersey_number": "16",
               "starter": false,
@@ -3559,7 +3559,7 @@
             },
             {
               "source_player_id": "4e4313fa-90bd-11f1-aa24-d925956b0a39",
-              "display_name": "Silja Viita",
+              "display_name": "SILJA VIITA",
               "team_source_id": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
               "jersey_number": "10",
               "starter": true,
@@ -3639,7 +3639,7 @@
             },
             {
               "source_player_id": "78f56213-90be-11f1-bea6-9339b75ea0b9",
-              "display_name": "Eeva Alatalo",
+              "display_name": "EEVA ALATALO",
               "team_source_id": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
               "jersey_number": "6",
               "starter": false,
@@ -3719,7 +3719,7 @@
             },
             {
               "source_player_id": "9b18fc96-90bb-11f1-8441-35d7afbe70b8",
-              "display_name": "Riikka Kujala",
+              "display_name": "RIIKKA KUJALA",
               "team_source_id": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
               "jersey_number": "8",
               "starter": false,
@@ -3759,7 +3759,7 @@
             },
             {
               "source_player_id": "a08bb81c-90bd-11f1-842e-277bedfa33ca",
-              "display_name": "Pihla Jaatinen",
+              "display_name": "PIHLA JAATINEN",
               "team_source_id": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
               "jersey_number": "18",
               "starter": true,
@@ -3799,7 +3799,7 @@
             },
             {
               "source_player_id": "aee15430-90bd-11f1-9f98-37aaf0479419",
-              "display_name": "Minttu Isoranta",
+              "display_name": "MINTTU ISORANTA",
               "team_source_id": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
               "jersey_number": "5",
               "starter": false,
@@ -3839,7 +3839,7 @@
             },
             {
               "source_player_id": "dbe2c474-90be-11f1-83ff-73883e79fac1",
-              "display_name": "Silja Kangas",
+              "display_name": "SILJA KANGAS",
               "team_source_id": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
               "jersey_number": "11",
               "starter": false,
@@ -4061,7 +4061,7 @@
             },
             {
               "source_player_id": "72f884e7-90bf-11f1-9198-f3e0ee38e95c",
-              "display_name": "MAIJA HONKONEN",
+              "display_name": "Maija Honkonen",
               "team_source_id": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
               "jersey_number": "14",
               "starter": true,
@@ -4101,7 +4101,7 @@
             },
             {
               "source_player_id": "84fd45d0-90bf-11f1-9edc-df5a7344780a",
-              "display_name": "ELLI RIIHELÄ",
+              "display_name": "Elli Riihelä",
               "team_source_id": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
               "jersey_number": "2",
               "starter": false,
@@ -4181,7 +4181,7 @@
             },
             {
               "source_player_id": "93dacbdf-90be-11f1-8ee4-b9d3b0a6c9e2",
-              "display_name": "VENLA PATRIKAINEN",
+              "display_name": "Venla Patrikainen",
               "team_source_id": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
               "jersey_number": "73",
               "starter": false,
@@ -4221,7 +4221,7 @@
             },
             {
               "source_player_id": "a10da6f8-90be-11f1-9492-f55c6a1f11ab",
-              "display_name": "ALINA AHONEN",
+              "display_name": "Alina Ahonen",
               "team_source_id": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
               "jersey_number": "16",
               "starter": false,
@@ -4261,7 +4261,7 @@
             },
             {
               "source_player_id": "cadfb0d4-90be-11f1-94a8-699532503340",
-              "display_name": "MONA ETU-SEPPÄLÄ",
+              "display_name": "Mona Etu-Seppälä",
               "team_source_id": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
               "jersey_number": "68",
               "starter": false,
@@ -4381,7 +4381,7 @@
             },
             {
               "source_player_id": "da2b5a61-90bd-11f1-ae42-23575df7f55b",
-              "display_name": "VIIVI NISKANEN",
+              "display_name": "Viivi Niskanen",
               "team_source_id": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
               "jersey_number": "15",
               "starter": false,
@@ -4529,8 +4529,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1006180/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-08T16:22:25Z",
-        "payload_sha256": "2c3347e9d9e4dbb8ca0bebd31ff6f980760f86d086b342720235de9b695516bc"
+        "ingested_at_utc": "2026-10-09T20:49:18Z",
+        "payload_sha256": "1763f0227d380f0eb46a180be66b8319f77539169e84db5a9f46e6a7cb95d085"
       },
       "competition": {
         "source_id": "8e536942-90dc-11f1-947f-814ab4ec9e3e",
@@ -4918,7 +4918,7 @@
             },
             {
               "source_player_id": "f0d1592d-90be-11f1-a323-713ca2bbccaa",
-              "display_name": "HELLI SUVANTO",
+              "display_name": "Helli Suvanto",
               "team_source_id": "d231065a-90a6-11f1-9f40-e7d7c2463142",
               "jersey_number": "45",
               "starter": true,
@@ -5140,7 +5140,7 @@
             },
             {
               "source_player_id": "2c6d50fe-90bf-11f1-9c4e-515875ef95f7",
-              "display_name": "JESSI NENONEN",
+              "display_name": "Jessi Nenonen",
               "team_source_id": "d244ed43-90a6-11f1-833b-e7d7c2463142",
               "jersey_number": "18",
               "starter": true,
@@ -5528,8 +5528,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1006230/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-08T16:22:27Z",
-        "payload_sha256": "9ec8c162856fac8a8038f01cba3f2c86599d34fdab9a1d3ad3b0daab7d2032cb"
+        "ingested_at_utc": "2026-10-09T20:49:20Z",
+        "payload_sha256": "a5cf80f4088d48331f968fa28d9c7a8b974de10332e5d2b8d7b54ce380af2072"
       },
       "competition": {
         "source_id": "8e536942-90dc-11f1-947f-814ab4ec9e3e",
@@ -6099,7 +6099,7 @@
           "players": [
             {
               "source_player_id": "10cdb07f-90bd-11f1-9539-7b8c3a749dc5",
-              "display_name": "Carolina Kert",
+              "display_name": "CAROLINA KERT",
               "team_source_id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
               "jersey_number": "11",
               "starter": true,
@@ -6219,7 +6219,7 @@
             },
             {
               "source_player_id": "2aabf0c9-90bf-11f1-8a9b-515875ef95f7",
-              "display_name": "LOTTA TYYNILÄ",
+              "display_name": "Lotta Tyynilä",
               "team_source_id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
               "jersey_number": "6",
               "starter": false,
@@ -6379,7 +6379,7 @@
             },
             {
               "source_player_id": "6c0d90ce-90be-11f1-b03f-8b7b745739af",
-              "display_name": "ELLA SAHURI",
+              "display_name": "Ella Sahuri",
               "team_source_id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
               "jersey_number": "4",
               "starter": false,
@@ -6539,7 +6539,7 @@
             },
             {
               "source_player_id": "f1ed659b-90bd-11f1-8508-4f8fabaf4a0e",
-              "display_name": "METTE NURMINEN",
+              "display_name": "Mette Nurminen",
               "team_source_id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
               "jersey_number": "9",
               "starter": false,
