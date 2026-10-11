@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "season_id": "huki2627",
-  "updated_at": "2026-10-10T22:55:13.638383+00:00",
+  "updated_at": "2026-10-11T15:34:29.518608+00:00",
   "source_url": "https://tulospalvelu.basket.fi/",
   "schedule": [
     {
@@ -23673,8 +23673,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005903/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-10T15:14:15Z",
-        "payload_sha256": "e513d2fd257da7ca28e51c0cf5f72bd9c4e1e36b4120daaf8c62ba90872aad3d"
+        "ingested_at_utc": "2026-10-11T15:34:27Z",
+        "payload_sha256": "4f3d65cb6a745f89189895917b2d03e30b4b1a444905eb5311e9b793d43163df"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -23856,7 +23856,7 @@
                 "efficiency": 21
               },
               "source_fields": {
-                "active": true,
+                "active": false,
                 "person_link": null
               }
             },
@@ -23936,7 +23936,7 @@
                 "efficiency": 10
               },
               "source_fields": {
-                "active": true,
+                "active": false,
                 "person_link": null
               }
             },
@@ -24056,7 +24056,7 @@
                 "efficiency": 17
               },
               "source_fields": {
-                "active": true,
+                "active": false,
                 "person_link": null
               }
             },
@@ -24096,7 +24096,7 @@
                 "efficiency": 5
               },
               "source_fields": {
-                "active": true,
+                "active": false,
                 "person_link": null
               }
             },
@@ -24176,7 +24176,7 @@
                 "efficiency": 22
               },
               "source_fields": {
-                "active": true,
+                "active": false,
                 "person_link": null
               }
             },
@@ -24318,7 +24318,7 @@
                 "efficiency": 29
               },
               "source_fields": {
-                "active": true,
+                "active": false,
                 "person_link": null
               }
             },
@@ -24438,7 +24438,7 @@
                 "efficiency": 18
               },
               "source_fields": {
-                "active": true,
+                "active": false,
                 "person_link": null
               }
             },
@@ -24478,7 +24478,7 @@
                 "efficiency": 20
               },
               "source_fields": {
-                "active": true,
+                "active": false,
                 "person_link": null
               }
             },
@@ -24638,7 +24638,7 @@
                 "efficiency": 7
               },
               "source_fields": {
-                "active": true,
+                "active": false,
                 "person_link": null
               }
             },
@@ -24758,7 +24758,7 @@
                 "efficiency": 8
               },
               "source_fields": {
-                "active": true,
+                "active": false,
                 "person_link": null
               }
             }
@@ -27037,7 +27037,7 @@
     "requested_games": 21,
     "fetched_games": 21,
     "failed_games": 0,
-    "cached_games": 8,
+    "cached_games": 20,
     "valid_games": 21,
     "invalid_games": 0
   },
