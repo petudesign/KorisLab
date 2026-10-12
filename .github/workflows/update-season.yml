@@ -46,9 +46,23 @@ jobs:
         run: python -m ingestion.publish_season
       - name: Refresh Korisliiga schedule and verified statistics
         run: python -m ingestion.publish_season --category-id 4 --group-id 303022 --out web/public/korisliiga/season-2026-27.json
+      - name: Sync the new KorisLab data
+        run: python prototypes/paper-home/scripts/sync-data.py
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+          package-manager-cache: false
+      - name: Verify the new site before committing data
+        working-directory: prototypes/paper-home
+        run: |
+          npm install --global pnpm@11.25.0
+          pnpm install --frozen-lockfile
+          pnpm run build
+          pnpm test
       - name: Commit the public snapshot
         run: |
           git add web/public/season-2026-27.json web/public/shots web/public/quarters-2026-27.json web/public/assists-2026-27.json web/public/player-shots-2026-27.json web/public/replays web/public/korisliiga
+          git add prototypes/paper-home/source/seasons.json prototypes/paper-home/source/match-analysis.json prototypes/paper-home/source/player-analysis.json prototypes/paper-home/public/data
           if git diff --cached --quiet; then exit 0; fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
