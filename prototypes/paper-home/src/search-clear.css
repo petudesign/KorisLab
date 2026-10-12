@@ -1,0 +1,8 @@
+.prototype-page .search-clear{display:grid;place-items:center;flex:none;width:32px;height:32px;padding:0;border:0;border-radius:6px;background:transparent;color:#929297;cursor:pointer}
+.prototype-page .search-clear svg{width:16px;height:16px}
+.prototype-page .search-clear:hover{color:#f3f3f4;background:#ffffff06}
+.prototype-page .search-clear:focus-visible{outline:2px solid #df945b;outline-offset:2px}
+.search-field .search-clear{width:40px;height:40px}
+.answer-search-field{display:flex;position:relative;flex:1;min-width:0}
+.answer-search .answer-search-field input{width:100%;min-width:0;padding-right:48px}
+.answer-search-field .search-clear{position:absolute;right:8px;top:50%;transform:translateY(-50%)}

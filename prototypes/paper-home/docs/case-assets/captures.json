@@ -1,0 +1,114 @@
+[
+  {
+    "file": "home-before-1440x900.jpg",
+    "url": "https://korislab.vercel.app/?season=2025-26&league=naisten-korisliiga",
+    "version": "before",
+    "view": "home",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "language": "fi",
+    "theme": "dark",
+    "capturedDate": "2026-10-11",
+    "sha256": "5f51be6875fdb38c07d703f59b14f2c453986e24e6adf8df6fdedce2e3c60205"
+  },
+  {
+    "file": "home-after-1440x900.jpg",
+    "url": "http://127.0.0.1:5175/?season=2025-26&league=naisten-korisliiga",
+    "version": "after",
+    "view": "home",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "language": "fi",
+    "theme": "dark",
+    "capturedDate": "2026-10-11",
+    "sha256": "31f4731f375f7e2cabd358e359c36da153e9a6796f97a4271d3ba72123717af2"
+  },
+  {
+    "file": "overview-before-1440x900.jpg",
+    "url": "https://korislab.vercel.app/overview/?season=2025-26&league=naisten-korisliiga",
+    "version": "before",
+    "view": "overview",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "language": "fi",
+    "theme": "dark",
+    "capturedDate": "2026-10-11",
+    "sha256": "154eac4c929b0361757387f483718d309865e6bfd778139453c6b002b3e22ef6"
+  },
+  {
+    "file": "overview-after-1440x900.jpg",
+    "url": "http://127.0.0.1:5175/overview/?season=2025-26&league=naisten-korisliiga",
+    "version": "after",
+    "view": "overview",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "language": "fi",
+    "theme": "dark",
+    "capturedDate": "2026-10-11",
+    "sha256": "44a526ff907e797b008119eec558b01214123bf4a8da5b8d5bf00335d0cd59d2"
+  },
+  {
+    "file": "player-before-1440x900.jpg",
+    "url": "https://korislab.vercel.app/players/903b6ff9-90bc-11f1-8aff-7bff69c6eb8e/?season=2025-26",
+    "version": "before",
+    "view": "player",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "language": "fi",
+    "theme": "dark",
+    "capturedDate": "2026-10-11",
+    "sha256": "3c5d508fe6411367371d4e1c1ba236d8d6aa9fa77b97f72179995450babfc6a2"
+  },
+  {
+    "file": "player-after-1440x900.jpg",
+    "url": "http://127.0.0.1:5175/players/903b6ff9-90bc-11f1-8aff-7bff69c6eb8e/?season=2025-26",
+    "version": "after",
+    "view": "player",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "language": "fi",
+    "theme": "dark",
+    "capturedDate": "2026-10-11",
+    "sha256": "410a27a7055a8c65a373f6822aa2551d18ca2dfda10d291426b87e0a786c32d3"
+  },
+  {
+    "file": "match-before-1440x900.jpg",
+    "url": "https://korislab.vercel.app/matches/968971/?season=2025-26",
+    "version": "before",
+    "view": "match",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "language": "fi",
+    "theme": "dark",
+    "capturedDate": "2026-10-11",
+    "sha256": "4fc778fe9f4683b6df88033a1d2369feb7937a010a4a42c933f03426835015ff"
+  },
+  {
+    "file": "match-after-1440x900.jpg",
+    "url": "http://127.0.0.1:5175/matches/968971/?season=2025-26",
+    "version": "after",
+    "view": "match",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "language": "fi",
+    "theme": "dark",
+    "capturedDate": "2026-10-11",
+    "sha256": "0f7f036c3b3f01bd1cbe416c3e08bd7a3e4df9d7252c7ffd33333463d2b1a860"
+  }
+]

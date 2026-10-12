@@ -22,7 +22,8 @@
     "react-dom": "19.2.0",
     "shaders": "^4.0.4",
     "three": "^0.186.1",
-    "vite": "6.4.2"
+    "vite": "6.4.2",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
   },
   "engines": {
     "node": ">=22.18"

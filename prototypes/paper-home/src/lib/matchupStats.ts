@@ -28,6 +28,8 @@ export function comparisonValues(stats: StatLine, divisor: number, opponent?: St
     ft: divide(stats.ftm, stats.fta, 100), twoPct: divide(stats.two_pm, stats.two_pa, 100), threePct: divide(stats.three_pm, stats.three_pa, 100),
     threeShare: divide(stats.three_pa, attempted, 100), ftRate: divide(stats.fta, attempted), astTo: divide(stats.assists, stats.turnovers),
     ortg: divide(stats.points, sharedPossessions, 100), drtg: divide(opponent?.points, sharedPossessions, 100),
+    orbPct: divide(stats.offensive_rebounds, add(stats.offensive_rebounds, opponent?.defensive_rebounds), 100),
+    tovPct: divide(stats.turnovers, sharedPossessions, 100),
     net: divide(stats.points == null || opponent?.points == null ? null : stats.points - opponent.points, sharedPossessions, 100),
   };
 }

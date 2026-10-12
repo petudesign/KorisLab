@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {analyzeChange,changeRecords,summarizeChangeSample,previousPlayerIdentity} from '../src/lib/changeAnalysis.js';
+import {analyzeChange,changeRecords,summarizeChangeSample,previousPlayerIdentity,changeContextGames} from '../src/lib/changeAnalysis.js';
 const row=(i,patch={})=>({id:String(i),date:`2026-01-${String(i+1).padStart(2,'0')}`,team:'A',opponent:'B',minutes:20,starts:1,points:10,attempts:10,effectiveMade:5,threeAttempts:2,rebounds:4,assists:2,turnovers:3,offensiveRebounds:2,opponentDefensiveRebounds:8,possessions:70,allowed:65,...patch});
 test('last five and earlier samples are disjoint and require at least eight appearances',()=>{
  const data=Array.from({length:12},(_,i)=>row(i));const a=analyzeChange(data,[]);
@@ -30,4 +30,20 @@ test('player identity uses IDs and rejects ambiguous names; zero-minute games ar
  assert.equal(previousPlayerIdentity([game],{id:'a',name:'Changed name'}),'a');
  assert.equal(changeRecords([game],{playerId:'a'}).length,0);
  assert.equal(changeRecords([{...game,verified:false}],{teamName:'A'}).length,0);
+});
+test('opening comparison takes exactly the first five appearances from each season without leaking later games',()=>{
+ const previous=Array.from({length:10},(_,i)=>row(i,{points:i<5?10:100}));
+ const current=Array.from({length:9},(_,i)=>row(i,{points:i<5?20:200,minutes:10}));
+ const a=analyzeChange(current,previous,{mode:'firstFive'});
+ assert.equal(a.ready,true);assert.equal(a.current.games,5);assert.equal(a.baseline.games,5);
+ assert.equal(a.current.points,20);assert.equal(a.baseline.points,10);
+ assert.equal(a.recent.at(-1).id,'4');assert.equal(a.earlier.at(-1).id,'4');
+ assert.equal(analyzeChange(current.slice(0,4),previous,{mode:'firstFive'}).ready,false);
+ assert.equal(analyzeChange(current,previous.slice(0,4),{mode:'firstFive'}).ready,false);
+});
+
+test('opening player context excludes later team results and undated games',()=>{
+ const games=[{id:'early',date:'2026-01-01'},{id:'cutoff',date:'2026-01-05'},{id:'late',date:'2026-02-01'},{id:'unknown'}];
+ assert.deepEqual(changeContextGames(games,[row(4)],'firstFive').map(g=>g.id),['early','cutoff']);
+ assert.equal(changeContextGames(games,[row(4)],'season'),games);
 });

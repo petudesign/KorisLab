@@ -51,11 +51,11 @@ const definitions={player:[
  ['orb','Hyökkäyslevypallot','%',5,'Levypallot'],['threes','Kolmosten osuus','%',5,'Heittovalinnat']]};
 
 export function analyzeChange(currentRecords,previousRecords,{type='player',mode='recent'}={}){
- const recent=mode==='recent'?currentRecords.slice(-5):currentRecords;
- const earlier=mode==='recent'?currentRecords.slice(0,-5):previousRecords;
+ const recent=mode==='recent'?currentRecords.slice(-5):mode==='firstFive'?currentRecords.slice(0,5):currentRecords;
+ const earlier=mode==='recent'?currentRecords.slice(0,-5):mode==='firstFive'?previousRecords.slice(0,5):previousRecords;
  const current=summarizeChangeSample(recent,type),baseline=summarizeChangeSample(earlier,type);
- const ready=mode==='recent'?recent.length===5&&earlier.length>=3:recent.length>=2&&earlier.length>=(type==='player'?8:5);
- const sufficient=ready&&(type!=='player'||current.minutes>=30&&baseline.minutes>=120);
+ const ready=mode==='recent'?recent.length===5&&earlier.length>=3:mode==='firstFive'?recent.length===5&&earlier.length===5:recent.length>=2&&earlier.length>=(type==='player'?8:5);
+ const sufficient=ready&&(type!=='player'||current.minutes>=30&&baseline.minutes>=(mode==='firstFive'?30:120));
  const rows=definitions[type].map(([key,label,unit,threshold,category])=>{
   const available=finite(current[key])&&finite(baseline[key])&&(key!=='efg'||current.attempts>=30&&baseline.attempts>=30);
   const delta=available?current[key]-baseline[key]:null;
@@ -79,4 +79,12 @@ export function analyzeChange(currentRecords,previousRecords,{type='player',mode
   summary=offense.delta<=-5&&shooting.strength<1&&finite(shooting.delta)&&turnovers.delta>=3?'Hyökkäystehokkuus laski, vaikka heittotehokkuus pysyi lähellä vertailutasoa. Samalla menetyksiä tuli enemmän pallonhallintaa kohti.':'Joukkueen luvut ovat muuttuneet. Vertailu erottaa tehokkuuden, pallonhallinnan ja heittovalinnat.';
  }
  return {ready:sufficient,current,baseline,rows,notable,summary,recent,earlier,teamChanged:type==='player'&&current.teams.some(t=>!baseline.teams.includes(t))};
+}
+
+// Opening-period context must not reveal team results from later in the season.
+export function changeContextGames(games,records,mode){
+ if(mode!=='firstFive')return games;
+ const cutoff=records.at(-1)?.date;
+ if(!cutoff)return [];
+ return games.filter(game=>game.date&&Date.parse(game.date)<=Date.parse(cutoff));
 }

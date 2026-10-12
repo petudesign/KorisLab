@@ -28,7 +28,7 @@ const men = {
     'Korihait': {coach:'Pieti Poikola',coachSeasons:11,previousCoach:'Kari Kurronen',budget:424400,previousBudget:407000,payroll:268000,previousPayroll:274000,previousRank:3,rankBefore:5},
     'Kouvot': {coach:'Kari Kurronen',coachSeasons:2,previousCoach:'Darko Mihajlovic',budget:455000,previousBudget:502000,payroll:220000,previousPayroll:260000,previousRank:11,rankBefore:8},
     'KTP-Basket': {coach:'Greg Gibson',coachSeasons:14,previousCoach:'Kristian Palotie',budget:532000,previousBudget:460000,payroll:338000,previousPayroll:323000,previousRank:6,rankBefore:11},
-    'Lahti Basketball': {coach:'Teemu Turunen',coachSeasons:2,previousCoach:null,budget:505300,previousBudget:458600,payroll:335000,previousPayroll:233900,previousRank:'I divisioona',rankBefore:'I divisioona'},
+    'Lahti Basketball': {coach:'Teemu Turunen',coachSeasons:2,previousCoach:null,budget:505300,previousBudget:458600,payroll:335000,previousPayroll:233900,previousRank:10,rankBefore:'I divisioona'},
     'Salon Vilpas': {coach:'Jussi Savolainen',coachSeasons:5,previousCoach:'Jussi Savolainen',budget:965000,previousBudget:781400,payroll:495800,previousPayroll:434700,previousRank:1,rankBefore:3},
     'Tampereen Pyrintö': {coach:'Tero Hassinen',coachSeasons:6,previousCoach:'Tero Hassinen',budget:382000,previousBudget:407200,payroll:286500,previousPayroll:299600,previousRank:8,rankBefore:7},
     'Tapiolan Honka': {coach:'Aapo Heinonen',coachSeasons:6,previousCoach:'Aapo Heinonen',budget:384500,previousBudget:368000,payroll:312400,previousPayroll:315000,previousRank:7,rankBefore:10},
