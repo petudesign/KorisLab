@@ -77,3 +77,12 @@
 .dashboard-expanded .dash-shot-counts dd span{font-size:10px;width:48px}
 .dashboard-expanded .dash-shot-total{font-size:10px}
 .dashboard-expanded .dash-shot-total>span{font-size:9px}
+
+/* Extra room for the overview's player-move feed in the homepage dashboard preview. */
+.hero .dashboard-frame{height:1730px}
+.prototype-page .hero{height:2202px}
+.canvas-wrapper:not(.overview-wrapper){height:calc(2308px * var(--scale))}
+.canvas-wrapper:not(.overview-wrapper) .canvas{height:2308px}
+@media(max-width:700px){.prototype-page .hero{height:calc(502px + 2225.3px * var(--scale))}.hero .dashboard-frame{height:1870px}.canvas-wrapper:not(.overview-wrapper){height:auto}.canvas-wrapper:not(.overview-wrapper) .canvas{height:auto}}
+.dash-ranking-row{display:grid;grid-template-columns:minmax(100px,160px) minmax(0,1fr);align-items:center;gap:12px}.dash-ranking-team{min-width:0;overflow:hidden;color:#aaaab2;text-overflow:ellipsis;white-space:nowrap;text-decoration:none}.dash-ranking-team:hover,.dash-ranking-team:focus-visible,.dash-ranking-row.selected-team .dash-ranking-team{color:#efb786}.dash-ranking-select{display:grid!important;grid-template-columns:minmax(0,1fr) 42px!important;align-items:center;width:100%;gap:8px!important;padding:4px 0!important;border:0!important;background:transparent!important;color:#aaaab2;text-align:left}.dash-ranking-select strong{text-align:right;font-weight:500}.dash-ranking-select:hover,.dash-ranking-row.selected-team .dash-ranking-select{color:#efb786;background:#df945b0c!important}
+@media(max-width:700px){.dashboard-expanded .dash-ranking-row{grid-template-columns:minmax(95px,110px) minmax(0,1fr);gap:8px}.dashboard-expanded .dash-ranking-select{grid-template-columns:minmax(0,1fr) 35px!important}}

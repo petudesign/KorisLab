@@ -11,3 +11,12 @@ The sync script makes no network requests; it uses already-published, validated 
 The temporary Ignored Build Step used during the first manual release must be removed after this migration (`commandForIgnoringBuildStep: null`). Otherwise legacy bot commits without the new app were intentionally skipped. A rollback can use the retained previous Vercel deployment, but its old Root Directory settings should not be restored without an explicit decision to revert the application.
 
 Local build: `pnpm install --frozen-lockfile`, `pnpm run build`, `pnpm test` from this folder. Data sync requires the repository checkout and Python 3. The initial migration was checked against a clean checkout of current main: 102 frontend tests passed, and repeated sync produced identical hashes across 1,236 JSON files.
+
+## Migration verified — 12 October 2026
+
+- App commit: b655ad6f; workflow update: 60235e20; first automated data commit: 01994863.
+- First full Actions run succeeded: https://github.com/petudesign/KorisLab/actions/runs/38223149288
+- Git-backed production deployment is Ready: dpl_EiMpZzMjupB1HFqojf1dWjwGaFPw, https://korislab-aexanjavp-petudesigns-projects.vercel.app, aliased to https://korislab.vercel.app.
+- Production data endpoints confirmed 12 verified women games / 108 fixtures and 21 verified men games / 204 fixtures. Browser overview confirmed the new metrics with no console errors; initial skeleton remains absent.
+- Root Directory and restored null ignored-build rule were read back from the Vercel API. The Git push credential cannot update workflows; the existing authorized GitHub connector performed that single update successfully.
+- The original local main history diverges from origin/main and contains user changes; it was not reset or rewritten. Local source/data/configuration copies were updated while preserving unrelated working changes. Use the clean release checkout for publication until that local history is deliberately reconciled.

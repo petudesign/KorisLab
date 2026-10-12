@@ -12,6 +12,10 @@
 .highlight-value{display:flex;align-items:baseline;gap:7px;font-size:37px;line-height:1.2;font-weight:600;letter-spacing:-.045em;font-variant-numeric:tabular-nums;color:var(--highlight-accent)}
 .highlight-value small{font-size:9px;font-weight:400;letter-spacing:0;color:#aaaab3;white-space:nowrap}
 .highlight-team{font-size:12px;color:#dedee2}
+.overview-dashboard a.highlight-team{text-decoration:none;border-radius:3px}
+.overview-dashboard a.highlight-team:hover,.overview-dashboard a.highlight-team:focus-visible{color:var(--highlight-accent);text-decoration:underline;text-underline-offset:3px}
+.highlight-compare-button{margin-top:auto;padding:6px 0 0;border:0;border-top:1px solid #ffffff0b;background:transparent;color:#a4a4ad;text-align:left;font-size:9px!important;cursor:pointer}
+.highlight-compare-button:hover,.highlight-compare-button[aria-pressed=true]{color:var(--highlight-accent)}
 .highlight-caption{font-size:8px;color:#8f8f99;line-height:1.5}
 .dashboard-expanded .season-highlights>header h3{font-size:22px}
 .dashboard-expanded .season-highlights>header>span{font-size:11px}

@@ -73,6 +73,7 @@ function teamTerms(team            ) {
       const stem = shortName.slice(0, -2);
       for (const suffix of ["ien", "ia", "issa", "ista", "illa", "ilta", "ille"]) terms.add(`${stem}${suffix}`);
     }
+    if(shortName.endsWith('nka'))terms.add(`${shortName.slice(0,-3)}ngan`);
   }
   return [...terms];
 }
@@ -189,6 +190,11 @@ function playerTerms(playerName        ) {
   const surname = words.at(-1) ?? "";
   const prefix = words.slice(0, -1).join(" ");
   const terms = [name,...words.filter(word=>word.length>=4)];
+  for(const word of words.filter(word=>word.length>=4)){
+    terms.push(`${word}n`);
+    if(word.endsWith('ki'))terms.push(`${word.slice(0,-2)}en`);
+    if(word.endsWith('nen'))terms.push(`${word.slice(0,-3)}sen`);
+  }
   if (prefix && surname.length >= 4) {
     for (const suffix of ["n", "in", "ssa", "ssä", "sta", "stä", "lle", "lla", "llä"]) terms.push(`${prefix} ${surname}${suffix}`);
   }
@@ -567,3 +573,5 @@ export async function resolveBasketballQuery(rawQuery        , options          
     ]),
   };
 }
+
+export {normalize,mentionedPlayers,mentionedTeams,seasonFromQuery};

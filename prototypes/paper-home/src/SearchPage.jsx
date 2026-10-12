@@ -8,6 +8,8 @@ import {aggregateSeasonPlayers} from './lib/playerStats';
 import {routeHref,slug} from './routing';
 import {TeamLogo} from './TeamLogo';
 import './search-page.css';
+import {resolveContextSearch} from './lib/contextSearch';
+import {ContextSearchAnswer} from './ContextSearchAnswer';
 const requests=new Map();
 function load(url){if(!requests.has(url))requests.set(url,fetch(url).then(r=>{if(!r.ok)throw Error('Search data');return r.json();}).catch(e=>{requests.delete(url);throw e;}));return requests.get(url);}
 export function SearchPage({query,onSearch,onRoute}){
@@ -16,6 +18,8 @@ export function SearchPage({query,onSearch,onRoute}){
  const [retry,setRetry]=useState(0),[draft,setDraft]=useState(query),[state,setState]=useState({loading:true});
  useEffect(()=>{setDraft(query);let active=true;setState({loading:true});
  (async()=>{
+  const contextual=await resolveContextSearch(query,{seasonId,seasonIds,loadGames:s=>load(getSeason(leagueId,s).matchesUrl)});
+  if(contextual){if(active)setState({contextual});return;}
   const current=await load(getSeason(leagueId,'2026-27').matchesUrl);
   const resolution=await resolveBasketballQuery(query,{language,leagueId:leagueId==='men'?'korisliiga':'naisten-korisliiga',seasonId,selectedSeasonTeams:getSeason(leagueId,seasonId).aggregate.teams,historicalTeams:getSeason(leagueId,'2025-26').aggregate.teams,currentTeams:getSeason(leagueId,'2026-27').aggregate.teams,currentScheduleTeams:[...new Set(current.flatMap(g=>g.teams.map(t=>t.name)))],currentSchedule:searchSchedule(current),historicalTeamsBySeason:Object.fromEntries(seasonIds.map(s=>[s,getSeason(leagueId,s)])),loadMatches:async s=>searchRecords(await load(getSeason(leagueId,s).matchesUrl)),loadPlayoffMatches:s=>s==='2026-27'?Promise.resolve([]):load(`/data/search/${leagueId}-${s}-finals.json`)});
   const targetSeason=resolution.answer?.season||resolution.navigate?.season||seasonId;
@@ -33,9 +37,10 @@ export function SearchPage({query,onSearch,onRoute}){
  const fixture=a?.kind==='fixture'?a.fixture:a?.nextFixture;
  const selectedTeam=a?.requestedTeam||team?.name||a?.teamName||p?.team||(fixture&&fixture.home.name);
  const related=(state.games||[]).filter(g=>!selectedTeam||g.teams.some(t=>t.name===selectedTeam)).filter(g=>a?.kind!=='team-games'||a.scope==='all'||g.verified&&((g.teams.find(t=>t.name===selectedTeam)?.score>g.teams.find(t=>t.name!==selectedTeam)?.score)===(a.scope==='wins'))).sort((x,y)=>{const xf=x.teams.every(t=>t.score==null)&&new Date(x.date)>Date.now(),yf=y.teams.every(t=>t.score==null)&&new Date(y.date)>Date.now();return Number(yf)-Number(xf)||(xf&&yf?(x.date||'').localeCompare(y.date||''):(y.date||'').localeCompare(x.date||''));});
- const suggestions=state.resolution?.feedback.suggestions||[say('Milloin Honka pelaa seuraavaksi?','When does Honka play next?'),say('Lauren Heard pisteet 2526','Lauren Heard points 2526'),say('Kuka voitti kauden 2526?','Who won the 2526 season?')];
+ const suggestions=state.contextual?[say('Miten Aarrejoen rooli muuttui?','How did Aarrejoki’s role change?'),say('Miksi Peli-Karhut on pelannut huonommin?','Why has Peli-Karhut played worse?'),say('Mitä Hongan seuraavassa ottelussa kannattaa seurata?','What should I watch in Honka’s next game?')]:state.resolution?.feedback.suggestions||[say('Milloin Honka pelaa seuraavaksi?','When does Honka play next?'),say('Lauren Heard pisteet 2526','Lauren Heard points 2526'),say('Kuka voitti kauden 2526?','Who won the 2526 season?')];
  return <section className="search-page"><header><h2>{say('Hakutulokset','Search results')}</h2><p>{t(leagueName)} · {say('Ottelut, pelaajat ja kaudet','Games, players and seasons')}</p></header><form className="answer-search" onSubmit={e=>{e.preventDefault();if(draft.trim())onSearch(draft.trim());}}><label className="sr-only" htmlFor="answer-query">{say('Kysy koripallosta','Ask about basketball')}</label><input id="answer-query" maxLength={200} value={draft} onChange={e=>setDraft(e.target.value)} placeholder={say('Kysy otteluista tai pelaajista…','Ask about games or players…')}/><button disabled={!draft.trim()}>{say('Hae','Search')}</button></form>
  {state.loading?<LoadingSkeleton variant="search" label="Haetaan vastausta…"/>:state.error?<StateCard tone="error" title="Tietojen lataus epäonnistui" description="Tarkista yhteys ja yritä uudelleen. Valintasi säilyvät." onAction={()=>setRetry(n=>n+1)}/>:<>
+ <>{state.contextual?<ContextSearchAnswer result={state.contextual} leagueId={leagueId} onRoute={onRoute} onSearch={onSearch}/>:<>
  <article className={`dash-card search-answer ${a?.kind||''}`} aria-live="polite">
  <div className="answer-label">{say('Vastaus','Answer')} · {(state.targetSeason||seasonId).replace('-','–')}</div>
  {fixture?<><div className="answer-label">{say('Seuraava ottelu','Next game')}</div><div className="answer-match"><div><TeamLogo name={fixture.home.name}/><h3>{fixture.home.name}</h3></div><div><strong>{fixture.scheduled_time?.slice(0,5)||'—'}</strong><span>{date(fixture.scheduled_date)}</span></div><div><TeamLogo name={fixture.away.name}/><h3>{fixture.away.name}</h3></div></div><p>{fixture.venue}</p>{link({view:'matches',season:a.season,id:fixture.source_match_id},say('Avaa ottelun ennakko','Open game preview'),'answer-link')}</>
@@ -46,6 +51,7 @@ export function SearchPage({query,onSearch,onRoute}){
  {state.resolution.feedback.actions?.filter(action=>!(a?.kind==='champion'&&action.target.view==='teams')).map((action,i)=><span className="answer-action" key={i}>{link(action.target,action.label)}</span>)}
  </article>
  {(fixture||p||team||a?.kind==='team-games')&&related.length>0&&<section className="search-related"><header><h3>{selectedTeam} · {say('Kauden ottelut','Season games')}</h3><span>{related.length} {say('ottelua','games')}</span></header><div>{related.map(g=><div className="search-game" key={g.id}><span>{date(g.date)}</span>{link({view:'matches',season:state.targetSeason,id:g.id},<><span>{g.teams[0].name}</span><strong>{g.teams[0].score!=null&&g.teams[1].score!=null?<><b className={g.teams[0].score>=g.teams[1].score?'winner':''}>{g.teams[0].score}</b> – <b className={g.teams[1].score>=g.teams[0].score?'winner':''}>{g.teams[1].score}</b></>:g.time?.slice(0,5)||'—'}</strong><span>{g.teams[1].name}</span></>)}<small>{g.venue}</small></div>)}</div></section>}
+ </>}</>
  <p className="search-source">{say('Vastaukset perustuvat tallennettuun otteluohjelmaan ja tarkistettuihin tilastoihin.','Answers use the saved schedule and verified statistics.')}</p>
  </>}
  <div className="search-suggestions"><span>{say('Kokeile myös','Try also')}</span>{suggestions.map(s=><button key={s} onClick={()=>onSearch(s)}>{s}</button>)}</div></section>;

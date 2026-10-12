@@ -1,10 +1,11 @@
 import {t as translate,locale} from './i18n';
 import { useId, useState } from 'react';
 import { useSeason } from './SeasonContext';
+import {routeHref,slug} from './routing';
 import './season-highlights.css';
 const format=n=>n.toLocaleString(locale(),{minimumFractionDigits:1,maximumFractionDigits:1});
-export function SeasonHighlights({onChooseTeam,selectedTeam}){
- const {data,seasonLabel}=useSeason();
+export function SeasonHighlights({onChooseTeam,selectedTeam,onEntityNavigate}){
+ const {data,seasonLabel,leagueId,seasonId}=useSeason();
  const teams=data.aggregate.teams.filter(team=>team.games>0);
  const definitions=[
   {key:'orb',label:'Parhaat hyökkäyslevypallot',unit:'ORB %',get:t=>t.metrics.offensive_rebound_pct,accent:'#df945b',caption:'Osuus hyökkäyspään levypalloista'},
@@ -16,7 +17,8 @@ export function SeasonHighlights({onChooseTeam,selectedTeam}){
   if(!team)return null;
   const recent=(data.highlightTrends[team.source_team_id]||[]).filter(game=>Number.isFinite(game[item.key]));
   const average=data.highlightLeagueAverages[item.key];
-  return <button key={item.label} className={`season-highlight ${selectedTeam===team.source_team_id?'highlight-selected':''}`} style={{'--highlight-accent':item.accent}} onClick={()=>onChooseTeam(team)} aria-pressed={selectedTeam===team.source_team_id} aria-label={translate(`${item.label}: ${team.name}, ${format(item.get(team))} ${item.unit}. Näytä joukkueen luvut.`)}><span className="highlight-label">{translate(item.label)}</span><strong className="highlight-value">{translate(format(item.get(team)))}<small>{translate(item.unit)}</small></strong><span className="highlight-team">{translate(team.name)}</span><HighlightTrend games={recent} metric={item.key} average={average}/><span className="highlight-average">{translate("Liigan KA ")}<b>{translate(format(average))}{translate(item.key==='net'?'':'%')}</b></span><span className="highlight-caption">{translate(item.caption)}{translate(" · ")}{translate(team.games)}{translate(" ottelua")}</span></button>;
+  const teamSlug=slug(team.name),href=routeHref({section:'Joukkueet',leagueId,seasonId,teamId:teamSlug});
+  return <article key={item.label} className={`season-highlight ${selectedTeam===team.source_team_id?'highlight-selected':''}`} style={{'--highlight-accent':item.accent}}><span className="highlight-label">{translate(item.label)}</span><strong className="highlight-value">{translate(format(item.get(team)))}<small>{translate(item.unit)}</small></strong><a className="highlight-team" href={href} onClick={event=>{if(onEntityNavigate&&!event.metaKey&&!event.ctrlKey&&!event.shiftKey){event.preventDefault();onEntityNavigate('Joukkueet',teamSlug,seasonId);}}}>{translate(team.name)}</a><HighlightTrend games={recent} metric={item.key} average={average}/><span className="highlight-average">{translate("Liigan KA ")}<b>{translate(format(average))}{translate(item.key==='net'?'':'%')}</b></span><span className="highlight-caption">{translate(item.caption)}{translate(" · ")}{translate(team.games)}{translate(" ottelua")}</span><button type="button" className="highlight-compare-button" onClick={()=>onChooseTeam(team)} aria-pressed={selectedTeam===team.source_team_id}>{translate(selectedTeam===team.source_team_id?'Valittu vertailuun':'Näytä vertailussa')}</button></article>;
  }))}</div></section>;
 }
 

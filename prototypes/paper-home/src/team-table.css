@@ -10,10 +10,10 @@
 .dash-team-table th:nth-child(2){text-align:left}
 .dash-team-table thead th{color:#91919c;font-size:9px}
 .dash-team-table thead button{border:0;background:none;padding:0;color:inherit;font-size:inherit}
-.dash-team-table tbody th button{background:none;border:0;padding:2px 0;color:#d0d0d7;text-align:left;font-size:inherit}
+.dash-team-table tbody th a{display:inline-block;padding:2px 0;color:#d0d0d7;text-align:left;text-decoration:none}
 .dash-team-table tbody tr:hover{background:#df945b0c}
 .dash-team-table .selected-team{background:#df945b15}
-.dash-team-table tbody th button:hover{color:#efb786}
+.dash-team-table tbody th a:hover,.dash-team-table tbody th a:focus-visible{color:#efb786;text-decoration:underline;text-underline-offset:3px}
 .dash-team-table .team-table-rank{color:#7e7e8c;width:24px;text-align:left}
 .dash-team-table tbody tr:first-child .team-table-rank{color:#dfaa79}
 .dash-team-table .positive{color:#dfaa79}
