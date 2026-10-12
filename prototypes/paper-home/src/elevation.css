@@ -1,0 +1,17 @@
+/* Shared depth levels: content, navigation and floating surfaces. */
+:root{
+ --surface-edge:inset 0 1px 0 #ffffff08;
+ --shadow-card:0 2px 3px #0002,0 8px 18px -8px #0008;
+ --shadow-nav:0 3px 8px #0003,0 14px 32px -12px #000a;
+ --shadow-floating:0 4px 10px #0005,0 18px 42px -8px #000b;
+}
+.prototype-page .nav-wrapper .nav-utilities{border-left:0;padding-left:0}
+.prototype-page .nav-wrapper .navigation{box-shadow:var(--surface-edge),var(--shadow-nav)}
+.overview-dashboard .dash-card,.overview-dashboard .season-highlight,
+.home-continuation .analysis-example,.home-continuation .explore-options button{
+ box-shadow:var(--surface-edge),var(--shadow-card);
+}
+.prototype-page .season-menu,.prototype-page .mobile-main-menu,
+.overview-dashboard .highlight-tooltip,.prototype-page .preview-dialog{
+ box-shadow:inset 0 1px 0 #ffffff0d,var(--shadow-floating);
+}

@@ -1,0 +1,61 @@
+.player-analysis-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:14px;margin:0 0 20px}
+.player-analysis-grid>.dash-card{min-width:0;padding:20px}
+.player-analysis-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:18px}
+.overview-dashboard .player-analysis-heading h3{font:400 20px/1.2 'Cal Sans',sans-serif;margin:0;color:#e4e4e9}
+.player-analysis-heading p{font-size:10px;color:#9797a2;margin:7px 0 0}
+.player-analysis-coverage{font-size:9px;color:#9898a3;white-space:nowrap;padding-top:4px}
+.player-shot-controls{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.player-analysis-tabs{display:inline-flex;gap:3px;padding:3px;background:#ffffff03;border:1px solid #ffffff08;border-radius:8px}
+.player-analysis-tabs button{font:inherit;font-size:10px;border:0;background:transparent;color:#a1a1ad;border-radius:5px;padding:7px 10px;cursor:pointer}
+.player-analysis-tabs button[aria-pressed=true]{background:#df945b19;color:#e4ad7f}
+.player-analysis-tabs button:hover{background:#ffffff07;color:#dedee5}
+.player-analysis-tabs button:focus-visible{outline:2px solid #df945b;outline-offset:2px}
+.player-shot-controls select{max-width:100%;font:inherit;font-size:10px;padding:7px 8px;border-radius:7px;background:#1d1d20;color:#bbbcc5;border:1px solid #38383e}
+.player-shot-summary{display:flex;align-items:center;gap:25px;margin-bottom:14px}
+.player-shot-summary>strong{font-size:25px;font-weight:550;font-variant-numeric:tabular-nums;color:#6bce90}
+.player-shot-summary strong>span{font-size:17px;font-weight:400;color:#9999a5}
+.player-shot-summary strong>small{display:block;font-size:9px;font-weight:400;color:#9999a5;margin-top:4px}
+.player-shot-key{margin-left:auto;display:flex;flex-direction:column;gap:8px;color:#a0a0ab;font-size:9px}
+.player-shot-key>span{display:flex;align-items:center;gap:7px}
+.player-shot-key i{width:6px;height:6px;border-radius:50%;background:#44d17a}
+.player-shot-key b{font-size:15px;font-weight:400;color:#bb8e78;width:6px}
+.player-shot-map{position:relative;padding:14px;background:radial-gradient(ellipse at top,#df945b06,transparent 75%),#0f0f12;border:1px solid #ffffff09;border-radius:10px}
+.player-shot-map svg{display:block;width:100%;max-height:310px;overflow:hidden}
+.player-shot-map.half-court svg{max-height:330px}
+.player-court-lines{stroke:#66616a;stroke-width:1.2;opacity:.65}
+.player-court-hoops{stroke:#df945b;opacity:1;stroke-width:1.5}
+.player-shot-point{cursor:crosshair}
+.player-shot-point.made>circle:last-child{fill:#44d17a;fill-opacity:.65;stroke:#44d17a55;stroke-width:.7}
+.player-shot-point.missed>path{fill:none;stroke:#bd8a72;stroke-width:1.2;opacity:.65}
+.player-shot-point.active>circle:last-child{fill-opacity:1;stroke:#d5fbe2;stroke-width:1}
+.player-shot-point.active>path{stroke:#f3c3a9;opacity:1;stroke-width:2}
+.player-shot-readout{display:block;text-align:center;font-size:9px;color:#a6a6b1;min-height:14px;line-height:1.5;margin-top:10px}
+.player-shot-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px;flex-wrap:wrap}
+.player-shot-footer>small{color:#858591;font-size:8px}
+.player-analysis-note{font-size:9px;color:#93939f;line-height:1.7;margin:14px 0 0}
+.assist-created-points{margin:8px 0 20px}
+.assist-created-points>span{font-size:11px;color:#a9a9b3}
+.assist-created-points>strong{display:flex;align-items:baseline;gap:8px;font-size:48px;letter-spacing:-.04em;font-weight:550;color:#df945b;font-variant-numeric:tabular-nums;line-height:1.2;margin-top:8px}
+.assist-created-points strong small{font-size:10px;letter-spacing:0;color:#a0a0aa;font-weight:400}
+.assist-created-points p{font-size:10px;color:#a0a0ab;margin:8px 0 0}
+.assist-outcome-bar{display:flex;gap:3px;height:7px;overflow:hidden;border-radius:4px;background:#33333a;margin-bottom:17px}
+.assist-outcome-list{list-style:none;padding:0;margin:0;display:grid;gap:13px}
+.assist-outcome-list li{display:grid;grid-template-columns:1fr 30px 48px;align-items:center;gap:10px;font-size:11px}
+.assist-outcome-list li>span{display:flex;align-items:center;gap:8px;color:#b6b6c0}
+.assist-outcome-list i{width:6px;height:6px;border-radius:50%;flex:none}
+.assist-outcome-list b{text-align:right;font-weight:500;color:#dfdfe7;font-variant-numeric:tabular-nums}
+.assist-outcome-list small{font-size:10px;color:#90909c;text-align:right;font-variant-numeric:tabular-nums}
+.assist-value-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:22px 0;padding:15px 0;border-block:1px solid #ffffff09}
+.assist-value-pair span{font-size:9px;color:#9e9eaa;display:block;line-height:1.5}
+.assist-value-pair strong{display:block;margin-top:7px;font-size:25px;font-weight:500;font-variant-numeric:tabular-nums;color:#dedee6}
+.assist-value-pair small{font-size:11px;color:#90909d;font-weight:400}
+.player-analysis-details{font-size:10px;color:#92929e;line-height:1.7}
+.player-analysis-details summary{cursor:pointer;color:#b9aa9e;font-size:10px}
+.player-analysis-details summary:focus-visible{outline:2px solid #df945b;outline-offset:4px}
+@media(max-width:1100px){.player-analysis-grid{grid-template-columns:1fr}.player-assist-analysis .assist-created-points>strong{font-size:40px}}
+@media(max-width:700px){.player-analysis-grid{gap:12px}.player-analysis-grid>.dash-card{padding:15px}.overview-dashboard .player-analysis-heading h3{font-size:19px}.player-analysis-heading{gap:8px}.player-analysis-coverage{font-size:8px}.player-shot-summary{gap:18px}.player-shot-summary>strong{font-size:23px}.player-shot-map{padding:10px}.player-shot-map.half-court svg{max-height:290px}.player-analysis-tabs button{padding:7px 9px}.player-shot-readout{font-size:8px}}
+.player-shot-inspect{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:10px}
+.player-shot-inspect .player-shot-readout{margin:0;min-width:180px}
+.player-shot-inspect button{width:24px;height:24px;display:flex;align-items:center;justify-content:center;border:1px solid #ffffff10;border-radius:6px;background:#ffffff03;color:#b8b8c4;font-size:20px;cursor:pointer}
+.player-shot-inspect button:hover{color:#dfaa7b;border-color:#df945b44}
+.player-shot-inspect button:focus-visible{outline:2px solid #df945b;outline-offset:2px}

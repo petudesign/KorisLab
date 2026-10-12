@@ -1,0 +1,15 @@
+/* Native select semantics, with a consistently inset arrow across every view. */
+.prototype-page select{
+ appearance:none;
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23b9b9bf' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m7 10 5 5 5-5'/%3E%3C/svg%3E")!important;
+ background-repeat:no-repeat!important;
+ background-position:right 12px center!important;
+ padding-right:40px!important;
+ padding-left:12px!important;
+}
+.match-rail{touch-action:pan-x pan-y;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+.match-card img{pointer-events:none;user-select:none;-webkit-user-drag:none}
+.match-frame.edge-hovered::after{border-color:#95643f}
+@media(hover:none){.match-card:hover{border-color:#34383b;background:#0b0b0b}}
+
+.language-settings{display:grid;gap:12px;padding:12px 0 20px}.language-settings label{font-size:14px;color:#d8d8dc}.language-settings select{width:100%;min-height:44px;background:#1d1d20;color:#e5e5e8;border:1px solid #424247;border-radius:8px;padding:10px 40px 10px 12px}.language-settings p{font-size:12px;color:#a6a6ae;margin:0}
