@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "season_id": "huki2627",
-  "updated_at": "2026-10-11T23:35:46.528735+00:00",
+  "updated_at": "2026-10-12T08:22:39.350371+00:00",
   "source_url": "https://tulospalvelu.basket.fi/",
   "schedule": [
     {
@@ -859,28 +859,6 @@
       "away": {
         "source_team_id": "45373",
         "name": "Vimpelin Veto",
-        "score": null
-      }
-    },
-    {
-      "source_match_id": "1006184",
-      "competition_id": "huki2627",
-      "category_id": "1",
-      "season_id": null,
-      "group_id": "303031",
-      "group_name": "Runkosarja",
-      "scheduled_date": "2026-12-06",
-      "scheduled_time": "15:00:00",
-      "venue": "Tapiolan Liikuntahalli",
-      "status": "Fixture",
-      "home": {
-        "source_team_id": "31",
-        "name": "Tapiolan Honka",
-        "score": null
-      },
-      "away": {
-        "source_team_id": "4615311",
-        "name": "HBA-Märsky",
         "score": null
       }
     },
@@ -2113,6 +2091,28 @@
       "away": {
         "source_team_id": "34",
         "name": "ToPo",
+        "score": null
+      }
+    },
+    {
+      "source_match_id": "1006184",
+      "competition_id": "huki2627",
+      "category_id": "1",
+      "season_id": null,
+      "group_id": "303031",
+      "group_name": "Runkosarja",
+      "scheduled_date": "2027-03-03",
+      "scheduled_time": "18:30:00",
+      "venue": "Tapiolan Liikuntahalli",
+      "status": "Fixture",
+      "home": {
+        "source_team_id": "31",
+        "name": "Tapiolan Honka",
+        "score": null
+      },
+      "away": {
+        "source_team_id": "4615311",
+        "name": "HBA-Märsky",
         "score": null
       }
     },
@@ -14756,7 +14756,7 @@
     "requested_games": 12,
     "fetched_games": 12,
     "failed_games": 0,
-    "cached_games": 8,
+    "cached_games": 12,
     "valid_games": 12,
     "invalid_games": 0
   },
