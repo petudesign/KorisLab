@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "season_id": "huki2627",
-  "updated_at": "2026-10-12T08:22:39.350371+00:00",
+  "updated_at": "2026-10-12T18:54:28.618012+00:00",
   "source_url": "https://tulospalvelu.basket.fi/",
   "schedule": [
     {
@@ -10763,8 +10763,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1006233/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-11T15:33:51Z",
-        "payload_sha256": "cee90a63538b11ef3e0209fecc883593b9e489fed1d68986c9a89fcaae0a6501"
+        "ingested_at_utc": "2026-10-12T18:54:25Z",
+        "payload_sha256": "5f3dd372493ac30a2c28e2d15cae7d687206d51f7bd74daa2497d6d4f1986e47"
       },
       "competition": {
         "source_id": "8e536942-90dc-11f1-947f-814ab4ec9e3e",
@@ -14756,7 +14756,7 @@
     "requested_games": 12,
     "fetched_games": 12,
     "failed_games": 0,
-    "cached_games": 12,
+    "cached_games": 11,
     "valid_games": 12,
     "invalid_games": 0
   },
