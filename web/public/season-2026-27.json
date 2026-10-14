@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "season_id": "huki2627",
-  "updated_at": "2026-10-14T18:50:12.929717+00:00",
+  "updated_at": "2026-10-14T22:12:10.758004+00:00",
   "source_url": "https://tulospalvelu.basket.fi/",
   "schedule": [
     {
@@ -10763,8 +10763,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1006233/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-13T21:47:52Z",
-        "payload_sha256": "9a1bfc9ba70aa1d39bcb8900803055eb25e3c9eba61f9c59b42694d6b0846a97"
+        "ingested_at_utc": "2026-10-14T22:12:07Z",
+        "payload_sha256": "fa96afe98724aa529a92c4359f53d3353ac89ccbf0384dee9e398b41db8ee1b5"
       },
       "competition": {
         "source_id": "8e536942-90dc-11f1-947f-814ab4ec9e3e",
@@ -10992,7 +10992,7 @@
             },
             {
               "source_player_id": "9962115c-90be-11f1-94e3-839d4a76272d",
-              "display_name": "AINO TERVANEN",
+              "display_name": "Aino Tervanen",
               "team_source_id": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
               "jersey_number": "1",
               "starter": false,
@@ -11374,7 +11374,7 @@
             },
             {
               "source_player_id": "295047b1-90bd-11f1-8b04-d1b26dd8807a",
-              "display_name": "Saga Ukkonen",
+              "display_name": "SAGA UKKONEN",
               "team_source_id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
               "jersey_number": "7",
               "starter": true,
@@ -11414,7 +11414,7 @@
             },
             {
               "source_player_id": "2aabf0c9-90bf-11f1-8a9b-515875ef95f7",
-              "display_name": "Lotta Tyynilä",
+              "display_name": "LOTTA TYYNILÄ",
               "team_source_id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
               "jersey_number": "6",
               "starter": false,
@@ -11454,7 +11454,7 @@
             },
             {
               "source_player_id": "45d4e94b-90bd-11f1-bfd6-c73957d2f288",
-              "display_name": "Maija Kuisma",
+              "display_name": "MAIJA KUISMA",
               "team_source_id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
               "jersey_number": "12",
               "starter": false,
@@ -11534,7 +11534,7 @@
             },
             {
               "source_player_id": "6c0d90ce-90be-11f1-b03f-8b7b745739af",
-              "display_name": "Ella Sahuri",
+              "display_name": "ELLA SAHURI",
               "team_source_id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
               "jersey_number": "4",
               "starter": false,
@@ -14756,7 +14756,7 @@
     "requested_games": 12,
     "fetched_games": 12,
     "failed_games": 0,
-    "cached_games": 12,
+    "cached_games": 11,
     "valid_games": 12,
     "invalid_games": 0
   },
