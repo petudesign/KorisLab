@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "season_id": "huki2627",
-  "updated_at": "2026-10-15T21:41:33.545528+00:00",
+  "updated_at": "2026-10-16T13:54:16.986434+00:00",
   "source_url": "https://tulospalvelu.basket.fi/",
   "schedule": [
     {
@@ -10763,8 +10763,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1006233/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-14T22:12:07Z",
-        "payload_sha256": "fa96afe98724aa529a92c4359f53d3353ac89ccbf0384dee9e398b41db8ee1b5"
+        "ingested_at_utc": "2026-10-16T13:54:13Z",
+        "payload_sha256": "343d06b38bf3dfa11e35b728a648c10b00f6347971cd8bbabb36f026acd2ab68"
       },
       "competition": {
         "source_id": "8e536942-90dc-11f1-947f-814ab4ec9e3e",
@@ -10872,7 +10872,7 @@
           "players": [
             {
               "source_player_id": "4e4313fa-90bd-11f1-aa24-d925956b0a39",
-              "display_name": "SILJA VIITA",
+              "display_name": "Silja Viita",
               "team_source_id": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
               "jersey_number": "10",
               "starter": true,
@@ -10912,7 +10912,7 @@
             },
             {
               "source_player_id": "68451ce5-90bd-11f1-b9da-73575e376a6e",
-              "display_name": "ELLI LEPPÄNEN",
+              "display_name": "Elli Leppänen",
               "team_source_id": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
               "jersey_number": "17",
               "starter": true,
@@ -10952,7 +10952,7 @@
             },
             {
               "source_player_id": "78f56213-90be-11f1-bea6-9339b75ea0b9",
-              "display_name": "EEVA ALATALO",
+              "display_name": "Eeva Alatalo",
               "team_source_id": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
               "jersey_number": "6",
               "starter": false,
@@ -11032,7 +11032,7 @@
             },
             {
               "source_player_id": "9b18fc96-90bb-11f1-8441-35d7afbe70b8",
-              "display_name": "RIIKKA KUJALA",
+              "display_name": "Riikka Kujala",
               "team_source_id": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
               "jersey_number": "8",
               "starter": true,
@@ -11072,7 +11072,7 @@
             },
             {
               "source_player_id": "aee15430-90bd-11f1-9f98-37aaf0479419",
-              "display_name": "MINTTU ISORANTA",
+              "display_name": "Minttu Isoranta",
               "team_source_id": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
               "jersey_number": "5",
               "starter": false,
@@ -11112,7 +11112,7 @@
             },
             {
               "source_player_id": "dbe2c474-90be-11f1-83ff-73883e79fac1",
-              "display_name": "SILJA KANGAS",
+              "display_name": "Silja Kangas",
               "team_source_id": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
               "jersey_number": "11",
               "starter": false,
@@ -11294,7 +11294,7 @@
           "players": [
             {
               "source_player_id": "10cdb07f-90bd-11f1-9539-7b8c3a749dc5",
-              "display_name": "CAROLINA KERT",
+              "display_name": "Carolina Kert",
               "team_source_id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
               "jersey_number": "11",
               "starter": true,
@@ -11334,7 +11334,7 @@
             },
             {
               "source_player_id": "19c35381-90be-11f1-8d32-5d5f4f976a20",
-              "display_name": "PEPPI LOHKO",
+              "display_name": "Peppi Lohko",
               "team_source_id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
               "jersey_number": "2",
               "starter": false,
@@ -11374,7 +11374,7 @@
             },
             {
               "source_player_id": "295047b1-90bd-11f1-8b04-d1b26dd8807a",
-              "display_name": "SAGA UKKONEN",
+              "display_name": "Saga Ukkonen",
               "team_source_id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
               "jersey_number": "7",
               "starter": true,
@@ -11414,7 +11414,7 @@
             },
             {
               "source_player_id": "2aabf0c9-90bf-11f1-8a9b-515875ef95f7",
-              "display_name": "LOTTA TYYNILÄ",
+              "display_name": "Lotta Tyynilä",
               "team_source_id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
               "jersey_number": "6",
               "starter": false,
@@ -11454,7 +11454,7 @@
             },
             {
               "source_player_id": "45d4e94b-90bd-11f1-bfd6-c73957d2f288",
-              "display_name": "MAIJA KUISMA",
+              "display_name": "Maija Kuisma",
               "team_source_id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
               "jersey_number": "12",
               "starter": false,
@@ -11494,7 +11494,7 @@
             },
             {
               "source_player_id": "540c2922-90bf-11f1-a71e-0d6fa49bbe21",
-              "display_name": "IDA RIIHIJÄRVI",
+              "display_name": "Ida Riihijärvi",
               "team_source_id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
               "jersey_number": "10",
               "starter": true,
@@ -11534,7 +11534,7 @@
             },
             {
               "source_player_id": "6c0d90ce-90be-11f1-b03f-8b7b745739af",
-              "display_name": "ELLA SAHURI",
+              "display_name": "Ella Sahuri",
               "team_source_id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
               "jersey_number": "4",
               "starter": false,
@@ -11614,7 +11614,7 @@
             },
             {
               "source_player_id": "bdffb17d-90bc-11f1-bdfe-916f627ff7ec",
-              "display_name": "RONJA ORPO",
+              "display_name": "Ronja Orpo",
               "team_source_id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
               "jersey_number": "8",
               "starter": true,
@@ -14756,7 +14756,7 @@
     "requested_games": 12,
     "fetched_games": 12,
     "failed_games": 0,
-    "cached_games": 12,
+    "cached_games": 11,
     "valid_games": 12,
     "invalid_games": 0
   },
