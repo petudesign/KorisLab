@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "season_id": "huki2627",
-  "updated_at": "2026-10-16T20:58:27.090051+00:00",
+  "updated_at": "2026-10-17T12:55:03.911707+00:00",
   "source_url": "https://tulospalvelu.basket.fi/",
   "schedule": [
     {
@@ -590,12 +590,12 @@
       "home": {
         "source_team_id": "4633129",
         "name": "Bisons Loimaa",
-        "score": null
+        "score": 0
       },
       "away": {
         "source_team_id": "23",
         "name": "Salon Vilpas",
-        "score": null
+        "score": 0
       }
     },
     {
@@ -28119,8 +28119,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005937/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-15T21:42:09Z",
-        "payload_sha256": "2bc4f6d1ca58ba49dd27e3c74eba225dd94327d73052ea28ac563754957a9548"
+        "ingested_at_utc": "2026-10-17T12:55:00Z",
+        "payload_sha256": "3f3c73c86d77027bebed25a0d08956e1f0fd9ec92f33c29d60e5f1662279957d"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -32352,7 +32352,7 @@
     "requested_games": 26,
     "fetched_games": 26,
     "failed_games": 0,
-    "cached_games": 5,
+    "cached_games": 25,
     "valid_games": 26,
     "invalid_games": 0
   },
