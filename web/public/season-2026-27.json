@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "season_id": "huki2627",
-  "updated_at": "2026-10-17T21:24:26.912071+00:00",
+  "updated_at": "2026-10-18T13:10:10.806564+00:00",
   "source_url": "https://tulospalvelu.basket.fi/",
   "schedule": [
     {
@@ -344,16 +344,16 @@
       "scheduled_date": "2026-10-18",
       "scheduled_time": "16:00:00",
       "venue": "AGCO Power Arena",
-      "status": "Fixture",
+      "status": "Live",
       "home": {
         "source_team_id": "8",
         "name": "BC Nokia",
-        "score": null
+        "score": 1
       },
       "away": {
         "source_team_id": "4615311",
         "name": "HBA-Märsky",
-        "score": null
+        "score": 10
       }
     },
     {
@@ -14759,8 +14759,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1006207/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-17T12:54:19Z",
-        "payload_sha256": "8901939cf0a460795df2bb5f3a32a62d7d40ca8ddaa90fda7dd679f9c659575c"
+        "ingested_at_utc": "2026-10-18T13:10:08Z",
+        "payload_sha256": "c2efc41a33aafb3178efaafd5b8e7f7b45fba7e2acb502520d590814df9d8901"
       },
       "competition": {
         "source_id": "8e536942-90dc-11f1-947f-814ab4ec9e3e",
@@ -14774,7 +14774,7 @@
         "source_id": "1006207",
         "upstream_fixture_id": null,
         "scheduled_at": "2026-10-17",
-        "status": "IN_PROGRESS",
+        "status": "CONFIRMED",
         "venue": {
           "name": "Tapiolan Liikuntahalli"
         },
@@ -14982,7 +14982,7 @@
                 "efficiency": 12
               },
               "source_fields": {
-                "active": true,
+                "active": false,
                 "person_link": null
               }
             },
@@ -15062,7 +15062,7 @@
                 "efficiency": 6
               },
               "source_fields": {
-                "active": true,
+                "active": false,
                 "person_link": null
               }
             },
@@ -15102,7 +15102,7 @@
                 "efficiency": 7
               },
               "source_fields": {
-                "active": true,
+                "active": false,
                 "person_link": null
               }
             },
@@ -15182,7 +15182,7 @@
                 "efficiency": 15
               },
               "source_fields": {
-                "active": true,
+                "active": false,
                 "person_link": null
               }
             },
@@ -15262,7 +15262,7 @@
                 "efficiency": 11
               },
               "source_fields": {
-                "active": true,
+                "active": false,
                 "person_link": null
               }
             },
@@ -15484,7 +15484,7 @@
                 "efficiency": 17
               },
               "source_fields": {
-                "active": true,
+                "active": false,
                 "person_link": null
               }
             },
@@ -15564,7 +15564,7 @@
                 "efficiency": 10
               },
               "source_fields": {
-                "active": true,
+                "active": false,
                 "person_link": null
               }
             },
@@ -15644,7 +15644,7 @@
                 "efficiency": 13
               },
               "source_fields": {
-                "active": true,
+                "active": false,
                 "person_link": null
               }
             },
@@ -15684,7 +15684,7 @@
                 "efficiency": 20
               },
               "source_fields": {
-                "active": true,
+                "active": false,
                 "person_link": null
               }
             },
@@ -15724,7 +15724,7 @@
                 "efficiency": 8
               },
               "source_fields": {
-                "active": true,
+                "active": false,
                 "person_link": null
               }
             },
@@ -17798,7 +17798,7 @@
     "requested_games": 15,
     "fetched_games": 15,
     "failed_games": 0,
-    "cached_games": 4,
+    "cached_games": 14,
     "valid_games": 15,
     "invalid_games": 0
   },
