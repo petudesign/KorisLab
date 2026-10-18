@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "season_id": "huki2627",
-  "updated_at": "2026-10-18T13:10:58.373522+00:00",
+  "updated_at": "2026-10-18T16:48:39.809869+00:00",
   "source_url": "https://tulospalvelu.basket.fi/",
   "schedule": [
     {
@@ -23673,8 +23673,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005903/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-17T16:19:06Z",
-        "payload_sha256": "dcbe06e6f3853117c15215916182e8ee1dda6db106328810072c9e291a68330d"
+        "ingested_at_utc": "2026-10-18T16:48:23Z",
+        "payload_sha256": "5a9027fc2c1a5797e4a22b636a1e94dbd388894235e64635b552aafa0c6ad7bf"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -32355,8 +32355,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005854/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-17T16:19:15Z",
-        "payload_sha256": "090104cd48260ef9a122d0a58ed4d655d346d4aac0d44de2b581ffac1411565c"
+        "ingested_at_utc": "2026-10-18T16:48:33Z",
+        "payload_sha256": "ab881bfa84dd8f3edfcf8964a18f248da20cd3874a321b397972e5359dbd83bd"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -33474,8 +33474,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1006006/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-17T16:19:17Z",
-        "payload_sha256": "83c1b923a8e04df6ac7c3934773c972549a2a22dd76db567f0ae8bf0e3208868"
+        "ingested_at_utc": "2026-10-18T16:48:38Z",
+        "payload_sha256": "04fe1acb46cabf2e547297a2445bbe4c590abe7fd3f6d678775eb9bcd8ca50ec"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -33617,7 +33617,7 @@
                 "efficiency": 19
               },
               "source_fields": {
-                "active": true,
+                "active": false,
                 "person_link": null
               }
             },
@@ -33657,7 +33657,7 @@
                 "efficiency": 23
               },
               "source_fields": {
-                "active": true,
+                "active": false,
                 "person_link": null
               }
             },
@@ -33697,7 +33697,7 @@
                 "efficiency": 9
               },
               "source_fields": {
-                "active": true,
+                "active": false,
                 "person_link": null
               }
             },
@@ -33857,7 +33857,7 @@
                 "efficiency": 3
               },
               "source_fields": {
-                "active": true,
+                "active": false,
                 "person_link": null
               }
             },
@@ -33937,7 +33937,7 @@
                 "efficiency": 27
               },
               "source_fields": {
-                "active": true,
+                "active": false,
                 "person_link": null
               }
             },
@@ -34159,7 +34159,7 @@
                 "efficiency": 22
               },
               "source_fields": {
-                "active": true,
+                "active": false,
                 "person_link": null
               }
             },
@@ -34239,7 +34239,7 @@
                 "efficiency": 26
               },
               "source_fields": {
-                "active": true,
+                "active": false,
                 "person_link": null
               }
             },
@@ -34279,7 +34279,7 @@
                 "efficiency": 25
               },
               "source_fields": {
-                "active": true,
+                "active": false,
                 "person_link": null
               }
             },
@@ -34319,7 +34319,7 @@
                 "efficiency": 6
               },
               "source_fields": {
-                "active": true,
+                "active": false,
                 "person_link": null
               }
             },
@@ -34359,7 +34359,7 @@
                 "efficiency": 14
               },
               "source_fields": {
-                "active": true,
+                "active": false,
                 "person_link": null
               }
             }
@@ -35549,7 +35549,7 @@
     "requested_games": 29,
     "fetched_games": 29,
     "failed_games": 0,
-    "cached_games": 28,
+    "cached_games": 26,
     "valid_games": 29,
     "invalid_games": 0
   },
