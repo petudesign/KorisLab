@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "season_id": "huki2627",
-  "updated_at": "2026-10-18T16:48:39.809869+00:00",
+  "updated_at": "2026-10-18T19:23:38.371320+00:00",
   "source_url": "https://tulospalvelu.basket.fi/",
   "schedule": [
     {
@@ -29158,8 +29158,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005972/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-17T18:46:48Z",
-        "payload_sha256": "79203b1a284119536661079937db42eb70ff0edb8bab9f6cef5eb7ac4947ae3a"
+        "ingested_at_utc": "2026-10-18T19:23:27Z",
+        "payload_sha256": "5e4dde82627cfc863df5f55d19c9aef6f8fc9227ed5594d20d3096cf5ab2412c"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -30277,8 +30277,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005887/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-17T18:46:51Z",
-        "payload_sha256": "31cb8d806b50c3b4ab8a06f01e188268b6247b8731d535738dc1d0db3610b913"
+        "ingested_at_utc": "2026-10-18T19:23:30Z",
+        "payload_sha256": "aae87651181b7e454115155a718042e88ad13556ad97ca85b26967ed0a34e8a3"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -31276,8 +31276,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005920/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-17T18:46:53Z",
-        "payload_sha256": "57cd6f8a28b9f27210f219cea2514089d69663b67d303383b9d6eef075ee0ca8"
+        "ingested_at_utc": "2026-10-18T19:23:32Z",
+        "payload_sha256": "5e93bd41bddecded0d70f2d991fc2188c2a9fce4b35dff9b2d4f713b7551482c"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -31348,7 +31348,7 @@
             "blocks": 2,
             "blocks_received": 4,
             "fouls": 16,
-            "fouls_drawn": 21,
+            "fouls_drawn": 22,
             "plus_minus": null,
             "efficiency": 100
           },
@@ -31380,7 +31380,7 @@
             "biggestLead": 11,
             "biggestScoringRun": 9,
             "leadChanges": 16,
-            "timeInLead": "PT25M10S"
+            "timeInLead": "PT25M14S"
           },
           "players": [
             {
@@ -31392,8 +31392,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 7.1833,
-              "minutes_display": "7:11",
+              "minutes": 7.0,
+              "minutes_display": "7:00",
               "stats": {
                 "points": 3,
                 "two_pm": 0,
@@ -31432,8 +31432,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 26.6,
-              "minutes_display": "26:36",
+              "minutes": 26.65,
+              "minutes_display": "26:39",
               "stats": {
                 "points": 5,
                 "two_pm": 0,
@@ -31455,7 +31455,7 @@
                 "blocks_received": 2,
                 "fouls": 1,
                 "fouls_drawn": 2,
-                "plus_minus": 12,
+                "plus_minus": 10,
                 "efficiency": 8
               },
               "source_fields": {
@@ -31472,8 +31472,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 25.4833,
-              "minutes_display": "25:29",
+              "minutes": 25.4667,
+              "minutes_display": "25:28",
               "stats": {
                 "points": 7,
                 "two_pm": 2,
@@ -31512,8 +31512,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 15.6833,
-              "minutes_display": "15:41",
+              "minutes": 15.0333,
+              "minutes_display": "15:02",
               "stats": {
                 "points": 0,
                 "two_pm": 0,
@@ -31535,7 +31535,7 @@
                 "blocks_received": 0,
                 "fouls": 3,
                 "fouls_drawn": 0,
-                "plus_minus": -13,
+                "plus_minus": -11,
                 "efficiency": -2
               },
               "source_fields": {
@@ -31552,8 +31552,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 6.6167,
-              "minutes_display": "6:37",
+              "minutes": 6.6833,
+              "minutes_display": "6:41",
               "stats": {
                 "points": 0,
                 "two_pm": 0,
@@ -31615,7 +31615,7 @@
                 "blocks_received": 1,
                 "fouls": 0,
                 "fouls_drawn": 2,
-                "plus_minus": -2,
+                "plus_minus": 0,
                 "efficiency": 21
               },
               "source_fields": {
@@ -31632,8 +31632,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 10.8167,
-              "minutes_display": "10:49",
+              "minutes": 10.9833,
+              "minutes_display": "10:59",
               "stats": {
                 "points": 10,
                 "two_pm": 3,
@@ -31712,8 +31712,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 30.6,
-              "minutes_display": "30:36",
+              "minutes": 30.45,
+              "minutes_display": "30:27",
               "stats": {
                 "points": 23,
                 "two_pm": 7,
@@ -31735,7 +31735,7 @@
                 "blocks_received": 0,
                 "fouls": 1,
                 "fouls_drawn": 8,
-                "plus_minus": 8,
+                "plus_minus": 10,
                 "efficiency": 18
               },
               "source_fields": {
@@ -31752,8 +31752,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 29.2833,
-              "minutes_display": "29:17",
+              "minutes": 29.2333,
+              "minutes_display": "29:14",
               "stats": {
                 "points": 24,
                 "two_pm": 8,
@@ -31774,7 +31774,7 @@
                 "blocks": 1,
                 "blocks_received": 0,
                 "fouls": 4,
-                "fouls_drawn": 3,
+                "fouls_drawn": 4,
                 "plus_minus": 0,
                 "efficiency": 25
               },
@@ -31792,8 +31792,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 22.5167,
-              "minutes_display": "22:31",
+              "minutes": 23.2833,
+              "minutes_display": "23:17",
               "stats": {
                 "points": 6,
                 "two_pm": 2,
@@ -31815,7 +31815,7 @@
                 "blocks_received": 1,
                 "fouls": 2,
                 "fouls_drawn": 2,
-                "plus_minus": -5,
+                "plus_minus": -9,
                 "efficiency": 1
               },
               "source_fields": {
@@ -31850,7 +31850,7 @@
             "blocks": 4,
             "blocks_received": 2,
             "fouls": 23,
-            "fouls_drawn": 17,
+            "fouls_drawn": 16,
             "plus_minus": null,
             "efficiency": 100
           },
@@ -31882,7 +31882,7 @@
             "biggestLead": 10,
             "biggestScoringRun": 7,
             "leadChanges": 16,
-            "timeInLead": "PT11M9S"
+            "timeInLead": "PT11M5S"
           },
           "players": [
             {
@@ -31894,8 +31894,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 15.1,
-              "minutes_display": "15:06",
+              "minutes": 15.2333,
+              "minutes_display": "15:14",
               "stats": {
                 "points": 2,
                 "two_pm": 1,
@@ -31917,7 +31917,7 @@
                 "blocks_received": 0,
                 "fouls": 4,
                 "fouls_drawn": 0,
-                "plus_minus": -5,
+                "plus_minus": -6,
                 "efficiency": 4
               },
               "source_fields": {
@@ -31934,8 +31934,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 13.6833,
-              "minutes_display": "13:41",
+              "minutes": 13.7333,
+              "minutes_display": "13:44",
               "stats": {
                 "points": 7,
                 "two_pm": 3,
@@ -31956,7 +31956,7 @@
                 "blocks": 2,
                 "blocks_received": 1,
                 "fouls": 0,
-                "fouls_drawn": 2,
+                "fouls_drawn": 3,
                 "plus_minus": 7,
                 "efficiency": 14
               },
@@ -31974,8 +31974,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 32.3833,
-              "minutes_display": "32:23",
+              "minutes": 32.25,
+              "minutes_display": "32:15",
               "stats": {
                 "points": 17,
                 "two_pm": 7,
@@ -31997,7 +31997,7 @@
                 "blocks_received": 0,
                 "fouls": 3,
                 "fouls_drawn": 0,
-                "plus_minus": -5,
+                "plus_minus": 0,
                 "efficiency": 20
               },
               "source_fields": {
@@ -32014,8 +32014,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 29.8667,
-              "minutes_display": "29:52",
+              "minutes": 31.2833,
+              "minutes_display": "31:17",
               "stats": {
                 "points": 16,
                 "two_pm": 3,
@@ -32036,8 +32036,8 @@
                 "blocks": 0,
                 "blocks_received": 0,
                 "fouls": 2,
-                "fouls_drawn": 4,
-                "plus_minus": -9,
+                "fouls_drawn": 3,
+                "plus_minus": -10,
                 "efficiency": 14
               },
               "source_fields": {
@@ -32054,8 +32054,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 29.4,
-              "minutes_display": "29:24",
+              "minutes": 29.2667,
+              "minutes_display": "29:16",
               "stats": {
                 "points": 23,
                 "two_pm": 10,
@@ -32076,8 +32076,8 @@
                 "blocks": 0,
                 "blocks_received": 1,
                 "fouls": 5,
-                "fouls_drawn": 7,
-                "plus_minus": -2,
+                "fouls_drawn": 6,
+                "plus_minus": -4,
                 "efficiency": 21
               },
               "source_fields": {
@@ -32094,8 +32094,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 22.8333,
-              "minutes_display": "22:50",
+              "minutes": 21.45,
+              "minutes_display": "21:27",
               "stats": {
                 "points": 7,
                 "two_pm": 0,
@@ -32117,7 +32117,7 @@
                 "blocks_received": 0,
                 "fouls": 3,
                 "fouls_drawn": 1,
-                "plus_minus": 1,
+                "plus_minus": -3,
                 "efficiency": 4
               },
               "source_fields": {
@@ -32134,8 +32134,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 14.3667,
-              "minutes_display": "14:22",
+              "minutes": 14.4167,
+              "minutes_display": "14:25",
               "stats": {
                 "points": 6,
                 "two_pm": 0,
@@ -32157,7 +32157,7 @@
                 "blocks_received": 0,
                 "fouls": 0,
                 "fouls_drawn": 0,
-                "plus_minus": 1,
+                "plus_minus": 4,
                 "efficiency": 5
               },
               "source_fields": {
@@ -32214,8 +32214,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 14.2,
-              "minutes_display": "14:12",
+              "minutes": 14.4333,
+              "minutes_display": "14:26",
               "stats": {
                 "points": 3,
                 "two_pm": 0,
@@ -32237,7 +32237,7 @@
                 "blocks_received": 0,
                 "fouls": 1,
                 "fouls_drawn": 1,
-                "plus_minus": -3,
+                "plus_minus": -5,
                 "efficiency": 5
               },
               "source_fields": {
@@ -32254,8 +32254,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 25.8,
-              "minutes_display": "25:48",
+              "minutes": 25.5667,
+              "minutes_display": "25:34",
               "stats": {
                 "points": 10,
                 "two_pm": 4,
@@ -32277,7 +32277,7 @@
                 "blocks_received": 0,
                 "fouls": 4,
                 "fouls_drawn": 2,
-                "plus_minus": -2,
+                "plus_minus": 0,
                 "efficiency": 9
               },
               "source_fields": {
@@ -34433,8 +34433,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005838/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-17T18:46:58Z",
-        "payload_sha256": "38e39fd4dcfd8ae5e750d352babb5d65e7002b98743649994417e57e130d94d6"
+        "ingested_at_utc": "2026-10-18T19:23:38Z",
+        "payload_sha256": "cd1cbabdf531a700fb8f3371637de345765f83dd3021ba6d972c1cb409f6c444"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -35549,7 +35549,7 @@
     "requested_games": 29,
     "fetched_games": 29,
     "failed_games": 0,
-    "cached_games": 26,
+    "cached_games": 25,
     "valid_games": 29,
     "invalid_games": 0
   },
@@ -35900,7 +35900,7 @@
           "blocks": 13.0,
           "blocks_received": 7.0,
           "fouls": 84.0,
-          "fouls_drawn": 75.0,
+          "fouls_drawn": 74.0,
           "efficiency": 447.0
         },
         "per_game": {
@@ -35920,7 +35920,7 @@
           "blocks": 3.2,
           "blocks_received": 1.8,
           "fouls": 21.0,
-          "fouls_drawn": 18.8,
+          "fouls_drawn": 18.5,
           "efficiency": 111.8
         },
         "metrics": {
@@ -36220,7 +36220,7 @@
           "blocks": 22.0,
           "blocks_received": 16.0,
           "fouls": 93.0,
-          "fouls_drawn": 99.0,
+          "fouls_drawn": 100.0,
           "efficiency": 481.0
         },
         "per_game": {
@@ -36240,7 +36240,7 @@
           "blocks": 4.4,
           "blocks_received": 3.2,
           "fouls": 18.6,
-          "fouls_drawn": 19.8,
+          "fouls_drawn": 20.0,
           "efficiency": 96.2
         },
         "metrics": {
