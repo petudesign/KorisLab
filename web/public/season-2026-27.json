@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "season_id": "huki2627",
-  "updated_at": "2026-10-21T18:52:09.436324+00:00",
+  "updated_at": "2026-10-21T22:15:25.027131+00:00",
   "source_url": "https://tulospalvelu.basket.fi/",
   "schedule": [
     {
@@ -10924,8 +10924,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1006233/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-20T22:13:39Z",
-        "payload_sha256": "8e8432be5cc813ec9d65509e3f6480e0e1d90347a43b6a4abff0a906f74df66c"
+        "ingested_at_utc": "2026-10-21T22:15:09Z",
+        "payload_sha256": "5e8b23df914df62ba5718661cf86f45f97c192c8ed964d69158b96f5a7b85220"
       },
       "competition": {
         "source_id": "8e536942-90dc-11f1-947f-814ab4ec9e3e",
@@ -11067,6 +11067,7 @@
                 "efficiency": 30
               },
               "source_fields": {
+                "minutes_duration": "PT38M2S",
                 "active": false,
                 "person_link": null
               }
@@ -11107,6 +11108,7 @@
                 "efficiency": 1
               },
               "source_fields": {
+                "minutes_duration": "PT21M4S",
                 "active": false,
                 "person_link": null
               }
@@ -11147,6 +11149,7 @@
                 "efficiency": 0
               },
               "source_fields": {
+                "minutes_duration": "PT3M56S",
                 "active": false,
                 "person_link": null
               }
@@ -11187,6 +11190,7 @@
                 "efficiency": 0
               },
               "source_fields": {
+                "minutes_duration": "PT5M27S",
                 "active": false,
                 "person_link": null
               }
@@ -11227,6 +11231,7 @@
                 "efficiency": 3
               },
               "source_fields": {
+                "minutes_duration": "PT33M33S",
                 "active": false,
                 "person_link": null
               }
@@ -11267,6 +11272,7 @@
                 "efficiency": 1
               },
               "source_fields": {
+                "minutes_duration": "PT25M44S",
                 "active": false,
                 "person_link": null
               }
@@ -11307,6 +11313,7 @@
                 "efficiency": 0
               },
               "source_fields": {
+                "minutes_duration": "PT2M29S",
                 "active": false,
                 "person_link": null
               }
@@ -11347,6 +11354,7 @@
                 "efficiency": 23
               },
               "source_fields": {
+                "minutes_duration": "PT34M46S",
                 "active": false,
                 "person_link": null
               }
@@ -11387,6 +11395,7 @@
                 "efficiency": 8
               },
               "source_fields": {
+                "minutes_duration": "PT34M59S",
                 "active": false,
                 "person_link": null
               }
@@ -11489,6 +11498,7 @@
                 "efficiency": 4
               },
               "source_fields": {
+                "minutes_duration": "PT28M20S",
                 "active": false,
                 "person_link": null
               }
@@ -11529,6 +11539,7 @@
                 "efficiency": 7
               },
               "source_fields": {
+                "minutes_duration": "PT13M38S",
                 "active": false,
                 "person_link": null
               }
@@ -11569,6 +11580,7 @@
                 "efficiency": 7
               },
               "source_fields": {
+                "minutes_duration": "PT19M33S",
                 "active": false,
                 "person_link": null
               }
@@ -11609,6 +11621,7 @@
                 "efficiency": 1
               },
               "source_fields": {
+                "minutes_duration": "PT15M54S",
                 "active": false,
                 "person_link": null
               }
@@ -11649,6 +11662,7 @@
                 "efficiency": 6
               },
               "source_fields": {
+                "minutes_duration": "PT18M8S",
                 "active": false,
                 "person_link": null
               }
@@ -11689,6 +11703,7 @@
                 "efficiency": 9
               },
               "source_fields": {
+                "minutes_duration": "PT25M11S",
                 "active": false,
                 "person_link": null
               }
@@ -11729,6 +11744,7 @@
                 "efficiency": 7
               },
               "source_fields": {
+                "minutes_duration": "PT22M15S",
                 "active": false,
                 "person_link": null
               }
@@ -11769,6 +11785,7 @@
                 "efficiency": 22
               },
               "source_fields": {
+                "minutes_duration": "PT17M54S",
                 "active": false,
                 "person_link": null
               }
@@ -11809,6 +11826,7 @@
                 "efficiency": 11
               },
               "source_fields": {
+                "minutes_duration": "PT20M5S",
                 "active": false,
                 "person_link": null
               }
@@ -11849,6 +11867,7 @@
                 "efficiency": 5
               },
               "source_fields": {
+                "minutes_duration": "PT19M40S",
                 "active": false,
                 "person_link": null
               }
@@ -16077,8 +16096,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1006171/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-20T22:13:46Z",
-        "payload_sha256": "4488c0cf9f8f356245a3614b4fb4b33c7859290b534dd1df6349a019ab442a75"
+        "ingested_at_utc": "2026-10-21T22:15:16Z",
+        "payload_sha256": "a4bffcbe5cc9b65e7e39325cb1f3f19338141e4552e700bb82ae68345aa60fc2"
       },
       "competition": {
         "source_id": "8e536942-90dc-11f1-947f-814ab4ec9e3e",
@@ -16220,6 +16239,7 @@
                 "efficiency": 3
               },
               "source_fields": {
+                "minutes_duration": "PT22M55S",
                 "active": false,
                 "person_link": null
               }
@@ -16260,6 +16280,7 @@
                 "efficiency": 2
               },
               "source_fields": {
+                "minutes_duration": "PT4M9S",
                 "active": false,
                 "person_link": null
               }
@@ -16300,6 +16321,7 @@
                 "efficiency": -6
               },
               "source_fields": {
+                "minutes_duration": "PT21M9S",
                 "active": false,
                 "person_link": null
               }
@@ -16340,6 +16362,7 @@
                 "efficiency": 4
               },
               "source_fields": {
+                "minutes_duration": "PT30M35S",
                 "active": false,
                 "person_link": null
               }
@@ -16380,6 +16403,7 @@
                 "efficiency": 4
               },
               "source_fields": {
+                "minutes_duration": "PT18M18S",
                 "active": false,
                 "person_link": null
               }
@@ -16420,6 +16444,7 @@
                 "efficiency": 4
               },
               "source_fields": {
+                "minutes_duration": "PT8M12S",
                 "active": false,
                 "person_link": null
               }
@@ -16460,6 +16485,7 @@
                 "efficiency": 18
               },
               "source_fields": {
+                "minutes_duration": "PT34M33S",
                 "active": false,
                 "person_link": null
               }
@@ -16500,6 +16526,7 @@
                 "efficiency": 0
               },
               "source_fields": {
+                "minutes_duration": null,
                 "active": false,
                 "person_link": null
               }
@@ -16540,6 +16567,7 @@
                 "efficiency": 30
               },
               "source_fields": {
+                "minutes_duration": "PT38M15S",
                 "active": false,
                 "person_link": null
               }
@@ -16580,6 +16608,7 @@
                 "efficiency": 14
               },
               "source_fields": {
+                "minutes_duration": "PT21M54S",
                 "active": false,
                 "person_link": null
               }
@@ -16682,6 +16711,7 @@
                 "efficiency": 15
               },
               "source_fields": {
+                "minutes_duration": "PT28M14S",
                 "active": false,
                 "person_link": null
               }
@@ -16722,6 +16752,7 @@
                 "efficiency": 3
               },
               "source_fields": {
+                "minutes_duration": "PT34M21S",
                 "active": false,
                 "person_link": null
               }
@@ -16762,6 +16793,7 @@
                 "efficiency": 3
               },
               "source_fields": {
+                "minutes_duration": "PT25M14S",
                 "active": false,
                 "person_link": null
               }
@@ -16802,6 +16834,7 @@
                 "efficiency": 4
               },
               "source_fields": {
+                "minutes_duration": "PT13M50S",
                 "active": false,
                 "person_link": null
               }
@@ -16842,6 +16875,7 @@
                 "efficiency": 6
               },
               "source_fields": {
+                "minutes_duration": "PT11M28S",
                 "active": false,
                 "person_link": null
               }
@@ -16882,6 +16916,7 @@
                 "efficiency": 6
               },
               "source_fields": {
+                "minutes_duration": "PT12M17S",
                 "active": false,
                 "person_link": null
               }
@@ -16922,6 +16957,7 @@
                 "efficiency": 2
               },
               "source_fields": {
+                "minutes_duration": "PT26M35S",
                 "active": false,
                 "person_link": null
               }
@@ -16962,6 +16998,7 @@
                 "efficiency": 19
               },
               "source_fields": {
+                "minutes_duration": "PT24M10S",
                 "active": false,
                 "person_link": null
               }
@@ -17002,6 +17039,7 @@
                 "efficiency": -3
               },
               "source_fields": {
+                "minutes_duration": "PT23M51S",
                 "active": false,
                 "person_link": null
               }
@@ -17076,8 +17114,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1006254/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-20T22:13:49Z",
-        "payload_sha256": "c9fd58891193d363ff4250d9b6b613f8691a8cfb651f7e5105457bfbdcba165f"
+        "ingested_at_utc": "2026-10-21T22:15:19Z",
+        "payload_sha256": "14f83fe9ed47342135ddf07b35a41bc61d140720dc8cbdb8156288d9dd940f7c"
       },
       "competition": {
         "source_id": "8e536942-90dc-11f1-947f-814ab4ec9e3e",
@@ -17224,6 +17262,7 @@
                 "efficiency": -1
               },
               "source_fields": {
+                "minutes_duration": "PT9M55S",
                 "active": false,
                 "person_link": null
               }
@@ -17264,6 +17303,7 @@
                 "efficiency": 6
               },
               "source_fields": {
+                "minutes_duration": "PT39M23S",
                 "active": false,
                 "person_link": null
               }
@@ -17304,6 +17344,7 @@
                 "efficiency": 16
               },
               "source_fields": {
+                "minutes_duration": "PT33M55S",
                 "active": false,
                 "person_link": null
               }
@@ -17344,6 +17385,7 @@
                 "efficiency": 10
               },
               "source_fields": {
+                "minutes_duration": "PT25M20S",
                 "active": false,
                 "person_link": null
               }
@@ -17384,6 +17426,7 @@
                 "efficiency": 2
               },
               "source_fields": {
+                "minutes_duration": "PT9M23S",
                 "active": false,
                 "person_link": null
               }
@@ -17424,6 +17467,7 @@
                 "efficiency": 15
               },
               "source_fields": {
+                "minutes_duration": "PT25M3S",
                 "active": false,
                 "person_link": null
               }
@@ -17464,6 +17508,7 @@
                 "efficiency": 8
               },
               "source_fields": {
+                "minutes_duration": "PT24M3S",
                 "active": false,
                 "person_link": null
               }
@@ -17504,6 +17549,7 @@
                 "efficiency": 11
               },
               "source_fields": {
+                "minutes_duration": "PT17M6S",
                 "active": false,
                 "person_link": null
               }
@@ -17544,6 +17590,7 @@
                 "efficiency": 15
               },
               "source_fields": {
+                "minutes_duration": "PT40M52S",
                 "active": false,
                 "person_link": null
               }
@@ -17646,6 +17693,7 @@
                 "efficiency": 18
               },
               "source_fields": {
+                "minutes_duration": "PT43M22S",
                 "active": false,
                 "person_link": null
               }
@@ -17686,6 +17734,7 @@
                 "efficiency": -4
               },
               "source_fields": {
+                "minutes_duration": "PT18M4S",
                 "active": false,
                 "person_link": null
               }
@@ -17726,6 +17775,7 @@
                 "efficiency": -1
               },
               "source_fields": {
+                "minutes_duration": "PT1M19S",
                 "active": false,
                 "person_link": null
               }
@@ -17766,6 +17816,7 @@
                 "efficiency": -1
               },
               "source_fields": {
+                "minutes_duration": "PT10M28S",
                 "active": false,
                 "person_link": null
               }
@@ -17806,6 +17857,7 @@
                 "efficiency": 6
               },
               "source_fields": {
+                "minutes_duration": "PT38M31S",
                 "active": false,
                 "person_link": null
               }
@@ -17846,6 +17898,7 @@
                 "efficiency": 13
               },
               "source_fields": {
+                "minutes_duration": "PT33M40S",
                 "active": false,
                 "person_link": null
               }
@@ -17886,6 +17939,7 @@
                 "efficiency": -3
               },
               "source_fields": {
+                "minutes_duration": "PT11M13S",
                 "active": false,
                 "person_link": null
               }
@@ -17926,6 +17980,7 @@
                 "efficiency": 8
               },
               "source_fields": {
+                "minutes_duration": "PT25M50S",
                 "active": false,
                 "person_link": null
               }
@@ -17966,6 +18021,7 @@
                 "efficiency": 22
               },
               "source_fields": {
+                "minutes_duration": "PT42M33S",
                 "active": false,
                 "person_link": null
               }
@@ -18040,8 +18096,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1006175/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-20T22:13:51Z",
-        "payload_sha256": "b19db037ef6c5f5f9e973ef134e9b657ae87514d13ff8152039bbac9d37534c7"
+        "ingested_at_utc": "2026-10-21T22:15:25Z",
+        "payload_sha256": "3d17682f938e100c268b32f5cf01a2e8839e3e28499471101e4cc1d3c975b639"
       },
       "competition": {
         "source_id": "8e536942-90dc-11f1-947f-814ab4ec9e3e",
@@ -18183,6 +18239,7 @@
                 "efficiency": 13
               },
               "source_fields": {
+                "minutes_duration": "PT34M30S",
                 "active": false,
                 "person_link": null
               }
@@ -18223,6 +18280,7 @@
                 "efficiency": -2
               },
               "source_fields": {
+                "minutes_duration": "PT19M38S",
                 "active": false,
                 "person_link": null
               }
@@ -18263,6 +18321,7 @@
                 "efficiency": -8
               },
               "source_fields": {
+                "minutes_duration": "PT23M16S",
                 "active": false,
                 "person_link": null
               }
@@ -18303,6 +18362,7 @@
                 "efficiency": 16
               },
               "source_fields": {
+                "minutes_duration": "PT26M24S",
                 "active": false,
                 "person_link": null
               }
@@ -18343,6 +18403,7 @@
                 "efficiency": 1
               },
               "source_fields": {
+                "minutes_duration": "PT12M35S",
                 "active": false,
                 "person_link": null
               }
@@ -18383,6 +18444,7 @@
                 "efficiency": 1
               },
               "source_fields": {
+                "minutes_duration": "PT12M36S",
                 "active": false,
                 "person_link": null
               }
@@ -18423,6 +18485,7 @@
                 "efficiency": 4
               },
               "source_fields": {
+                "minutes_duration": "PT18M1S",
                 "active": false,
                 "person_link": null
               }
@@ -18463,6 +18526,7 @@
                 "efficiency": 10
               },
               "source_fields": {
+                "minutes_duration": "PT27M41S",
                 "active": false,
                 "person_link": null
               }
@@ -18503,6 +18567,7 @@
                 "efficiency": 7
               },
               "source_fields": {
+                "minutes_duration": "PT25M19S",
                 "active": false,
                 "person_link": null
               }
@@ -18605,6 +18670,7 @@
                 "efficiency": 24
               },
               "source_fields": {
+                "minutes_duration": "PT24M47S",
                 "active": false,
                 "person_link": null
               }
@@ -18645,6 +18711,7 @@
                 "efficiency": 7
               },
               "source_fields": {
+                "minutes_duration": "PT23M23S",
                 "active": false,
                 "person_link": null
               }
@@ -18685,6 +18752,7 @@
                 "efficiency": 3
               },
               "source_fields": {
+                "minutes_duration": "PT13M23S",
                 "active": false,
                 "person_link": null
               }
@@ -18725,6 +18793,7 @@
                 "efficiency": 11
               },
               "source_fields": {
+                "minutes_duration": "PT12M17S",
                 "active": false,
                 "person_link": null
               }
@@ -18765,6 +18834,7 @@
                 "efficiency": 10
               },
               "source_fields": {
+                "minutes_duration": "PT18M2S",
                 "active": false,
                 "person_link": null
               }
@@ -18805,6 +18875,7 @@
                 "efficiency": 8
               },
               "source_fields": {
+                "minutes_duration": "PT14M28S",
                 "active": false,
                 "person_link": null
               }
@@ -18845,6 +18916,7 @@
                 "efficiency": 2
               },
               "source_fields": {
+                "minutes_duration": "PT23M20S",
                 "active": false,
                 "person_link": null
               }
@@ -18885,6 +18957,7 @@
                 "efficiency": 5
               },
               "source_fields": {
+                "minutes_duration": "PT8M43S",
                 "active": false,
                 "person_link": null
               }
@@ -18925,6 +18998,7 @@
                 "efficiency": 29
               },
               "source_fields": {
+                "minutes_duration": "PT15M46S",
                 "active": false,
                 "person_link": null
               }
@@ -18965,6 +19039,7 @@
                 "efficiency": 13
               },
               "source_fields": {
+                "minutes_duration": "PT24M3S",
                 "active": false,
                 "person_link": null
               }
@@ -19005,6 +19080,7 @@
                 "efficiency": 10
               },
               "source_fields": {
+                "minutes_duration": "PT21M48S",
                 "active": false,
                 "person_link": null
               }
@@ -19076,7 +19152,7 @@
     "requested_games": 16,
     "fetched_games": 16,
     "failed_games": 0,
-    "cached_games": 4,
+    "cached_games": 12,
     "valid_games": 16,
     "invalid_games": 0
   },
