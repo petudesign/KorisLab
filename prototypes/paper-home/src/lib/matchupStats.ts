@@ -7,7 +7,7 @@ export type StatLine = Record<string, number | null | undefined>;
 export type ComparisonEntry = { id: string; name: string; team: string; games: number; minutes: number; values: Record<string, number | null>; shots: StatLine };
 export const statKeys = ["points", "two_pm", "two_pa", "three_pm", "three_pa", "ftm", "fta", "offensive_rebounds", "defensive_rebounds", "rebounds", "assists", "turnovers", "steals", "blocks"] as const;
 const add = (a: number | null | undefined, b: number | null | undefined) => a == null || b == null ? null : a + b;
-const divide = (a: number | null | undefined, b: number | null | undefined, scale = 1) => a == null || b == null || b <= 0 ? null : scale * a / b;
+const divide = (a: number | null | undefined, b: number | null | undefined, scale = 1) => !Number.isFinite(a) || !Number.isFinite(b) || b! <= 0 ? null : scale * a / b;
 
 export function sumStatLines(lines: StatLine[]): StatLine {
   return Object.fromEntries(statKeys.map((key) => [key, lines.length && lines.every((line) => line[key] != null) ? lines.reduce((total, line) => total + line[key]!, 0) : null]));
@@ -40,7 +40,7 @@ export function buildComparisonEntries(records: SeasonMatchRecord[], kind: Compa
     const opponent = record.teams.find((other) => other.source_id !== team.source_id);
     if (!opponent) continue;
     const entities = kind === "teams" ? [{ id: team.source_id, name: team.name, stats: team.stats, minutes: 0 }]
-      : team.players.filter((player) => player.minutes != null && player.minutes > 0).map((player) => ({ id: player.source_player_id, name: playerDisplayName(player.display_name), stats: player.stats, minutes: player.minutes! }));
+      : team.players.filter((player) => (player.minutes != null && player.minutes > 0 || player.participated === true)).map((player) => ({ id: player.source_player_id, name: playerDisplayName(player.display_name), stats: player.stats, minutes: player.minutes ?? Number.NaN }));
     for (const entity of entities) {
       let group = groups.get(entity.id);
       if (!group) { group = { name: entity.name, teams: new Set(), own: [], opponent: [], minutes: 0, wins: 0, losses: 0, outcomesKnown: true }; groups.set(entity.id, group); }
@@ -57,7 +57,7 @@ export function buildComparisonEntries(records: SeasonMatchRecord[], kind: Compa
 }
 
 export function entityGames(records: SeasonMatchRecord[], kind: ComparisonKind, id: string) {
-  return records.filter((record) => record.teams.some((team) => kind === "teams" ? team.source_id === id : team.players.some((player) => player.source_player_id === id && player.minutes != null && player.minutes > 0)));
+  return records.filter((record) => record.teams.some((team) => kind === "teams" ? team.source_id === id : team.players.some((player) => player.source_player_id === id && (player.minutes != null && player.minutes > 0 || player.participated === true))));
 }
 
 export function recentSplit(records: SeasonMatchRecord[], kind: ComparisonKind, id: string) {
@@ -71,8 +71,8 @@ export function appearanceSplit(records: SeasonMatchRecord[], teamId: string, pl
   let unknown = 0;
   for (const record of entityGames(records, "teams", teamId)) {
     const player = record.teams.find((team) => team.source_id === teamId)!.players.find((row) => row.source_player_id === playerId);
-    if (player && player.minutes == null && player.participated !== false) { unknown++; continue; }
-    (player && player.minutes != null && player.minutes > 0 ? played : absent).push(record);
+    if (player && player.minutes == null && player.participated == null) { unknown++; continue; }
+    (player && (player.minutes != null && player.minutes > 0 || player.participated === true) ? played : absent).push(record);
   }
   return { played, absent, unknown };
 }

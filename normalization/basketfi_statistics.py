@@ -203,6 +203,7 @@ def normalize_fixture_statistics(
                     "minutes_display": _duration_display(raw_player_stats.get("minutes")),
                     "stats": _stats(raw_player_stats),
                     "source_fields": {
+                        "minutes_duration": _text(raw_player_stats.get("minutes")),
                         "active": _bool(row.get("active")),
                         "person_link": _text(row.get("personLink")),
                     },

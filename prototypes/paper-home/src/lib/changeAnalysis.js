@@ -5,7 +5,7 @@ const normalize=name=>name.normalize('NFC').trim().toLocaleLowerCase('fi').repla
 
 export function changeRecords(games,{playerId,teamName}){
  return games.filter(g=>g.verified&&g.date&&g.teams.length===2).flatMap(g=>{
-  const own=g.teams.find(t=>playerId?t.players.some(p=>p.id===playerId&&p.minutesValue>0):t.name===teamName);
+  const own=g.teams.find(t=>playerId?t.players.some(p=>p.id===playerId&&(p.minutesValue>0||p.participated===true)):t.name===teamName);
   if(!own)return [];
   const other=g.teams.find(t=>t!==own),player=playerId?own.players.find(p=>p.id===playerId):null,s=player?.stats||own.stats;
   const possessions=t=>['two_pa','three_pa','fta','offensive_rebounds','turnovers'].every(k=>finite(t.stats[k]))?t.stats.two_pa+t.stats.three_pa+.44*t.stats.fta-t.stats.offensive_rebounds+t.stats.turnovers:null;

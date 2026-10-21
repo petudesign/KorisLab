@@ -4783,7 +4783,14 @@
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
         "ingested_at_utc": "2026-10-02T15:30:32Z",
-        "payload_sha256": "bba75ddd29384bf42ba3c881e904491f085736a3a4b746bb40b19161d3a4de12"
+        "payload_sha256": "bba75ddd29384bf42ba3c881e904491f085736a3a4b746bb40b19161d3a4de12",
+        "playing_time_unavailable": {
+          "reason": "Unfinished period",
+          "team_ids": [
+            "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+            "d347a09d-90a6-11f1-a259-e7d7c2463142"
+          ]
+        }
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -4904,8 +4911,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 0.3333,
-              "minutes_display": "0:20",
+              "minutes": null,
+              "minutes_display": null,
               "stats": {
                 "points": 5,
                 "two_pm": 1,
@@ -4932,7 +4939,11 @@
               },
               "source_fields": {
                 "active": false,
-                "person_link": null
+                "person_link": null,
+                "original_playing_time": {
+                  "minutes": 0.3333,
+                  "minutes_display": "0:20"
+                }
               }
             },
             {
@@ -4944,8 +4955,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 0.15,
-              "minutes_display": "0:09",
+              "minutes": null,
+              "minutes_display": null,
               "stats": {
                 "points": 0,
                 "two_pm": 0,
@@ -4972,7 +4983,11 @@
               },
               "source_fields": {
                 "active": false,
-                "person_link": null
+                "person_link": null,
+                "original_playing_time": {
+                  "minutes": 0.15,
+                  "minutes_display": "0:09"
+                }
               }
             },
             {
@@ -4984,8 +4999,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 0.0667,
-              "minutes_display": "0:04",
+              "minutes": null,
+              "minutes_display": null,
               "stats": {
                 "points": 3,
                 "two_pm": 0,
@@ -5012,7 +5027,11 @@
               },
               "source_fields": {
                 "active": false,
-                "person_link": null
+                "person_link": null,
+                "original_playing_time": {
+                  "minutes": 0.0667,
+                  "minutes_display": "0:04"
+                }
               }
             },
             {
@@ -5024,8 +5043,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 0.5833,
-              "minutes_display": "0:35",
+              "minutes": null,
+              "minutes_display": null,
               "stats": {
                 "points": 22,
                 "two_pm": 8,
@@ -5052,7 +5071,11 @@
               },
               "source_fields": {
                 "active": false,
-                "person_link": null
+                "person_link": null,
+                "original_playing_time": {
+                  "minutes": 0.5833,
+                  "minutes_display": "0:35"
+                }
               }
             },
             {
@@ -5064,8 +5087,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 0.1833,
-              "minutes_display": "0:11",
+              "minutes": null,
+              "minutes_display": null,
               "stats": {
                 "points": 4,
                 "two_pm": 2,
@@ -5092,7 +5115,11 @@
               },
               "source_fields": {
                 "active": false,
-                "person_link": null
+                "person_link": null,
+                "original_playing_time": {
+                  "minutes": 0.1833,
+                  "minutes_display": "0:11"
+                }
               }
             },
             {
@@ -5104,8 +5131,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 0.25,
-              "minutes_display": "0:15",
+              "minutes": null,
+              "minutes_display": null,
               "stats": {
                 "points": 1,
                 "two_pm": 0,
@@ -5132,7 +5159,11 @@
               },
               "source_fields": {
                 "active": false,
-                "person_link": null
+                "person_link": null,
+                "original_playing_time": {
+                  "minutes": 0.25,
+                  "minutes_display": "0:15"
+                }
               }
             },
             {
@@ -5144,8 +5175,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 0.4833,
-              "minutes_display": "0:29",
+              "minutes": null,
+              "minutes_display": null,
               "stats": {
                 "points": 20,
                 "two_pm": 3,
@@ -5172,7 +5203,11 @@
               },
               "source_fields": {
                 "active": false,
-                "person_link": null
+                "person_link": null,
+                "original_playing_time": {
+                  "minutes": 0.4833,
+                  "minutes_display": "0:29"
+                }
               }
             },
             {
@@ -5184,8 +5219,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 0.5333,
-              "minutes_display": "0:32",
+              "minutes": null,
+              "minutes_display": null,
               "stats": {
                 "points": 24,
                 "two_pm": 3,
@@ -5212,7 +5247,11 @@
               },
               "source_fields": {
                 "active": false,
-                "person_link": null
+                "person_link": null,
+                "original_playing_time": {
+                  "minutes": 0.5333,
+                  "minutes_display": "0:32"
+                }
               }
             },
             {
@@ -5224,8 +5263,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 0.2167,
-              "minutes_display": "0:13",
+              "minutes": null,
+              "minutes_display": null,
               "stats": {
                 "points": 2,
                 "two_pm": 1,
@@ -5252,7 +5291,11 @@
               },
               "source_fields": {
                 "active": false,
-                "person_link": null
+                "person_link": null,
+                "original_playing_time": {
+                  "minutes": 0.2167,
+                  "minutes_display": "0:13"
+                }
               }
             },
             {
@@ -5264,8 +5307,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 0.5333,
-              "minutes_display": "0:32",
+              "minutes": null,
+              "minutes_display": null,
               "stats": {
                 "points": 3,
                 "two_pm": 1,
@@ -5292,7 +5335,11 @@
               },
               "source_fields": {
                 "active": false,
-                "person_link": null
+                "person_link": null,
+                "original_playing_time": {
+                  "minutes": 0.5333,
+                  "minutes_display": "0:32"
+                }
               }
             },
             {
@@ -5304,8 +5351,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 0.4,
-              "minutes_display": "0:24",
+              "minutes": null,
+              "minutes_display": null,
               "stats": {
                 "points": 10,
                 "two_pm": 1,
@@ -5332,7 +5379,11 @@
               },
               "source_fields": {
                 "active": false,
-                "person_link": null
+                "person_link": null,
+                "original_playing_time": {
+                  "minutes": 0.4,
+                  "minutes_display": "0:24"
+                }
               }
             }
           ]
@@ -5406,8 +5457,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 0.4833,
-              "minutes_display": "0:29",
+              "minutes": null,
+              "minutes_display": null,
               "stats": {
                 "points": 3,
                 "two_pm": 0,
@@ -5434,7 +5485,11 @@
               },
               "source_fields": {
                 "active": false,
-                "person_link": null
+                "person_link": null,
+                "original_playing_time": {
+                  "minutes": 0.4833,
+                  "minutes_display": "0:29"
+                }
               }
             },
             {
@@ -5446,8 +5501,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 0.5833,
-              "minutes_display": "0:35",
+              "minutes": null,
+              "minutes_display": null,
               "stats": {
                 "points": 15,
                 "two_pm": 5,
@@ -5474,7 +5529,11 @@
               },
               "source_fields": {
                 "active": false,
-                "person_link": null
+                "person_link": null,
+                "original_playing_time": {
+                  "minutes": 0.5833,
+                  "minutes_display": "0:35"
+                }
               }
             },
             {
@@ -5486,8 +5545,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 0.45,
-              "minutes_display": "0:27",
+              "minutes": null,
+              "minutes_display": null,
               "stats": {
                 "points": 11,
                 "two_pm": 4,
@@ -5514,7 +5573,11 @@
               },
               "source_fields": {
                 "active": false,
-                "person_link": null
+                "person_link": null,
+                "original_playing_time": {
+                  "minutes": 0.45,
+                  "minutes_display": "0:27"
+                }
               }
             },
             {
@@ -5526,8 +5589,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 0.6,
-              "minutes_display": "0:36",
+              "minutes": null,
+              "minutes_display": null,
               "stats": {
                 "points": 8,
                 "two_pm": 3,
@@ -5554,7 +5617,11 @@
               },
               "source_fields": {
                 "active": false,
-                "person_link": null
+                "person_link": null,
+                "original_playing_time": {
+                  "minutes": 0.6,
+                  "minutes_display": "0:36"
+                }
               }
             },
             {
@@ -5566,8 +5633,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 0.4,
-              "minutes_display": "0:24",
+              "minutes": null,
+              "minutes_display": null,
               "stats": {
                 "points": 10,
                 "two_pm": 0,
@@ -5594,7 +5661,11 @@
               },
               "source_fields": {
                 "active": false,
-                "person_link": null
+                "person_link": null,
+                "original_playing_time": {
+                  "minutes": 0.4,
+                  "minutes_display": "0:24"
+                }
               }
             },
             {
@@ -5606,8 +5677,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 0.3667,
-              "minutes_display": "0:22",
+              "minutes": null,
+              "minutes_display": null,
               "stats": {
                 "points": 10,
                 "two_pm": 5,
@@ -5634,7 +5705,11 @@
               },
               "source_fields": {
                 "active": false,
-                "person_link": null
+                "person_link": null,
+                "original_playing_time": {
+                  "minutes": 0.3667,
+                  "minutes_display": "0:22"
+                }
               }
             },
             {
@@ -5646,8 +5721,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 0.4333,
-              "minutes_display": "0:26",
+              "minutes": null,
+              "minutes_display": null,
               "stats": {
                 "points": 12,
                 "two_pm": 4,
@@ -5674,7 +5749,11 @@
               },
               "source_fields": {
                 "active": false,
-                "person_link": null
+                "person_link": null,
+                "original_playing_time": {
+                  "minutes": 0.4333,
+                  "minutes_display": "0:26"
+                }
               }
             },
             {
@@ -5686,8 +5765,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 0.0167,
-              "minutes_display": "0:01",
+              "minutes": null,
+              "minutes_display": null,
               "stats": {
                 "points": 3,
                 "two_pm": 0,
@@ -5714,7 +5793,11 @@
               },
               "source_fields": {
                 "active": false,
-                "person_link": null
+                "person_link": null,
+                "original_playing_time": {
+                  "minutes": 0.0167,
+                  "minutes_display": "0:01"
+                }
               }
             },
             {
@@ -5726,8 +5809,8 @@
               "position": null,
               "participated": true,
               "dnp_reason": null,
-              "minutes": 0.4,
-              "minutes_display": "0:24",
+              "minutes": null,
+              "minutes_display": null,
               "stats": {
                 "points": 15,
                 "two_pm": 0,
@@ -5754,7 +5837,11 @@
               },
               "source_fields": {
                 "active": false,
-                "person_link": null
+                "person_link": null,
+                "original_playing_time": {
+                  "minutes": 0.4,
+                  "minutes_display": "0:24"
+                }
               }
             }
           ]
@@ -5763,13 +5850,19 @@
       "availability": {
         "box_score": true,
         "advanced_stats": false,
-        "shot_coordinates": false
+        "shot_coordinates": false,
+        "playing_time": false
       },
       "validation": {
         "valid": true,
         "failure_count": 0,
-        "warning_count": 0,
+        "warning_count": 1,
         "checks": [
+          {
+            "name": "playing_time_available",
+            "status": "warn",
+            "detail": "Unverified playing time withheld; counting stats retained"
+          },
           {
             "name": "game_identity",
             "status": "pass",

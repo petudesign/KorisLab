@@ -4,7 +4,7 @@ function teamStints(games){
  const players=new Map();
  const ordered=[...games].filter(game=>game.verified&&game.date).sort((a,b)=>a.date.localeCompare(b.date)||String(a.id).localeCompare(String(b.id)));
  for(const game of ordered)for(const team of game.teams||[])for(const player of team.players||[]){
-  if(!player.id||!Number.isFinite(player.minutesValue)||player.minutesValue<=0)continue;
+  if(!player.id||!(player.minutesValue>0||player.participated===true))continue;
   let record=players.get(player.id);
   if(!record){record={id:player.id,name:player.name,stints:[]};players.set(player.id,record);}
   record.name=player.name||record.name;

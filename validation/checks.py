@@ -87,6 +87,11 @@ def validate_statistics_snapshot(snapshot: dict[str, Any]) -> dict[str, Any]:
     """Validate the full Basket.fi/Sportradar box-score shape."""
 
     checks: list[dict[str, str]] = []
+    from normalization.playing_time import legacy_minute_teams
+    if legacy_minute_teams(snapshot):
+        checks.append(_check("playing_time_units", "fail", "Team minutes contain the legacy minute-as-second import error"))
+    if snapshot.get("availability", {}).get("playing_time") is False:
+        checks.append(_check("playing_time_available", "warn", "Unverified playing time withheld; counting stats retained"))
     source = snapshot.get("source", {})
     game = snapshot.get("game", {})
     teams = snapshot.get("teams", [])

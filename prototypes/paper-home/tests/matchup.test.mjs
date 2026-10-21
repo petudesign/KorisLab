@@ -105,7 +105,8 @@ for(const league of ['women','men'])for(const season of ['2024-25','2025-26','20
  for(const player of buildComparisonEntries(records,'players')){
   const games=entityGames(records,'players',player.id);assert.equal(games.length,player.games);
   const normalized=buildComparisonEntries(games,'players','40').find(p=>p.id===player.id);
-  assert.ok(Math.abs(normalized.values.points-player.shots.points/player.minutes*40)<1e-9);
+  if(Number.isFinite(player.minutes))assert.ok(Math.abs(normalized.values.points-player.shots.points/player.minutes*40)<1e-9);
+  else assert.equal(normalized.values.points,null);
  }
 });
 for(const [league,season] of [['women','2025-26'],['men','2024-25'],['men','2025-26']])test(`${league} ${season}: on/off copy matches verified original`,()=>{

@@ -22,9 +22,9 @@ export function seasonOutliers(players,previous,limit=4){
  const qualification=discoveryQualification(players),byId=new Map(previous.map(p=>[p.id,p]));
  const oldNames=uniqueNames(previous),currentNames=uniqueNames(players),candidates=[];
  for(const player of players){
-  if(player.games<qualification.games||player.minutes<qualification.minutes)continue;
+  if(player.games<qualification.games||!Number.isFinite(player.minutes)||player.minutes<qualification.minutes)continue;
   const key=nameKey(player.name),baseline=byId.get(player.id)||(currentNames.get(key)===player?oldNames.get(key):null);
-  if(!baseline||baseline.games<8||baseline.minutes<120)continue;
+  if(!baseline||baseline.games<8||!Number.isFinite(baseline.minutes)||baseline.minutes<120)continue;
   for(const metric of [...metrics.filter(m=>m.key!=='steals'),role]){
    if(!metric.enough(player)||!metric.enough(baseline)||metric.key==='efg'&&attempts(baseline)<80)continue;
    const current=metric.value(player),prior=metric.value(baseline);

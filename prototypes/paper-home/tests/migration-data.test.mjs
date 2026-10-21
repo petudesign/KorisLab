@@ -14,5 +14,5 @@ for(const [league,datasets] of Object.entries(seasons))for(const [season,data] o
  const actual=sorted(aggregateSeasonPlayers(adapted)),expected=sorted(aggregateSeasonPlayers(original.matches));
  // Integer stats are exact; minute totals tolerate floating-point summation order.
  assert.equal(actual.length,expected.length);
- actual.forEach((p,i)=>{const q=expected[i];assert.equal(p.id,q.id);for(const key of ['games','starts','points','rebounds','assists','twoPM','twoPA','threePM','threePA','ftm','fta'])assert.equal(p[key],q[key],`${p.name} ${key}`);assert.ok(Math.abs(p.minutes-q.minutes)<1e-8);});
+ actual.forEach((p,i)=>{const q=expected[i];assert.equal(p.id,q.id);for(const key of ['games','starts','points','rebounds','assists','twoPM','twoPA','threePM','threePA','ftm','fta'])assert.equal(p[key],q[key],`${p.name} ${key}`);assert.ok(Number.isNaN(p.minutes)&&Number.isNaN(q.minutes)||Math.abs(p.minutes-q.minutes)<1e-8);});
 });

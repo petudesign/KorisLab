@@ -6,9 +6,9 @@ export function playerLeader(players, metric) {
 }
 export function playerRecentGames(games,id,metric) {
  return games.filter(g=>g.verified).flatMap(g=>{
-  const row=g.teams.flatMap(t=>t.players).find(p=>p.id===id&&p.minutesValue>0);
+  const row=g.teams.flatMap(t=>t.players).find(p=>p.id===id&&(p.minutesValue>0||p.participated===true));
   if(!row)return [];
-  const value=['points','assists','rebounds','steals'].includes(metric)?row.stats[metric]:metric==='minutes'?row.minutesValue:playerMetric({games:1,minutes:row.minutesValue,points:row.stats.points,twoPA:row.stats.two_pa,threePA:row.stats.three_pa,fta:row.stats.fta,efficiency:row.stats.efficiency},metric);
+  const value=['points','assists','rebounds','steals'].includes(metric)?row.stats[metric]:metric==='minutes'?row.minutesValue:playerMetric({games:1,minutes:row.minutesValue??Number.NaN,points:row.stats.points,twoPA:row.stats.two_pa,threePA:row.stats.three_pa,fta:row.stats.fta,efficiency:row.stats.efficiency},metric);
   if(!Number.isFinite(value))return [];
   const home=g.teams.find(t=>t.side==='home'),away=g.teams.find(t=>t.side==='away');
   return [{id:g.id,date:g.date,home:home.name,away:away.name,homeScore:home.score,awayScore:away.score,[metric]:value}];

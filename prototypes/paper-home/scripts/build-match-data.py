@@ -12,7 +12,7 @@ for league,seasons in datasets.items():
   source_data=json.loads((root/data['sourceFile']).read_text())
   for record in source_data['matches']:
    game=record['game']
-   games.append({'id':str(game['source_id']),'date':game.get('scheduled_at') or (dates.get(str(game['source_id'])) if league=='women' and season=='2025-26' else None),'venue':(game.get('venue') or {}).get('name'),'periods':game.get('periods',[]),'sourceUrl':record['source'].get('source_url'),'teams':[{'id':team['source_id'],'name':team['name'],'side':team['home_away'],'score':team['score'],'stats':team['stats'],'players':[{'id':p.get('source_player_id'),'name':p['display_name'],'minutesValue':p.get('minutes'),'minutes':p.get('minutes_display'),'starter':p.get('starter'),'stats':p['stats']} for p in team.get('players',[]) if p.get('participated',True)]} for team in record['teams']]})
+   games.append({'id':str(game['source_id']),'date':game.get('scheduled_at') or (dates.get(str(game['source_id'])) if league=='women' and season=='2025-26' else None),'venue':(game.get('venue') or {}).get('name'),'periods':game.get('periods',[]),'sourceUrl':record['source'].get('source_url'),'teams':[{'id':team['source_id'],'name':team['name'],'side':team['home_away'],'score':team['score'],'stats':team['stats'],'players':[{'id':p.get('source_player_id'),'name':p['display_name'],'minutesValue':p.get('minutes'),'minutes':p.get('minutes_display') or '—','starter':p.get('starter'),'participated':p.get('participated'),'stats':p['stats']} for p in team.get('players',[]) if p.get('participated',True)]} for team in record['teams']]})
   for g in games:g.update(verified=True,status='played')
   schedule=source_data.get('schedule',[])
   if schedule:

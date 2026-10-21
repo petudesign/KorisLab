@@ -49,8 +49,8 @@ export function aggregateSeasonPlayers(records: SeasonMatchRecord[]) {
   for (const record of records) {
     for (const team of record.teams) {
       for (const player of team.players as RawSeasonPlayer[]) {
-        const minutes = player.minutes ?? 0;
-        if (minutes <= 0) continue;
+        const minutes = player.minutes ?? Number.NaN;
+        if (!(minutes > 0 || player.participated === true)) continue;
         const id = player.source_player_id;
         const row = rows.get(id) ?? {
           id,
@@ -76,8 +76,8 @@ export function aggregateSeasonPlayers(records: SeasonMatchRecord[]) {
           efficiency: 0,
         };
         const stats = player.stats;
-        if (minutes > 0) row.games += 1;
-        if (minutes > 0 && player.starter) row.starts += 1;
+        row.games += 1;
+        if (player.starter) row.starts += 1;
         row.minutes += minutes;
         row.points += stats.points ?? 0;
         row.twoPM += stats.two_pm ?? 0;
@@ -139,7 +139,7 @@ export function aggregatePlayerShotVolumes(records: SeasonMatchRecord[]) {
         ? null
         : team.stats.two_pa + team.stats.three_pa;
       for (const player of team.players) {
-        if ((player.minutes ?? 0) <= 0) continue;
+        if (!(player.minutes! > 0 || player.participated === true)) continue;
         const current = volumes.get(player.source_player_id) ?? { fieldGoalAttempts: 0, teamFieldGoalAttempts: 0, complete: true };
         const playerAttempts = player.stats.two_pa == null || player.stats.three_pa == null
           ? null
@@ -166,10 +166,10 @@ export function playerThreePctFromTotals(player: SeasonPlayerRow) {
 }
 
 export function playerEfficiencyPer40(player: SeasonPlayerRow) {
-  return player.minutes === 0 ? null : (player.efficiency / player.minutes) * 40;
+  return !Number.isFinite(player.minutes) || player.minutes <= 0 ? null : (player.efficiency / player.minutes) * 40;
 }
 
 export function playerAttemptsPer40(player: SeasonPlayerRow) {
   const attempts = player.twoPA + player.threePA;
-  return player.minutes === 0 ? null : (attempts / player.minutes) * 40;
+  return !Number.isFinite(player.minutes) || player.minutes <= 0 ? null : (attempts / player.minutes) * 40;
 }

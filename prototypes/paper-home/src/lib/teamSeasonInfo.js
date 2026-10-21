@@ -46,7 +46,7 @@ function playerRoster(games, teamName) {
     const team = (game.teams || []).find(row => row.name === teamName);
     if (!team) continue;
     for (const player of team.players || []) {
-      if (!player.id || !Number.isFinite(player.minutesValue) || player.minutesValue <= 0) continue;
+      if (!player.id || !(player.minutesValue > 0 || player.participated === true)) continue;
       byId.set(player.id, {id:player.id,name:player.name,teamId:team.id,teamName:team.name});
     }
   }
@@ -63,7 +63,7 @@ function allPlayers(games) {
   for (const game of games || []) {
     if (!game.verified) continue;
     for (const team of game.teams || []) for (const player of team.players || []) {
-      if (!player.id || !Number.isFinite(player.minutesValue) || player.minutesValue <= 0) continue;
+      if (!player.id || !(player.minutesValue > 0 || player.participated === true)) continue;
       byId.set(player.id,{id:player.id,name:player.name,teamId:team.id,teamName:team.name});
     }
   }

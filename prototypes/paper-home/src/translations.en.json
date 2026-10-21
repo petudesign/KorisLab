@@ -1546,5 +1546,6 @@
   "Joukkueiden näkymä": "Team view",
   "vertailukelpoista joukkuetta": "comparable teams",
   "Voitot / euro = valitun kauden tähän mennessä tarkistetut runkosarjavoitot ÷ saman kauden kausibudjetti × 100 000. Ottelumäärät voivat erota. Luku päivittyy tulosten mukana, eikä mittaa mestaruuksia tai pudotuspelimenestystä.": "Wins / euro = verified regular-season wins recorded so far in the selected season divided by that season’s budget × 100,000. Game counts may differ. The figure updates with results and does not measure championships or playoff success.",
-  "Tyhjennä haku": "Clear search"
+  "Tyhjennä haku": "Clear search",
+  "Osaa lähteen peliajoista ei voitu varmistaa. Niihin perustuvat minuutti- ja per 40 minuutin luvut näkyvät viivana; muut tilastot säilyvät.": "Some source playing times could not be verified. Affected minute and per-40-minute values are shown as a dash; other statistics are retained."
 }

@@ -1,0 +1,398 @@
+[
+  {
+    "file": "data/normalized/season_korisliiga_2024_2025.json",
+    "original_sha256": "5f44e049eafd855c9284c472df66c4f0ce06d1efe72f8a1a108eb417df84917f",
+    "matches": [
+      {
+        "match_id": "929746",
+        "status": "withheld",
+        "players": 20,
+        "reason": "Unfinished period"
+      }
+    ]
+  },
+  {
+    "file": "data/normalized/season_korisliiga_2025_2026.json",
+    "original_sha256": "23af8ef7ed7da1c4b0b05cfecf70c5d0170d05966d902114c6992df291ebd1de",
+    "matches": [
+      {
+        "match_id": "968705",
+        "status": "recovered",
+        "players": 22,
+        "reason": null
+      },
+      {
+        "match_id": "968727",
+        "status": "recovered",
+        "players": 19,
+        "reason": null
+      },
+      {
+        "match_id": "968738",
+        "status": "withheld",
+        "players": 16,
+        "reason": "Statistical player is not on court; same-clock lineup is unresolved"
+      },
+      {
+        "match_id": "968694",
+        "status": "withheld",
+        "players": 22,
+        "reason": "Statistical player is not on court; same-clock lineup is unresolved"
+      },
+      {
+        "match_id": "968760",
+        "status": "recovered",
+        "players": 24,
+        "reason": null
+      },
+      {
+        "match_id": "968749",
+        "status": "withheld",
+        "players": 19,
+        "reason": "Reconstructed playing time differs from box score"
+      },
+      {
+        "match_id": "968782",
+        "status": "recovered",
+        "players": 23,
+        "reason": null
+      },
+      {
+        "match_id": "968683",
+        "status": "withheld",
+        "players": 17,
+        "reason": "Statistical player is not on court; same-clock lineup is unresolved"
+      },
+      {
+        "match_id": "968716",
+        "status": "recovered",
+        "players": 22,
+        "reason": null
+      },
+      {
+        "match_id": "968771",
+        "status": "recovered",
+        "players": 21,
+        "reason": null
+      },
+      {
+        "match_id": "968661",
+        "status": "withheld",
+        "players": 20,
+        "reason": "Statistical player is not on court; same-clock lineup is unresolved"
+      },
+      {
+        "match_id": "968750",
+        "status": "withheld",
+        "players": 23,
+        "reason": "Reconstructed plus/minus differs from box score"
+      },
+      {
+        "match_id": "968706",
+        "status": "recovered",
+        "players": 24,
+        "reason": null
+      },
+      {
+        "match_id": "968728",
+        "status": "recovered",
+        "players": 19,
+        "reason": null
+      },
+      {
+        "match_id": "968739",
+        "status": "recovered",
+        "players": 23,
+        "reason": null
+      },
+      {
+        "match_id": "968717",
+        "status": "recovered",
+        "players": 20,
+        "reason": null
+      },
+      {
+        "match_id": "968695",
+        "status": "recovered",
+        "players": 20,
+        "reason": null
+      },
+      {
+        "match_id": "968672",
+        "status": "recovered",
+        "players": 22,
+        "reason": null
+      },
+      {
+        "match_id": "968673",
+        "status": "recovered",
+        "players": 23,
+        "reason": null
+      },
+      {
+        "match_id": "968662",
+        "status": "recovered",
+        "players": 20,
+        "reason": null
+      },
+      {
+        "match_id": "968772",
+        "status": "recovered",
+        "players": 20,
+        "reason": null
+      },
+      {
+        "match_id": "968684",
+        "status": "recovered",
+        "players": 18,
+        "reason": null
+      },
+      {
+        "match_id": "968783",
+        "status": "recovered",
+        "players": 21,
+        "reason": null
+      },
+      {
+        "match_id": "968761",
+        "status": "withheld",
+        "players": 21,
+        "reason": "Statistical player is not on court; same-clock lineup is unresolved"
+      },
+      {
+        "match_id": "968751",
+        "status": "withheld",
+        "players": 18,
+        "reason": "Reconstructed plus/minus differs from box score"
+      },
+      {
+        "match_id": "968729",
+        "status": "recovered",
+        "players": 22,
+        "reason": null
+      },
+      {
+        "match_id": "968740",
+        "status": "recovered",
+        "players": 21,
+        "reason": null
+      },
+      {
+        "match_id": "968685",
+        "status": "recovered",
+        "players": 21,
+        "reason": null
+      },
+      {
+        "match_id": "968718",
+        "status": "recovered",
+        "players": 22,
+        "reason": null
+      },
+      {
+        "match_id": "968707",
+        "status": "recovered",
+        "players": 17,
+        "reason": null
+      },
+      {
+        "match_id": "968762",
+        "status": "recovered",
+        "players": 20,
+        "reason": null
+      },
+      {
+        "match_id": "968663",
+        "status": "recovered",
+        "players": 24,
+        "reason": null
+      },
+      {
+        "match_id": "968696",
+        "status": "recovered",
+        "players": 17,
+        "reason": null
+      },
+      {
+        "match_id": "968784",
+        "status": "recovered",
+        "players": 19,
+        "reason": null
+      },
+      {
+        "match_id": "968773",
+        "status": "recovered",
+        "players": 21,
+        "reason": null
+      },
+      {
+        "match_id": "968674",
+        "status": "recovered",
+        "players": 22,
+        "reason": null
+      },
+      {
+        "match_id": "968708",
+        "status": "recovered",
+        "players": 22,
+        "reason": null
+      },
+      {
+        "match_id": "968675",
+        "status": "recovered",
+        "players": 22,
+        "reason": null
+      },
+      {
+        "match_id": "968730",
+        "status": "recovered",
+        "players": 17,
+        "reason": null
+      },
+      {
+        "match_id": "968741",
+        "status": "recovered",
+        "players": 20,
+        "reason": null
+      },
+      {
+        "match_id": "968719",
+        "status": "recovered",
+        "players": 20,
+        "reason": null
+      },
+      {
+        "match_id": "968686",
+        "status": "recovered",
+        "players": 17,
+        "reason": null
+      },
+      {
+        "match_id": "968763",
+        "status": "recovered",
+        "players": 20,
+        "reason": null
+      },
+      {
+        "match_id": "968785",
+        "status": "recovered",
+        "players": 19,
+        "reason": null
+      },
+      {
+        "match_id": "968664",
+        "status": "withheld",
+        "players": 23,
+        "reason": "Reconstructed plus/minus differs from box score"
+      },
+      {
+        "match_id": "968752",
+        "status": "withheld",
+        "players": 22,
+        "reason": "Reconstructed plus/minus differs from box score"
+      },
+      {
+        "match_id": "968697",
+        "status": "withheld",
+        "players": 19,
+        "reason": "Incomplete lineup at a timed or statistical event"
+      },
+      {
+        "match_id": "968774",
+        "status": "recovered",
+        "players": 21,
+        "reason": null
+      },
+      {
+        "match_id": "968709",
+        "status": "recovered",
+        "players": 21,
+        "reason": null
+      },
+      {
+        "match_id": "968676",
+        "status": "recovered",
+        "players": 23,
+        "reason": null
+      },
+      {
+        "match_id": "968665",
+        "status": "withheld",
+        "players": 17,
+        "reason": "Statistical player is not on court; same-clock lineup is unresolved"
+      },
+      {
+        "match_id": "968687",
+        "status": "recovered",
+        "players": 18,
+        "reason": null
+      },
+      {
+        "match_id": "968731",
+        "status": "recovered",
+        "players": 20,
+        "reason": null
+      },
+      {
+        "match_id": "968720",
+        "status": "recovered",
+        "players": 21,
+        "reason": null
+      },
+      {
+        "match_id": "968710",
+        "status": "recovered",
+        "players": 20,
+        "reason": null
+      },
+      {
+        "match_id": "968786",
+        "status": "recovered",
+        "players": 20,
+        "reason": null
+      },
+      {
+        "match_id": "968742",
+        "status": "withheld",
+        "players": 21,
+        "reason": "Reconstructed plus/minus differs from box score"
+      },
+      {
+        "match_id": "968753",
+        "status": "recovered",
+        "players": 21,
+        "reason": null
+      },
+      {
+        "match_id": "968764",
+        "status": "recovered",
+        "players": 21,
+        "reason": null
+      },
+      {
+        "match_id": "968698",
+        "status": "recovered",
+        "players": 17,
+        "reason": null
+      },
+      {
+        "match_id": "968666",
+        "status": "withheld",
+        "players": 22,
+        "reason": "Reconstructed plus/minus differs from box score"
+      }
+    ]
+  },
+  {
+    "file": "data/normalized/season_korisliiga_2025_2026.json",
+    "original_sha256": "7c29c4a23de6f56eedc219d89298e338b89d5cfce91c7ac71541c1c5bd93eecf",
+    "matches": [
+      {
+        "match_id": "968677",
+        "status": "recovered",
+        "players": 22,
+        "reason": null
+      }
+    ]
+  }
+]

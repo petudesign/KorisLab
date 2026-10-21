@@ -11,6 +11,7 @@ from urllib.request import Request, urlopen
 
 from ingestion.basketfi import BasketFiClient
 from normalization.basketfi_statistics import normalize_fixture_statistics
+from normalization.playing_time import legacy_minute_teams, recover_legacy_minutes, quarantine_legacy_minutes
 
 
 DEFAULT_EMBED_BASE_URL = "https://embed-api.eui.connect.sportradar.com/v1/embed"
@@ -62,9 +63,15 @@ class BasketFiStatisticsClient:
             raise BasketFiStatisticsError(f"Torneo match {match_id} has no public Sportradar fixture ID")
         embed_url = f"{self.embed_base_url.rstrip('/')}/{self.website_id}/fixture_detail"
         payload = self.get_fixture(str(fixture_id))
-        return normalize_fixture_statistics(
+        record = normalize_fixture_statistics(
             payload,
             match_id=str(match_id),
             source_url=f"https://tulospalvelu.basket.fi/match/{match_id}/statistics",
             embed_url=embed_url,
         )
+        if legacy_minute_teams(record):
+            try:
+                recover_legacy_minutes(record, self.get_fixture(str(fixture_id), sub="pbp"), fixture_id=str(fixture_id))
+            except (ValueError, BasketFiStatisticsError) as exc:
+                quarantine_legacy_minutes(record, str(exc))
+        return record
