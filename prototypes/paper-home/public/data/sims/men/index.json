@@ -1,0 +1,246 @@
+{
+ "model": "player-sim-v1",
+ "data_cutoff": "2026-10-21",
+ "games": [
+  {
+   "id": "1005839",
+   "date": "2026-10-23",
+   "time": "18:30:00",
+   "venue": "IKH Areena",
+   "home": {
+    "id": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+    "name": "Kauhajoki"
+   },
+   "away": {
+    "id": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+    "name": "Lahti Basketball"
+   },
+   "home_win_probability": 0.568
+  },
+  {
+   "id": "1005955",
+   "date": "2026-10-23",
+   "time": "18:30:00",
+   "venue": "Steveco Areena",
+   "home": {
+    "id": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+    "name": "KTP-Basket"
+   },
+   "away": {
+    "id": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+    "name": "Kouvot"
+   },
+   "home_win_probability": 0.742
+  },
+  {
+   "id": "1005973",
+   "date": "2026-10-24",
+   "time": "16:00:00",
+   "venue": "Tapiolan Liikuntahalli",
+   "home": {
+    "id": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+    "name": "Tapiolan Honka"
+   },
+   "away": {
+    "id": "815439d4-b169-11f1-bc74-593eff165a09",
+    "name": "Kipinä Basket"
+   },
+   "home_win_probability": 0.592
+  },
+  {
+   "id": "1006007",
+   "date": "2026-10-24",
+   "time": "16:00:00",
+   "venue": "Uusikaupunki Areena Wintteri",
+   "home": {
+    "id": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+    "name": "Korihait"
+   },
+   "away": {
+    "id": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+    "name": "Bisons Loimaa"
+   },
+   "home_win_probability": 0.564
+  },
+  {
+   "id": "1005904",
+   "date": "2026-10-24",
+   "time": "17:00:00",
+   "venue": "Motonet Areena",
+   "home": {
+    "id": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+    "name": "Kataja Basket"
+   },
+   "away": {
+    "id": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+    "name": "Tampereen Pyrintö"
+   },
+   "home_win_probability": 0.514
+  },
+  {
+   "id": "1005939",
+   "date": "2026-10-24",
+   "time": "18:00:00",
+   "venue": "Salohalli",
+   "home": {
+    "id": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+    "name": "Salon Vilpas"
+   },
+   "away": {
+    "id": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+    "name": "Helsinki Seagulls"
+   },
+   "home_win_probability": 0.764
+  },
+  {
+   "id": "1005868",
+   "date": "2026-10-27",
+   "time": "18:30:00",
+   "venue": "Luhta Areena",
+   "home": {
+    "id": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+    "name": "Lahti Basketball"
+   },
+   "away": {
+    "id": "815439d4-b169-11f1-bc74-593eff165a09",
+    "name": "Kipinä Basket"
+   },
+   "home_win_probability": 0.435
+  },
+  {
+   "id": "1005989",
+   "date": "2026-10-27",
+   "time": "18:30:00",
+   "venue": "Töölön Kisahalli",
+   "home": {
+    "id": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+    "name": "Helsinki Seagulls"
+   },
+   "away": {
+    "id": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+    "name": "Salon Vilpas"
+   },
+   "home_win_probability": 0.353
+  },
+  {
+   "id": "1005872",
+   "date": "2026-10-30",
+   "time": "18:30:00",
+   "venue": "Luhta Areena",
+   "home": {
+    "id": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+    "name": "Lahti Basketball"
+   },
+   "away": {
+    "id": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+    "name": "Salon Vilpas"
+   },
+   "home_win_probability": 0.406
+  },
+  {
+   "id": "1005889",
+   "date": "2026-10-30",
+   "time": "18:30:00",
+   "venue": "MLL Areena",
+   "home": {
+    "id": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+    "name": "Kouvot"
+   },
+   "away": {
+    "id": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+    "name": "Korihait"
+   },
+   "home_win_probability": 0.524
+  },
+  {
+   "id": "1005956",
+   "date": "2026-10-30",
+   "time": "18:30:00",
+   "venue": "Steveco Areena",
+   "home": {
+    "id": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+    "name": "KTP-Basket"
+   },
+   "away": {
+    "id": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+    "name": "Tapiolan Honka"
+   },
+   "home_win_probability": 0.548
+  },
+  {
+   "id": "1005990",
+   "date": "2026-10-30",
+   "time": "18:30:00",
+   "venue": "Töölön Kisahalli",
+   "home": {
+    "id": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+    "name": "Helsinki Seagulls"
+   },
+   "away": {
+    "id": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+    "name": "Tampereen Pyrintö"
+   },
+   "home_win_probability": 0.398
+  },
+  {
+   "id": "1005856",
+   "date": "2026-10-31",
+   "time": "16:00:00",
+   "venue": "Loimaan liikuntahalli",
+   "home": {
+    "id": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+    "name": "Bisons Loimaa"
+   },
+   "away": {
+    "id": "815439d4-b169-11f1-bc74-593eff165a09",
+    "name": "Kipinä Basket"
+   },
+   "home_win_probability": 0.408
+  },
+  {
+   "id": "1005905",
+   "date": "2026-10-31",
+   "time": "18:00:00",
+   "venue": "Motonet Areena",
+   "home": {
+    "id": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+    "name": "Kataja Basket"
+   },
+   "away": {
+    "id": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+    "name": "Kauhajoki"
+   },
+   "home_win_probability": 0.608
+  },
+  {
+   "id": "1005922",
+   "date": "2026-11-03",
+   "time": "18:30:00",
+   "venue": "Pyynikin palloiluhalli",
+   "home": {
+    "id": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+    "name": "Tampereen Pyrintö"
+   },
+   "away": {
+    "id": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+    "name": "Kouvot"
+   },
+   "home_win_probability": 0.717
+  },
+  {
+   "id": "1005974",
+   "date": "2026-11-03",
+   "time": "18:30:00",
+   "venue": "Tapiolan Liikuntahalli",
+   "home": {
+    "id": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+    "name": "Tapiolan Honka"
+   },
+   "away": {
+    "id": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+    "name": "Helsinki Seagulls"
+   },
+   "home_win_probability": 0.739
+  }
+ ]
+}

@@ -3,6 +3,7 @@
 Run through `python3 -m simulation.refresh`, which prepares the history first.
 """
 from collections import Counter
+from datetime import date, timedelta
 import json
 from statistics import mean, median
 
@@ -111,14 +112,15 @@ def pack(model, simulator, match, simulations, cutoff):
     }
 
 
-def publish_packs(model, schedule, out_dir, *, today, games=6, simulations=1000):
-    """Write packs for the next unplayed games and remove packs that are no longer upcoming.
+def publish_packs(model, schedule, out_dir, *, today, games=16, horizon_days=14, simulations=1000):
+    """Write packs for unplayed games within the horizon and remove packs that are no longer upcoming.
 
     Output is deterministic for the same inputs, so an unchanged season causes no diff.
     """
-    cutoff = max(date for date, _, _ in model.records)
+    cutoff = max(day for day, _, _ in model.records)
     ids = {name: tid for tid, name in model.team_names.items()}
-    upcoming = sorted((m for m in schedule if m["status"] != "Played" and m["scheduled_date"] >= max(today, cutoff)
+    last_day = (date.fromisoformat(today) + timedelta(days=horizon_days)).isoformat()
+    upcoming = sorted((m for m in schedule if m["status"] != "Played" and max(today, cutoff) <= m["scheduled_date"] <= last_day
                        and m["home"]["name"] in ids and m["away"]["name"] in ids),
                       key=lambda m: (m["scheduled_date"], m.get("scheduled_time") or "", m["source_match_id"]))[:games]
     out_dir.mkdir(parents=True, exist_ok=True)
