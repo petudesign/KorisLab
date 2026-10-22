@@ -1,0 +1,65 @@
+{
+  "season": "2025-26",
+  "matches": 161,
+  "simulations_per_match": 400,
+  "history": "2024-25 weight 0.5, earlier 2025-26 days weight 1",
+  "priors": {
+    "usage_minutes": 60,
+    "action": 40,
+    "zone_share": 20,
+    "two_pct": 25,
+    "three_pct": 60,
+    "ft_pct": 20,
+    "per_minute": 80,
+    "team": 150,
+    "pace": 600
+  },
+  "metrics_brier": {
+    "player_simulation": 0.2382,
+    "possession_simulation_v2": 0.2398,
+    "elo_k32": 0.2386,
+    "margin_home_locked": 0.2329
+  },
+  "favorites_correct": {
+    "player_simulation": 90
+  },
+  "margin_mae": 11.52,
+  "total_bias": -1.78,
+  "player_points": {
+    "players": 2889,
+    "mae": 4.63,
+    "correlation": 0.645
+  },
+  "calibration": [
+    {
+      "range": "0.0-0.2",
+      "matches": 1,
+      "mean_probability": 0.198,
+      "home_win_rate": 1
+    },
+    {
+      "range": "0.2-0.4",
+      "matches": 22,
+      "mean_probability": 0.336,
+      "home_win_rate": 0.5
+    },
+    {
+      "range": "0.4-0.6",
+      "matches": 89,
+      "mean_probability": 0.507,
+      "home_win_rate": 0.494
+    },
+    {
+      "range": "0.6-0.8",
+      "matches": 44,
+      "mean_probability": 0.671,
+      "home_win_rate": 0.705
+    },
+    {
+      "range": "0.8-1.0",
+      "matches": 5,
+      "mean_probability": 0.832,
+      "home_win_rate": 1
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+import {AbsoluteFill,Interactive,interpolate,useCurrentFrame,useVideoConfig} from 'remotion';
+import {Background,Brand,colors,ease} from '../design';
+const EndSceneInner=()=>{const frame=useCurrentFrame(),{fps}=useVideoConfig();return <AbsoluteFill style={{fontFamily:'Inter',color:colors.text}}><Background/>
+ <Interactive.Div name="Closing brand" style={{position:'absolute',top:145,width:'100%',display:'flex',justifyContent:'center',opacity:interpolate(frame,[0,.2*fps],[0,1],ease)}}><Brand size={86}/></Interactive.Div>
+ <Interactive.Div name="Why KorisLab" style={{position:'absolute',top:349,left:144,right:144,textAlign:'center',fontFamily:'Cal Sans',fontSize:126,lineHeight:1.06,letterSpacing:'-.035em',opacity:interpolate(frame,[.08*fps,.33*fps],[0,1],ease),translate:interpolate(frame,[.08*fps,.42*fps],['0px 28px','0px 0px'],ease)}}>Muodosta näkemyksesi<br/>datan pohjalta.</Interactive.Div>
+ <Interactive.Div name="Product benefit" style={{position:'absolute',top:670,width:'100%',textAlign:'center',fontSize:38,color:colors.muted,opacity:interpolate(frame,[.26*fps,.52*fps],[0,1],ease)}}>Pelaajat, joukkueet ja ottelut samassa paikassa.</Interactive.Div>
+ <Interactive.Div name="Call to action" style={{position:'absolute',top:798,width:'100%',display:'flex',justifyContent:'center',opacity:interpolate(frame,[.43*fps,.72*fps],[0,1],ease),translate:interpolate(frame,[.43*fps,.8*fps],['0px 18px','0px 0px'],ease)}}><div style={{display:'flex',alignItems:'center',gap:25,padding:'23px 35px',borderRadius:17,border:'1px solid #44d17a55',background:'#44d17a0b',color:colors.green,fontSize:50,fontWeight:600,letterSpacing:'-.025em'}}>korislab.vercel.app <span style={{fontWeight:400}}>↗</span></div></Interactive.Div>
+ </AbsoluteFill>;};
+export const EndScene=Interactive.withSchema({Component:EndSceneInner,componentName:'EndScene',schema:{},wrapInSequence:true,layout:'absolute-fill'});

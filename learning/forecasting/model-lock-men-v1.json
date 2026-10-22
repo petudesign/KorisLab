@@ -1,0 +1,26 @@
+{
+  "version": "men-margin-v1",
+  "league": "men",
+  "locked_at": "2026-10-13T12:47:50.945281+00:00",
+  "training_season": "2024-25",
+  "training_source_sha256": "7439fe593dacfb354a5118a61ec9a909d6cda29519e65cb9a6bf7772cf75416b",
+  "training_matches": 161,
+  "prior_games": 5,
+  "feature_divisor": 10,
+  "evaluation_rule": "first archived forecast within seven days before actual kickoff; same teams and kickoff required",
+  "models": {
+    "margin": {
+      "slope": 1.0997088667530177,
+      "bias": 0.0
+    },
+    "margin_home": {
+      "slope": 1.1384076138780206,
+      "bias": 0.3342771898728105
+    }
+  },
+  "limitations": [
+    "Missing one 2024-25 match",
+    "No roster, injury, rest or opponent-strength adjustment",
+    "Not calibrated on prospective matches"
+  ]
+}

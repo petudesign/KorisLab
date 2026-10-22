@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="fi">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>KorisLab · otteluarvion kokeilu</title><link rel="stylesheet" href="card.css"></head>
+<body><main>
+<header class="page-header"><a class="brand" href="http://127.0.0.1:5174/" aria-label="KorisLab etusivu"><svg viewBox="0 0 32 32" aria-hidden="true"><g fill="#44d17a" transform="skewX(-14)"><rect x="8" y="17" width="5" height="11" rx="2.5" opacity=".65"/><rect x="17" y="7" width="5" height="21" rx="2.5"/><rect x="26" y="14" width="5" height="14" rx="2.5" opacity=".85"/></g></svg><span>Koris<span class="green">Lab</span></span></a><span class="local-label">Paikallinen kokeilu</span></header>
+<div class="page-title"><p class="muted">Miesten Korisliiga · 2026–27</p><h1>Ennen ensimmäistä heittoa.</h1><p class="intro">Kaksi mallia. Sama ottelu. Näe arvio ja sen lähtötiedot.</p></div>
+<article class="forecast-card" aria-labelledby="match-title">
+<div class="match-meta"><span id="kickoff">Ladataan ottelua…</span><span>Otteluennakko</span></div>
+<h2 id="match-title" class="sr-only">Ottelun voittoarvio</h2>
+<div class="model-tabs" role="tablist" aria-label="Arvion laskentamalli"><button id="tab-margin" role="tab" aria-selected="true" aria-controls="forecast-panel" data-model="margin">Piste-eromalli</button><button id="tab-home" role="tab" aria-selected="false" aria-controls="forecast-panel" data-model="margin_home" tabindex="-1">Kotipaikkakorjaus</button></div>
+<div id="forecast-panel" role="tabpanel" aria-labelledby="tab-margin">
+<p class="estimate-label">Mallin arvio · voittotodennäköisyys</p>
+<div class="teams"><div class="team"><img id="home-logo" alt=""><h3 id="home-name">—</h3><span class="team-side">Kotijoukkue</span><div class="probability orange" id="home-probability">—</div></div><div class="versus" aria-hidden="true">vs</div><div class="team"><img id="away-logo" alt=""><h3 id="away-name">—</h3><span class="team-side">Vierasjoukkue</span><div class="probability blue" id="away-probability">—</div></div></div>
+<div class="probability-track" aria-hidden="true"><div id="home-bar"></div></div>
+<p class="verdict" id="verdict" aria-live="polite"></p><p class="model-explanation" id="model-explanation"></p>
+</div>
+<div class="sample-note"><span class="note-dot"></span><p id="sample-note">Pieni alkukauden otos.</p></div>
+</article>
+<section class="context-grid" aria-label="Arvion tausta"><article class="context-card"><h2>Mistä arvio syntyy?</h2><p class="muted">Aiemmissa peleissä tehtyjen ja päästettyjen pisteiden erotus.</p><div id="margin-values" class="margin-values"></div><p id="correction-text" class="correction"></p><details><summary>Näytä laskennan lähtötiedot</summary><div id="calculation" class="calculation"></div><div id="evidence" class="evidence"></div></details></article>
+<article class="context-card unknowns"><h2>Mitä arvio ei tiedä?</h2><p class="muted">Nämä tiedot eivät kuulu nykyisen mallin laskentaan.</p><ul><li><span>Kokoonpanot ja poissaolot</span><span>Ei huomioitu</span></li><li><span>Lepuutus ja minuuttirajoitukset</span><span>Ei huomioitu</span></li><li><span>Vastustajien vahvuus ja lepoajat</span><span>Ei huomioitu</span></li></ul><p class="uncertainty-note">Arviolle ei ole vielä määritetty luotettavaa virhemarginaalia. Prosentit ovat mallin arvioita, eivät lupaus tuloksesta.</p></article></section>
+<section class="after-card" aria-labelledby="after-title"><div><span class="after-label">Ottelun jälkeen</span><h2 id="after-title">Arvio kohtaa tuloksen.</h2><p id="after-copy" class="muted">Tulos lisätään tähän, kun se on varmennettu aineistossa. Alkuperäinen arvio säilyy.</p></div><div id="after-result" class="result-status">Odottaa ottelua<span>Ei vielä arvioitavaa tulosta</span></div></section>
+<footer><span id="record-time">—</span><span id="source-time">—</span><span id="version">—</span></footer>
+<p class="preview-note">Tämä erillinen esikatselu lukee tallennetun ennusteen. Se ei päivitä aineistoa tai julkaise mitään KorisLabiin.</p>
+</main><script src="card.js" defer></script></body></html>

@@ -1,0 +1,12 @@
+import {Interactive,interpolate,useCurrentFrame,useVideoConfig} from 'remotion';
+import {AdFrame,cardStyle} from '../AdFrame';
+import {colors,ease,fi} from '../design';
+import {data} from '../data';
+function Court(){return <g fill="none" stroke="#ffffff35" strokeWidth=".9"><rect width="560" height="300"/><path d="M280 0v300"/><circle cx="280" cy="150" r="36"/><path d="M0 101h116v98H0M560 101H444v98h116"/><circle cx="116" cy="150" r="36"/><circle cx="444" cy="150" r="36"/><path d="M0 18h60a135 135 0 0 1 0 264H0M560 18h-60a135 135 0 0 0 0 264h60"/><path d="M31.5 124a26 26 0 0 1 0 52M528.5 124a26 26 0 0 0 0 52M24 132v36M536 132v36"/><circle cx="31.5" cy="150" r="4.5"/><circle cx="528.5" cy="150" r="4.5"/></g>;}
+const ShotsSceneInner=()=>{const frame=useCurrentFrame(),{fps}=useVideoConfig();return <AdFrame title="Heitot näkyviksi.">
+ <Interactive.Div name="Shot map" style={{...cardStyle,position:'absolute',left:280,top:430,width:1360,height:464,opacity:interpolate(frame,[0,.26*fps],[0,1],ease),translate:interpolate(frame,[0,.35*fps],['0px 34px','0px 0px'],ease)}}>
+ <svg width="960" height="416" viewBox="-8 -8 576 316" style={{position:'absolute',left:24,top:22}}><Court/>{data.shots.located.map((shot,index)=>{const x=shot.x*5.6,y=shot.y*3;return <g key={shot.id} opacity={interpolate(frame,[(.2+index/data.shots.located.length*.6)*fps,(.5+index/data.shots.located.length*.6)*fps],[0,1],ease)}>{shot.made?<circle cx={x} cy={y} r="3.3" fill={colors.green} fillOpacity=".85"/>:<path d={`M${x-2.5},${y-2.5}l5,5m-5,0l5,-5`} stroke="#929297" strokeWidth="1.1"/>}</g>;})}</svg>
+ <div style={{position:'absolute',left:1010,top:80}}><div style={{fontSize:85,color:colors.green,fontWeight:600,letterSpacing:'-.045em'}}>{data.shots.made}<span style={{fontSize:42,color:colors.muted,fontWeight:400}}> / {data.shots.attempts}</span></div><div style={{fontSize:27,color:colors.muted}}>osumat / yritykset</div><div style={{fontSize:65,marginTop:30,fontWeight:600,letterSpacing:'-.04em'}}>{fi(100*data.shots.made/data.shots.attempts)} %</div><div style={{fontSize:25,color:colors.muted,marginTop:14}}><span style={{color:colors.green}}>● Osuma</span> · × Ohi</div></div>
+ </Interactive.Div><div style={{position:'absolute',top:926,left:280,fontSize:28,color:colors.muted}}>Peli-Karhut – Espoo Basket Team · pelitilanneheitot</div>
+ </AdFrame>;};
+export const ShotsScene=Interactive.withSchema({Component:ShotsSceneInner,componentName:'ShotsScene',schema:{},wrapInSequence:true,layout:'absolute-fill'});

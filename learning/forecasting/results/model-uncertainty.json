@@ -1,0 +1,41 @@
+{
+  "point_vs_elo": {
+    "difference": -0.01462988418491689,
+    "lower": -0.032172443775096406,
+    "upper": 0.003755033378926647,
+    "weeks": 21,
+    "matches": 108,
+    "repeats": 5000,
+    "seed": 20261013
+  },
+  "home_vs_neutral": {
+    "difference": 0.004039986753165787,
+    "lower": -0.005056215411447092,
+    "upper": 0.012646851055609762,
+    "weeks": 21,
+    "matches": 108,
+    "repeats": 5000,
+    "seed": 20261013
+  },
+  "common_neutral": {
+    "matches": 103,
+    "brier": 0.1912621446296735,
+    "favorites": 103,
+    "correct": 75,
+    "ties": 0
+  },
+  "common_home": {
+    "matches": 103,
+    "brier": 0.1934563512362306,
+    "favorites": 103,
+    "correct": 76,
+    "ties": 0
+  },
+  "additional_home": {
+    "matches": 5,
+    "brier": 0.29206305777330444,
+    "favorites": 5,
+    "correct": 1,
+    "ties": 0
+  }
+}
