@@ -89,14 +89,35 @@ def normalize_quarter_stats(payload, record, *, fixture_id):
         raise ValueError("Empty play-by-play")
     # Period IDs use 11+ for overtime. Match them in order, without folding OT into Q4.
     ordered_periods = sorted(counts, key=int)
-    box_periods = record["game"]["periods"]
-    if len(ordered_periods) != len(box_periods):
-        raise ValueError("Play-by-play period coverage differs from box score")
-    for key, box in zip(ordered_periods, box_periods):
+    box_periods = record["game"].get("periods") or []
+    if box_periods:
+        if len(ordered_periods) != len(box_periods):
+            raise ValueError("Play-by-play period coverage differs from box score")
+        for key, box in zip(ordered_periods, box_periods):
+            for team in teams:
+                expected = box["home_score" if team["home_away"] == "home" else "away_score"]
+                if counts[key][team["source_id"]]["points"] != expected:
+                    raise ValueError("Play-by-play quarter points differ from box score")
+    else:
+        # Current statistics responses can omit box-score quarter rows. Verify
+        # each complete PBP period against its own source total, then reconcile
+        # the aggregate with the final box-score points.
+        for key in ordered_periods:
+            team_scores = periods[key].get("teamScore")
+            if not isinstance(team_scores, dict):
+                raise ValueError("Play-by-play period scores are unavailable")
+            for team in teams:
+                expected = team_scores.get(team["source_id"])
+                if isinstance(expected, str) and expected.isdigit():
+                    expected = int(expected)
+                if not isinstance(expected, int) or isinstance(expected, bool):
+                    raise ValueError("Play-by-play period score is invalid")
+                if counts[key][team["source_id"]]["points"] != expected:
+                    raise ValueError("Play-by-play points differ from period score")
         for team in teams:
-            expected = box["home_score" if team["home_away"] == "home" else "away_score"]
-            if counts[key][team["source_id"]]["points"] != expected:
-                raise ValueError("Play-by-play quarter points differ from box score")
+            scored = sum(counts[key][team["source_id"]]["points"] for key in ordered_periods)
+            if scored != team["score"]:
+                raise ValueError("Play-by-play final points differ from box score")
     verified = [metric for metric in METRICS if all(
         team["stats"].get(metric) is not None and
         sum(counts[key][team["source_id"]][metric] for key in counts) == team["stats"][metric]

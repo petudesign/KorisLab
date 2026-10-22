@@ -7,6 +7,9 @@ from unittest.mock import Mock
 
 from ingestion.publish_quarters import publish_quarters
 from normalization.basketfi_pbp import METRICS, normalize_quarter_stats
+from normalization.basketfi_replay import normalize_replay
+from normalization.basketfi_statistics import normalize_fixture_statistics
+from tests.basketfi_fixtures import FIXTURE_ID, basketfi_payload
 
 
 def fixture(overtime=False):
@@ -66,6 +69,20 @@ class QuarterTests(unittest.TestCase):
         record["game"]["periods"][1]["home_score"] = 4
         with self.assertRaises(ValueError):
             normalize_quarter_stats(payload, record, fixture_id="fixture")
+
+    def test_legacy_and_current_period_data_reconcile_for_quarters_and_replay(self):
+        for schema in ("legacy", "current"):
+            with self.subTest(schema=schema):
+                payload = basketfi_payload(schema)
+                record = normalize_fixture_statistics(payload, match_id="1005837")
+                quarters = normalize_quarter_stats(payload, record, fixture_id=FIXTURE_ID)
+                replay = normalize_replay(payload, record, season_id="2026-27")
+
+                self.assertIn("points", quarters["verified_metrics"])
+                self.assertEqual(quarters["event_count"], 7)
+                self.assertTrue(replay["verified"])
+                self.assertEqual(replay["events"][-1]["home"], 8)
+                self.assertEqual(replay["events"][-1]["away"], 6)
 
     def test_refresh_failure_keeps_valid_cache_and_denominator(self):
         payload, record = fixture(overtime=True)

@@ -87,6 +87,11 @@ def validate_statistics_snapshot(snapshot: dict[str, Any]) -> dict[str, Any]:
     """Validate the full Basket.fi/Sportradar box-score shape."""
 
     checks: list[dict[str, str]] = []
+    from normalization.playing_time import legacy_minute_teams
+    if legacy_minute_teams(snapshot):
+        checks.append(_check("playing_time_units", "fail", "Team minutes contain the legacy minute-as-second import error"))
+    if snapshot.get("availability", {}).get("playing_time") is False:
+        checks.append(_check("playing_time_available", "warn", "Unverified playing time withheld; counting stats retained"))
     source = snapshot.get("source", {})
     game = snapshot.get("game", {})
     teams = snapshot.get("teams", [])
@@ -138,6 +143,60 @@ def validate_statistics_snapshot(snapshot: dict[str, Any]) -> dict[str, Any]:
         checks.append(_check("box_score_present", "pass", "full box-score totals are present"))
     else:
         checks.append(_check("box_score_present", "warn", "fixture has no full box-score totals yet"))
+
+    failures = sum(check["status"] == "fail" for check in checks)
+    warnings = sum(check["status"] == "warn" for check in checks)
+    return {"valid": failures == 0, "failure_count": failures, "warning_count": warnings, "checks": checks}
+
+
+def validate_completed_statistics_snapshot(snapshot: dict[str, Any]) -> dict[str, Any]:
+    """Require regulation periods and a final-score reconciliation for played games."""
+    result = validate_statistics_snapshot(snapshot)
+    checks = list(result["checks"])
+    periods = snapshot.get("game", {}).get("periods", [])
+    final_score = snapshot.get("game", {}).get("final_score", {})
+    period_ids: list[str] = []
+    period_scores: list[tuple[float, float]] = []
+    period_rows_valid = isinstance(periods, list)
+    for row in periods if isinstance(periods, list) else []:
+        if not isinstance(row, dict):
+            period_rows_valid = False
+            continue
+        period_id = row.get("period")
+        if period_id is None or isinstance(period_id, bool):
+            period_rows_valid = False
+            continue
+        period_ids.append(str(period_id))
+        home_score = _number(row.get("home_score"))
+        away_score = _number(row.get("away_score"))
+        if home_score is None or away_score is None or home_score < 0 or away_score < 0:
+            period_rows_valid = False
+            continue
+        period_scores.append((home_score, away_score))
+
+    quarter_ids = {period_id for period_id in period_ids if period_id in {"1", "2", "3", "4"}}
+    regulation_complete = period_rows_valid and len(period_ids) == len(set(period_ids)) and quarter_ids == {"1", "2", "3", "4"}
+    checks.append(_check(
+        "completed_period_coverage",
+        "pass" if regulation_complete else "fail",
+        "all four regulation periods have scores" if regulation_complete else "played games require unique scores for periods 1–4",
+    ))
+
+    final_home = _number(final_score.get("home")) if isinstance(final_score, dict) else None
+    final_away = _number(final_score.get("away")) if isinstance(final_score, dict) else None
+    reconciles = (
+        regulation_complete
+        and len(period_scores) == len(period_ids)
+        and final_home is not None
+        and final_away is not None
+        and sum(score[0] for score in period_scores) == final_home
+        and sum(score[1] for score in period_scores) == final_away
+    )
+    checks.append(_check(
+        "completed_score_reconciliation",
+        "pass" if reconciles else "fail",
+        "all period scores sum to the final score" if reconciles else "period scores do not reconcile to the final score",
+    ))
 
     failures = sum(check["status"] == "fail" for check in checks)
     warnings = sum(check["status"] == "warn" for check in checks)

@@ -1,6 +1,8 @@
 import unittest
 
 from normalization.basketfi_statistics import normalize_fixture_statistics
+from tests.basketfi_fixtures import basketfi_payload
+from validation.checks import validate_completed_statistics_snapshot
 from validation.checks import validate_statistics_snapshot
 
 
@@ -70,6 +72,29 @@ class BasketFiStatisticsTests(unittest.TestCase):
 
         self.assertTrue(result["valid"])
         self.assertEqual(result["failure_count"], 0)
+
+    def test_legacy_and_current_period_score_shapes_are_supported(self):
+        for schema in ("legacy", "current"):
+            with self.subTest(schema=schema):
+                snapshot = normalize_fixture_statistics(basketfi_payload(schema), match_id="1005837")
+                validation = validate_completed_statistics_snapshot(snapshot)
+
+                self.assertTrue(validation["valid"], validation["checks"])
+                self.assertEqual(snapshot["game"]["periods"], [
+                    {"period": 1, "home_score": 2, "away_score": 2},
+                    {"period": 2, "home_score": 2, "away_score": 2},
+                    {"period": 3, "home_score": 3, "away_score": 0},
+                    {"period": 4, "home_score": 1, "away_score": 2},
+                ])
+
+    def test_completed_game_requires_four_periods_and_reconciled_score(self):
+        snapshot = normalize_fixture_statistics(basketfi_payload("current"), match_id="1005837")
+        snapshot["game"]["periods"].pop()
+
+        validation = validate_completed_statistics_snapshot(snapshot)
+
+        self.assertFalse(validation["valid"])
+        self.assertIn("completed_period_coverage", [check["name"] for check in validation["checks"]])
 
 
 if __name__ == "__main__":

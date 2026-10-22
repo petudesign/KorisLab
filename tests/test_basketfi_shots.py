@@ -5,6 +5,7 @@ from unittest.mock import Mock
 
 from ingestion.publish_shots import publish_player_shot_index, publish_shots
 from normalization.basketfi_shots import normalize_shot_chart
+from tests.basketfi_fixtures import FIXTURE_ID, basketfi_payload
 
 
 def payload():
@@ -20,6 +21,13 @@ class ShotChartTests(unittest.TestCase):
     def test_source_player_identity_and_coordinates_are_preserved(self):
         shot = normalize_shot_chart(payload(), match_id="1", fixture_id="fixture")["shots"][0]
         self.assertEqual((shot["player_id"], shot["x"], shot["y"], shot["made"]), ("player", 12, 81, True))
+
+    def test_current_period_data_shots_are_collected_across_periods(self):
+        chart = normalize_shot_chart(basketfi_payload("current"), match_id="1005837", fixture_id=FIXTURE_ID)
+
+        self.assertEqual(len(chart["shots"]), 6)
+        self.assertEqual({shot["period"] for shot in chart["shots"]}, {1, 2, 3, 4})
+        self.assertTrue(all(shot["x"] == 40 and shot["y"] == 82 for shot in chart["shots"]))
 
     def test_invalid_coordinates_are_missing_not_zero(self):
         data = payload()
@@ -41,6 +49,27 @@ class ShotChartTests(unittest.TestCase):
             result = publish_shots([record], out_dir=Path(directory), client=client, delay_seconds=0)
         self.assertEqual(result["published"], 1)
         client.get_fixture.assert_called_once_with("fixture", sub="shot_chart")
+
+    def test_missing_source_chart_is_reported_as_unavailable(self):
+        record = {"game": {"source_id": "1", "upstream_fixture_id": "fixture"}, "teams": []}
+        client = Mock()
+        client.get_fixture.return_value = {"data": {"fixture": {
+            "id": "fixture",
+            "competitors": [
+                {"entityId": "home", "name": "Home", "isHome": True},
+                {"entityId": "away", "name": "Away", "isHome": False},
+            ],
+        }}}
+
+        with TemporaryDirectory() as directory:
+            result = publish_shots([record], out_dir=Path(directory), client=client, delay_seconds=0)
+
+        self.assertEqual(result["unavailable"], [{
+            "match_id": "1",
+            "reason": "No shot chart in source response",
+            "retained_previous": False,
+        }])
+        self.assertEqual(result["failures"], [])
 
     def test_wrong_fixture_or_duplicate_events_are_rejected(self):
         with self.assertRaises(ValueError):

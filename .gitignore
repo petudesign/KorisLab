@@ -3,6 +3,7 @@ __pycache__/
 .pytest_cache/
 .venv/
 venv/
+learning/vision/media/
 raw/
 web/node_modules/
 web/dist/
@@ -12,3 +13,4 @@ web/dist/
 data/cache/pbp/
 data/cache/statistics/
 data/cache/pbp-probe.json
+data/cache/playing-time-recovery/
