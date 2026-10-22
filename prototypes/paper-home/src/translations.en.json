@@ -1516,7 +1516,6 @@
   "Vertailukautta ei ole aineistossa.": "No comparison season is available in the data.",
   "Valmennus": "Coaching staff",
   "Päävalmentaja": "Head coach",
-  ". kausi liigassa": "th league season",
   "Ei vertailtavaa aiempaa päävalmentajaa liigassa": "No previous league head coach to compare",
   "Uusi päävalmentaja": "New head coach",
   "Päävalmentaja jatkaa": "Head coach returns",
@@ -1547,5 +1546,11 @@
   "vertailukelpoista joukkuetta": "comparable teams",
   "Voitot / euro = valitun kauden tähän mennessä tarkistetut runkosarjavoitot ÷ saman kauden kausibudjetti × 100 000. Ottelumäärät voivat erota. Luku päivittyy tulosten mukana, eikä mittaa mestaruuksia tai pudotuspelimenestystä.": "Wins / euro = verified regular-season wins recorded so far in the selected season divided by that season’s budget × 100,000. Game counts may differ. The figure updates with results and does not measure championships or playoff success.",
   "Tyhjennä haku": "Clear search",
-  "Osaa lähteen peliajoista ei voitu varmistaa. Niihin perustuvat minuutti- ja per 40 minuutin luvut näkyvät viivana; muut tilastot säilyvät.": "Some source playing times could not be verified. Affected minute and per-40-minute values are shown as a dash; other statistics are retained."
+  "Osaa lähteen peliajoista ei voitu varmistaa. Niihin perustuvat minuutti- ja per 40 minuutin luvut näkyvät viivana; muut tilastot säilyvät.": "Some source playing times could not be verified. Affected minute and per-40-minute values are shown as a dash; other statistics are retained.",
+  "Ei laskettavaa arvoa tästä ottelusta (esim. ei yrityksiä)": "No computable value for this game (e.g. no attempts)",
+  "kausi liigassa": "league season",
+  "2. neljännes": "2nd quarter",
+  "3. neljännes": "3rd quarter",
+  "4. neljännes": "4th quarter",
+  ". kausi liigassa": "th league season"
 }

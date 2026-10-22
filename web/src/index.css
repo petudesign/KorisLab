@@ -3552,7 +3552,6 @@ select.language-toggle { width: 58px; min-width: 58px; padding-left: 9px; paddin
   .analysis-quarter-bars { min-height: 110px; }
 }
 
-
 .match-preview { display: grid; gap: 18px; }
 .match-preview-score, .match-preview-context { min-width: 0; padding: clamp(18px, 3vw, 30px); }
 .match-preview-score { text-align: center; }
@@ -3576,6 +3575,8 @@ select.language-toggle { width: 58px; min-width: 58px; padding-left: 9px; paddin
 .match-preview-recent-columns li button { display: grid; grid-template-columns: 28px 1fr auto; align-items: center; width: 100%; gap: 8px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--soft); text-align: left; cursor: pointer; }
 .match-preview-recent-columns li button:hover { border-color: var(--mint); }
 .match-preview-recent-columns li button > span { color: var(--muted); font-size: 11px; }
+.match-preview-recent-columns li button > span[data-result="win"] { color: var(--success-strong); }
+.match-preview-recent-columns li button > span[data-result="loss"] { color: var(--muted); }
 .match-preview-recent-columns li button small { color: var(--muted); font-size: 11px; }
 .match-preview-recent-columns > section > p { color: var(--muted); font-size: 13px; }
 .match-preview-method { margin: 18px 0 0; color: var(--muted); font-size: 12px; line-height: 1.6; }

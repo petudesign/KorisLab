@@ -1,0 +1,73 @@
+/* KorisLab foundation v0.1: opt-in draft, not imported by the application yet.
+ * Theme colors and display typography are intentionally decided separately.
+ * See docs/design-system.md for usage and acceptance criteria.
+ */
+:root {
+  --kl-font-ui: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --kl-font-weight-regular: 400;
+  --kl-font-weight-medium: 500;
+  --kl-font-weight-semibold: 600;
+  --kl-font-weight-bold: 700;
+
+  --kl-text-caption: 0.75rem;
+  --kl-text-label: 0.875rem;
+  --kl-text-body: 1rem;
+  --kl-text-section: 1.25rem;
+  --kl-text-title: 1.75rem;
+  --kl-text-page: 2rem;
+  --kl-text-stat: 2.5rem;
+  --kl-text-score: 3rem;
+  --kl-leading-tight: 1.2;
+  --kl-leading-ui: 1.4;
+  --kl-leading-body: 1.5;
+
+  --kl-space-1: 0.25rem;
+  --kl-space-2: 0.5rem;
+  --kl-space-3: 0.75rem;
+  --kl-space-4: 1rem;
+  --kl-space-5: 1.25rem;
+  --kl-space-6: 1.5rem;
+  --kl-space-8: 2rem;
+  --kl-space-10: 2.5rem;
+  --kl-space-12: 3rem;
+  --kl-space-16: 4rem;
+
+  --kl-radius-control: 0.25rem;
+  --kl-radius-surface: 0.5rem;
+  --kl-radius-round: 50%;
+  --kl-border-width: 1px;
+  --kl-focus-width: 2px;
+  --kl-focus-offset: 3px;
+
+  --kl-control-height: 2.75rem;
+  --kl-control-height-compact: 2.25rem;
+  --kl-target-touch: 2.75rem;
+  --kl-table-row: 2.75rem;
+  --kl-table-row-compact: 2.25rem;
+  --kl-table-cell-padding-inline: 0.75rem;
+  --kl-icon-small: 1rem;
+  --kl-icon-default: 1.25rem;
+  --kl-icon-large: 1.5rem;
+  --kl-entity-small: 1.5rem;
+  --kl-entity-default: 2.5rem;
+  --kl-entity-featured: 4rem;
+
+  --kl-sidebar-width: 13.5rem;
+  --kl-toolbar-min-height: 3.5rem;
+  --kl-content-max-width: 90rem;
+  --kl-page-gutter: clamp(1rem, 3vw, 2rem);
+  --kl-chart-height-small: 12rem;
+  --kl-chart-height-default: 18rem;
+  --kl-chart-height-large: 24rem;
+
+  --kl-motion-fast: 120ms;
+  --kl-motion-default: 180ms;
+  --kl-motion-ease: ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --kl-motion-fast: 0ms;
+    --kl-motion-default: 0ms;
+  }
+}

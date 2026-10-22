@@ -1,0 +1,166 @@
+{
+  "version": "possession-sim-v2",
+  "locked_at": "2026-10-21T17:19:14.057754+00:00",
+  "training_season": "2024-25",
+  "training_matches": 161,
+  "possession_games": 189,
+  "parameters": {
+    "prior": 30,
+    "pace_prior": 600,
+    "shock": 0.0
+  },
+  "selection": "lowest Brier, both teams with five earlier matches, same-day results excluded",
+  "simulations_during_selection": 1000,
+  "grid": [
+    {
+      "prior": 15,
+      "shock": 0.0,
+      "brier": 0.21822948447204962,
+      "correct": 104
+    },
+    {
+      "prior": 15,
+      "shock": 0.05,
+      "brier": 0.21796963354037263,
+      "correct": 104
+    },
+    {
+      "prior": 15,
+      "shock": 0.1,
+      "brier": 0.21662073913043484,
+      "correct": 104
+    },
+    {
+      "prior": 15,
+      "shock": 0.15,
+      "brier": 0.21912397515527937,
+      "correct": 103
+    },
+    {
+      "prior": 15,
+      "shock": 0.2,
+      "brier": 0.21879620496894414,
+      "correct": 104
+    },
+    {
+      "prior": 15,
+      "shock": 0.3,
+      "brier": 0.22095541614906825,
+      "correct": 102
+    },
+    {
+      "prior": 30,
+      "shock": 0.0,
+      "brier": 0.21610168322981363,
+      "correct": 105
+    },
+    {
+      "prior": 30,
+      "shock": 0.05,
+      "brier": 0.21654349689440985,
+      "correct": 103
+    },
+    {
+      "prior": 30,
+      "shock": 0.1,
+      "brier": 0.21652703105590068,
+      "correct": 104
+    },
+    {
+      "prior": 30,
+      "shock": 0.15,
+      "brier": 0.21889395652173912,
+      "correct": 101
+    },
+    {
+      "prior": 30,
+      "shock": 0.2,
+      "brier": 0.21908148447204961,
+      "correct": 104
+    },
+    {
+      "prior": 30,
+      "shock": 0.3,
+      "brier": 0.22146547204968944,
+      "correct": 106
+    },
+    {
+      "prior": 60,
+      "shock": 0.0,
+      "brier": 0.21678307453416146,
+      "correct": 106
+    },
+    {
+      "prior": 60,
+      "shock": 0.05,
+      "brier": 0.21700178260869563,
+      "correct": 105
+    },
+    {
+      "prior": 60,
+      "shock": 0.1,
+      "brier": 0.21754939130434783,
+      "correct": 102
+    },
+    {
+      "prior": 60,
+      "shock": 0.15,
+      "brier": 0.22068432919254663,
+      "correct": 98
+    },
+    {
+      "prior": 60,
+      "shock": 0.2,
+      "brier": 0.2193550248447205,
+      "correct": 101
+    },
+    {
+      "prior": 60,
+      "shock": 0.3,
+      "brier": 0.22216380124223598,
+      "correct": 102
+    },
+    {
+      "prior": 120,
+      "shock": 0.0,
+      "brier": 0.21984213043478246,
+      "correct": 102
+    },
+    {
+      "prior": 120,
+      "shock": 0.05,
+      "brier": 0.22148700621118034,
+      "correct": 101
+    },
+    {
+      "prior": 120,
+      "shock": 0.1,
+      "brier": 0.220908850931677,
+      "correct": 102
+    },
+    {
+      "prior": 120,
+      "shock": 0.15,
+      "brier": 0.22148341614906833,
+      "correct": 102
+    },
+    {
+      "prior": 120,
+      "shock": 0.2,
+      "brier": 0.22231479503105597,
+      "correct": 106
+    },
+    {
+      "prior": 120,
+      "shock": 0.3,
+      "brier": 0.22677481366459618,
+      "correct": 104
+    }
+  ],
+  "sources_sha256": {
+    "matches": "1ca8779eee17855d15708392c097cf382810ba1f82bb6f34eb8101ebe52bac51",
+    "possessions": "4d1b5574da35bca2a8a106cbfa25dba09ba62afd31794148d87890be86a97da1",
+    "possession_sim.py": "3024d707e883b7f142591a74158a74f305b6b38951dc0fa1d67a96eb0f8adafb"
+  },
+  "elo_k32_brier_same_matches": 0.2272632571898208
+}

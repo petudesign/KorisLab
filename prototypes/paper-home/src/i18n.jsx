@@ -11,6 +11,8 @@ const translate=createTranslator(translations);
 // Localize presentation only; routing, identifiers and source data stay unchanged.
 export const t=value=>translate(value,currentLanguage);
 export const locale=()=>currentLanguage==='en'?'en-GB':'fi-FI';
+const englishSuffix=n=>{const mod100=n%100;if(mod100>=11&&mod100<=13)return 'th';return {1:'st',2:'nd',3:'rd'}[n%10]||'th';};
+export const ordinal=n=>currentLanguage==='en'?`${n}${englishSuffix(n)}`:`${n}.`;
 
 export function LanguageProvider({children}){
  const [language,setState]=useState(currentLanguage);

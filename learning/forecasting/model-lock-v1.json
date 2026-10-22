@@ -1,0 +1,25 @@
+{
+  "version": "women-margin-v1",
+  "locked_at": "2026-10-13T12:35:57+00:00",
+  "training_season": "2024-25",
+  "training_source_sha256": "4295a2712d2f478b9e3d4fb26d63d878ec10335c0cbc2acaac4c1915f399dc45",
+  "training_matches": 103,
+  "prior_games": 5,
+  "feature_divisor": 10,
+  "evaluation_rule": "first archived forecast within seven days before actual kickoff; same teams and kickoff required",
+  "models": {
+    "margin": {
+      "slope": 1.4807736483505063,
+      "bias": 0.0
+    },
+    "margin_home": {
+      "slope": 1.498377600190098,
+      "bias": 0.254991976055092
+    }
+  },
+  "limitations": [
+    "Missing one 2024-25 match",
+    "No roster, injury, rest or opponent-strength adjustment",
+    "Not calibrated on prospective matches"
+  ]
+}

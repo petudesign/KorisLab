@@ -1,0 +1,584 @@
+{
+  "reviewed_at": "2026-10-21T11:22:48.044967+00:00",
+  "league": "women",
+  "model_sha256": "49d2efc3b9cf3bdb8f5c3278654db7a9fa54d3cbb239bf470779693d9818914f",
+  "forecast_history_sha256": "328aa66d331feb77ec6a6ab06f988c986c1571939b003e4bba28a244362c8e0b",
+  "time_note": "Box scores may omit kickoff. Existing season fixture times retained; postponements not independently checked by this script.",
+  "archived_matches": 96,
+  "past_fixtures": 4,
+  "sources": [
+    {
+      "match_id": "1006207",
+      "file": "learning/forecasting/results/verified/women-1006207.json",
+      "sha256": "094569c7b9be205952ef1da8d0d00674a19a2a17cb7b83a4f3e9ce514d7c4b75",
+      "source": {
+        "system": "basketfi_sportradar_embed",
+        "entity": "fixture_statistics",
+        "source_entity_id": "1006207",
+        "source_url": "https://tulospalvelu.basket.fi/match/1006207/statistics",
+        "upstream_fixture_id": null,
+        "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
+        "ingested_at_utc": "2026-10-21T11:22:48Z",
+        "payload_sha256": "d5a5a285f9b198a0bc5a269a44db2a3b701bd7059547cf251f914460d631fc4d"
+      }
+    },
+    {
+      "match_id": "1006171",
+      "file": "learning/forecasting/results/verified/women-1006171.json",
+      "sha256": "50466936db11efb76085a9f0085a332b575d7aadeae711116b072b76da278661",
+      "source": {
+        "system": "basketfi_sportradar_embed",
+        "entity": "fixture_statistics",
+        "source_entity_id": "1006171",
+        "source_url": "https://tulospalvelu.basket.fi/match/1006171/statistics",
+        "upstream_fixture_id": null,
+        "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
+        "ingested_at_utc": "2026-10-21T11:22:49Z",
+        "payload_sha256": "ca450ab048fd65e2c10499bfc13d88d7d85bc0c2ca8b304d870362c005e765b5"
+      }
+    },
+    {
+      "match_id": "1006254",
+      "file": "learning/forecasting/results/verified/women-1006254.json",
+      "sha256": "47966926247110829eccab1610b29108deb256d0fa53df091aca178efc3e756f",
+      "source": {
+        "system": "basketfi_sportradar_embed",
+        "entity": "fixture_statistics",
+        "source_entity_id": "1006254",
+        "source_url": "https://tulospalvelu.basket.fi/match/1006254/statistics",
+        "upstream_fixture_id": null,
+        "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
+        "ingested_at_utc": "2026-10-21T11:22:50Z",
+        "payload_sha256": "d11914cbff2208458c6a120a34ad1caa2be0b5044acb5657a0687654191fca1b"
+      }
+    },
+    {
+      "match_id": "1006175",
+      "file": "learning/forecasting/results/verified/women-1006175.json",
+      "sha256": "a74cea79acd1a33695ed6037295ae2a8137ea5116180a4660270a2ed7adbdf3b",
+      "source": {
+        "system": "basketfi_sportradar_embed",
+        "entity": "fixture_statistics",
+        "source_entity_id": "1006175",
+        "source_url": "https://tulospalvelu.basket.fi/match/1006175/statistics",
+        "upstream_fixture_id": null,
+        "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
+        "ingested_at_utc": "2026-10-21T11:22:51Z",
+        "payload_sha256": "9cd763b58ea72de7976e17bd2f8148986e6e7b9114b25bc176986628d1af7aa1"
+      }
+    }
+  ],
+  "skipped": [],
+  "evaluated": [
+    {
+      "forecast": {
+        "away": "Peli-Karhut",
+        "away_id": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+        "away_prior_games": 3,
+        "created_at": "2026-10-13T12:38:02.784544+00:00",
+        "evaluation_eligible": true,
+        "evidence": [
+          {
+            "away_id": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+            "away_score": 89,
+            "home_id": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+            "home_score": 96,
+            "kickoff": "2026-10-02T18:30:00+03:00",
+            "match_id": "1006239"
+          },
+          {
+            "away_id": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+            "away_score": 103,
+            "home_id": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
+            "home_score": 80,
+            "kickoff": "2026-10-03T16:00:00+03:00",
+            "match_id": "1006161"
+          },
+          {
+            "away_id": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+            "away_score": 82,
+            "home_id": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+            "home_score": 58,
+            "kickoff": "2026-10-03T17:00:00+03:00",
+            "match_id": "1006180"
+          },
+          {
+            "away_id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+            "away_score": 74,
+            "home_id": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+            "home_score": 80,
+            "kickoff": "2026-10-04T17:00:00+03:00",
+            "match_id": "1006230"
+          },
+          {
+            "away_id": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+            "away_score": 70,
+            "home_id": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+            "home_score": 97,
+            "kickoff": "2026-10-07T18:30:00+03:00",
+            "match_id": "1006164"
+          },
+          {
+            "away_id": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+            "away_score": 72,
+            "home_id": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+            "home_score": 66,
+            "kickoff": "2026-10-07T18:30:00+03:00",
+            "match_id": "1006199"
+          },
+          {
+            "away_id": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+            "away_score": 72,
+            "home_id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+            "home_score": 55,
+            "kickoff": "2026-10-07T18:30:00+03:00",
+            "match_id": "1006194"
+          },
+          {
+            "away_id": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
+            "away_score": 61,
+            "home_id": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+            "home_score": 109,
+            "kickoff": "2026-10-07T18:30:00+03:00",
+            "match_id": "1006257"
+          },
+          {
+            "away_id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+            "away_score": 71,
+            "home_id": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
+            "home_score": 70,
+            "kickoff": "2026-10-10T16:00:00+03:00",
+            "match_id": "1006233"
+          },
+          {
+            "away_id": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+            "away_score": 89,
+            "home_id": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+            "home_score": 97,
+            "kickoff": "2026-10-10T17:00:00+03:00",
+            "match_id": "1006151"
+          },
+          {
+            "away_id": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+            "away_score": 57,
+            "home_id": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+            "home_score": 63,
+            "kickoff": "2026-10-10T17:00:00+03:00",
+            "match_id": "1006215"
+          },
+          {
+            "away_id": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+            "away_score": 98,
+            "home_id": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+            "home_score": 61,
+            "kickoff": "2026-10-10T17:00:00+03:00",
+            "match_id": "1006241"
+          }
+        ],
+        "feature": 0.4125,
+        "home": "Tapiolan Honka",
+        "home_id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+        "home_prior_games": 3,
+        "input_signature": "a6a07a43dcbde073d81d4767e80a2333dc188ea42f94378763db605a01e3542c",
+        "kickoff": "2026-10-17T14:00:00+03:00",
+        "match_id": "1006207",
+        "model_sha256": "49d2efc3b9cf3bdb8f5c3278654db7a9fa54d3cbb239bf470779693d9818914f",
+        "model_version": "women-margin-v1",
+        "probabilities": {
+          "margin": 0.6481276340436368,
+          "margin_home": 0.7053846679743427
+        },
+        "record_id": "56b336f5b5c674666cff12921e39ac59864ef636f0dbe88c14d0c2229b86437a",
+        "source_sha256": "12023b1101c807e72868b7b32d4e54014460a6a2448b9cff10767ae6f09ac5b2"
+      },
+      "home_score": 75,
+      "away_score": 83
+    },
+    {
+      "forecast": {
+        "away": "Espoo Basket Team",
+        "away_id": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+        "away_prior_games": 2,
+        "created_at": "2026-10-13T12:38:02.784544+00:00",
+        "evaluation_eligible": true,
+        "evidence": [
+          {
+            "away_id": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+            "away_score": 89,
+            "home_id": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+            "home_score": 96,
+            "kickoff": "2026-10-02T18:30:00+03:00",
+            "match_id": "1006239"
+          },
+          {
+            "away_id": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+            "away_score": 103,
+            "home_id": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
+            "home_score": 80,
+            "kickoff": "2026-10-03T16:00:00+03:00",
+            "match_id": "1006161"
+          },
+          {
+            "away_id": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+            "away_score": 82,
+            "home_id": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+            "home_score": 58,
+            "kickoff": "2026-10-03T17:00:00+03:00",
+            "match_id": "1006180"
+          },
+          {
+            "away_id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+            "away_score": 74,
+            "home_id": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+            "home_score": 80,
+            "kickoff": "2026-10-04T17:00:00+03:00",
+            "match_id": "1006230"
+          },
+          {
+            "away_id": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+            "away_score": 70,
+            "home_id": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+            "home_score": 97,
+            "kickoff": "2026-10-07T18:30:00+03:00",
+            "match_id": "1006164"
+          },
+          {
+            "away_id": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+            "away_score": 72,
+            "home_id": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+            "home_score": 66,
+            "kickoff": "2026-10-07T18:30:00+03:00",
+            "match_id": "1006199"
+          },
+          {
+            "away_id": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+            "away_score": 72,
+            "home_id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+            "home_score": 55,
+            "kickoff": "2026-10-07T18:30:00+03:00",
+            "match_id": "1006194"
+          },
+          {
+            "away_id": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
+            "away_score": 61,
+            "home_id": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+            "home_score": 109,
+            "kickoff": "2026-10-07T18:30:00+03:00",
+            "match_id": "1006257"
+          },
+          {
+            "away_id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+            "away_score": 71,
+            "home_id": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
+            "home_score": 70,
+            "kickoff": "2026-10-10T16:00:00+03:00",
+            "match_id": "1006233"
+          },
+          {
+            "away_id": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+            "away_score": 89,
+            "home_id": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+            "home_score": 97,
+            "kickoff": "2026-10-10T17:00:00+03:00",
+            "match_id": "1006151"
+          },
+          {
+            "away_id": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+            "away_score": 57,
+            "home_id": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+            "home_score": 63,
+            "kickoff": "2026-10-10T17:00:00+03:00",
+            "match_id": "1006215"
+          },
+          {
+            "away_id": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+            "away_score": 98,
+            "home_id": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+            "home_score": 61,
+            "kickoff": "2026-10-10T17:00:00+03:00",
+            "match_id": "1006241"
+          }
+        ],
+        "feature": 1.2464285714285714,
+        "home": "ToPo",
+        "home_id": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+        "home_prior_games": 3,
+        "input_signature": "5f14b22368482e96b0e868943f600510424fe0754c337d7980c7e981c38a6622",
+        "kickoff": "2026-10-17T17:00:00+03:00",
+        "match_id": "1006171",
+        "model_sha256": "49d2efc3b9cf3bdb8f5c3278654db7a9fa54d3cbb239bf470779693d9818914f",
+        "model_version": "women-margin-v1",
+        "probabilities": {
+          "margin": 0.8636189202993901,
+          "margin_home": 0.8930816573244211
+        },
+        "record_id": "01be2b0a75213e0cfb2775703a3c864e2b2a662a403d071d9d40129704e8cffe",
+        "source_sha256": "12023b1101c807e72868b7b32d4e54014460a6a2448b9cff10767ae6f09ac5b2"
+      },
+      "home_score": 67,
+      "away_score": 68
+    },
+    {
+      "forecast": {
+        "away": "Vimpelin Veto",
+        "away_id": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
+        "away_prior_games": 3,
+        "created_at": "2026-10-13T12:38:02.784544+00:00",
+        "evaluation_eligible": true,
+        "evidence": [
+          {
+            "away_id": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+            "away_score": 89,
+            "home_id": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+            "home_score": 96,
+            "kickoff": "2026-10-02T18:30:00+03:00",
+            "match_id": "1006239"
+          },
+          {
+            "away_id": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+            "away_score": 103,
+            "home_id": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
+            "home_score": 80,
+            "kickoff": "2026-10-03T16:00:00+03:00",
+            "match_id": "1006161"
+          },
+          {
+            "away_id": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+            "away_score": 82,
+            "home_id": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+            "home_score": 58,
+            "kickoff": "2026-10-03T17:00:00+03:00",
+            "match_id": "1006180"
+          },
+          {
+            "away_id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+            "away_score": 74,
+            "home_id": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+            "home_score": 80,
+            "kickoff": "2026-10-04T17:00:00+03:00",
+            "match_id": "1006230"
+          },
+          {
+            "away_id": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+            "away_score": 70,
+            "home_id": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+            "home_score": 97,
+            "kickoff": "2026-10-07T18:30:00+03:00",
+            "match_id": "1006164"
+          },
+          {
+            "away_id": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+            "away_score": 72,
+            "home_id": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+            "home_score": 66,
+            "kickoff": "2026-10-07T18:30:00+03:00",
+            "match_id": "1006199"
+          },
+          {
+            "away_id": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+            "away_score": 72,
+            "home_id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+            "home_score": 55,
+            "kickoff": "2026-10-07T18:30:00+03:00",
+            "match_id": "1006194"
+          },
+          {
+            "away_id": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
+            "away_score": 61,
+            "home_id": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+            "home_score": 109,
+            "kickoff": "2026-10-07T18:30:00+03:00",
+            "match_id": "1006257"
+          },
+          {
+            "away_id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+            "away_score": 71,
+            "home_id": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
+            "home_score": 70,
+            "kickoff": "2026-10-10T16:00:00+03:00",
+            "match_id": "1006233"
+          },
+          {
+            "away_id": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+            "away_score": 89,
+            "home_id": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+            "home_score": 97,
+            "kickoff": "2026-10-10T17:00:00+03:00",
+            "match_id": "1006151"
+          },
+          {
+            "away_id": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+            "away_score": 57,
+            "home_id": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+            "home_score": 63,
+            "kickoff": "2026-10-10T17:00:00+03:00",
+            "match_id": "1006215"
+          },
+          {
+            "away_id": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+            "away_score": 98,
+            "home_id": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+            "home_score": 61,
+            "kickoff": "2026-10-10T17:00:00+03:00",
+            "match_id": "1006241"
+          }
+        ],
+        "feature": 0.9,
+        "home": "Tampereen Pyrintö",
+        "home_id": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+        "home_prior_games": 2,
+        "input_signature": "09831fe4eea4d1a0757fcd5964074d5910774cfb4baf41487bbf291dfd1e81f4",
+        "kickoff": "2026-10-17T17:00:00+03:00",
+        "match_id": "1006254",
+        "model_sha256": "49d2efc3b9cf3bdb8f5c3278654db7a9fa54d3cbb239bf470779693d9818914f",
+        "model_version": "women-margin-v1",
+        "probabilities": {
+          "margin": 0.7912862819532335,
+          "margin_home": 0.8325114264955347
+        },
+        "record_id": "b3af310728a904aa6de6d6e104e43da2bb8e6f9457a67bb3b86e56c9dc715d88",
+        "source_sha256": "12023b1101c807e72868b7b32d4e54014460a6a2448b9cff10767ae6f09ac5b2"
+      },
+      "home_score": 74,
+      "away_score": 70
+    },
+    {
+      "forecast": {
+        "away": "HBA-Märsky",
+        "away_id": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+        "away_prior_games": 2,
+        "created_at": "2026-10-13T12:38:02.784544+00:00",
+        "evaluation_eligible": true,
+        "evidence": [
+          {
+            "away_id": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+            "away_score": 89,
+            "home_id": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+            "home_score": 96,
+            "kickoff": "2026-10-02T18:30:00+03:00",
+            "match_id": "1006239"
+          },
+          {
+            "away_id": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+            "away_score": 103,
+            "home_id": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
+            "home_score": 80,
+            "kickoff": "2026-10-03T16:00:00+03:00",
+            "match_id": "1006161"
+          },
+          {
+            "away_id": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+            "away_score": 82,
+            "home_id": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+            "home_score": 58,
+            "kickoff": "2026-10-03T17:00:00+03:00",
+            "match_id": "1006180"
+          },
+          {
+            "away_id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+            "away_score": 74,
+            "home_id": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+            "home_score": 80,
+            "kickoff": "2026-10-04T17:00:00+03:00",
+            "match_id": "1006230"
+          },
+          {
+            "away_id": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+            "away_score": 70,
+            "home_id": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+            "home_score": 97,
+            "kickoff": "2026-10-07T18:30:00+03:00",
+            "match_id": "1006164"
+          },
+          {
+            "away_id": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+            "away_score": 72,
+            "home_id": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+            "home_score": 66,
+            "kickoff": "2026-10-07T18:30:00+03:00",
+            "match_id": "1006199"
+          },
+          {
+            "away_id": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+            "away_score": 72,
+            "home_id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+            "home_score": 55,
+            "kickoff": "2026-10-07T18:30:00+03:00",
+            "match_id": "1006194"
+          },
+          {
+            "away_id": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
+            "away_score": 61,
+            "home_id": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+            "home_score": 109,
+            "kickoff": "2026-10-07T18:30:00+03:00",
+            "match_id": "1006257"
+          },
+          {
+            "away_id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+            "away_score": 71,
+            "home_id": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
+            "home_score": 70,
+            "kickoff": "2026-10-10T16:00:00+03:00",
+            "match_id": "1006233"
+          },
+          {
+            "away_id": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+            "away_score": 89,
+            "home_id": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+            "home_score": 97,
+            "kickoff": "2026-10-10T17:00:00+03:00",
+            "match_id": "1006151"
+          },
+          {
+            "away_id": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+            "away_score": 57,
+            "home_id": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+            "home_score": 63,
+            "kickoff": "2026-10-10T17:00:00+03:00",
+            "match_id": "1006215"
+          },
+          {
+            "away_id": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+            "away_score": 98,
+            "home_id": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+            "home_score": 61,
+            "kickoff": "2026-10-10T17:00:00+03:00",
+            "match_id": "1006241"
+          }
+        ],
+        "feature": -0.6160714285714286,
+        "home": "BC Nokia",
+        "home_id": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+        "home_prior_games": 3,
+        "input_signature": "206d06211948eda8fccc161f04022936d2340c166bbcc752aaa0b1e4e674044d",
+        "kickoff": "2026-10-18T17:00:00+03:00",
+        "match_id": "1006175",
+        "model_sha256": "49d2efc3b9cf3bdb8f5c3278654db7a9fa54d3cbb239bf470779693d9818914f",
+        "model_version": "women-margin-v1",
+        "probabilities": {
+          "margin": 0.2865371163086632,
+          "margin_home": 0.3389189060181334
+        },
+        "record_id": "e66f1c210e9334d25b1250485c907a5ac8c7aa403eb7dece063d60e12a7c76ed",
+        "source_sha256": "12023b1101c807e72868b7b32d4e54014460a6a2448b9cff10767ae6f09ac5b2"
+      },
+      "home_score": 56,
+      "away_score": 95
+    }
+  ],
+  "metrics": {
+    "margin": {
+      "correct": 2,
+      "ties": 0,
+      "games": 4,
+      "brier": 0.32289300115836905
+    },
+    "margin_home": {
+      "correct": 2,
+      "ties": 0,
+      "games": 4,
+      "brier": 0.35952020589342437
+    }
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "season": "2025-26",
+  "matches": 192,
+  "evaluated": 162,
+  "evaluation_rule": "both teams have five earlier matches; same-day results excluded",
+  "possession_games": 191,
+  "simulations_per_match": 2000,
+  "parameters": {
+    "prior": 30,
+    "pace_prior": 600,
+    "shock": 0.0,
+    "seed": 0,
+    "selected_by_this_season": false
+  },
+  "metrics": {
+    "possession_simulation": {
+      "matches": 162,
+      "brier": 0.23912993827160492,
+      "favorites": 162,
+      "correct": 101,
+      "ties": 0
+    },
+    "elo_k32": {
+      "matches": 162,
+      "brier": 0.23841929765370015,
+      "favorites": 162,
+      "correct": 92,
+      "ties": 0
+    },
+    "margin_home_locked": {
+      "matches": 162,
+      "brier": 0.23216127092392846,
+      "favorites": 162,
+      "correct": 98,
+      "ties": 0
+    },
+    "home_rate": {
+      "matches": 162,
+      "brier": 0.24752062277132356,
+      "favorites": 162,
+      "correct": 93,
+      "ties": 0
+    },
+    "flat": {
+      "matches": 162,
+      "brier": 0.25,
+      "favorites": 0,
+      "correct": 0,
+      "ties": 162
+    }
+  },
+  "score_errors": {
+    "matches": 162,
+    "margin_mae": 11.526691358024692,
+    "total_mae": 14.046493827160495,
+    "total_bias": -2.3393950617283954,
+    "zero_margin_mae": 12.209876543209877
+  },
+  "calibration": [
+    {
+      "range": "0.0-0.2",
+      "matches": 1,
+      "mean_probability": 0.1935,
+      "home_win_rate": 1
+    },
+    {
+      "range": "0.2-0.4",
+      "matches": 19,
+      "mean_probability": 0.3153684210526316,
+      "home_win_rate": 0.3684210526315789
+    },
+    {
+      "range": "0.4-0.6",
+      "matches": 69,
+      "mean_probability": 0.511768115942029,
+      "home_win_rate": 0.5652173913043478
+    },
+    {
+      "range": "0.6-0.8",
+      "matches": 51,
+      "mean_probability": 0.6952745098039216,
+      "home_win_rate": 0.5686274509803921
+    },
+    {
+      "range": "0.8-1.0",
+      "matches": 22,
+      "mean_probability": 0.85775,
+      "home_win_rate": 0.7727272727272727
+    }
+  ]
+}

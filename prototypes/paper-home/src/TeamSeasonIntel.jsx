@@ -4,7 +4,7 @@ import {useMatches} from './useMatches';
 import {teamSeasonContext,teamSeasonInfo} from './lib/teamSeasonInfo';
 import {routeHref} from './routing';
 import {TeamLogo} from './TeamLogo';
-import {t as translate,locale} from './i18n';
+import {t as translate,locale,ordinal} from './i18n';
 import './team-season-intel.css';
 
 const euro = value => Number.isFinite(value) ? new Intl.NumberFormat(locale(),{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(value) : '—';
@@ -65,7 +65,7 @@ function CoachInfo({info}) {
  return <article className="dash-card team-intel-card team-intel-coach">
   <h4 className="team-intel-title">{translate("Valmennus")}</h4>
   <strong className="team-coach-name">{translate(info.coach)}</strong>
-  <span className="team-coach-role">{translate("Päävalmentaja")}{translate(" · ")}{translate(info.coachSeasons)}{translate(". kausi liigassa")}</span>
+  <span className="team-coach-role">{translate("Päävalmentaja")}{translate(" · ")}{ordinal(info.coachSeasons)}{translate(" kausi liigassa")}</span>
   <p className={`team-coach-status ${coachChanged?'changed':''}`}>{translate(!info.previousCoach?"Ei vertailtavaa aiempaa päävalmentajaa liigassa":coachChanged?"Uusi päävalmentaja": "Päävalmentaja jatkaa")}</p>
   {info.previousCoach&&<div className="team-coach-previous"><span>{translate("Edellinen")}</span><strong>{translate(info.previousCoach)}</strong></div>}
   <p className="team-intel-note team-intel-bottom">{translate("Infopaketti ilmoittaa päävalmentajan, mutta ei koko valmennusryhmän kokoa.")}</p>

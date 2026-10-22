@@ -1,0 +1,872 @@
+{
+  "season": "2025-26",
+  "matches": 161,
+  "simulations_per_match": 400,
+  "history": "2024-25 weight 0.5, earlier 2025-26 days weight 1",
+  "priors": {
+    "usage_minutes": 60,
+    "action": 40,
+    "zone_share": 20,
+    "two_pct": 25,
+    "three_pct": 60,
+    "ft_pct": 20,
+    "per_minute": 80,
+    "team": 150,
+    "pace": 600
+  },
+  "metrics_brier": {
+    "player_simulation": 0.2382,
+    "possession_simulation_v2": 0.2398,
+    "elo_k32": 0.2386,
+    "margin_home_locked": 0.2329
+  },
+  "favorites_correct": {
+    "player_simulation": 90
+  },
+  "margin_mae": 11.52,
+  "total_bias": -1.78,
+  "player_points": {
+    "players": 2889,
+    "mae": 4.63,
+    "correlation": 0.645
+  },
+  "calibration": [
+    {
+      "range": "0.0-0.2",
+      "matches": 1,
+      "mean_probability": 0.198,
+      "home_win_rate": 1
+    },
+    {
+      "range": "0.2-0.4",
+      "matches": 22,
+      "mean_probability": 0.336,
+      "home_win_rate": 0.5
+    },
+    {
+      "range": "0.4-0.6",
+      "matches": 89,
+      "mean_probability": 0.507,
+      "home_win_rate": 0.494
+    },
+    {
+      "range": "0.6-0.8",
+      "matches": 44,
+      "mean_probability": 0.671,
+      "home_win_rate": 0.705
+    },
+    {
+      "range": "0.8-1.0",
+      "matches": 5,
+      "mean_probability": 0.832,
+      "home_win_rate": 1
+    }
+  ],
+  "predictions": [
+    {
+      "match_id": "968663",
+      "player_simulation": 0.525,
+      "home_won": 1
+    },
+    {
+      "match_id": "968762",
+      "player_simulation": 0.785,
+      "home_won": 1
+    },
+    {
+      "match_id": "968696",
+      "player_simulation": 0.5725,
+      "home_won": 1
+    },
+    {
+      "match_id": "968784",
+      "player_simulation": 0.51,
+      "home_won": 1
+    },
+    {
+      "match_id": "968773",
+      "player_simulation": 0.47,
+      "home_won": 1
+    },
+    {
+      "match_id": "968674",
+      "player_simulation": 0.755,
+      "home_won": 1
+    },
+    {
+      "match_id": "968675",
+      "player_simulation": 0.6975,
+      "home_won": 1
+    },
+    {
+      "match_id": "968708",
+      "player_simulation": 0.44,
+      "home_won": 1
+    },
+    {
+      "match_id": "968730",
+      "player_simulation": 0.3625,
+      "home_won": 1
+    },
+    {
+      "match_id": "968741",
+      "player_simulation": 0.3325,
+      "home_won": 1
+    },
+    {
+      "match_id": "968719",
+      "player_simulation": 0.635,
+      "home_won": 0
+    },
+    {
+      "match_id": "968686",
+      "player_simulation": 0.445,
+      "home_won": 0
+    },
+    {
+      "match_id": "968664",
+      "player_simulation": 0.48,
+      "home_won": 0
+    },
+    {
+      "match_id": "968763",
+      "player_simulation": 0.59,
+      "home_won": 1
+    },
+    {
+      "match_id": "968785",
+      "player_simulation": 0.625,
+      "home_won": 1
+    },
+    {
+      "match_id": "968697",
+      "player_simulation": 0.53,
+      "home_won": 1
+    },
+    {
+      "match_id": "968752",
+      "player_simulation": 0.6225,
+      "home_won": 0
+    },
+    {
+      "match_id": "968774",
+      "player_simulation": 0.605,
+      "home_won": 1
+    },
+    {
+      "match_id": "968676",
+      "player_simulation": 0.725,
+      "home_won": 0
+    },
+    {
+      "match_id": "968709",
+      "player_simulation": 0.4725,
+      "home_won": 0
+    },
+    {
+      "match_id": "968665",
+      "player_simulation": 0.565,
+      "home_won": 0
+    },
+    {
+      "match_id": "968687",
+      "player_simulation": 0.375,
+      "home_won": 1
+    },
+    {
+      "match_id": "968731",
+      "player_simulation": 0.5425,
+      "home_won": 0
+    },
+    {
+      "match_id": "968720",
+      "player_simulation": 0.6325,
+      "home_won": 0
+    },
+    {
+      "match_id": "968710",
+      "player_simulation": 0.325,
+      "home_won": 0
+    },
+    {
+      "match_id": "968742",
+      "player_simulation": 0.4975,
+      "home_won": 1
+    },
+    {
+      "match_id": "968786",
+      "player_simulation": 0.505,
+      "home_won": 1
+    },
+    {
+      "match_id": "968753",
+      "player_simulation": 0.5525,
+      "home_won": 0
+    },
+    {
+      "match_id": "968764",
+      "player_simulation": 0.5075,
+      "home_won": 1
+    },
+    {
+      "match_id": "968698",
+      "player_simulation": 0.74,
+      "home_won": 1
+    },
+    {
+      "match_id": "968666",
+      "player_simulation": 0.5975,
+      "home_won": 0
+    },
+    {
+      "match_id": "968677",
+      "player_simulation": 0.56,
+      "home_won": 0
+    },
+    {
+      "match_id": "968732",
+      "player_simulation": 0.695,
+      "home_won": 1
+    },
+    {
+      "match_id": "968775",
+      "player_simulation": 0.4625,
+      "home_won": 0
+    },
+    {
+      "match_id": "968688",
+      "player_simulation": 0.3875,
+      "home_won": 1
+    },
+    {
+      "match_id": "968721",
+      "player_simulation": 0.71,
+      "home_won": 1
+    },
+    {
+      "match_id": "968667",
+      "player_simulation": 0.4575,
+      "home_won": 0
+    },
+    {
+      "match_id": "968678",
+      "player_simulation": 0.6075,
+      "home_won": 0
+    },
+    {
+      "match_id": "968787",
+      "player_simulation": 0.745,
+      "home_won": 1
+    },
+    {
+      "match_id": "968689",
+      "player_simulation": 0.54,
+      "home_won": 0
+    },
+    {
+      "match_id": "968722",
+      "player_simulation": 0.6675,
+      "home_won": 1
+    },
+    {
+      "match_id": "968776",
+      "player_simulation": 0.4125,
+      "home_won": 0
+    },
+    {
+      "match_id": "968711",
+      "player_simulation": 0.2825,
+      "home_won": 0
+    },
+    {
+      "match_id": "968733",
+      "player_simulation": 0.5375,
+      "home_won": 0
+    },
+    {
+      "match_id": "968743",
+      "player_simulation": 0.4125,
+      "home_won": 0
+    },
+    {
+      "match_id": "968699",
+      "player_simulation": 0.6825,
+      "home_won": 1
+    },
+    {
+      "match_id": "968754",
+      "player_simulation": 0.5725,
+      "home_won": 0
+    },
+    {
+      "match_id": "968765",
+      "player_simulation": 0.585,
+      "home_won": 0
+    },
+    {
+      "match_id": "968679",
+      "player_simulation": 0.67,
+      "home_won": 0
+    },
+    {
+      "match_id": "968788",
+      "player_simulation": 0.425,
+      "home_won": 1
+    },
+    {
+      "match_id": "968668",
+      "player_simulation": 0.5225,
+      "home_won": 0
+    },
+    {
+      "match_id": "968690",
+      "player_simulation": 0.46,
+      "home_won": 1
+    },
+    {
+      "match_id": "968766",
+      "player_simulation": 0.8175,
+      "home_won": 1
+    },
+    {
+      "match_id": "968777",
+      "player_simulation": 0.52,
+      "home_won": 0
+    },
+    {
+      "match_id": "968734",
+      "player_simulation": 0.495,
+      "home_won": 0
+    },
+    {
+      "match_id": "968744",
+      "player_simulation": 0.5675,
+      "home_won": 1
+    },
+    {
+      "match_id": "968755",
+      "player_simulation": 0.485,
+      "home_won": 1
+    },
+    {
+      "match_id": "968712",
+      "player_simulation": 0.2975,
+      "home_won": 0
+    },
+    {
+      "match_id": "968700",
+      "player_simulation": 0.545,
+      "home_won": 1
+    },
+    {
+      "match_id": "968723",
+      "player_simulation": 0.53,
+      "home_won": 1
+    },
+    {
+      "match_id": "968701",
+      "player_simulation": 0.8525,
+      "home_won": 1
+    },
+    {
+      "match_id": "968778",
+      "player_simulation": 0.5075,
+      "home_won": 0
+    },
+    {
+      "match_id": "968789",
+      "player_simulation": 0.505,
+      "home_won": 1
+    },
+    {
+      "match_id": "968669",
+      "player_simulation": 0.5375,
+      "home_won": 1
+    },
+    {
+      "match_id": "968767",
+      "player_simulation": 0.59,
+      "home_won": 1
+    },
+    {
+      "match_id": "968680",
+      "player_simulation": 0.505,
+      "home_won": 0
+    },
+    {
+      "match_id": "968713",
+      "player_simulation": 0.21,
+      "home_won": 0
+    },
+    {
+      "match_id": "968724",
+      "player_simulation": 0.615,
+      "home_won": 0
+    },
+    {
+      "match_id": "968735",
+      "player_simulation": 0.4575,
+      "home_won": 0
+    },
+    {
+      "match_id": "968745",
+      "player_simulation": 0.4825,
+      "home_won": 0
+    },
+    {
+      "match_id": "968756",
+      "player_simulation": 0.3925,
+      "home_won": 0
+    },
+    {
+      "match_id": "968691",
+      "player_simulation": 0.5125,
+      "home_won": 1
+    },
+    {
+      "match_id": "968702",
+      "player_simulation": 0.655,
+      "home_won": 1
+    },
+    {
+      "match_id": "968768",
+      "player_simulation": 0.7125,
+      "home_won": 1
+    },
+    {
+      "match_id": "968790",
+      "player_simulation": 0.4425,
+      "home_won": 0
+    },
+    {
+      "match_id": "968670",
+      "player_simulation": 0.3925,
+      "home_won": 0
+    },
+    {
+      "match_id": "968757",
+      "player_simulation": 0.8125,
+      "home_won": 1
+    },
+    {
+      "match_id": "968779",
+      "player_simulation": 0.495,
+      "home_won": 0
+    },
+    {
+      "match_id": "968681",
+      "player_simulation": 0.6725,
+      "home_won": 1
+    },
+    {
+      "match_id": "968746",
+      "player_simulation": 0.47,
+      "home_won": 1
+    },
+    {
+      "match_id": "968725",
+      "player_simulation": 0.4775,
+      "home_won": 1
+    },
+    {
+      "match_id": "968692",
+      "player_simulation": 0.6225,
+      "home_won": 0
+    },
+    {
+      "match_id": "968714",
+      "player_simulation": 0.315,
+      "home_won": 0
+    },
+    {
+      "match_id": "968736",
+      "player_simulation": 0.2675,
+      "home_won": 0
+    },
+    {
+      "match_id": "968703",
+      "player_simulation": 0.5675,
+      "home_won": 1
+    },
+    {
+      "match_id": "968758",
+      "player_simulation": 0.6575,
+      "home_won": 1
+    },
+    {
+      "match_id": "968769",
+      "player_simulation": 0.58,
+      "home_won": 0
+    },
+    {
+      "match_id": "968780",
+      "player_simulation": 0.5775,
+      "home_won": 0
+    },
+    {
+      "match_id": "968791",
+      "player_simulation": 0.3775,
+      "home_won": 1
+    },
+    {
+      "match_id": "968747",
+      "player_simulation": 0.7475,
+      "home_won": 1
+    },
+    {
+      "match_id": "968682",
+      "player_simulation": 0.53,
+      "home_won": 1
+    },
+    {
+      "match_id": "968737",
+      "player_simulation": 0.4175,
+      "home_won": 1
+    },
+    {
+      "match_id": "968781",
+      "player_simulation": 0.54,
+      "home_won": 0
+    },
+    {
+      "match_id": "968671",
+      "player_simulation": 0.7375,
+      "home_won": 0
+    },
+    {
+      "match_id": "968693",
+      "player_simulation": 0.4525,
+      "home_won": 1
+    },
+    {
+      "match_id": "968726",
+      "player_simulation": 0.5475,
+      "home_won": 1
+    },
+    {
+      "match_id": "968704",
+      "player_simulation": 0.54,
+      "home_won": 1
+    },
+    {
+      "match_id": "968715",
+      "player_simulation": 0.36,
+      "home_won": 1
+    },
+    {
+      "match_id": "968759",
+      "player_simulation": 0.5425,
+      "home_won": 1
+    },
+    {
+      "match_id": "968770",
+      "player_simulation": 0.6975,
+      "home_won": 1
+    },
+    {
+      "match_id": "968748",
+      "player_simulation": 0.39,
+      "home_won": 1
+    },
+    {
+      "match_id": "968792",
+      "player_simulation": 0.5375,
+      "home_won": 0
+    },
+    {
+      "match_id": "1000919",
+      "player_simulation": 0.4325,
+      "home_won": 0
+    },
+    {
+      "match_id": "1000929",
+      "player_simulation": 0.6575,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000939",
+      "player_simulation": 0.2925,
+      "home_won": 0
+    },
+    {
+      "match_id": "1000944",
+      "player_simulation": 0.6125,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000954",
+      "player_simulation": 0.365,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000934",
+      "player_simulation": 0.515,
+      "home_won": 0
+    },
+    {
+      "match_id": "1000924",
+      "player_simulation": 0.5075,
+      "home_won": 0
+    },
+    {
+      "match_id": "1000964",
+      "player_simulation": 0.615,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000910",
+      "player_simulation": 0.5375,
+      "home_won": 0
+    },
+    {
+      "match_id": "1000930",
+      "player_simulation": 0.6075,
+      "home_won": 0
+    },
+    {
+      "match_id": "1000960",
+      "player_simulation": 0.565,
+      "home_won": 0
+    },
+    {
+      "match_id": "1000950",
+      "player_simulation": 0.7475,
+      "home_won": 0
+    },
+    {
+      "match_id": "1000936",
+      "player_simulation": 0.565,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000940",
+      "player_simulation": 0.28,
+      "home_won": 0
+    },
+    {
+      "match_id": "1000956",
+      "player_simulation": 0.4275,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000920",
+      "player_simulation": 0.42,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000915",
+      "player_simulation": 0.7025,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000945",
+      "player_simulation": 0.62,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000953",
+      "player_simulation": 0.54,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000961",
+      "player_simulation": 0.5325,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000937",
+      "player_simulation": 0.65,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000911",
+      "player_simulation": 0.5425,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000916",
+      "player_simulation": 0.605,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000957",
+      "player_simulation": 0.53,
+      "home_won": 0
+    },
+    {
+      "match_id": "1000951",
+      "player_simulation": 0.845,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000921",
+      "player_simulation": 0.5025,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000925",
+      "player_simulation": 0.4625,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000931",
+      "player_simulation": 0.43,
+      "home_won": 0
+    },
+    {
+      "match_id": "1000946",
+      "player_simulation": 0.495,
+      "home_won": 0
+    },
+    {
+      "match_id": "1000941",
+      "player_simulation": 0.34,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000917",
+      "player_simulation": 0.5975,
+      "home_won": 0
+    },
+    {
+      "match_id": "1000926",
+      "player_simulation": 0.4025,
+      "home_won": 0
+    },
+    {
+      "match_id": "1000966",
+      "player_simulation": 0.395,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000912",
+      "player_simulation": 0.535,
+      "home_won": 0
+    },
+    {
+      "match_id": "1000952",
+      "player_simulation": 0.71,
+      "home_won": 0
+    },
+    {
+      "match_id": "1000962",
+      "player_simulation": 0.8325,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000965",
+      "player_simulation": 0.4325,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000958",
+      "player_simulation": 0.4175,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000942",
+      "player_simulation": 0.28,
+      "home_won": 0
+    },
+    {
+      "match_id": "1000918",
+      "player_simulation": 0.605,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000938",
+      "player_simulation": 0.5175,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000913",
+      "player_simulation": 0.4725,
+      "home_won": 0
+    },
+    {
+      "match_id": "1000932",
+      "player_simulation": 0.555,
+      "home_won": 0
+    },
+    {
+      "match_id": "1000947",
+      "player_simulation": 0.7825,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000963",
+      "player_simulation": 0.6575,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000967",
+      "player_simulation": 0.4325,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000927",
+      "player_simulation": 0.3825,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000923",
+      "player_simulation": 0.45,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000933",
+      "player_simulation": 0.66,
+      "home_won": 0
+    },
+    {
+      "match_id": "1000968",
+      "player_simulation": 0.5975,
+      "home_won": 0
+    },
+    {
+      "match_id": "1000928",
+      "player_simulation": 0.4125,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000943",
+      "player_simulation": 0.1975,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000948",
+      "player_simulation": 0.5375,
+      "home_won": 0
+    },
+    {
+      "match_id": "1000909",
+      "player_simulation": 0.5025,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000914",
+      "player_simulation": 0.62,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000935",
+      "player_simulation": 0.625,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000949",
+      "player_simulation": 0.525,
+      "home_won": 0
+    },
+    {
+      "match_id": "1000955",
+      "player_simulation": 0.72,
+      "home_won": 1
+    },
+    {
+      "match_id": "1000959",
+      "player_simulation": 0.6125,
+      "home_won": 1
+    }
+  ]
+}

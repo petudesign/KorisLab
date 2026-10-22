@@ -1,0 +1,269 @@
+{
+  "match_id": "1005937",
+  "kickoff": "14.10.2026 · 18:30",
+  "created_at": "13.10.2026 15:47",
+  "source_updated_at": "12.10.2026 11:23",
+  "model_version": "men-margin-v1",
+  "probabilities": {
+    "margin": 0.4725349520197571,
+    "margin_home": 0.5548870300305313
+  },
+  "original_probabilities": {
+    "margin": 0.4725349520197571,
+    "margin_home": 0.5548870300305313
+  },
+  "teams": [
+    {
+      "name": "Salon Vilpas",
+      "logo": "salon-vilpas",
+      "games": 3,
+      "margin_average": 12.333333333333334,
+      "adjusted_margin": 4.625,
+      "evidence": [
+        {
+          "match_id": "1005936",
+          "date": "2026-09-29T18:30:00+03:00",
+          "points_for": 104,
+          "points_against": 107
+        },
+        {
+          "match_id": "1005919",
+          "date": "2026-10-03T18:00:00+03:00",
+          "points_for": 97,
+          "points_against": 79
+        },
+        {
+          "match_id": "1005938",
+          "date": "2026-10-10T18:00:00+03:00",
+          "points_for": 95,
+          "points_against": 73
+        }
+      ]
+    },
+    {
+      "name": "KTP-Basket",
+      "logo": "ktp-basket",
+      "games": 3,
+      "margin_average": 15.0,
+      "adjusted_margin": 5.625,
+      "evidence": [
+        {
+          "match_id": "1005953",
+          "date": "2026-09-29T18:30:00+03:00",
+          "points_for": 87,
+          "points_against": 64
+        },
+        {
+          "match_id": "1005836",
+          "date": "2026-10-03T16:00:00+03:00",
+          "points_for": 84,
+          "points_against": 78
+        },
+        {
+          "match_id": "1005954",
+          "date": "2026-10-09T18:30:00+03:00",
+          "points_for": 88,
+          "points_against": 72
+        }
+      ]
+    }
+  ],
+  "evaluation": {
+    "forecast": {
+      "away": "KTP-Basket",
+      "away_id": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+      "away_prior_games": 3,
+      "created_at": "2026-10-13T12:47:50.985658+00:00",
+      "evaluation_eligible": true,
+      "evidence": [
+        {
+          "away_id": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+          "away_score": 83,
+          "home_id": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+          "home_score": 102,
+          "kickoff": "2026-09-29T18:30:00+03:00",
+          "match_id": "1005902"
+        },
+        {
+          "away_id": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+          "away_score": 107,
+          "home_id": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+          "home_score": 104,
+          "kickoff": "2026-09-29T18:30:00+03:00",
+          "match_id": "1005936"
+        },
+        {
+          "away_id": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+          "away_score": 64,
+          "home_id": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+          "home_score": 87,
+          "kickoff": "2026-09-29T18:30:00+03:00",
+          "match_id": "1005953"
+        },
+        {
+          "away_id": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+          "away_score": 95,
+          "home_id": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+          "home_score": 89,
+          "kickoff": "2026-09-30T18:30:00+03:00",
+          "match_id": "1006004"
+        },
+        {
+          "away_id": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+          "away_score": 77,
+          "home_id": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+          "home_score": 74,
+          "kickoff": "2026-09-30T18:30:00+03:00",
+          "match_id": "1005885"
+        },
+        {
+          "away_id": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+          "away_score": 70,
+          "home_id": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+          "home_score": 76,
+          "kickoff": "2026-10-02T18:30:00+03:00",
+          "match_id": "1005987"
+        },
+        {
+          "away_id": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+          "away_score": 85,
+          "home_id": "815439d4-b169-11f1-bc74-593eff165a09",
+          "home_score": 109,
+          "kickoff": "2026-10-03T16:00:00+03:00",
+          "match_id": "1006021"
+        },
+        {
+          "away_id": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+          "away_score": 84,
+          "home_id": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+          "home_score": 78,
+          "kickoff": "2026-10-03T16:00:00+03:00",
+          "match_id": "1005836"
+        },
+        {
+          "away_id": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+          "away_score": 91,
+          "home_id": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+          "home_score": 99,
+          "kickoff": "2026-10-03T17:00:00+03:00",
+          "match_id": "1005970"
+        },
+        {
+          "away_id": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+          "away_score": 86,
+          "home_id": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+          "home_score": 71,
+          "kickoff": "2026-10-03T17:30:00+03:00",
+          "match_id": "1005853"
+        },
+        {
+          "away_id": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+          "away_score": 97,
+          "home_id": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+          "home_score": 79,
+          "kickoff": "2026-10-03T18:00:00+03:00",
+          "match_id": "1005919"
+        },
+        {
+          "away_id": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+          "away_score": 73,
+          "home_id": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+          "home_score": 72,
+          "kickoff": "2026-10-06T18:30:00+03:00",
+          "match_id": "1005837"
+        },
+        {
+          "away_id": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+          "away_score": 67,
+          "home_id": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+          "home_score": 88,
+          "kickoff": "2026-10-06T18:30:00+03:00",
+          "match_id": "1006005"
+        },
+        {
+          "away_id": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+          "away_score": 96,
+          "home_id": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+          "home_score": 97,
+          "kickoff": "2026-10-06T18:30:00+03:00",
+          "match_id": "1005971"
+        },
+        {
+          "away_id": "815439d4-b169-11f1-bc74-593eff165a09",
+          "away_score": 89,
+          "home_id": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+          "home_score": 80,
+          "kickoff": "2026-10-06T18:30:00+03:00",
+          "match_id": "1005886"
+        },
+        {
+          "away_id": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+          "away_score": 85,
+          "home_id": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+          "home_score": 91,
+          "kickoff": "2026-10-07T18:30:00+03:00",
+          "match_id": "1005869"
+        },
+        {
+          "away_id": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+          "away_score": 56,
+          "home_id": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+          "home_score": 84,
+          "kickoff": "2026-10-09T18:30:00+03:00",
+          "match_id": "1005988"
+        },
+        {
+          "away_id": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+          "away_score": 72,
+          "home_id": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+          "home_score": 88,
+          "kickoff": "2026-10-09T18:30:00+03:00",
+          "match_id": "1005954"
+        },
+        {
+          "away_id": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+          "away_score": 108,
+          "home_id": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+          "home_score": 99,
+          "kickoff": "2026-10-10T15:00:00+03:00",
+          "match_id": "1005903"
+        },
+        {
+          "away_id": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+          "away_score": 95,
+          "home_id": "815439d4-b169-11f1-bc74-593eff165a09",
+          "home_score": 98,
+          "kickoff": "2026-10-10T17:00:00+03:00",
+          "match_id": "1006022"
+        },
+        {
+          "away_id": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+          "away_score": 73,
+          "home_id": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+          "home_score": 95,
+          "kickoff": "2026-10-10T18:00:00+03:00",
+          "match_id": "1005938"
+        }
+      ],
+      "feature": -0.1,
+      "home": "Salon Vilpas",
+      "home_id": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+      "home_prior_games": 3,
+      "input_signature": "93c017d1e6ca855bce9fad9c00e3120bc7a08e907a2893ff953a2c67b9f35336",
+      "kickoff": "2026-10-14T18:30:00+03:00",
+      "match_id": "1005937",
+      "model_sha256": "5760dc1a4d881fa34a8df705b05d1aa827046636086b3003c09648209688f412",
+      "model_version": "men-margin-v1",
+      "probabilities": {
+        "margin": 0.4725349520197571,
+        "margin_home": 0.5548870300305313
+      },
+      "record_id": "4e0ed6d77f93ce1c0e93e80e225837fc1593acecf69179953f0d397d353114cc",
+      "source_sha256": "7b1bcf3ce7a6ae4ef0e79951e4e3c2072a5d27ad1ee53c122782b311ff90e39f"
+    },
+    "home_score": 81,
+    "away_score": 102
+  },
+  "prior_games": 5,
+  "feature_divisor": 10
+}

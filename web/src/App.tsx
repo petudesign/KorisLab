@@ -25,13 +25,13 @@ import { SeasonShotDistance } from "./ShotDistanceProfile";
 import { Icon, type IconName } from "./Icon";
 import { parseQuarterStats, quarterValue, type QuarterStats, type ScratchMetricKey, type ScratchPeriodKey } from "./quarterStats";
 import { CurrentSeasonMatches, CurrentSeasonPending } from "./CurrentSeason";
-import { MatchPreview } from "./MatchPreview";
 import { DecryptedText } from "./DecryptedText";
 import { playerDisplayName } from "./playerName";
 import { QuerySearch } from "./QuerySearch";
 import { MatchupLab } from "./MatchupLab";
 import { MatchReplay, useMatchReplay } from "./MatchReplay";
 import { MatchStory } from "./MatchStory";
+import { MatchPreview } from "./MatchPreview";
 import { LiveSeason } from "./LiveSeason";
 import { resolveBasketballQuery, type QueryFeedback, type QueryResolution, type QueryTarget } from "./basketballQuery";
 import { AnalysesIndex, AnalysisArticlePage } from "./AnalysisArticles";
@@ -2052,7 +2052,7 @@ function App() {
             </>
           )}
 
-          {!route.previewPanel && view === "data" && <section className="panel detail-panel"><div className="panel-heading"><div><span className="section-kicker">{tr("Datan tiedot", "Data details")}</span><h3>{tr("Ottelun datan saatavuus", "Game data availability")}</h3></div><span className="source-id">{tr("Ottelu-ID", "Game ID")} {activeMatch.sourceMatchId}</span></div><p className="detail-intro">{tr("KorisLab ei täytä puuttuvia arvoja nollilla. Jokainen analyysi rakentuu saatavilla olevien tilastokenttien varaan.", "KorisLab does not fill missing values with zeros. Each analysis is built on the statistics fields available.")}</p><div className="availability-list">{displayedAvailability.map((item) => <div className="availability-row" key={item.label}><span className={`availability-icon ${item.tone}`}><Icon name={item.tone === "ready" ? "check" : item.tone === "warning" ? "warning" : "minus"} size={15} /></span><div><strong>{item.label}</strong><span>{item.detail}</span></div><em className={item.tone}>{item.value}</em></div>)}</div><div className="data-footnote"><span className="status-dot" /> {tr("Ottelutilastot tarkistettu tuonnissa", "Game statistics validated during import")}</div></section>}
+          {view === "data" && <section className="panel detail-panel"><div className="panel-heading"><div><span className="section-kicker">{tr("Datan tiedot", "Data details")}</span><h3>{tr("Ottelun datan saatavuus", "Game data availability")}</h3></div><span className="source-id">{tr("Ottelu-ID", "Game ID")} {activeMatch.sourceMatchId}</span></div><p className="detail-intro">{tr("KorisLab ei täytä puuttuvia arvoja nollilla. Jokainen analyysi rakentuu saatavilla olevien tilastokenttien varaan.", "KorisLab does not fill missing values with zeros. Each analysis is built on the statistics fields available.")}</p><div className="availability-list">{displayedAvailability.map((item) => <div className="availability-row" key={item.label}><span className={`availability-icon ${item.tone}`}><Icon name={item.tone === "ready" ? "check" : item.tone === "warning" ? "warning" : "minus"} size={15} /></span><div><strong>{item.label}</strong><span>{item.detail}</span></div><em className={item.tone}>{item.value}</em></div>)}</div><div className="data-footnote"><span className="status-dot" /> {tr("Ottelutilastot tarkistettu tuonnissa", "Game statistics validated during import")}</div></section>}
           </>}
           </div>
           </>}

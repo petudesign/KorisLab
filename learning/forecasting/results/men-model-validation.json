@@ -1,0 +1,25 @@
+{
+  "training_season": "2024-25",
+  "training_rows": 191,
+  "training_samples": 161,
+  "validation_season": "2025-26",
+  "validation_rows": 192,
+  "metrics": {
+    "margin": {
+      "matches": 192,
+      "brier": 0.2398532925086677,
+      "favorites": 186,
+      "correct": 106,
+      "ties": 6
+    },
+    "margin_home": {
+      "matches": 192,
+      "brier": 0.23321295155905797,
+      "favorites": 192,
+      "correct": 115,
+      "ties": 0
+    }
+  },
+  "validation_source_sha256": "9178f4f6b846a63448c6ccfcfb02ae99a949293779ab302f981bf5fd1b7de283",
+  "parameters_selected_by_validation": false
+}

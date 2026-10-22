@@ -57,3 +57,7 @@
 .dashboard-expanded .highlight-tooltip-date{font-size:9px}
 .overview-dashboard .season-highlight{overflow:clip}
 .season-highlight::after{bottom:0;right:0}
+.highlight-trend-missing{stroke:#8a8a94;stroke-width:1;stroke-dasharray:2 3;vector-effect:non-scaling-stroke}
+.highlight-trend-missing.active{stroke:#c4c4cc}
+.highlight-zero-line{stroke:#5a5a63;stroke-width:1;opacity:.35;vector-effect:non-scaling-stroke}
+.highlight-trend-x{fill:none;stroke:var(--highlight-accent);stroke-width:1.6;stroke-linecap:round;vector-effect:non-scaling-stroke}

@@ -1,5 +1,5 @@
 import {useEffect,useState} from 'react';
-export const sectionPaths={'Design system':'/design-system/','Haku':'/search/','Etusivu':'/','Yleiskatsaus':'/overview/','Ottelut':'/matches/','Joukkueet':'/teams/','Pelaajat':'/players/','Kausitrendit':'/season/','Analyysit':'/analyysit/','Matchup Lab':'/matchup/','Custom import':'/custom-import/','Datan tila':'/data/'};
+export const sectionPaths={'Design system':'/design-system/','Haku':'/search/','Etusivu':'/','Yleiskatsaus':'/overview/','Ottelut':'/matches/','Joukkueet':'/teams/','Pelaajat':'/players/','Kausitrendit':'/season/','Analyysit':'/analyysit/','Matchup Lab':'/matchup/','Sim Studio':'/sim/','Custom import':'/custom-import/','Datan tila':'/data/'};
 export const slug=name=>name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('fi').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 const decodeId=value=>{try{return decodeURIComponent(value);}catch{return null;}};
 export function readRoute(defaults,location=window.location){
