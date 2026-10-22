@@ -25,8 +25,8 @@ export function parseRoute(pathname: string, search = ""): AppRoute {
     view: page[0] as ViewKey,
     ...(page[0] === "ask" ? { askQuery: new URLSearchParams(search).get("q") ?? "" } : {}),
     ...(page[0] === "matchup" ? {
-      comparePlayerA: new URLSearchParams(search).get("playerA") ?? undefined,
-      comparePlayerB: new URLSearchParams(search).get("playerB") ?? undefined,
+      comparePlayerA: new URLSearchParams(search).get("playerA") || undefined,
+      comparePlayerB: new URLSearchParams(search).get("playerB") || undefined,
     } : {}),
     ...scope,
   };
