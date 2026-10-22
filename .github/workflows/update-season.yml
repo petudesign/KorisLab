@@ -10,6 +10,7 @@ on:
       - "analytics/**"
       - "ingestion/**"
       - "normalization/**"
+      - "simulation/**"
       - "tests/**"
       - "validation/**"
   schedule:
@@ -47,6 +48,8 @@ jobs:
         run: python -m ingestion.publish_season
       - name: Refresh Korisliiga schedule and verified statistics
         run: python -m ingestion.publish_season --category-id 4 --group-id 303022 --out web/public/korisliiga/season-2026-27.json
+      - name: Simulate upcoming Korisliiga games
+        run: python -m simulation.refresh
       - name: Commit the public snapshot
         run: |
           git add web/public/season-2026-27.json web/public/shots web/public/quarters-2026-27.json web/public/assists-2026-27.json web/public/player-shots-2026-27.json web/public/replays web/public/korisliiga

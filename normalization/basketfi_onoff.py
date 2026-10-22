@@ -21,7 +21,10 @@ def clock_seconds(clock):
     return int(match[1] or 0) * 60 + float(match[2] or 0)
 
 
-def reconstruct_game(payload, record, *, playing_time_tolerance_seconds=PLAYING_TIME_TOLERANCE_SECONDS, diagnostics=None):
+def reconstruct_game(payload, record, *, playing_time_tolerance_seconds=PLAYING_TIME_TOLERANCE_SECONDS, diagnostics=None,
+                     on_event=None):
+    """`on_event(period, event, seconds, lineups)` sees every non-substitution event in
+    processing order; lineups is a frozen snapshot for statistical events, else None."""
     if not isfinite(playing_time_tolerance_seconds) or playing_time_tolerance_seconds < 0:
         raise ValueError("Invalid playing-time tolerance")
     diagnostics = diagnostics if diagnostics is not None else {}
@@ -119,6 +122,8 @@ def reconstruct_game(payload, record, *, playing_time_tolerance_seconds=PLAYING_
             elif kind in ("assist", "turnover", "steal", "block"):
                 increments[{"assist": "assists", "turnover": "turnovers", "steal": "steals", "block": "blocks"}[kind]] = 1
             else:
+                if on_event:
+                    on_event(int(key), event, seconds, None)
                 continue
             require_lineups()
             if tid not in teams:
@@ -141,6 +146,8 @@ def reconstruct_game(payload, record, *, playing_time_tolerance_seconds=PLAYING_
                     unavailable_stats.update(increments)
                 else:
                     raise ValueError("Statistical player is not on court; same-clock lineup is unresolved")
+            if on_event:
+                on_event(int(key), event, seconds, {t: frozenset(p) for t, p in event_lineups.items()})
             for stat, value in increments.items():
                 totals[tid][stat] += value
                 for player_team, players in states.items():
