@@ -1,7 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot, type Root } from "react-dom/client";
 import App from "./App";
-import "./index.css";
 import { LanguageProvider } from "./i18n";
 import { SeasonProvider } from "./SeasonContext";
 

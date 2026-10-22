@@ -2560,6 +2560,7 @@ a.player-leader-card:hover { border-color: var(--mint); }
 .profile-phase-toggle button[aria-pressed="true"] { background: var(--surface); color: var(--soft); box-shadow: 0 1px 3px #0003; }
 .profile-phase-toggle button:focus-visible { outline: 2px solid var(--mint); outline-offset: 2px; }
 .profile-discovery-summary { max-width: 760px; margin: 0 0 16px; padding: 16px 18px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.player-profile-actions { display: flex; justify-content: flex-start; margin: -4px 0 14px; }
 .player-season-comparison { --profile-metric-accent: #c9a7ff; margin-bottom: 18px; padding: 22px; }
 :root[data-theme="light"] .player-season-comparison { --profile-metric-accent: #7859a8; }
 .player-season-comparison .panel-heading { gap: 16px; }
@@ -3076,6 +3077,18 @@ select.language-toggle { width: 58px; min-width: 58px; padding-left: 9px; paddin
 .matchup-table .matchup-weaker { color: var(--danger-strong); }
 .matchup-difference { color: var(--muted); }
 .matchup-table tbody tr:last-child > * { border-bottom: 0; }
+.matchup-head-to-head { padding: 22px; }
+.matchup-head-to-head .panel-heading { margin-bottom: 18px; }
+.matchup-head-to-head-list { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.matchup-head-to-head-row { display: grid; grid-template-columns: minmax(140px, .7fr) minmax(0, 2fr); align-items: center; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.matchup-head-to-head-row:last-child { border-bottom: 0; }
+.matchup-head-to-head-meta { display: grid; gap: 4px; color: var(--soft); font-size: 13px; }
+.matchup-head-to-head-meta small { color: var(--muted); font-size: 11px; }
+.matchup-head-to-head-scoreline { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 12px; font-size: 13px; }
+.matchup-head-to-head-scoreline > :last-child { text-align: right; }
+.matchup-head-to-head-scoreline strong { color: var(--soft); font-size: 16px; font-variant-numeric: tabular-nums; }
+.matchup-head-to-head-winner { color: var(--success-strong); font-weight: 650; }
+.matchup-head-to-head-note { margin: 14px 0 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
 @media (max-width: 720px) {
   .topbar { height: 64px; padding-inline: 12px; gap: 12px; }
   .topbar-actions > .language-toggle, .topbar-actions > .theme-toggle { display: none; }
@@ -3116,6 +3129,10 @@ select.language-toggle { width: 58px; min-width: 58px; padding-left: 9px; paddin
   .matchup-controls { grid-template-columns: 1fr; gap: 12px; }
   .matchup-toolbar > .matchup-control { width: 100%; }
   .matchup-scroll-hint { display: block; margin: 0 0 10px; color: var(--muted); font-size: 11px; }
+  .matchup-head-to-head { padding: 16px; }
+  .matchup-head-to-head-row { grid-template-columns: 1fr; gap: 8px; }
+  .matchup-head-to-head-scoreline { gap: 8px; font-size: 12px; }
+  .matchup-head-to-head-scoreline strong { font-size: 14px; }
 }
 /* The replay is deliberately static until playback is requested. */
 .replay-panel { margin-bottom: 24px; min-width: 0; padding: 24px; }
@@ -3533,4 +3550,37 @@ select.language-toggle { width: 58px; min-width: 58px; padding-left: 9px; paddin
   .analysis-chart-legend { justify-content: flex-start; }
   .analysis-quarter-chart { gap: 6px; margin-top: 17px; }
   .analysis-quarter-bars { min-height: 110px; }
+}
+
+.match-preview { display: grid; gap: 18px; }
+.match-preview-score, .match-preview-context { min-width: 0; padding: clamp(18px, 3vw, 30px); }
+.match-preview-score { text-align: center; }
+.match-preview-eyebrow { color: var(--mint); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.match-preview-score h2 { margin: 10px 0 4px; font-size: clamp(24px, 4vw, 36px); }
+.match-preview-score > p { margin: 0; color: var(--muted); }
+.match-preview-live-score { display: block; margin-top: 12px; font-size: 30px; font-variant-numeric: tabular-nums; }
+.match-preview-table-wrap { overflow-x: auto; }
+.match-preview-table { width: 100%; border-collapse: collapse; text-align: right; }
+.match-preview-table th, .match-preview-table td { padding: 12px 10px; border-bottom: 1px solid var(--line); }
+.match-preview-table thead th { color: var(--soft); font-size: 13px; }
+.match-preview-table th:first-child { text-align: left; }
+.match-preview-table tbody th { color: var(--muted); font-size: 13px; font-weight: 500; }
+.match-preview-table td { color: var(--soft); font-size: 16px; font-variant-numeric: tabular-nums; font-weight: 700; }
+.match-preview-table td small { display: block; margin-top: 3px; color: var(--muted); font-size: 11px; font-weight: 400; }
+.match-preview-recent { margin-top: 24px; }
+.match-preview-recent > h3 { font-size: 16px; }
+.match-preview-recent-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.match-preview-recent-columns h4 { margin-bottom: 8px; font-size: 14px; }
+.match-preview-recent-columns ol { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.match-preview-recent-columns li button { display: grid; grid-template-columns: 28px 1fr auto; align-items: center; width: 100%; gap: 8px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--soft); text-align: left; cursor: pointer; }
+.match-preview-recent-columns li button:hover { border-color: var(--mint); }
+.match-preview-recent-columns li button > span { color: var(--muted); font-size: 11px; }
+.match-preview-recent-columns li button > span[data-result="win"] { color: var(--success-strong); }
+.match-preview-recent-columns li button > span[data-result="loss"] { color: var(--muted); }
+.match-preview-recent-columns li button small { color: var(--muted); font-size: 11px; }
+.match-preview-recent-columns > section > p { color: var(--muted); font-size: 13px; }
+.match-preview-method { margin: 18px 0 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+@media (max-width: 620px) {
+  .match-preview-recent-columns { grid-template-columns: 1fr; }
+  .match-preview-table { min-width: 420px; }
 }
