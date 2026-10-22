@@ -1,0 +1,296 @@
+{
+  "BC Nokia": {
+    "name_fi": "BC Nokia",
+    "city_fi": "Nokia",
+    "logo_url": "https://images.dc.connect.sportradar.com/b1ebt/49efc118c8594c4db8c3505f65a71854",
+    "src": "/logos/bc-nokia.png",
+    "bounds": [
+      100,
+      100,
+      0,
+      1,
+      100,
+      99
+    ]
+  },
+  "Bisons Loimaa": {
+    "name_fi": "Bisons Loimaa",
+    "city_fi": "Loimaa",
+    "logo_url": "https://images.dc.connect.sportradar.com/b1ebt/5ff7b257558b436f8601baf462ed1422",
+    "src": "/logos/bisons-loimaa.png",
+    "bounds": [
+      100,
+      100,
+      9,
+      0,
+      91,
+      100
+    ]
+  },
+  "Helsinki Seagulls": {
+    "name_fi": "Helsinki Seagulls",
+    "city_fi": "Helsinki",
+    "logo_url": "https://images.dc.connect.sportradar.com/b1ebt/6af95347d4c941288180db470cdfbce5",
+    "src": "/logos/helsinki-seagulls.png",
+    "bounds": [
+      100,
+      100,
+      0,
+      8,
+      100,
+      92
+    ]
+  },
+  "Kataja Basket": {
+    "name_fi": "Kataja Basket",
+    "city_fi": "Joensuu",
+    "logo_url": "https://images.dc.connect.sportradar.com/b1ebt/8e96253509044a3e8dae3e73dea90eb3",
+    "src": "/logos/kataja-basket.png",
+    "bounds": [
+      100,
+      100,
+      0,
+      29,
+      100,
+      71
+    ]
+  },
+  "Kauhajoki": {
+    "name_fi": "Kauhajoki",
+    "city_fi": "Kauhajoki",
+    "logo_url": "https://images.dc.connect.sportradar.com/b1ebt/a43c4b6befba49f6a53d20ab9aca3d1e",
+    "src": "/logos/kauhajoki.png",
+    "bounds": [
+      100,
+      100,
+      5,
+      0,
+      95,
+      100
+    ]
+  },
+  "Kobrat": {
+    "name_fi": "Kobrat",
+    "city_fi": "Lapua",
+    "logo_url": "https://images.dc.connect.sportradar.com/b1ebt/870ff7900e0f47fd993901275d419ad7",
+    "src": "/logos/kobrat.png",
+    "bounds": [
+      100,
+      100,
+      0,
+      6,
+      100,
+      94
+    ]
+  },
+  "Korihait": {
+    "name_fi": "Korihait",
+    "city_fi": "Uusikaupunki",
+    "logo_url": "https://images.dc.connect.sportradar.com/b1ebt/76471754e398473da68d538b9affc022",
+    "src": "/logos/korihait.png",
+    "bounds": [
+      100,
+      100,
+      0,
+      15,
+      100,
+      85
+    ]
+  },
+  "Kouvot": {
+    "name_fi": "Kouvot",
+    "city_fi": "Kouvola",
+    "logo_url": "https://images.dc.connect.sportradar.com/b1ebt/951cfc00efe14842b0e51f0f46591fba",
+    "src": "/logos/kouvot.png",
+    "bounds": [
+      100,
+      100,
+      0,
+      0,
+      100,
+      100
+    ]
+  },
+  "KTP-Basket": {
+    "name_fi": "KTP-Basket",
+    "city_fi": "Kotka",
+    "logo_url": "https://images.dc.connect.sportradar.com/b1ebt/45518c2dc54f462eab40e333c43407ed",
+    "src": "/logos/ktp-basket.png",
+    "bounds": [
+      100,
+      100,
+      0,
+      0,
+      100,
+      100
+    ]
+  },
+  "Lahti Basketball": {
+    "name_fi": "Lahti Basketball",
+    "city_fi": "Lahti",
+    "logo_url": "https://images.dc.connect.sportradar.com/b1ebt/ed380aa690634e83a04735831db85412",
+    "src": "/logos/lahti-basketball.png",
+    "bounds": [
+      100,
+      100,
+      6,
+      0,
+      94,
+      100
+    ]
+  },
+  "Salon Vilpas": {
+    "name_fi": "Salon Vilpas",
+    "city_fi": "Salo",
+    "logo_url": "https://images.dc.connect.sportradar.com/b1ebt/621e9fa355f34cacb38cc03aaf764269",
+    "src": "/logos/salon-vilpas.png",
+    "bounds": [
+      100,
+      100,
+      9,
+      3,
+      90,
+      96
+    ]
+  },
+  "Tampereen Pyrintö": {
+    "name_fi": "Tampereen Pyrintö",
+    "city_fi": "Tampere",
+    "logo_url": "https://images.dc.connect.sportradar.com/b1ebt/a09a09d42f854b43ba6f09bf64ea20d7",
+    "src": "/logos/tampereen-pyrinto.png",
+    "bounds": [
+      100,
+      100,
+      0,
+      0,
+      100,
+      100
+    ]
+  },
+  "Tapiolan Honka": {
+    "name_fi": "Tapiolan Honka",
+    "city_fi": "Espoo",
+    "logo_url": "https://images.dc.connect.sportradar.com/b1ebt/25725d22cfec4807be16d464a29c07c1",
+    "src": "/logos/tapiolan-honka.png",
+    "bounds": [
+      100,
+      100,
+      0,
+      0,
+      100,
+      100
+    ]
+  },
+  "Kipinä Basket": {
+    "name_fi": "Kipinä Basket",
+    "city_fi": null,
+    "logo_url": "https://images.dc.connect.sportradar.com/b1ebt/5c78b435a9ef47fcbb2cb12df96bb4cb",
+    "src": "/logos/kipina-basket.png",
+    "bounds": [
+      100,
+      100,
+      11,
+      0,
+      89,
+      100
+    ]
+  },
+  "Espoo Basket Team": {
+    "name_fi": "Espoo Basket Team",
+    "city_fi": "Espoo",
+    "logo_url": "https://images.dc.connect.sportradar.com/b1ebt/16abca57256141a0ab3778b9a13f7c61",
+    "src": "/logos/espoo-basket-team.png",
+    "bounds": [
+      100,
+      100,
+      0,
+      18,
+      99,
+      82
+    ]
+  },
+  "Forssan Alku": {
+    "name_fi": "Forssan Alku",
+    "city_fi": "Forssa",
+    "logo_url": "https://images.dc.connect.sportradar.com/b1ebt/8d03f6f8637f4c38975390f82b0f25ba",
+    "src": "/logos/forssan-alku.png",
+    "bounds": [
+      100,
+      100,
+      0,
+      16,
+      100,
+      84
+    ]
+  },
+  "HBA-Märsky": {
+    "name_fi": "HBA-Märsky",
+    "city_fi": "Helsinki",
+    "logo_url": "https://images.dc.connect.sportradar.com/b1ebt/cfb114813a7944bcac082782b72238b1",
+    "src": "/logos/hba-marsky.png",
+    "bounds": [
+      100,
+      100,
+      0,
+      0,
+      100,
+      100
+    ]
+  },
+  "Kouvottaret": {
+    "name_fi": "Kouvottaret",
+    "city_fi": "Kouvola",
+    "logo_url": "https://www.kouvottaret.fi/wp-content/uploads/2021/09/cropped-cropped-cropped-kouvottaret_logo_tp-300x247.png",
+    "src": "/logos/kouvottaret.png",
+    "bounds": [
+      300,
+      247,
+      10,
+      3,
+      293,
+      244
+    ]
+  },
+  "Peli-Karhut": {
+    "name_fi": "Peli-Karhut",
+    "city_fi": "Kotka",
+    "logo_url": "https://images.dc.connect.sportradar.com/b1ebt/3c42299630ed445e9289b1365656b67f",
+    "src": "/logos/peli-karhut.png",
+    "bounds": [
+      100,
+      100,
+      6,
+      0,
+      94,
+      100
+    ]
+  },
+  "ToPo": {
+    "name_fi": "ToPo",
+    "city_fi": "Helsinki",
+    "logo_url": "https://images.dc.connect.sportradar.com/b1ebt/e468733df27645cda332984aa51b8476",
+    "src": "/logos/topo.png",
+    "bounds": [
+      100,
+      100,
+      0,
+      0,
+      100,
+      100
+    ]
+  },
+  "Vimpelin Veto": {
+    "name_fi": "Vimpelin Veto",
+    "city_fi": "Vimpeli",
+    "logo_url": "https://images.dc.connect.sportradar.com/b1ebt/2bab5b3c5ccc405abb26eec6e5b75e7e",
+    "src": "/logos/vimpelin-veto.png",
+    "bounds": [
+      100,
+      100,
+      0,
+      0,
+      99,
+      100
+    ]
+  }
+}

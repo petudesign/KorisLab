@@ -1,0 +1,52 @@
+import {readFileSync,writeFileSync,mkdirSync,cpSync,rmSync} from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {aggregateSeasonPlayers,playerPerGame} from '../src/lib/playerStats.ts';
+import {seasonTeams,teamSeasonSummary} from '../src/lib/teamProfiles.js';
+import {escapeHtml as e,scopeKey,SITE_ORIGIN,sitemap} from '../server/seo.mjs';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const seasons=JSON.parse(readFileSync(path.join(root,'source/seasons.json')));
+const slug=n=>n.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('fi').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+const fmt=n=>Number.isFinite(n)?n.toLocaleString('fi-FI',{maximumFractionDigits:1,minimumFractionDigits:1}):'—';
+const manifest={defaultSeason:'2026-27',seasons:['2026-27','2025-26','2024-25'],pages:{}};
+const source='<p><a href="https://tulospalvelu.basket.fi/">Lähde: Basket.fi:n tulospalvelu</a>. Tilastot perustuvat tallennettuun kausiaineistoon, eivät reaaliaikaiseen syötteeseen. Puuttuva tieto merkitään viivalla.</p>';
+for(const [league,datasets] of Object.entries(seasons))for(const [season,d] of Object.entries(datasets)){
+ const name=league==='men'?'Miesten Korisliiga':'Naisten Korisliiga',scope=`${name} ${season.replace('-','–')}`;
+ const games=JSON.parse(readFileSync(path.join(root,'public',d.matchesUrl)));
+ const records=games.filter(g=>g.verified).map(g=>({game:{source_id:g.id},teams:g.teams.map(t=>({...t,source_id:t.id,home_away:t.side,players:t.players.map(p=>({...p,source_player_id:p.id,display_name:p.name,minutes:p.minutesValue}))}))}));
+ const players=aggregateSeasonPlayers(records),teams=seasonTeams(d,games);
+ const href=p=>scopeKey(p,season,league),link=(p,label)=>`<a href="${e(href(p))}">${e(label)}</a>`;
+ const nav='<nav>'+[['/overview/','Yleiskatsaus'],['/matches/','Ottelut'],['/teams/','Joukkueet'],['/players/','Pelaajat'],['/season/','Kausitrendit'],['/matchup/','Matchup Lab']].map(([p,l])=>link(p,l)).join(' · ')+'</nav>';
+ const add=(p,title,description,body,type='WebPage',entity=null,indexable=true)=>{
+  const url=SITE_ORIGIN+href(p),crumbs=[{name:'KorisLab',item:SITE_ORIGIN+href('/')}];
+  if(p!=='/')crumbs.push({name:title,item:url});
+  const structured={'@context':'https://schema.org','@graph':[{'@type':type,'@id':url+'#page',url,name:title,description,inLanguage:'fi',isPartOf:{'@id':SITE_ORIGIN+'/#website'},...(entity?{mainEntity:entity}:{})},{'@type':'WebSite','@id':SITE_ORIGIN+'/#website',name:'KorisLab',url:SITE_ORIGIN+'/',description:'Suomalaisen koripallon tilastot ja analyysit: Naisten Korisliiga ja Miesten Korisliiga.',inLanguage:['fi','en']},{'@type':'BreadcrumbList',itemListElement:crumbs.map((c,i)=>({'@type':'ListItem',position:i+1,...c}))}]};
+  manifest.pages[href(p)]={title,description,indexable,structured,summary:`${nav}<h1>${e(title)}</h1><p>${e(description)}</p>${body}<h2>Aineisto ja laskenta</h2><p>${e(scope)} · ${d.aggregate.games} tilastoitua ottelua.${d.updatedAt?' Aineiston päivitys: '+e(d.updatedAt)+'.':''} Kausivalinta koskee kaikkia lukuja tällä sivulla. Keskiarvojen yhteydessä tarkista ottelumäärä; pieni otos ei kuvaa vakiintunutta tasoa.</p>${source}`};
+ };
+ const teamPath=t=>`/teams/${league==='men'?'korisliiga':'naisten-korisliiga'}/${slug(t.name)}/`;
+ const teamList='<ul>'+teams.map(t=>'<li>'+link(teamPath(t),t.name)+'</li>').join('')+'</ul>';
+ const playerList='<ul>'+players.map(p=>`<li>${link('/players/'+p.id+'/',p.name)} · ${e(p.team)} · ${p.games} ottelua · ${fmt(playerPerGame(p,'points'))} pistettä / ottelu</li>`).join('')+'</ul>';
+ const gameList='<ul>'+games.slice().sort((a,b)=>String(b.date).localeCompare(String(a.date))).map(g=>`<li>${link('/matches/'+g.id+'/',g.teams.map(t=>t.name).join(' – '))} · ${e(g.date?.slice(0,10)||'Päivä puuttuu')} · ${g.verified?g.teams.map(t=>t.score).join('–'):'Otteluohjelma / ennakko'}</li>`).join('')+'</ul>';
+ add('/','Suomalainen koripallo, datan kautta',`KorisLab tarjoaa Naisten ja Miesten Korisliigan pelaajatilastot, joukkuevertailut, ottelutulokset ja kausitrendit. Valittuna ${scope}.`,'<h2>Mitä KorisLabissa voi tutkia?</h2><p>Vertaa pelaajien pisteitä, levypalloja ja syöttöjä, tarkastele joukkueiden pelitapoja ja selvitä otteluiden eroja. Heittokartat ja tapahtuma-aikajanat ovat saatavilla aineiston kattavuuden mukaan.</p><h2>Mistä löydän Korisliigan tilastot?</h2><p>Pelaajatilastot, joukkueprofiilit ja ottelusivut löytyvät yllä olevista linkeistä. KorisLab on riippumaton analyysipalvelu; otteluiden lähdeaineisto tulee Basket.fi:stä.</p>'+teamList);
+ add('/overview/',`Yleiskatsaus · ${scope}`,`${scope}: sarjan tilastot, joukkueiden tehokkuus ja kauden nostot.`,teamList);
+ add('/teams/',`Joukkueet · ${scope}`,`${scope}: joukkueprofiilit, hyökkäys- ja puolustustehokkuus sekä ottelut.`,teamList,'CollectionPage');
+ add('/players/',`Pelaajat · ${scope}`,`${scope}: pelaajien pisteet, levypallot ja syötöt ottelua kohti.`,playerList,'CollectionPage');
+ add('/matches/',`Ottelut · ${scope}`,`${scope}: ottelutulokset, tulevat ottelut ja varmennetut ottelutilastot.`,gameList,'CollectionPage');
+ add('/season/',`Kausitrendit · ${scope}`,`${scope}: tilastokehitys ja viimeisten otteluiden trendit.`, '<p>eFG % huomioi kolmosten lisäarvon: (2P-onnistumiset + 1,5 × 3P-onnistumiset) / pelitilanneheittoyritykset. Hyökkäys- ja puolustustehokkuus esitetään pisteinä sataa arvioitua pallonhallintaa kohti.</p>'+teamList);
+ add('/sim/',`Sim Studio · ${scope}`,'Miesten Korisliigan tulevat ottelut simuloituna tuhat kertaa: voittotodennäköisyys, miten voitot syntyvät ja yksi simuloitu peli kentällä.','<p>Simulaatio pelaa ottelun hallinta kerrallaan oikeilla pelaajilla. Tapahtumat ovat mallin tuottamia, eivät ennuste yksittäisistä tapahtumista.</p>'+nav,'WebPage',null,false);
+ add('/matchup/',`Matchup Lab · ${scope}`,`Vertaa ${scope}-kauden joukkueita ja pelaajia eri otoksissa.`, '<p>Vertailut: joukkueet/pelaajat, kaudet, viimeiset viisi vs aiemmat, sarjavaihe, pelasi/poissa ja tarkistetun aineiston on/off. Pelasi/poissa ei ole on/off-mittari. Otos tai ero ei osoita kausaalista vaikutusta.</p>'+teamList);
+ for(const t of teams){const s=teamSeasonSummary(games,t.name);add(teamPath(t),`${t.name} · ${scope}`,`${t.name}: ${s.games} tilastoitua ottelua, ${s.wins} voittoa ja ${s.losses} tappiota kaudella ${season}.`,`<dl><dt>Pisteet / ottelu</dt><dd>${fmt(s.pointsPerGame)}</dd><dt>Päästetyt pisteet / ottelu</dt><dd>${fmt(s.allowedPerGame)}</dd></dl><h2>Pelaajat</h2><ul>${players.filter(p=>p.team===t.name).map(p=>'<li>'+link('/players/'+p.id+'/',p.name)+'</li>').join('')}</ul>`,'WebPage',{'@type':'SportsTeam',name:t.name,sport:'Basketball'});if(t.source_team_id)manifest.pages[href(`/teams/${league==='men'?'korisliiga':'naisten-korisliiga'}/${t.source_team_id}/`)]= {...manifest.pages[href(teamPath(t))],indexable:false,alias:href(teamPath(t))};}
+ for(const p of players)add('/players/'+p.id+'/',`${p.name} · ${scope}`,`${p.name}, ${p.team}: ${fmt(playerPerGame(p,'points'))} pistettä, ${fmt(playerPerGame(p,'rebounds'))} levypalloa ja ${fmt(playerPerGame(p,'assists'))} syöttöä ottelua kohti. Otos ${p.games} ottelua.`,`<p>Joukkue: ${link(teamPath({name:p.team}),p.team)}. Nämä ovat valitun kauden tietoja, eivät väite pelaajan nykyisestä sopimuksesta.</p><dl><dt>Ottelut</dt><dd>${p.games}</dd><dt>PTS / ottelu</dt><dd>${fmt(playerPerGame(p,'points'))}</dd><dt>REB / ottelu</dt><dd>${fmt(playerPerGame(p,'rebounds'))}</dd><dt>AST / ottelu</dt><dd>${fmt(playerPerGame(p,'assists'))}</dd></dl><p>Keskiarvot perustuvat pelaajan pelattuihin otteluihin. Heittokartta ja syöttöanalyysi näkyvät interaktiivisessa profiilissa, kun lähdetietoja on saatavilla.</p>`,'ProfilePage',{'@type':'Person',name:p.name});
+ for(const g of games){const [home,away]=['home','away'].map(side=>g.teams.find(t=>t.side===side));if(!home||!away)continue;const score=g.verified?`${home.score}–${away.score}`:'ennakko';add('/matches/'+g.id+'/',`${home.name} – ${away.name} · ${score}`,`${scope}: ${home.name} vastaan ${away.name}, ${g.date?.slice(0,10)||'päivämäärä ei aineistossa'}. ${g.verified?'Varmennettu lopputulos '+score+'.':'Ottelutilastoja ei vielä ole.'}`,`<p>${link(teamPath(home),home.name)} – ${link(teamPath(away),away.name)}</p><p>${e(g.venue||'')} · ${e(g.date||'')}</p>${g.verified?`<h2>Neljännekset</h2><p>${g.periods.map(p=>`${p.period}.: ${p.home_score}–${p.away_score}`).join(' · ')}</p>`:''}<p><a href="${e(g.sourceUrl||'https://tulospalvelu.basket.fi/')}">Ottelun lähdetilastot Basket.fi:ssä</a></p>`,'WebPage',{'@type':'SportsEvent',name:home.name+' – '+away.name,sport:'Basketball',...(g.date?{startDate:g.date}:{}),homeTeam:{'@type':'SportsTeam',name:home.name},awayTeam:{'@type':'SportsTeam',name:away.name}});}
+ for(const [p,title] of [['/search/','Haku'],['/design-system/','Design system'],['/custom-import/','Custom import'],['/data/','Datan tila'],['/analyysit/','Analyysit']])add(p,title,`${title} · KorisLab`,nav,'WebPage',null,false);
+}
+const client=path.join(root,'dist/client');mkdirSync(path.join(client,'_seo'),{recursive:true});
+writeFileSync(path.join(client,'_seo/manifest.json'),JSON.stringify(manifest));
+writeFileSync(path.join(client,'sitemap.xml'),sitemap(manifest));
+// robots.txt is served dynamically so staging deployments never expose a production sitemap.
+const output=path.join(root,'.vercel/output');rmSync(output,{recursive:true,force:true});mkdirSync(output,{recursive:true});cpSync(client,path.join(output,'static'),{recursive:true});rmSync(path.join(output,'static/index.html'));rmSync(path.join(output,'static/_seo'),{recursive:true});
+const func=path.join(output,'functions/render.func');mkdirSync(func,{recursive:true});cpSync(path.join(client,'index.html'),path.join(func,'template.html'));cpSync(path.join(client,'_seo/manifest.json'),path.join(func,'manifest.json'));
+cpSync(path.join(root,'server/vercel.mjs'),path.join(func,'serve.mjs'));cpSync(path.join(root,'server/seo.mjs'),path.join(func,'seo.mjs'));
+writeFileSync(path.join(func,'.vc-config.json'),JSON.stringify({runtime:'nodejs22.x',handler:'serve.mjs',launcherType:'Nodejs',maxDuration:10}));
+writeFileSync(path.join(output,'config.json'),JSON.stringify({version:3,routes:[{src:'/robots.txt',dest:'/render?__path=/robots.txt'},{src:'/sitemap.xml',dest:'/render?__path=/sitemap.xml'},{handle:'filesystem'},{src:'/(.*)',dest:'/render?__path=/$1'}]}));
+console.log(`SEO: ${Object.keys(manifest.pages).length} scoped pages; Sites + Vercel output prepared.`);

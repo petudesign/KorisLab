@@ -1,0 +1,34 @@
+/* Emil Kowalski animate: spatial continuity, using existing easing tokens. */
+:root{--motion-menu:180ms;--motion-dialog:250ms;--motion-feedback:120ms}
+.prototype-page .season-menu,.prototype-page .mobile-main-menu{
+ opacity:1;transform:translateY(0) scale(1);
+ transition:opacity var(--motion-menu) var(--ease-out),transform var(--motion-menu) var(--ease-out),display var(--motion-menu) allow-discrete;
+}
+.prototype-page .season-menu{transform-origin:top left}
+.prototype-page .mobile-main-menu{transform-origin:top right}
+.prototype-page .season-menu[hidden],.prototype-page .mobile-main-menu[hidden]{display:none;opacity:0;transform:translateY(-4px) scale(.97);pointer-events:none}
+@starting-style{
+ .prototype-page .season-menu:not([hidden]),.prototype-page .mobile-main-menu:not([hidden]){opacity:0;transform:translateY(-4px) scale(.97)}
+}
+.prototype-page .preview-dialog{
+ opacity:0;transform:scale(.96);transform-origin:center;
+ transition:opacity var(--motion-dialog) var(--ease-out),transform var(--motion-dialog) var(--ease-out),display var(--motion-dialog) allow-discrete,overlay var(--motion-dialog) allow-discrete;
+}
+.prototype-page .preview-dialog[open]{opacity:1;transform:scale(1)}
+.prototype-page .preview-dialog::backdrop{background:#000;opacity:0;transition:opacity var(--motion-dialog) var(--ease-out),display var(--motion-dialog) allow-discrete,overlay var(--motion-dialog) allow-discrete}
+.prototype-page .preview-dialog[open]::backdrop{opacity:.65}
+@starting-style{
+ .prototype-page .preview-dialog[open]{opacity:0;transform:scale(.96)}
+ .prototype-page .preview-dialog[open]::backdrop{opacity:0}
+}
+.prototype-page .mobile-nav-toggle svg,.prototype-page .nav-utilities button svg,.prototype-page .season-picker-trigger .picker-season svg{transition:transform var(--motion-feedback) var(--ease-out)}
+.prototype-page .mobile-nav-toggle:active svg,.prototype-page .nav-utilities button:active svg{transform:scale(.94)}
+.prototype-page .season-picker-trigger[aria-expanded=true] .picker-season svg{transform:rotate(-90deg)}
+.prototype-page.keyboard-input .season-menu,.prototype-page.keyboard-input .mobile-main-menu,.prototype-page.keyboard-input .preview-dialog,.prototype-page.keyboard-input .preview-dialog::backdrop,.prototype-page.keyboard-input .mobile-nav-toggle svg,.prototype-page.keyboard-input .nav-utilities button svg,.prototype-page.keyboard-input .season-picker-trigger .picker-season svg{transition:none}
+@media(prefers-reduced-motion:reduce){
+ .prototype-page .season-menu,.prototype-page .mobile-main-menu,.prototype-page .preview-dialog,.prototype-page .preview-dialog[open]{transform:none;transition:opacity 120ms ease,display 120ms allow-discrete,overlay 120ms allow-discrete}
+ .prototype-page .season-menu[hidden],.prototype-page .mobile-main-menu[hidden]{transform:none}
+ .prototype-page .preview-dialog::backdrop{transition:opacity 120ms ease,display 120ms allow-discrete,overlay 120ms allow-discrete}
+ .prototype-page .mobile-nav-toggle svg,.prototype-page .nav-utilities button svg,.prototype-page .season-picker-trigger .picker-season svg{transition:none;transform:none}
+ @starting-style{.prototype-page .season-menu:not([hidden]),.prototype-page .mobile-main-menu:not([hidden]),.prototype-page .preview-dialog[open]{transform:none}}
+}

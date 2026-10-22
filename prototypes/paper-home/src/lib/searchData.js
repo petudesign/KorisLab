@@ -1,0 +1,5 @@
+export const leagues={"naisten-korisliiga":{"name":"Naisten Korisliiga","nameEn":"Women's Korisliiga","decidingFinals":{"2024-25":"965824","2025-26":"1003919"}},"korisliiga":{"name":"Korisliiga","nameEn":"Korisliiga","decidingFinals":{"2024-25":"965763","2025-26":"1004241"}}};
+export const isCompletedScheduleStatus=s=>['played','finished','completed'].includes(s);
+export const isLiveScheduleStatus=s=>['live','break','playing','in progress'].includes(s);
+export const searchRecords=games=>games.filter(g=>g.verified).map(g=>({game:{source_id:g.id,scheduled_at:g.date},teams:g.teams.map(t=>({...t,source_id:t.id,home_away:t.side,players:t.players.map(p=>({...p,source_player_id:p.id,display_name:p.name,minutes:p.minutesValue}))}))}));
+export const searchSchedule=games=>games.map(g=>({source_match_id:g.id,scheduled_date:g.date?.slice(0,10),scheduled_time:g.time,status:g.status,venue:g.venue,home:{source_team_id:g.teams[0].id,name:g.teams[0].name,score:g.teams[0].score??null},away:{source_team_id:g.teams[1].id,name:g.teams[1].name,score:g.teams[1].score??null}}));

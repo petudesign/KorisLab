@@ -1,0 +1,308 @@
+[
+  {
+    "name": "--color-canvas",
+    "type": "color",
+    "value": "#0b0b0b"
+  },
+  {
+    "name": "--color-surface",
+    "type": "color",
+    "value": "#161617"
+  },
+  {
+    "name": "--color-surface-raised",
+    "type": "color",
+    "value": "#202023"
+  },
+  {
+    "name": "--color-border",
+    "type": "color",
+    "value": "#353537"
+  },
+  {
+    "name": "--color-text",
+    "type": "color",
+    "value": "#f3f3f4"
+  },
+  {
+    "name": "--color-text-secondary",
+    "type": "color",
+    "value": "#b1b1b8"
+  },
+  {
+    "name": "--color-text-muted",
+    "type": "color",
+    "value": "#929297"
+  },
+  {
+    "name": "--color-primary",
+    "type": "color",
+    "value": "#df945b"
+  },
+  {
+    "name": "--color-brand",
+    "type": "color",
+    "value": "#44d17a"
+  },
+  {
+    "name": "--color-positive",
+    "type": "color",
+    "value": "#44d17a"
+  },
+  {
+    "name": "--color-negative",
+    "type": "color",
+    "value": "#e18b8b"
+  },
+  {
+    "name": "--color-series-blue",
+    "type": "color",
+    "value": "#91b4c8"
+  },
+  {
+    "name": "--spacing-4",
+    "type": "spacing",
+    "value": "4px"
+  },
+  {
+    "name": "--spacing-8",
+    "type": "spacing",
+    "value": "8px"
+  },
+  {
+    "name": "--spacing-12",
+    "type": "spacing",
+    "value": "12px"
+  },
+  {
+    "name": "--spacing-16",
+    "type": "spacing",
+    "value": "16px"
+  },
+  {
+    "name": "--spacing-20",
+    "type": "spacing",
+    "value": "20px"
+  },
+  {
+    "name": "--spacing-24",
+    "type": "spacing",
+    "value": "24px"
+  },
+  {
+    "name": "--spacing-28",
+    "type": "spacing",
+    "value": "28px"
+  },
+  {
+    "name": "--spacing-32",
+    "type": "spacing",
+    "value": "32px"
+  },
+  {
+    "name": "--spacing-40",
+    "type": "spacing",
+    "value": "40px"
+  },
+  {
+    "name": "--spacing-48",
+    "type": "spacing",
+    "value": "48px"
+  },
+  {
+    "name": "--spacing-64",
+    "type": "spacing",
+    "value": "64px"
+  },
+  {
+    "name": "--radius-6",
+    "type": "radius",
+    "value": "6px"
+  },
+  {
+    "name": "--radius-8",
+    "type": "radius",
+    "value": "8px"
+  },
+  {
+    "name": "--radius-12",
+    "type": "radius",
+    "value": "12px"
+  },
+  {
+    "name": "--radius-15",
+    "type": "radius",
+    "value": "15px"
+  },
+  {
+    "name": "--radius-16",
+    "type": "radius",
+    "value": "16px"
+  },
+  {
+    "name": "--radius-24",
+    "type": "radius",
+    "value": "24px"
+  },
+  {
+    "name": "--text-11",
+    "type": "fontSize",
+    "value": "11px"
+  },
+  {
+    "name": "--text-12",
+    "type": "fontSize",
+    "value": "12px"
+  },
+  {
+    "name": "--text-13",
+    "type": "fontSize",
+    "value": "13px"
+  },
+  {
+    "name": "--text-14",
+    "type": "fontSize",
+    "value": "14px"
+  },
+  {
+    "name": "--text-16",
+    "type": "fontSize",
+    "value": "16px"
+  },
+  {
+    "name": "--text-18",
+    "type": "fontSize",
+    "value": "18px"
+  },
+  {
+    "name": "--text-22",
+    "type": "fontSize",
+    "value": "22px"
+  },
+  {
+    "name": "--text-28",
+    "type": "fontSize",
+    "value": "28px"
+  },
+  {
+    "name": "--text-32",
+    "type": "fontSize",
+    "value": "32px"
+  },
+  {
+    "name": "--text-44",
+    "type": "fontSize",
+    "value": "44px"
+  },
+  {
+    "name": "--text-68",
+    "type": "fontSize",
+    "value": "68px"
+  },
+  {
+    "name": "--text-76",
+    "type": "fontSize",
+    "value": "76px"
+  },
+  {
+    "name": "--font-weight-400",
+    "type": "fontWeight",
+    "value": 400
+  },
+  {
+    "name": "--font-weight-500",
+    "type": "fontWeight",
+    "value": 500
+  },
+  {
+    "name": "--font-weight-600",
+    "type": "fontWeight",
+    "value": 600
+  },
+  {
+    "name": "--font-body",
+    "type": "fontFamily",
+    "value": "Inter"
+  },
+  {
+    "name": "--font-heading",
+    "type": "fontFamily",
+    "value": "Cal Sans"
+  },
+  {
+    "name": "--font-display",
+    "type": "fontFamily",
+    "value": "Array",
+    "description": "Web: Array Semibold. Paper needs this font installed to edit the hero display lettering."
+  },
+  {
+    "name": "--tracking-heading",
+    "type": "letterSpacing",
+    "value": "-0.025em"
+  },
+  {
+    "name": "--leading-18",
+    "type": "lineHeight",
+    "value": "18px"
+  },
+  {
+    "name": "--leading-20",
+    "type": "lineHeight",
+    "value": "20px"
+  },
+  {
+    "name": "--leading-24",
+    "type": "lineHeight",
+    "value": "24px"
+  },
+  {
+    "name": "--leading-28",
+    "type": "lineHeight",
+    "value": "28px"
+  },
+  {
+    "name": "--leading-38",
+    "type": "lineHeight",
+    "value": "38px"
+  },
+  {
+    "name": "--leading-52",
+    "type": "lineHeight",
+    "value": "52px"
+  },
+  {
+    "name": "--leading-80",
+    "type": "lineHeight",
+    "value": "80px"
+  },
+  {
+    "name": "--leading-92",
+    "type": "lineHeight",
+    "value": "92px"
+  },
+  {
+    "name": "--opacity-disabled",
+    "type": "opacity",
+    "value": 0.4
+  },
+  {
+    "name": "--container-content",
+    "type": "container",
+    "value": "1366px"
+  },
+  {
+    "name": "--container-sidebar",
+    "type": "container",
+    "value": "200px"
+  },
+  {
+    "name": "--breakpoint-700",
+    "type": "breakpoint",
+    "value": "700px"
+  },
+  {
+    "name": "--breakpoint-1100",
+    "type": "breakpoint",
+    "value": "1100px"
+  }
+]

@@ -1,0 +1,10 @@
+.table-sort-menu{display:flex;align-items:flex-end;gap:6px;margin:12px 0;color:#9999a4;font-size:10px}
+.table-sort-menu label{display:grid;gap:6px}
+.table-sort-menu select,.table-sort-menu>button{height:32px;border:1px solid #39393f;border-radius:6px;background:#19191c;color:#d4d4dc;padding:0 10px;font:inherit;font-size:11px}
+.table-sort-menu>button{width:32px;padding:0;font-size:15px}
+.table-sort-heading{display:inline-flex;align-items:center;gap:6px;background:none;border:0;padding:3px 0;color:inherit;font:inherit;cursor:pointer;white-space:nowrap}
+.table-sort-heading span{font-size:11px;color:#6e6e7b}
+.table-sort-heading:hover{color:#e6b087}
+.table-sort-heading:focus-visible,.table-sort-menu button:focus-visible{outline:2px solid #df945b;outline-offset:3px}
+.entity-table thead th[aria-sort=ascending],.entity-table thead th[aria-sort=descending],.match-roster thead th[aria-sort=ascending],.match-roster thead th[aria-sort=descending],.dash-team-table thead th[aria-sort=ascending],.dash-team-table thead th[aria-sort=descending]{color:#edb07e;background:#df945b0b}
+th[aria-sort=ascending] .table-sort-heading span,th[aria-sort=descending] .table-sort-heading span{color:#edb07e}

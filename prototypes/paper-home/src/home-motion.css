@@ -1,0 +1,16 @@
+:root{--ease-in-out:cubic-bezier(0.77,0,0.175,1)}
+/* Marketing continuation only: each section enters once, never on data pages. */
+.home-continuation.motion-ready .home-reveal{
+ opacity:0;transform:translateY(8px);
+ transition:opacity 600ms var(--ease-out),transform 600ms var(--ease-out);
+}
+.home-continuation.motion-ready .home-reveal[data-visible="true"],.home-continuation.motion-ready .home-reveal:focus-within{opacity:1;transform:translateY(0)}
+.home-continuation.motion-ready .insight-comparison i{clip-path:inset(0 100% 0 0);transition:clip-path 600ms var(--ease-in-out)}
+.home-continuation.motion-ready .insight-data[data-visible="true"] .insight-comparison i{clip-path:inset(0)}
+.insight-data>strong{font-variant-numeric:tabular-nums}
+@media(prefers-reduced-motion:reduce){.home-continuation.motion-ready .home-reveal{opacity:1;transform:none;transition:none}.home-continuation.motion-ready .insight-comparison i{clip-path:none;transition:none}}
+
+/* Match the eFG reveal for the paired comparison bars. */
+.home-continuation.motion-ready .play-bar i{clip-path:inset(0 100% 0 0);transition:clip-path 600ms var(--ease-in-out)}
+.home-continuation.motion-ready .play-comparison[data-visible="true"] .play-bar i{clip-path:inset(0)}
+@media(prefers-reduced-motion:reduce){.home-continuation.motion-ready .play-bar i{clip-path:none;transition:none}}

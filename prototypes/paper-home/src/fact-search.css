@@ -1,0 +1,21 @@
+.fact-search-answer{margin-top:20px}
+.fact-search-summary{margin-bottom:16px}
+.fact-search-answer h3{font:400 24px/1.25 'Cal Sans',sans-serif;margin:14px 0 20px;color:#f3f3f4}
+.fact-search-leader{display:flex;align-items:center;gap:16px;margin:20px 0}
+.fact-search-leader>svg{width:48px;height:48px;flex:none}
+.fact-search-leader>div{display:grid;gap:8px}
+.fact-search-leader strong{font-size:24px;font-weight:500;letter-spacing:-.025em}
+.fact-search-leader span{font-size:12px;color:#929297;font-variant-numeric:tabular-nums}
+.fact-search-answer a{color:#dedee2;text-decoration:none}
+.fact-search-answer a:hover{color:#df945b}
+.fact-search-answer a:focus-visible{outline:2px solid #df945b;outline-offset:3px}
+.fact-search-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:24px}
+.fact-search-groups h4{color:#929297;font-size:12px;font-weight:400;margin:0 0 12px}
+.fact-search-groups ol{list-style:none;margin:0;padding:0}
+.fact-search-groups li{display:grid;grid-template-columns:16px minmax(0,1fr) auto;align-items:center;gap:12px;padding:14px 0;border-top:1px solid #ffffff08}
+.fact-search-rank{font-size:10px;color:#929297}
+.fact-search-subject{display:flex;align-items:center;gap:8px;min-width:0;font-size:12px;line-height:1.5}
+.fact-search-subject small{display:block;color:#929297;font-size:10px;margin-top:4px}
+.fact-search-groups li>strong{font-size:22px;font-weight:550;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.fact-search-groups li:first-child>strong{color:#df945b}
+@media(max-width:700px){.fact-search-groups{grid-template-columns:1fr;gap:20px}.fact-search-groups li>strong{font-size:20px}.fact-search-leader strong{font-size:22px}.fact-search-answer h3{font-size:22px}}

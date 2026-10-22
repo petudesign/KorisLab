@@ -1,0 +1,97 @@
+.player-profile-banner{display:flex;align-items:center;gap:24px;margin:20px 0 16px;padding:24px;border:1px solid #34343b;border-radius:13px;background:radial-gradient(ellipse at top right,#df945b0b,transparent 65%),linear-gradient(135deg,#1b1b1e,#131315)}
+.player-profile-photo{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;flex:none;width:120px;height:140px;border-radius:12px;background:#ffffff04;border:1px solid #ffffff08;overflow:hidden}
+.player-profile-photo img{width:104px;height:108px;object-fit:contain;opacity:.75}
+.player-profile-photo small{font-size:9px;color:#888894}
+.player-profile-banner h1{font:400 32px/1.2 'Cal Sans',sans-serif;margin:0;color:#ededf0}
+.player-profile-banner p{font-size:12px;color:#b5a18f;margin:12px 0 8px}
+.player-profile-banner>div>span{font-size:11px;color:#93939d}
+.player-profile-method{margin:0 0 16px;font-size:10px;line-height:1.6;color:#92929c}
+.player-profile-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:24px}
+.player-profile-metric{display:flex;flex-direction:column;gap:12px;min-width:0}
+.player-profile-metric>strong{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px;font-size:31px;font-weight:550;letter-spacing:-.04em;font-variant-numeric:tabular-nums;color:#ebebef}
+.player-profile-metric strong small{font-size:9px;font-weight:400;letter-spacing:0;color:#93939e;white-space:nowrap}
+.player-profile-metric-note{font-size:9px;color:#93939d;line-height:1.5;min-height:27px}
+.player-profile-metric .highlight-trend{margin:0}
+.player-profile-metric .highlight-trend svg{height:48px}
+.player-profile-metric .highlight-trend-label{font-size:9px}
+.player-profile-no-trend{font-size:9px;line-height:1.5;color:#83838e;min-height:63px}
+.player-profile-metric .highlight-tooltip,.team-detail-metric .highlight-tooltip{min-width:150px}
+@media(max-width:1250px){.player-profile-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.player-profile-banner{gap:16px;padding:18px}.player-profile-photo{width:80px;height:102px}.player-profile-photo img{width:70px;height:72px}.player-profile-banner h1{font-size:25px}.player-profile-banner p{font-size:11px;line-height:1.5}.player-profile-banner>div>span{font-size:10px}.player-profile-method{font-size:9px}.player-profile-metrics{gap:10px}.overview-dashboard .player-profile-metric{padding:14px}.player-profile-metric>strong{font-size:27px}.player-profile-metric .dash-card-label{font-size:11px}.player-profile-metric-note{font-size:8px}.player-profile-metric .highlight-trend svg{height:40px}.player-profile-metric .highlight-trend-label{font-size:8px}}
+/* Profile density: smaller metrics, with the identity and honours in one banner. */
+.overview-dashboard .player-profile-metric{padding:15px;gap:8px}
+.player-profile-metric>strong{font-size:28px}
+.player-profile-metric-note{min-height:20px;line-height:1.35}
+.player-profile-metric .highlight-trend svg{height:36px}
+.player-profile-no-trend{min-height:51px}
+.player-profile-metrics{gap:10px}
+.player-profile-banner{align-items:flex-start;gap:20px;padding:20px}
+.player-profile-identity{min-width:0;flex:1;align-self:center}
+.player-profile-bio{display:flex;flex-wrap:wrap;gap:12px 24px;margin:14px 0 12px}
+.player-profile-bio>div{display:grid;gap:5px}
+.player-profile-bio dt{font-size:9px;color:#898994}
+.player-profile-bio dd{margin:0;font-size:12px;color:#d1d1d9}
+.player-trophy-cabinet{align-self:stretch;flex:0 1 300px;min-width:0;padding:15px 17px;border:1px solid #df945b19;border-radius:10px;background:radial-gradient(ellipse at top right,#df945b0b,transparent 85%),#ffffff02}
+.player-trophy-cabinet h4{display:flex;align-items:center;gap:7px;font:400 14px/1.3 'Cal Sans',sans-serif;color:#d8c4b3;margin:0 0 12px}
+.player-trophy-cabinet h4 svg{font-size:17px;color:#df945b}
+.player-trophy-cabinet ul{list-style:none;padding:0;margin:0;display:grid;gap:11px}
+.player-trophy-cabinet li a{display:flex;gap:10px;align-items:center;text-decoration:none}
+.player-trophy-cabinet li svg{font-size:22px;color:#dfa86b;flex:none}
+.player-trophy-cabinet li span{display:grid;gap:4px}
+.player-trophy-cabinet li strong{font-size:11px;font-weight:500;color:#e1d8cf}
+.player-trophy-cabinet li small{font-size:9px;color:#a29890}
+.player-trophy-cabinet p{font-size:10px!important;line-height:1.6;color:#99949a!important;margin:0 0 10px!important}
+.player-trophy-scope{display:block;color:#777783;font-size:8px;margin-top:13px;line-height:1.4}
+@media(min-width:701px) and (max-width:1100px){.player-profile-banner{flex-wrap:wrap}.player-trophy-cabinet{flex-basis:100%}.player-trophy-cabinet ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.player-profile-banner{flex-wrap:wrap;gap:14px;padding:16px}.player-profile-bio{gap:10px 16px;margin:11px 0}.player-profile-bio dd{font-size:10px}.player-profile-bio dt{font-size:8px}.player-trophy-cabinet{flex-basis:100%;padding:12px}.player-trophy-cabinet ul{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.player-trophy-cabinet h4{font-size:13px;margin-bottom:9px}.player-trophy-cabinet li strong{font-size:10px}.player-trophy-cabinet li svg{font-size:18px}.player-trophy-scope{margin-top:10px}.overview-dashboard .player-profile-metric{padding:12px;gap:7px}.player-profile-metric>strong{font-size:25px}.player-profile-metric .highlight-trend svg{height:32px}.player-profile-metric-note{min-height:20px}.player-profile-metrics{gap:8px}}
+.player-profile-metric>strong.above-average{color:#86cea1}
+.player-profile-metric>strong.below-average{color:#c3938f}
+.entity-shot-totals .shot-made-count{display:inline;color:#69cc90;background:none;height:auto;font-weight:550}
+.entity-shot-totals .shot-attempt-count{font-size:inherit;color:#9696a2}
+.entity-profile .player-game-score{display:inline-flex;align-items:center;gap:5px;margin-left:10px;font-variant-numeric:tabular-nums;color:#898995}
+.player-game-score b{font-weight:500}
+.player-game-score b.winner{color:#eeeeF3;font-weight:550}
+.entity-profile .player-game-result{display:inline-flex;align-items:center;justify-content:center;width:19px;height:19px;border-radius:4px;margin-right:8px;font-size:9px;background:#ffffff07;color:#9898a4;border:1px solid #ffffff08}
+.entity-profile .player-game-won .player-game-result{background:#44d17a12;color:#74ce97;border-color:#44d17a20}
+
+.player-profile-team-row{display:flex;align-items:center;flex-wrap:wrap;gap:7px 10px}
+.player-profile-team{display:inline-flex;align-items:center;gap:9px;min-width:0}
+.player-profile-team-logo{display:flex;align-items:center;justify-content:center;flex:none;width:34px;height:34px}
+.player-profile-team-logo svg{display:block;width:100%;height:100%}
+.player-profile-games{color:#92929c;white-space:nowrap}
+@media(min-width:701px){
+ .player-profile-photo{width:184px;height:214px;align-self:center;gap:10px}
+ .player-profile-photo img{width:164px;height:174px}
+}
+@media(max-width:700px){
+ .player-profile-team-row{gap:4px 7px}
+ .player-profile-team{gap:6px}
+ .player-profile-team-logo{width:26px;height:26px}
+}
+/* Let the identity and recent form share the space next to the trophy cabinet. */
+.player-profile-overview{display:flex;align-items:center;gap:20px;min-width:0;flex:1}
+.player-profile-recent{display:none}
+@media(min-width:1101px){
+ .player-profile-banner{align-items:start}
+ .player-profile-overview{display:grid;grid-template-columns:184px minmax(0,1fr);align-items:center;gap:20px;align-self:start}
+ .player-profile-overview .player-profile-identity{align-self:center}
+ .player-profile-overview .player-profile-identity>span{font-size:11px;color:#93939d}
+ .player-profile-recent{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-column:1/-1;gap:24px;border-top:1px solid #ffffff0a;padding-top:20px;margin-top:2px;min-width:0}
+ .player-profile-recent h3{font-size:11px;font-weight:500;color:#b1b1b8;margin:0 0 16px}
+ .player-profile-recent dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:0}
+ .player-profile-recent dt{font-size:10px;color:#929297;margin-bottom:7px}
+ .player-profile-recent dd{font-size:25px;font-weight:500;color:#f3f3f4;margin:0;font-variant-numeric:tabular-nums;white-space:nowrap}
+ .player-profile-recent dd small{font-size:9px;font-weight:400;color:#929297}
+ .player-profile-recent-stats>p{font-size:9px;color:#929297;margin:12px 0 0}
+ .player-profile-recent-chart{min-width:0;--highlight-accent:#df945b}
+ .player-profile-recent-chart>span{display:block;font-size:11px;color:#b1b1b8;margin-bottom:12px}
+ .player-profile-recent-chart .highlight-trend-label{font-size:9px}
+ .player-profile-recent-chart .highlight-trend svg{height:76px}
+}
+@media(max-width:700px){.player-profile-overview{gap:14px;width:100%;flex-basis:100%}}
+.player-profile-identity>span{font-size:11px;color:#93939d}
+.player-profile-latest-game{display:flex;align-items:start;gap:8px;flex-wrap:wrap;font-size:10px;line-height:1.6;color:#9999a1;text-decoration:none;margin-top:12px}
+.player-profile-latest-game strong{font-weight:500;color:#d8d8dd;white-space:nowrap}
+.player-profile-latest-game:hover{color:#df945b}
+.player-profile-latest-game:focus-visible{outline:2px solid #df945b;outline-offset:3px;border-radius:3px}
+@media(max-width:700px){.player-profile-identity>span{font-size:10px}}

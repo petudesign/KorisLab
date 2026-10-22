@@ -1,0 +1,77 @@
+.sim-studio{display:grid;gap:16px;min-width:0}
+.sim-studio .panel{background:linear-gradient(135deg,#1b1b1d,#151516);border:1px solid #303033;border-radius:12px;box-shadow:var(--shadow-card)}
+.sim-intro{margin:0;color:#b1b1b8;font-size:13px;line-height:1.6;max-width:760px}
+.sim-toolbar{display:flex;flex-wrap:wrap;align-items:end;gap:12px 18px}
+.sim-control{display:grid;gap:7px;min-width:0;width:min(340px,100%);font-size:11px;color:#9999a1}
+.sim-studio .sim-control select{width:100%;max-width:100%;min-width:0;height:40px;font-size:13px;color:#e2e2e5}
+.sim-chips{display:flex;flex-wrap:wrap;gap:6px}
+.sim-chips span{padding:4px 10px;border:1px solid #303033;border-radius:999px;color:#a7a7ad;font-size:11px}
+.sim-toggle{display:flex;flex-wrap:wrap;gap:4px;padding:4px;background:#121213;border:1px solid #303033;border-radius:9px;width:fit-content;max-width:100%}
+.sim-toggle button{padding:7px 11px;background:transparent;border:0;border-radius:6px;color:#a7a7ad;font-size:12px;cursor:pointer;transition:background 120ms,color 120ms}
+.sim-toggle button:hover{color:#f3f3f4}
+.sim-toggle button[aria-pressed=true]{background:#29231e;color:#e9a66f;box-shadow:inset 0 0 0 1px #6a4830}
+.sim-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,360px);gap:12px;align-items:start}
+.sim-stage{overflow:hidden;min-width:0}
+.sim-viewport{position:relative}
+.sim-court{width:100%;aspect-ratio:16/9;touch-action:none}
+.sim-court canvas{display:block;width:100%!important;height:100%!important}
+.sim-badge{position:absolute;top:12px;left:12px;padding:3px 8px;border-radius:6px;background:#df945b26;color:#e9a66f;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.sim-scoreboard{position:absolute;top:12px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:12px;padding:6px 12px;border:1px solid #ffffff1c;border-radius:10px;background:#0b0b0bd9;backdrop-filter:blur(6px);font-variant-numeric:tabular-nums;white-space:nowrap}
+.sim-scoreboard b{font-size:20px;font-weight:600}
+.sim-sb-team{display:flex;align-items:center;gap:7px;font-size:13px;color:#e2e2e5}
+.sim-sb-team i,.sim-ticker i,.sim-ways h4 i,.sim-pairs i{display:inline-block;width:8px;height:8px;border-radius:50%;flex:none}
+.sim-sb-clock{display:grid;justify-items:center;padding:0 10px;border-inline:1px solid #ffffff1c;font-size:13px;color:#d8d8dc}
+.sim-sb-clock small{font-size:10px;color:#929297}
+.sim-ticker{position:absolute;left:12px;bottom:12px;display:grid;gap:4px;margin:0;padding:0;list-style:none;max-width:min(420px,70%);pointer-events:none}
+.sim-ticker li{display:flex;align-items:center;gap:7px;padding:4px 9px;border-radius:6px;background:#0b0b0bcc;color:#a7a7ad;font-size:12px}
+.sim-ticker li:last-child{color:#f3f3f4}
+.sim-controls{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;padding:12px 14px;border-top:1px solid #29292c}
+.sim-play{display:grid;place-items:center;width:40px;height:40px;flex:none;border:0;border-radius:50%;background:#df945b;color:#0b0b0b;cursor:pointer}
+.sim-scrub{position:relative;flex:1 1 260px;min-width:0;height:40px}
+.sim-scrub svg{display:block;width:100%;height:40px}
+.sim-scrub line{stroke:#303033}
+.sim-scrub polyline{fill:none;stroke:#91b4c8;stroke-width:1.6;vector-effect:non-scaling-stroke}
+.sim-scrub rect{fill:#e9a66f}
+.sim-scrub input{position:absolute;inset:0;width:100%;height:40px;margin:0;opacity:0;cursor:pointer}
+.sim-side{display:grid;gap:12px;min-width:0}
+.sim-panel{padding:17px;min-width:0}
+.sim-panel h3{margin:0 0 12px;font-size:13px;font-weight:500;color:#d8d8dc}
+.sim-panel h3:not(:first-child){margin-top:18px}
+.sim-prob{display:flex;height:34px;border-radius:8px;overflow:hidden;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums}
+.sim-prob span{display:flex;align-items:center;padding:0 10px;color:#0b0b0b;white-space:nowrap;min-width:0}
+.sim-prob span:last-child{justify-content:flex-end}
+.sim-legend{display:flex;justify-content:space-between;gap:12px;margin-top:6px;color:#929297;font-size:11px}
+.sim-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:14px 0 0}
+.sim-facts div{padding:9px;border-radius:8px;background:#121213;min-width:0}
+.sim-facts dt{color:#929297;font-size:10px;line-height:1.35}
+.sim-facts dd{margin:4px 0 0;font-size:16px;font-variant-numeric:tabular-nums}
+.sim-hist{display:block;width:100%;height:110px}
+.sim-hist rect{opacity:.85}
+.sim-hist line{stroke:#f3f3f4;stroke-dasharray:3 3;opacity:.45}
+.sim-ways{display:grid;gap:16px}
+.sim-ways h4{display:flex;align-items:center;gap:8px;margin:0 0 8px;font-size:13px;font-weight:500}
+.sim-ways dl,.sim-ways p{margin:0}
+.sim-ways dl div{display:flex;justify-content:space-between;gap:12px;padding:4px 0;border-bottom:1px solid #ffffff08;font-size:12px}
+.sim-ways dt{color:#a7a7ad}
+.sim-ways dd{margin:0;font-variant-numeric:tabular-nums}
+.sim-bottom{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,360px);gap:12px;align-items:start}
+.sim-team-toggle{margin-bottom:10px}
+.sim-table-wrap{overflow-x:auto}
+.sim-table{width:100%;border-collapse:collapse;font-size:12px;font-variant-numeric:tabular-nums}
+.sim-table th,.sim-table td{padding:9px 8px;border-bottom:1px solid #ffffff08;text-align:right;font-weight:400;white-space:nowrap}
+.sim-table th:first-child{text-align:left}
+.sim-table thead{color:#878791;font-size:10px}
+.sim-table small{color:#878791}
+.sim-pairs{display:grid;gap:7px;margin:0;padding:0;list-style:none;font-size:12px}
+.sim-pairs li{display:flex;justify-content:space-between;gap:12px}
+.sim-pairs span{display:flex;align-items:center;gap:7px;color:#d8d8dc}
+.sim-pairs b{font-weight:400;color:#a7a7ad;font-variant-numeric:tabular-nums}
+.sim-method p{margin:0 0 10px;color:#a7a7ad;font-size:12px;line-height:1.65}
+@media(max-width:1100px){.sim-layout,.sim-bottom{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:700px){
+ .sim-court{aspect-ratio:4/3}
+ .sim-badge,.sim-ticker{display:none}
+ .sim-scoreboard{top:8px;gap:8px;padding:4px 8px}.sim-scoreboard b{font-size:16px}.sim-sb-team{font-size:0;gap:0}
+ .sim-controls{flex-wrap:wrap}.sim-scrub{flex-basis:calc(100% - 52px)}
+ .sim-facts dd{font-size:14px}
+}

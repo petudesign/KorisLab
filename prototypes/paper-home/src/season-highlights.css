@@ -1,0 +1,63 @@
+.season-highlights{margin:20px 0 16px}
+.season-highlights>header{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:12px}
+.season-highlights>header h3{font-family:'Cal Sans',sans-serif;font-weight:400;font-size:18px;margin:0;color:#dcdcdf}
+.season-highlights>header>span{font-size:9px;color:#8e8e97}
+.season-highlight-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.overview-dashboard .season-highlight{position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:8px;min-width:0;padding:18px;border:1px solid #323238;border-radius:12px;background:linear-gradient(140deg,#1d1d20,#131315);color:#dedee2;transition:background .18s,border-color .18s}
+.season-highlight::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:radial-gradient(circle,var(--highlight-accent) .65px,transparent .9px);background-size:4px 4px;opacity:.22;mask-image:radial-gradient(ellipse at 100% 80%,#000,transparent 68%)}
+.season-highlight::after{content:'';position:absolute;right:-35px;bottom:-65px;width:200px;height:180px;background:radial-gradient(ellipse,color-mix(in srgb,var(--highlight-accent) 7%,transparent),transparent 70%);z-index:-2;pointer-events:none}
+.overview-dashboard .season-highlight:hover,.overview-dashboard .season-highlight.highlight-selected{border-color:color-mix(in srgb,var(--highlight-accent) 50%,#323238);background:linear-gradient(140deg,#232326,#161618)}
+.highlight-label{display:flex;align-items:center;justify-content:space-between;width:100%;font-size:10px;color:#b0b0b8;gap:8px}
+.highlight-label svg{font-size:13px;color:#8c8c95}
+.highlight-value{display:flex;align-items:baseline;gap:7px;font-size:37px;line-height:1.2;font-weight:600;letter-spacing:-.045em;font-variant-numeric:tabular-nums;color:var(--highlight-accent)}
+.highlight-value small{font-size:9px;font-weight:400;letter-spacing:0;color:#aaaab3;white-space:nowrap}
+.highlight-team{font-size:12px;color:#dedee2}
+.overview-dashboard a.highlight-team{text-decoration:none;border-radius:3px}
+.overview-dashboard a.highlight-team:hover,.overview-dashboard a.highlight-team:focus-visible{color:var(--highlight-accent);text-decoration:underline;text-underline-offset:3px}
+.highlight-compare-button{margin-top:auto;padding:6px 0 0;border:0;border-top:1px solid #ffffff0b;background:transparent;color:#a4a4ad;text-align:left;font-size:9px!important;cursor:pointer}
+.highlight-compare-button:hover,.highlight-compare-button[aria-pressed=true]{color:var(--highlight-accent)}
+.highlight-caption{font-size:8px;color:#8f8f99;line-height:1.5}
+.dashboard-expanded .season-highlights>header h3{font-size:22px}
+.dashboard-expanded .season-highlights>header>span{font-size:11px}
+.dashboard-expanded .season-highlight{padding:20px;gap:10px}
+.dashboard-expanded .highlight-label{font-size:12px}
+.dashboard-expanded .highlight-value{font-size:46px}
+.dashboard-expanded .highlight-value small{font-size:10px}
+.dashboard-expanded .highlight-team{font-size:14px}
+.dashboard-expanded .highlight-caption{font-size:10px}
+@media(max-width:1000px) and (min-width:701px){.dashboard-expanded .highlight-value{flex-wrap:wrap;gap:0 6px;font-size:38px}.dashboard-expanded .highlight-value small{font-size:9px}}
+@media(max-width:700px){.data-page .season-highlight-grid{grid-template-columns:1fr}.data-page .season-highlights>header{align-items:flex-start;flex-direction:column;gap:5px}.data-page .dashboard-expanded .season-highlight{padding:20px}.data-page .highlight-value{font-size:42px}}
+
+.highlight-trend{display:block;width:100%;margin-top:6px}
+.highlight-trend-label{display:flex;justify-content:space-between;gap:5px;font-size:8px;color:#a2a2ab}
+.highlight-trend-label>span{font-size:7px;color:#7e7e88}
+.highlight-trend svg{display:block;width:100%;height:60px;overflow:visible;margin-top:3px}
+.highlight-baseline{stroke:#777781;stroke-width:1;stroke-dasharray:3 4;opacity:.7}
+.highlight-trend-line{fill:none;stroke:var(--highlight-accent);stroke-width:2;stroke-linejoin:round;stroke-linecap:round;filter:drop-shadow(0 2px 4px color-mix(in srgb,var(--highlight-accent) 20%,transparent))}
+.highlight-trend-dot{fill:var(--highlight-accent);stroke:#1b1b1e;stroke-width:1.5}
+.highlight-average{display:flex;justify-content:space-between;width:100%;font-size:9px;color:#93939d;padding-top:5px;border-top:1px solid #ffffff09}
+.highlight-average b{font-weight:500;color:#bcbcc5;font-variant-numeric:tabular-nums}
+.dashboard-expanded .highlight-trend-label{font-size:10px}
+.dashboard-expanded .highlight-trend-label>span{font-size:8px}
+.dashboard-expanded .highlight-average{font-size:11px}
+.dashboard-expanded .highlight-trend svg{height:70px}
+.highlight-label{min-height:28px;line-height:14px;align-items:flex-start}
+.dashboard-expanded .highlight-label{min-height:32px;line-height:16px}
+.highlight-trend-label>span{display:none}
+.highlight-trend-label{white-space:nowrap}
+.highlight-trend{position:relative}
+.highlight-trend-line{filter:drop-shadow(0 0 5px color-mix(in srgb,var(--highlight-accent) 35%,transparent))}
+.highlight-trend-target{cursor:crosshair;outline:none}
+.highlight-trend-target:focus-visible{stroke:var(--highlight-accent);stroke-width:1;stroke-dasharray:2 2}
+.highlight-tooltip{position:absolute;left:0;right:0;bottom:calc(100% - 8px);z-index:3;display:flex;flex-direction:column;gap:5px;padding:10px 12px;border:1px solid #53535b;border-radius:9px;background:#242427;box-shadow:0 8px 22px #0008;font-size:10px;line-height:1.45;color:#dddde3;pointer-events:none}
+.highlight-tooltip-date{font-size:8px;color:#aaaab5}
+.highlight-tooltip strong{font-size:16px;font-weight:600;color:var(--highlight-accent);font-variant-numeric:tabular-nums}
+.highlight-tooltip small{font-size:9px;font-weight:400;color:#b5b5c0}
+.dashboard-expanded .highlight-tooltip{font-size:11px}
+.dashboard-expanded .highlight-tooltip-date{font-size:9px}
+.overview-dashboard .season-highlight{overflow:clip}
+.season-highlight::after{bottom:0;right:0}
+.highlight-trend-missing{stroke:#8a8a94;stroke-width:1;stroke-dasharray:2 3;vector-effect:non-scaling-stroke}
+.highlight-trend-missing.active{stroke:#c4c4cc}
+.highlight-zero-line{stroke:#5a5a63;stroke-width:1;opacity:.35;vector-effect:non-scaling-stroke}
+.highlight-trend-x{fill:none;stroke:var(--highlight-accent);stroke-width:1.6;stroke-linecap:round;vector-effect:non-scaling-stroke}

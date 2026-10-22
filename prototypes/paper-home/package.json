@@ -1,0 +1,32 @@
+{
+  "name": "paper-home",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node scripts/build-seo.mjs && node scripts/prepare-sites-build.mjs",
+    "preview": "vite preview",
+    "test:sites": "node --test tests/sites-worker.test.mjs",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^9.5.0",
+    "@mui/material": "^9.5.0",
+    "@paper-design/shaders-react": "0.0.81",
+    "@vitejs/plugin-react": "5.0.4",
+    "metal-fx": "2.0.11",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "shaders": "^4.0.4",
+    "three": "^0.186.1",
+    "vite": "6.4.2",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
+  },
+  "engines": {
+    "node": ">=22.18"
+  },
+  "packageManager": "pnpm@11.25.0"
+}

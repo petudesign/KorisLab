@@ -1,0 +1,31 @@
+.site-footer{position:relative;isolation:isolate;border-top:0;padding:56px 8% 24px;background:none;color:#c1c1c6}
+.site-footer::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,#18181890,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.footer-main{display:grid;grid-template-columns:1.4fr .8fr 1fr;gap:48px;padding-bottom:48px}
+.footer-brand{display:inline-flex;align-items:center;gap:14px;font:400 44px/1.1 'Cal Sans',sans-serif;letter-spacing:-.035em;color:#eeeeef}
+.footer-brand img{width:48px;height:44px;object-fit:contain;flex:none}
+.home-continuation .footer-identity p{margin-top:14px;margin-left:62px;font-size:18px;line-height:1.45;color:#a6a6ad}
+.site-footer h3{margin:0 0 18px;font:500 12px/1.5 Inter,sans-serif;letter-spacing:.07em;text-transform:uppercase;color:#929299}
+.footer-main nav{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.footer-main nav h3{margin-bottom:6px}
+.footer-main a:not(.footer-brand){font-size:14px;line-height:1.5;transition:color 150ms ease}
+.footer-main a:hover{color:#dfaa79}
+.footer-data>a{display:inline-flex;align-items:center;gap:8px;margin-top:16px;color:#dfaa79}
+.footer-data>a svg{font-size:16px}
+.home-continuation .footer-data p{font-size:14px;line-height:1.7}
+.home-continuation .footer-data .footer-data-note{font-size:12px;line-height:1.6;margin-top:18px;color:#929299;max-width:240px}
+.footer-bottom{border-top:1px solid #27272b;padding-top:22px;display:flex;justify-content:space-between;align-items:center;gap:24px;font-size:12px;color:#929299}
+.footer-bottom button{display:flex;align-items:center;gap:10px;border:0;background:none;padding:8px 0;color:#bdbdc3;font-size:12px}
+.footer-bottom button:hover{color:#dfaa79}.footer-bottom svg{font-size:16px}
+.player-left.player-annika{width:334px;height:334px;left:129px;top:219px;object-fit:contain}
+@media(max-width:700px){.site-footer{padding:36px 6% 20px}.footer-main{grid-template-columns:1fr 1fr;gap:32px 24px;padding-bottom:32px}.footer-identity{grid-column:1/-1}.footer-brand{font-size:36px;gap:10px}.footer-brand img{width:40px;height:38px}.home-continuation .footer-identity p{font-size:16px;margin-top:12px;margin-left:50px}.footer-main nav{gap:10px}.footer-main a:not(.footer-brand),.home-continuation .footer-data p{font-size:13px}.player-left.player-annika{width:202px;height:202px;left:-39px;top:302px}.footer-bottom{gap:12px}}
+
+.league-picker .season-picker-trigger .league-logo-color{object-fit:cover}
+.nav-wrapper .brand img{width:24px;height:22px;object-fit:contain}
+.dash-logo img{width:18px;height:18px}
+@media(max-width:700px){.nav-wrapper .brand img{width:20px;height:20px;object-fit:contain}}
+
+.player-left.player-nea{width:232px;height:520px;left:159px;top:228px;mask-image:linear-gradient(to bottom,#000 0%,#000 68%,transparent 90%)}
+@media(max-width:700px){.player-left.player-nea{width:122px;height:273px;left:8px;top:309px}}
+
+.player-right{width:686px;height:386px;left:auto;right:-67px;top:214px}
+@media(max-width:700px){.player-right{width:400px;height:225px;right:-115px;top:300px}}

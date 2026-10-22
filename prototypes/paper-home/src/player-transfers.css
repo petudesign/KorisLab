@@ -1,0 +1,37 @@
+.player-transfers{margin:20px 0 32px;min-width:0}
+.player-transfers-heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:12px}
+.player-transfers-heading h3{font-family:'Cal Sans',sans-serif;font-weight:400;font-size:18px;margin:0;color:#dcdcdf}
+.player-transfers-heading p{font-size:9px;color:#8e8e97;margin:4px 0 0}
+.player-transfers-heading>span{font-size:9px;color:#9c9ca5;white-space:nowrap}
+.player-transfer-filters{display:flex;gap:6px;overflow-x:auto;margin:-2px 0 12px;padding:0 0 2px;scrollbar-width:thin}.player-transfer-filters button{flex:none;display:flex;align-items:center;gap:7px;padding:6px 9px;border:1px solid #333338;border-radius:7px;background:#171719;color:#a4a4ad;font-size:9px;cursor:pointer}.player-transfer-filters button[aria-pressed=true]{border-color:#74543b;background:#251e19;color:#e6b486}.player-transfer-filters button span{color:#777780;font-variant-numeric:tabular-nums}.player-transfer-filters button[aria-pressed=true] span{color:#d9a779}
+.player-transfers-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.player-transfer-card{min-width:0;padding:13px 14px;border:1px solid #303034;border-radius:10px;background:linear-gradient(145deg,#19191c,#121214);box-shadow:0 5px 14px #0002}
+.player-transfer-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}
+.player-transfer-top>a{min-width:0;color:#e5e5e9;font-weight:550;font-size:12px;text-decoration:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.player-transfer-top>a:hover{color:#df945b}
+.player-transfer-top>span{flex:none;border:1px solid #3c3732;border-radius:999px;padding:3px 7px;color:#d1a178;font-size:8px}
+.player-transfer-route{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:8px}
+.player-transfer-team{display:flex;align-items:center;gap:7px;min-width:0;color:#a5a5ae;font-size:10px}
+.player-transfer-team>a{display:flex;align-items:center;gap:7px;min-width:0;color:inherit;text-decoration:none}
+.player-transfer-team>a:hover,.player-transfer-team>a:focus-visible{color:#efb786;text-decoration:underline;text-underline-offset:3px}
+.player-transfer-team>svg,.player-transfer-team>.team-logo-fallback,.player-transfer-team>a>svg,.player-transfer-team>a>.team-logo-fallback{width:25px;height:25px;flex:none}
+.player-transfer-team>span:last-child,.player-transfer-team>a>span:last-child{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;text-overflow:ellipsis;white-space:normal;line-height:1.2}
+.player-transfer-destination{color:#e3e3e7}
+.player-transfer-arrow{color:#df945b;font-size:14px}
+.player-transfer-meta{display:flex;justify-content:space-between;gap:8px;margin-top:11px;padding-top:9px;border-top:1px solid #ffffff0a;color:#8e8e98;font-size:8px;line-height:1.45}
+.player-transfer-meta time{min-width:0}
+.player-transfer-meta>span{flex:none;text-align:right}
+.player-transfers-toggle{display:flex;align-items:center;gap:8px;margin:12px auto 0;padding:7px 11px;border:1px solid #353539;border-radius:7px;background:#18181a;color:#c8c8ce;font-size:10px;cursor:pointer}
+.player-transfers-toggle:hover{border-color:#7b5a42;color:#e1b18b}
+.player-transfers-state{padding:18px;border:1px solid #303034;border-radius:10px;background:#151517;color:#a5a5ad;font-size:11px}
+.player-transfers-state button{margin-left:6px;border:0;background:transparent;color:#df945b;cursor:pointer}
+.player-transfers-note{margin:9px 0 0;color:#777780;font-size:8px;line-height:1.5}
+.dashboard-expanded .player-transfers-heading h3{font-size:22px}
+.dashboard-expanded .player-transfers-heading p,.dashboard-expanded .player-transfers-heading>span{font-size:11px}
+.dashboard-expanded .player-transfer-card{padding:15px 16px}
+.dashboard-expanded .player-transfer-top>a{font-size:13px}
+.dashboard-expanded .player-transfer-team{font-size:11px}
+.dashboard-expanded .player-transfer-meta{font-size:9px}
+.dashboard-expanded .player-transfers-note{font-size:9px}
+@media(max-width:1000px){.player-transfers-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.player-transfers-heading{align-items:flex-start;flex-direction:column;gap:5px}.player-transfers-heading h3{font-size:20px}.player-transfers-grid{grid-template-columns:1fr}.player-transfer-card{padding:13px}.player-transfer-top>a{font-size:12px}.player-transfers-note{font-size:9px}}

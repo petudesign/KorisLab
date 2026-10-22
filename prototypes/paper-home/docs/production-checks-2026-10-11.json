@@ -1,0 +1,60 @@
+[
+  {
+    "path": "/?season=2025-26",
+    "status": 200,
+    "type": "text/html; charset=utf-8",
+    "robots": "index,follow,max-image-preview:large",
+    "newApp": true
+  },
+  {
+    "path": "/overview/?season=2025-26",
+    "status": 200,
+    "type": "text/html; charset=utf-8",
+    "robots": "index,follow,max-image-preview:large",
+    "newApp": true
+  },
+  {
+    "path": "/players/903b6ff9-90bc-11f1-8aff-7bff69c6eb8e/?season=2025-26",
+    "status": 200,
+    "type": "text/html; charset=utf-8",
+    "robots": "index,follow,max-image-preview:large",
+    "newApp": true
+  },
+  {
+    "path": "/matches/968971/?season=2025-26",
+    "status": 200,
+    "type": "text/html; charset=utf-8",
+    "robots": "index,follow,max-image-preview:large",
+    "newApp": true
+  },
+  {
+    "path": "/not-a-real-page/",
+    "status": 404,
+    "type": "text/html; charset=utf-8",
+    "robots": "noindex,follow",
+    "newApp": true
+  },
+  {
+    "path": "/robots.txt",
+    "status": 200,
+    "type": "text/plain; charset=utf-8",
+    "robots": null,
+    "newApp": null,
+    "body": "User-agent: *\nAllow: /\nDisallow: /search/\nDisallow: /design-system/\nDisallow: /custom-import/\nDisallow: /data/\n\nUser-agent: OAI-SearchBot\nAllow: /\nDisallow: /search/\nDisallow: /design-system/\nDisallow: /custom-import/\nDisallow: /data/\n\nSitemap: https://korislab.vercel.app/sitemap.xml\n"
+  },
+  {
+    "path": "/sitemap.xml",
+    "status": 200,
+    "type": "application/xml; charset=utf-8",
+    "robots": null,
+    "newApp": null,
+    "entries": 1881
+  },
+  {
+    "path": "/assets/index-Cm_ZzMMp.js",
+    "status": 200,
+    "type": "application/javascript; charset=utf-8",
+    "robots": null,
+    "newApp": null
+  }
+]

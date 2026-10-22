@@ -1,0 +1,854 @@
+[
+  {
+    "playerId": "dfe80f45-90bd-11f1-be7c-6be1da1f835c",
+    "season": "2025-26",
+    "label": "Vuoden pelaaja",
+    "kind": "award",
+    "sourceUrl": "https://basket.fi/uutiset/samu-adler-ja-annika-aarrejoki-vuoden-pelaajat-palkintogaalassa-juhlistettiin-kauden-parhaita/"
+  },
+  {
+    "playerId": "903b6ff9-90bc-11f1-8aff-7bff69c6eb8e",
+    "season": "2025-26",
+    "label": "Vuoden ulkomaalaispelaaja",
+    "kind": "award",
+    "sourceUrl": "https://basket.fi/uutiset/samu-adler-ja-annika-aarrejoki-vuoden-pelaajat-palkintogaalassa-juhlistettiin-kauden-parhaita/"
+  },
+  {
+    "playerId": "2c6d50fe-90bf-11f1-9c4e-515875ef95f7",
+    "season": "2025-26",
+    "label": "Vuoden puolustuspelaaja",
+    "kind": "award",
+    "sourceUrl": "https://basket.fi/uutiset/samu-adler-ja-annika-aarrejoki-vuoden-pelaajat-palkintogaalassa-juhlistettiin-kauden-parhaita/"
+  },
+  {
+    "playerId": "30fa0d78-90bd-11f1-927b-df0c7c693a34",
+    "season": "2025-26",
+    "label": "Vuoden kuudes pelaaja",
+    "kind": "award",
+    "sourceUrl": "https://basket.fi/uutiset/samu-adler-ja-annika-aarrejoki-vuoden-pelaajat-palkintogaalassa-juhlistettiin-kauden-parhaita/"
+  },
+  {
+    "playerId": "10cdb07f-90bd-11f1-9539-7b8c3a749dc5",
+    "season": "2025-26",
+    "label": "Vuoden kehittynein",
+    "kind": "award",
+    "sourceUrl": "https://basket.fi/uutiset/samu-adler-ja-annika-aarrejoki-vuoden-pelaajat-palkintogaalassa-juhlistettiin-kauden-parhaita/"
+  },
+  {
+    "playerId": "2a5a38bc-90bf-11f1-9f47-515875ef95f7",
+    "season": "2025-26",
+    "label": "Vuoden tulokas",
+    "kind": "award",
+    "sourceUrl": "https://basket.fi/uutiset/samu-adler-ja-annika-aarrejoki-vuoden-pelaajat-palkintogaalassa-juhlistettiin-kauden-parhaita/"
+  },
+  {
+    "playerId": "903b6ff9-90bc-11f1-8aff-7bff69c6eb8e",
+    "season": "2025-26",
+    "label": "Finaalin MVP",
+    "kind": "award",
+    "sourceUrl": "https://basket.fi/uutiset/samu-adler-ja-annika-aarrejoki-vuoden-pelaajat-palkintogaalassa-juhlistettiin-kauden-parhaita/"
+  },
+  {
+    "playerId": "a0c836be-90be-11f1-911e-f55c6a1f11ab",
+    "season": "2025-26",
+    "label": "Vapaaheittopalkinto",
+    "kind": "award",
+    "sourceUrl": "https://basket.fi/uutiset/samu-adler-ja-annika-aarrejoki-vuoden-pelaajat-palkintogaalassa-juhlistettiin-kauden-parhaita/"
+  },
+  {
+    "playerId": "91a241bb-90b8-11f1-8517-831680e207e8",
+    "season": "2024-25",
+    "label": "Vuoden pelaaja",
+    "kind": "award",
+    "sourceUrl": "https://basket.fi/uutiset/lassi-nikkarinen-ja-taru-tuukkanen-vuoden-pelaajat-palkintogaalassa-juhlistettiin-kauden-parhaita/"
+  },
+  {
+    "playerId": "7a569082-90ba-11f1-a9c7-e3e1095353b3",
+    "season": "2024-25",
+    "label": "Vuoden ulkomaalaispelaaja",
+    "kind": "award",
+    "sourceUrl": "https://basket.fi/uutiset/lassi-nikkarinen-ja-taru-tuukkanen-vuoden-pelaajat-palkintogaalassa-juhlistettiin-kauden-parhaita/"
+  },
+  {
+    "playerId": "9b566fe8-90bc-11f1-9632-d14817461866",
+    "season": "2024-25",
+    "label": "Vuoden puolustuspelaaja",
+    "kind": "award",
+    "sourceUrl": "https://basket.fi/uutiset/lassi-nikkarinen-ja-taru-tuukkanen-vuoden-pelaajat-palkintogaalassa-juhlistettiin-kauden-parhaita/"
+  },
+  {
+    "playerId": "30fa0d78-90bd-11f1-927b-df0c7c693a34",
+    "season": "2024-25",
+    "label": "Vuoden kuudes pelaaja",
+    "kind": "award",
+    "sourceUrl": "https://basket.fi/uutiset/lassi-nikkarinen-ja-taru-tuukkanen-vuoden-pelaajat-palkintogaalassa-juhlistettiin-kauden-parhaita/"
+  },
+  {
+    "playerId": "c55056c3-90bd-11f1-8e05-7b525a68ccc9",
+    "season": "2024-25",
+    "label": "Vuoden kehittynein",
+    "kind": "award",
+    "sourceUrl": "https://basket.fi/uutiset/lassi-nikkarinen-ja-taru-tuukkanen-vuoden-pelaajat-palkintogaalassa-juhlistettiin-kauden-parhaita/"
+  },
+  {
+    "playerId": "c570bb13-90bd-11f1-8a85-7b525a68ccc9",
+    "season": "2024-25",
+    "label": "Vuoden tulokas",
+    "kind": "award",
+    "sourceUrl": "https://basket.fi/uutiset/lassi-nikkarinen-ja-taru-tuukkanen-vuoden-pelaajat-palkintogaalassa-juhlistettiin-kauden-parhaita/"
+  },
+  {
+    "playerId": "dd86bb5d-90ba-11f1-9171-770a70daccec",
+    "season": "2024-25",
+    "label": "Finaalin MVP",
+    "kind": "award",
+    "sourceUrl": "https://basket.fi/uutiset/lassi-nikkarinen-ja-taru-tuukkanen-vuoden-pelaajat-palkintogaalassa-juhlistettiin-kauden-parhaita/"
+  },
+  {
+    "playerId": "37cccf0b-90bd-11f1-a10a-e11d336766e0",
+    "season": "2024-25",
+    "label": "Vapaaheittopalkinto",
+    "kind": "award",
+    "sourceUrl": "https://basket.fi/uutiset/lassi-nikkarinen-ja-taru-tuukkanen-vuoden-pelaajat-palkintogaalassa-juhlistettiin-kauden-parhaita/"
+  },
+  {
+    "playerId": "119b31d8-90bd-11f1-b34c-7b8c3a749dc5",
+    "season": "2024-25",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Peli-Karhut",
+    "sourceUrl": "https://basket.fi/uutiset/peli-karhut-palasi-suomen-mestariksi-2/",
+    "matchIds": [
+      "965820",
+      "965821",
+      "965822",
+      "965823",
+      "965824"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "48aa5102-90bb-11f1-b975-1b0357244d26",
+    "season": "2024-25",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Peli-Karhut",
+    "sourceUrl": "https://basket.fi/uutiset/peli-karhut-palasi-suomen-mestariksi-2/",
+    "matchIds": [
+      "965820",
+      "965821",
+      "965822",
+      "965823",
+      "965824"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "688f4311-90bd-11f1-8224-73575e376a6e",
+    "season": "2024-25",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Peli-Karhut",
+    "sourceUrl": "https://basket.fi/uutiset/peli-karhut-palasi-suomen-mestariksi-2/",
+    "matchIds": [
+      "965820",
+      "965821",
+      "965822",
+      "965823",
+      "965824"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "88f3104a-90be-11f1-a83c-b9d3b0a6c9e2",
+    "season": "2024-25",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Peli-Karhut",
+    "sourceUrl": "https://basket.fi/uutiset/peli-karhut-palasi-suomen-mestariksi-2/",
+    "matchIds": [
+      "965820",
+      "965821",
+      "965822",
+      "965823",
+      "965824"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "903b6ff9-90bc-11f1-8aff-7bff69c6eb8e",
+    "season": "2024-25",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Peli-Karhut",
+    "sourceUrl": "https://basket.fi/uutiset/peli-karhut-palasi-suomen-mestariksi-2/",
+    "matchIds": [
+      "965820",
+      "965821",
+      "965822",
+      "965823",
+      "965824"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "95d77539-90be-11f1-9d80-b9d3b0a6c9e2",
+    "season": "2024-25",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Peli-Karhut",
+    "sourceUrl": "https://basket.fi/uutiset/peli-karhut-palasi-suomen-mestariksi-2/",
+    "matchIds": [
+      "965820",
+      "965821",
+      "965822",
+      "965823",
+      "965824"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "9ca4d6c6-90ba-11f1-997d-c7817cb4e90e",
+    "season": "2024-25",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Peli-Karhut",
+    "sourceUrl": "https://basket.fi/uutiset/peli-karhut-palasi-suomen-mestariksi-2/",
+    "matchIds": [
+      "965820",
+      "965821",
+      "965822",
+      "965823",
+      "965824"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "b807cdcc-90bc-11f1-ad51-b19807192607",
+    "season": "2024-25",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Peli-Karhut",
+    "sourceUrl": "https://basket.fi/uutiset/peli-karhut-palasi-suomen-mestariksi-2/",
+    "matchIds": [
+      "965820",
+      "965821",
+      "965822",
+      "965823",
+      "965824"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "cb3480d5-90bc-11f1-8878-e795959ab3d5",
+    "season": "2024-25",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Peli-Karhut",
+    "sourceUrl": "https://basket.fi/uutiset/peli-karhut-palasi-suomen-mestariksi-2/",
+    "matchIds": [
+      "965820",
+      "965821",
+      "965822",
+      "965823",
+      "965824"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "dd86bb5d-90ba-11f1-9171-770a70daccec",
+    "season": "2024-25",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Peli-Karhut",
+    "sourceUrl": "https://basket.fi/uutiset/peli-karhut-palasi-suomen-mestariksi-2/",
+    "matchIds": [
+      "965820",
+      "965821",
+      "965822",
+      "965823",
+      "965824"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "e948f1de-90bb-11f1-886b-c58622c231eb",
+    "season": "2024-25",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Peli-Karhut",
+    "sourceUrl": "https://basket.fi/uutiset/peli-karhut-palasi-suomen-mestariksi-2/",
+    "matchIds": [
+      "965820",
+      "965821",
+      "965822",
+      "965823",
+      "965824"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "072bebf0-90be-11f1-9991-63f25f046c80",
+    "season": "2025-26",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Peli-Karhut",
+    "sourceUrl": "https://basket.fi/uutiset/peli-karhuille-toinen-perakkainen-suomen-mestaruus/",
+    "matchIds": [
+      "1003916",
+      "1003917",
+      "1003918",
+      "1003919"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "341f4e6b-90be-11f1-a777-8fd4205740a9",
+    "season": "2025-26",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Peli-Karhut",
+    "sourceUrl": "https://basket.fi/uutiset/peli-karhuille-toinen-perakkainen-suomen-mestaruus/",
+    "matchIds": [
+      "1003916",
+      "1003917",
+      "1003918",
+      "1003919"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "417f1240-90be-11f1-93d6-2ffd388e433c",
+    "season": "2025-26",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Peli-Karhut",
+    "sourceUrl": "https://basket.fi/uutiset/peli-karhuille-toinen-perakkainen-suomen-mestaruus/",
+    "matchIds": [
+      "1003916",
+      "1003917",
+      "1003918",
+      "1003919"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "6c5701f6-90be-11f1-9a90-8b7b745739af",
+    "season": "2025-26",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Peli-Karhut",
+    "sourceUrl": "https://basket.fi/uutiset/peli-karhuille-toinen-perakkainen-suomen-mestaruus/",
+    "matchIds": [
+      "1003916",
+      "1003917",
+      "1003918",
+      "1003919"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "8379388b-90bd-11f1-a97d-a37e7de974d8",
+    "season": "2025-26",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Peli-Karhut",
+    "sourceUrl": "https://basket.fi/uutiset/peli-karhuille-toinen-perakkainen-suomen-mestaruus/",
+    "matchIds": [
+      "1003916",
+      "1003917",
+      "1003918",
+      "1003919"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "903b6ff9-90bc-11f1-8aff-7bff69c6eb8e",
+    "season": "2025-26",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Peli-Karhut",
+    "sourceUrl": "https://basket.fi/uutiset/peli-karhuille-toinen-perakkainen-suomen-mestaruus/",
+    "matchIds": [
+      "1003916",
+      "1003917",
+      "1003918",
+      "1003919"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "c55056c3-90bd-11f1-8e05-7b525a68ccc9",
+    "season": "2025-26",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Peli-Karhut",
+    "sourceUrl": "https://basket.fi/uutiset/peli-karhuille-toinen-perakkainen-suomen-mestaruus/",
+    "matchIds": [
+      "1003916",
+      "1003917",
+      "1003918",
+      "1003919"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "d42257a7-90bc-11f1-a912-ada88c48e62e",
+    "season": "2025-26",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Peli-Karhut",
+    "sourceUrl": "https://basket.fi/uutiset/peli-karhuille-toinen-perakkainen-suomen-mestaruus/",
+    "matchIds": [
+      "1003916",
+      "1003917",
+      "1003918",
+      "1003919"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "dcab331a-90be-11f1-a9fd-73883e79fac1",
+    "season": "2025-26",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Peli-Karhut",
+    "sourceUrl": "https://basket.fi/uutiset/peli-karhuille-toinen-perakkainen-suomen-mestaruus/",
+    "matchIds": [
+      "1003916",
+      "1003917",
+      "1003918",
+      "1003919"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "e571bc16-90ba-11f1-856b-d936dd1c73f2",
+    "season": "2025-26",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Peli-Karhut",
+    "sourceUrl": "https://basket.fi/uutiset/peli-karhuille-toinen-perakkainen-suomen-mestaruus/",
+    "matchIds": [
+      "1003916",
+      "1003917",
+      "1003918",
+      "1003919"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "0289786d-90bc-11f1-a8d5-797de5732515",
+    "season": "2024-25",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Helsinki Seagulls",
+    "sourceUrl": "https://basket.fi/uutiset/korisliiga-mestaruus-ratkesi-seagulls-kultamitaleille-suoraan-neljassa/",
+    "matchIds": [
+      "965760",
+      "965761",
+      "965762",
+      "965763"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "0ba20c58-90bd-11f1-8c4b-5345137024ff",
+    "season": "2024-25",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Helsinki Seagulls",
+    "sourceUrl": "https://basket.fi/uutiset/korisliiga-mestaruus-ratkesi-seagulls-kultamitaleille-suoraan-neljassa/",
+    "matchIds": [
+      "965760",
+      "965761",
+      "965762",
+      "965763"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "19400c2f-90bd-11f1-8c95-916f627ff7ec",
+    "season": "2024-25",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Helsinki Seagulls",
+    "sourceUrl": "https://basket.fi/uutiset/korisliiga-mestaruus-ratkesi-seagulls-kultamitaleille-suoraan-neljassa/",
+    "matchIds": [
+      "965760",
+      "965761",
+      "965762",
+      "965763"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "1d8a7602-90bc-11f1-9e2a-e9ae9e26fc7d",
+    "season": "2024-25",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Helsinki Seagulls",
+    "sourceUrl": "https://basket.fi/uutiset/korisliiga-mestaruus-ratkesi-seagulls-kultamitaleille-suoraan-neljassa/",
+    "matchIds": [
+      "965760",
+      "965761",
+      "965762",
+      "965763"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "2abf41c0-90b9-11f1-8341-05157c8829f2",
+    "season": "2024-25",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Helsinki Seagulls",
+    "sourceUrl": "https://basket.fi/uutiset/korisliiga-mestaruus-ratkesi-seagulls-kultamitaleille-suoraan-neljassa/",
+    "matchIds": [
+      "965760",
+      "965761",
+      "965762",
+      "965763"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "6652e70a-90bd-11f1-93b3-73575e376a6e",
+    "season": "2024-25",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Helsinki Seagulls",
+    "sourceUrl": "https://basket.fi/uutiset/korisliiga-mestaruus-ratkesi-seagulls-kultamitaleille-suoraan-neljassa/",
+    "matchIds": [
+      "965760",
+      "965761",
+      "965762",
+      "965763"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "6ceafc37-90bc-11f1-80cc-6f6630263df7",
+    "season": "2024-25",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Helsinki Seagulls",
+    "sourceUrl": "https://basket.fi/uutiset/korisliiga-mestaruus-ratkesi-seagulls-kultamitaleille-suoraan-neljassa/",
+    "matchIds": [
+      "965760",
+      "965761",
+      "965762",
+      "965763"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "953e165f-90bb-11f1-b3ee-2b2f17cdb034",
+    "season": "2024-25",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Helsinki Seagulls",
+    "sourceUrl": "https://basket.fi/uutiset/korisliiga-mestaruus-ratkesi-seagulls-kultamitaleille-suoraan-neljassa/",
+    "matchIds": [
+      "965760",
+      "965761",
+      "965762",
+      "965763"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "b8bf2a4b-90bc-11f1-9c48-b19807192607",
+    "season": "2024-25",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Helsinki Seagulls",
+    "sourceUrl": "https://basket.fi/uutiset/korisliiga-mestaruus-ratkesi-seagulls-kultamitaleille-suoraan-neljassa/",
+    "matchIds": [
+      "965760",
+      "965761",
+      "965762",
+      "965763"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "bbf4bb82-90b9-11f1-bbf0-7106e55498b7",
+    "season": "2024-25",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Helsinki Seagulls",
+    "sourceUrl": "https://basket.fi/uutiset/korisliiga-mestaruus-ratkesi-seagulls-kultamitaleille-suoraan-neljassa/",
+    "matchIds": [
+      "965760",
+      "965761",
+      "965762",
+      "965763"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "c4767580-90bd-11f1-a8aa-7b525a68ccc9",
+    "season": "2024-25",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Helsinki Seagulls",
+    "sourceUrl": "https://basket.fi/uutiset/korisliiga-mestaruus-ratkesi-seagulls-kultamitaleille-suoraan-neljassa/",
+    "matchIds": [
+      "965760",
+      "965761",
+      "965762",
+      "965763"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "d92cdbd1-90bd-11f1-9edf-23575df7f55b",
+    "season": "2024-25",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Helsinki Seagulls",
+    "sourceUrl": "https://basket.fi/uutiset/korisliiga-mestaruus-ratkesi-seagulls-kultamitaleille-suoraan-neljassa/",
+    "matchIds": [
+      "965760",
+      "965761",
+      "965762",
+      "965763"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "208a9d7b-90be-11f1-a8b1-f772deacbe7d",
+    "season": "2025-26",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Salon Vilpas",
+    "sourceUrl": "https://basket.fi/uutiset/korisliiga-finaalit-ratkesivat-vilpas-karkasi-toisella-puoliajalla-seurahistorian-toiseen-mestaruuteen/",
+    "matchIds": [
+      "1004235",
+      "1004236",
+      "1004237",
+      "1004238",
+      "1004239",
+      "1004240",
+      "1004241"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "21838fb7-90bd-11f1-8f7a-ebd35007e794",
+    "season": "2025-26",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Salon Vilpas",
+    "sourceUrl": "https://basket.fi/uutiset/korisliiga-finaalit-ratkesivat-vilpas-karkasi-toisella-puoliajalla-seurahistorian-toiseen-mestaruuteen/",
+    "matchIds": [
+      "1004235",
+      "1004236",
+      "1004237",
+      "1004238",
+      "1004239",
+      "1004240",
+      "1004241"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "28e15d24-90bd-11f1-8a7a-d1b26dd8807a",
+    "season": "2025-26",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Salon Vilpas",
+    "sourceUrl": "https://basket.fi/uutiset/korisliiga-finaalit-ratkesivat-vilpas-karkasi-toisella-puoliajalla-seurahistorian-toiseen-mestaruuteen/",
+    "matchIds": [
+      "1004235",
+      "1004236",
+      "1004237",
+      "1004238",
+      "1004239",
+      "1004240",
+      "1004241"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "47beaaf5-90bd-11f1-a9eb-c73957d2f288",
+    "season": "2025-26",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Salon Vilpas",
+    "sourceUrl": "https://basket.fi/uutiset/korisliiga-finaalit-ratkesivat-vilpas-karkasi-toisella-puoliajalla-seurahistorian-toiseen-mestaruuteen/",
+    "matchIds": [
+      "1004235",
+      "1004236",
+      "1004237",
+      "1004238",
+      "1004239",
+      "1004240",
+      "1004241"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "66646f62-90bd-11f1-aefd-73575e376a6e",
+    "season": "2025-26",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Salon Vilpas",
+    "sourceUrl": "https://basket.fi/uutiset/korisliiga-finaalit-ratkesivat-vilpas-karkasi-toisella-puoliajalla-seurahistorian-toiseen-mestaruuteen/",
+    "matchIds": [
+      "1004235",
+      "1004236",
+      "1004237",
+      "1004238",
+      "1004239",
+      "1004240",
+      "1004241"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "6ba4bef2-90bc-11f1-b099-6f6630263df7",
+    "season": "2025-26",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Salon Vilpas",
+    "sourceUrl": "https://basket.fi/uutiset/korisliiga-finaalit-ratkesivat-vilpas-karkasi-toisella-puoliajalla-seurahistorian-toiseen-mestaruuteen/",
+    "matchIds": [
+      "1004235",
+      "1004236",
+      "1004237",
+      "1004238",
+      "1004239",
+      "1004240",
+      "1004241"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "759cbe3a-90bd-11f1-9758-bf766ef3e20b",
+    "season": "2025-26",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Salon Vilpas",
+    "sourceUrl": "https://basket.fi/uutiset/korisliiga-finaalit-ratkesivat-vilpas-karkasi-toisella-puoliajalla-seurahistorian-toiseen-mestaruuteen/",
+    "matchIds": [
+      "1004235",
+      "1004236",
+      "1004237",
+      "1004238",
+      "1004239",
+      "1004240",
+      "1004241"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "abbc1a95-90bc-11f1-9235-fb3655655b76",
+    "season": "2025-26",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Salon Vilpas",
+    "sourceUrl": "https://basket.fi/uutiset/korisliiga-finaalit-ratkesivat-vilpas-karkasi-toisella-puoliajalla-seurahistorian-toiseen-mestaruuteen/",
+    "matchIds": [
+      "1004235",
+      "1004236",
+      "1004237",
+      "1004238",
+      "1004239",
+      "1004240",
+      "1004241"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "c416fd86-90bd-11f1-b262-7b525a68ccc9",
+    "season": "2025-26",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Salon Vilpas",
+    "sourceUrl": "https://basket.fi/uutiset/korisliiga-finaalit-ratkesivat-vilpas-karkasi-toisella-puoliajalla-seurahistorian-toiseen-mestaruuteen/",
+    "matchIds": [
+      "1004235",
+      "1004236",
+      "1004237",
+      "1004238",
+      "1004239",
+      "1004240",
+      "1004241"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "d5b2852c-90be-11f1-b062-2dc165e7f1b2",
+    "season": "2025-26",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Salon Vilpas",
+    "sourceUrl": "https://basket.fi/uutiset/korisliiga-finaalit-ratkesivat-vilpas-karkasi-toisella-puoliajalla-seurahistorian-toiseen-mestaruuteen/",
+    "matchIds": [
+      "1004235",
+      "1004236",
+      "1004237",
+      "1004238",
+      "1004239",
+      "1004240",
+      "1004241"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "e3c26bf2-90b9-11f1-9f1e-a19776e4ef59",
+    "season": "2025-26",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Salon Vilpas",
+    "sourceUrl": "https://basket.fi/uutiset/korisliiga-finaalit-ratkesivat-vilpas-karkasi-toisella-puoliajalla-seurahistorian-toiseen-mestaruuteen/",
+    "matchIds": [
+      "1004235",
+      "1004236",
+      "1004237",
+      "1004238",
+      "1004239",
+      "1004240",
+      "1004241"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "e5882668-90bd-11f1-b7ef-d7c486996b5f",
+    "season": "2025-26",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Salon Vilpas",
+    "sourceUrl": "https://basket.fi/uutiset/korisliiga-finaalit-ratkesivat-vilpas-karkasi-toisella-puoliajalla-seurahistorian-toiseen-mestaruuteen/",
+    "matchIds": [
+      "1004235",
+      "1004236",
+      "1004237",
+      "1004238",
+      "1004239",
+      "1004240",
+      "1004241"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  },
+  {
+    "playerId": "fa9976ef-90bc-11f1-83df-710154d60416",
+    "season": "2025-26",
+    "label": "Suomen mestaruus",
+    "kind": "championship",
+    "team": "Salon Vilpas",
+    "sourceUrl": "https://basket.fi/uutiset/korisliiga-finaalit-ratkesivat-vilpas-karkasi-toisella-puoliajalla-seurahistorian-toiseen-mestaruuteen/",
+    "matchIds": [
+      "1004235",
+      "1004236",
+      "1004237",
+      "1004238",
+      "1004239",
+      "1004240",
+      "1004241"
+    ],
+    "evidence": "Finaalien box score -kokoonpano; Basket.fi:n vahvistama mestarijoukkue"
+  }
+]
