@@ -3,8 +3,9 @@ import json
 from pathlib import Path
 
 
-def join_season(records, possession_games, weight):
-    """`records`: normalized matches; `possession_games`: dicts with match_id and possessions."""
+def join_season(records, possession_games, weight, dates=None):
+    """`records`: normalized matches; `possession_games`: dicts with match_id and possessions.
+    `dates` fills kickoff dates that a record lacks."""
     by_id = {r["game"]["source_id"]: r for r in records}
     games = []
     for game in possession_games:
@@ -12,7 +13,10 @@ def join_season(records, possession_games, weight):
         if record is None:
             continue
         home = next(t["source_id"] for t in record["teams"] if t.get("home_away") == "home")
-        games.append({"match_id": game["match_id"], "date": str(record["game"]["scheduled_at"])[:10],
+        date = record["game"].get("scheduled_at") or (dates or {}).get(game["match_id"])
+        if not date:
+            continue
+        games.append({"match_id": game["match_id"], "date": str(date)[:10],
                       "weight": weight, "home": home, "possessions": game["possessions"], "record": record})
     return games
 
