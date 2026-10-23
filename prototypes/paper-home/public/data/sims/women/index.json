@@ -121,6 +121,36 @@
     "name": "Peli-Karhut"
    },
    "home_win_probability": 0.306
+  },
+  {
+   "id": "1006189",
+   "date": "2026-11-07",
+   "time": "17:00:00",
+   "venue": "Espoonlahden urheiluhalli",
+   "home": {
+    "id": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+    "name": "Espoo Basket Team"
+   },
+   "away": {
+    "id": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+    "name": "Kouvottaret"
+   },
+   "home_win_probability": 0.674
+  },
+  {
+   "id": "1006223",
+   "date": "2026-11-07",
+   "time": "17:00:00",
+   "venue": "AGCO Power Arena",
+   "home": {
+    "id": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+    "name": "BC Nokia"
+   },
+   "away": {
+    "id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+    "name": "Tapiolan Honka"
+   },
+   "home_win_probability": 0.681
   }
  ]
 }
