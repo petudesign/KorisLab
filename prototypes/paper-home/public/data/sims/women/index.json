@@ -106,6 +106,21 @@
     "name": "Tapiolan Honka"
    },
    "home_win_probability": 0.727
+  },
+  {
+   "id": "1006213",
+   "date": "2026-11-08",
+   "time": "15:00:00",
+   "venue": "Urhea-halli",
+   "home": {
+    "id": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+    "name": "HBA-Märsky"
+   },
+   "away": {
+    "id": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+    "name": "Tampereen Pyrintö"
+   },
+   "home_win_probability": 0.765
   }
  ]
 }
