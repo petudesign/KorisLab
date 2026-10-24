@@ -49,7 +49,8 @@ function Court({pack,games,players}){
  useEffect(()=>court.current.setSpeed(speed),[speed]);
  useEffect(()=>court.current.setCamera(camera),[camera]);
  const actions=court.current?.actions()??[];
- const first=Math.max(0,tick.eventIndex-3),recent=actions.slice(first,tick.eventIndex+1);
+ // The flat tactical view keeps more of the court visible with a shorter feed.
+ const first=Math.max(0,tick.eventIndex-(camera==='tactical'?1:3)),recent=actions.slice(first,tick.eventIndex+1);
  const spark=actions.map(e=>`${(e.t/tick.duration*1000).toFixed(1)},${(20-Math.max(-19,Math.min(19,(e.home_score-e.away_score)*.9))).toFixed(1)}`).join(' ');
  const toggle=()=>{court.current.setPlaying(!tick.playing);setTick({...tick,playing:!tick.playing});};
  const variantLabel={typical_home_win:tr(`${home.name} voittaa`,`${home.name} win`),typical_away_win:tr(`${away.name} voittaa`,`${away.name} win`),closest:tr('Tiukin peli','Closest game')};

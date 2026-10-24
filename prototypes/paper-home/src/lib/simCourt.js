@@ -114,8 +114,13 @@ function makeFigure(scene,side){
  const ring=new THREE.Mesh(new THREE.RingGeometry(.36,.43,32),new THREE.MeshBasicMaterial({color:TEAM_COLORS[side],transparent:true,opacity:.45,side:THREE.DoubleSide}));
  ring.rotation.x=-Math.PI/2;ring.position.y=.012;root.add(ring);
  const tag=new THREE.Sprite(new THREE.SpriteMaterial({map:labelTexture('',TEAM_COLORS[side]),depthTest:false}));tag.scale.set(1.25,.47,1);tag.position.y=2.35;root.add(tag);
+ // Flat counter for the tactical view: team colour, jersey number, a rim that lights up for the acting player.
+ const token=new THREE.Group();token.visible=false;token.position.y=.06;root.add(token);
+ const tokenMaterial=new THREE.MeshBasicMaterial({map:numberTexture('',TEAM_COLORS[side])});
+ const disc=new THREE.Mesh(new THREE.CircleGeometry(.48,40),tokenMaterial);disc.rotation.x=-Math.PI/2;token.add(disc);
+ const rim=new THREE.Mesh(new THREE.RingGeometry(.48,.58,40),new THREE.MeshBasicMaterial({color:0x0b0b0b,transparent:true}));rim.rotation.x=-Math.PI/2;rim.position.y=.005;token.add(rim);
  scene.add(root);
- return {root,body,legs,arms,ring,tag,numberMaterial,phase:Math.random()*6,yaw:0};
+ return {root,body,legs,arms,ring,tag,numberMaterial,token,tokenMaterial,tokenRim:rim,phase:Math.random()*6,yaw:0};
 }
 
 function ballTexture(){
@@ -131,8 +136,10 @@ export function createSimCourt(host,{onTick}={}){
  const renderer=new THREE.WebGLRenderer({antialias:true});
  renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.shadowMap.enabled=true;
  host.append(renderer.domElement);
- const scene=new THREE.Scene();scene.background=new THREE.Color(0x0b0b0b);scene.fog=new THREE.Fog(0x0b0b0b,30,70);
+ const scene=new THREE.Scene();scene.background=new THREE.Color(0x0b0b0b);scene.fog=new THREE.Fog(0x0b0b0b,30,70);const fog=scene.fog;
  const camera=new THREE.PerspectiveCamera(38,16/9,.1,200);
+ // The tactical view is a flat, true top-down projection so counters keep their size across the court.
+ const topCamera=new THREE.OrthographicCamera(-16,16,9,-9,.1,100);topCamera.position.set(0,40,0);topCamera.up.set(0,0,-1);topCamera.lookAt(0,0,0);
  const controls=new OrbitControls(camera,renderer.domElement);controls.enabled=false;controls.maxPolarAngle=Math.PI/2.1;
  scene.add(new THREE.HemisphereLight(0xe8e8f0,0x101012,.9));
  const sun=new THREE.DirectionalLight(0xffffff,1.3);sun.position.set(-6,18,9);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);
@@ -147,6 +154,8 @@ export function createSimCourt(host,{onTick}={}){
  for(const side of ['home','away'])for(let i=0;i<5;i++)figures.push({side,slot:i,pid:null,pos:new THREE.Vector3(side==='home'?-3:3,0,(i-2)*2),...makeFigure(scene,side)});
  const ball=new THREE.Mesh(new THREE.SphereGeometry(.12,24,16),new THREE.MeshStandardMaterial({map:ballTexture(),roughness:.6}));
  ball.castShadow=true;scene.add(ball);
+ const ballToken=new THREE.Mesh(new THREE.CircleGeometry(.26,32),new THREE.MeshBasicMaterial({color:0xe07a35}));
+ ballToken.rotation.x=-Math.PI/2;ballToken.visible=false;scene.add(ballToken);
  const ballPos=new THREE.Vector3(),camFocus=new THREE.Vector3();
 
  let players={},actions=[],lineups=[],duration=2400,t=0,playing=false,speed=4,camMode='broadcast',snap=true,lastK=null,frame=0,last=performance.now(),disposed=false;
@@ -176,7 +185,7 @@ export function createSimCourt(host,{onTick}={}){
   });
   // A rebounder crashes towards the rim as the ball comes off it.
   if(isRebound(next)&&out[next.player]&&lead<1.5){const rim=hoopFor(offenseOf(prev??next),next.period);out[next.player]=out[next.player].clone().lerp(rim,.6);}
-  let ball;
+  let ball,holder=null;
   if(prev&&(isShot(prev)||prev.type==='free_throw')&&since<1.1){
    ball={mode:'rim',rim:hoopFor(prev.team,prev.period),since,made:prev.made};
   }else if(isShot(next)&&lead<.9){
@@ -185,40 +194,58 @@ export function createSimCourt(host,{onTick}={}){
    ball={mode:'loose',from:hoopFor(prev.team,prev.period),to:next.player,progress:Math.min(1,(since-1.1)/Math.max(.3,next.t-prev.t-1.1))};
   }else{
    const keeper=(isRebound(prev)||prev?.type==='steal')&&since<1.4?prev.player:null;
-   const holder=keeper??(next.assist&&lead>1.3?next.assist:offense===next.team&&next.player?next.player:attackers[0]);
+   holder=keeper??(next.assist&&lead>1.3?next.assist:offense===next.team&&next.player?next.player:attackers[0]);
    ball={mode:'hold',holder};
   }
-  return {k,out,ball,prev,next,shooter:isShot(next)&&lead<.7?next.player:null};
+  // Facing comes from the play, never from the ball's own position, so nobody chases their own dribble.
+  const face={},marks={};
+  attackers.forEach(pid=>{face[pid]=pid===holder||pid===next.player||!out[holder]?hoop:out[holder];});
+  [...defenders].sort((a,b)=>depth(b)-depth(a)).forEach((pid,i)=>{marks[pid]=order[i];face[pid]=out[order[i]]??hoop;});
+  if(next.type==='free_throw')for(const pid of [...attackers,...defenders])face[pid]=hoop;
+  return {k,out,face,marks,ball,holder,prev,next,shooter:isShot(next)&&lead<.7?next.player:null};
  }
 
  function update(gameDt,realDt){
   const state=targets(t);if(!state)return;
-  const on={home:lineupAt('home',t),away:lineupAt('away',t)},byPid={};
+  const on={home:lineupAt('home',t),away:lineupAt('away',t)},byPid={},tactical=camMode==='tactical';
+  // Positions first, so stances can use where the opponent actually is this frame.
+  for(const f of figures){const pid=on[f.side][f.slot];if(pid&&state.out[pid])byPid[pid]=f;}
   for(const f of figures){
    const pid=on[f.side][f.slot];
    if(pid!==f.pid){
     f.pid=pid;const p=players[pid];
     f.tag.material.map?.dispose();f.tag.material.map=labelTexture(p?`${p.number??''} ${p.short}`.trim():'',TEAM_COLORS[f.side]);f.tag.material.needsUpdate=true;
     f.numberMaterial.map?.dispose();f.numberMaterial.map=numberTexture(p?.number??'',TEAM_COLORS[f.side]);f.numberMaterial.needsUpdate=true;
+    f.tokenMaterial.map?.dispose();f.tokenMaterial.map=numberTexture(p?.number??'',TEAM_COLORS[f.side]);f.tokenMaterial.needsUpdate=true;
    }
    f.root.visible=Boolean(pid);
+   f.body.visible=f.ring.visible=!tactical;f.token.visible=tactical;
+   f.tag.position.set(0,tactical?.3:2.35,tactical?.95:0);f.tag.scale.set(tactical?1:1.25,tactical?.38:.47,1);
    const target=state.out[pid];if(!target)continue;
-   byPid[pid]=f;
    const before=f.pos.clone();
    if(snap)f.pos.copy(target);
    else{const step=target.clone().sub(f.pos),max=RUN_SPEED*gameDt;if(step.length()>max)step.setLength(max);f.pos.add(step);}
    f.root.position.copy(f.pos);
    const moved=snap?0:f.pos.distanceTo(before),pace=gameDt>0?moved/gameDt:0;
-   // Face the direction of travel; when standing, face the ball.
-   const look=pace>.6?f.pos.clone().sub(before):ballPos.clone().sub(f.pos);
-   if(look.lengthSq()>1e-4){const yaw=Math.atan2(look.x,look.z);let d=yaw-f.yaw;d=Math.atan2(Math.sin(d),Math.cos(d));f.yaw+=d*Math.min(1,realDt*8);}
+   // Running players face where they run; others face their role's target, turning at a human rate.
+   const look=pace>1.5?f.pos.clone().sub(before):(state.face[pid]??f.pos).clone().sub(f.pos);
+   if(look.lengthSq()>.01){
+    let d=Math.atan2(look.x,look.z)-f.yaw;d=Math.atan2(Math.sin(d),Math.cos(d));
+    const turn=Math.min(Math.abs(d),realDt*7);f.yaw+=Math.sign(d)*turn;
+   }
    f.body.rotation.y=f.yaw;
-   f.phase+=moved*3.4;
-   const stride=Math.min(1,pace/4)*.65;
-   f.legs[0].rotation.x=Math.sin(f.phase)*stride;f.legs[1].rotation.x=-Math.sin(f.phase)*stride;
-   const shooting=pid===state.shooter;
-   f.arms[0].rotation.x=shooting?-2.7:-Math.sin(f.phase)*stride*.8;f.arms[1].rotation.x=shooting?-2.7:Math.sin(f.phase)*stride*.8;
-   f.ring.material.opacity=pid===state.next?.player&&state.next.t-t<2?1:.4;
+   f.phase+=moved*3.2;
+   const stride=Math.min(1,pace/3)*.75,swing=Math.sin(f.phase)*stride,idle=Math.sin(t*1.6+f.phase)*.06;
+   f.legs[0].rotation.x=swing;f.legs[1].rotation.x=-swing;
+   const [left,right]=f.arms,shooting=pid===state.shooter,dribbling=pid===state.holder&&state.ball.mode==='hold';
+   const markGap=state.marks[pid]&&byPid[state.marks[pid]]?f.pos.distanceTo(byPid[state.marks[pid]].pos):9;
+   if(shooting){left.rotation.set(-2.75,0,-.15);right.rotation.set(-2.75,0,.15);}
+   else if(dribbling){left.rotation.set(-.35+idle,0,-.35);right.rotation.set(-.45-Math.abs(Math.sin(t*7))*.4,0,.12);}
+   else if(markGap<2.6&&pace<2){left.rotation.set(-.25+idle,0,-.95);right.rotation.set(-.25-idle,0,.95);}  // Defensive stance: arms wide.
+   else{left.rotation.set(-swing*1.1-.12+idle,0,-.08);right.rotation.set(swing*1.1-.12-idle,0,.08);}
+   const acting=pid===state.next?.player&&state.next.t-t<2;
+   f.ring.material.opacity=acting?1:.4;
+   f.tokenRim.material.color.set(acting||pid===state.holder?0xf3f3f4:0x0b0b0b);
   }
   // The ball is placed relative to where its holder actually is on screen.
   const hand=f=>f.pos.clone().add(new THREE.Vector3(Math.sin(f.yaw+.6)*.35,0,Math.cos(f.yaw+.6)*.35));
@@ -229,6 +256,7 @@ export function createSimCourt(host,{onTick}={}){
   else{const f=byPid[b.holder];if(f){bt.copy(hand(f));bt.y=.2+Math.abs(Math.sin(t*7))*.75;}else bt.copy(ballPos);}
   if(snap)ballPos.copy(bt);else ballPos.lerp(bt,Math.min(1,realDt*14));
   ball.position.copy(ballPos);ball.rotation.x+=realDt*6;
+  ball.visible=!tactical;ballToken.visible=tactical;ballToken.position.set(ballPos.x,.12,ballPos.z);
   snap=false;
   const e=state.prev,clock=Math.max(0,(e?e.clock:600)-(t-(e?.t??0)));
   onTick?.({t,duration,playing,period:e?.period??1,clock,home:e?.home_score??0,away:e?.away_score??0,eventIndex:state.k,changed:state.k!==lastK});
@@ -238,11 +266,11 @@ export function createSimCourt(host,{onTick}={}){
  function updateCamera(dt){
   if(camMode==='orbit'){controls.update();return;}
   // The camera follows a heavily smoothed point on the court axis, not the bouncing ball.
-  camFocus.x+=(Math.max(-8,Math.min(8,ballPos.x*.8))-camFocus.x)*Math.min(1,dt*.9);
+  camFocus.x+=(Math.max(-10,Math.min(10,ballPos.x*.85))-camFocus.x)*Math.min(1,dt*1.2);
   let want,look;
-  if(camMode==='tactical'){want=new THREE.Vector3(0,31,.01);look=new THREE.Vector3(0,0,0);}
-  else if(camMode==='baseline'){const dir=Math.sign(camFocus.x)||1;want=new THREE.Vector3(dir*(COURT_L/2+5),6.5,4.5);look=new THREE.Vector3(dir*3,1,-.5);}
-  else{const far=camera.aspect<1.5?1.5:1;want=new THREE.Vector3(camFocus.x*.7,12.5*far,17.5*far);look=new THREE.Vector3(camFocus.x,0,.6);}
+  if(camMode==='tactical')return;
+  if(camMode==='baseline'){const dir=Math.sign(camFocus.x)||1;want=new THREE.Vector3(dir*(COURT_L/2+5),6.5,4.5);look=new THREE.Vector3(dir*3,1,-.5);}
+  else{const far=camera.aspect<1.5?1.5:1;want=new THREE.Vector3(camFocus.x*.85,12.5*far,17.5*far);look=new THREE.Vector3(camFocus.x,0,.6);}
   camera.position.lerp(want,Math.min(1,dt*1.5));camera.lookAt(look);
  }
 
@@ -254,9 +282,18 @@ export function createSimCourt(host,{onTick}={}){
    if(playing){t=Math.min(duration,t+real*speed);if(t>=duration)playing=false;}
    update(playing?dt*speed:0,dt);
   }
-  updateCamera(dt);renderer.render(scene,camera);frame=requestAnimationFrame(loop);
+  updateCamera(dt);
+  const top=camMode==='tactical';scene.fog=top?null:fog;  // Fog would wash out the flat counters from 40 m up.
+  renderer.render(scene,top?topCamera:camera);frame=requestAnimationFrame(loop);
  }
- const resize=()=>{const w=host.clientWidth,h=host.clientHeight||w*9/16;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();};
+ const resize=()=>{
+  const w=host.clientWidth,h=host.clientHeight||w*9/16,aspect=w/h;
+  renderer.setSize(w,h,false);camera.aspect=aspect;camera.updateProjectionMatrix();
+  // Fit the whole court plus a margin in the top view, whatever the aspect ratio.
+  let halfW=COURT_L/2+1.6,halfH=halfW/aspect;if(halfH<COURT_W/2+1.2){halfH=COURT_W/2+1.2;halfW=halfH*aspect;}
+  // Extra room at the top keeps the scoreboard overlay off the court.
+  Object.assign(topCamera,{left:-halfW,right:halfW,top:halfH+1.8,bottom:-halfH-.4});topCamera.updateProjectionMatrix();
+ };
  const observer=new ResizeObserver(resize);observer.observe(host);
  camera.position.set(0,12.5,17.5);camera.lookAt(0,0,.6);resize();frame=requestAnimationFrame(loop);
 
