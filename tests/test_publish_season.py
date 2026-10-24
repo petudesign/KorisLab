@@ -108,7 +108,41 @@ class PublishSeasonTests(unittest.TestCase):
             "replays_verified": 1,
             "shot_charts_available": 1,
             "shot_charts_unavailable": 0,
+            "shot_charts_unreconciled": [],
         })
+
+    def test_publication_coverage_reports_lagging_shot_chart_without_blocking(self):
+        with TemporaryDirectory() as directory:
+            args = self._completed_publication(Path(directory))
+            chart_path = args[3] / "1005837.json"
+            chart = json.loads(chart_path.read_text(encoding="utf-8"))
+            chart["shots"] = chart["shots"][1:]  # The source's shot log is one attempt behind.
+            chart["box_score_matches"] = False
+            chart_path.write_text(json.dumps(chart), encoding="utf-8")
+
+            coverage = verify_publication_coverage(
+                args[0], args[1], season_id="2026-27", quarters_path=args[2],
+                shots_dir=args[3], replays_dir=args[4], shot_summary=args[5],
+            )
+
+        self.assertEqual(coverage["shot_charts_available"], 0)
+        self.assertEqual(coverage["shot_charts_unreconciled"], ["1005837"])
+
+    def test_unreconciled_shot_chart_is_refetched_despite_fresh_cache(self):
+        with TemporaryDirectory() as directory:
+            args = self._completed_publication(Path(directory))
+            chart_path = args[3] / "1005837.json"
+            chart = json.loads(chart_path.read_text(encoding="utf-8"))
+            chart["box_score_matches"] = False
+            chart_path.write_text(json.dumps(chart), encoding="utf-8")
+            client = Mock()
+            client.get_fixture.return_value = basketfi_payload("current")
+
+            summary = publish_shots(args[1]["matches"], out_dir=args[3], client=client, delay_seconds=0)
+            refreshed = json.loads(chart_path.read_text(encoding="utf-8"))
+
+        self.assertEqual((summary["published"], summary["cached"]), (1, 0))
+        self.assertTrue(refreshed["box_score_matches"])
 
     def test_publication_coverage_allows_explicitly_unavailable_shot_coordinates(self):
         with TemporaryDirectory() as directory:

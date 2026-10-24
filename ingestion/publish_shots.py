@@ -34,7 +34,10 @@ def publish_shots(records, *, out_dir, client=None, max_age_seconds=86400, delay
                     previous = None
             except (ValueError, AttributeError):
                 pass
-        if previous and previous.get("shots") and _has_coordinates(previous) and time() - target.stat().st_mtime < max_age_seconds:
+        # Only a chart that already matched the box score is fresh enough to skip; an unreconciled
+        # one is refetched every run until the source catches up.
+        if (previous and previous.get("shots") and _has_coordinates(previous) and previous.get("box_score_matches") is True
+                and time() - target.stat().st_mtime < max_age_seconds):
             summary["cached"] += 1
             continue
         try:
