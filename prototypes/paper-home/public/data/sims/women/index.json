@@ -1,52 +1,7 @@
 {
  "model": "player-sim-v1",
- "data_cutoff": "2026-10-18",
+ "data_cutoff": "2026-10-24",
  "games": [
-  {
-   "id": "1006197",
-   "date": "2026-10-24",
-   "time": "16:00:00",
-   "venue": "Lapuan urheilutalo",
-   "home": {
-    "id": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
-    "name": "Vimpelin Veto"
-   },
-   "away": {
-    "id": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
-    "name": "Kouvottaret"
-   },
-   "home_win_probability": 0.548
-  },
-  {
-   "id": "1006217",
-   "date": "2026-10-24",
-   "time": "17:00:00",
-   "venue": "Steveco Areena",
-   "home": {
-    "id": "d231065a-90a6-11f1-9f40-e7d7c2463142",
-    "name": "Peli-Karhut"
-   },
-   "away": {
-    "id": "d307acab-90a6-11f1-88bf-e7d7c2463142",
-    "name": "Tampereen Pyrintö"
-   },
-   "home_win_probability": 0.635
-  },
-  {
-   "id": "1006225",
-   "date": "2026-10-24",
-   "time": "17:00:00",
-   "venue": "Espoonlahden urheiluhalli",
-   "home": {
-    "id": "d20fc495-90a6-11f1-8017-e7d7c2463142",
-    "name": "Espoo Basket Team"
-   },
-   "away": {
-    "id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
-    "name": "Tapiolan Honka"
-   },
-   "home_win_probability": 0.736
-  },
   {
    "id": "1006237",
    "date": "2026-10-25",
@@ -60,7 +15,7 @@
     "id": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
     "name": "ToPo"
    },
-   "home_win_probability": 0.491
+   "home_win_probability": 0.511
   },
   {
    "id": "1006168",
@@ -75,7 +30,7 @@
     "id": "d20fc495-90a6-11f1-8017-e7d7c2463142",
     "name": "Espoo Basket Team"
    },
-   "home_win_probability": 0.35
+   "home_win_probability": 0.263
   },
   {
    "id": "1006159",
@@ -90,7 +45,7 @@
     "id": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
     "name": "BC Nokia"
    },
-   "home_win_probability": 0.63
+   "home_win_probability": 0.65
   },
   {
    "id": "1006183",
@@ -105,7 +60,7 @@
     "id": "d244ed43-90a6-11f1-833b-e7d7c2463142",
     "name": "HBA-Märsky"
    },
-   "home_win_probability": 0.167
+   "home_win_probability": 0.172
   },
   {
    "id": "1006204",
@@ -120,7 +75,7 @@
     "id": "d231065a-90a6-11f1-9f40-e7d7c2463142",
     "name": "Peli-Karhut"
    },
-   "home_win_probability": 0.306
+   "home_win_probability": 0.308
   },
   {
    "id": "1006189",
@@ -135,7 +90,7 @@
     "id": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
     "name": "Kouvottaret"
    },
-   "home_win_probability": 0.674
+   "home_win_probability": 0.76
   },
   {
    "id": "1006223",
@@ -150,7 +105,7 @@
     "id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
     "name": "Tapiolan Honka"
    },
-   "home_win_probability": 0.681
+   "home_win_probability": 0.727
   }
  ]
 }
