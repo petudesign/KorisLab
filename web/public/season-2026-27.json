@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "season_id": "huki2627",
-  "updated_at": "2026-10-24T19:24:14.167978+00:00",
+  "updated_at": "2026-10-25T14:16:02.551770+00:00",
   "source_url": "https://tulospalvelu.basket.fi/",
   "schedule": [
     {
@@ -432,16 +432,16 @@
       "scheduled_date": "2026-10-25",
       "scheduled_time": "15:00:00",
       "venue": "Urhea-halli",
-      "status": "Fixture",
+      "status": "Break",
       "home": {
         "source_team_id": "4615311",
         "name": "HBA-Märsky",
-        "score": null
+        "score": 55
       },
       "away": {
         "source_team_id": "34",
         "name": "ToPo",
-        "score": null
+        "score": 68
       }
     },
     {
