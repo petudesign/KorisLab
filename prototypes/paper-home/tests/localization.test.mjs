@@ -20,5 +20,7 @@ test('dynamic copy preserves names, numbers and spaces',()=>{
 test('long phrases translate atomically and include profile content',()=>{
  assert.equal(translate('Kenttäheitot ja vapaaheitot','en'),'Field goals and free throws');
  assert.equal(translate('Vuoden ulkomaalaispelaaja','en'),'International player of the year');
+ // Award names translate whole; word-by-word fallback once produced "Vuoden player".
+ for(const [fi,en] of [['Vuoden pelaaja','Player of the year'],['Vuoden puolustuspelaaja','Defensive player of the year'],['Vuoden tulokas','Rookie of the year'],['Vuoden kuudes pelaaja','Sixth player of the year'],['Vuoden kehittynein','Most improved player'],['Vapaaheittopalkinto','Free throw award']])assert.equal(translate(fi,'en'),en);
  assert.equal(translate('Mistä ero syntyy?','en'),'What makes the difference?');
 });
