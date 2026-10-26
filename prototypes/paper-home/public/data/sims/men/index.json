@@ -15,7 +15,7 @@
     "id": "815439d4-b169-11f1-bc74-593eff165a09",
     "name": "Kipinä Basket"
    },
-   "home_win_probability": 0.411
+   "home_win_probability": 0.405
   },
   {
    "id": "1005989",
@@ -60,7 +60,7 @@
     "id": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
     "name": "Korihait"
    },
-   "home_win_probability": 0.478
+   "home_win_probability": 0.479
   },
   {
    "id": "1005956",
@@ -120,7 +120,7 @@
     "id": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
     "name": "Kauhajoki"
    },
-   "home_win_probability": 0.584
+   "home_win_probability": 0.582
   },
   {
    "id": "1005922",
@@ -135,7 +135,7 @@
     "id": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
     "name": "Kouvot"
    },
-   "home_win_probability": 0.748
+   "home_win_probability": 0.747
   },
   {
    "id": "1005974",
@@ -150,7 +150,7 @@
     "id": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
     "name": "Helsinki Seagulls"
    },
-   "home_win_probability": 0.784
+   "home_win_probability": 0.783
   },
   {
    "id": "1005857",
@@ -225,7 +225,7 @@
     "id": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
     "name": "Salon Vilpas"
    },
-   "home_win_probability": 0.515
+   "home_win_probability": 0.513
   },
   {
    "id": "1005906",
