@@ -1,0 +1,17 @@
+.prototype-page .player-ratings{margin:0 0 24px}
+.player-ratings-types{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0}.player-ratings-types span{font-size:12px;padding:5px 11px;border:1px solid #df945b55;border-radius:999px;color:#f0c7a6;background:#df945b10}
+.player-ratings-pending{font-size:13px;color:#a6a6ad;line-height:1.6;margin:8px 0 0}
+.player-ratings-list{list-style:none;margin:0;padding:0}
+.player-ratings-list li{display:grid;grid-template-columns:minmax(0,1fr) 44px;grid-template-rows:auto 4px;column-gap:12px;row-gap:8px;padding:12px 4px;border-bottom:1px solid #ffffff0c}
+.player-ratings-list li.is-active{background:#ffffff04}
+.player-ratings-name{font-size:13px;color:#e6e6ea}.player-ratings-name small{display:block;color:#8f8f96;font-size:11px;margin-top:4px;font-variant-numeric:tabular-nums}
+.player-ratings-list strong{font-size:24px;letter-spacing:-.04em;text-align:right;font-variant-numeric:tabular-nums;align-self:center}
+.player-ratings-list strong[data-band="high"]{color:#df945b}.player-ratings-list strong[data-band="good"]{color:#e9b993}.player-ratings-list strong[data-band="mid"]{color:#c9c9cf}.player-ratings-list strong[data-band="low"],.player-ratings-list strong[data-band="none"]{color:#8f8f96}
+.player-ratings-list i{grid-column:1/-1;height:4px;border-radius:2px;background:#ffffff0d;position:relative;overflow:hidden}
+.player-ratings-list i::after{content:'';position:absolute;left:50%;top:0;bottom:0;border-left:1px dashed #ffffff40}
+.player-ratings-list i b{display:block;height:100%;border-radius:2px;background:#df945b;opacity:.85}
+@media(max-width:600px){.player-ratings-list strong{font-size:21px}}
+.player-ratings-sample{font-size:12px;color:#939399;margin:12px 0 0;font-variant-numeric:tabular-nums}.player-ratings-sample b{font-weight:500;color:#e6e6ea}.player-ratings-sample[data-reliability="early"] b{color:#e9b993}
+.player-ratings-name small.player-ratings-rank{color:#77777e;font-size:10px;margin-top:2px}
+.player-ratings-reading{margin-top:18px;padding-top:16px;border-top:1px solid #ffffff0c}.player-ratings-reading h3{font-size:13px;font-weight:500;margin:0 0 8px;color:#e6e6ea}
+.player-ratings-reading ul{margin:0;padding-left:18px;display:grid;gap:6px}.player-ratings-reading li{font-size:12px;line-height:1.6;color:#a6a6ad}
