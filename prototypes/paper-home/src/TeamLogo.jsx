@@ -9,12 +9,13 @@ const logoBounds = {
  '01M4JZ22GP1M2QGKCGHSCXASM8': [594,564,26,33,542,498],
  '01M4JZ3A0N7K2RNBX6F1WD9B1D': [240,289,0,0,240,289],
 };
-export function TeamLogo({assetId,name,className=''}) {
- const logo=teamLogos[name];
- if(logo?.src){const [width,height,x,y,right,bottom]=logo.bounds,w=right-x,h=bottom-y,padding=Math.max(w,h)*.05;return <svg className={className} viewBox={`${x-padding} ${y-padding} ${w+padding*2} ${h+padding*2}`} role="img" aria-label={name} focusable="false"><image href={logo.src} width={width} height={height}/></svg>;}
+// `decorative` hides the mark from screen readers when the team name is written right next to it.
+export function TeamLogo({assetId,name,className='',decorative=false}) {
+ const logo=teamLogos[name],label=decorative?{'aria-hidden':true}:{role:'img','aria-label':name};
+ if(logo?.src){const [width,height,x,y,right,bottom]=logo.bounds,w=right-x,h=bottom-y,padding=Math.max(w,h)*.05;return <svg className={className} viewBox={`${x-padding} ${y-padding} ${w+padding*2} ${h+padding*2}`} {...label} focusable="false"><image href={logo.src} width={width} height={height}/></svg>;}
 
- if(!assetId||!logoBounds[assetId])return <span className={`${className} team-logo-fallback`} role="img" aria-label={name}>{name.split(' ').map(part=>part[0]).slice(0,3).join('')}</span>;
+ if(!assetId||!logoBounds[assetId])return <span className={`${className} team-logo-fallback`} {...label}>{name.split(' ').map(part=>part[0]).slice(0,3).join('')}</span>;
  const [width,height,x,y,w,h]=logoBounds[assetId];
  const padding=Math.max(w,h)*.05;
- return <svg className={className} viewBox={`${x-padding} ${y-padding} ${w+padding*2} ${h+padding*2}`} role="img" aria-label={name} focusable="false"><image href={`/assets/${assetId}.png`} width={width} height={height}/></svg>;
+ return <svg className={className} viewBox={`${x-padding} ${y-padding} ${w+padding*2} ${h+padding*2}`} {...label} focusable="false"><image href={`/assets/${assetId}.png`} width={width} height={height}/></svg>;
 }

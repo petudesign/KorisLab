@@ -61,3 +61,5 @@
 .highlight-trend-missing.active{stroke:#c4c4cc}
 .highlight-zero-line{stroke:#5a5a63;stroke-width:1;opacity:.35;vector-effect:non-scaling-stroke}
 .highlight-trend-x{fill:none;stroke:var(--highlight-accent);stroke-width:1.6;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.highlight-team{display:inline-flex;align-items:center;gap:8px}.season-highlight .highlight-team-logo{width:20px;height:20px;flex:none}
+.season-highlight .highlight-team-logo.team-logo-fallback{display:inline-grid;place-items:center;border-radius:50%;background:#26262b;color:#a4a4af;font-size:8px;font-weight:600}
