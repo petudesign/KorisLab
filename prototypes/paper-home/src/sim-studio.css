@@ -91,3 +91,9 @@
 .sim-track .sim-facts{margin:0}
 .sim-track-note{margin:0;color:#929297;font-size:12px;line-height:1.6;max-width:760px}
 .sim-hit{color:#44d17a}.sim-miss{color:#e18b8b}
+.sim-method-topic{border-top:1px solid #29292c}
+.sim-method-topic summary{display:flex;justify-content:space-between;align-items:center;padding:9px 0;cursor:pointer;list-style:none;font-size:12px;color:#d8d8dc}
+.sim-method-topic summary::-webkit-details-marker{display:none}
+.sim-method-topic summary::after{content:'+';color:#e9a66f;font-size:14px}
+.sim-method-topic[open] summary::after{content:'−'}
+.sim-method-topic p{margin:0 0 10px}
