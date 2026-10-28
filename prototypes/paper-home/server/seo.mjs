@@ -1,6 +1,10 @@
 export const SITE_ORIGIN='https://korislab.vercel.app';
 export const escapeHtml=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-export const scopeKey=(path,season='2026-27',league='women')=>`${path}?season=${season}${league==='men'?'&league=korisliiga':''}`;
+export const DEFAULT_SEASON='2026-27';
+export const scopeKey=(path,season=DEFAULT_SEASON,league='women')=>`${path}?season=${season}${league==='men'?'&league=korisliiga':''}`;
+// Public address of a page: the current season needs no season parameter, so the home page is plain / and
+// current-season addresses stay the same while the season runs. Earlier seasons keep ?season=.
+export const publicPath=(key,defaultSeason=DEFAULT_SEASON)=>key.replace(new RegExp(`\\?season=${defaultSeason}(&|$)`),(_,rest)=>rest?'?':'');
 export function resolvePage(url,manifest){
  let path=url.pathname.replace(/\/+$/,'')||'/';path=path==='/'?'/':path+'/';
  path=path.replace(/^(\/matches\/\d+\/)(players|data|preview)\/$/,'$1');
@@ -10,10 +14,10 @@ export function resolvePage(url,manifest){
  // Invalid explicit scopes must not masquerade as another season's results.
  if(!manifest.seasons.includes(season)||url.searchParams.has('league')&&!['korisliiga','naisten-korisliiga'].includes(url.searchParams.get('league')))return {status:404};
  const key=scopeKey(decoded,season,league),page=manifest.pages[key];
- return page?{status:200,page,canonical:SITE_ORIGIN+(page.alias||key)}:{status:404};
+ return page?{status:200,page,canonical:SITE_ORIGIN+publicPath(page.alias||key,manifest.defaultSeason)}:{status:404};
 }
 export function robotsText(production){return production?`User-agent: *\nAllow: /\nDisallow: /search/\nDisallow: /design-system/\nDisallow: /custom-import/\nDisallow: /data/\n\nUser-agent: OAI-SearchBot\nAllow: /\nDisallow: /search/\nDisallow: /design-system/\nDisallow: /custom-import/\nDisallow: /data/\n\nSitemap: ${SITE_ORIGIN}/sitemap.xml\n`:'User-agent: *\nDisallow: /\n';}
-export function sitemap(manifest){return `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${Object.entries(manifest.pages).filter(([,p])=>p.indexable).map(([key])=>`<url><loc>${escapeHtml(SITE_ORIGIN+key)}</loc></url>`).join('')}</urlset>`;}
+export function sitemap(manifest){return `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${Object.entries(manifest.pages).filter(([,p])=>p.indexable).map(([key])=>`<url><loc>${escapeHtml(SITE_ORIGIN+publicPath(key,manifest.defaultSeason))}</loc></url>`).join('')}</urlset>`;}
 export function renderPage(template,url,manifest){
  const result=resolvePage(url,manifest),production=url.origin===SITE_ORIGIN;
  const page=result.page||{title:'Sivua ei löytynyt',description:'Tätä KorisLab-sivua ei löytynyt. Palaa etusivulle tai valitse toinen näkymä.',summary:'<h1>404 — Tämä sivu ei osunut koriin.</h1><p>Linkki voi olla vanhentunut tai osoitteessa voi olla kirjoitusvirhe.</p><a href="/">Takaisin etusivulle</a>',indexable:false};

@@ -1,0 +1,120 @@
+{
+ "men": {
+  "seasons": [
+   "2024-25",
+   "2025-26"
+  ],
+  "regulars": 142,
+  "typical": {
+   "points": 0.388979,
+   "rebounds": 0.152478,
+   "assists": 0.071414,
+   "threeAttempts": 0.12987,
+   "stocks": 0.043587,
+   "trueShooting": 0.564498,
+   "threePct": 0.343052,
+   "assistTurnover": 1.311012
+  },
+  "scales": {
+   "scoring": {
+    "center": 3.944986,
+    "scale": 0.621685
+   },
+   "efficiency": {
+    "center": 0.555691,
+    "scale": 0.05053
+   },
+   "threePct": {
+    "center": 0.337913,
+    "scale": 0.028331
+   },
+   "threeVolume": {
+    "center": 2.279423,
+    "scale": 0.522057
+   },
+   "assists": {
+    "center": 1.690289,
+    "scale": 0.374574
+   },
+   "assistTurnover": {
+    "center": 0.270674,
+    "scale": 0.25539
+   },
+   "rebounding": {
+    "center": 2.469534,
+    "scale": 0.47365
+   },
+   "defense": {
+    "center": 1.320602,
+    "scale": 0.218932
+   },
+   "threes": {
+    "center": -0.007712,
+    "scale": 0.774257
+   },
+   "playmaking": {
+    "center": 0.087084,
+    "scale": 0.930208
+   }
+  }
+ },
+ "women": {
+  "seasons": [
+   "2024-25",
+   "2025-26"
+  ],
+  "regulars": 198,
+  "typical": {
+   "points": 0.351657,
+   "rebounds": 0.172651,
+   "assists": 0.080051,
+   "threeAttempts": 0.128851,
+   "stocks": 0.059973,
+   "trueShooting": 0.491106,
+   "threePct": 0.296394,
+   "assistTurnover": 0.981812
+  },
+  "scales": {
+   "scoring": {
+    "center": 3.750501,
+    "scale": 0.56296
+   },
+   "efficiency": {
+    "center": 0.484728,
+    "scale": 0.051175
+   },
+   "threePct": {
+    "center": 0.290523,
+    "scale": 0.028613
+   },
+   "threeVolume": {
+    "center": 2.270694,
+    "scale": 0.457333
+   },
+   "assists": {
+    "center": 1.789594,
+    "scale": 0.286876
+   },
+   "assistTurnover": {
+    "center": -0.018354,
+    "scale": 0.325699
+   },
+   "rebounding": {
+    "center": 2.628012,
+    "scale": 0.342582
+   },
+   "defense": {
+    "center": 1.548792,
+    "scale": 0.236816
+   },
+   "threes": {
+    "center": 0.038132,
+    "scale": 0.779315
+   },
+   "playmaking": {
+    "center": 0.008085,
+    "scale": 1.008507
+   }
+  }
+ }
+}
