@@ -89,7 +89,7 @@ function Summary({pack}){
   <div className="sim-prob"><span style={{width:`${hp*100}%`,background:TEAM_COLORS.home}}>{pct(hp)}</span><span style={{width:`${(1-hp)*100}%`,background:TEAM_COLORS.away}}>{pct(1-hp)}</span></div>
   <div className="sim-legend"><span>{home.name}</span><span>{away.name}</span></div>
   <dl className="sim-facts">
-   <div><dt>{tr('Keskimääräinen tulos','Average score')}</dt><dd>{fmt(s.mean_score[home.id])}–{fmt(s.mean_score[away.id])}</dd></div>
+   <div><dt>{tr('Pisteet keskimäärin','Average points')}</dt><dd>{fmt(s.mean_score[home.id],1)}–{fmt(s.mean_score[away.id],1)}</dd></div>
    <div><dt>{tr('Kotijoukkueen ero, 80 %','Home margin, 80%')}</dt><dd>{signed(s.margin.p10)}…{signed(s.margin.p90)}</dd></div>
    <div><dt>{tr('Jatkoaika','Overtime')}</dt><dd>{pct(s.overtime_probability)}</dd></div>
   </dl>
@@ -157,12 +157,12 @@ function TrackRecord({league}){
     <div><dt>{tr('Piste-eron keskivirhe','Average margin error')}</dt><dd>{fmt(s.margin_mae,1)}</dd></div>
     <div><dt>{tr('Pelaajan pisteet 80 %:n välillä','Player points inside 80% range')}</dt><dd>{s.player_interval_coverage==null?'—':pct(s.player_interval_coverage)}</dd></div>
    </dl>
-   <p className="sim-track-note">{tr('Jokaisesta ottelusta näytetään viimeisin ennen ottelun alkua julkaistu ennuste. Ennustetta ei muuteta jälkikäteen. Pienellä otoksella osumaprosentti vaihtelee paljon; Brier mittaa myös sitä, olivatko prosentit oikean kokoisia.','Each game shows the last forecast published before tip-off. Forecasts are never changed afterwards. With a small sample the hit rate swings a lot; the Brier score also measures whether the percentages were the right size.')}</p>
+   <p className="sim-track-note">{tr('Jokaisesta ottelusta näytetään viimeisin ennen ottelun alkua julkaistu ennuste. Ennustetta ei muuteta jälkikäteen. Pisteet ovat tuhannen simulaation keskiarvoja, eivät yksittäinen lopputulos, joten tasaväkisessä ottelussa ne voivat olla lähes samat. Pienellä otoksella osumaprosentti vaihtelee paljon; Brier mittaa myös sitä, olivatko prosentit oikean kokoisia.','Each game shows the last forecast published before tip-off. Forecasts are never changed afterwards. Points are averages over a thousand simulations, not a single final score, so in an even game they can be almost equal. With a small sample the hit rate swings a lot; the Brier score also measures whether the percentages were the right size.')}</p>
    <div className="sim-table-wrap"><table className="sim-table">
-    <thead><tr><th>{tr('Ottelu','Game')}</th><th>{tr('Kotivoitto','Home win')}</th><th>{tr('Ennustettu tulos','Forecast score')}</th><th>{tr('Toteutunut','Result')}</th><th>{tr('Suosikki','Favourite')}</th></tr></thead>
+    <thead><tr><th>{tr('Ottelu','Game')}</th><th>{tr('Kotivoitto','Home win')}</th><th>{tr('Pisteet keskimäärin','Average points')}</th><th>{tr('Toteutunut','Result')}</th><th>{tr('Suosikki','Favourite')}</th></tr></thead>
     <tbody>{played.map(g=>{const m=g.match,r=g.result,p=g.home_win_probability,homeWon=r.home_score>r.away_score,hit=p===.5?null:(p>.5)===homeWon;
      return <tr key={m.id}><th><small>{dateLabel(m.date,{day:'numeric',month:'numeric'})}</small> {m.home.name} – {m.away.name}</th><td>{pct(p)}</td>
-      <td>{fmt(g.mean_score[m.home.id])}–{fmt(g.mean_score[m.away.id])}</td><td>{r.home_score}–{r.away_score}</td>
+      <td>{fmt(g.mean_score[m.home.id],1)}–{fmt(g.mean_score[m.away.id],1)}</td><td>{r.home_score}–{r.away_score}</td>
       <td className={hit?'sim-hit':hit===false?'sim-miss':''}>{hit==null?'—':hit?tr('Osui','Correct'):tr('Ei osunut','Missed')}</td></tr>;})}</tbody>
    </table></div>
   </div>}
