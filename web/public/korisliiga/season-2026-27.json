@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "season_id": "huki2627",
-  "updated_at": "2026-10-28T16:35:17.269538+00:00",
+  "updated_at": "2026-10-28T21:18:28.840992+00:00",
   "source_url": "https://tulospalvelu.basket.fi/",
   "schedule": [
     {
@@ -47972,8 +47972,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005868/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-27T20:36:50Z",
-        "payload_sha256": "526969221deb082432ea1869e17573f65101f948a9b129ac059738494f1a48f9"
+        "ingested_at_utc": "2026-10-28T21:18:24Z",
+        "payload_sha256": "593652654ed7b5a0bea785fc0cefcb7679c9993e8c2889898d3f9f36297a7d44"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -48510,7 +48510,7 @@
             "offensive_rebounds": 8,
             "defensive_rebounds": 37,
             "rebounds": 45,
-            "assists": 13,
+            "assists": 17,
             "turnovers": 8,
             "steals": 5,
             "blocks": 9,
@@ -48518,7 +48518,7 @@
             "fouls": 16,
             "fouls_drawn": 18,
             "plus_minus": null,
-            "efficiency": 114
+            "efficiency": 118
           },
           "team_extra_stats": {
             "points": null,
@@ -48699,7 +48699,7 @@
                 "offensive_rebounds": 1,
                 "defensive_rebounds": 4,
                 "rebounds": 5,
-                "assists": 1,
+                "assists": 2,
                 "turnovers": 4,
                 "steals": 0,
                 "blocks": 0,
@@ -48707,7 +48707,7 @@
                 "fouls": 0,
                 "fouls_drawn": 4,
                 "plus_minus": 12,
-                "efficiency": 6
+                "efficiency": 7
               },
               "source_fields": {
                 "minutes_duration": "PT27M35S",
@@ -48904,7 +48904,7 @@
                 "offensive_rebounds": 1,
                 "defensive_rebounds": 1,
                 "rebounds": 2,
-                "assists": 2,
+                "assists": 3,
                 "turnovers": 1,
                 "steals": 1,
                 "blocks": 0,
@@ -48912,7 +48912,7 @@
                 "fouls": 1,
                 "fouls_drawn": 2,
                 "plus_minus": 0,
-                "efficiency": 1
+                "efficiency": 2
               },
               "source_fields": {
                 "minutes_duration": "PT19M46S",
@@ -48945,7 +48945,7 @@
                 "offensive_rebounds": 0,
                 "defensive_rebounds": 1,
                 "rebounds": 1,
-                "assists": 2,
+                "assists": 4,
                 "turnovers": 0,
                 "steals": 1,
                 "blocks": 0,
@@ -48953,7 +48953,7 @@
                 "fouls": 1,
                 "fouls_drawn": 0,
                 "plus_minus": 5,
-                "efficiency": 9
+                "efficiency": 11
               },
               "source_fields": {
                 "minutes_duration": "PT18M13S",
@@ -49031,8 +49031,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005989/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-27T20:36:52Z",
-        "payload_sha256": "4d908a86a3e0743c6e55f2ffec63f93051a563c32ad340f7a474e56d304fee15"
+        "ingested_at_utc": "2026-10-28T21:18:28Z",
+        "payload_sha256": "679e1eebcf3663be22eafc29b2ca61effecdce4662c01d660c5731a2cfb40157"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -50128,7 +50128,7 @@
     "requested_games": 42,
     "fetched_games": 42,
     "failed_games": 0,
-    "cached_games": 42,
+    "cached_games": 40,
     "valid_games": 42,
     "invalid_games": 0
   },
@@ -50473,14 +50473,14 @@
           "offensive_rebounds": 65.0,
           "defensive_rebounds": 222.0,
           "rebounds": 287.0,
-          "assists": 134.0,
+          "assists": 138.0,
           "turnovers": 92.0,
           "steals": 43.0,
           "blocks": 31.0,
           "blocks_received": 16.0,
           "fouls": 137.0,
           "fouls_drawn": 134.0,
-          "efficiency": 806.0
+          "efficiency": 810.0
         },
         "per_game": {
           "points": 97.4,
@@ -50493,14 +50493,14 @@
           "offensive_rebounds": 9.3,
           "defensive_rebounds": 31.7,
           "rebounds": 41.0,
-          "assists": 19.1,
+          "assists": 19.7,
           "turnovers": 13.1,
           "steals": 6.1,
           "blocks": 4.4,
           "blocks_received": 2.3,
           "fouls": 19.6,
           "fouls_drawn": 19.1,
-          "efficiency": 115.1
+          "efficiency": 115.7
         },
         "metrics": {
           "field_goals_made": 247.0,
@@ -50920,14 +50920,14 @@
         "offensive_rebounds": 993.0,
         "defensive_rebounds": 2273.0,
         "rebounds": 3266.0,
-        "assists": 1410.0,
+        "assists": 1414.0,
         "turnovers": 1105.0,
         "steals": 620.0,
         "blocks": 254.0,
         "blocks_received": 254.0,
         "fouls": 1566.0,
         "fouls_drawn": 1525.0,
-        "efficiency": 8140.0
+        "efficiency": 8144.0
       },
       "per_game": {
         "points": 173.0,
@@ -50940,14 +50940,14 @@
         "offensive_rebounds": 23.6,
         "defensive_rebounds": 54.1,
         "rebounds": 77.8,
-        "assists": 33.6,
+        "assists": 33.7,
         "turnovers": 26.3,
         "steals": 14.8,
         "blocks": 6.0,
         "blocks_received": 6.0,
         "fouls": 37.3,
         "fouls_drawn": 36.3,
-        "efficiency": 193.8
+        "efficiency": 193.9
       },
       "metrics": {
         "field_goals_made": 2639.0,

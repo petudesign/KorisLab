@@ -1,22 +1,7 @@
 {
  "model": "player-sim-v1",
- "data_cutoff": "2026-10-25",
+ "data_cutoff": "2026-10-28",
  "games": [
-  {
-   "id": "1006168",
-   "date": "2026-10-28",
-   "time": "18:30:00",
-   "venue": "Pyynikin palloiluhalli",
-   "home": {
-    "id": "d307acab-90a6-11f1-88bf-e7d7c2463142",
-    "name": "Tampereen Pyrintö"
-   },
-   "away": {
-    "id": "d20fc495-90a6-11f1-8017-e7d7c2463142",
-    "name": "Espoo Basket Team"
-   },
-   "home_win_probability": 0.277
-  },
   {
    "id": "1006159",
    "date": "2026-10-31",
@@ -30,7 +15,7 @@
     "id": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
     "name": "BC Nokia"
    },
-   "home_win_probability": 0.642
+   "home_win_probability": 0.633
   },
   {
    "id": "1006183",
@@ -45,7 +30,7 @@
     "id": "d244ed43-90a6-11f1-833b-e7d7c2463142",
     "name": "HBA-Märsky"
    },
-   "home_win_probability": 0.157
+   "home_win_probability": 0.181
   },
   {
    "id": "1006204",
@@ -60,7 +45,7 @@
     "id": "d231065a-90a6-11f1-9f40-e7d7c2463142",
     "name": "Peli-Karhut"
    },
-   "home_win_probability": 0.311
+   "home_win_probability": 0.295
   },
   {
    "id": "1006189",
@@ -75,7 +60,7 @@
     "id": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
     "name": "Kouvottaret"
    },
-   "home_win_probability": 0.741
+   "home_win_probability": 0.747
   },
   {
    "id": "1006223",
@@ -90,7 +75,7 @@
     "id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
     "name": "Tapiolan Honka"
    },
-   "home_win_probability": 0.7
+   "home_win_probability": 0.756
   },
   {
    "id": "1006213",
@@ -105,7 +90,7 @@
     "id": "d307acab-90a6-11f1-88bf-e7d7c2463142",
     "name": "Tampereen Pyrintö"
    },
-   "home_win_probability": 0.759
+   "home_win_probability": 0.784
   }
  ]
 }

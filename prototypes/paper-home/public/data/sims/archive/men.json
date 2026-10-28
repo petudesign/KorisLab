@@ -3024,14 +3024,14 @@
    },
    "model": "player-sim-v1",
    "data_cutoff": "2026-10-27",
-   "published_at": "2026-10-27T20:38:56+00:00",
-   "home_win_probability": 0.407,
+   "published_at": "2026-10-28T23:19:12+02:00",
+   "home_win_probability": 0.408,
    "mean_score": {
     "d296e502-90a6-11f1-bf89-e7d7c2463142": 88.4,
-    "d350dc31-90a6-11f1-9e5e-e7d7c2463142": 91.7
+    "d350dc31-90a6-11f1-9e5e-e7d7c2463142": 91.6
    },
    "margin": {
-    "mean": -3.3,
+    "mean": -3.2,
     "p10": -22,
     "p90": 16
    },
@@ -3129,7 +3129,7 @@
      "id": "279f75c5-a775-11f1-ba6f-c9abd216b085",
      "name": "Karl Chavis",
      "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
-     "mean": 14.0,
+     "mean": 13.9,
      "p10": 7,
      "p90": 22
     },
@@ -3155,7 +3155,7 @@
      "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
      "mean": 3.2,
      "p10": 0,
-     "p90": 7
+     "p90": 8
     },
     {
      "id": "759cbe3a-90bd-11f1-9758-bf766ef3e20b",
@@ -3185,7 +3185,7 @@
      "id": "3381a791-c932-11f1-9d1f-696b2260119e",
      "name": "Jarred Godfrey",
      "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
-     "mean": 2.2,
+     "mean": 2.3,
      "p10": 0,
      "p90": 7
     },
@@ -3232,14 +3232,14 @@
    },
    "model": "player-sim-v1",
    "data_cutoff": "2026-10-27",
-   "published_at": "2026-10-28T14:57:18+02:00",
-   "home_win_probability": 0.473,
+   "published_at": "2026-10-28T23:19:12+02:00",
+   "home_win_probability": 0.474,
    "mean_score": {
     "d33f4cac-90a6-11f1-b66d-e7d7c2463142": 88.2,
     "d3631045-90a6-11f1-ab0a-e7d7c2463142": 88.9
    },
    "margin": {
-    "mean": -0.6,
+    "mean": -0.7,
     "p10": -20,
     "p90": 20
    },
@@ -3289,7 +3289,7 @@
      "id": "ebf4ab5f-90bd-11f1-af64-5bafc2773088",
      "name": "Eino Pällijeff",
      "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
-     "mean": 3.4,
+     "mean": 3.5,
      "p10": 0,
      "p90": 8
     },
@@ -3329,7 +3329,7 @@
      "id": "f502dce4-aae3-11f1-ae08-894bb12a0def",
      "name": "Devin Tillis",
      "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
-     "mean": 20.5,
+     "mean": 20.6,
      "p10": 12,
      "p90": 29
     },
@@ -3337,7 +3337,7 @@
      "id": "42818ee5-90bb-11f1-8344-d936dd1c73f2",
      "name": "Jalen Jackson",
      "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
-     "mean": 13.6,
+     "mean": 13.5,
      "p10": 6,
      "p90": 21
     },
@@ -3432,7 +3432,7 @@
    },
    "model": "player-sim-v1",
    "data_cutoff": "2026-10-27",
-   "published_at": "2026-10-27T20:38:56+00:00",
+   "published_at": "2026-10-28T23:19:12+02:00",
    "home_win_probability": 0.558,
    "mean_score": {
     "d347a09d-90a6-11f1-a259-e7d7c2463142": 92.8,
@@ -3569,7 +3569,7 @@
      "id": "9aac90bf-90bd-11f1-a3d9-a1f0b16090d5",
      "name": "Lauri Kallio",
      "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
-     "mean": 3.6,
+     "mean": 3.5,
      "p10": 0,
      "p90": 9
     },
@@ -3632,14 +3632,14 @@
    },
    "model": "player-sim-v1",
    "data_cutoff": "2026-10-27",
-   "published_at": "2026-10-28T14:57:18+02:00",
-   "home_win_probability": 0.331,
+   "published_at": "2026-10-28T23:19:12+02:00",
+   "home_win_probability": 0.33,
    "mean_score": {
-    "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc": 80.0,
-    "d35a3d28-90a6-11f1-a47f-e7d7c2463142": 85.4
+    "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc": 80,
+    "d35a3d28-90a6-11f1-a47f-e7d7c2463142": 85.5
    },
    "margin": {
-    "mean": -5.4,
+    "mean": -5.5,
     "p10": -23,
     "p90": 13
    },
@@ -3689,7 +3689,7 @@
      "id": "1da7c9bb-90bc-11f1-97db-e9ae9e26fc7d",
      "name": "Remu Raitanen",
      "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
-     "mean": 4.8,
+     "mean": 4.9,
      "p10": 0,
      "p90": 11
     },
@@ -3840,8 +3840,8 @@
    },
    "model": "player-sim-v1",
    "data_cutoff": "2026-10-27",
-   "published_at": "2026-10-28T14:57:18+02:00",
-   "home_win_probability": 0.326,
+   "published_at": "2026-10-28T23:19:12+02:00",
+   "home_win_probability": 0.325,
    "mean_score": {
     "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1": 85.0,
     "815439d4-b169-11f1-bc74-593eff165a09": 91.2
@@ -3851,7 +3851,7 @@
     "p10": -25,
     "p90": 13
    },
-   "overtime_probability": 0.027,
+   "overtime_probability": 0.026,
    "players": [
     {
      "id": "4514784c-90bc-11f1-892c-8793bc36545e",
@@ -4048,11 +4048,11 @@
    },
    "model": "player-sim-v1",
    "data_cutoff": "2026-10-27",
-   "published_at": "2026-10-27T20:38:56+00:00",
-   "home_win_probability": 0.586,
+   "published_at": "2026-10-28T23:19:12+02:00",
+   "home_win_probability": 0.587,
    "mean_score": {
     "d31984cb-90a6-11f1-997e-e7d7c2463142": 85.5,
-    "d323c8b6-90a6-11f1-9192-e7d7c2463142": 82.4
+    "d323c8b6-90a6-11f1-9192-e7d7c2463142": 82.3
    },
    "margin": {
     "mean": 3.1,
@@ -4065,7 +4065,7 @@
      "id": "00b8b2c2-a83a-11f1-ac95-dbfd521311a7",
      "name": "Stevie Strong",
      "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
-     "mean": 20.2,
+     "mean": 20.1,
      "p10": 11,
      "p90": 29
     },
@@ -4074,7 +4074,7 @@
      "name": "Topias Palmi",
      "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
      "mean": 18.3,
-     "p10": 10,
+     "p10": 9,
      "p90": 27
     },
     {
@@ -4113,7 +4113,7 @@
      "id": "794bb8b2-90bc-11f1-84b6-4554ddfa8cbf",
      "name": "Teemu Knihtinen",
      "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
-     "mean": 2.3,
+     "mean": 2.4,
      "p10": 0,
      "p90": 6
     },
@@ -4888,14 +4888,14 @@
    },
    "model": "player-sim-v1",
    "data_cutoff": "2026-10-27",
-   "published_at": "2026-10-28T14:57:18+02:00",
+   "published_at": "2026-10-28T23:19:12+02:00",
    "home_win_probability": 0.746,
    "mean_score": {
     "d35a3d28-90a6-11f1-a47f-e7d7c2463142": 92.5,
-    "d33f4cac-90a6-11f1-b66d-e7d7c2463142": 83.0
+    "d33f4cac-90a6-11f1-b66d-e7d7c2463142": 83.1
    },
    "margin": {
-    "mean": 9.5,
+    "mean": 9.4,
     "p10": -9,
     "p90": 28
    },
@@ -4939,13 +4939,13 @@
      "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
      "mean": 14.3,
      "p10": 7,
-     "p90": 23
+     "p90": 22
     },
     {
      "id": "27296292-90bd-11f1-8c85-d1b26dd8807a",
      "name": "Joona Hakamaa",
      "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
-     "mean": 3.1,
+     "mean": 3.2,
      "p10": 0,
      "p90": 8
     },
@@ -5001,7 +5001,7 @@
      "id": "7254105c-a836-11f1-901e-3bf588878d4f",
      "name": "Christian Terrell",
      "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
-     "mean": 13.8,
+     "mean": 13.9,
      "p10": 7,
      "p90": 21
     },
@@ -5088,14 +5088,14 @@
    },
    "model": "player-sim-v1",
    "data_cutoff": "2026-10-27",
-   "published_at": "2026-10-27T20:38:56+00:00",
+   "published_at": "2026-10-28T23:19:12+02:00",
    "home_win_probability": 0.772,
    "mean_score": {
     "e214cb24-90a6-11f1-976f-5b3c5c56dcf1": 94.3,
     "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc": 83.4
    },
    "margin": {
-    "mean": 11.0,
+    "mean": 10.9,
     "p10": -8,
     "p90": 30
    },
@@ -5105,7 +5105,7 @@
      "id": "1fd5a811-90bd-11f1-9904-ebd35007e794",
      "name": "Alvar Peltoniemi",
      "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
-     "mean": 19.0,
+     "mean": 18.9,
      "p10": 10,
      "p90": 27
     },
@@ -5137,7 +5137,7 @@
      "id": "3874931f-aaf5-11f1-b299-3bd10ee0c642",
      "name": "Terrance Williams II",
      "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
-     "mean": 13.6,
+     "mean": 13.5,
      "p10": 6,
      "p90": 22
     },
@@ -5217,7 +5217,7 @@
      "id": "bbf4bb82-90b9-11f1-bbf0-7106e55498b7",
      "name": "Rene Rougeau",
      "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
-     "mean": 18.0,
+     "mean": 18.1,
      "p10": 10,
      "p90": 26
     },
@@ -5304,8 +5304,8 @@
    },
    "model": "player-sim-v1",
    "data_cutoff": "2026-10-27",
-   "published_at": "2026-10-28T14:57:18+02:00",
-   "home_win_probability": 0.517,
+   "published_at": "2026-10-28T23:19:12+02:00",
+   "home_win_probability": 0.516,
    "mean_score": {
     "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1": 87.2,
     "d296e502-90a6-11f1-bf89-e7d7c2463142": 86.2
@@ -5329,7 +5329,7 @@
      "id": "c99140c3-90bb-11f1-b302-1d8434d82986",
      "name": "Deshon Taylor",
      "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
-     "mean": 19.7,
+     "mean": 19.6,
      "p10": 11,
      "p90": 29
     },
@@ -5369,7 +5369,7 @@
      "id": "d36d484b-90bd-11f1-af79-2feb4d029b30",
      "name": "Ville Karhu",
      "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
-     "mean": 1.4,
+     "mean": 1.5,
      "p10": 0,
      "p90": 5
     },
@@ -5441,7 +5441,7 @@
      "id": "8a49a8f9-90bd-11f1-984c-95de893ea309",
      "name": "Eemi Luukkonen",
      "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
-     "mean": 4.8,
+     "mean": 4.9,
      "p10": 0,
      "p90": 10
     },
@@ -5504,14 +5504,14 @@
    },
    "model": "player-sim-v1",
    "data_cutoff": "2026-10-27",
-   "published_at": "2026-10-28T14:57:18+02:00",
-   "home_win_probability": 0.525,
+   "published_at": "2026-10-28T23:19:12+02:00",
+   "home_win_probability": 0.526,
    "mean_score": {
-    "d3631045-90a6-11f1-ab0a-e7d7c2463142": 83.6,
+    "d3631045-90a6-11f1-ab0a-e7d7c2463142": 83.7,
     "d323c8b6-90a6-11f1-9192-e7d7c2463142": 82.5
    },
    "margin": {
-    "mean": 1.1,
+    "mean": 1.2,
     "p10": -17,
     "p90": 20
    },
@@ -5553,7 +5553,7 @@
      "id": "43b817ee-90bc-11f1-b5b8-8793bc36545e",
      "name": "Trey Niemi",
      "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
-     "mean": 6.5,
+     "mean": 6.4,
      "p10": 0,
      "p90": 13
     },
@@ -5712,14 +5712,14 @@
    },
    "model": "player-sim-v1",
    "data_cutoff": "2026-10-27",
-   "published_at": "2026-10-27T20:38:56+00:00",
-   "home_win_probability": 0.59,
+   "published_at": "2026-10-28T23:19:12+02:00",
+   "home_win_probability": 0.591,
    "mean_score": {
     "815439d4-b169-11f1-bc74-593eff165a09": 92.3,
     "d347a09d-90a6-11f1-a259-e7d7c2463142": 89.0
    },
    "margin": {
-    "mean": 3.3,
+    "mean": 3.4,
     "p10": -16,
     "p90": 22
    },
@@ -5819,7 +5819,7 @@
      "team": "d347a09d-90a6-11f1-a259-e7d7c2463142",
      "mean": 17.5,
      "p10": 10,
-     "p90": 25
+     "p90": 26
     },
     {
      "id": "cb3d506e-90bc-11f1-a511-e795959ab3d5",
@@ -5904,8 +5904,8 @@
    },
    "model": "player-sim-v1",
    "data_cutoff": "2026-10-27",
-   "published_at": "2026-10-27T20:38:56+00:00",
-   "home_win_probability": 0.548,
+   "published_at": "2026-10-28T23:19:12+02:00",
+   "home_win_probability": 0.547,
    "mean_score": {
     "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc": 87.6,
     "d33f4cac-90a6-11f1-b66d-e7d7c2463142": 85.2
@@ -5921,7 +5921,7 @@
      "id": "0289786d-90bc-11f1-a8d5-797de5732515",
      "name": "Lassi Nikkarinen",
      "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
-     "mean": 11.6,
+     "mean": 11.5,
      "p10": 5,
      "p90": 19
     },
@@ -6033,7 +6033,7 @@
      "id": "d92cdbd1-90bd-11f1-9edf-23575df7f55b",
      "name": "Tuukka Härsilä",
      "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
-     "mean": 11.2,
+     "mean": 11.3,
      "p10": 4,
      "p90": 19
     },
@@ -6104,18 +6104,18 @@
    },
    "model": "player-sim-v1",
    "data_cutoff": "2026-10-27",
-   "published_at": "2026-10-27T20:38:56+00:00",
-   "home_win_probability": 0.409,
+   "published_at": "2026-10-28T23:19:12+02:00",
+   "home_win_probability": 0.408,
    "mean_score": {
-    "d323c8b6-90a6-11f1-9192-e7d7c2463142": 87.4,
+    "d323c8b6-90a6-11f1-9192-e7d7c2463142": 87.5,
     "e214cb24-90a6-11f1-976f-5b3c5c56dcf1": 90.5
    },
    "margin": {
     "mean": -3.0,
-    "p10": -21,
+    "p10": -22,
     "p90": 17
    },
-   "overtime_probability": 0.042,
+   "overtime_probability": 0.043,
    "players": [
     {
      "id": "22ca437b-a85c-11f1-b44c-1d65c8555753",
@@ -6209,7 +6209,7 @@
      "id": "1fd5a811-90bd-11f1-9904-ebd35007e794",
      "name": "Alvar Peltoniemi",
      "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
-     "mean": 18.2,
+     "mean": 18.3,
      "p10": 10,
      "p90": 27
     },
@@ -6233,7 +6233,7 @@
      "id": "5c2ac50a-aaf5-11f1-a6f5-2b788620a1f0",
      "name": "Lucas Taylor",
      "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
-     "mean": 13.2,
+     "mean": 13.3,
      "p10": 6,
      "p90": 22
     },
@@ -6241,7 +6241,7 @@
      "id": "3874931f-aaf5-11f1-b299-3bd10ee0c642",
      "name": "Terrance Williams II",
      "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
-     "mean": 12.8,
+     "mean": 12.9,
      "p10": 6,
      "p90": 20
     },
@@ -6320,18 +6320,18 @@
    },
    "model": "player-sim-v1",
    "data_cutoff": "2026-10-27",
-   "published_at": "2026-10-28T14:57:18+02:00",
-   "home_win_probability": 0.607,
+   "published_at": "2026-10-28T23:19:12+02:00",
+   "home_win_probability": 0.605,
    "mean_score": {
     "d31984cb-90a6-11f1-997e-e7d7c2463142": 88.0,
-    "d3631045-90a6-11f1-ab0a-e7d7c2463142": 84.3
+    "d3631045-90a6-11f1-ab0a-e7d7c2463142": 84.2
    },
    "margin": {
-    "mean": 3.8,
+    "mean": 3.7,
     "p10": -16,
     "p90": 23
    },
-   "overtime_probability": 0.027,
+   "overtime_probability": 0.026,
    "players": [
     {
      "id": "00b8b2c2-a83a-11f1-ac95-dbfd521311a7",
@@ -6345,7 +6345,7 @@
      "id": "61f2db99-90bb-11f1-bce6-27f2444e308f",
      "name": "Topias Palmi",
      "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
-     "mean": 18.3,
+     "mean": 18.2,
      "p10": 9,
      "p90": 28
     },
@@ -6481,7 +6481,7 @@
      "id": "8c05f590-90bd-11f1-bab5-95de893ea309",
      "name": "Kion Williams",
      "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
-     "mean": 1.8,
+     "mean": 1.9,
      "p10": 0,
      "p90": 6
     },
@@ -6528,7 +6528,7 @@
    },
    "model": "player-sim-v1",
    "data_cutoff": "2026-10-27",
-   "published_at": "2026-10-27T20:38:56+00:00",
+   "published_at": "2026-10-28T23:19:12+02:00",
    "home_win_probability": 0.598,
    "mean_score": {
     "815439d4-b169-11f1-bc74-593eff165a09": 93.2,
@@ -6545,7 +6545,7 @@
      "id": "6cb2f3be-90bd-11f1-a1c6-31ded31f16e5",
      "name": "Jalen McCoy",
      "team": "815439d4-b169-11f1-bc74-593eff165a09",
-     "mean": 21.0,
+     "mean": 20.9,
      "p10": 13,
      "p90": 29
     },
@@ -6603,7 +6603,7 @@
      "team": "815439d4-b169-11f1-bc74-593eff165a09",
      "mean": 1.7,
      "p10": 0,
-     "p90": 5
+     "p90": 6
     },
     {
      "id": "c4a0048c-90bc-11f1-a1be-af3c0b98eadb",
@@ -6634,7 +6634,7 @@
      "name": "Leland Walker",
      "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
      "mean": 23.9,
-     "p10": 14,
+     "p10": 13,
      "p90": 34
     },
     {
@@ -7184,11 +7184,11 @@
    },
    "model": "player-sim-v1",
    "data_cutoff": "2026-10-27",
-   "published_at": "2026-10-28T14:57:18+02:00",
+   "published_at": "2026-10-28T23:19:12+02:00",
    "home_win_probability": 0.68,
    "mean_score": {
     "d35a3d28-90a6-11f1-a47f-e7d7c2463142": 86.7,
-    "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1": 79.5
+    "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1": 79.4
    },
    "margin": {
     "mean": 7.3,
@@ -7217,7 +7217,7 @@
      "id": "52d0fe47-90bd-11f1-903d-fdb6131f8409",
      "name": "Valtteri Mervola",
      "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
-     "mean": 5.3,
+     "mean": 5.4,
      "p10": 0,
      "p90": 11
     },
