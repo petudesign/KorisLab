@@ -26,3 +26,5 @@
 .dashboard-expanded .dash-team-table>header p,.dashboard-expanded .team-table-note{font-size:10px}
 .dashboard-expanded .team-table-tabs button{font-size:11px!important;padding:7px 10px}
 @media(max-width:700px){.data-page .dash-team-table>header{align-items:flex-start;flex-direction:column}.data-page .dash-team-table table{font-size:11px}.data-page .dash-team-table th,.data-page .dash-team-table td{padding:10px 7px}.data-page .dash-team-table .team-table-note{font-size:9px}}
+.dash-team-table tbody th a{display:inline-flex;align-items:center;gap:10px}.dash-team-table .team-table-logo{width:22px;height:22px;flex:none}
+.dash-team-table .team-table-logo.team-logo-fallback{display:inline-grid;place-items:center;border-radius:50%;background:#26262b;color:#a4a4af;font-size:8px;font-weight:600}
