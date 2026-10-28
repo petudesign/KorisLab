@@ -1,4 +1,5 @@
-import {useEffect,useRef,useState} from 'react';
+import {useEffect,useId,useLayoutEffect,useRef,useState} from 'react';
+import ExpandMoreRounded from '@mui/icons-material/ExpandMoreRounded';
 import PlayArrowRounded from '@mui/icons-material/PlayArrowRounded';
 import PauseRounded from '@mui/icons-material/PauseRounded';
 import {useI18n,locale} from './i18n';
@@ -32,6 +33,37 @@ function describe(e,players,teams,tr){
   turnover:`${e.player?n(e.player):teams[e.team]} ${tr('menetys','turnover')}`,steal:`${n(e.player)} ${tr('riisto','steal')}`,
   offensive_rebound:`${n(e.player)} ${tr('hyökkäyslevypallo','offensive rebound')}`,defensive_rebound:`${n(e.player)} ${tr('puolustuslevypallo','defensive rebound')}`,
   foul:`${n(e.player)} ${tr('virhe','foul')}`}[e.type]??'';
+}
+
+// Expand/collapse per Emil Kowalski's recipe: measured height plus opacity, 200 ms strong ease-out.
+function Disclosure({summary,children,className='',triggerClassName=''}){
+ const [open,setOpen]=useState(false),[height,setHeight]=useState(0),inner=useRef(null),id=useId();
+ useLayoutEffect(()=>{const node=inner.current,measure=()=>setHeight(node.offsetHeight);measure();const observer=new ResizeObserver(measure);observer.observe(node);return()=>observer.disconnect();},[]);
+ return <div className={`sim-disclosure ${className}`} data-open={open}>
+  <button type="button" className={`sim-disclosure-trigger ${triggerClassName}`} aria-expanded={open} aria-controls={id} onClick={()=>setOpen(!open)}>
+   {summary}<ExpandMoreRounded className="sim-disclosure-icon" aria-hidden="true"/>
+  </button>
+  <div id={id} className="sim-disclosure-panel" style={{height:open?height:0}} inert={!open}><div ref={inner}>{children}</div></div>
+ </div>;
+}
+
+// Segmented control per the RECIPES tab indicator: an aria-hidden copy styled as active is clipped to the
+// selected option and the clip moves (250 ms ease-in-out), so text and background change together.
+function Segmented({label,options,value,onChange}){
+ const group=useRef(null),[clip,setClip]=useState(null);
+ useLayoutEffect(()=>{
+  const node=group.current,measure=()=>{
+   const active=node.querySelector('[aria-pressed="true"]');if(!active)return;
+   const box=node.querySelector('.sim-seg-active').getBoundingClientRect(),rect=active.getBoundingClientRect();
+   setClip(`inset(${rect.top-box.top}px ${box.right-rect.right}px ${box.bottom-rect.bottom}px ${rect.left-box.left}px round 6px)`);
+  };
+  measure();const observer=new ResizeObserver(measure);observer.observe(node);return()=>observer.disconnect();
+ },[value,options.length]);
+ const items=active=>options.map(o=>active?<span key={o.value} className="sim-seg-item">{o.label}</span>:<button key={o.value} type="button" aria-pressed={o.value===value} onClick={()=>onChange(o.value)}>{o.label}</button>);
+ return <div className="sim-toggle sim-seg" role="group" aria-label={label} ref={group}>
+  {items(false)}
+  <div className="sim-seg-active" aria-hidden="true" style={{clipPath:clip??'inset(50%)'}} data-ready={clip?'':undefined}>{items(true)}</div>
+ </div>;
 }
 
 function Court({pack,games,players}){
@@ -75,9 +107,10 @@ function Court({pack,games,players}){
    </div>
   </div>
   <div className="sim-controls sim-options">
-   <div className="sim-toggle" role="group" aria-label={tr('Simuloitu peli','Simulated game')}>{games.map((g,i)=><button key={g.label} aria-pressed={gameIndex===i} onClick={()=>setGameIndex(i)}>{variantLabel[g.label]??g.label} <span className="sim-score">{g.score[home.id]}–{g.score[away.id]}</span></button>)}</div>
-   <div className="sim-toggle" role="group" aria-label={tr('Kamera','Camera')}>{CAMERAS.map(([id,fi,en])=><button key={id} aria-pressed={camera===id} onClick={()=>setCamera(id)}>{tr(fi,en)}</button>)}</div>
-   <div className="sim-toggle" role="group" aria-label={tr('Nopeus','Speed')}>{SPEEDS.map(s=><button key={s} aria-pressed={speed===s} onClick={()=>setSpeed(s)}>{s}×</button>)}</div>
+   <Segmented label={tr('Simuloitu peli','Simulated game')} value={gameIndex} onChange={setGameIndex}
+    options={games.map((g,i)=>({value:i,label:<>{variantLabel[g.label]??g.label} <span className="sim-score">{g.score[home.id]}–{g.score[away.id]}</span></>}))}/>
+   <Segmented label={tr('Kamera','Camera')} value={camera} onChange={setCamera} options={CAMERAS.map(([id,fi,en])=>({value:id,label:tr(fi,en)}))}/>
+   <Segmented label={tr('Nopeus','Speed')} value={speed} onChange={setSpeed} options={SPEEDS.map(s=>({value:s,label:`${s}×`}))}/>
   </div>
  </section>;
 }
@@ -89,7 +122,7 @@ function Summary({pack}){
   <div className="sim-prob"><span style={{width:`${hp*100}%`,background:TEAM_COLORS.home}}>{pct(hp)}</span><span style={{width:`${(1-hp)*100}%`,background:TEAM_COLORS.away}}>{pct(1-hp)}</span></div>
   <div className="sim-legend"><span>{home.name}</span><span>{away.name}</span></div>
   <dl className="sim-facts">
-   <div><dt>{tr('Keskimääräinen tulos','Average score')}</dt><dd>{fmt(s.mean_score[home.id])}–{fmt(s.mean_score[away.id])}</dd></div>
+   <div><dt>{tr('Pisteet keskimäärin','Average points')}</dt><dd>{fmt(s.mean_score[home.id],1)}–{fmt(s.mean_score[away.id],1)}</dd></div>
    <div><dt>{tr('Kotijoukkueen ero, 80 %','Home margin, 80%')}</dt><dd>{signed(s.margin.p10)}…{signed(s.margin.p90)}</dd></div>
    <div><dt>{tr('Jatkoaika','Overtime')}</dt><dd>{pct(s.overtime_probability)}</dd></div>
   </dl>
@@ -120,7 +153,7 @@ function Players({pack,players}){
  const tr=useTr(),{home,away}=pack.match,[team,setTeam]=useState(home.id);
  return <section className="sim-panel panel">
   <div className="sim-panel-head"><h3>{tr('Pelaajat simulaatioissa','Players in the simulations')}</h3>
-   <div className="sim-toggle" role="group" aria-label={tr('Joukkue','Team')}>{[home,away].map(x=><button key={x.id} aria-pressed={team===x.id} onClick={()=>setTeam(x.id)}>{x.name}</button>)}</div></div>
+   <Segmented label={tr('Joukkue','Team')} value={team} onChange={setTeam} options={[home,away].map(x=>({value:x.id,label:x.name}))}/></div>
   <div className="sim-table-wrap"><table className="sim-table">
    <thead><tr><th>{tr('Pelaaja','Player')}</th><th>{tr('Pisteet','Points')}</th><th>{tr('80 % väli','80% range')}</th><th>20+</th><th>{tr('Syötöt','Assists')}</th><th>{tr('Levypallot','Rebounds')}</th></tr></thead>
    <tbody>{pack.players.filter(p=>p.team===team).slice(0,10).map(p=><tr key={p.id}><th>{p.number&&<small>#{p.number} </small>}{titleCase(p.name)}</th><td>{fmt(p.points.mean,1)}</td><td><small>{p.points.p10}–{p.points.p90}</small></td><td>{pct(p.points.twenty_plus)}</td><td>{fmt(p.assists,1)}</td><td>{fmt(p.rebounds,1)}</td></tr>)}</tbody>
@@ -130,14 +163,63 @@ function Players({pack,players}){
  </section>;
 }
 
+// A two-line summary up front; each topic opens for a short, concrete explanation.
 function Method({league}){
  const tr=useTr();
- return <section className="sim-panel panel sim-method"><h3>{tr('Mitä tämä on','What this is')}</h3>
-  <p>{tr('Malli pelaa ottelun hallinta kerrallaan oikeilla pelaajilla tuhat kertaa. Data määrää, kuka toimii, mistä hän heittää, millä onnistumisella, kenelle syöttää ja kuka ottaa levypallon. Vähäinen data kutistetaan kohti sarjan keskitasoa.','The model plays the game possession by possession with real players a thousand times. The data decides who acts, where they shoot from, how often they score, who they pass to and who rebounds. Small samples are pulled towards the league average.')}</p>
-  <p>{tr('Tapahtumat ovat mallin tuottamia. Pelaajien liike tapahtumien välillä on havainnollistus, joka perustuu pelaajien omiin heittopaikkoihin. Poissaoloja malli ei tiedä.','The events are generated by the model. Movement between events is illustrative and based on each player’s own shot locations. The model does not know about absences.')}</p>
-  {league==='men'?<p>{tr('Ajallisesti oikeassa testissä kaudella 2025–26 (161 ottelua) Brier oli 0,2382. Elo sai 0,2386 ja lukittu piste-eromalli 0,2329, eli malli ei vielä ennusta voittajaa muita paremmin. Pienempi on parempi.','In a time-ordered test on the 2025–26 season (161 games) the Brier score was 0.2382, against 0.2386 for Elo and 0.2329 for the locked margin model, so the model does not yet pick winners better than the others. Lower is better.')}</p>
-   :<p>{tr('Naisten sarjan mallia ei ole vielä testattu erikseen menneitä otteluita vastaan. Lue luvut suuntaa antavina.','The women’s model has not yet been tested separately against past games. Treat the numbers as indicative.')}</p>}
+ const topics=[
+  [tr('Mihin se perustuu','What it is based on'),[
+   tr('Basket.fi:n viralliset pelitapahtumat kolmelta kaudelta: jokainen heitto paikkoineen, syöttö, levypallo, menetys ja vaihto. Ottelu otetaan mukaan vain, jos sen pisteet täsmäävät pöytäkirjaan.','Basket.fi’s official play-by-play from three seasons: every shot with its location, assist, rebound, turnover and substitution. A game is used only if its points match the official box score.'),
+   tr('Jokaiselle pelaajalle lasketaan, kuinka usein hän toimii, mistä hän heittää, kuinka hyvin hän osuu kultakin alueelta, kenelle hän syöttää ja kuinka paljon levypalloja hän ottaa. Joukkueelle lasketaan puolustus ja tempo.','For each player: how often they act, where they shoot from, how well they hit from each area, who they pass to and how much they rebound. For each team: defence and pace.'),
+   tr('Vähäinen näyttö vedetään kohti sarjan keskitasoa: 5/6 kolmosista ei tee kenestäkään 83 %:n heittäjää. Kuluva kausi painaa eniten.','Thin evidence is pulled towards the league average: 5 of 6 threes does not make anyone an 83% shooter. The current season counts the most.')]],
+  [tr('Miten ottelu pelataan','How a game is played'),[
+   tr('Hallinta kerrallaan pelikelloa vasten, noin 80 hallintaa joukkuetta kohden.','Possession by possession against the game clock, about 80 per team.'),
+   tr('Kentällä olevista viidestä arvotaan toimija. Hän heittää, menettää pallon tai pääsee vapaaheittoon omien osuuksiensa mukaan. Heittopaikka arvotaan hänen oikeista heitoistaan, ja osuminen riippuu hänen tarkkuudestaan, vastustajan puolustuksesta ja kotiedusta.','One of the five on court is drawn to act. They shoot, turn it over or get to the line at their own rates. The shot location comes from their real shots; making it depends on their accuracy, the defence and home advantage.'),
+   tr('Korin syöttäjä valitaan sen mukaan, kenelle pelaaja oikeasti syöttää. Ohi menneestä heitosta tulee levypallo, ja vaihdot seuraavat viimeisimpien otteluiden peliminuutteja.','The passer on a basket is chosen from who the player actually passes to. A miss leads to a rebound, and substitutions follow recent playing time.')]],
+  [tr('Mitä luvut tarkoittavat','What the numbers mean'),[
+   tr('Sama ottelu pelataan tuhat kertaa. 57 % tarkoittaa, että joukkue voitti 570 simulaatiota.','The same game is played a thousand times. 57% means the team won 570 of them.'),
+   tr('Pisteet ovat simulaatioiden keskiarvoja, eivät ennustettu lopputulos. Välit (esim. 10–22 pistettä) kattavat 80 % simulaatioista.','Points are averages across the simulations, not a predicted final score. Ranges (e.g. 10–22 points) cover 80% of the simulations.'),
+   tr('Kentällä näkyvä peli on yksi näistä tuhannesta.','The game on the court is one of those thousand.')]],
+  [tr('Mitä malli ei tiedä','What the model does not know'),[
+   tr('Poissaoloja ja loukkaantumisia: kokoonpano arvataan viimeisimmistä otteluista. Taktiikkaa ja valmentajan ratkaisuja. Pelaajien liikettä tapahtumien välillä: kentän liike on havainnollistus, ei seurantadataa.','Absences and injuries: the lineup is inferred from recent games. Tactics and coaching decisions. Movement between events: what you see on court is an illustration, not tracking data.')]],
+  [tr('Kuinka luotettava se on','How reliable it is'),[
+   league==='men'
+    ?tr('Testattu ajallisesti oikein kaudella 2025–26 (161 ottelua): Brier 0,238, Elo 0,239 ja yksinkertainen piste-eromalli 0,233. Pienempi on parempi, ja kolikonheitto antaa 0,250. Malli on siis kolikkoa parempi, mutta ei vielä parempi kuin yksinkertaiset mallit.','Tested in time order on 2025–26 (161 games): Brier 0.238, against 0.239 for Elo and 0.233 for a simple margin model. Lower is better; a coin flip scores 0.250. So the model beats chance but not yet the simple models.')
+    :tr('Naisten mallia ei ole vielä testattu menneitä otteluita vastaan, joten luvut ovat suuntaa antavia.','The women’s model has not yet been tested against past games, so treat the numbers as indicative.'),
+   tr('Jokaisen ennusteen toteuma näkyy sivun yläosassa.','How every forecast turned out is shown at the top of the page.')]],
+ ];
+ return <section className="sim-panel panel sim-method"><h3>{tr('Miten simulaatio toimii','How the simulation works')}</h3>
+  <p>{tr('Ottelu pelataan tuhat kertaa hallinta kerrallaan oikeilla pelaajilla ja heidän omalla datallaan. Luvut kertovat, mitä näissä tuhannessa pelissä tapahtui.','The game is played a thousand times, possession by possession, with real players and their own data. The numbers describe what happened in those thousand games.')}</p>
+  {topics.map(([title,lines])=><Disclosure key={title} className="sim-method-topic" summary={<span>{title}</span>}>{lines.map(line=><p key={line}>{line}</p>)}</Disclosure>)}
  </section>;
+}
+
+// Every pre-game forecast is archived and scored once the game is played; shown openly, misses included.
+function TrackRecord({league}){
+ const tr=useTr(),[archive,setArchive]=useState(null);
+ useEffect(()=>{let live=true;setArchive(null);fetch(`/data/sims/archive/${league}.json`).then(r=>r.ok?r.json():null).then(data=>{if(live)setArchive(data);}).catch(()=>{});return()=>{live=false;};},[league]);
+ const s=archive?.summary;
+ if(!s)return null;
+ const played=Object.values(archive.games).filter(g=>g.result).sort((a,b)=>b.match.date.localeCompare(a.match.date));
+ const headline=s.games?tr(`Ennusteiden toteuma: suosikki voitti ${s.favourites_won}/${s.favourites} · Brier ${fmt(s.brier,3)} (kolikonheitto 0,250)`,`Forecast record: favourite won ${s.favourites_won}/${s.favourites} · Brier ${fmt(s.brier,3)} (coin flip 0.250)`)
+  :tr('Ennusteiden toteuma näkyy, kun ensimmäinen simuloitu ottelu on pelattu.','The forecast record appears once the first simulated game has been played.');
+ if(!s.games)return <section className="sim-track panel"><p className="sim-track-empty">{headline}</p></section>;
+ return <Disclosure className="sim-track panel" triggerClassName="sim-track-trigger" summary={<strong>{headline}</strong>}>
+<div className="sim-track-body">
+   <dl className="sim-facts">
+    <div><dt>{tr('Pelattuja ennustettuja otteluita','Forecast games played')}</dt><dd>{s.games}</dd></div>
+    <div><dt>{tr('Piste-eron keskivirhe','Average margin error')}</dt><dd>{fmt(s.margin_mae,1)}</dd></div>
+    <div><dt>{tr('Pelaajan pisteet 80 %:n välillä','Player points inside 80% range')}</dt><dd>{s.player_interval_coverage==null?'—':pct(s.player_interval_coverage)}</dd></div>
+   </dl>
+   <p className="sim-track-note">{tr('Jokaisesta ottelusta näytetään viimeisin ennen ottelun alkua julkaistu ennuste. Ennustetta ei muuteta jälkikäteen. Pisteet ovat tuhannen simulaation keskiarvoja, eivät yksittäinen lopputulos, joten tasaväkisessä ottelussa ne voivat olla lähes samat. Pienellä otoksella osumaprosentti vaihtelee paljon; Brier mittaa myös sitä, olivatko prosentit oikean kokoisia.','Each game shows the last forecast published before tip-off. Forecasts are never changed afterwards. Points are averages over a thousand simulations, not a single final score, so in an even game they can be almost equal. With a small sample the hit rate swings a lot; the Brier score also measures whether the percentages were the right size.')}</p>
+   <div className="sim-table-wrap"><table className="sim-table">
+    <thead><tr><th>{tr('Ottelu','Game')}</th><th>{tr('Kotivoitto','Home win')}</th><th>{tr('Pisteet keskimäärin','Average points')}</th><th>{tr('Toteutunut','Result')}</th><th>{tr('Suosikki','Favourite')}</th></tr></thead>
+    <tbody>{played.map(g=>{const m=g.match,r=g.result,p=g.home_win_probability,homeWon=r.home_score>r.away_score,hit=p===.5?null:(p>.5)===homeWon;
+     return <tr key={m.id}><th><small>{dateLabel(m.date,{day:'numeric',month:'numeric'})}</small> {m.home.name} – {m.away.name}</th><td>{pct(p)}</td>
+      <td>{fmt(g.mean_score[m.home.id],1)}–{fmt(g.mean_score[m.away.id],1)}</td><td>{r.home_score}–{r.away_score}</td>
+      <td className={hit?'sim-hit':hit===false?'sim-miss':''}>{hit==null?'—':hit?tr('Osui','Correct'):tr('Ei osunut','Missed')}</td></tr>;})}</tbody>
+   </table></div>
+  </div>
+ </Disclosure>;
 }
 
 export function SimStudio(){
@@ -169,6 +251,7 @@ export function SimStudio(){
     <select value={matchId} onChange={e=>setMatchId(e.target.value)} aria-label={tr('Ottelu','Game')}>{index.games.map(g=><option key={g.id} value={g.id}>{dateLabel(g.date,{day:'numeric',month:'numeric'})} {g.home.name} – {g.away.name}</option>)}</select></label>
    <div className="sim-chips">{chips.map(text=><span key={text}>{text}</span>)}</div>
   </div>
+  <TrackRecord league={leagueId}/>
   <div className="sim-layout">
    <div className="sim-main"><Court key={m.id} pack={pack} games={pack.games} players={players}/><Players key={`players-${m.id}`} pack={pack} players={players}/></div>
    <div className="sim-side"><Summary pack={pack}/><HowWins pack={pack}/><Method league={leagueId}/></div>

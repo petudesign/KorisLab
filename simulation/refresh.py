@@ -12,12 +12,12 @@ from datetime import datetime
 import gzip
 import json
 from pathlib import Path
-from zoneinfo import ZoneInfo
 
 from ingestion.publish_possessions import publish
 from simulation.export import publish_packs
 from simulation.history import join_season
 from simulation.player_sim import PlayerModel
+from simulation.track import HELSINKI, attach_results, read_archive, record_forecasts, write_archive
 
 # Earlier seasons count less: rosters and roles change between seasons.
 LEAGUES = {
@@ -70,7 +70,8 @@ def site_dates(league, season):
     return {g["id"]: g["date"] for g in json.loads(path.read_text(encoding="utf-8")) if g.get("date")}
 
 
-def refresh_league(league, args, today):
+def refresh_league(league, args, now):
+    today = now.date().isoformat()
     config, games, report = LEAGUES[league], [], {}
     for season, path, weight in config["history"]:
         records = matches(path)
@@ -95,6 +96,11 @@ def refresh_league(league, args, today):
     schedule = json.loads(path.read_text(encoding="utf-8"))["schedule"]
     index = publish_packs(PlayerModel(games), schedule, args.out_dir / league, today=today, games=args.games,
                           horizon_days=args.horizon_days, simulations=args.simulations)
+    # Archive the forecasts before kick-off and score finished games against verified results.
+    packs = [json.loads(path.read_text(encoding="utf-8")) for path in sorted((args.out_dir / league).glob("*.json"))
+             if path.name != "index.json"]
+    archive = record_forecasts(read_archive(league), packs, now)
+    write_archive(league, attach_results(archive, records))
     report["packs"] = [{"match": g["id"], "date": g["date"], "home": g["home"]["name"], "away": g["away"]["name"],
                         "home_win": g["home_win_probability"]} for g in index]
     return report
@@ -111,8 +117,8 @@ def main():
     parser.add_argument("--simulations", type=int, default=1000)
     parser.add_argument("--today", help="YYYY-MM-DD; defaults to today in Helsinki")
     args = parser.parse_args()
-    today = args.today or datetime.now(ZoneInfo("Europe/Helsinki")).date().isoformat()
-    report = {league: refresh_league(league, args, today) for league in args.league or sorted(LEAGUES)}
+    now = datetime.fromisoformat(f"{args.today}T00:00:00").replace(tzinfo=HELSINKI) if args.today else datetime.now(HELSINKI)
+    report = {league: refresh_league(league, args, now) for league in args.league or sorted(LEAGUES)}
     print(json.dumps(report, ensure_ascii=False, indent=1))
 
 
