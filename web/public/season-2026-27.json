@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "season_id": "huki2627",
-  "updated_at": "2026-10-28T12:54:59.123906+00:00",
+  "updated_at": "2026-10-28T16:34:15.808482+00:00",
   "source_url": "https://tulospalvelu.basket.fi/",
   "schedule": [
     {
@@ -454,16 +454,16 @@
       "scheduled_date": "2026-10-28",
       "scheduled_time": "18:30:00",
       "venue": "Pyynikin palloiluhalli",
-      "status": "Fixture",
+      "status": "Live",
       "home": {
         "source_team_id": "138",
         "name": "Tampereen Pyrintö",
-        "score": null
+        "score": 5
       },
       "away": {
         "source_team_id": "1040",
         "name": "Espoo Basket Team",
-        "score": null
+        "score": 5
       }
     },
     {
