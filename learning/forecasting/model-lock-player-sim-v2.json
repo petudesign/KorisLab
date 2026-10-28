@@ -1,0 +1,376 @@
+{
+ "version": "player-sim-v2",
+ "selected_on": "2024-25 walk-forward, no earlier history",
+ "evaluation_rule": "both teams have five earlier games; same-day results excluded",
+ "simulations": 400,
+ "grid": {
+  "team": [
+   40,
+   80,
+   150,
+   300
+  ],
+  "per_minute": [
+   40,
+   80,
+   160
+  ],
+  "usage_minutes": [
+   30,
+   60,
+   120
+  ]
+ },
+ "results": [
+  {
+   "priors": {
+    "team": 40,
+    "per_minute": 40,
+    "usage_minutes": 30
+   },
+   "games": 158,
+   "brier": 0.2287
+  },
+  {
+   "priors": {
+    "team": 40,
+    "per_minute": 40,
+    "usage_minutes": 60
+   },
+   "games": 158,
+   "brier": 0.2297
+  },
+  {
+   "priors": {
+    "team": 40,
+    "per_minute": 40,
+    "usage_minutes": 120
+   },
+   "games": 158,
+   "brier": 0.2284
+  },
+  {
+   "priors": {
+    "team": 40,
+    "per_minute": 80,
+    "usage_minutes": 30
+   },
+   "games": 158,
+   "brier": 0.2287
+  },
+  {
+   "priors": {
+    "team": 40,
+    "per_minute": 80,
+    "usage_minutes": 60
+   },
+   "games": 158,
+   "brier": 0.2297
+  },
+  {
+   "priors": {
+    "team": 40,
+    "per_minute": 80,
+    "usage_minutes": 120
+   },
+   "games": 158,
+   "brier": 0.2284
+  },
+  {
+   "priors": {
+    "team": 40,
+    "per_minute": 160,
+    "usage_minutes": 30
+   },
+   "games": 158,
+   "brier": 0.2287
+  },
+  {
+   "priors": {
+    "team": 40,
+    "per_minute": 160,
+    "usage_minutes": 60
+   },
+   "games": 158,
+   "brier": 0.2297
+  },
+  {
+   "priors": {
+    "team": 40,
+    "per_minute": 160,
+    "usage_minutes": 120
+   },
+   "games": 158,
+   "brier": 0.2284
+  },
+  {
+   "priors": {
+    "team": 80,
+    "per_minute": 40,
+    "usage_minutes": 30
+   },
+   "games": 158,
+   "brier": 0.2291
+  },
+  {
+   "priors": {
+    "team": 80,
+    "per_minute": 40,
+    "usage_minutes": 60
+   },
+   "games": 158,
+   "brier": 0.2297
+  },
+  {
+   "priors": {
+    "team": 80,
+    "per_minute": 40,
+    "usage_minutes": 120
+   },
+   "games": 158,
+   "brier": 0.2288
+  },
+  {
+   "priors": {
+    "team": 80,
+    "per_minute": 80,
+    "usage_minutes": 30
+   },
+   "games": 158,
+   "brier": 0.2291
+  },
+  {
+   "priors": {
+    "team": 80,
+    "per_minute": 80,
+    "usage_minutes": 60
+   },
+   "games": 158,
+   "brier": 0.2297
+  },
+  {
+   "priors": {
+    "team": 80,
+    "per_minute": 80,
+    "usage_minutes": 120
+   },
+   "games": 158,
+   "brier": 0.2288
+  },
+  {
+   "priors": {
+    "team": 80,
+    "per_minute": 160,
+    "usage_minutes": 30
+   },
+   "games": 158,
+   "brier": 0.2291
+  },
+  {
+   "priors": {
+    "team": 80,
+    "per_minute": 160,
+    "usage_minutes": 60
+   },
+   "games": 158,
+   "brier": 0.2297
+  },
+  {
+   "priors": {
+    "team": 80,
+    "per_minute": 160,
+    "usage_minutes": 120
+   },
+   "games": 158,
+   "brier": 0.2288
+  },
+  {
+   "priors": {
+    "team": 150,
+    "per_minute": 40,
+    "usage_minutes": 30
+   },
+   "games": 158,
+   "brier": 0.229
+  },
+  {
+   "priors": {
+    "team": 150,
+    "per_minute": 40,
+    "usage_minutes": 60
+   },
+   "games": 158,
+   "brier": 0.227
+  },
+  {
+   "priors": {
+    "team": 150,
+    "per_minute": 40,
+    "usage_minutes": 120
+   },
+   "games": 158,
+   "brier": 0.2276
+  },
+  {
+   "priors": {
+    "team": 150,
+    "per_minute": 80,
+    "usage_minutes": 30
+   },
+   "games": 158,
+   "brier": 0.229
+  },
+  {
+   "priors": {
+    "team": 150,
+    "per_minute": 80,
+    "usage_minutes": 60
+   },
+   "games": 158,
+   "brier": 0.227
+  },
+  {
+   "priors": {
+    "team": 150,
+    "per_minute": 80,
+    "usage_minutes": 120
+   },
+   "games": 158,
+   "brier": 0.2276
+  },
+  {
+   "priors": {
+    "team": 150,
+    "per_minute": 160,
+    "usage_minutes": 30
+   },
+   "games": 158,
+   "brier": 0.229
+  },
+  {
+   "priors": {
+    "team": 150,
+    "per_minute": 160,
+    "usage_minutes": 60
+   },
+   "games": 158,
+   "brier": 0.227
+  },
+  {
+   "priors": {
+    "team": 150,
+    "per_minute": 160,
+    "usage_minutes": 120
+   },
+   "games": 158,
+   "brier": 0.2276
+  },
+  {
+   "priors": {
+    "team": 300,
+    "per_minute": 40,
+    "usage_minutes": 30
+   },
+   "games": 158,
+   "brier": 0.2279
+  },
+  {
+   "priors": {
+    "team": 300,
+    "per_minute": 40,
+    "usage_minutes": 60
+   },
+   "games": 158,
+   "brier": 0.2258
+  },
+  {
+   "priors": {
+    "team": 300,
+    "per_minute": 40,
+    "usage_minutes": 120
+   },
+   "games": 158,
+   "brier": 0.2257
+  },
+  {
+   "priors": {
+    "team": 300,
+    "per_minute": 80,
+    "usage_minutes": 30
+   },
+   "games": 158,
+   "brier": 0.2279
+  },
+  {
+   "priors": {
+    "team": 300,
+    "per_minute": 80,
+    "usage_minutes": 60
+   },
+   "games": 158,
+   "brier": 0.2258
+  },
+  {
+   "priors": {
+    "team": 300,
+    "per_minute": 80,
+    "usage_minutes": 120
+   },
+   "games": 158,
+   "brier": 0.2257
+  },
+  {
+   "priors": {
+    "team": 300,
+    "per_minute": 160,
+    "usage_minutes": 30
+   },
+   "games": 158,
+   "brier": 0.2279
+  },
+  {
+   "priors": {
+    "team": 300,
+    "per_minute": 160,
+    "usage_minutes": 60
+   },
+   "games": 158,
+   "brier": 0.2258
+  },
+  {
+   "priors": {
+    "team": 300,
+    "per_minute": 160,
+    "usage_minutes": 120
+   },
+   "games": 158,
+   "brier": 0.2257
+  }
+ ],
+ "selected": {
+  "priors": {
+   "team": 300,
+   "per_minute": 160,
+   "usage_minutes": 120
+  },
+  "games": 158,
+  "brier": 0.2257
+ },
+ "priors": {
+  "usage_minutes": 120,
+  "action": 40,
+  "zone_share": 20,
+  "two_pct": 25,
+  "three_pct": 60,
+  "ft_pct": 20,
+  "per_minute": 160,
+  "team": 300,
+  "pace": 600
+ },
+ "locked_at": "2026-10-28T14:04:48+00:00",
+ "sources_sha256": {
+  "records": "2f4412eb62d4adaafb5dd4ab9f8e0533ff586d0d99c20d785c171da593b8ba72",
+  "possessions": "cc6ace466c55e16bbb438024efbb473027175e258a85596ca80dcea3d27eb017"
+ },
+ "note": "2025-26 was not read when this file was written."
+}

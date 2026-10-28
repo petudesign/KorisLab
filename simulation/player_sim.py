@@ -247,7 +247,8 @@ class PlayerModel:
         league = self.league[stat] / max(self.league["minutes"], 1)
         return shrink(self.players[pid][stat], self.players[pid]["minutes"], league, PRIORS["per_minute"])
 
-    def team_factor(self, team, observed, expected, prior=PRIORS["team"]):
+    def team_factor(self, team, observed, expected, prior=None):
+        prior = PRIORS["team"] if prior is None else prior  # Read at call time so a tuning run can change PRIORS.
         t = self.teams[team]
         return (t[observed] + prior) / (t[expected] + prior)
 
