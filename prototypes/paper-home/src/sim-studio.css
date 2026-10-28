@@ -8,7 +8,6 @@
 .sim-toggle{display:flex;flex-wrap:wrap;gap:4px;padding:4px;background:#121213;border:1px solid #303033;border-radius:9px;width:fit-content;max-width:100%}
 .sim-toggle button{padding:7px 11px;background:transparent;border:0;border-radius:6px;color:#a7a7ad;font-size:12px;cursor:pointer;transition:background 120ms,color 120ms}
 .sim-toggle button:hover{color:#f3f3f4}
-.sim-toggle button[aria-pressed=true]{background:#29231e;color:#e9a66f;box-shadow:inset 0 0 0 1px #6a4830}
 .sim-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,360px);gap:12px;align-items:start}
 .sim-main{display:grid;gap:12px;min-width:0}
 .sim-stage{overflow:hidden;min-width:0}
@@ -81,19 +80,40 @@
  .sim-controls{flex-wrap:wrap}.sim-scrub{flex-basis:calc(100% - 52px)}
  .sim-facts dd{font-size:14px}
 }
-.sim-track{padding:0;overflow:hidden}
-.sim-track summary{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 12px;padding:12px 16px;cursor:pointer;list-style:none;font-size:13px;color:#d8d8dc}
-.sim-track summary::-webkit-details-marker{display:none}
-.sim-track summary strong{font-weight:500}
-.sim-track summary span{color:#e9a66f;font-size:12px}
-.sim-track[open] summary span{display:none}
+/* Motion follows Emil Kowalski's animate skill and the site's tokens (--ease-out, --ease-in-out). */
+.sim-seg{position:relative}
+.sim-seg-active{position:absolute;inset:0;padding:4px;box-sizing:border-box;display:flex;flex-wrap:wrap;gap:4px;pointer-events:none;transition:clip-path 250ms var(--ease-in-out)}
+.sim-seg-active:not([data-ready]){transition:none}
+.sim-seg-active .sim-seg-item{padding:7px 11px;border-radius:6px;background:#29231e;color:#e9a66f;box-shadow:inset 0 0 0 1px #6a4830;font-size:12px;white-space:nowrap}
+.sim-seg-active .sim-score{color:#e9a66f}
+.sim-seg button{white-space:nowrap}
+.sim-play{transition:transform 160ms var(--ease-out)}
+.sim-play:active{transform:scale(.97)}
+.sim-disclosure-trigger{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:0;background:none;border:0;color:inherit;font:inherit;text-align:left;cursor:pointer}
+.sim-disclosure-icon{flex:none;font-size:18px!important;color:#e9a66f;transition:transform 200ms var(--ease-out)}
+.sim-disclosure[data-open=true] .sim-disclosure-icon{transform:rotate(180deg)}
+.sim-disclosure-panel{overflow:hidden;opacity:0;transition:height 200ms var(--ease-out),opacity 200ms var(--ease-out)}
+.sim-disclosure[data-open=true]>.sim-disclosure-panel{opacity:1}
+.sim-track{padding:0}
+.sim-track-trigger{padding:12px 16px;font-size:13px;color:#d8d8dc}
+.sim-track-trigger strong{font-weight:500}
+.sim-track-empty{margin:0;padding:12px 16px;font-size:13px;color:#a7a7ad}
 .sim-track-body{display:grid;gap:12px;padding:0 16px 16px}
 .sim-track .sim-facts{margin:0}
 .sim-track-note{margin:0;color:#929297;font-size:12px;line-height:1.6;max-width:760px}
 .sim-hit{color:#44d17a}.sim-miss{color:#e18b8b}
 .sim-method-topic{border-top:1px solid #29292c}
-.sim-method-topic summary{display:flex;justify-content:space-between;align-items:center;padding:9px 0;cursor:pointer;list-style:none;font-size:12px;color:#d8d8dc}
-.sim-method-topic summary::-webkit-details-marker{display:none}
-.sim-method-topic summary::after{content:'+';color:#e9a66f;font-size:14px}
-.sim-method-topic[open] summary::after{content:'−'}
+.sim-method-topic .sim-disclosure-trigger{padding:9px 0;font-size:12px;color:#d8d8dc}
 .sim-method-topic p{margin:0 0 10px}
+.sim-method-topic .sim-disclosure-panel>div{padding-bottom:2px}
+/* A new game swaps the data in place; a short fade keeps the change from being jarring. */
+.sim-layout{transition:opacity 160ms var(--ease-out)}
+@starting-style{.sim-layout{opacity:0}}
+@media(hover:hover) and (pointer:fine){.sim-disclosure-trigger:hover .sim-disclosure-icon{color:#f3c49b}}
+/* Keyboard-initiated changes are instant. */
+.prototype-page.keyboard-input .sim-disclosure-panel,.prototype-page.keyboard-input .sim-disclosure-icon,.prototype-page.keyboard-input .sim-seg-active,.prototype-page.keyboard-input .sim-layout{transition:none}
+@media(prefers-reduced-motion:reduce){
+ .sim-disclosure-panel{transition:opacity 150ms ease}
+ .sim-disclosure-icon,.sim-seg-active,.sim-play{transition:none}
+ .sim-play:active{transform:none}
+}

@@ -1,4 +1,5 @@
-import {useEffect,useRef,useState} from 'react';
+import {useEffect,useId,useLayoutEffect,useRef,useState} from 'react';
+import ExpandMoreRounded from '@mui/icons-material/ExpandMoreRounded';
 import PlayArrowRounded from '@mui/icons-material/PlayArrowRounded';
 import PauseRounded from '@mui/icons-material/PauseRounded';
 import {useI18n,locale} from './i18n';
@@ -32,6 +33,37 @@ function describe(e,players,teams,tr){
   turnover:`${e.player?n(e.player):teams[e.team]} ${tr('menetys','turnover')}`,steal:`${n(e.player)} ${tr('riisto','steal')}`,
   offensive_rebound:`${n(e.player)} ${tr('hyökkäyslevypallo','offensive rebound')}`,defensive_rebound:`${n(e.player)} ${tr('puolustuslevypallo','defensive rebound')}`,
   foul:`${n(e.player)} ${tr('virhe','foul')}`}[e.type]??'';
+}
+
+// Expand/collapse per Emil Kowalski's recipe: measured height plus opacity, 200 ms strong ease-out.
+function Disclosure({summary,children,className='',triggerClassName=''}){
+ const [open,setOpen]=useState(false),[height,setHeight]=useState(0),inner=useRef(null),id=useId();
+ useLayoutEffect(()=>{const node=inner.current,measure=()=>setHeight(node.offsetHeight);measure();const observer=new ResizeObserver(measure);observer.observe(node);return()=>observer.disconnect();},[]);
+ return <div className={`sim-disclosure ${className}`} data-open={open}>
+  <button type="button" className={`sim-disclosure-trigger ${triggerClassName}`} aria-expanded={open} aria-controls={id} onClick={()=>setOpen(!open)}>
+   {summary}<ExpandMoreRounded className="sim-disclosure-icon" aria-hidden="true"/>
+  </button>
+  <div id={id} className="sim-disclosure-panel" style={{height:open?height:0}} inert={!open}><div ref={inner}>{children}</div></div>
+ </div>;
+}
+
+// Segmented control per the RECIPES tab indicator: an aria-hidden copy styled as active is clipped to the
+// selected option and the clip moves (250 ms ease-in-out), so text and background change together.
+function Segmented({label,options,value,onChange}){
+ const group=useRef(null),[clip,setClip]=useState(null);
+ useLayoutEffect(()=>{
+  const node=group.current,measure=()=>{
+   const active=node.querySelector('[aria-pressed="true"]');if(!active)return;
+   const box=node.querySelector('.sim-seg-active').getBoundingClientRect(),rect=active.getBoundingClientRect();
+   setClip(`inset(${rect.top-box.top}px ${box.right-rect.right}px ${box.bottom-rect.bottom}px ${rect.left-box.left}px round 6px)`);
+  };
+  measure();const observer=new ResizeObserver(measure);observer.observe(node);return()=>observer.disconnect();
+ },[value,options.length]);
+ const items=active=>options.map(o=>active?<span key={o.value} className="sim-seg-item">{o.label}</span>:<button key={o.value} type="button" aria-pressed={o.value===value} onClick={()=>onChange(o.value)}>{o.label}</button>);
+ return <div className="sim-toggle sim-seg" role="group" aria-label={label} ref={group}>
+  {items(false)}
+  <div className="sim-seg-active" aria-hidden="true" style={{clipPath:clip??'inset(50%)'}} data-ready={clip?'':undefined}>{items(true)}</div>
+ </div>;
 }
 
 function Court({pack,games,players}){
@@ -75,9 +107,10 @@ function Court({pack,games,players}){
    </div>
   </div>
   <div className="sim-controls sim-options">
-   <div className="sim-toggle" role="group" aria-label={tr('Simuloitu peli','Simulated game')}>{games.map((g,i)=><button key={g.label} aria-pressed={gameIndex===i} onClick={()=>setGameIndex(i)}>{variantLabel[g.label]??g.label} <span className="sim-score">{g.score[home.id]}–{g.score[away.id]}</span></button>)}</div>
-   <div className="sim-toggle" role="group" aria-label={tr('Kamera','Camera')}>{CAMERAS.map(([id,fi,en])=><button key={id} aria-pressed={camera===id} onClick={()=>setCamera(id)}>{tr(fi,en)}</button>)}</div>
-   <div className="sim-toggle" role="group" aria-label={tr('Nopeus','Speed')}>{SPEEDS.map(s=><button key={s} aria-pressed={speed===s} onClick={()=>setSpeed(s)}>{s}×</button>)}</div>
+   <Segmented label={tr('Simuloitu peli','Simulated game')} value={gameIndex} onChange={setGameIndex}
+    options={games.map((g,i)=>({value:i,label:<>{variantLabel[g.label]??g.label} <span className="sim-score">{g.score[home.id]}–{g.score[away.id]}</span></>}))}/>
+   <Segmented label={tr('Kamera','Camera')} value={camera} onChange={setCamera} options={CAMERAS.map(([id,fi,en])=>({value:id,label:tr(fi,en)}))}/>
+   <Segmented label={tr('Nopeus','Speed')} value={speed} onChange={setSpeed} options={SPEEDS.map(s=>({value:s,label:`${s}×`}))}/>
   </div>
  </section>;
 }
@@ -120,7 +153,7 @@ function Players({pack,players}){
  const tr=useTr(),{home,away}=pack.match,[team,setTeam]=useState(home.id);
  return <section className="sim-panel panel">
   <div className="sim-panel-head"><h3>{tr('Pelaajat simulaatioissa','Players in the simulations')}</h3>
-   <div className="sim-toggle" role="group" aria-label={tr('Joukkue','Team')}>{[home,away].map(x=><button key={x.id} aria-pressed={team===x.id} onClick={()=>setTeam(x.id)}>{x.name}</button>)}</div></div>
+   <Segmented label={tr('Joukkue','Team')} value={team} onChange={setTeam} options={[home,away].map(x=>({value:x.id,label:x.name}))}/></div>
   <div className="sim-table-wrap"><table className="sim-table">
    <thead><tr><th>{tr('Pelaaja','Player')}</th><th>{tr('Pisteet','Points')}</th><th>{tr('80 % väli','80% range')}</th><th>20+</th><th>{tr('Syötöt','Assists')}</th><th>{tr('Levypallot','Rebounds')}</th></tr></thead>
    <tbody>{pack.players.filter(p=>p.team===team).slice(0,10).map(p=><tr key={p.id}><th>{p.number&&<small>#{p.number} </small>}{titleCase(p.name)}</th><td>{fmt(p.points.mean,1)}</td><td><small>{p.points.p10}–{p.points.p90}</small></td><td>{pct(p.points.twenty_plus)}</td><td>{fmt(p.assists,1)}</td><td>{fmt(p.rebounds,1)}</td></tr>)}</tbody>
@@ -156,7 +189,7 @@ function Method({league}){
  ];
  return <section className="sim-panel panel sim-method"><h3>{tr('Miten simulaatio toimii','How the simulation works')}</h3>
   <p>{tr('Ottelu pelataan tuhat kertaa hallinta kerrallaan oikeilla pelaajilla ja heidän omalla datallaan. Luvut kertovat, mitä näissä tuhannessa pelissä tapahtui.','The game is played a thousand times, possession by possession, with real players and their own data. The numbers describe what happened in those thousand games.')}</p>
-  {topics.map(([title,lines])=><details key={title} className="sim-method-topic"><summary>{title}</summary>{lines.map(line=><p key={line}>{line}</p>)}</details>)}
+  {topics.map(([title,lines])=><Disclosure key={title} className="sim-method-topic" summary={<span>{title}</span>}>{lines.map(line=><p key={line}>{line}</p>)}</Disclosure>)}
  </section>;
 }
 
@@ -169,9 +202,9 @@ function TrackRecord({league}){
  const played=Object.values(archive.games).filter(g=>g.result).sort((a,b)=>b.match.date.localeCompare(a.match.date));
  const headline=s.games?tr(`Ennusteiden toteuma: suosikki voitti ${s.favourites_won}/${s.favourites} · Brier ${fmt(s.brier,3)} (kolikonheitto 0,250)`,`Forecast record: favourite won ${s.favourites_won}/${s.favourites} · Brier ${fmt(s.brier,3)} (coin flip 0.250)`)
   :tr('Ennusteiden toteuma näkyy, kun ensimmäinen simuloitu ottelu on pelattu.','The forecast record appears once the first simulated game has been played.');
- return <details className="sim-track panel">
-  <summary><strong>{headline}</strong>{s.games>0&&<span>{tr('Näytä ottelut','Show games')}</span>}</summary>
-  {s.games>0&&<div className="sim-track-body">
+ if(!s.games)return <section className="sim-track panel"><p className="sim-track-empty">{headline}</p></section>;
+ return <Disclosure className="sim-track panel" triggerClassName="sim-track-trigger" summary={<strong>{headline}</strong>}>
+<div className="sim-track-body">
    <dl className="sim-facts">
     <div><dt>{tr('Pelattuja ennustettuja otteluita','Forecast games played')}</dt><dd>{s.games}</dd></div>
     <div><dt>{tr('Piste-eron keskivirhe','Average margin error')}</dt><dd>{fmt(s.margin_mae,1)}</dd></div>
@@ -185,8 +218,8 @@ function TrackRecord({league}){
       <td>{fmt(g.mean_score[m.home.id],1)}–{fmt(g.mean_score[m.away.id],1)}</td><td>{r.home_score}–{r.away_score}</td>
       <td className={hit?'sim-hit':hit===false?'sim-miss':''}>{hit==null?'—':hit?tr('Osui','Correct'):tr('Ei osunut','Missed')}</td></tr>;})}</tbody>
    </table></div>
-  </div>}
- </details>;
+  </div>
+ </Disclosure>;
 }
 
 export function SimStudio(){
