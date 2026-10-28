@@ -3,24 +3,29 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {aggregateSeasonPlayers,playerPerGame} from '../src/lib/playerStats.ts';
 import {seasonTeams,teamSeasonSummary} from '../src/lib/teamProfiles.js';
-import {escapeHtml as e,scopeKey,SITE_ORIGIN,sitemap} from '../server/seo.mjs';
+import {escapeHtml as e,scopeKey,publicPath,DEFAULT_SEASON,SITE_ORIGIN,sitemap} from '../server/seo.mjs';
+// Who makes KorisLab: lets search engines and AI answers connect the site, its maker and the source code.
+const CREATOR={'@type':'Person','@id':'https://www.petu.design/#person',name:'Petteri Helttula',url:'https://www.petu.design/'};
+const ORGANIZATION={'@type':'Organization','@id':SITE_ORIGIN+'/#organization',name:'KorisLab',url:SITE_ORIGIN+'/',
+ description:'Suomalaisen koripallon analytiikkasivusto: Naisten ja Miesten Korisliigan tilastot, analyysit ja ottelusimulaatiot.',
+ founder:{'@id':CREATOR['@id']},sameAs:['https://github.com/petudesign/KorisLab','https://www.petu.design/korislab/']};
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const seasons=JSON.parse(readFileSync(path.join(root,'source/seasons.json')));
 const slug=n=>n.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('fi').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 const fmt=n=>Number.isFinite(n)?n.toLocaleString('fi-FI',{maximumFractionDigits:1,minimumFractionDigits:1}):'—';
-const manifest={defaultSeason:'2026-27',seasons:['2026-27','2025-26','2024-25'],pages:{}};
+const manifest={defaultSeason:DEFAULT_SEASON,seasons:['2026-27','2025-26','2024-25'],pages:{}};
 const source='<p><a href="https://tulospalvelu.basket.fi/">Lähde: Basket.fi:n tulospalvelu</a>. Tilastot perustuvat tallennettuun kausiaineistoon, eivät reaaliaikaiseen syötteeseen. Puuttuva tieto merkitään viivalla.</p>';
 for(const [league,datasets] of Object.entries(seasons))for(const [season,d] of Object.entries(datasets)){
  const name=league==='men'?'Miesten Korisliiga':'Naisten Korisliiga',scope=`${name} ${season.replace('-','–')}`;
  const games=JSON.parse(readFileSync(path.join(root,'public',d.matchesUrl)));
  const records=games.filter(g=>g.verified).map(g=>({game:{source_id:g.id},teams:g.teams.map(t=>({...t,source_id:t.id,home_away:t.side,players:t.players.map(p=>({...p,source_player_id:p.id,display_name:p.name,minutes:p.minutesValue}))}))}));
  const players=aggregateSeasonPlayers(records),teams=seasonTeams(d,games);
- const href=p=>scopeKey(p,season,league),link=(p,label)=>`<a href="${e(href(p))}">${e(label)}</a>`;
+ const href=p=>scopeKey(p,season,league),pub=p=>publicPath(href(p),manifest.defaultSeason),link=(p,label)=>`<a href="${e(pub(p))}">${e(label)}</a>`;
  const nav='<nav>'+[['/overview/','Yleiskatsaus'],['/matches/','Ottelut'],['/teams/','Joukkueet'],['/players/','Pelaajat'],['/season/','Kausitrendit'],['/matchup/','Matchup Lab']].map(([p,l])=>link(p,l)).join(' · ')+'</nav>';
  const add=(p,title,description,body,type='WebPage',entity=null,indexable=true)=>{
-  const url=SITE_ORIGIN+href(p),crumbs=[{name:'KorisLab',item:SITE_ORIGIN+href('/')}];
+  const url=SITE_ORIGIN+pub(p),crumbs=[{name:'KorisLab',item:SITE_ORIGIN+pub('/')}];
   if(p!=='/')crumbs.push({name:title,item:url});
-  const structured={'@context':'https://schema.org','@graph':[{'@type':type,'@id':url+'#page',url,name:title,description,inLanguage:'fi',isPartOf:{'@id':SITE_ORIGIN+'/#website'},...(entity?{mainEntity:entity}:{})},{'@type':'WebSite','@id':SITE_ORIGIN+'/#website',name:'KorisLab',url:SITE_ORIGIN+'/',description:'Suomalaisen koripallon tilastot ja analyysit: Naisten Korisliiga ja Miesten Korisliiga.',inLanguage:['fi','en']},{'@type':'BreadcrumbList',itemListElement:crumbs.map((c,i)=>({'@type':'ListItem',position:i+1,...c}))}]};
+  const structured={'@context':'https://schema.org','@graph':[{'@type':type,'@id':url+'#page',url,name:title,description,inLanguage:'fi',isPartOf:{'@id':SITE_ORIGIN+'/#website'},...(entity?{mainEntity:entity}:{})},{'@type':'WebSite','@id':SITE_ORIGIN+'/#website',name:'KorisLab',url:SITE_ORIGIN+'/',description:'Suomalaisen koripallon tilastot ja analyysit: Naisten Korisliiga ja Miesten Korisliiga.',publisher:{'@id':SITE_ORIGIN+'/#organization'},creator:{'@id':CREATOR['@id']},inLanguage:['fi','en']},ORGANIZATION,CREATOR,{'@type':'BreadcrumbList',itemListElement:crumbs.map((c,i)=>({'@type':'ListItem',position:i+1,...c}))}]};
   manifest.pages[href(p)]={title,description,indexable,structured,summary:`${nav}<h1>${e(title)}</h1><p>${e(description)}</p>${body}<h2>Aineisto ja laskenta</h2><p>${e(scope)} · ${d.aggregate.games} tilastoitua ottelua.${d.updatedAt?' Aineiston päivitys: '+e(d.updatedAt)+'.':''} Kausivalinta koskee kaikkia lukuja tällä sivulla. Keskiarvojen yhteydessä tarkista ottelumäärä; pieni otos ei kuvaa vakiintunutta tasoa.</p>${source}`};
  };
  const teamPath=t=>`/teams/${league==='men'?'korisliiga':'naisten-korisliiga'}/${slug(t.name)}/`;

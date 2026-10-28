@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {runInNewContext} from 'node:vm';
-import {resolvePage,renderPage,scopeKey} from '../server/seo.mjs';
+import {resolvePage,renderPage,scopeKey,sitemap,publicPath} from '../server/seo.mjs';
 const manifest=JSON.parse(readFileSync(new URL('../dist/client/_seo/manifest.json',import.meta.url)));
 const template='<html><head><title>Old</title><meta name="robots" content="noindex,follow"></head><body><div id="root"></div></body></html>';
 test('boot preserves no-JS facts without flashing a skeleton and recovers on bundle failure',()=>{
@@ -35,7 +35,7 @@ test('all generated summaries have source context, one factual heading and match
  assert.ok(Object.keys(manifest.pages).length>1900);
  for(const [key,p] of Object.entries(manifest.pages)){
   assert.match(p.summary,/Basket.fi/);assert.match(p.summary,/Aineisto ja laskenta/);assert.equal((p.summary.match(/<h1>/g)||[]).length,1);
-  const page=p.structured['@graph'][0];assert.equal(page.url,'https://korislab.vercel.app'+(p.alias||key));
+  const page=p.structured['@graph'][0];assert.equal(page.url,'https://korislab.vercel.app'+publicPath(p.alias||key,manifest.defaultSeason));
  }
 });
 test('server-rendered player statistics match the real copied game totals and played appearances',()=>{
@@ -53,4 +53,15 @@ test('Vercel function preserves scope queries, returns HEAD correctly and refuse
  assert.equal(invoke('/render?__path=/matches/968959/&season=2025-26','HEAD').body,undefined);
  assert.equal(invoke('/render?__path=/api/missing').body,'Not found');
  assert.match(invoke('/render?__path=/overview/&season=2025-26','GET','preview.vercel.app').headers['X-Robots-Tag'],/noindex/);
+});
+test('current-season pages use season-free public addresses, so the home page is plain /',()=>{
+ const pages={[scopeKey('/')]:{title:'Etusivu',description:'d',summary:'',indexable:true},[scopeKey('/players/','2025-26')]:{title:'P',description:'d',summary:'',indexable:true},[scopeKey('/','2026-27','men')]:{title:'M',description:'d',summary:'',indexable:true}};
+ const custom={...manifest,pages};
+ assert.equal(resolvePage(new URL('https://korislab.vercel.app/'),custom).canonical,'https://korislab.vercel.app/');
+ assert.equal(resolvePage(new URL('https://korislab.vercel.app/?season=2026-27'),custom).canonical,'https://korislab.vercel.app/');
+ assert.equal(resolvePage(new URL('https://korislab.vercel.app/?league=korisliiga'),custom).canonical,'https://korislab.vercel.app/?league=korisliiga');
+ assert.equal(resolvePage(new URL('https://korislab.vercel.app/players/?season=2025-26'),custom).canonical,'https://korislab.vercel.app/players/?season=2025-26');
+ const map=sitemap(custom);
+ assert.match(map,/<loc>https:\/\/korislab\.vercel\.app\/<\/loc>/);
+ assert.doesNotMatch(map,/season=2026-27/);
 });
