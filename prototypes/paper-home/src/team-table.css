@@ -1,3 +1,4 @@
+.dash-team-table{margin-bottom:12px}
 .dash-team-table>header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
 .dash-team-table>header h3{margin:0;font-family:'Cal Sans',sans-serif;font-size:18px;font-weight:400}
 .dash-team-table>header p{margin:5px 0 0;font-size:9px;color:#90909a}
