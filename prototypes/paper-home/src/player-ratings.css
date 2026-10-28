@@ -15,3 +15,4 @@
 .player-ratings-name small.player-ratings-rank{color:#77777e;font-size:10px;margin-top:2px}
 .player-ratings-reading{margin-top:18px;padding-top:16px;border-top:1px solid #ffffff0c}.player-ratings-reading h3{font-size:13px;font-weight:500;margin:0 0 8px;color:#e6e6ea}
 .player-ratings-reading ul{margin:0;padding-left:18px;display:grid;gap:6px}.player-ratings-reading li{font-size:12px;line-height:1.6;color:#a6a6ad}
+.prototype-page .player-ratings-compare{margin:0 0 20px}.player-ratings-compare .matchup-radar-values td small{display:block;color:#77777e;font-size:10px;margin-top:3px}

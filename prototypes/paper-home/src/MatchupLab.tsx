@@ -10,6 +10,8 @@ import {routeHref} from "./routing";
 import {useSeason as useSelectedSeason} from "./SeasonContext";
 import "./matchup.css";
 import {MatchupRadar} from "./MatchupRadar";
+import {PlayerRatingsCompare} from "./PlayerRatings";
+import {aggregateSeasonPlayers} from "./lib/playerStats";
 import { playerDisplayName } from "./lib/playerName";
 import GroupsOutlined from "@mui/icons-material/GroupsOutlined";
 import PersonOutlined from "@mui/icons-material/PersonOutlined";
@@ -231,6 +233,10 @@ export function MatchupLab({ initialPlayerA, initialPlayerB }: { initialPlayerA?
   const entryFor = (selected: SeasonMatchRecord[], id: string) => buildComparisonEntries(selected, kind, basis).find((entry) => entry.id === id);
   const detail = (entry?: ComparisonEntry) => entry ? `${entry.games} ${tr("ottelua", "games")}${kind === "players" ? ` · ${entry.team} · ${Math.round(entry.minutes)} min` : ` · ${entry.values.wins ?? "—"} W / ${entry.values.losses ?? "—"} L`}` : tr("0 tilastoitua ottelua", "0 recorded games");
   const side = (entry: ComparisonEntry | undefined, name: string): Side => ({ entry, name, detail: detail(entry) });
+  const ratingLeague = useSelectedSeason().leagueId;
+  // Player profiles need a single season per side, so combined earlier seasons get no radar.
+  const ratingsShown = kind === "players" && (mode === "entities" || mode === "seasons" && firstSeason !== "earlier");
+  const ratingPlayers = useMemo(() => ratingsShown ? [aggregateSeasonPlayers(firstRecords), aggregateSeasonPlayers(secondRecords)] : null, [ratingsShown, firstRecords, secondRecords]);
   let sides: [Side, Side] = [side(aEntries.find((entry) => entry.id === first?.id), first?.name ?? "A"), side(bEntries.find((entry) => entry.id === second?.id), second?.name ?? "B")];
   let note = tr("Valitun kauden runkosarja. Luvut kuvaavat suorituksia, eivät ennusta keskinäisen ottelun voittajaa.", "Selected regular season. Statistics describe performance; they do not predict a head-to-head winner.");
   let unavailable = "";
@@ -320,6 +326,7 @@ export function MatchupLab({ initialPlayerA, initialPlayerB }: { initialPlayerA?
     <div className="matchup-toolbar"><div className="matchup-display-controls">{(mode==="entities"||mode==="seasons"&&firstSeason!=="earlier")&&<button className="matchup-swap" type="button" onClick={()=>{setFirstId(second?.id??"");setSecondId(first?.id??"");if(mode==="seasons"&&firstSeason!=="earlier"){setFirstSeason(secondSeason);setSecondSeason(firstSeason);}}}>{tr("Vaihda puolet", "Swap sides")}</button>}<div className="profile-phase-toggle" role="group" aria-label={tr("Mittarit", "Metrics")}><button type="button" aria-pressed={!shooting} onClick={() => setShooting(false)}>{tr("Perusluvut", "Overview")}</button><button type="button" aria-pressed={shooting} onClick={() => setShooting(true)}>{tr("Heittoprofiili", "Shot profile")}</button></div></div>{kind === "players" && <Select label={tr("Näytä luvut", "Show statistics")} value={basis} options={[{ id: "game", name: tr("Per ottelu", "Per game") }, { id: "40", name: tr("Per 40 minuuttia", "Per 40 minutes") }]} onChange={(value) => setBasis(value as "game" | "40")} />}</div>
     <details className="matchup-method"><summary>{tr("Mitä tässä verrataan?", "What is being compared?")}</summary><p>{note}</p></details>
     {appearance && appearance.absent.length === 0 && <button className="outline-button matchup-mode-suggestion" type="button" onClick={() => setMode("onoff")}>{tr("Katso penkkiminuutit ja joukkueen luvut niiden aikana", "See bench minutes and team performance during them")} <Icon name="arrowOutward" size={14} /></button>}
+    {ratingPlayers && first && second && !error && !loading && !unavailable && <PlayerRatingsCompare leagueId={ratingLeague} entries={[{ name: sides[0].name, player: ratingPlayers[0].find((p) => p.id === first.id), players: ratingPlayers[0] }, { name: sides[1].name, player: ratingPlayers[1].find((p) => p.id === second.id), players: ratingPlayers[1] }]} />}
     {error?<StateCard tone="error" title="Vertailun lataus epäonnistui." description="Tarkista yhteys ja yritä uudelleen. Valintasi säilyvät." onAction={()=>{setRetry(value=>value+1);if(needCurrent&&!current)void refreshCurrent();}}/>:unavailable?<StateCard title={unavailable}/>:loading?<LoadingSkeleton variant="comparison" label="Ladataan vertailua…"/>:<Comparison sides={sides} metrics={metrics} shooting={shooting} radarLeague={kind==="teams"&&mode==="entities"?aEntries:undefined}/>}
     {kind === "teams" && (mode === "entities" || mode === "seasons") && first && second && first.id !== second.id && !error && <HeadToHeadPanel sources={headToHeadSources} first={first} second={second} currentDates={currentMatchDates} loading={headToHeadLoading} partial={headToHeadStatus === "partial" || headToHeadStatus === "error"} />}
     <p className="players-method-note">{tr("Heittoprosentit lasketaan yhteenlasketuista osumista ja yrityksistä. ORtg, DRtg ja Net Rating perustuvat arvioituihin pallonhallintoihin. Viiva tarkoittaa puuttuvaa tai määrittelemätöntä arvoa. Pieni otos voi nostaa lukuja paljon.", "Shooting percentages use total makes and attempts. ORtg, DRtg and Net Rating use estimated possessions. A dash means missing or undefined data. Small samples can produce high values.")}</p>
