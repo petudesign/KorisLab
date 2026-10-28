@@ -1083,6 +1083,7 @@
   "Pelaajien vähimmäisottelut": "Minimum player games",
   "Vähintään otteluita": "Minimum games",
   "Järjestys: voittoprosentti, tasatilanteessa piste-ero.": "Sorted by win percentage, then point differential.",
+  "Järjestys: voittoprosentti, tasatilanteessa piste-ero. Virallisia tasapistesääntöjä ei sovelleta, joten tämä ei ole virallinen sarjataulukko.": "Sorted by win percentage, then point differential. Official tiebreak rules are not applied, so this is not the official standings.",
   "Voitot – tappiot tilastoiduissa otteluissa": "Wins – losses in games with stats",
   "Tehdyt pisteet miinus päästetyt pisteet": "Points scored minus points allowed",
   "Tilastoidut ottelut · klikkaa joukkuetta.": "Games with stats · select a team.",

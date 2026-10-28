@@ -4,6 +4,7 @@ import {useMemo,useState} from 'react';
 import {useSeason} from './SeasonContext';
 import {useMatches} from './useMatches';
 import {TeamDirectory,TeamProfileSummary} from './TeamDirectory';
+import {TeamTable} from './TeamTable';
 import {seasonTeams} from './lib/teamProfiles';
 import {aggregateSeasonPlayers,playerPerGame,playerEfGPctFromTotals,playerTrueShootingPctFromTotals,playerEfficiencyPer40} from './lib/playerStats';
 import {routeHref,slug} from './routing';
@@ -50,7 +51,7 @@ export function EntityPages({section,playerId,teamId,onNavigate,onOpenMatch}){
  const minuteNotice=players.some(p=>(!playerId||p.id===playerId)&&!Number.isFinite(p.minutes))?<p className="match-method" role="note">{translate('Osaa lähteen peliajoista ei voitu varmistaa. Niihin perustuvat minuutti- ja per 40 minuutin luvut näkyvät viivana; muut tilastot säilyvät.')}</p>:null;
  if(section==='Joukkueet'){
   const selected=seasonTeams(season,games).find(t=>t.source_team_id===teamId||slug(t.name)===teamId);
-  if(!teamId)return <TeamDirectory season={season} games={games} link={link}/>;
+  if(!teamId)return <><TeamTable onEntityNavigate={onNavigate}/><TeamDirectory season={season} games={games} link={link}/></>;
   if(!selected)return <StateCard title="Joukkuetta ei löydy valitulta kaudelta" description="Tarkista sarja ja kausi yläreunan valikosta tai palaa joukkuelistaan.">{link('Joukkueet',null,'Kaikki joukkueet')}</StateCard>;
   const teamPlayers=players.filter(p=>p.team===selected.name),teamGames=games.filter(g=>g.teams.some(t=>t.name===selected.name));
   return <div className="entity-profile">{minuteNotice}{translate(link('Joukkueet',null,'← Joukkueet'))}<TeamProfileSummary team={selected} games={games} season={season} onOpenMatch={onOpenMatch}/><TeamSeasonIntel team={selected} games={games} onOpenMatch={onOpenMatch}/><ChangeAnalysis key={`${leagueId}-${seasonId}-${selected.name}`} games={games} teamName={selected.name}/><article className="dash-card"><h3>{translate("Pelaajat")}</h3><TableSortMenu columns={rosterColumns} sorting={rosterSorting} label="Joukkueen pelaajien järjestys"/><div className="entity-table-wrap"><table className="entity-table"><thead><tr><SortHeaders columns={rosterColumns} sorting={rosterSorting}/></tr></thead><tbody>{translate(rosterSorting.rows(teamPlayers).map(p=><tr key={p.id}><th>{translate(link('Pelaajat',p.id,p.name))}</th><td>{translate(p.games)}</td><td>{translate(fmt(p.minutes/p.games))}</td><td>{translate(fmt(playerPerGame(p,'points')))}</td><td>{translate(fmt(playerPerGame(p,'rebounds')))}</td><td>{translate(fmt(playerPerGame(p,'assists')))}</td><td>{translate(fmt(playerEfGPctFromTotals(p)))}</td></tr>))}</tbody></table></div></article><article className="dash-card"><h3>{translate("Ottelut")}</h3><GameLinks games={teamGames} context={context} onOpenMatch={onOpenMatch} teamName={selected.name}/></article></div>;
