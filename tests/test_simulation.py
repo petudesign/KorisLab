@@ -6,7 +6,10 @@ import unittest
 from simulation.court import shot_zone, to_left_half
 from simulation.export import publish_packs
 from simulation.player_sim import GameSimulator, PlayerModel, offensive_chances
+from simulation.error_analysis import continuity, decomposition
+from simulation.evaluate import walk_forward
 from simulation.track import HELSINKI, attach_results, record_forecasts, summarize
+from simulation.tune import evaluable
 
 
 def event(team, player, kind, clock, **fields):
@@ -128,3 +131,33 @@ class TrackTests(unittest.TestCase):
         summary = summarize(attach_results(archive, [record]))
         self.assertEqual((summary["games"], summary["favourites_won"], summary["brier"]), (1, 0, 0.36))
         self.assertEqual(summary["player_interval_coverage"], 0.0)
+
+
+class EvaluationTests(unittest.TestCase):
+    def test_walk_forward_uses_only_earlier_days_and_keeps_margins(self):
+        games = [game(day) for day in range(1, 5)]
+        for g in games:
+            for team, score in zip(g["record"]["teams"], (90, 70)):
+                team["score"] = score
+        out = walk_forward([], games, simulations=20, workers=2)
+        self.assertNotIn("1", out)  # Nothing earlier to learn from on the first day.
+        self.assertEqual(set(out), {"2", "3", "4"})
+        self.assertGreater(out["4"]["home_win_probability"], 0.5)
+        self.assertLessEqual(out["4"]["margin_p10"], out["4"]["mean_margin"])
+        self.assertLessEqual(out["4"]["mean_margin"], out["4"]["margin_p90"])
+        self.assertEqual(out, walk_forward([], games, simulations=20, workers=1))
+
+    def test_evaluable_games_need_five_earlier_games_for_both_teams(self):
+        games = [game(day) for day in range(1, 9)]
+        self.assertEqual(evaluable(games), {"6", "7", "8"})
+
+    def test_decomposition_and_continuity(self):
+        perfect = [{"p": 1.0, "home_won": 1}, {"p": 0.0, "home_won": 0}]
+        result = decomposition(perfect, "p")
+        self.assertEqual(result["reliability"], 0)
+        self.assertEqual(result["resolution"], result["uncertainty"])
+        before, after = record(), record()
+        after["teams"][1]["players"] = [{**p, "source_player_id": "new" + p["source_player_id"]} for p in after["teams"][1]["players"]]
+        kept = continuity([before], [after])
+        self.assertEqual(kept["a"], 1.0)
+        self.assertEqual(kept["b"], 0.0)

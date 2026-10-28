@@ -344,3 +344,78 @@ voittotodennäköisyyden, piste-erojakauman, miten kumpikin joukkue voittaa,
 pelaajien pistejakaumat ja syöttöparit. Yhden simuloidun pelin voi katsoa
 3D-kentällä. Pelaajien liike tapahtumien välillä on havainnollistus pelaajien
 omista heittopaikoista, ei seurantadataa; sivu kertoo tämän.
+
+## Pelaajasimulaattorin virheanalyysi (KOR-10), 28.10.2026
+
+Kysymys: missä pelaajasimulaattori (v1, Brier 0,2382) häviää lukitulle
+piste-eromallille (0,2329) kauden 2025–26 samoissa 161 ottelussa? Lukittu v1-ajo
+toistettiin rinnakkaisena (`simulation/evaluate.py`), ja todennäköisyydet olivat
+identtiset jäädytetyn tiedoston kanssa. Lisäksi talteen jäi jokaisen ottelun
+piste-erojakauma. Ajo: `python3 -m simulation.error_analysis`, tulos
+`learning/forecasting/results/player-sim-v1-error-analysis.json`.
+
+Havainnot:
+
+- **Erottelu on parempi, kalibrointi huonompi.** Brierin hajotelmassa
+  simulaattorin resoluutio oli 0,032 (piste-eromalli 0,015, Elo 0,008), mutta
+  kalibrointivirhe 0,024 (piste-eromalli 0,003). Simulaattori siis järjestää
+  ottelut paremmin, mutta sen todennäköisyydet ovat väärän kokoisia. 161 ottelua
+  ja kymmenen luokkaa tekevät hajotelmasta kohinaisen, joten suunta on luotettavampi
+  kuin tarkat luvut.
+- **Ennusteet ovat liian varovaisia.** Ennustettujen piste-erojen hajonta oli vain
+  5,1 pistettä, ja keskimääräinen etäisyys 50 %:sta 0,106 (piste-eromalli 0,140).
+  Kotijoukkue voitti keskimäärin 0,95 pistettä ennustettua enemmän.
+- **Jakauman leveys on kohdallaan.** Simuloitu piste-eron keskihajonta 14,9,
+  toteutunut virheen hajonta 14,5; standardoitujen virheiden hajonta 0,98.
+  80 %:n väliin osui 84 %. Ongelma on keskiarvoissa, ei hajonnassa.
+- **Häviö tulee vaihtuneista kokoonpanoista.** Kun ottelussa oli joukkue, jonka
+  kauden minuuteista enintään 22 % pelasivat samassa joukkueessa edellisellä
+  kaudella (80 ottelua), simulaattori hävisi selvästi: 0,238 vs. 0,218. Vakaampien
+  kokoonpanojen otteluissa (81) se voitti piste-eromallin: 0,238 vs. 0,248.
+  Suurimmat häviöt olivat KTP:n ja Lahden otteluissa, ja kummankin kokoonpano oli
+  käytännössä kokonaan uusi. Uudesta pelaajasta simulaattorilla on vain sarjan
+  keskitaso, kun taas piste-eromalli oppii joukkueen tuloksista suoraan.
+  Jatkuvuus on laskettu koko kauden minuuteista, joten se selittää eikä ennusta.
+- **Erimielisyydet:** 37 ottelussa mallit suosivat eri joukkuetta.
+  Piste-eromalli oli oikeassa 22, simulaattori 15 kertaa.
+- **Kauden vaihe:** simulaattori voitti joulukuun ja tammikuun alun jakson
+  (0,202 vs. 0,216), mutta hävisi muut kolme neljännestä.
+
+Päätös: ensin halvin ja reilu korjaus eli priorien viritys kaudella 2024–25
+(KOR-11), painona joukkuekertoimen priori. Se ratkaisee, kuinka nopeasti
+uuden kokoonpanon tulokset siirtyvät ennusteeseen. Jos viritys ei riitä, seuraava
+kokeiltava on joukkuetason tuloskorjaus uusille kokoonpanoille tai kalibrointi
+2024–25:llä sovitetulla muunnoksella.
+
+## Pelaajasimulaattorin priorien viritys, v2 (KOR-11), 28.10.2026
+
+Priorit viritettiin pelkällä kaudella 2024–25 ja lukittiin ennen kauden 2025–26
+lukemista (`python3 -m simulation.tune --lock v2`). Ruudukko: joukkuekertoimen
+priori 40/80/150/300, per minuutti -priori 40/80/160 ja käyttöasteen priori
+30/60/120, eli 36 yhdistelmää. Kullakin ajettiin walk-forward 400 simulaatiolla
+158 ottelussa, joissa kummallakin joukkueella oli viisi aiempaa ottelua.
+
+- Paras oli joukkuekerroin 300 ja käyttöaste 120 (v1: 150 ja 60): Brier 0,2257,
+  kun v1:n arvoilla saatiin 0,2270. Paras arvo osui ruudukon reunaan, eli
+  joukkuetason kutistusta haluttiin vahvemmaksi, ei heikommaksi kuin virheanalyysin
+  perusteella odotin.
+- Per minuutti -priori ei muuttanut voittotodennäköisyyksiä lainkaan. Se vaikuttaa
+  vain levypallo-, syöttö- ja riistotilastoihin.
+- Lukitusta: `learning/forecasting/model-lock-player-sim-v2.json`.
+
+Lukittu vertailu kaudella 2025–26 samoissa 161 ottelussa
+(`python3 -m simulation.tune --evaluate v2`): **v2 Brier 0,2400**, v1 0,2382,
+piste-eromalli 0,2329, Elo 0,2386. Suosikki voitti 84 kertaa (v1 90). Viritys
+siis huononsi tulosta. Tallenne: `learning/forecasting/results/player-sim-v2.json`.
+
+Todennäköinen syy: 2024–25 viritettiin ilman edellisen kauden historiaa, jolloin
+kaikki pelaajat olivat kauden alussa tuntemattomia ja vahva joukkuetason kutistus
+auttoi. Kaudella 2025–26 simulaattorilla on 2024–25 historia painolla 0,5, ja
+tilanne on toinen. Kahden kauden aineistolla virityskausi ei vastaa testikautta.
+
+Päätös: tuotannon simulaattori pysyy v1:n prioreissa. Prioreista ei ole
+haettavissa reilua parannusta ennen kuin historiaa on kolmelta kaudelta.
+Seuraava kokeilu kohdistuu suoraan virheanalyysin löydökseen: uusien
+kokoonpanojen joukkueille joukkuetason tuloskorjaus nykykauden otteluista, tai
+todennäköisyyksien kalibrointi. Kumpikin pitää lukita ennen 2025–26-vertailua
+samalla tavalla.
