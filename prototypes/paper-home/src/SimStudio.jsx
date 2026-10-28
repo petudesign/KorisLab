@@ -140,6 +140,35 @@ function Method({league}){
  </section>;
 }
 
+// Every pre-game forecast is archived and scored once the game is played; shown openly, misses included.
+function TrackRecord({league}){
+ const tr=useTr(),[archive,setArchive]=useState(null);
+ useEffect(()=>{let live=true;setArchive(null);fetch(`/data/sims/archive/${league}.json`).then(r=>r.ok?r.json():null).then(data=>{if(live)setArchive(data);}).catch(()=>{});return()=>{live=false;};},[league]);
+ const s=archive?.summary;
+ if(!s)return null;
+ const played=Object.values(archive.games).filter(g=>g.result).sort((a,b)=>b.match.date.localeCompare(a.match.date));
+ const headline=s.games?tr(`Ennusteiden toteuma: suosikki voitti ${s.favourites_won}/${s.favourites} · Brier ${fmt(s.brier,3)} (kolikonheitto 0,250)`,`Forecast record: favourite won ${s.favourites_won}/${s.favourites} · Brier ${fmt(s.brier,3)} (coin flip 0.250)`)
+  :tr('Ennusteiden toteuma näkyy, kun ensimmäinen simuloitu ottelu on pelattu.','The forecast record appears once the first simulated game has been played.');
+ return <details className="sim-track panel">
+  <summary><strong>{headline}</strong>{s.games>0&&<span>{tr('Näytä ottelut','Show games')}</span>}</summary>
+  {s.games>0&&<div className="sim-track-body">
+   <dl className="sim-facts">
+    <div><dt>{tr('Pelattuja ennustettuja otteluita','Forecast games played')}</dt><dd>{s.games}</dd></div>
+    <div><dt>{tr('Piste-eron keskivirhe','Average margin error')}</dt><dd>{fmt(s.margin_mae,1)}</dd></div>
+    <div><dt>{tr('Pelaajan pisteet 80 %:n välillä','Player points inside 80% range')}</dt><dd>{s.player_interval_coverage==null?'—':pct(s.player_interval_coverage)}</dd></div>
+   </dl>
+   <p className="sim-track-note">{tr('Jokaisesta ottelusta näytetään viimeisin ennen ottelun alkua julkaistu ennuste. Ennustetta ei muuteta jälkikäteen. Pienellä otoksella osumaprosentti vaihtelee paljon; Brier mittaa myös sitä, olivatko prosentit oikean kokoisia.','Each game shows the last forecast published before tip-off. Forecasts are never changed afterwards. With a small sample the hit rate swings a lot; the Brier score also measures whether the percentages were the right size.')}</p>
+   <div className="sim-table-wrap"><table className="sim-table">
+    <thead><tr><th>{tr('Ottelu','Game')}</th><th>{tr('Kotivoitto','Home win')}</th><th>{tr('Ennustettu tulos','Forecast score')}</th><th>{tr('Toteutunut','Result')}</th><th>{tr('Suosikki','Favourite')}</th></tr></thead>
+    <tbody>{played.map(g=>{const m=g.match,r=g.result,p=g.home_win_probability,homeWon=r.home_score>r.away_score,hit=p===.5?null:(p>.5)===homeWon;
+     return <tr key={m.id}><th><small>{dateLabel(m.date,{day:'numeric',month:'numeric'})}</small> {m.home.name} – {m.away.name}</th><td>{pct(p)}</td>
+      <td>{fmt(g.mean_score[m.home.id])}–{fmt(g.mean_score[m.away.id])}</td><td>{r.home_score}–{r.away_score}</td>
+      <td className={hit?'sim-hit':hit===false?'sim-miss':''}>{hit==null?'—':hit?tr('Osui','Correct'):tr('Ei osunut','Missed')}</td></tr>;})}</tbody>
+   </table></div>
+  </div>}
+ </details>;
+}
+
 export function SimStudio(){
  const tr=useTr(),{leagueId}=useSeason(),base=`/data/sims/${leagueId}/`;
  const [index,setIndex]=useState(null),[matchId,setMatchId]=useState(()=>new URLSearchParams(location.search).get('match')),[pack,setPack]=useState(null),[error,setError]=useState(null);
@@ -169,6 +198,7 @@ export function SimStudio(){
     <select value={matchId} onChange={e=>setMatchId(e.target.value)} aria-label={tr('Ottelu','Game')}>{index.games.map(g=><option key={g.id} value={g.id}>{dateLabel(g.date,{day:'numeric',month:'numeric'})} {g.home.name} – {g.away.name}</option>)}</select></label>
    <div className="sim-chips">{chips.map(text=><span key={text}>{text}</span>)}</div>
   </div>
+  <TrackRecord league={leagueId}/>
   <div className="sim-layout">
    <div className="sim-main"><Court key={m.id} pack={pack} games={pack.games} players={players}/><Players key={`players-${m.id}`} pack={pack} players={players}/></div>
    <div className="sim-side"><Summary pack={pack}/><HowWins pack={pack}/><Method league={leagueId}/></div>

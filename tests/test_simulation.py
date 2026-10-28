@@ -1,3 +1,4 @@
+from datetime import datetime
 from pathlib import Path
 from tempfile import TemporaryDirectory
 import unittest
@@ -5,6 +6,7 @@ import unittest
 from simulation.court import shot_zone, to_left_half
 from simulation.export import publish_packs
 from simulation.player_sim import GameSimulator, PlayerModel, offensive_chances
+from simulation.track import HELSINKI, attach_results, record_forecasts, summarize
 
 
 def event(team, player, kind, clock, **fields):
@@ -102,3 +104,27 @@ class PublishTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TrackTests(unittest.TestCase):
+    def pack(self, probability, date="2026-01-10"):
+        return {"model": "test", "data_cutoff": "2026-01-01",
+                "match": {"id": "7", "date": date, "time": "18:30:00", "home": {"id": "a"}, "away": {"id": "b"}},
+                "summary": {"home_win_probability": probability, "mean_score": {"a": 80, "b": 75},
+                            "margin": {"mean": 5, "p10": -8, "p90": 18}, "overtime_probability": 0.02},
+                "players": [{"id": "a1", "name": "A One", "team": "a", "points": {"mean": 12, "p10": 6, "p90": 19}}]}
+
+    def test_forecast_is_frozen_at_kickoff_and_scored_against_the_result(self):
+        before = datetime(2026, 1, 10, 12, tzinfo=HELSINKI)
+        archive = record_forecasts({}, [self.pack(0.6)], before)
+        published = archive["7"]["published_at"]
+        record_forecasts(archive, [self.pack(0.6)], before.replace(hour=13))
+        self.assertEqual(archive["7"]["published_at"], published)  # Unchanged forecast, no churn.
+        record_forecasts(archive, [self.pack(0.9)], datetime(2026, 1, 10, 19, tzinfo=HELSINKI))
+        self.assertEqual(archive["7"]["home_win_probability"], 0.6)  # Kick-off has passed.
+        record = {"game": {"source_id": "7"}, "teams": [
+            {"source_id": "a", "score": 70, "players": [{"source_player_id": "a1", "stats": {"points": 25}}]},
+            {"source_id": "b", "score": 72, "players": []}]}
+        summary = summarize(attach_results(archive, [record]))
+        self.assertEqual((summary["games"], summary["favourites_won"], summary["brier"]), (1, 0, 0.36))
+        self.assertEqual(summary["player_interval_coverage"], 0.0)

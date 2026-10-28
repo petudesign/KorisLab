@@ -81,3 +81,13 @@
  .sim-controls{flex-wrap:wrap}.sim-scrub{flex-basis:calc(100% - 52px)}
  .sim-facts dd{font-size:14px}
 }
+.sim-track{padding:0;overflow:hidden}
+.sim-track summary{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 12px;padding:12px 16px;cursor:pointer;list-style:none;font-size:13px;color:#d8d8dc}
+.sim-track summary::-webkit-details-marker{display:none}
+.sim-track summary strong{font-weight:500}
+.sim-track summary span{color:#e9a66f;font-size:12px}
+.sim-track[open] summary span{display:none}
+.sim-track-body{display:grid;gap:12px;padding:0 16px 16px}
+.sim-track .sim-facts{margin:0}
+.sim-track-note{margin:0;color:#929297;font-size:12px;line-height:1.6;max-width:760px}
+.sim-hit{color:#44d17a}.sim-miss{color:#e18b8b}

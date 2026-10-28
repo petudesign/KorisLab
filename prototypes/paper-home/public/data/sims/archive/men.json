@@ -1,0 +1,7619 @@
+{
+ "league": "men",
+ "summary": {
+  "games": 8,
+  "brier": 0.2208,
+  "coin_flip_brier": 0.25,
+  "favourites_won": 5,
+  "favourites": 8,
+  "margin_mae": 8.1,
+  "player_interval_coverage": 0.803,
+  "player_interval_target": 0.8,
+  "players_checked": 147,
+  "calibration": [
+   {
+    "range": "0.4-0.6",
+    "games": 4,
+    "mean_favourite_probability": 0.558,
+    "favourite_win_rate": 0.75
+   },
+   {
+    "range": "0.6-0.8",
+    "games": 4,
+    "mean_favourite_probability": 0.699,
+    "favourite_win_rate": 0.5
+   }
+  ]
+ },
+ "games": {
+  "1005839": {
+   "match": {
+    "id": "1005839",
+    "date": "2026-10-23",
+    "time": "18:30:00",
+    "venue": "IKH Areena",
+    "home": {
+     "id": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "name": "Kauhajoki"
+    },
+    "away": {
+     "id": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "name": "Lahti Basketball"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-21",
+   "published_at": "2026-10-22T16:57:56+03:00",
+   "home_win_probability": 0.568,
+   "mean_score": {
+    "d323c8b6-90a6-11f1-9192-e7d7c2463142": 88.5,
+    "d296e502-90a6-11f1-bf89-e7d7c2463142": 86.3
+   },
+   "margin": {
+    "mean": 2.2,
+    "p10": -18,
+    "p90": 22
+   },
+   "overtime_probability": 0.035,
+   "players": [
+    {
+     "id": "22ca437b-a85c-11f1-b44c-1d65c8555753",
+     "name": "Tyeree Bryan",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 17.1,
+     "p10": 9,
+     "p90": 25
+    },
+    {
+     "id": "222fc249-a85c-11f1-94af-73f3b12250f1",
+     "name": "Jerrell Bellamy",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 17.0,
+     "p10": 10,
+     "p90": 25
+    },
+    {
+     "id": "19400c2f-90bd-11f1-8c95-916f627ff7ec",
+     "name": "Erik Sajantila",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 13.4,
+     "p10": 6,
+     "p90": 21
+    },
+    {
+     "id": "2382cc56-a85c-11f1-a14b-4dff4a9271f7",
+     "name": "Chandler Cuthrell",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 16.8,
+     "p10": 9,
+     "p90": 25
+    },
+    {
+     "id": "25d6dd91-a85c-11f1-a0aa-a9c086c1b63e",
+     "name": "Aatu Kivimäki",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 13.9,
+     "p10": 6,
+     "p90": 22
+    },
+    {
+     "id": "2457c538-a85c-11f1-bf81-1579ec539163",
+     "name": "Tehree Horn",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 4.6,
+     "p10": 0,
+     "p90": 11
+    },
+    {
+     "id": "20cbf6b3-90bd-11f1-adc7-ebd35007e794",
+     "name": "Antti Ahonen",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 3.4,
+     "p10": 0,
+     "p90": 9
+    },
+    {
+     "id": "60115ef2-90bd-11f1-b2b7-3f7cdc8d4fd3",
+     "name": "Hugo Boman",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 1.5,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "7c4c77d3-90bd-11f1-bca8-59500384dde4",
+     "name": "Kalle Koivunen",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 0.9,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "58198aab-90be-11f1-ad74-174497ca91c8",
+     "name": "Elias Ylipeltola",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 0.0,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "2f03b2d2-b116-11f1-80e6-6965d9955a48",
+     "name": "D'Maurian Williams",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 21.5,
+     "p10": 13,
+     "p90": 31
+    },
+    {
+     "id": "f40148a4-90bd-11f1-baec-4f8fabaf4a0e",
+     "name": "Riku Korhonen",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 16.2,
+     "p10": 8,
+     "p90": 25
+    },
+    {
+     "id": "70b53173-b116-11f1-a2f1-735644110542",
+     "name": "Jackson Threadgill",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 17.3,
+     "p10": 9,
+     "p90": 26
+    },
+    {
+     "id": "8a49a8f9-90bd-11f1-984c-95de893ea309",
+     "name": "EEMI LUUKKONEN",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 5.4,
+     "p10": 0,
+     "p90": 11
+    },
+    {
+     "id": "4a05a759-90bc-11f1-9c13-f9d3ff21d24a",
+     "name": "Vili Nyman",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 11.4,
+     "p10": 5,
+     "p90": 18
+    },
+    {
+     "id": "e364d2c9-90bb-11f1-be41-a19776e4ef59",
+     "name": "Aaron Carver",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 8.1,
+     "p10": 2,
+     "p90": 14
+    },
+    {
+     "id": "a72d3f59-b116-11f1-b60c-558507beef60",
+     "name": "Jalen Barr",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 3.4,
+     "p10": 0,
+     "p90": 9
+    },
+    {
+     "id": "79046d3d-90bc-11f1-a7b5-4554ddfa8cbf",
+     "name": "Kalle Peltonen",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 1.5,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "8077c0b9-90be-11f1-8f51-9528bf057578",
+     "name": "Jonas Kaivos",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 1.0,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "208a9d7b-90be-11f1-a8b1-f772deacbe7d",
+     "name": "Tino Yli-Junnila",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 0.5,
+     "p10": 0,
+     "p90": 2
+    }
+   ],
+   "result": {
+    "home_score": 73,
+    "away_score": 68,
+    "player_points": {
+     "19400c2f-90bd-11f1-8c95-916f627ff7ec": 6,
+     "20cbf6b3-90bd-11f1-adc7-ebd35007e794": 3,
+     "222fc249-a85c-11f1-94af-73f3b12250f1": 22,
+     "22ca437b-a85c-11f1-b44c-1d65c8555753": 6,
+     "2382cc56-a85c-11f1-a14b-4dff4a9271f7": 19,
+     "25d6dd91-a85c-11f1-a0aa-a9c086c1b63e": 9,
+     "60115ef2-90bd-11f1-b2b7-3f7cdc8d4fd3": 2,
+     "7c4c77d3-90bd-11f1-bca8-59500384dde4": 0,
+     "ae4d278c-90bb-11f1-9d7b-5faf62dace4e": 6,
+     "208a9d7b-90be-11f1-a8b1-f772deacbe7d": 2,
+     "2f03b2d2-b116-11f1-80e6-6965d9955a48": 4,
+     "4a05a759-90bc-11f1-9c13-f9d3ff21d24a": 9,
+     "70b53173-b116-11f1-a2f1-735644110542": 14,
+     "79046d3d-90bc-11f1-a7b5-4554ddfa8cbf": 2,
+     "8077c0b9-90be-11f1-8f51-9528bf057578": 0,
+     "8a49a8f9-90bd-11f1-984c-95de893ea309": 5,
+     "a72d3f59-b116-11f1-b60c-558507beef60": 8,
+     "e364d2c9-90bb-11f1-be41-a19776e4ef59": 9,
+     "f40148a4-90bd-11f1-baec-4f8fabaf4a0e": 15
+    }
+   }
+  },
+  "1005955": {
+   "match": {
+    "id": "1005955",
+    "date": "2026-10-23",
+    "time": "18:30:00",
+    "venue": "Steveco Areena",
+    "home": {
+     "id": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+     "name": "KTP-Basket"
+    },
+    "away": {
+     "id": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "name": "Kouvot"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-21",
+   "published_at": "2026-10-22T16:57:56+03:00",
+   "home_win_probability": 0.742,
+   "mean_score": {
+    "d347a09d-90a6-11f1-a259-e7d7c2463142": 92.4,
+    "d33f4cac-90a6-11f1-b66d-e7d7c2463142": 83.1
+   },
+   "margin": {
+    "mean": 9.3,
+    "p10": -10,
+    "p90": 29
+   },
+   "overtime_probability": 0.024,
+   "players": [
+    {
+     "id": "52dab6fa-90bd-11f1-bafa-fdb6131f8409",
+     "name": "Joel Mäntynen",
+     "team": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+     "mean": 18.1,
+     "p10": 10,
+     "p90": 27
+    },
+    {
+     "id": "cb3d506e-90bc-11f1-a511-e795959ab3d5",
+     "name": "Jesper Granlund",
+     "team": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+     "mean": 11.3,
+     "p10": 5,
+     "p90": 18
+    },
+    {
+     "id": "522565f2-abd3-11f1-b258-89e93bb2c61f",
+     "name": "Zion Styles",
+     "team": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+     "mean": 16.8,
+     "p10": 9,
+     "p90": 25
+    },
+    {
+     "id": "1ba42f86-90bb-11f1-955f-d7ae8223e556",
+     "name": "Daniel Dolenc",
+     "team": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+     "mean": 14.3,
+     "p10": 7,
+     "p90": 23
+    },
+    {
+     "id": "55ba44e6-abd3-11f1-a663-8bcb8341c5de",
+     "name": "Mason Gillis",
+     "team": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+     "mean": 21.4,
+     "p10": 11,
+     "p90": 32
+    },
+    {
+     "id": "f6feffb1-90bb-11f1-853e-5147ecc42f90",
+     "name": "Joona Tuomala",
+     "team": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+     "mean": 5.7,
+     "p10": 0,
+     "p90": 12
+    },
+    {
+     "id": "4eff2a20-abd3-11f1-a0fa-817ba5325215",
+     "name": "AJ White",
+     "team": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+     "mean": 3.6,
+     "p10": 0,
+     "p90": 9
+    },
+    {
+     "id": "3ef8df52-90bd-11f1-88ec-b9351c62770e",
+     "name": "Ian Uwamungu",
+     "team": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+     "mean": 1.0,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "37467282-90bf-11f1-82ee-dbbd8242dc7e",
+     "name": "Alfred Pitkänen",
+     "team": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+     "mean": 0.1,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "d5130b21-90bb-11f1-ae7b-8946effc4eb6",
+     "name": "Tuomas Hirvonen",
+     "team": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+     "mean": 0.1,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "7254105c-a836-11f1-901e-3bf588878d4f",
+     "name": "Christian Terrell",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 14.1,
+     "p10": 7,
+     "p90": 22
+    },
+    {
+     "id": "401079cf-a6bc-11f1-b2b5-c3d958ec4d1a",
+     "name": "Sheldon Williams",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 18.3,
+     "p10": 10,
+     "p90": 27
+    },
+    {
+     "id": "a523681c-a212-11f1-9e06-4db1c4da4259",
+     "name": "Aaron Johnson-Cash",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 14.4,
+     "p10": 7,
+     "p90": 23
+    },
+    {
+     "id": "dfe6cfae-a517-11f1-9367-7597af25adb2",
+     "name": "Masai Troutman",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 16.5,
+     "p10": 8,
+     "p90": 25
+    },
+    {
+     "id": "d92cdbd1-90bd-11f1-9edf-23575df7f55b",
+     "name": "Tuukka Härsilä",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 10.9,
+     "p10": 4,
+     "p90": 18
+    },
+    {
+     "id": "73a88aa6-90bd-11f1-aec5-bf766ef3e20b",
+     "name": "Teemu Kristeri",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 2.6,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "ebf4ab5f-90bd-11f1-af64-5bafc2773088",
+     "name": "Eino Pällijeff",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 2.7,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "7c4054c8-90bd-11f1-a503-59500384dde4",
+     "name": "Aarni Korkiatupa",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 2.6,
+     "p10": 0,
+     "p90": 8
+    },
+    {
+     "id": "0d1f5ccc-90be-11f1-9bea-053db5cf498e",
+     "name": "Patrik En",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 0.5,
+     "p10": 0,
+     "p90": 2
+    },
+    {
+     "id": "5c1f4d1d-90be-11f1-83f0-2ffd388e433c",
+     "name": "Joel Toikka",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 0.4,
+     "p10": 0,
+     "p90": 2
+    }
+   ],
+   "result": {
+    "home_score": 99,
+    "away_score": 75,
+    "player_points": {
+     "1ba42f86-90bb-11f1-955f-d7ae8223e556": 17,
+     "37467282-90bf-11f1-82ee-dbbd8242dc7e": 2,
+     "3ef8df52-90bd-11f1-88ec-b9351c62770e": 0,
+     "4eff2a20-abd3-11f1-a0fa-817ba5325215": 9,
+     "522565f2-abd3-11f1-b258-89e93bb2c61f": 6,
+     "52dab6fa-90bd-11f1-bafa-fdb6131f8409": 20,
+     "55ba44e6-abd3-11f1-a663-8bcb8341c5de": 27,
+     "cb3d506e-90bc-11f1-a511-e795959ab3d5": 11,
+     "f6feffb1-90bb-11f1-853e-5147ecc42f90": 7,
+     "0d1f5ccc-90be-11f1-9bea-053db5cf498e": 0,
+     "401079cf-a6bc-11f1-b2b5-c3d958ec4d1a": 26,
+     "7254105c-a836-11f1-901e-3bf588878d4f": 13,
+     "73a88aa6-90bd-11f1-aec5-bf766ef3e20b": 2,
+     "a523681c-a212-11f1-9e06-4db1c4da4259": 16,
+     "d92cdbd1-90bd-11f1-9edf-23575df7f55b": 8,
+     "dfe6cfae-a517-11f1-9367-7597af25adb2": 8,
+     "ebf4ab5f-90bd-11f1-af64-5bafc2773088": 2
+    }
+   }
+  },
+  "1005904": {
+   "match": {
+    "id": "1005904",
+    "date": "2026-10-24",
+    "time": "17:00:00",
+    "venue": "Motonet Areena",
+    "home": {
+     "id": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "name": "Kataja Basket"
+    },
+    "away": {
+     "id": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "name": "Tampereen Pyrintö"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-23",
+   "published_at": "2026-10-23T18:42:51+00:00",
+   "home_win_probability": 0.51,
+   "mean_score": {
+    "d31984cb-90a6-11f1-997e-e7d7c2463142": 85.3,
+    "d35a3d28-90a6-11f1-a47f-e7d7c2463142": 85.2
+   },
+   "margin": {
+    "mean": 0.1,
+    "p10": -18,
+    "p90": 18
+   },
+   "overtime_probability": 0.031,
+   "players": [
+    {
+     "id": "00b8b2c2-a83a-11f1-ac95-dbfd521311a7",
+     "name": "Stevie Strong",
+     "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "mean": 19.0,
+     "p10": 11,
+     "p90": 28
+    },
+    {
+     "id": "fe07789e-a839-11f1-9e43-33a5e0826522",
+     "name": "Josiah Harris",
+     "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "mean": 17.0,
+     "p10": 9,
+     "p90": 26
+    },
+    {
+     "id": "00017500-a83a-11f1-8b00-41f92683b540",
+     "name": "Richie Springs",
+     "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "mean": 14.0,
+     "p10": 6,
+     "p90": 22
+    },
+    {
+     "id": "61f2db99-90bb-11f1-bce6-27f2444e308f",
+     "name": "Topias Palmi",
+     "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "mean": 16.5,
+     "p10": 8,
+     "p90": 26
+    },
+    {
+     "id": "21838fb7-90bd-11f1-8f7a-ebd35007e794",
+     "name": "Teemu Suokas",
+     "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "mean": 5.1,
+     "p10": 0,
+     "p90": 11
+    },
+    {
+     "id": "037a0c46-90bd-11f1-ad46-e9a336bf1467",
+     "name": "Joonas Timonen",
+     "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "mean": 7.7,
+     "p10": 2,
+     "p90": 14
+    },
+    {
+     "id": "794bb8b2-90bc-11f1-84b6-4554ddfa8cbf",
+     "name": "Teemu Knihtinen",
+     "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "mean": 2.3,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "fea72430-a839-11f1-9aac-d745ed5fb394",
+     "name": "Jalen Lake",
+     "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "mean": 2.1,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "2010abed-90bd-11f1-bfc7-ebd35007e794",
+     "name": "Henri Permanto",
+     "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "mean": 1.3,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "c416fd86-90bd-11f1-b262-7b525a68ccc9",
+     "name": "Thomas Rönnholm",
+     "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "mean": 0.3,
+     "p10": 0,
+     "p90": 1
+    },
+    {
+     "id": "370699bb-90bf-11f1-8fe8-dbbd8242dc7e",
+     "name": "Aatu Aropelto",
+     "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "mean": 0,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "f052dc9d-ac83-11f1-8140-e359daa5ceb4",
+     "name": "Jamal West Jr.",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 21.1,
+     "p10": 13,
+     "p90": 30
+    },
+    {
+     "id": "ef3d1fa8-ac83-11f1-96a9-fb562df9b9a1",
+     "name": "Jordan Mason",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 20.5,
+     "p10": 13,
+     "p90": 29
+    },
+    {
+     "id": "52d0fe47-90bd-11f1-903d-fdb6131f8409",
+     "name": "Valtteri Mervola",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 5.5,
+     "p10": 0,
+     "p90": 11
+    },
+    {
+     "id": "27296292-90bd-11f1-8c85-d1b26dd8807a",
+     "name": "Joona Hakamaa",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 3.8,
+     "p10": 0,
+     "p90": 9
+    },
+    {
+     "id": "953e165f-90bb-11f1-b3ee-2b2f17cdb034",
+     "name": "SHAWN HOPKINS",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 13.2,
+     "p10": 6,
+     "p90": 22
+    },
+    {
+     "id": "fa6bf28d-90bd-11f1-87bb-a1f0b16090d5",
+     "name": "Erik Muhonen",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 8.9,
+     "p10": 3,
+     "p90": 16
+    },
+    {
+     "id": "9122b8a8-90bd-11f1-a737-9d9b6f578d5a",
+     "name": "Otto Räisänen",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 7.9,
+     "p10": 2,
+     "p90": 14
+    },
+    {
+     "id": "a6263fc6-bbd6-11f1-885f-6b47e880c0ea",
+     "name": "Duane Posey",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 2.7,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "19733281-90be-11f1-819d-5d5f4f976a20",
+     "name": "Kalle Mattila",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 1.1,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "94247e57-90be-11f1-b7c8-b9d3b0a6c9e2",
+     "name": "Jaakko Nieminen",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 0.4,
+     "p10": 0,
+     "p90": 2
+    },
+    {
+     "id": "a84338ea-90be-11f1-b8de-13228fe003c9",
+     "name": "Ville-Pekka Eskelinen",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 0.0,
+     "p10": 0,
+     "p90": 0
+    }
+   ],
+   "result": {
+    "home_score": 79,
+    "away_score": 84,
+    "player_points": {
+     "00017500-a83a-11f1-8b00-41f92683b540": 17,
+     "00b8b2c2-a83a-11f1-ac95-dbfd521311a7": 19,
+     "037a0c46-90bd-11f1-ad46-e9a336bf1467": 4,
+     "2010abed-90bd-11f1-bfc7-ebd35007e794": 3,
+     "21838fb7-90bd-11f1-8f7a-ebd35007e794": 8,
+     "370699bb-90bf-11f1-8fe8-dbbd8242dc7e": 0,
+     "61f2db99-90bb-11f1-bce6-27f2444e308f": 26,
+     "794bb8b2-90bc-11f1-84b6-4554ddfa8cbf": 2,
+     "c416fd86-90bd-11f1-b262-7b525a68ccc9": 0,
+     "19733281-90be-11f1-819d-5d5f4f976a20": 1,
+     "27296292-90bd-11f1-8c85-d1b26dd8807a": 0,
+     "52d0fe47-90bd-11f1-903d-fdb6131f8409": 15,
+     "9122b8a8-90bd-11f1-a737-9d9b6f578d5a": 8,
+     "94247e57-90be-11f1-b7c8-b9d3b0a6c9e2": 0,
+     "953e165f-90bb-11f1-b3ee-2b2f17cdb034": 0,
+     "a6263fc6-bbd6-11f1-885f-6b47e880c0ea": 3,
+     "ef3d1fa8-ac83-11f1-96a9-fb562df9b9a1": 20,
+     "f052dc9d-ac83-11f1-8140-e359daa5ceb4": 20,
+     "fa6bf28d-90bd-11f1-87bb-a1f0b16090d5": 17
+    }
+   }
+  },
+  "1005939": {
+   "match": {
+    "id": "1005939",
+    "date": "2026-10-24",
+    "time": "18:00:00",
+    "venue": "Salohalli",
+    "home": {
+     "id": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "name": "Salon Vilpas"
+    },
+    "away": {
+     "id": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "name": "Helsinki Seagulls"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-23",
+   "published_at": "2026-10-23T18:42:51+00:00",
+   "home_win_probability": 0.76,
+   "mean_score": {
+    "d350dc31-90a6-11f1-9e5e-e7d7c2463142": 91.0,
+    "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc": 80.6
+   },
+   "margin": {
+    "mean": 10.4,
+    "p10": -9,
+    "p90": 29
+   },
+   "overtime_probability": 0.016,
+   "players": [
+    {
+     "id": "2b7bd981-a775-11f1-b862-6dd9293707cf",
+     "name": "Leland Walker",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 23.8,
+     "p10": 14,
+     "p90": 34
+    },
+    {
+     "id": "279f75c5-a775-11f1-ba6f-c9abd216b085",
+     "name": "Karl Chavis",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 15.1,
+     "p10": 8,
+     "p90": 23
+    },
+    {
+     "id": "6ba4bef2-90bc-11f1-b099-6f6630263df7",
+     "name": "Eero Innamaa",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 8.7,
+     "p10": 3,
+     "p90": 15
+    },
+    {
+     "id": "29ba5392-a775-11f1-868a-6dd9293707cf",
+     "name": "DJ Jeffries",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 14.0,
+     "p10": 6,
+     "p90": 23
+    },
+    {
+     "id": "631124bc-90bb-11f1-ad96-27f2444e308f",
+     "name": "Mikael Aalto",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 18.0,
+     "p10": 9,
+     "p90": 27
+    },
+    {
+     "id": "759cbe3a-90bd-11f1-9758-bf766ef3e20b",
+     "name": "Sebastian Lindberg",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 3.5,
+     "p10": 0,
+     "p90": 9
+    },
+    {
+     "id": "0f0163c4-90bc-11f1-81ce-05157c8829f2",
+     "name": "Riku Laine",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 3.5,
+     "p10": 0,
+     "p90": 9
+    },
+    {
+     "id": "88368a5b-90be-11f1-9c74-b9d3b0a6c9e2",
+     "name": "Simeon Stefanovic",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 2.2,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "add7436f-90bd-11f1-9a1a-37aaf0479419",
+     "name": "Aamos Laavainen",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 1.4,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "e3c26bf2-90b9-11f1-9f1e-a19776e4ef59",
+     "name": "Mikko Koivisto",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 0.4,
+     "p10": 0,
+     "p90": 2
+    },
+    {
+     "id": "171abdaf-90bf-11f1-bb67-1f5ab6163e2c",
+     "name": "Benjamin Granström",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 0.3,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "0289786d-90bc-11f1-a8d5-797de5732515",
+     "name": "Lassi Nikkarinen",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 10.7,
+     "p10": 5,
+     "p90": 17
+    },
+    {
+     "id": "96191371-abc9-11f1-a344-798b3c09e270",
+     "name": "Keonte Kennedy",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 17.7,
+     "p10": 10,
+     "p90": 26
+    },
+    {
+     "id": "d166d74d-abc9-11f1-9a84-ab2c6646cd34",
+     "name": "Tyrese Williams",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 14.6,
+     "p10": 7,
+     "p90": 22
+    },
+    {
+     "id": "bbf4bb82-90b9-11f1-bbf0-7106e55498b7",
+     "name": "Rene Rougeau",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 16.8,
+     "p10": 9,
+     "p90": 25
+    },
+    {
+     "id": "1da7c9bb-90bc-11f1-97db-e9ae9e26fc7d",
+     "name": "Remu Raitanen",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 5.8,
+     "p10": 0,
+     "p90": 12
+    },
+    {
+     "id": "bd6db3e4-90bc-11f1-ae39-916f627ff7ec",
+     "name": "Victor Iwuakor",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 11.7,
+     "p10": 5,
+     "p90": 19
+    },
+    {
+     "id": "b8bf2a4b-90bc-11f1-9c48-b19807192607",
+     "name": "Ricky Waxlax",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 1.2,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "a977a6d2-90bd-11f1-92f4-83767142611d",
+     "name": "Lenni Hervola",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 1.2,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "6a27d731-90bb-11f1-b94b-e9ae9e26fc7d",
+     "name": "Timi Puittinen",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 0.5,
+     "p10": 0,
+     "p90": 2
+    },
+    {
+     "id": "10c3564c-90bd-11f1-bf3b-7b8c3a749dc5",
+     "name": "Samatar Abokar",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 0.2,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "7968551b-90be-11f1-bfcd-9339b75ea0b9",
+     "name": "Vili Vesterinen",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 0.2,
+     "p10": 0,
+     "p90": 0
+    }
+   ],
+   "result": {
+    "home_score": 79,
+    "away_score": 64,
+    "player_points": {
+     "0f0163c4-90bc-11f1-81ce-05157c8829f2": 14,
+     "279f75c5-a775-11f1-ba6f-c9abd216b085": 4,
+     "29ba5392-a775-11f1-868a-6dd9293707cf": 10,
+     "2b7bd981-a775-11f1-b862-6dd9293707cf": 24,
+     "3381a791-c932-11f1-9d1f-696b2260119e": 15,
+     "631124bc-90bb-11f1-ad96-27f2444e308f": 4,
+     "6ba4bef2-90bc-11f1-b099-6f6630263df7": 2,
+     "759cbe3a-90bd-11f1-9758-bf766ef3e20b": 4,
+     "88368a5b-90be-11f1-9c74-b9d3b0a6c9e2": 0,
+     "add7436f-90bd-11f1-9a1a-37aaf0479419": 2,
+     "0289786d-90bc-11f1-a8d5-797de5732515": 2,
+     "1da7c9bb-90bc-11f1-97db-e9ae9e26fc7d": 4,
+     "96191371-abc9-11f1-a344-798b3c09e270": 10,
+     "a977a6d2-90bd-11f1-92f4-83767142611d": 2,
+     "b8bf2a4b-90bc-11f1-9c48-b19807192607": 4,
+     "bbf4bb82-90b9-11f1-bbf0-7106e55498b7": 23,
+     "bd6db3e4-90bc-11f1-ae39-916f627ff7ec": 8,
+     "d166d74d-abc9-11f1-9a84-ab2c6646cd34": 11
+    }
+   }
+  },
+  "1005973": {
+   "match": {
+    "id": "1005973",
+    "date": "2026-10-24",
+    "time": "16:00:00",
+    "venue": "Tapiolan Liikuntahalli",
+    "home": {
+     "id": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "name": "Tapiolan Honka"
+    },
+    "away": {
+     "id": "815439d4-b169-11f1-bc74-593eff165a09",
+     "name": "Kipinä Basket"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-23",
+   "published_at": "2026-10-23T18:42:51+00:00",
+   "home_win_probability": 0.612,
+   "mean_score": {
+    "e214cb24-90a6-11f1-976f-5b3c5c56dcf1": 97.9,
+    "815439d4-b169-11f1-bc74-593eff165a09": 94.5
+   },
+   "margin": {
+    "mean": 3.4,
+    "p10": -16,
+    "p90": 22
+   },
+   "overtime_probability": 0.021,
+   "players": [
+    {
+     "id": "1fd5a811-90bd-11f1-9904-ebd35007e794",
+     "name": "Alvar Peltoniemi",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 18.9,
+     "p10": 11,
+     "p90": 28
+    },
+    {
+     "id": "985a93d5-90bd-11f1-ba74-a1f0b16090d5",
+     "name": "AJ Ferguson",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 18.2,
+     "p10": 10,
+     "p90": 27
+    },
+    {
+     "id": "c18d2d42-aaf5-11f1-8463-afea389cc510",
+     "name": "Trevon Faulkner",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 15.5,
+     "p10": 8,
+     "p90": 24
+    },
+    {
+     "id": "5c2ac50a-aaf5-11f1-a6f5-2b788620a1f0",
+     "name": "Lucas Taylor",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 5.7,
+     "p10": 0,
+     "p90": 12
+    },
+    {
+     "id": "3874931f-aaf5-11f1-b299-3bd10ee0c642",
+     "name": "Terrance Williams II",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 13.3,
+     "p10": 6,
+     "p90": 21
+    },
+    {
+     "id": "8979cd83-90bd-11f1-b1db-95de893ea309",
+     "name": "Iiro Tuomi",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 17.5,
+     "p10": 9,
+     "p90": 26
+    },
+    {
+     "id": "9aac90bf-90bd-11f1-a3d9-a1f0b16090d5",
+     "name": "Lauri Kallio",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 2.9,
+     "p10": 0,
+     "p90": 8
+    },
+    {
+     "id": "e1d14260-90bb-11f1-b001-a19776e4ef59",
+     "name": "Elias Eerikinharju",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 2.4,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "c57708a2-90bc-11f1-b2ee-af3c0b98eadb",
+     "name": "Tomas Pihlajamäki",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 2.1,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "93f79c9e-90be-11f1-9127-b9d3b0a6c9e2",
+     "name": "Alvan Laavainen",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 1.1,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "21c584c6-90bd-11f1-929d-ebd35007e794",
+     "name": "Jaakko Juusela",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 0.2,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "d5e9ce9f-90be-11f1-b0fb-2dc165e7f1b2",
+     "name": "Veeti Ulander",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 0.1,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "6cb2f3be-90bd-11f1-a1c6-31ded31f16e5",
+     "name": "Jalen McCoy",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 22.9,
+     "p10": 14,
+     "p90": 33
+    },
+    {
+     "id": "84e2074b-b169-11f1-984b-15001704dc97",
+     "name": "Derrin Boyd",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 21.2,
+     "p10": 12,
+     "p90": 31
+    },
+    {
+     "id": "f2c5e6a7-90bc-11f1-ab3c-c13ce11da02d",
+     "name": "Jake Hilmer",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 15.4,
+     "p10": 8,
+     "p90": 24
+    },
+    {
+     "id": "ae42289d-90ba-11f1-8f7c-e7350f4a6e12",
+     "name": "TOPIAS KUUKKANEN",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 11.3,
+     "p10": 4,
+     "p90": 20
+    },
+    {
+     "id": "87041e33-b169-11f1-ba17-05d216676cba",
+     "name": "Tristan Smith",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 7.2,
+     "p10": 1,
+     "p90": 14
+    },
+    {
+     "id": "3e4c526a-90bc-11f1-98a2-09086e96cf2a",
+     "name": "Hannes Pöllä",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 5.7,
+     "p10": 0,
+     "p90": 12
+    },
+    {
+     "id": "35e6a4bc-90be-11f1-855b-8fd4205740a9",
+     "name": "Roope Filtness",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 7.0,
+     "p10": 2,
+     "p90": 13
+    },
+    {
+     "id": "e5882668-90bd-11f1-b7ef-d7c486996b5f",
+     "name": "Daniel Rantapaju",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 2.1,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "c4a0048c-90bc-11f1-a1be-af3c0b98eadb",
+     "name": "Eemeli Laaksonen",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 1.4,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "cb066764-90bc-11f1-bcaa-e795959ab3d5",
+     "name": "Ville Virtaharju",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 0.3,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "b88b4457-b6b9-11f1-982f-01e059c213ea",
+     "name": "Aleksi Lehikoinen",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 0.1,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "f093e76f-90be-11f1-8d7a-713ca2bbccaa",
+     "name": "Eetu Viiru",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 0.0,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "2b628db0-90bf-11f1-9e78-515875ef95f7",
+     "name": "Leevi Manninen",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 0.0,
+     "p10": 0,
+     "p90": 0
+    }
+   ],
+   "result": {
+    "home_score": 94,
+    "away_score": 96,
+    "player_points": {
+     "1fd5a811-90bd-11f1-9904-ebd35007e794": 13,
+     "3874931f-aaf5-11f1-b299-3bd10ee0c642": 12,
+     "5c2ac50a-aaf5-11f1-a6f5-2b788620a1f0": 17,
+     "8979cd83-90bd-11f1-b1db-95de893ea309": 11,
+     "93f79c9e-90be-11f1-9127-b9d3b0a6c9e2": 2,
+     "985a93d5-90bd-11f1-ba74-a1f0b16090d5": 12,
+     "9aac90bf-90bd-11f1-a3d9-a1f0b16090d5": 7,
+     "c18d2d42-aaf5-11f1-8463-afea389cc510": 11,
+     "c57708a2-90bc-11f1-b2ee-af3c0b98eadb": 6,
+     "e1d14260-90bb-11f1-b001-a19776e4ef59": 3,
+     "35e6a4bc-90be-11f1-855b-8fd4205740a9": 9,
+     "3e4c526a-90bc-11f1-98a2-09086e96cf2a": 12,
+     "6cb2f3be-90bd-11f1-a1c6-31ded31f16e5": 16,
+     "84e2074b-b169-11f1-984b-15001704dc97": 15,
+     "ae42289d-90ba-11f1-8f7c-e7350f4a6e12": 13,
+     "c4a0048c-90bc-11f1-a1be-af3c0b98eadb": 6,
+     "cb066764-90bc-11f1-bcaa-e795959ab3d5": 0,
+     "e5882668-90bd-11f1-b7ef-d7c486996b5f": 6,
+     "f2c5e6a7-90bc-11f1-ab3c-c13ce11da02d": 19
+    }
+   }
+  },
+  "1006007": {
+   "match": {
+    "id": "1006007",
+    "date": "2026-10-24",
+    "time": "16:00:00",
+    "venue": "Uusikaupunki Areena Wintteri",
+    "home": {
+     "id": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "name": "Korihait"
+    },
+    "away": {
+     "id": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "name": "Bisons Loimaa"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-23",
+   "published_at": "2026-10-23T18:42:51+00:00",
+   "home_win_probability": 0.559,
+   "mean_score": {
+    "d3631045-90a6-11f1-ab0a-e7d7c2463142": 84.9,
+    "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1": 82.9
+   },
+   "margin": {
+    "mean": 1.9,
+    "p10": -17,
+    "p90": 22
+   },
+   "overtime_probability": 0.028,
+   "players": [
+    {
+     "id": "f502dce4-aae3-11f1-ae08-894bb12a0def",
+     "name": "Devin Tillis",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 17.7,
+     "p10": 10,
+     "p90": 26
+    },
+    {
+     "id": "43b817ee-90bc-11f1-b5b8-8793bc36545e",
+     "name": "Trey Niemi",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 15.7,
+     "p10": 8,
+     "p90": 24
+    },
+    {
+     "id": "42818ee5-90bb-11f1-8344-d936dd1c73f2",
+     "name": "Jalen Jackson",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 11.3,
+     "p10": 4,
+     "p90": 19
+    },
+    {
+     "id": "390fa980-aae4-11f1-88b9-1dd105afe284",
+     "name": "Thomas Murr",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 17.2,
+     "p10": 9,
+     "p90": 26
+    },
+    {
+     "id": "18d99789-90be-11f1-9c3c-5d5f4f976a20",
+     "name": "Rasmus Lindberg",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 10.4,
+     "p10": 4,
+     "p90": 18
+    },
+    {
+     "id": "fe6ebefa-90b9-11f1-a987-1f9f65ff4cc1",
+     "name": "Bojan Sarcévic",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 2.9,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "f899ea71-aae3-11f1-a85e-09a07a165553",
+     "name": "Garry Clark",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 4.5,
+     "p10": 0,
+     "p90": 11
+    },
+    {
+     "id": "6d86faaf-90bd-11f1-9067-31ded31f16e5",
+     "name": "Roni Ahvenjärvi",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 2.4,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "8c05f590-90bd-11f1-bab5-95de893ea309",
+     "name": "Kion Williams",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 1.9,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "63fc2a25-90bb-11f1-aa48-27f2444e308f",
+     "name": "Joni Herrala",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 0.5,
+     "p10": 0,
+     "p90": 2
+    },
+    {
+     "id": "c5892cdb-90bc-11f1-b8c9-af3c0b98eadb",
+     "name": "Eetu Lähdetniemi",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 0.3,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "4514784c-90bc-11f1-892c-8793bc36545e",
+     "name": "Roydell Brown",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 15.7,
+     "p10": 9,
+     "p90": 24
+    },
+    {
+     "id": "a35a4a00-90bb-11f1-a8fd-a923156cc791",
+     "name": "Javion Ogunyemi",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 15.2,
+     "p10": 8,
+     "p90": 23
+    },
+    {
+     "id": "c99140c3-90bb-11f1-b302-1d8434d82986",
+     "name": "Deshon Taylor",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 19.7,
+     "p10": 11,
+     "p90": 29
+    },
+    {
+     "id": "c8b53068-90bb-11f1-831f-1d8434d82986",
+     "name": "Aapeli Alanen",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 14.3,
+     "p10": 7,
+     "p90": 23
+    },
+    {
+     "id": "ce9eae2b-90bb-11f1-9cdf-e9ae9e26fc7d",
+     "name": "FIIFI AIDOO",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 11.2,
+     "p10": 5,
+     "p90": 18
+    },
+    {
+     "id": "3ad1572d-adab-11f1-9d97-739172e87e08",
+     "name": "AJ Harris II",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 2.2,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "d36d484b-90bd-11f1-af79-2feb4d029b30",
+     "name": "Ville Karhu",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 1.6,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "f1abff67-90bc-11f1-8c2c-c13ce11da02d",
+     "name": "Ville Tahvanainen",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 1.7,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "2457c538-a85c-11f1-bf81-1579ec539163",
+     "name": "Tehree Horn",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 0.7,
+     "p10": 0,
+     "p90": 2
+    },
+    {
+     "id": "e564c0a5-90bd-11f1-8a27-d7c486996b5f",
+     "name": "Onni Mäkynen",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 0.5,
+     "p10": 0,
+     "p90": 2
+    },
+    {
+     "id": "06148f5a-90be-11f1-b98f-63f25f046c80",
+     "name": "Niko Mykrä",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 0.2,
+     "p10": 0,
+     "p90": 0
+    }
+   ],
+   "result": {
+    "home_score": 90,
+    "away_score": 78,
+    "player_points": {
+     "18d99789-90be-11f1-9c3c-5d5f4f976a20": 5,
+     "390fa980-aae4-11f1-88b9-1dd105afe284": 22,
+     "42818ee5-90bb-11f1-8344-d936dd1c73f2": 17,
+     "63fc2a25-90bb-11f1-aa48-27f2444e308f": 3,
+     "6d86faaf-90bd-11f1-9067-31ded31f16e5": 3,
+     "8c05f590-90bd-11f1-bab5-95de893ea309": 5,
+     "c5892cdb-90bc-11f1-b8c9-af3c0b98eadb": 0,
+     "f502dce4-aae3-11f1-ae08-894bb12a0def": 23,
+     "fe6ebefa-90b9-11f1-a987-1f9f65ff4cc1": 12,
+     "06148f5a-90be-11f1-b98f-63f25f046c80": 0,
+     "2457c538-a85c-11f1-bf81-1579ec539163": 12,
+     "4514784c-90bc-11f1-892c-8793bc36545e": 12,
+     "a35a4a00-90bb-11f1-a8fd-a923156cc791": 4,
+     "c8b53068-90bb-11f1-831f-1d8434d82986": 18,
+     "c99140c3-90bb-11f1-b302-1d8434d82986": 3,
+     "ce9eae2b-90bb-11f1-9cdf-e9ae9e26fc7d": 4,
+     "d36d484b-90bd-11f1-af79-2feb4d029b30": 0,
+     "f1abff67-90bc-11f1-8c2c-c13ce11da02d": 25
+    }
+   }
+  },
+  "1006197": {
+   "match": {
+    "id": "1006197",
+    "date": "2026-10-24",
+    "time": "16:00:00",
+    "venue": "Lapuan urheilutalo",
+    "home": {
+     "id": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
+     "name": "Vimpelin Veto"
+    },
+    "away": {
+     "id": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+     "name": "Kouvottaret"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-18",
+   "published_at": "2026-10-22T16:57:56+03:00",
+   "home_win_probability": 0.548,
+   "mean_score": {
+    "d24d7d47-90a6-11f1-b368-e7d7c2463142": 78.4,
+    "d2569c80-90a6-11f1-b52d-e7d7c2463142": 76.3
+   },
+   "margin": {
+    "mean": 2.0,
+    "p10": -17,
+    "p90": 21
+   },
+   "overtime_probability": 0.023,
+   "players": [
+    {
+     "id": "4e4313fa-90bd-11f1-aa24-d925956b0a39",
+     "name": "Silja Viita",
+     "team": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
+     "mean": 18.3,
+     "p10": 10,
+     "p90": 27
+    },
+    {
+     "id": "fe4ac659-ae00-11f1-9afb-adc603652717",
+     "name": "Lilian Hansford",
+     "team": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
+     "mean": 15.9,
+     "p10": 8,
+     "p90": 24
+    },
+    {
+     "id": "fd586bdf-ae00-11f1-baf7-1b746f567d9d",
+     "name": "Nakia Cheatham",
+     "team": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
+     "mean": 18.3,
+     "p10": 10,
+     "p90": 27
+    },
+    {
+     "id": "9b18fc96-90bb-11f1-8441-35d7afbe70b8",
+     "name": "Riikka Kujala",
+     "team": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
+     "mean": 9.5,
+     "p10": 4,
+     "p90": 16
+    },
+    {
+     "id": "aee15430-90bd-11f1-9f98-37aaf0479419",
+     "name": "Minttu Isoranta",
+     "team": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
+     "mean": 8.5,
+     "p10": 3,
+     "p90": 15
+    },
+    {
+     "id": "68451ce5-90bd-11f1-b9da-73575e376a6e",
+     "name": "Elli Leppänen",
+     "team": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
+     "mean": 2.7,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "86a6fd5c-b0e7-11f1-9faa-b9639d00cd21",
+     "name": "Melanie Hoyt",
+     "team": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
+     "mean": 2.0,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "a08bb81c-90bd-11f1-842e-277bedfa33ca",
+     "name": "Pihla Jaatinen",
+     "team": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
+     "mean": 1.2,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "9962115c-90be-11f1-94e3-839d4a76272d",
+     "name": "Aino Tervanen",
+     "team": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
+     "mean": 0.6,
+     "p10": 0,
+     "p90": 2
+    },
+    {
+     "id": "dbe2c474-90be-11f1-83ff-73883e79fac1",
+     "name": "Silja Kangas",
+     "team": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
+     "mean": 0.5,
+     "p10": 0,
+     "p90": 2
+    },
+    {
+     "id": "78f56213-90be-11f1-bea6-9339b75ea0b9",
+     "name": "Eeva Alatalo",
+     "team": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
+     "mean": 0.4,
+     "p10": 0,
+     "p90": 2
+    },
+    {
+     "id": "250bf49e-90bf-11f1-bc38-3b6494574767",
+     "name": "Helmi Hietala",
+     "team": "d24d7d47-90a6-11f1-b368-e7d7c2463142",
+     "mean": 0.3,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "d051fa0d-bb2a-11f1-8672-87bafd9c4eb1",
+     "name": "Kelly Moten",
+     "team": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+     "mean": 21.4,
+     "p10": 13,
+     "p90": 31
+    },
+    {
+     "id": "3f014d7d-90bd-11f1-a152-b9351c62770e",
+     "name": "Johanna Räty",
+     "team": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+     "mean": 9.1,
+     "p10": 3,
+     "p90": 16
+    },
+    {
+     "id": "5abd665b-90bd-11f1-bba0-6dc09d38f92b",
+     "name": "Henriikka Vähäuski",
+     "team": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+     "mean": 10.1,
+     "p10": 4,
+     "p90": 17
+    },
+    {
+     "id": "224b3798-bb2b-11f1-9366-df82ac1db881",
+     "name": "Ayana Emmanuel",
+     "team": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+     "mean": 17.4,
+     "p10": 9,
+     "p90": 27
+    },
+    {
+     "id": "c38e5848-90bd-11f1-9b11-7b525a68ccc9",
+     "name": "Mimmi Kaulo",
+     "team": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+     "mean": 9.5,
+     "p10": 4,
+     "p90": 16
+    },
+    {
+     "id": "80bde8fc-90bc-11f1-a469-6724e60b9a02",
+     "name": "Jasmina Jones",
+     "team": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+     "mean": 3.1,
+     "p10": 0,
+     "p90": 8
+    },
+    {
+     "id": "5fb8fa0f-90bf-11f1-b0c5-3dc68df8a35d",
+     "name": "Lila Lampinen",
+     "team": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+     "mean": 2.4,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "688f4311-90bd-11f1-8224-73575e376a6e",
+     "name": "Elli Heikkilä",
+     "team": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+     "mean": 2.6,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "1f88c5bf-90bf-11f1-9595-7104566eb116",
+     "name": "Enni Luostarinen",
+     "team": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+     "mean": 0.5,
+     "p10": 0,
+     "p90": 2
+    }
+   ]
+  },
+  "1006217": {
+   "match": {
+    "id": "1006217",
+    "date": "2026-10-24",
+    "time": "17:00:00",
+    "venue": "Steveco Areena",
+    "home": {
+     "id": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+     "name": "Peli-Karhut"
+    },
+    "away": {
+     "id": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "name": "Tampereen Pyrintö"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-18",
+   "published_at": "2026-10-22T16:57:56+03:00",
+   "home_win_probability": 0.635,
+   "mean_score": {
+    "d231065a-90a6-11f1-9f40-e7d7c2463142": 70.8,
+    "d307acab-90a6-11f1-88bf-e7d7c2463142": 65.9
+   },
+   "margin": {
+    "mean": 4.9,
+    "p10": -14,
+    "p90": 25
+   },
+   "overtime_probability": 0.026,
+   "players": [
+    {
+     "id": "6dc845fc-bb09-11f1-b847-4bfc5aa83a90",
+     "name": "Ellie Foster",
+     "team": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+     "mean": 11.4,
+     "p10": 5,
+     "p90": 19
+    },
+    {
+     "id": "c570bb13-90bd-11f1-8a85-7b525a68ccc9",
+     "name": "Emma Lampén",
+     "team": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+     "mean": 15.6,
+     "p10": 8,
+     "p90": 24
+    },
+    {
+     "id": "d42257a7-90bc-11f1-a912-ada88c48e62e",
+     "name": "Elina Arike",
+     "team": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+     "mean": 10.7,
+     "p10": 5,
+     "p90": 17
+    },
+    {
+     "id": "47408b55-bb09-11f1-bdcf-117fb8a9e697",
+     "name": "Melannie Daley",
+     "team": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+     "mean": 12.3,
+     "p10": 5,
+     "p90": 20
+    },
+    {
+     "id": "f0d1592d-90be-11f1-a323-713ca2bbccaa",
+     "name": "Helli Suvanto",
+     "team": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+     "mean": 10.1,
+     "p10": 4,
+     "p90": 17
+    },
+    {
+     "id": "c55056c3-90bd-11f1-8e05-7b525a68ccc9",
+     "name": "Cayro-Lyza Toomingas",
+     "team": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+     "mean": 4.1,
+     "p10": 0,
+     "p90": 10
+    },
+    {
+     "id": "dcab331a-90be-11f1-a9fd-73883e79fac1",
+     "name": "Minea Nurminen",
+     "team": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+     "mean": 1.8,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "119b31d8-90bd-11f1-b34c-7b8c3a749dc5",
+     "name": "Lotta Vehka-Aho",
+     "team": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+     "mean": 2.4,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "072bebf0-90be-11f1-9991-63f25f046c80",
+     "name": "Verna Savioja",
+     "team": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+     "mean": 1.2,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "53467fc8-90bd-11f1-884e-fdb6131f8409",
+     "name": "Alexandra Ailus",
+     "team": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+     "mean": 0.9,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "417f1240-90be-11f1-93d6-2ffd388e433c",
+     "name": "Veera Mäntykivi",
+     "team": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+     "mean": 0.3,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "f3ee9fc8-90bd-11f1-a9fa-4f8fabaf4a0e",
+     "name": "Kenisha Williams",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 14.0,
+     "p10": 7,
+     "p90": 21
+    },
+    {
+     "id": "36cc6dd8-90bc-11f1-9be0-05157c8829f2",
+     "name": "Niina Sedano",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 9.4,
+     "p10": 4,
+     "p90": 15
+    },
+    {
+     "id": "8ca9f24f-90bd-11f1-8c77-95de893ea309",
+     "name": "Peppi Tyynilä",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 7.0,
+     "p10": 2,
+     "p90": 13
+    },
+    {
+     "id": "848420ff-90bf-11f1-99e1-df5a7344780a",
+     "name": "Martta Mattila",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 15.2,
+     "p10": 7,
+     "p90": 24
+    },
+    {
+     "id": "eedffa14-90bb-11f1-8d0f-51139916104b",
+     "name": "Ninni Salmi",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 10.0,
+     "p10": 4,
+     "p90": 17
+    },
+    {
+     "id": "1e92d90a-90bf-11f1-bc2e-7104566eb116",
+     "name": "Alina Nikkilä",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 1.7,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "7d178d78-90bd-11f1-b25f-59500384dde4",
+     "name": "Saana Kujala",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 2.5,
+     "p10": 0,
+     "p90": 8
+    },
+    {
+     "id": "a88d047f-90be-11f1-abb8-13228fe003c9",
+     "name": "Ella Mähönen",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 1.3,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "bb4c762b-90be-11f1-80a5-6b2027ef299b",
+     "name": "Hanna Taponen",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 1.1,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "c55cb61d-90bd-11f1-b6a3-7b525a68ccc9",
+     "name": "Sara-Sofia Mikkonen",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 0.9,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "d967ba88-90bf-11f1-b14f-856a28018d0a",
+     "name": "Mariam Sarumi",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 1.3,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "d07fac4d-90be-11f1-a798-1550020fb2b2",
+     "name": "Nessa Etu-Seppälä",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 1.0,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "059b1020-90be-11f1-9324-63f25f046c80",
+     "name": "Sara Himanen",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 0.5,
+     "p10": 0,
+     "p90": 2
+    }
+   ]
+  },
+  "1006225": {
+   "match": {
+    "id": "1006225",
+    "date": "2026-10-24",
+    "time": "17:00:00",
+    "venue": "Espoonlahden urheiluhalli",
+    "home": {
+     "id": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "name": "Espoo Basket Team"
+    },
+    "away": {
+     "id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "name": "Tapiolan Honka"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-18",
+   "published_at": "2026-10-22T16:57:56+03:00",
+   "home_win_probability": 0.736,
+   "mean_score": {
+    "d20fc495-90a6-11f1-8017-e7d7c2463142": 82.8,
+    "d239f658-90a6-11f1-bea9-e7d7c2463142": 73.4
+   },
+   "margin": {
+    "mean": 9.4,
+    "p10": -10,
+    "p90": 29
+   },
+   "overtime_probability": 0.019,
+   "players": [
+    {
+     "id": "164ac9ef-90bf-11f1-9b48-1f5ab6163e2c",
+     "name": "Emili Melnikova",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 17.9,
+     "p10": 10,
+     "p90": 27
+    },
+    {
+     "id": "02439126-90bd-11f1-9900-e9a336bf1467",
+     "name": "Elli Salovaara",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 12.5,
+     "p10": 6,
+     "p90": 20
+    },
+    {
+     "id": "fd847bc7-90be-11f1-87ba-31ded31f16e5",
+     "name": "Nea Schreck",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 17.8,
+     "p10": 10,
+     "p90": 27
+    },
+    {
+     "id": "ec7ed40e-90bd-11f1-889f-5bafc2773088",
+     "name": "Kiia Mäntylä",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 13.7,
+     "p10": 6,
+     "p90": 22
+    },
+    {
+     "id": "2ae72529-90bf-11f1-92ca-515875ef95f7",
+     "name": "Matilda Mainio",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 9.6,
+     "p10": 4,
+     "p90": 16
+    },
+    {
+     "id": "167e643c-90bf-11f1-bf87-1f5ab6163e2c",
+     "name": "Adiisa Rinne",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 3.1,
+     "p10": 0,
+     "p90": 8
+    },
+    {
+     "id": "517a716f-90be-11f1-b1eb-699532503340",
+     "name": "Esther Arial",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 1.8,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "a7cfdab7-90be-11f1-8a54-13228fe003c9",
+     "name": "Sanni Nelskylä",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 1.0,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "5e2b874e-90be-11f1-8aad-2ffd388e433c",
+     "name": "Alli Niinistö",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 1.2,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "1d9109ea-90bf-11f1-8624-7104566eb116",
+     "name": "Alessia Kilpeläinen",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 1.4,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "57fddf41-90be-11f1-8d52-174497ca91c8",
+     "name": "Ella Vainio",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 1.1,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "1652de90-90bf-11f1-bbd7-1f5ab6163e2c",
+     "name": "OLIVIA TAMMILEHTO",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 0.9,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "fc8cb5f3-90be-11f1-b858-31ded31f16e5",
+     "name": "Hilla Mäkynen",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 0.7,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "bf77ac5d-90bf-11f1-8197-7f2d70fdcfec",
+     "name": "Sanni Mäkinen",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 12.9,
+     "p10": 6,
+     "p90": 21
+    },
+    {
+     "id": "295047b1-90bd-11f1-8b04-d1b26dd8807a",
+     "name": "Saga Ukkonen",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 5.3,
+     "p10": 0,
+     "p90": 11
+    },
+    {
+     "id": "45d4e94b-90bd-11f1-bfd6-c73957d2f288",
+     "name": "Maija Kuisma",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 9.2,
+     "p10": 4,
+     "p90": 15
+    },
+    {
+     "id": "10cdb07f-90bd-11f1-9539-7b8c3a749dc5",
+     "name": "Carolina Kert",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 9.6,
+     "p10": 4,
+     "p90": 16
+    },
+    {
+     "id": "bdffb17d-90bc-11f1-bdfe-916f627ff7ec",
+     "name": "Ronja Orpo",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 11.0,
+     "p10": 4,
+     "p90": 18
+    },
+    {
+     "id": "540c2922-90bf-11f1-a71e-0d6fa49bbe21",
+     "name": "Ida Riihijärvi",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 10.1,
+     "p10": 4,
+     "p90": 17
+    },
+    {
+     "id": "2aabf0c9-90bf-11f1-8a9b-515875ef95f7",
+     "name": "Lotta Tyynilä",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 4.2,
+     "p10": 0,
+     "p90": 10
+    },
+    {
+     "id": "19c35381-90be-11f1-8d32-5d5f4f976a20",
+     "name": "Peppi Lohko",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 3.5,
+     "p10": 0,
+     "p90": 9
+    },
+    {
+     "id": "6c0d90ce-90be-11f1-b03f-8b7b745739af",
+     "name": "Ella Sahuri",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 2.9,
+     "p10": 0,
+     "p90": 8
+    },
+    {
+     "id": "7a24b37e-90be-11f1-beed-9339b75ea0b9",
+     "name": "Chalina Mäkelä",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 3.3,
+     "p10": 0,
+     "p90": 8
+    },
+    {
+     "id": "4d4cc2df-90bf-11f1-8d4e-85b9a01ea999",
+     "name": "Mona Kettunen",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 0.9,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "f1ed659b-90bd-11f1-8508-4f8fabaf4a0e",
+     "name": "Mette Nurminen",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 0.6,
+     "p10": 0,
+     "p90": 2
+    }
+   ]
+  },
+  "1006237": {
+   "match": {
+    "id": "1006237",
+    "date": "2026-10-25",
+    "time": "15:00:00",
+    "venue": "Urhea-halli",
+    "home": {
+     "id": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "name": "HBA-Märsky"
+    },
+    "away": {
+     "id": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+     "name": "ToPo"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-24",
+   "published_at": "2026-10-24T17:28:53+00:00",
+   "home_win_probability": 0.511,
+   "mean_score": {
+    "d244ed43-90a6-11f1-833b-e7d7c2463142": 80.4,
+    "d2e4a92d-90a6-11f1-a346-e7d7c2463142": 80.1
+   },
+   "margin": {
+    "mean": 0.3,
+    "p10": -19,
+    "p90": 21
+   },
+   "overtime_probability": 0.028,
+   "players": [
+    {
+     "id": "d5d80bed-90be-11f1-92a8-2dc165e7f1b2",
+     "name": "Tiia Talonen",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 14.0,
+     "p10": 7,
+     "p90": 22
+    },
+    {
+     "id": "02f00705-90bf-11f1-8a81-afaea9d0f10f",
+     "name": "Anna Gardziella",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 14.3,
+     "p10": 7,
+     "p90": 23
+    },
+    {
+     "id": "e3d248a5-90be-11f1-82ef-73883e79fac1",
+     "name": "Eevi Seppä",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 12.4,
+     "p10": 6,
+     "p90": 20
+    },
+    {
+     "id": "2c6d50fe-90bf-11f1-9c4e-515875ef95f7",
+     "name": "Jessi Nenonen",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 14.8,
+     "p10": 7,
+     "p90": 22
+    },
+    {
+     "id": "0ff1d72f-90bf-11f1-be89-31ded31f16e5",
+     "name": "Aluel Machol",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 11.6,
+     "p10": 5,
+     "p90": 19
+    },
+    {
+     "id": "b5fa7db0-90be-11f1-88d4-6b2027ef299b",
+     "name": "Duaa Aden",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 3.5,
+     "p10": 0,
+     "p90": 9
+    },
+    {
+     "id": "1f9bbb22-90bf-11f1-a972-7104566eb116",
+     "name": "Aino Koskela",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 2.5,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "53c1ab90-90bf-11f1-a541-0d6fa49bbe21",
+     "name": "Joella Rasanen",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 1.9,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "b043f1e4-90bf-11f1-af3f-8366bf5442cb",
+     "name": "Aida Kimario",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 1.5,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "793f6d2f-90bf-11f1-9dbc-f9bd2f996dfd",
+     "name": "Veronika Nanje",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 1.6,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "a0c836be-90be-11f1-911e-f55c6a1f11ab",
+     "name": "Ada Luukkanen",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 1.3,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "2a5a38bc-90bf-11f1-9f47-515875ef95f7",
+     "name": "Mona Pasanen",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 0.6,
+     "p10": 0,
+     "p90": 2
+    },
+    {
+     "id": "c470e1d1-90be-11f1-bdec-99f5e03a6b84",
+     "name": "Eevi Haveri",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 0.5,
+     "p10": 0,
+     "p90": 2
+    },
+    {
+     "id": "dfe80f45-90bd-11f1-be7c-6be1da1f835c",
+     "name": "Annika Aarrejoki",
+     "team": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+     "mean": 21.1,
+     "p10": 12,
+     "p90": 30
+    },
+    {
+     "id": "3eb16fdc-90bd-11f1-a2bc-b9351c62770e",
+     "name": "Ebba Hämäläinen",
+     "team": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+     "mean": 10.8,
+     "p10": 5,
+     "p90": 18
+    },
+    {
+     "id": "9b566fe8-90bc-11f1-9632-d14817461866",
+     "name": "Magdalene Agyei",
+     "team": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+     "mean": 17.4,
+     "p10": 9,
+     "p90": 26
+    },
+    {
+     "id": "295fd067-90bd-11f1-bcf0-d1b26dd8807a",
+     "name": "Meri Damoiseaux",
+     "team": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+     "mean": 9.8,
+     "p10": 3,
+     "p90": 17
+    },
+    {
+     "id": "5682f31f-90bb-11f1-adf1-d7ea4c2d0ca3",
+     "name": "Kaisa Kuisma",
+     "team": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+     "mean": 4.5,
+     "p10": 0,
+     "p90": 10
+    },
+    {
+     "id": "e68d85b2-90bd-11f1-ba0f-d7c486996b5f",
+     "name": "Anni Mujunen",
+     "team": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+     "mean": 8.8,
+     "p10": 3,
+     "p90": 15
+    },
+    {
+     "id": "1df670a7-90bc-11f1-98ff-e9ae9e26fc7d",
+     "name": "Lotta Vesiluoma",
+     "team": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+     "mean": 4.9,
+     "p10": 0,
+     "p90": 11
+    },
+    {
+     "id": "6aa00ee4-90bf-11f1-a4cd-4fc2adf4ab8e",
+     "name": "Eva Tauriainen",
+     "team": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+     "mean": 1.3,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "24afa711-90bc-11f1-ae99-b9351c62770e",
+     "name": "Claudia Kärnä",
+     "team": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+     "mean": 0.9,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "a7972221-90be-11f1-a4ca-13228fe003c9",
+     "name": "Lilli Laine",
+     "team": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+     "mean": 0.7,
+     "p10": 0,
+     "p90": 3
+    }
+   ]
+  },
+  "1005868": {
+   "match": {
+    "id": "1005868",
+    "date": "2026-10-27",
+    "time": "18:30:00",
+    "venue": "Luhta Areena",
+    "home": {
+     "id": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "name": "Lahti Basketball"
+    },
+    "away": {
+     "id": "815439d4-b169-11f1-bc74-593eff165a09",
+     "name": "Kipinä Basket"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-24",
+   "published_at": "2026-10-26T21:42:05+00:00",
+   "home_win_probability": 0.405,
+   "mean_score": {
+    "d296e502-90a6-11f1-bf89-e7d7c2463142": 90.8,
+    "815439d4-b169-11f1-bc74-593eff165a09": 94.3
+   },
+   "margin": {
+    "mean": -3.4,
+    "p10": -23,
+    "p90": 16
+   },
+   "overtime_probability": 0.03,
+   "players": [
+    {
+     "id": "2f03b2d2-b116-11f1-80e6-6965d9955a48",
+     "name": "D'Maurian Williams",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 21.6,
+     "p10": 12,
+     "p90": 31
+    },
+    {
+     "id": "f40148a4-90bd-11f1-baec-4f8fabaf4a0e",
+     "name": "Riku Korhonen",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 17.1,
+     "p10": 9,
+     "p90": 26
+    },
+    {
+     "id": "70b53173-b116-11f1-a2f1-735644110542",
+     "name": "Jackson Threadgill",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 17.8,
+     "p10": 8,
+     "p90": 27
+    },
+    {
+     "id": "8a49a8f9-90bd-11f1-984c-95de893ea309",
+     "name": "EEMI LUUKKONEN",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 5.7,
+     "p10": 0,
+     "p90": 11
+    },
+    {
+     "id": "4a05a759-90bc-11f1-9c13-f9d3ff21d24a",
+     "name": "Vili Nyman",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 11.7,
+     "p10": 6,
+     "p90": 19
+    },
+    {
+     "id": "e364d2c9-90bb-11f1-be41-a19776e4ef59",
+     "name": "Aaron Carver",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 10.4,
+     "p10": 4,
+     "p90": 17
+    },
+    {
+     "id": "a72d3f59-b116-11f1-b60c-558507beef60",
+     "name": "Jalen Barr",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 3.6,
+     "p10": 0,
+     "p90": 9
+    },
+    {
+     "id": "79046d3d-90bc-11f1-a7b5-4554ddfa8cbf",
+     "name": "Kalle Peltonen",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 1.5,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "8077c0b9-90be-11f1-8f51-9528bf057578",
+     "name": "Jonas Kaivos",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 0.8,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "208a9d7b-90be-11f1-a8b1-f772deacbe7d",
+     "name": "Tino Yli-Junnila",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 0.7,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "6cb2f3be-90bd-11f1-a1c6-31ded31f16e5",
+     "name": "Jalen McCoy",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 22.2,
+     "p10": 14,
+     "p90": 31
+    },
+    {
+     "id": "84e2074b-b169-11f1-984b-15001704dc97",
+     "name": "Derrin Boyd",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 21.6,
+     "p10": 13,
+     "p90": 31
+    },
+    {
+     "id": "f2c5e6a7-90bc-11f1-ab3c-c13ce11da02d",
+     "name": "Jake Hilmer",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 16.6,
+     "p10": 9,
+     "p90": 25
+    },
+    {
+     "id": "ae42289d-90ba-11f1-8f7c-e7350f4a6e12",
+     "name": "TOPIAS KUUKKANEN",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 12.1,
+     "p10": 5,
+     "p90": 20
+    },
+    {
+     "id": "3e4c526a-90bc-11f1-98a2-09086e96cf2a",
+     "name": "Hannes Pöllä",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 5.4,
+     "p10": 0,
+     "p90": 13
+    },
+    {
+     "id": "87041e33-b169-11f1-ba17-05d216676cba",
+     "name": "Tristan Smith",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 4.9,
+     "p10": 0,
+     "p90": 11
+    },
+    {
+     "id": "35e6a4bc-90be-11f1-855b-8fd4205740a9",
+     "name": "Roope Filtness",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 7.4,
+     "p10": 2,
+     "p90": 13
+    },
+    {
+     "id": "e5882668-90bd-11f1-b7ef-d7c486996b5f",
+     "name": "Daniel Rantapaju",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 2.0,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "c4a0048c-90bc-11f1-a1be-af3c0b98eadb",
+     "name": "Eemeli Laaksonen",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 1.6,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "cb066764-90bc-11f1-bcaa-e795959ab3d5",
+     "name": "Ville Virtaharju",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 0.5,
+     "p10": 0,
+     "p90": 2
+    },
+    {
+     "id": "f093e76f-90be-11f1-8d7a-713ca2bbccaa",
+     "name": "Eetu Viiru",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 0.0,
+     "p10": 0,
+     "p90": 0
+    }
+   ],
+   "result": {
+    "home_score": 78,
+    "away_score": 90,
+    "player_points": {
+     "208a9d7b-90be-11f1-a8b1-f772deacbe7d": 3,
+     "2f03b2d2-b116-11f1-80e6-6965d9955a48": 20,
+     "4a05a759-90bc-11f1-9c13-f9d3ff21d24a": 14,
+     "70b53173-b116-11f1-a2f1-735644110542": 14,
+     "79046d3d-90bc-11f1-a7b5-4554ddfa8cbf": 2,
+     "8077c0b9-90be-11f1-8f51-9528bf057578": 0,
+     "8a49a8f9-90bd-11f1-984c-95de893ea309": 6,
+     "a72d3f59-b116-11f1-b60c-558507beef60": 0,
+     "e364d2c9-90bb-11f1-be41-a19776e4ef59": 3,
+     "f40148a4-90bd-11f1-baec-4f8fabaf4a0e": 16,
+     "35e6a4bc-90be-11f1-855b-8fd4205740a9": 6,
+     "3e4c526a-90bc-11f1-98a2-09086e96cf2a": 20,
+     "6cb2f3be-90bd-11f1-a1c6-31ded31f16e5": 17,
+     "84e2074b-b169-11f1-984b-15001704dc97": 13,
+     "87041e33-b169-11f1-ba17-05d216676cba": 11,
+     "ae42289d-90ba-11f1-8f7c-e7350f4a6e12": 12,
+     "c4a0048c-90bc-11f1-a1be-af3c0b98eadb": 2,
+     "cb066764-90bc-11f1-bcaa-e795959ab3d5": 0,
+     "e5882668-90bd-11f1-b7ef-d7c486996b5f": 3,
+     "f2c5e6a7-90bc-11f1-ab3c-c13ce11da02d": 6
+    }
+   }
+  },
+  "1005989": {
+   "match": {
+    "id": "1005989",
+    "date": "2026-10-27",
+    "time": "18:30:00",
+    "venue": "Töölön Kisahalli",
+    "home": {
+     "id": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "name": "Helsinki Seagulls"
+    },
+    "away": {
+     "id": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "name": "Salon Vilpas"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-24",
+   "published_at": "2026-10-26T21:42:05+00:00",
+   "home_win_probability": 0.32,
+   "mean_score": {
+    "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc": 81.0,
+    "d350dc31-90a6-11f1-9e5e-e7d7c2463142": 88.1
+   },
+   "margin": {
+    "mean": -7.0,
+    "p10": -25,
+    "p90": 11
+   },
+   "overtime_probability": 0.022,
+   "players": [
+    {
+     "id": "0289786d-90bc-11f1-a8d5-797de5732515",
+     "name": "Lassi Nikkarinen",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 10.5,
+     "p10": 4,
+     "p90": 17
+    },
+    {
+     "id": "96191371-abc9-11f1-a344-798b3c09e270",
+     "name": "Keonte Kennedy",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 17.7,
+     "p10": 9,
+     "p90": 26
+    },
+    {
+     "id": "bbf4bb82-90b9-11f1-bbf0-7106e55498b7",
+     "name": "Rene Rougeau",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 17.6,
+     "p10": 10,
+     "p90": 26
+    },
+    {
+     "id": "d166d74d-abc9-11f1-9a84-ab2c6646cd34",
+     "name": "Tyrese Williams",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 15.0,
+     "p10": 7,
+     "p90": 23
+    },
+    {
+     "id": "1da7c9bb-90bc-11f1-97db-e9ae9e26fc7d",
+     "name": "Remu Raitanen",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 5.3,
+     "p10": 0,
+     "p90": 11
+    },
+    {
+     "id": "bd6db3e4-90bc-11f1-ae39-916f627ff7ec",
+     "name": "Victor Iwuakor",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 11.4,
+     "p10": 5,
+     "p90": 19
+    },
+    {
+     "id": "b8bf2a4b-90bc-11f1-9c48-b19807192607",
+     "name": "Ricky Waxlax",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 1.9,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "a977a6d2-90bd-11f1-92f4-83767142611d",
+     "name": "Lenni Hervola",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 1.0,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "6a27d731-90bb-11f1-b94b-e9ae9e26fc7d",
+     "name": "Timi Puittinen",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 0.4,
+     "p10": 0,
+     "p90": 1
+    },
+    {
+     "id": "7968551b-90be-11f1-bfcd-9339b75ea0b9",
+     "name": "Vili Vesterinen",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 0.2,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "10c3564c-90bd-11f1-bf3b-7b8c3a749dc5",
+     "name": "Samatar Abokar",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 0.1,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "2b7bd981-a775-11f1-b862-6dd9293707cf",
+     "name": "Leland Walker",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 23.5,
+     "p10": 14,
+     "p90": 34
+    },
+    {
+     "id": "279f75c5-a775-11f1-ba6f-c9abd216b085",
+     "name": "Karl Chavis",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 13.6,
+     "p10": 6,
+     "p90": 21
+    },
+    {
+     "id": "631124bc-90bb-11f1-ad96-27f2444e308f",
+     "name": "Mikael Aalto",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 17.0,
+     "p10": 9,
+     "p90": 25
+    },
+    {
+     "id": "6ba4bef2-90bc-11f1-b099-6f6630263df7",
+     "name": "Eero Innamaa",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 3.7,
+     "p10": 0,
+     "p90": 8
+    },
+    {
+     "id": "29ba5392-a775-11f1-868a-6dd9293707cf",
+     "name": "DJ Jeffries",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 5.8,
+     "p10": 0,
+     "p90": 12
+    },
+    {
+     "id": "759cbe3a-90bd-11f1-9758-bf766ef3e20b",
+     "name": "Sebastian Lindberg",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 8.9,
+     "p10": 3,
+     "p90": 16
+    },
+    {
+     "id": "0f0163c4-90bc-11f1-81ce-05157c8829f2",
+     "name": "Riku Laine",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 10.5,
+     "p10": 4,
+     "p90": 18
+    },
+    {
+     "id": "88368a5b-90be-11f1-9c74-b9d3b0a6c9e2",
+     "name": "Simeon Stefanovic",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 1.9,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "add7436f-90bd-11f1-9a1a-37aaf0479419",
+     "name": "Aamos Laavainen",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 1.5,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "3381a791-c932-11f1-9d1f-696b2260119e",
+     "name": "Jarred Godfrey",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 0.8,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "e3c26bf2-90b9-11f1-9f1e-a19776e4ef59",
+     "name": "Mikko Koivisto",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 0.6,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "171abdaf-90bf-11f1-bb67-1f5ab6163e2c",
+     "name": "Benjamin Granström",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 0.3,
+     "p10": 0,
+     "p90": 0
+    }
+   ],
+   "result": {
+    "home_score": 86,
+    "away_score": 79,
+    "player_points": {
+     "0289786d-90bc-11f1-a8d5-797de5732515": 17,
+     "1da7c9bb-90bc-11f1-97db-e9ae9e26fc7d": 11,
+     "6a27d731-90bb-11f1-b94b-e9ae9e26fc7d": 0,
+     "96191371-abc9-11f1-a344-798b3c09e270": 15,
+     "a977a6d2-90bd-11f1-92f4-83767142611d": 0,
+     "b8bf2a4b-90bc-11f1-9c48-b19807192607": 8,
+     "bbf4bb82-90b9-11f1-bbf0-7106e55498b7": 16,
+     "bd6db3e4-90bc-11f1-ae39-916f627ff7ec": 8,
+     "d166d74d-abc9-11f1-9a84-ab2c6646cd34": 11,
+     "0f0163c4-90bc-11f1-81ce-05157c8829f2": 3,
+     "279f75c5-a775-11f1-ba6f-c9abd216b085": 2,
+     "29ba5392-a775-11f1-868a-6dd9293707cf": 15,
+     "2b7bd981-a775-11f1-b862-6dd9293707cf": 24,
+     "3381a791-c932-11f1-9d1f-696b2260119e": 13,
+     "631124bc-90bb-11f1-ad96-27f2444e308f": 17,
+     "6ba4bef2-90bc-11f1-b099-6f6630263df7": 2,
+     "759cbe3a-90bd-11f1-9758-bf766ef3e20b": 3,
+     "88368a5b-90be-11f1-9c74-b9d3b0a6c9e2": 0,
+     "add7436f-90bd-11f1-9a1a-37aaf0479419": 0
+    }
+   }
+  },
+  "1006168": {
+   "match": {
+    "id": "1006168",
+    "date": "2026-10-28",
+    "time": "18:30:00",
+    "venue": "Pyynikin palloiluhalli",
+    "home": {
+     "id": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "name": "Tampereen Pyrintö"
+    },
+    "away": {
+     "id": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "name": "Espoo Basket Team"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-25",
+   "published_at": "2026-10-25T17:56:13+00:00",
+   "home_win_probability": 0.277,
+   "mean_score": {
+    "d307acab-90a6-11f1-88bf-e7d7c2463142": 70.5,
+    "d20fc495-90a6-11f1-8017-e7d7c2463142": 79.3
+   },
+   "margin": {
+    "mean": -8.9,
+    "p10": -27,
+    "p90": 10
+   },
+   "overtime_probability": 0.027,
+   "players": [
+    {
+     "id": "f3ee9fc8-90bd-11f1-a9fa-4f8fabaf4a0e",
+     "name": "Kenisha Williams",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 15.7,
+     "p10": 9,
+     "p90": 23
+    },
+    {
+     "id": "36cc6dd8-90bc-11f1-9be0-05157c8829f2",
+     "name": "Niina Sedano",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 10.0,
+     "p10": 4,
+     "p90": 16
+    },
+    {
+     "id": "eedffa14-90bb-11f1-8d0f-51139916104b",
+     "name": "Ninni Salmi",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 12.5,
+     "p10": 5,
+     "p90": 21
+    },
+    {
+     "id": "8ca9f24f-90bd-11f1-8c77-95de893ea309",
+     "name": "Peppi Tyynilä",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 7.5,
+     "p10": 2,
+     "p90": 13
+    },
+    {
+     "id": "848420ff-90bf-11f1-99e1-df5a7344780a",
+     "name": "Martta Mattila",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 15.9,
+     "p10": 8,
+     "p90": 24
+    },
+    {
+     "id": "d967ba88-90bf-11f1-b14f-856a28018d0a",
+     "name": "Mariam Sarumi",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 1.7,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "d07fac4d-90be-11f1-a798-1550020fb2b2",
+     "name": "Nessa Etu-Seppälä",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 1.3,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "1e92d90a-90bf-11f1-bc2e-7104566eb116",
+     "name": "Alina Nikkilä",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 1.1,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "7d178d78-90bd-11f1-b25f-59500384dde4",
+     "name": "Saana Kujala",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 1.5,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "a88d047f-90be-11f1-abb8-13228fe003c9",
+     "name": "Ella Mähönen",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 1.0,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "bb4c762b-90be-11f1-80a5-6b2027ef299b",
+     "name": "Hanna Taponen",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 0.8,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "c55cb61d-90bd-11f1-b6a3-7b525a68ccc9",
+     "name": "Sara-Sofia Mikkonen",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 0.7,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "059b1020-90be-11f1-9324-63f25f046c80",
+     "name": "Sara Himanen",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 0.7,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "164ac9ef-90bf-11f1-9b48-1f5ab6163e2c",
+     "name": "Emili Melnikova",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 17.0,
+     "p10": 9,
+     "p90": 26
+    },
+    {
+     "id": "02439126-90bd-11f1-9900-e9a336bf1467",
+     "name": "Elli Salovaara",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 12.6,
+     "p10": 6,
+     "p90": 20
+    },
+    {
+     "id": "fd847bc7-90be-11f1-87ba-31ded31f16e5",
+     "name": "Nea Schreck",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 15.4,
+     "p10": 8,
+     "p90": 23
+    },
+    {
+     "id": "ec7ed40e-90bd-11f1-889f-5bafc2773088",
+     "name": "Kiia Mäntylä",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 13.8,
+     "p10": 6,
+     "p90": 22
+    },
+    {
+     "id": "167e643c-90bf-11f1-bf87-1f5ab6163e2c",
+     "name": "Adiisa Rinne",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 9.5,
+     "p10": 3,
+     "p90": 17
+    },
+    {
+     "id": "2ae72529-90bf-11f1-92ca-515875ef95f7",
+     "name": "Matilda Mainio",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 2.5,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "a7cfdab7-90be-11f1-8a54-13228fe003c9",
+     "name": "Sanni Nelskylä",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 1.5,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "517a716f-90be-11f1-b1eb-699532503340",
+     "name": "Esther Arial",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 1.3,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "fc8cb5f3-90be-11f1-b858-31ded31f16e5",
+     "name": "Hilla Mäkynen",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 1.2,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "5e2b874e-90be-11f1-8aad-2ffd388e433c",
+     "name": "Alli Niinistö",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 0.9,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "1d9109ea-90bf-11f1-8624-7104566eb116",
+     "name": "Alessia Kilpeläinen",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 1.0,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "57fddf41-90be-11f1-8d52-174497ca91c8",
+     "name": "Ella Vainio",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 0.7,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "b918b97b-90bf-11f1-a817-a3988146f1e6",
+     "name": "Rosa Saarimäki",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 0.7,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "1652de90-90bf-11f1-bbd7-1f5ab6163e2c",
+     "name": "OLIVIA TAMMILEHTO",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 0.7,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "aa19fed0-90bf-11f1-a3d8-d9c0ec8b687c",
+     "name": "Merit Kallis",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 0.6,
+     "p10": 0,
+     "p90": 2
+    }
+   ]
+  },
+  "1005872": {
+   "match": {
+    "id": "1005872",
+    "date": "2026-10-30",
+    "time": "18:30:00",
+    "venue": "Luhta Areena",
+    "home": {
+     "id": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "name": "Lahti Basketball"
+    },
+    "away": {
+     "id": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "name": "Salon Vilpas"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-27",
+   "published_at": "2026-10-27T20:38:56+00:00",
+   "home_win_probability": 0.407,
+   "mean_score": {
+    "d296e502-90a6-11f1-bf89-e7d7c2463142": 88.4,
+    "d350dc31-90a6-11f1-9e5e-e7d7c2463142": 91.7
+   },
+   "margin": {
+    "mean": -3.3,
+    "p10": -22,
+    "p90": 16
+   },
+   "overtime_probability": 0.029,
+   "players": [
+    {
+     "id": "2f03b2d2-b116-11f1-80e6-6965d9955a48",
+     "name": "D'Maurian Williams",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 21.7,
+     "p10": 12,
+     "p90": 31
+    },
+    {
+     "id": "e364d2c9-90bb-11f1-be41-a19776e4ef59",
+     "name": "Aaron Carver",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 11.3,
+     "p10": 5,
+     "p90": 18
+    },
+    {
+     "id": "70b53173-b116-11f1-a2f1-735644110542",
+     "name": "Jackson Threadgill",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 17.2,
+     "p10": 9,
+     "p90": 26
+    },
+    {
+     "id": "f40148a4-90bd-11f1-baec-4f8fabaf4a0e",
+     "name": "Riku Korhonen",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 15.9,
+     "p10": 8,
+     "p90": 25
+    },
+    {
+     "id": "8a49a8f9-90bd-11f1-984c-95de893ea309",
+     "name": "Eemi Luukkonen",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 5.2,
+     "p10": 0,
+     "p90": 10
+    },
+    {
+     "id": "4a05a759-90bc-11f1-9c13-f9d3ff21d24a",
+     "name": "Vili Nyman",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 11.3,
+     "p10": 5,
+     "p90": 18
+    },
+    {
+     "id": "a72d3f59-b116-11f1-b60c-558507beef60",
+     "name": "Jalen Barr",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 3.0,
+     "p10": 0,
+     "p90": 8
+    },
+    {
+     "id": "79046d3d-90bc-11f1-a7b5-4554ddfa8cbf",
+     "name": "Kalle Peltonen",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 1.2,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "208a9d7b-90be-11f1-a8b1-f772deacbe7d",
+     "name": "Tino Yli-Junnila",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 0.9,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "8077c0b9-90be-11f1-8f51-9528bf057578",
+     "name": "Jonas Kaivos",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 0.7,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "2b7bd981-a775-11f1-b862-6dd9293707cf",
+     "name": "Leland Walker",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 24.7,
+     "p10": 15,
+     "p90": 35
+    },
+    {
+     "id": "279f75c5-a775-11f1-ba6f-c9abd216b085",
+     "name": "Karl Chavis",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 14.0,
+     "p10": 7,
+     "p90": 22
+    },
+    {
+     "id": "631124bc-90bb-11f1-ad96-27f2444e308f",
+     "name": "Mikael Aalto",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 18.2,
+     "p10": 10,
+     "p90": 27
+    },
+    {
+     "id": "29ba5392-a775-11f1-868a-6dd9293707cf",
+     "name": "Dj Jeffries",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 5.9,
+     "p10": 0,
+     "p90": 12
+    },
+    {
+     "id": "6ba4bef2-90bc-11f1-b099-6f6630263df7",
+     "name": "Eero Innamaa",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 3.2,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "759cbe3a-90bd-11f1-9758-bf766ef3e20b",
+     "name": "Sebastian Lindberg",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 9.2,
+     "p10": 3,
+     "p90": 16
+    },
+    {
+     "id": "0f0163c4-90bc-11f1-81ce-05157c8829f2",
+     "name": "Riku Laine",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 10.3,
+     "p10": 4,
+     "p90": 17
+    },
+    {
+     "id": "add7436f-90bd-11f1-9a1a-37aaf0479419",
+     "name": "Aamos Laavainen",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 1.5,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "3381a791-c932-11f1-9d1f-696b2260119e",
+     "name": "Jarred Godfrey",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 2.2,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "88368a5b-90be-11f1-9c74-b9d3b0a6c9e2",
+     "name": "Simeon Stefanovic",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 1.8,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "e3c26bf2-90b9-11f1-9f1e-a19776e4ef59",
+     "name": "Mikko Koivisto",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 0.6,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "171abdaf-90bf-11f1-bb67-1f5ab6163e2c",
+     "name": "Benjamin Granström",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 0.1,
+     "p10": 0,
+     "p90": 0
+    }
+   ]
+  },
+  "1005889": {
+   "match": {
+    "id": "1005889",
+    "date": "2026-10-30",
+    "time": "18:30:00",
+    "venue": "MLL Areena",
+    "home": {
+     "id": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "name": "Kouvot"
+    },
+    "away": {
+     "id": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "name": "Korihait"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-27",
+   "published_at": "2026-10-27T20:38:56+00:00",
+   "home_win_probability": 0.473,
+   "mean_score": {
+    "d33f4cac-90a6-11f1-b66d-e7d7c2463142": 88.2,
+    "d3631045-90a6-11f1-ab0a-e7d7c2463142": 88.9
+   },
+   "margin": {
+    "mean": -0.6,
+    "p10": -20,
+    "p90": 20
+   },
+   "overtime_probability": 0.03,
+   "players": [
+    {
+     "id": "dfe6cfae-a517-11f1-9367-7597af25adb2",
+     "name": "Masai Troutman",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 19.3,
+     "p10": 10,
+     "p90": 28
+    },
+    {
+     "id": "7254105c-a836-11f1-901e-3bf588878d4f",
+     "name": "Christian Terrell",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 15.0,
+     "p10": 8,
+     "p90": 23
+    },
+    {
+     "id": "401079cf-a6bc-11f1-b2b5-c3d958ec4d1a",
+     "name": "Sheldon Williams",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 19.9,
+     "p10": 11,
+     "p90": 29
+    },
+    {
+     "id": "d92cdbd1-90bd-11f1-9edf-23575df7f55b",
+     "name": "Tuukka Härsilä",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 11.5,
+     "p10": 5,
+     "p90": 19
+    },
+    {
+     "id": "a523681c-a212-11f1-9e06-4db1c4da4259",
+     "name": "Aaron Johnson-Cash",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 14.5,
+     "p10": 6,
+     "p90": 23
+    },
+    {
+     "id": "ebf4ab5f-90bd-11f1-af64-5bafc2773088",
+     "name": "Eino Pällijeff",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 3.4,
+     "p10": 0,
+     "p90": 8
+    },
+    {
+     "id": "73a88aa6-90bd-11f1-aec5-bf766ef3e20b",
+     "name": "Teemu Kristeri",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 2.6,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "7c4054c8-90bd-11f1-a503-59500384dde4",
+     "name": "Aarni Korkiatupa",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 1.4,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "0d1f5ccc-90be-11f1-9bea-053db5cf498e",
+     "name": "Patrik En",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 0.4,
+     "p10": 0,
+     "p90": 2
+    },
+    {
+     "id": "5c1f4d1d-90be-11f1-83f0-2ffd388e433c",
+     "name": "Joel Toikka",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 0.2,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "f502dce4-aae3-11f1-ae08-894bb12a0def",
+     "name": "Devin Tillis",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 20.5,
+     "p10": 12,
+     "p90": 29
+    },
+    {
+     "id": "42818ee5-90bb-11f1-8344-d936dd1c73f2",
+     "name": "Jalen Jackson",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 13.6,
+     "p10": 6,
+     "p90": 21
+    },
+    {
+     "id": "390fa980-aae4-11f1-88b9-1dd105afe284",
+     "name": "Thomas Murr",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 19.8,
+     "p10": 10,
+     "p90": 30
+    },
+    {
+     "id": "18d99789-90be-11f1-9c3c-5d5f4f976a20",
+     "name": "Rasmus Lindberg",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 12.0,
+     "p10": 5,
+     "p90": 20
+    },
+    {
+     "id": "43b817ee-90bc-11f1-b5b8-8793bc36545e",
+     "name": "Trey Niemi",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 6.6,
+     "p10": 0,
+     "p90": 14
+    },
+    {
+     "id": "fe6ebefa-90b9-11f1-a987-1f9f65ff4cc1",
+     "name": "Bojan Sarcévic",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 9.2,
+     "p10": 3,
+     "p90": 16
+    },
+    {
+     "id": "6d86faaf-90bd-11f1-9067-31ded31f16e5",
+     "name": "Roni Ahvenjärvi",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 1.9,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "8c05f590-90bd-11f1-bab5-95de893ea309",
+     "name": "Kion Williams",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 1.8,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "f899ea71-aae3-11f1-a85e-09a07a165553",
+     "name": "Garry Clark",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 2.7,
+     "p10": 0,
+     "p90": 9
+    },
+    {
+     "id": "63fc2a25-90bb-11f1-aa48-27f2444e308f",
+     "name": "Joni Herrala",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 0.6,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "c5892cdb-90bc-11f1-b8c9-af3c0b98eadb",
+     "name": "Eetu Lähdetniemi",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 0.2,
+     "p10": 0,
+     "p90": 0
+    }
+   ]
+  },
+  "1005956": {
+   "match": {
+    "id": "1005956",
+    "date": "2026-10-30",
+    "time": "18:30:00",
+    "venue": "Steveco Areena",
+    "home": {
+     "id": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+     "name": "KTP-Basket"
+    },
+    "away": {
+     "id": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "name": "Tapiolan Honka"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-27",
+   "published_at": "2026-10-27T20:38:56+00:00",
+   "home_win_probability": 0.558,
+   "mean_score": {
+    "d347a09d-90a6-11f1-a259-e7d7c2463142": 92.8,
+    "e214cb24-90a6-11f1-976f-5b3c5c56dcf1": 90.6
+   },
+   "margin": {
+    "mean": 2.3,
+    "p10": -18,
+    "p90": 21
+   },
+   "overtime_probability": 0.022,
+   "players": [
+    {
+     "id": "52dab6fa-90bd-11f1-bafa-fdb6131f8409",
+     "name": "Joel Mäntynen",
+     "team": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+     "mean": 18.7,
+     "p10": 11,
+     "p90": 27
+    },
+    {
+     "id": "cb3d506e-90bc-11f1-a511-e795959ab3d5",
+     "name": "Jesper Granlund",
+     "team": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+     "mean": 11.2,
+     "p10": 5,
+     "p90": 18
+    },
+    {
+     "id": "522565f2-abd3-11f1-b258-89e93bb2c61f",
+     "name": "Zion Styles",
+     "team": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+     "mean": 16.1,
+     "p10": 8,
+     "p90": 25
+    },
+    {
+     "id": "1ba42f86-90bb-11f1-955f-d7ae8223e556",
+     "name": "Daniel Dolenc",
+     "team": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+     "mean": 14.1,
+     "p10": 7,
+     "p90": 22
+    },
+    {
+     "id": "f6feffb1-90bb-11f1-853e-5147ecc42f90",
+     "name": "Joona Tuomala",
+     "team": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+     "mean": 6.3,
+     "p10": 0,
+     "p90": 12
+    },
+    {
+     "id": "55ba44e6-abd3-11f1-a663-8bcb8341c5de",
+     "name": "Mason Gillis",
+     "team": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+     "mean": 20.6,
+     "p10": 11,
+     "p90": 31
+    },
+    {
+     "id": "4eff2a20-abd3-11f1-a0fa-817ba5325215",
+     "name": "AJ White",
+     "team": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+     "mean": 4.5,
+     "p10": 0,
+     "p90": 11
+    },
+    {
+     "id": "3ef8df52-90bd-11f1-88ec-b9351c62770e",
+     "name": "Ian Uwamungu",
+     "team": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+     "mean": 1.1,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "37467282-90bf-11f1-82ee-dbbd8242dc7e",
+     "name": "Alfred Pitkänen",
+     "team": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+     "mean": 0.2,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "1fd5a811-90bd-11f1-9904-ebd35007e794",
+     "name": "Alvar Peltoniemi",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 18.1,
+     "p10": 10,
+     "p90": 26
+    },
+    {
+     "id": "985a93d5-90bd-11f1-ba74-a1f0b16090d5",
+     "name": "AJ Ferguson",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 17.2,
+     "p10": 9,
+     "p90": 26
+    },
+    {
+     "id": "c18d2d42-aaf5-11f1-8463-afea389cc510",
+     "name": "Trevon Faulkner",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 14.2,
+     "p10": 6,
+     "p90": 23
+    },
+    {
+     "id": "5c2ac50a-aaf5-11f1-a6f5-2b788620a1f0",
+     "name": "Lucas Taylor",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 13.0,
+     "p10": 6,
+     "p90": 21
+    },
+    {
+     "id": "3874931f-aaf5-11f1-b299-3bd10ee0c642",
+     "name": "Terrance Williams II",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 13.0,
+     "p10": 6,
+     "p90": 21
+    },
+    {
+     "id": "8979cd83-90bd-11f1-b1db-95de893ea309",
+     "name": "Iiro Tuomi",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 6.5,
+     "p10": 0,
+     "p90": 14
+    },
+    {
+     "id": "9aac90bf-90bd-11f1-a3d9-a1f0b16090d5",
+     "name": "Lauri Kallio",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 3.6,
+     "p10": 0,
+     "p90": 9
+    },
+    {
+     "id": "e1d14260-90bb-11f1-b001-a19776e4ef59",
+     "name": "Elias Eerikinharju",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 2.0,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "c57708a2-90bc-11f1-b2ee-af3c0b98eadb",
+     "name": "Tomas Pihlajamäki",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 1.8,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "93f79c9e-90be-11f1-9127-b9d3b0a6c9e2",
+     "name": "Alvan Laavainen",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 1.1,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "21c584c6-90bd-11f1-929d-ebd35007e794",
+     "name": "Jaakko Juusela",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 0.2,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "d5e9ce9f-90be-11f1-b0fb-2dc165e7f1b2",
+     "name": "Veeti Ulander",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 0.1,
+     "p10": 0,
+     "p90": 0
+    }
+   ]
+  },
+  "1005990": {
+   "match": {
+    "id": "1005990",
+    "date": "2026-10-30",
+    "time": "18:30:00",
+    "venue": "Töölön Kisahalli",
+    "home": {
+     "id": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "name": "Helsinki Seagulls"
+    },
+    "away": {
+     "id": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "name": "Tampereen Pyrintö"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-27",
+   "published_at": "2026-10-27T20:38:56+00:00",
+   "home_win_probability": 0.331,
+   "mean_score": {
+    "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc": 80.0,
+    "d35a3d28-90a6-11f1-a47f-e7d7c2463142": 85.4
+   },
+   "margin": {
+    "mean": -5.4,
+    "p10": -23,
+    "p90": 13
+   },
+   "overtime_probability": 0.019,
+   "players": [
+    {
+     "id": "0289786d-90bc-11f1-a8d5-797de5732515",
+     "name": "Lassi Nikkarinen",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 10.5,
+     "p10": 5,
+     "p90": 17
+    },
+    {
+     "id": "96191371-abc9-11f1-a344-798b3c09e270",
+     "name": "Keonte Kennedy",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 17.0,
+     "p10": 9,
+     "p90": 26
+    },
+    {
+     "id": "bbf4bb82-90b9-11f1-bbf0-7106e55498b7",
+     "name": "Rene Rougeau",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 17.6,
+     "p10": 10,
+     "p90": 26
+    },
+    {
+     "id": "d166d74d-abc9-11f1-9a84-ab2c6646cd34",
+     "name": "Tyrese Williams",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 14.6,
+     "p10": 7,
+     "p90": 23
+    },
+    {
+     "id": "bd6db3e4-90bc-11f1-ae39-916f627ff7ec",
+     "name": "Victor Iwuakor",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 11.6,
+     "p10": 5,
+     "p90": 19
+    },
+    {
+     "id": "1da7c9bb-90bc-11f1-97db-e9ae9e26fc7d",
+     "name": "Remu Raitanen",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 4.8,
+     "p10": 0,
+     "p90": 11
+    },
+    {
+     "id": "b8bf2a4b-90bc-11f1-9c48-b19807192607",
+     "name": "Ricky Waxlax",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 2.6,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "a977a6d2-90bd-11f1-92f4-83767142611d",
+     "name": "Lenni Hervola",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 0.8,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "6a27d731-90bb-11f1-b94b-e9ae9e26fc7d",
+     "name": "Timi Puittinen",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 0.2,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "7968551b-90be-11f1-bfcd-9339b75ea0b9",
+     "name": "Vili Vesterinen",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 0.1,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "10c3564c-90bd-11f1-bf3b-7b8c3a749dc5",
+     "name": "Samatar Abokar",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 0.1,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "f052dc9d-ac83-11f1-8140-e359daa5ceb4",
+     "name": "Jamal West Jr.",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 20.9,
+     "p10": 12,
+     "p90": 30
+    },
+    {
+     "id": "ef3d1fa8-ac83-11f1-96a9-fb562df9b9a1",
+     "name": "Jordan Mason",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 21.0,
+     "p10": 12,
+     "p90": 30
+    },
+    {
+     "id": "52d0fe47-90bd-11f1-903d-fdb6131f8409",
+     "name": "Valtteri Mervola",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 5.1,
+     "p10": 0,
+     "p90": 11
+    },
+    {
+     "id": "fa6bf28d-90bd-11f1-87bb-a1f0b16090d5",
+     "name": "Erik Muhonen",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 10.9,
+     "p10": 4,
+     "p90": 18
+    },
+    {
+     "id": "953e165f-90bb-11f1-b3ee-2b2f17cdb034",
+     "name": "SHAWN HOPKINS",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 13.1,
+     "p10": 6,
+     "p90": 21
+    },
+    {
+     "id": "27296292-90bd-11f1-8c85-d1b26dd8807a",
+     "name": "Joona Hakamaa",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 2.9,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "9122b8a8-90bd-11f1-a737-9d9b6f578d5a",
+     "name": "Otto Räisänen",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 7.8,
+     "p10": 2,
+     "p90": 14
+    },
+    {
+     "id": "a6263fc6-bbd6-11f1-885f-6b47e880c0ea",
+     "name": "Duane Posey",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 2.3,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "19733281-90be-11f1-819d-5d5f4f976a20",
+     "name": "Kalle Mattila",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 0.9,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "94247e57-90be-11f1-b7c8-b9d3b0a6c9e2",
+     "name": "Jaakko Nieminen",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 0.5,
+     "p10": 0,
+     "p90": 2
+    },
+    {
+     "id": "a84338ea-90be-11f1-b8de-13228fe003c9",
+     "name": "Ville-Pekka Eskelinen",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 0.0,
+     "p10": 0,
+     "p90": 0
+    }
+   ]
+  },
+  "1005856": {
+   "match": {
+    "id": "1005856",
+    "date": "2026-10-31",
+    "time": "16:00:00",
+    "venue": "Loimaan liikuntahalli",
+    "home": {
+     "id": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "name": "Bisons Loimaa"
+    },
+    "away": {
+     "id": "815439d4-b169-11f1-bc74-593eff165a09",
+     "name": "Kipinä Basket"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-27",
+   "published_at": "2026-10-27T20:38:56+00:00",
+   "home_win_probability": 0.326,
+   "mean_score": {
+    "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1": 85.0,
+    "815439d4-b169-11f1-bc74-593eff165a09": 91.2
+   },
+   "margin": {
+    "mean": -6.2,
+    "p10": -25,
+    "p90": 13
+   },
+   "overtime_probability": 0.027,
+   "players": [
+    {
+     "id": "4514784c-90bc-11f1-892c-8793bc36545e",
+     "name": "Roydell Brown",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 16.2,
+     "p10": 9,
+     "p90": 24
+    },
+    {
+     "id": "c99140c3-90bb-11f1-b302-1d8434d82986",
+     "name": "Deshon Taylor",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 19.2,
+     "p10": 10,
+     "p90": 28
+    },
+    {
+     "id": "a35a4a00-90bb-11f1-a8fd-a923156cc791",
+     "name": "Javion Ogunyemi",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 14.4,
+     "p10": 7,
+     "p90": 21
+    },
+    {
+     "id": "c8b53068-90bb-11f1-831f-1d8434d82986",
+     "name": "Aapeli Alanen",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 14.4,
+     "p10": 7,
+     "p90": 23
+    },
+    {
+     "id": "ce9eae2b-90bb-11f1-9cdf-e9ae9e26fc7d",
+     "name": "FIIFI AIDOO",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 11.4,
+     "p10": 5,
+     "p90": 19
+    },
+    {
+     "id": "f1abff67-90bc-11f1-8c2c-c13ce11da02d",
+     "name": "Ville Tahvanainen",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 4.1,
+     "p10": 0,
+     "p90": 10
+    },
+    {
+     "id": "d36d484b-90bd-11f1-af79-2feb4d029b30",
+     "name": "Ville Karhu",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 1.5,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "2457c538-a85c-11f1-bf81-1579ec539163",
+     "name": "Tehree Horn",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 2.1,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "3ad1572d-adab-11f1-9d97-739172e87e08",
+     "name": "AJ Harris II",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 1.3,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "e564c0a5-90bd-11f1-8a27-d7c486996b5f",
+     "name": "Onni Mäkynen",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 0.4,
+     "p10": 0,
+     "p90": 2
+    },
+    {
+     "id": "06148f5a-90be-11f1-b98f-63f25f046c80",
+     "name": "Niko Mykrä",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 0.2,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "6cb2f3be-90bd-11f1-a1c6-31ded31f16e5",
+     "name": "Jalen McCoy",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 20.3,
+     "p10": 12,
+     "p90": 29
+    },
+    {
+     "id": "84e2074b-b169-11f1-984b-15001704dc97",
+     "name": "Derrin Boyd",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 19.2,
+     "p10": 11,
+     "p90": 28
+    },
+    {
+     "id": "ae42289d-90ba-11f1-8f7c-e7350f4a6e12",
+     "name": "Topias Kuukkanen",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 12.1,
+     "p10": 5,
+     "p90": 20
+    },
+    {
+     "id": "f2c5e6a7-90bc-11f1-ab3c-c13ce11da02d",
+     "name": "Jake Hilmer",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 14.1,
+     "p10": 7,
+     "p90": 22
+    },
+    {
+     "id": "3e4c526a-90bc-11f1-98a2-09086e96cf2a",
+     "name": "Hannes Pöllä",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 14.9,
+     "p10": 7,
+     "p90": 23
+    },
+    {
+     "id": "87041e33-b169-11f1-ba17-05d216676cba",
+     "name": "Tristan Smith",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 4.5,
+     "p10": 0,
+     "p90": 10
+    },
+    {
+     "id": "e5882668-90bd-11f1-b7ef-d7c486996b5f",
+     "name": "Daniel Rantapaju",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 2.3,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "35e6a4bc-90be-11f1-855b-8fd4205740a9",
+     "name": "Roope Filtness",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 1.7,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "c4a0048c-90bc-11f1-a1be-af3c0b98eadb",
+     "name": "Eemeli Laaksonen",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 1.4,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "cb066764-90bc-11f1-bcaa-e795959ab3d5",
+     "name": "Ville Virtaharju",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 0.7,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "f093e76f-90be-11f1-8d7a-713ca2bbccaa",
+     "name": "Eetu Viiru",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 0.0,
+     "p10": 0,
+     "p90": 0
+    }
+   ]
+  },
+  "1005905": {
+   "match": {
+    "id": "1005905",
+    "date": "2026-10-31",
+    "time": "18:00:00",
+    "venue": "Motonet Areena",
+    "home": {
+     "id": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "name": "Kataja Basket"
+    },
+    "away": {
+     "id": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "name": "Kauhajoki"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-27",
+   "published_at": "2026-10-27T20:38:56+00:00",
+   "home_win_probability": 0.586,
+   "mean_score": {
+    "d31984cb-90a6-11f1-997e-e7d7c2463142": 85.5,
+    "d323c8b6-90a6-11f1-9192-e7d7c2463142": 82.4
+   },
+   "margin": {
+    "mean": 3.1,
+    "p10": -17,
+    "p90": 23
+   },
+   "overtime_probability": 0.032,
+   "players": [
+    {
+     "id": "00b8b2c2-a83a-11f1-ac95-dbfd521311a7",
+     "name": "Stevie Strong",
+     "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "mean": 20.2,
+     "p10": 11,
+     "p90": 29
+    },
+    {
+     "id": "61f2db99-90bb-11f1-bce6-27f2444e308f",
+     "name": "Topias Palmi",
+     "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "mean": 18.3,
+     "p10": 10,
+     "p90": 27
+    },
+    {
+     "id": "00017500-a83a-11f1-8b00-41f92683b540",
+     "name": "Richie Springs",
+     "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "mean": 15.0,
+     "p10": 7,
+     "p90": 23
+    },
+    {
+     "id": "21838fb7-90bd-11f1-8f7a-ebd35007e794",
+     "name": "Teemu Suokas",
+     "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "mean": 4.9,
+     "p10": 0,
+     "p90": 10
+    },
+    {
+     "id": "fe07789e-a839-11f1-9e43-33a5e0826522",
+     "name": "Josiah Harris",
+     "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "mean": 6.0,
+     "p10": 0,
+     "p90": 13
+    },
+    {
+     "id": "037a0c46-90bd-11f1-ad46-e9a336bf1467",
+     "name": "Joonas Timonen",
+     "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "mean": 8.5,
+     "p10": 3,
+     "p90": 15
+    },
+    {
+     "id": "794bb8b2-90bc-11f1-84b6-4554ddfa8cbf",
+     "name": "Teemu Knihtinen",
+     "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "mean": 2.3,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "2010abed-90bd-11f1-bfc7-ebd35007e794",
+     "name": "Henri Permanto",
+     "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "mean": 8.2,
+     "p10": 3,
+     "p90": 15
+    },
+    {
+     "id": "fea72430-a839-11f1-9aac-d745ed5fb394",
+     "name": "Jalen Lake",
+     "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "mean": 1.4,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "c416fd86-90bd-11f1-b262-7b525a68ccc9",
+     "name": "Thomas Rönnholm",
+     "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "mean": 0.6,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "370699bb-90bf-11f1-8fe8-dbbd8242dc7e",
+     "name": "Aatu Aropelto",
+     "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "mean": 0.1,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "22ca437b-a85c-11f1-b44c-1d65c8555753",
+     "name": "Tyeree Bryan",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 15.1,
+     "p10": 8,
+     "p90": 23
+    },
+    {
+     "id": "222fc249-a85c-11f1-94af-73f3b12250f1",
+     "name": "Jerrell Bellamy",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 17.0,
+     "p10": 9,
+     "p90": 25
+    },
+    {
+     "id": "19400c2f-90bd-11f1-8c95-916f627ff7ec",
+     "name": "Erik Sajantila",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 12.5,
+     "p10": 5,
+     "p90": 20
+    },
+    {
+     "id": "2382cc56-a85c-11f1-a14b-4dff4a9271f7",
+     "name": "Chandler Cuthrell",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 16.4,
+     "p10": 9,
+     "p90": 25
+    },
+    {
+     "id": "25d6dd91-a85c-11f1-a0aa-a9c086c1b63e",
+     "name": "Aatu Kivimäki",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 13.2,
+     "p10": 6,
+     "p90": 21
+    },
+    {
+     "id": "20cbf6b3-90bd-11f1-adc7-ebd35007e794",
+     "name": "Antti Ahonen",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 2.7,
+     "p10": 0,
+     "p90": 8
+    },
+    {
+     "id": "2457c538-a85c-11f1-bf81-1579ec539163",
+     "name": "Tehree Horn",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 2.7,
+     "p10": 0,
+     "p90": 8
+    },
+    {
+     "id": "60115ef2-90bd-11f1-b2b7-3f7cdc8d4fd3",
+     "name": "Hugo Boman",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 1.6,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "7c4c77d3-90bd-11f1-bca8-59500384dde4",
+     "name": "Kalle Koivunen",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 0.8,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "ae4d278c-90bb-11f1-9d7b-5faf62dace4e",
+     "name": "Tevaun Kokko",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 0.4,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "58198aab-90be-11f1-ad74-174497ca91c8",
+     "name": "Elias Ylipeltola",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 0.0,
+     "p10": 0,
+     "p90": 0
+    }
+   ]
+  },
+  "1006159": {
+   "match": {
+    "id": "1006159",
+    "date": "2026-10-31",
+    "time": "18:00:00",
+    "venue": "Munkkiniemen Yhteiskoulu",
+    "home": {
+     "id": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+     "name": "ToPo"
+    },
+    "away": {
+     "id": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+     "name": "BC Nokia"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-25",
+   "published_at": "2026-10-25T17:56:13+00:00",
+   "home_win_probability": 0.642,
+   "mean_score": {
+    "d2e4a92d-90a6-11f1-a346-e7d7c2463142": 78.3,
+    "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142": 72.7
+   },
+   "margin": {
+    "mean": 5.5,
+    "p10": -13,
+    "p90": 23
+   },
+   "overtime_probability": 0.025,
+   "players": [
+    {
+     "id": "dfe80f45-90bd-11f1-be7c-6be1da1f835c",
+     "name": "Annika Aarrejoki",
+     "team": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+     "mean": 20.1,
+     "p10": 12,
+     "p90": 29
+    },
+    {
+     "id": "9b566fe8-90bc-11f1-9632-d14817461866",
+     "name": "Magdalene Agyei",
+     "team": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+     "mean": 17.8,
+     "p10": 10,
+     "p90": 26
+    },
+    {
+     "id": "3eb16fdc-90bd-11f1-a2bc-b9351c62770e",
+     "name": "Ebba Hämäläinen",
+     "team": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+     "mean": 10.8,
+     "p10": 5,
+     "p90": 17
+    },
+    {
+     "id": "295fd067-90bd-11f1-bcf0-d1b26dd8807a",
+     "name": "Meri Damoiseaux",
+     "team": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+     "mean": 9.7,
+     "p10": 3,
+     "p90": 17
+    },
+    {
+     "id": "e68d85b2-90bd-11f1-ba0f-d7c486996b5f",
+     "name": "Anni Mujunen",
+     "team": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+     "mean": 8.9,
+     "p10": 3,
+     "p90": 15
+    },
+    {
+     "id": "5682f31f-90bb-11f1-adf1-d7ea4c2d0ca3",
+     "name": "Kaisa Kuisma",
+     "team": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+     "mean": 4.0,
+     "p10": 0,
+     "p90": 10
+    },
+    {
+     "id": "1df670a7-90bc-11f1-98ff-e9ae9e26fc7d",
+     "name": "Lotta Vesiluoma",
+     "team": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+     "mean": 4.3,
+     "p10": 0,
+     "p90": 10
+    },
+    {
+     "id": "6aa00ee4-90bf-11f1-a4cd-4fc2adf4ab8e",
+     "name": "Eva Tauriainen",
+     "team": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+     "mean": 1.6,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "24afa711-90bc-11f1-ae99-b9351c62770e",
+     "name": "Claudia Kärnä",
+     "team": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+     "mean": 0.6,
+     "p10": 0,
+     "p90": 2
+    },
+    {
+     "id": "a7972221-90be-11f1-a4ca-13228fe003c9",
+     "name": "Lilli Laine",
+     "team": "d2e4a92d-90a6-11f1-a346-e7d7c2463142",
+     "mean": 0.6,
+     "p10": 0,
+     "p90": 2
+    },
+    {
+     "id": "f1bb247c-90bd-11f1-ac51-4f8fabaf4a0e",
+     "name": "Anni Nurminen",
+     "team": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+     "mean": 8.7,
+     "p10": 3,
+     "p90": 15
+    },
+    {
+     "id": "5f19357c-90bc-11f1-9f21-9f45eff23255",
+     "name": "Cierra Walker",
+     "team": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+     "mean": 14.4,
+     "p10": 7,
+     "p90": 22
+    },
+    {
+     "id": "8e8bd0ae-b968-11f1-bba6-b31538bf0c7b",
+     "name": "Lauren Carter",
+     "team": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+     "mean": 16.3,
+     "p10": 9,
+     "p90": 24
+    },
+    {
+     "id": "93dacbdf-90be-11f1-8ee4-b9d3b0a6c9e2",
+     "name": "Venla Patrikainen",
+     "team": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+     "mean": 8.3,
+     "p10": 3,
+     "p90": 14
+    },
+    {
+     "id": "72f884e7-90bf-11f1-9198-f3e0ee38e95c",
+     "name": "Maija Honkonen",
+     "team": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+     "mean": 10.7,
+     "p10": 5,
+     "p90": 18
+    },
+    {
+     "id": "cf28d5ff-b968-11f1-a300-9bd9497afdf3",
+     "name": "Brianna Scott",
+     "team": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+     "mean": 5.4,
+     "p10": 0,
+     "p90": 12
+    },
+    {
+     "id": "ce076870-90bf-11f1-b89b-057c596d8bba",
+     "name": "Lisa Camara",
+     "team": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+     "mean": 4.7,
+     "p10": 0,
+     "p90": 11
+    },
+    {
+     "id": "cadfb0d4-90be-11f1-94a8-699532503340",
+     "name": "Mona Etu-Seppälä",
+     "team": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+     "mean": 1.9,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "84fd45d0-90bf-11f1-9edc-df5a7344780a",
+     "name": "Elli Riihelä",
+     "team": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+     "mean": 1.8,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "a10da6f8-90be-11f1-9492-f55c6a1f11ab",
+     "name": "Alina Ahonen",
+     "team": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+     "mean": 0.5,
+     "p10": 0,
+     "p90": 2
+    },
+    {
+     "id": "da2b5a61-90bd-11f1-ae42-23575df7f55b",
+     "name": "Viivi Niskanen",
+     "team": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+     "mean": 0.1,
+     "p10": 0,
+     "p90": 0
+    }
+   ]
+  },
+  "1006183": {
+   "match": {
+    "id": "1006183",
+    "date": "2026-11-01",
+    "time": "14:00:00",
+    "venue": "Tapiolan Liikuntahalli",
+    "home": {
+     "id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "name": "Tapiolan Honka"
+    },
+    "away": {
+     "id": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "name": "HBA-Märsky"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-25",
+   "published_at": "2026-10-25T17:56:13+00:00",
+   "home_win_probability": 0.157,
+   "mean_score": {
+    "d239f658-90a6-11f1-bea9-e7d7c2463142": 70.6,
+    "d244ed43-90a6-11f1-833b-e7d7c2463142": 85.5
+   },
+   "margin": {
+    "mean": -14.9,
+    "p10": -34,
+    "p90": 4
+   },
+   "overtime_probability": 0.019,
+   "players": [
+    {
+     "id": "bf77ac5d-90bf-11f1-8197-7f2d70fdcfec",
+     "name": "Sanni Mäkinen",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 5.7,
+     "p10": 0,
+     "p90": 12
+    },
+    {
+     "id": "295047b1-90bd-11f1-8b04-d1b26dd8807a",
+     "name": "Saga Ukkonen",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 11.7,
+     "p10": 5,
+     "p90": 19
+    },
+    {
+     "id": "45d4e94b-90bd-11f1-bfd6-c73957d2f288",
+     "name": "Maija Kuisma",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 8.5,
+     "p10": 3,
+     "p90": 15
+    },
+    {
+     "id": "bdffb17d-90bc-11f1-bdfe-916f627ff7ec",
+     "name": "Ronja Orpo",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 11.4,
+     "p10": 4,
+     "p90": 19
+    },
+    {
+     "id": "540c2922-90bf-11f1-a71e-0d6fa49bbe21",
+     "name": "Ida Riihijärvi",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 9.6,
+     "p10": 3,
+     "p90": 17
+    },
+    {
+     "id": "10cdb07f-90bd-11f1-9539-7b8c3a749dc5",
+     "name": "Carolina Kert",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 3.1,
+     "p10": 0,
+     "p90": 8
+    },
+    {
+     "id": "2aabf0c9-90bf-11f1-8a9b-515875ef95f7",
+     "name": "Lotta Tyynilä",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 9.9,
+     "p10": 4,
+     "p90": 17
+    },
+    {
+     "id": "6c0d90ce-90be-11f1-b03f-8b7b745739af",
+     "name": "Ella Sahuri",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 2.9,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "7a24b37e-90be-11f1-beed-9339b75ea0b9",
+     "name": "Chalina Mäkelä",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 3.5,
+     "p10": 0,
+     "p90": 9
+    },
+    {
+     "id": "19c35381-90be-11f1-8d32-5d5f4f976a20",
+     "name": "Peppi Lohko",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 2.4,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "f1ed659b-90bd-11f1-8508-4f8fabaf4a0e",
+     "name": "Mette Nurminen",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 0.9,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "4d4cc2df-90bf-11f1-8d4e-85b9a01ea999",
+     "name": "Mona Kettunen",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 0.8,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "d5d80bed-90be-11f1-92a8-2dc165e7f1b2",
+     "name": "Tiia Talonen",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 15.6,
+     "p10": 7,
+     "p90": 24
+    },
+    {
+     "id": "e3d248a5-90be-11f1-82ef-73883e79fac1",
+     "name": "Eevi Seppä",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 12.9,
+     "p10": 6,
+     "p90": 21
+    },
+    {
+     "id": "2c6d50fe-90bf-11f1-9c4e-515875ef95f7",
+     "name": "Jessi Nenonen",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 16.3,
+     "p10": 8,
+     "p90": 25
+    },
+    {
+     "id": "0ff1d72f-90bf-11f1-be89-31ded31f16e5",
+     "name": "Aluel Machol",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 13.0,
+     "p10": 6,
+     "p90": 21
+    },
+    {
+     "id": "02f00705-90bf-11f1-8a81-afaea9d0f10f",
+     "name": "Anna Gardziella",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 4.9,
+     "p10": 0,
+     "p90": 11
+    },
+    {
+     "id": "b5fa7db0-90be-11f1-88d4-6b2027ef299b",
+     "name": "Duaa Aden",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 3.9,
+     "p10": 0,
+     "p90": 9
+    },
+    {
+     "id": "1f9bbb22-90bf-11f1-a972-7104566eb116",
+     "name": "Aino Koskela",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 3.5,
+     "p10": 0,
+     "p90": 9
+    },
+    {
+     "id": "53c1ab90-90bf-11f1-a541-0d6fa49bbe21",
+     "name": "Joella Rasanen",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 2.0,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "a0c836be-90be-11f1-911e-f55c6a1f11ab",
+     "name": "Ada Luukkanen",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 8.7,
+     "p10": 3,
+     "p90": 16
+    },
+    {
+     "id": "793f6d2f-90bf-11f1-9dbc-f9bd2f996dfd",
+     "name": "Veronika Nanje",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 1.7,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "2a5a38bc-90bf-11f1-9f47-515875ef95f7",
+     "name": "Mona Pasanen",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 1.4,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "b043f1e4-90bf-11f1-af3f-8366bf5442cb",
+     "name": "Aida Kimario",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 1.2,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "c470e1d1-90be-11f1-bdec-99f5e03a6b84",
+     "name": "Eevi Haveri",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 0.3,
+     "p10": 0,
+     "p90": 0
+    }
+   ]
+  },
+  "1006204": {
+   "match": {
+    "id": "1006204",
+    "date": "2026-11-01",
+    "time": "17:00:00",
+    "venue": "MLL Areena",
+    "home": {
+     "id": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+     "name": "Kouvottaret"
+    },
+    "away": {
+     "id": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+     "name": "Peli-Karhut"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-25",
+   "published_at": "2026-10-25T17:56:13+00:00",
+   "home_win_probability": 0.311,
+   "mean_score": {
+    "d2569c80-90a6-11f1-b52d-e7d7c2463142": 68.2,
+    "d231065a-90a6-11f1-9f40-e7d7c2463142": 75.3
+   },
+   "margin": {
+    "mean": -7.1,
+    "p10": -25,
+    "p90": 12
+   },
+   "overtime_probability": 0.018,
+   "players": [
+    {
+     "id": "3f014d7d-90bd-11f1-a152-b9351c62770e",
+     "name": "Johanna Räty",
+     "team": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+     "mean": 7.9,
+     "p10": 2,
+     "p90": 14
+    },
+    {
+     "id": "d051fa0d-bb2a-11f1-8672-87bafd9c4eb1",
+     "name": "Kelly Moten",
+     "team": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+     "mean": 19.8,
+     "p10": 11,
+     "p90": 28
+    },
+    {
+     "id": "5abd665b-90bd-11f1-bba0-6dc09d38f92b",
+     "name": "Henriikka Vähäuski",
+     "team": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+     "mean": 9.7,
+     "p10": 3,
+     "p90": 17
+    },
+    {
+     "id": "224b3798-bb2b-11f1-9366-df82ac1db881",
+     "name": "Ayana Emmanuel",
+     "team": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+     "mean": 15.6,
+     "p10": 8,
+     "p90": 24
+    },
+    {
+     "id": "c38e5848-90bd-11f1-9b11-7b525a68ccc9",
+     "name": "Mimmi Kaulo",
+     "team": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+     "mean": 7.9,
+     "p10": 3,
+     "p90": 14
+    },
+    {
+     "id": "80bde8fc-90bc-11f1-a469-6724e60b9a02",
+     "name": "Jasmina Jones",
+     "team": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+     "mean": 2.7,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "5fb8fa0f-90bf-11f1-b0c5-3dc68df8a35d",
+     "name": "Lila Lampinen",
+     "team": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+     "mean": 2.1,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "688f4311-90bd-11f1-8224-73575e376a6e",
+     "name": "Elli Heikkilä",
+     "team": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+     "mean": 2.0,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "1f88c5bf-90bf-11f1-9595-7104566eb116",
+     "name": "Enni Luostarinen",
+     "team": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+     "mean": 0.5,
+     "p10": 0,
+     "p90": 2
+    },
+    {
+     "id": "6dc845fc-bb09-11f1-b847-4bfc5aa83a90",
+     "name": "Ellie Foster",
+     "team": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+     "mean": 12.0,
+     "p10": 5,
+     "p90": 19
+    },
+    {
+     "id": "c570bb13-90bd-11f1-8a85-7b525a68ccc9",
+     "name": "Emma Lampén",
+     "team": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+     "mean": 16.1,
+     "p10": 8,
+     "p90": 25
+    },
+    {
+     "id": "47408b55-bb09-11f1-bdcf-117fb8a9e697",
+     "name": "Melannie Daley",
+     "team": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+     "mean": 13.1,
+     "p10": 6,
+     "p90": 21
+    },
+    {
+     "id": "d42257a7-90bc-11f1-a912-ada88c48e62e",
+     "name": "Elina Arike",
+     "team": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+     "mean": 4.2,
+     "p10": 0,
+     "p90": 9
+    },
+    {
+     "id": "c55056c3-90bd-11f1-8e05-7b525a68ccc9",
+     "name": "Cayro-Lyza Toomingas",
+     "team": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+     "mean": 13.2,
+     "p10": 6,
+     "p90": 21
+    },
+    {
+     "id": "f0d1592d-90be-11f1-a323-713ca2bbccaa",
+     "name": "Helli Suvanto",
+     "team": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+     "mean": 4.1,
+     "p10": 0,
+     "p90": 10
+    },
+    {
+     "id": "119b31d8-90bd-11f1-b34c-7b8c3a749dc5",
+     "name": "Lotta Vehka-Aho",
+     "team": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+     "mean": 2.8,
+     "p10": 0,
+     "p90": 8
+    },
+    {
+     "id": "dcab331a-90be-11f1-a9fd-73883e79fac1",
+     "name": "Minea Nurminen",
+     "team": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+     "mean": 1.9,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "072bebf0-90be-11f1-9991-63f25f046c80",
+     "name": "Verna Savioja",
+     "team": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+     "mean": 5.8,
+     "p10": 1,
+     "p90": 11
+    },
+    {
+     "id": "53467fc8-90bd-11f1-884e-fdb6131f8409",
+     "name": "Alexandra Ailus",
+     "team": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+     "mean": 1.0,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "417f1240-90be-11f1-93d6-2ffd388e433c",
+     "name": "Veera Mäntykivi",
+     "team": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+     "mean": 0.5,
+     "p10": 0,
+     "p90": 2
+    },
+    {
+     "id": "9ca4d6c6-90ba-11f1-997d-c7817cb4e90e",
+     "name": "Linda-Lotta LEHTORANTA",
+     "team": "d231065a-90a6-11f1-9f40-e7d7c2463142",
+     "mean": 0.7,
+     "p10": 0,
+     "p90": 3
+    }
+   ]
+  },
+  "1005922": {
+   "match": {
+    "id": "1005922",
+    "date": "2026-11-03",
+    "time": "18:30:00",
+    "venue": "Pyynikin palloiluhalli",
+    "home": {
+     "id": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "name": "Tampereen Pyrintö"
+    },
+    "away": {
+     "id": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "name": "Kouvot"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-27",
+   "published_at": "2026-10-27T20:38:56+00:00",
+   "home_win_probability": 0.746,
+   "mean_score": {
+    "d35a3d28-90a6-11f1-a47f-e7d7c2463142": 92.5,
+    "d33f4cac-90a6-11f1-b66d-e7d7c2463142": 83.0
+   },
+   "margin": {
+    "mean": 9.5,
+    "p10": -9,
+    "p90": 28
+   },
+   "overtime_probability": 0.035,
+   "players": [
+    {
+     "id": "f052dc9d-ac83-11f1-8140-e359daa5ceb4",
+     "name": "Jamal West Jr.",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 23.0,
+     "p10": 14,
+     "p90": 32
+    },
+    {
+     "id": "ef3d1fa8-ac83-11f1-96a9-fb562df9b9a1",
+     "name": "Jordan Mason",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 22.4,
+     "p10": 14,
+     "p90": 32
+    },
+    {
+     "id": "52d0fe47-90bd-11f1-903d-fdb6131f8409",
+     "name": "Valtteri Mervola",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 5.3,
+     "p10": 0,
+     "p90": 11
+    },
+    {
+     "id": "fa6bf28d-90bd-11f1-87bb-a1f0b16090d5",
+     "name": "Erik Muhonen",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 11.7,
+     "p10": 5,
+     "p90": 19
+    },
+    {
+     "id": "953e165f-90bb-11f1-b3ee-2b2f17cdb034",
+     "name": "SHAWN HOPKINS",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 14.3,
+     "p10": 7,
+     "p90": 23
+    },
+    {
+     "id": "27296292-90bd-11f1-8c85-d1b26dd8807a",
+     "name": "Joona Hakamaa",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 3.1,
+     "p10": 0,
+     "p90": 8
+    },
+    {
+     "id": "9122b8a8-90bd-11f1-a737-9d9b6f578d5a",
+     "name": "Otto Räisänen",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 8.6,
+     "p10": 3,
+     "p90": 15
+    },
+    {
+     "id": "a6263fc6-bbd6-11f1-885f-6b47e880c0ea",
+     "name": "Duane Posey",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 2.5,
+     "p10": 0,
+     "p90": 8
+    },
+    {
+     "id": "19733281-90be-11f1-819d-5d5f4f976a20",
+     "name": "Kalle Mattila",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 1.0,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "94247e57-90be-11f1-b7c8-b9d3b0a6c9e2",
+     "name": "Jaakko Nieminen",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 0.5,
+     "p10": 0,
+     "p90": 2
+    },
+    {
+     "id": "a84338ea-90be-11f1-b8de-13228fe003c9",
+     "name": "Ville-Pekka Eskelinen",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 0.0,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "dfe6cfae-a517-11f1-9367-7597af25adb2",
+     "name": "Masai Troutman",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 18.3,
+     "p10": 10,
+     "p90": 27
+    },
+    {
+     "id": "7254105c-a836-11f1-901e-3bf588878d4f",
+     "name": "Christian Terrell",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 13.8,
+     "p10": 7,
+     "p90": 21
+    },
+    {
+     "id": "401079cf-a6bc-11f1-b2b5-c3d958ec4d1a",
+     "name": "Sheldon Williams",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 18.8,
+     "p10": 11,
+     "p90": 28
+    },
+    {
+     "id": "d92cdbd1-90bd-11f1-9edf-23575df7f55b",
+     "name": "Tuukka Härsilä",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 10.6,
+     "p10": 4,
+     "p90": 18
+    },
+    {
+     "id": "a523681c-a212-11f1-9e06-4db1c4da4259",
+     "name": "Aaron Johnson-Cash",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 13.7,
+     "p10": 6,
+     "p90": 22
+    },
+    {
+     "id": "ebf4ab5f-90bd-11f1-af64-5bafc2773088",
+     "name": "Eino Pällijeff",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 3.3,
+     "p10": 0,
+     "p90": 8
+    },
+    {
+     "id": "73a88aa6-90bd-11f1-aec5-bf766ef3e20b",
+     "name": "Teemu Kristeri",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 2.5,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "7c4054c8-90bd-11f1-a503-59500384dde4",
+     "name": "Aarni Korkiatupa",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 1.3,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "0d1f5ccc-90be-11f1-9bea-053db5cf498e",
+     "name": "Patrik En",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 0.5,
+     "p10": 0,
+     "p90": 2
+    },
+    {
+     "id": "5c1f4d1d-90be-11f1-83f0-2ffd388e433c",
+     "name": "Joel Toikka",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 0.2,
+     "p10": 0,
+     "p90": 0
+    }
+   ]
+  },
+  "1005974": {
+   "match": {
+    "id": "1005974",
+    "date": "2026-11-03",
+    "time": "18:30:00",
+    "venue": "Tapiolan Liikuntahalli",
+    "home": {
+     "id": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "name": "Tapiolan Honka"
+    },
+    "away": {
+     "id": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "name": "Helsinki Seagulls"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-27",
+   "published_at": "2026-10-27T20:38:56+00:00",
+   "home_win_probability": 0.772,
+   "mean_score": {
+    "e214cb24-90a6-11f1-976f-5b3c5c56dcf1": 94.3,
+    "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc": 83.4
+   },
+   "margin": {
+    "mean": 11.0,
+    "p10": -8,
+    "p90": 30
+   },
+   "overtime_probability": 0.019,
+   "players": [
+    {
+     "id": "1fd5a811-90bd-11f1-9904-ebd35007e794",
+     "name": "Alvar Peltoniemi",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 19.0,
+     "p10": 10,
+     "p90": 27
+    },
+    {
+     "id": "985a93d5-90bd-11f1-ba74-a1f0b16090d5",
+     "name": "AJ Ferguson",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 18.0,
+     "p10": 9,
+     "p90": 26
+    },
+    {
+     "id": "c18d2d42-aaf5-11f1-8463-afea389cc510",
+     "name": "Trevon Faulkner",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 14.6,
+     "p10": 7,
+     "p90": 23
+    },
+    {
+     "id": "5c2ac50a-aaf5-11f1-a6f5-2b788620a1f0",
+     "name": "Lucas Taylor",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 13.7,
+     "p10": 6,
+     "p90": 22
+    },
+    {
+     "id": "3874931f-aaf5-11f1-b299-3bd10ee0c642",
+     "name": "Terrance Williams II",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 13.6,
+     "p10": 6,
+     "p90": 22
+    },
+    {
+     "id": "8979cd83-90bd-11f1-b1db-95de893ea309",
+     "name": "Iiro Tuomi",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 6.6,
+     "p10": 0,
+     "p90": 14
+    },
+    {
+     "id": "9aac90bf-90bd-11f1-a3d9-a1f0b16090d5",
+     "name": "Lauri Kallio",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 3.6,
+     "p10": 0,
+     "p90": 9
+    },
+    {
+     "id": "e1d14260-90bb-11f1-b001-a19776e4ef59",
+     "name": "Elias Eerikinharju",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 2.1,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "c57708a2-90bc-11f1-b2ee-af3c0b98eadb",
+     "name": "Tomas Pihlajamäki",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 2.0,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "93f79c9e-90be-11f1-9127-b9d3b0a6c9e2",
+     "name": "Alvan Laavainen",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 1.0,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "21c584c6-90bd-11f1-929d-ebd35007e794",
+     "name": "Jaakko Juusela",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 0.2,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "d5e9ce9f-90be-11f1-b0fb-2dc165e7f1b2",
+     "name": "Veeti Ulander",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 0.1,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "0289786d-90bc-11f1-a8d5-797de5732515",
+     "name": "Lassi Nikkarinen",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 11.0,
+     "p10": 5,
+     "p90": 18
+    },
+    {
+     "id": "96191371-abc9-11f1-a344-798b3c09e270",
+     "name": "Keonte Kennedy",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 17.9,
+     "p10": 10,
+     "p90": 27
+    },
+    {
+     "id": "bbf4bb82-90b9-11f1-bbf0-7106e55498b7",
+     "name": "Rene Rougeau",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 18.0,
+     "p10": 10,
+     "p90": 26
+    },
+    {
+     "id": "d166d74d-abc9-11f1-9a84-ab2c6646cd34",
+     "name": "Tyrese Williams",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 15.4,
+     "p10": 8,
+     "p90": 24
+    },
+    {
+     "id": "bd6db3e4-90bc-11f1-ae39-916f627ff7ec",
+     "name": "Victor Iwuakor",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 11.9,
+     "p10": 5,
+     "p90": 19
+    },
+    {
+     "id": "1da7c9bb-90bc-11f1-97db-e9ae9e26fc7d",
+     "name": "Remu Raitanen",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 4.9,
+     "p10": 0,
+     "p90": 11
+    },
+    {
+     "id": "b8bf2a4b-90bc-11f1-9c48-b19807192607",
+     "name": "Ricky Waxlax",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 2.9,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "a977a6d2-90bd-11f1-92f4-83767142611d",
+     "name": "Lenni Hervola",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 0.8,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "6a27d731-90bb-11f1-b94b-e9ae9e26fc7d",
+     "name": "Timi Puittinen",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 0.2,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "7968551b-90be-11f1-bfcd-9339b75ea0b9",
+     "name": "Vili Vesterinen",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 0.2,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "10c3564c-90bd-11f1-bf3b-7b8c3a749dc5",
+     "name": "Samatar Abokar",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 0.1,
+     "p10": 0,
+     "p90": 0
+    }
+   ]
+  },
+  "1005857": {
+   "match": {
+    "id": "1005857",
+    "date": "2026-11-04",
+    "time": "18:30:00",
+    "venue": "Loimaan liikuntahalli",
+    "home": {
+     "id": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "name": "Bisons Loimaa"
+    },
+    "away": {
+     "id": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "name": "Lahti Basketball"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-27",
+   "published_at": "2026-10-27T20:38:56+00:00",
+   "home_win_probability": 0.517,
+   "mean_score": {
+    "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1": 87.2,
+    "d296e502-90a6-11f1-bf89-e7d7c2463142": 86.2
+   },
+   "margin": {
+    "mean": 1.0,
+    "p10": -18,
+    "p90": 19
+   },
+   "overtime_probability": 0.019,
+   "players": [
+    {
+     "id": "4514784c-90bc-11f1-892c-8793bc36545e",
+     "name": "Roydell Brown",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 16.2,
+     "p10": 8,
+     "p90": 24
+    },
+    {
+     "id": "c99140c3-90bb-11f1-b302-1d8434d82986",
+     "name": "Deshon Taylor",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 19.7,
+     "p10": 11,
+     "p90": 29
+    },
+    {
+     "id": "a35a4a00-90bb-11f1-a8fd-a923156cc791",
+     "name": "Javion Ogunyemi",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 15.1,
+     "p10": 8,
+     "p90": 23
+    },
+    {
+     "id": "c8b53068-90bb-11f1-831f-1d8434d82986",
+     "name": "Aapeli Alanen",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 15.0,
+     "p10": 7,
+     "p90": 23
+    },
+    {
+     "id": "ce9eae2b-90bb-11f1-9cdf-e9ae9e26fc7d",
+     "name": "FIIFI AIDOO",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 11.8,
+     "p10": 5,
+     "p90": 19
+    },
+    {
+     "id": "f1abff67-90bc-11f1-8c2c-c13ce11da02d",
+     "name": "Ville Tahvanainen",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 4.1,
+     "p10": 0,
+     "p90": 10
+    },
+    {
+     "id": "d36d484b-90bd-11f1-af79-2feb4d029b30",
+     "name": "Ville Karhu",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 1.4,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "2457c538-a85c-11f1-bf81-1579ec539163",
+     "name": "Tehree Horn",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 2.1,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "3ad1572d-adab-11f1-9d97-739172e87e08",
+     "name": "AJ Harris II",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 1.2,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "e564c0a5-90bd-11f1-8a27-d7c486996b5f",
+     "name": "Onni Mäkynen",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 0.5,
+     "p10": 0,
+     "p90": 2
+    },
+    {
+     "id": "06148f5a-90be-11f1-b98f-63f25f046c80",
+     "name": "Niko Mykrä",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 0.2,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "2f03b2d2-b116-11f1-80e6-6965d9955a48",
+     "name": "D'Maurian Williams",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 20.6,
+     "p10": 11,
+     "p90": 30
+    },
+    {
+     "id": "e364d2c9-90bb-11f1-be41-a19776e4ef59",
+     "name": "Aaron Carver",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 11.0,
+     "p10": 5,
+     "p90": 18
+    },
+    {
+     "id": "70b53173-b116-11f1-a2f1-735644110542",
+     "name": "Jackson Threadgill",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 17.3,
+     "p10": 9,
+     "p90": 26
+    },
+    {
+     "id": "f40148a4-90bd-11f1-baec-4f8fabaf4a0e",
+     "name": "Riku Korhonen",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 15.8,
+     "p10": 8,
+     "p90": 24
+    },
+    {
+     "id": "8a49a8f9-90bd-11f1-984c-95de893ea309",
+     "name": "Eemi Luukkonen",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 4.8,
+     "p10": 0,
+     "p90": 10
+    },
+    {
+     "id": "4a05a759-90bc-11f1-9c13-f9d3ff21d24a",
+     "name": "Vili Nyman",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 11.0,
+     "p10": 4,
+     "p90": 18
+    },
+    {
+     "id": "a72d3f59-b116-11f1-b60c-558507beef60",
+     "name": "Jalen Barr",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 3.0,
+     "p10": 0,
+     "p90": 8
+    },
+    {
+     "id": "79046d3d-90bc-11f1-a7b5-4554ddfa8cbf",
+     "name": "Kalle Peltonen",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 1.1,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "208a9d7b-90be-11f1-a8b1-f772deacbe7d",
+     "name": "Tino Yli-Junnila",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 0.8,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "8077c0b9-90be-11f1-8f51-9528bf057578",
+     "name": "Jonas Kaivos",
+     "team": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+     "mean": 0.8,
+     "p10": 0,
+     "p90": 3
+    }
+   ]
+  },
+  "1006008": {
+   "match": {
+    "id": "1006008",
+    "date": "2026-11-04",
+    "time": "18:30:00",
+    "venue": "Uusikaupunki Areena Wintteri",
+    "home": {
+     "id": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "name": "Korihait"
+    },
+    "away": {
+     "id": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "name": "Kauhajoki"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-27",
+   "published_at": "2026-10-27T20:38:56+00:00",
+   "home_win_probability": 0.525,
+   "mean_score": {
+    "d3631045-90a6-11f1-ab0a-e7d7c2463142": 83.6,
+    "d323c8b6-90a6-11f1-9192-e7d7c2463142": 82.5
+   },
+   "margin": {
+    "mean": 1.1,
+    "p10": -17,
+    "p90": 20
+   },
+   "overtime_probability": 0.028,
+   "players": [
+    {
+     "id": "f502dce4-aae3-11f1-ae08-894bb12a0def",
+     "name": "Devin Tillis",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 19.3,
+     "p10": 11,
+     "p90": 28
+    },
+    {
+     "id": "42818ee5-90bb-11f1-8344-d936dd1c73f2",
+     "name": "Jalen Jackson",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 12.3,
+     "p10": 5,
+     "p90": 20
+    },
+    {
+     "id": "390fa980-aae4-11f1-88b9-1dd105afe284",
+     "name": "Thomas Murr",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 18.9,
+     "p10": 10,
+     "p90": 28
+    },
+    {
+     "id": "18d99789-90be-11f1-9c3c-5d5f4f976a20",
+     "name": "Rasmus Lindberg",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 11.1,
+     "p10": 5,
+     "p90": 19
+    },
+    {
+     "id": "43b817ee-90bc-11f1-b5b8-8793bc36545e",
+     "name": "Trey Niemi",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 6.5,
+     "p10": 0,
+     "p90": 13
+    },
+    {
+     "id": "fe6ebefa-90b9-11f1-a987-1f9f65ff4cc1",
+     "name": "Bojan Sarcévic",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 8.4,
+     "p10": 3,
+     "p90": 15
+    },
+    {
+     "id": "6d86faaf-90bd-11f1-9067-31ded31f16e5",
+     "name": "Roni Ahvenjärvi",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 1.9,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "8c05f590-90bd-11f1-bab5-95de893ea309",
+     "name": "Kion Williams",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 2.0,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "f899ea71-aae3-11f1-a85e-09a07a165553",
+     "name": "Garry Clark",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 2.6,
+     "p10": 0,
+     "p90": 8
+    },
+    {
+     "id": "63fc2a25-90bb-11f1-aa48-27f2444e308f",
+     "name": "Joni Herrala",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 0.6,
+     "p10": 0,
+     "p90": 2
+    },
+    {
+     "id": "c5892cdb-90bc-11f1-b8c9-af3c0b98eadb",
+     "name": "Eetu Lähdetniemi",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 0.2,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "22ca437b-a85c-11f1-b44c-1d65c8555753",
+     "name": "Tyeree Bryan",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 15.4,
+     "p10": 8,
+     "p90": 23
+    },
+    {
+     "id": "222fc249-a85c-11f1-94af-73f3b12250f1",
+     "name": "Jerrell Bellamy",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 16.9,
+     "p10": 10,
+     "p90": 24
+    },
+    {
+     "id": "19400c2f-90bd-11f1-8c95-916f627ff7ec",
+     "name": "Erik Sajantila",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 12.6,
+     "p10": 6,
+     "p90": 20
+    },
+    {
+     "id": "2382cc56-a85c-11f1-a14b-4dff4a9271f7",
+     "name": "Chandler Cuthrell",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 16.7,
+     "p10": 9,
+     "p90": 25
+    },
+    {
+     "id": "25d6dd91-a85c-11f1-a0aa-a9c086c1b63e",
+     "name": "Aatu Kivimäki",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 12.6,
+     "p10": 5,
+     "p90": 20
+    },
+    {
+     "id": "20cbf6b3-90bd-11f1-adc7-ebd35007e794",
+     "name": "Antti Ahonen",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 2.8,
+     "p10": 0,
+     "p90": 8
+    },
+    {
+     "id": "2457c538-a85c-11f1-bf81-1579ec539163",
+     "name": "Tehree Horn",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 2.7,
+     "p10": 0,
+     "p90": 8
+    },
+    {
+     "id": "60115ef2-90bd-11f1-b2b7-3f7cdc8d4fd3",
+     "name": "Hugo Boman",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 1.7,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "7c4c77d3-90bd-11f1-bca8-59500384dde4",
+     "name": "Kalle Koivunen",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 0.8,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "ae4d278c-90bb-11f1-9d7b-5faf62dace4e",
+     "name": "Tevaun Kokko",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 0.4,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "58198aab-90be-11f1-ad74-174497ca91c8",
+     "name": "Elias Ylipeltola",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 0.0,
+     "p10": 0,
+     "p90": 0
+    }
+   ]
+  },
+  "1006024": {
+   "match": {
+    "id": "1006024",
+    "date": "2026-11-04",
+    "time": "18:30:00",
+    "venue": "Jyväskylän Monitoimitalo",
+    "home": {
+     "id": "815439d4-b169-11f1-bc74-593eff165a09",
+     "name": "Kipinä Basket"
+    },
+    "away": {
+     "id": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+     "name": "KTP-Basket"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-27",
+   "published_at": "2026-10-27T20:38:56+00:00",
+   "home_win_probability": 0.59,
+   "mean_score": {
+    "815439d4-b169-11f1-bc74-593eff165a09": 92.3,
+    "d347a09d-90a6-11f1-a259-e7d7c2463142": 89.0
+   },
+   "margin": {
+    "mean": 3.3,
+    "p10": -16,
+    "p90": 22
+   },
+   "overtime_probability": 0.045,
+   "players": [
+    {
+     "id": "6cb2f3be-90bd-11f1-a1c6-31ded31f16e5",
+     "name": "Jalen McCoy",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 20.3,
+     "p10": 13,
+     "p90": 29
+    },
+    {
+     "id": "84e2074b-b169-11f1-984b-15001704dc97",
+     "name": "Derrin Boyd",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 19.9,
+     "p10": 11,
+     "p90": 29
+    },
+    {
+     "id": "ae42289d-90ba-11f1-8f7c-e7350f4a6e12",
+     "name": "Topias Kuukkanen",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 12.2,
+     "p10": 5,
+     "p90": 20
+    },
+    {
+     "id": "f2c5e6a7-90bc-11f1-ab3c-c13ce11da02d",
+     "name": "Jake Hilmer",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 14.4,
+     "p10": 7,
+     "p90": 22
+    },
+    {
+     "id": "3e4c526a-90bc-11f1-98a2-09086e96cf2a",
+     "name": "Hannes Pöllä",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 14.7,
+     "p10": 7,
+     "p90": 23
+    },
+    {
+     "id": "87041e33-b169-11f1-ba17-05d216676cba",
+     "name": "Tristan Smith",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 4.6,
+     "p10": 0,
+     "p90": 11
+    },
+    {
+     "id": "e5882668-90bd-11f1-b7ef-d7c486996b5f",
+     "name": "Daniel Rantapaju",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 2.3,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "35e6a4bc-90be-11f1-855b-8fd4205740a9",
+     "name": "Roope Filtness",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 1.8,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "c4a0048c-90bc-11f1-a1be-af3c0b98eadb",
+     "name": "Eemeli Laaksonen",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 1.4,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "cb066764-90bc-11f1-bcaa-e795959ab3d5",
+     "name": "Ville Virtaharju",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 0.7,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "f093e76f-90be-11f1-8d7a-713ca2bbccaa",
+     "name": "Eetu Viiru",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 0.0,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "52dab6fa-90bd-11f1-bafa-fdb6131f8409",
+     "name": "Joel Mäntynen",
+     "team": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+     "mean": 17.5,
+     "p10": 10,
+     "p90": 25
+    },
+    {
+     "id": "cb3d506e-90bc-11f1-a511-e795959ab3d5",
+     "name": "Jesper Granlund",
+     "team": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+     "mean": 10.9,
+     "p10": 4,
+     "p90": 18
+    },
+    {
+     "id": "522565f2-abd3-11f1-b258-89e93bb2c61f",
+     "name": "Zion Styles",
+     "team": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+     "mean": 15.4,
+     "p10": 7,
+     "p90": 24
+    },
+    {
+     "id": "1ba42f86-90bb-11f1-955f-d7ae8223e556",
+     "name": "Daniel Dolenc",
+     "team": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+     "mean": 13.7,
+     "p10": 6,
+     "p90": 22
+    },
+    {
+     "id": "f6feffb1-90bb-11f1-853e-5147ecc42f90",
+     "name": "Joona Tuomala",
+     "team": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+     "mean": 6.2,
+     "p10": 0,
+     "p90": 13
+    },
+    {
+     "id": "55ba44e6-abd3-11f1-a663-8bcb8341c5de",
+     "name": "Mason Gillis",
+     "team": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+     "mean": 19.6,
+     "p10": 11,
+     "p90": 30
+    },
+    {
+     "id": "4eff2a20-abd3-11f1-a0fa-817ba5325215",
+     "name": "AJ White",
+     "team": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+     "mean": 4.6,
+     "p10": 0,
+     "p90": 11
+    },
+    {
+     "id": "3ef8df52-90bd-11f1-88ec-b9351c62770e",
+     "name": "Ian Uwamungu",
+     "team": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+     "mean": 0.9,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "37467282-90bf-11f1-82ee-dbbd8242dc7e",
+     "name": "Alfred Pitkänen",
+     "team": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+     "mean": 0.2,
+     "p10": 0,
+     "p90": 0
+    }
+   ]
+  },
+  "1005991": {
+   "match": {
+    "id": "1005991",
+    "date": "2026-11-06",
+    "time": "18:30:00",
+    "venue": "Töölön Kisahalli",
+    "home": {
+     "id": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "name": "Helsinki Seagulls"
+    },
+    "away": {
+     "id": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "name": "Kouvot"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-27",
+   "published_at": "2026-10-27T20:38:56+00:00",
+   "home_win_probability": 0.548,
+   "mean_score": {
+    "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc": 87.6,
+    "d33f4cac-90a6-11f1-b66d-e7d7c2463142": 85.2
+   },
+   "margin": {
+    "mean": 2.4,
+    "p10": -17,
+    "p90": 23
+   },
+   "overtime_probability": 0.027,
+   "players": [
+    {
+     "id": "0289786d-90bc-11f1-a8d5-797de5732515",
+     "name": "Lassi Nikkarinen",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 11.6,
+     "p10": 5,
+     "p90": 19
+    },
+    {
+     "id": "96191371-abc9-11f1-a344-798b3c09e270",
+     "name": "Keonte Kennedy",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 18.5,
+     "p10": 10,
+     "p90": 27
+    },
+    {
+     "id": "bbf4bb82-90b9-11f1-bbf0-7106e55498b7",
+     "name": "Rene Rougeau",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 19.1,
+     "p10": 11,
+     "p90": 28
+    },
+    {
+     "id": "d166d74d-abc9-11f1-9a84-ab2c6646cd34",
+     "name": "Tyrese Williams",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 16.2,
+     "p10": 8,
+     "p90": 25
+    },
+    {
+     "id": "bd6db3e4-90bc-11f1-ae39-916f627ff7ec",
+     "name": "Victor Iwuakor",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 12.9,
+     "p10": 6,
+     "p90": 20
+    },
+    {
+     "id": "1da7c9bb-90bc-11f1-97db-e9ae9e26fc7d",
+     "name": "Remu Raitanen",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 5.2,
+     "p10": 0,
+     "p90": 11
+    },
+    {
+     "id": "b8bf2a4b-90bc-11f1-9c48-b19807192607",
+     "name": "Ricky Waxlax",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 2.9,
+     "p10": 0,
+     "p90": 8
+    },
+    {
+     "id": "a977a6d2-90bd-11f1-92f4-83767142611d",
+     "name": "Lenni Hervola",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 0.8,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "6a27d731-90bb-11f1-b94b-e9ae9e26fc7d",
+     "name": "Timi Puittinen",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 0.2,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "7968551b-90be-11f1-bfcd-9339b75ea0b9",
+     "name": "Vili Vesterinen",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 0.2,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "10c3564c-90bd-11f1-bf3b-7b8c3a749dc5",
+     "name": "Samatar Abokar",
+     "team": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+     "mean": 0.1,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "dfe6cfae-a517-11f1-9367-7597af25adb2",
+     "name": "Masai Troutman",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 18.5,
+     "p10": 10,
+     "p90": 27
+    },
+    {
+     "id": "7254105c-a836-11f1-901e-3bf588878d4f",
+     "name": "Christian Terrell",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 14.3,
+     "p10": 7,
+     "p90": 22
+    },
+    {
+     "id": "401079cf-a6bc-11f1-b2b5-c3d958ec4d1a",
+     "name": "Sheldon Williams",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 18.9,
+     "p10": 11,
+     "p90": 28
+    },
+    {
+     "id": "d92cdbd1-90bd-11f1-9edf-23575df7f55b",
+     "name": "Tuukka Härsilä",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 11.2,
+     "p10": 4,
+     "p90": 19
+    },
+    {
+     "id": "a523681c-a212-11f1-9e06-4db1c4da4259",
+     "name": "Aaron Johnson-Cash",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 14.1,
+     "p10": 6,
+     "p90": 22
+    },
+    {
+     "id": "ebf4ab5f-90bd-11f1-af64-5bafc2773088",
+     "name": "Eino Pällijeff",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 3.6,
+     "p10": 0,
+     "p90": 8
+    },
+    {
+     "id": "73a88aa6-90bd-11f1-aec5-bf766ef3e20b",
+     "name": "Teemu Kristeri",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 2.6,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "7c4054c8-90bd-11f1-a503-59500384dde4",
+     "name": "Aarni Korkiatupa",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 1.3,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "0d1f5ccc-90be-11f1-9bea-053db5cf498e",
+     "name": "Patrik En",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 0.5,
+     "p10": 0,
+     "p90": 2
+    },
+    {
+     "id": "5c1f4d1d-90be-11f1-83f0-2ffd388e433c",
+     "name": "Joel Toikka",
+     "team": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+     "mean": 0.2,
+     "p10": 0,
+     "p90": 0
+    }
+   ]
+  },
+  "1005840": {
+   "match": {
+    "id": "1005840",
+    "date": "2026-11-07",
+    "time": "18:00:00",
+    "venue": "IKH Areena",
+    "home": {
+     "id": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "name": "Kauhajoki"
+    },
+    "away": {
+     "id": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "name": "Tapiolan Honka"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-27",
+   "published_at": "2026-10-27T20:38:56+00:00",
+   "home_win_probability": 0.409,
+   "mean_score": {
+    "d323c8b6-90a6-11f1-9192-e7d7c2463142": 87.4,
+    "e214cb24-90a6-11f1-976f-5b3c5c56dcf1": 90.5
+   },
+   "margin": {
+    "mean": -3.0,
+    "p10": -21,
+    "p90": 17
+   },
+   "overtime_probability": 0.042,
+   "players": [
+    {
+     "id": "22ca437b-a85c-11f1-b44c-1d65c8555753",
+     "name": "Tyeree Bryan",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 15.9,
+     "p10": 8,
+     "p90": 24
+    },
+    {
+     "id": "222fc249-a85c-11f1-94af-73f3b12250f1",
+     "name": "Jerrell Bellamy",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 18.2,
+     "p10": 10,
+     "p90": 26
+    },
+    {
+     "id": "19400c2f-90bd-11f1-8c95-916f627ff7ec",
+     "name": "Erik Sajantila",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 13.7,
+     "p10": 6,
+     "p90": 21
+    },
+    {
+     "id": "2382cc56-a85c-11f1-a14b-4dff4a9271f7",
+     "name": "Chandler Cuthrell",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 17.5,
+     "p10": 10,
+     "p90": 26
+    },
+    {
+     "id": "25d6dd91-a85c-11f1-a0aa-a9c086c1b63e",
+     "name": "Aatu Kivimäki",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 13.6,
+     "p10": 6,
+     "p90": 22
+    },
+    {
+     "id": "20cbf6b3-90bd-11f1-adc7-ebd35007e794",
+     "name": "Antti Ahonen",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 3.0,
+     "p10": 0,
+     "p90": 9
+    },
+    {
+     "id": "2457c538-a85c-11f1-bf81-1579ec539163",
+     "name": "Tehree Horn",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 2.8,
+     "p10": 0,
+     "p90": 8
+    },
+    {
+     "id": "60115ef2-90bd-11f1-b2b7-3f7cdc8d4fd3",
+     "name": "Hugo Boman",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 1.5,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "7c4c77d3-90bd-11f1-bca8-59500384dde4",
+     "name": "Kalle Koivunen",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 0.8,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "ae4d278c-90bb-11f1-9d7b-5faf62dace4e",
+     "name": "Tevaun Kokko",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 0.4,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "58198aab-90be-11f1-ad74-174497ca91c8",
+     "name": "Elias Ylipeltola",
+     "team": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
+     "mean": 0.0,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "1fd5a811-90bd-11f1-9904-ebd35007e794",
+     "name": "Alvar Peltoniemi",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 18.2,
+     "p10": 10,
+     "p90": 27
+    },
+    {
+     "id": "985a93d5-90bd-11f1-ba74-a1f0b16090d5",
+     "name": "AJ Ferguson",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 17.2,
+     "p10": 9,
+     "p90": 26
+    },
+    {
+     "id": "c18d2d42-aaf5-11f1-8463-afea389cc510",
+     "name": "Trevon Faulkner",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 13.9,
+     "p10": 6,
+     "p90": 22
+    },
+    {
+     "id": "5c2ac50a-aaf5-11f1-a6f5-2b788620a1f0",
+     "name": "Lucas Taylor",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 13.2,
+     "p10": 6,
+     "p90": 22
+    },
+    {
+     "id": "3874931f-aaf5-11f1-b299-3bd10ee0c642",
+     "name": "Terrance Williams II",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 12.8,
+     "p10": 6,
+     "p90": 20
+    },
+    {
+     "id": "8979cd83-90bd-11f1-b1db-95de893ea309",
+     "name": "Iiro Tuomi",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 6.3,
+     "p10": 0,
+     "p90": 13
+    },
+    {
+     "id": "9aac90bf-90bd-11f1-a3d9-a1f0b16090d5",
+     "name": "Lauri Kallio",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 3.4,
+     "p10": 0,
+     "p90": 8
+    },
+    {
+     "id": "e1d14260-90bb-11f1-b001-a19776e4ef59",
+     "name": "Elias Eerikinharju",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 2.0,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "c57708a2-90bc-11f1-b2ee-af3c0b98eadb",
+     "name": "Tomas Pihlajamäki",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 2.0,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "93f79c9e-90be-11f1-9127-b9d3b0a6c9e2",
+     "name": "Alvan Laavainen",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 1.1,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "21c584c6-90bd-11f1-929d-ebd35007e794",
+     "name": "Jaakko Juusela",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 0.2,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "d5e9ce9f-90be-11f1-b0fb-2dc165e7f1b2",
+     "name": "Veeti Ulander",
+     "team": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+     "mean": 0.1,
+     "p10": 0,
+     "p90": 0
+    }
+   ]
+  },
+  "1005906": {
+   "match": {
+    "id": "1005906",
+    "date": "2026-11-07",
+    "time": "17:00:00",
+    "venue": "Motonet Areena",
+    "home": {
+     "id": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "name": "Kataja Basket"
+    },
+    "away": {
+     "id": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "name": "Korihait"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-27",
+   "published_at": "2026-10-27T20:38:56+00:00",
+   "home_win_probability": 0.607,
+   "mean_score": {
+    "d31984cb-90a6-11f1-997e-e7d7c2463142": 88.0,
+    "d3631045-90a6-11f1-ab0a-e7d7c2463142": 84.3
+   },
+   "margin": {
+    "mean": 3.8,
+    "p10": -16,
+    "p90": 23
+   },
+   "overtime_probability": 0.027,
+   "players": [
+    {
+     "id": "00b8b2c2-a83a-11f1-ac95-dbfd521311a7",
+     "name": "Stevie Strong",
+     "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "mean": 21.1,
+     "p10": 12,
+     "p90": 30
+    },
+    {
+     "id": "61f2db99-90bb-11f1-bce6-27f2444e308f",
+     "name": "Topias Palmi",
+     "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "mean": 18.3,
+     "p10": 9,
+     "p90": 28
+    },
+    {
+     "id": "00017500-a83a-11f1-8b00-41f92683b540",
+     "name": "Richie Springs",
+     "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "mean": 15.3,
+     "p10": 8,
+     "p90": 24
+    },
+    {
+     "id": "21838fb7-90bd-11f1-8f7a-ebd35007e794",
+     "name": "Teemu Suokas",
+     "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "mean": 5.5,
+     "p10": 0,
+     "p90": 12
+    },
+    {
+     "id": "fe07789e-a839-11f1-9e43-33a5e0826522",
+     "name": "Josiah Harris",
+     "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "mean": 6.3,
+     "p10": 0,
+     "p90": 13
+    },
+    {
+     "id": "037a0c46-90bd-11f1-ad46-e9a336bf1467",
+     "name": "Joonas Timonen",
+     "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "mean": 8.3,
+     "p10": 2,
+     "p90": 15
+    },
+    {
+     "id": "794bb8b2-90bc-11f1-84b6-4554ddfa8cbf",
+     "name": "Teemu Knihtinen",
+     "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "mean": 2.6,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "2010abed-90bd-11f1-bfc7-ebd35007e794",
+     "name": "Henri Permanto",
+     "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "mean": 8.4,
+     "p10": 2,
+     "p90": 16
+    },
+    {
+     "id": "fea72430-a839-11f1-9aac-d745ed5fb394",
+     "name": "Jalen Lake",
+     "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "mean": 1.6,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "c416fd86-90bd-11f1-b262-7b525a68ccc9",
+     "name": "Thomas Rönnholm",
+     "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "mean": 0.6,
+     "p10": 0,
+     "p90": 2
+    },
+    {
+     "id": "370699bb-90bf-11f1-8fe8-dbbd8242dc7e",
+     "name": "Aatu Aropelto",
+     "team": "d31984cb-90a6-11f1-997e-e7d7c2463142",
+     "mean": 0.1,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "f502dce4-aae3-11f1-ae08-894bb12a0def",
+     "name": "Devin Tillis",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 19.5,
+     "p10": 11,
+     "p90": 28
+    },
+    {
+     "id": "42818ee5-90bb-11f1-8344-d936dd1c73f2",
+     "name": "Jalen Jackson",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 12.8,
+     "p10": 6,
+     "p90": 20
+    },
+    {
+     "id": "390fa980-aae4-11f1-88b9-1dd105afe284",
+     "name": "Thomas Murr",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 19.3,
+     "p10": 10,
+     "p90": 29
+    },
+    {
+     "id": "18d99789-90be-11f1-9c3c-5d5f4f976a20",
+     "name": "Rasmus Lindberg",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 11.1,
+     "p10": 4,
+     "p90": 19
+    },
+    {
+     "id": "43b817ee-90bc-11f1-b5b8-8793bc36545e",
+     "name": "Trey Niemi",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 6.2,
+     "p10": 0,
+     "p90": 13
+    },
+    {
+     "id": "fe6ebefa-90b9-11f1-a987-1f9f65ff4cc1",
+     "name": "Bojan Sarcévic",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 8.6,
+     "p10": 3,
+     "p90": 15
+    },
+    {
+     "id": "6d86faaf-90bd-11f1-9067-31ded31f16e5",
+     "name": "Roni Ahvenjärvi",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 1.7,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "8c05f590-90bd-11f1-bab5-95de893ea309",
+     "name": "Kion Williams",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 1.8,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "f899ea71-aae3-11f1-a85e-09a07a165553",
+     "name": "Garry Clark",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 2.5,
+     "p10": 0,
+     "p90": 8
+    },
+    {
+     "id": "63fc2a25-90bb-11f1-aa48-27f2444e308f",
+     "name": "Joni Herrala",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 0.6,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "c5892cdb-90bc-11f1-b8c9-af3c0b98eadb",
+     "name": "Eetu Lähdetniemi",
+     "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
+     "mean": 0.2,
+     "p10": 0,
+     "p90": 0
+    }
+   ]
+  },
+  "1006025": {
+   "match": {
+    "id": "1006025",
+    "date": "2026-11-07",
+    "time": "16:00:00",
+    "venue": "Äänekoski Areena Pankkari",
+    "home": {
+     "id": "815439d4-b169-11f1-bc74-593eff165a09",
+     "name": "Kipinä Basket"
+    },
+    "away": {
+     "id": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "name": "Salon Vilpas"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-27",
+   "published_at": "2026-10-27T20:38:56+00:00",
+   "home_win_probability": 0.598,
+   "mean_score": {
+    "815439d4-b169-11f1-bc74-593eff165a09": 93.2,
+    "d350dc31-90a6-11f1-9e5e-e7d7c2463142": 89.7
+   },
+   "margin": {
+    "mean": 3.6,
+    "p10": -16,
+    "p90": 24
+   },
+   "overtime_probability": 0.023,
+   "players": [
+    {
+     "id": "6cb2f3be-90bd-11f1-a1c6-31ded31f16e5",
+     "name": "Jalen McCoy",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 21.0,
+     "p10": 13,
+     "p90": 29
+    },
+    {
+     "id": "84e2074b-b169-11f1-984b-15001704dc97",
+     "name": "Derrin Boyd",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 19.4,
+     "p10": 11,
+     "p90": 28
+    },
+    {
+     "id": "ae42289d-90ba-11f1-8f7c-e7350f4a6e12",
+     "name": "Topias Kuukkanen",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 12.4,
+     "p10": 5,
+     "p90": 20
+    },
+    {
+     "id": "f2c5e6a7-90bc-11f1-ab3c-c13ce11da02d",
+     "name": "Jake Hilmer",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 14.4,
+     "p10": 7,
+     "p90": 22
+    },
+    {
+     "id": "3e4c526a-90bc-11f1-98a2-09086e96cf2a",
+     "name": "Hannes Pöllä",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 15.4,
+     "p10": 8,
+     "p90": 25
+    },
+    {
+     "id": "87041e33-b169-11f1-ba17-05d216676cba",
+     "name": "Tristan Smith",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 4.8,
+     "p10": 0,
+     "p90": 11
+    },
+    {
+     "id": "e5882668-90bd-11f1-b7ef-d7c486996b5f",
+     "name": "Daniel Rantapaju",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 2.2,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "35e6a4bc-90be-11f1-855b-8fd4205740a9",
+     "name": "Roope Filtness",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 1.7,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "c4a0048c-90bc-11f1-a1be-af3c0b98eadb",
+     "name": "Eemeli Laaksonen",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 1.3,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "cb066764-90bc-11f1-bcaa-e795959ab3d5",
+     "name": "Ville Virtaharju",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 0.6,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "f093e76f-90be-11f1-8d7a-713ca2bbccaa",
+     "name": "Eetu Viiru",
+     "team": "815439d4-b169-11f1-bc74-593eff165a09",
+     "mean": 0.0,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "2b7bd981-a775-11f1-b862-6dd9293707cf",
+     "name": "Leland Walker",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 23.9,
+     "p10": 14,
+     "p90": 34
+    },
+    {
+     "id": "279f75c5-a775-11f1-ba6f-c9abd216b085",
+     "name": "Karl Chavis",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 13.7,
+     "p10": 7,
+     "p90": 22
+    },
+    {
+     "id": "631124bc-90bb-11f1-ad96-27f2444e308f",
+     "name": "Mikael Aalto",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 17.5,
+     "p10": 9,
+     "p90": 27
+    },
+    {
+     "id": "29ba5392-a775-11f1-868a-6dd9293707cf",
+     "name": "Dj Jeffries",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 6.5,
+     "p10": 0,
+     "p90": 13
+    },
+    {
+     "id": "6ba4bef2-90bc-11f1-b099-6f6630263df7",
+     "name": "Eero Innamaa",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 3.3,
+     "p10": 0,
+     "p90": 8
+    },
+    {
+     "id": "759cbe3a-90bd-11f1-9758-bf766ef3e20b",
+     "name": "Sebastian Lindberg",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 8.9,
+     "p10": 3,
+     "p90": 16
+    },
+    {
+     "id": "0f0163c4-90bc-11f1-81ce-05157c8829f2",
+     "name": "Riku Laine",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 10.0,
+     "p10": 4,
+     "p90": 17
+    },
+    {
+     "id": "add7436f-90bd-11f1-9a1a-37aaf0479419",
+     "name": "Aamos Laavainen",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 1.5,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "3381a791-c932-11f1-9d1f-696b2260119e",
+     "name": "Jarred Godfrey",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 2.0,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "88368a5b-90be-11f1-9c74-b9d3b0a6c9e2",
+     "name": "Simeon Stefanovic",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 1.6,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "e3c26bf2-90b9-11f1-9f1e-a19776e4ef59",
+     "name": "Mikko Koivisto",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 0.6,
+     "p10": 0,
+     "p90": 2
+    },
+    {
+     "id": "171abdaf-90bf-11f1-bb67-1f5ab6163e2c",
+     "name": "Benjamin Granström",
+     "team": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+     "mean": 0.2,
+     "p10": 0,
+     "p90": 0
+    }
+   ]
+  },
+  "1006189": {
+   "match": {
+    "id": "1006189",
+    "date": "2026-11-07",
+    "time": "17:00:00",
+    "venue": "Espoonlahden urheiluhalli",
+    "home": {
+     "id": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "name": "Espoo Basket Team"
+    },
+    "away": {
+     "id": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+     "name": "Kouvottaret"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-25",
+   "published_at": "2026-10-25T17:56:13+00:00",
+   "home_win_probability": 0.741,
+   "mean_score": {
+    "d20fc495-90a6-11f1-8017-e7d7c2463142": 83.7,
+    "d2569c80-90a6-11f1-b52d-e7d7c2463142": 73.5
+   },
+   "margin": {
+    "mean": 10.3,
+    "p10": -9,
+    "p90": 30
+   },
+   "overtime_probability": 0.022,
+   "players": [
+    {
+     "id": "164ac9ef-90bf-11f1-9b48-1f5ab6163e2c",
+     "name": "Emili Melnikova",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 17.9,
+     "p10": 10,
+     "p90": 27
+    },
+    {
+     "id": "02439126-90bd-11f1-9900-e9a336bf1467",
+     "name": "Elli Salovaara",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 13.0,
+     "p10": 6,
+     "p90": 21
+    },
+    {
+     "id": "fd847bc7-90be-11f1-87ba-31ded31f16e5",
+     "name": "Nea Schreck",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 16.7,
+     "p10": 8,
+     "p90": 25
+    },
+    {
+     "id": "ec7ed40e-90bd-11f1-889f-5bafc2773088",
+     "name": "Kiia Mäntylä",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 13.7,
+     "p10": 6,
+     "p90": 22
+    },
+    {
+     "id": "167e643c-90bf-11f1-bf87-1f5ab6163e2c",
+     "name": "Adiisa Rinne",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 10.2,
+     "p10": 4,
+     "p90": 17
+    },
+    {
+     "id": "2ae72529-90bf-11f1-92ca-515875ef95f7",
+     "name": "Matilda Mainio",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 2.8,
+     "p10": 0,
+     "p90": 8
+    },
+    {
+     "id": "a7cfdab7-90be-11f1-8a54-13228fe003c9",
+     "name": "Sanni Nelskylä",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 1.6,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "517a716f-90be-11f1-b1eb-699532503340",
+     "name": "Esther Arial",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 1.7,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "fc8cb5f3-90be-11f1-b858-31ded31f16e5",
+     "name": "Hilla Mäkynen",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 1.5,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "5e2b874e-90be-11f1-8aad-2ffd388e433c",
+     "name": "Alli Niinistö",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 0.9,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "1d9109ea-90bf-11f1-8624-7104566eb116",
+     "name": "Alessia Kilpeläinen",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 0.9,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "57fddf41-90be-11f1-8d52-174497ca91c8",
+     "name": "Ella Vainio",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 0.8,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "b918b97b-90bf-11f1-a817-a3988146f1e6",
+     "name": "Rosa Saarimäki",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 0.7,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "1652de90-90bf-11f1-bbd7-1f5ab6163e2c",
+     "name": "OLIVIA TAMMILEHTO",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 0.7,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "aa19fed0-90bf-11f1-a3d8-d9c0ec8b687c",
+     "name": "Merit Kallis",
+     "team": "d20fc495-90a6-11f1-8017-e7d7c2463142",
+     "mean": 0.6,
+     "p10": 0,
+     "p90": 2
+    },
+    {
+     "id": "3f014d7d-90bd-11f1-a152-b9351c62770e",
+     "name": "Johanna Räty",
+     "team": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+     "mean": 8.4,
+     "p10": 3,
+     "p90": 15
+    },
+    {
+     "id": "d051fa0d-bb2a-11f1-8672-87bafd9c4eb1",
+     "name": "Kelly Moten",
+     "team": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+     "mean": 21.4,
+     "p10": 13,
+     "p90": 30
+    },
+    {
+     "id": "5abd665b-90bd-11f1-bba0-6dc09d38f92b",
+     "name": "Henriikka Vähäuski",
+     "team": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+     "mean": 10.3,
+     "p10": 3,
+     "p90": 17
+    },
+    {
+     "id": "224b3798-bb2b-11f1-9366-df82ac1db881",
+     "name": "Ayana Emmanuel",
+     "team": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+     "mean": 17.2,
+     "p10": 9,
+     "p90": 26
+    },
+    {
+     "id": "c38e5848-90bd-11f1-9b11-7b525a68ccc9",
+     "name": "Mimmi Kaulo",
+     "team": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+     "mean": 8.6,
+     "p10": 3,
+     "p90": 15
+    },
+    {
+     "id": "80bde8fc-90bc-11f1-a469-6724e60b9a02",
+     "name": "Jasmina Jones",
+     "team": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+     "mean": 2.7,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "5fb8fa0f-90bf-11f1-b0c5-3dc68df8a35d",
+     "name": "Lila Lampinen",
+     "team": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+     "mean": 2.3,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "688f4311-90bd-11f1-8224-73575e376a6e",
+     "name": "Elli Heikkilä",
+     "team": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+     "mean": 2.0,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "1f88c5bf-90bf-11f1-9595-7104566eb116",
+     "name": "Enni Luostarinen",
+     "team": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
+     "mean": 0.5,
+     "p10": 0,
+     "p90": 2
+    }
+   ]
+  },
+  "1006223": {
+   "match": {
+    "id": "1006223",
+    "date": "2026-11-07",
+    "time": "17:00:00",
+    "venue": "AGCO Power Arena",
+    "home": {
+     "id": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+     "name": "BC Nokia"
+    },
+    "away": {
+     "id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "name": "Tapiolan Honka"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-25",
+   "published_at": "2026-10-25T17:56:13+00:00",
+   "home_win_probability": 0.7,
+   "mean_score": {
+    "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142": 77.9,
+    "d239f658-90a6-11f1-bea9-e7d7c2463142": 68.6
+   },
+   "margin": {
+    "mean": 9.3,
+    "p10": -10,
+    "p90": 30
+   },
+   "overtime_probability": 0.026,
+   "players": [
+    {
+     "id": "f1bb247c-90bd-11f1-ac51-4f8fabaf4a0e",
+     "name": "Anni Nurminen",
+     "team": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+     "mean": 9.2,
+     "p10": 4,
+     "p90": 16
+    },
+    {
+     "id": "5f19357c-90bc-11f1-9f21-9f45eff23255",
+     "name": "Cierra Walker",
+     "team": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+     "mean": 14.9,
+     "p10": 7,
+     "p90": 24
+    },
+    {
+     "id": "8e8bd0ae-b968-11f1-bba6-b31538bf0c7b",
+     "name": "Lauren Carter",
+     "team": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+     "mean": 17.4,
+     "p10": 10,
+     "p90": 26
+    },
+    {
+     "id": "93dacbdf-90be-11f1-8ee4-b9d3b0a6c9e2",
+     "name": "Venla Patrikainen",
+     "team": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+     "mean": 9.3,
+     "p10": 3,
+     "p90": 16
+    },
+    {
+     "id": "72f884e7-90bf-11f1-9198-f3e0ee38e95c",
+     "name": "Maija Honkonen",
+     "team": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+     "mean": 11.5,
+     "p10": 5,
+     "p90": 19
+    },
+    {
+     "id": "cf28d5ff-b968-11f1-a300-9bd9497afdf3",
+     "name": "Brianna Scott",
+     "team": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+     "mean": 5.9,
+     "p10": 0,
+     "p90": 13
+    },
+    {
+     "id": "ce076870-90bf-11f1-b89b-057c596d8bba",
+     "name": "Lisa Camara",
+     "team": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+     "mean": 4.9,
+     "p10": 0,
+     "p90": 11
+    },
+    {
+     "id": "cadfb0d4-90be-11f1-94a8-699532503340",
+     "name": "Mona Etu-Seppälä",
+     "team": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+     "mean": 2.1,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "84fd45d0-90bf-11f1-9edc-df5a7344780a",
+     "name": "Elli Riihelä",
+     "team": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+     "mean": 2.0,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "a10da6f8-90be-11f1-9492-f55c6a1f11ab",
+     "name": "Alina Ahonen",
+     "team": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+     "mean": 0.5,
+     "p10": 0,
+     "p90": 2
+    },
+    {
+     "id": "da2b5a61-90bd-11f1-ae42-23575df7f55b",
+     "name": "Viivi Niskanen",
+     "team": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
+     "mean": 0.0,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "bf77ac5d-90bf-11f1-8197-7f2d70fdcfec",
+     "name": "Sanni Mäkinen",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 5.5,
+     "p10": 0,
+     "p90": 11
+    },
+    {
+     "id": "295047b1-90bd-11f1-8b04-d1b26dd8807a",
+     "name": "Saga Ukkonen",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 11.3,
+     "p10": 5,
+     "p90": 19
+    },
+    {
+     "id": "45d4e94b-90bd-11f1-bfd6-c73957d2f288",
+     "name": "Maija Kuisma",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 8.2,
+     "p10": 2,
+     "p90": 14
+    },
+    {
+     "id": "bdffb17d-90bc-11f1-bdfe-916f627ff7ec",
+     "name": "Ronja Orpo",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 11.4,
+     "p10": 4,
+     "p90": 19
+    },
+    {
+     "id": "540c2922-90bf-11f1-a71e-0d6fa49bbe21",
+     "name": "Ida Riihijärvi",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 9.3,
+     "p10": 3,
+     "p90": 16
+    },
+    {
+     "id": "10cdb07f-90bd-11f1-9539-7b8c3a749dc5",
+     "name": "Carolina Kert",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 3.2,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "2aabf0c9-90bf-11f1-8a9b-515875ef95f7",
+     "name": "Lotta Tyynilä",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 9.5,
+     "p10": 4,
+     "p90": 16
+    },
+    {
+     "id": "6c0d90ce-90be-11f1-b03f-8b7b745739af",
+     "name": "Ella Sahuri",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 2.9,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "7a24b37e-90be-11f1-beed-9339b75ea0b9",
+     "name": "Chalina Mäkelä",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 3.4,
+     "p10": 0,
+     "p90": 9
+    },
+    {
+     "id": "19c35381-90be-11f1-8d32-5d5f4f976a20",
+     "name": "Peppi Lohko",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 2.2,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "f1ed659b-90bd-11f1-8508-4f8fabaf4a0e",
+     "name": "Mette Nurminen",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 1.0,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "4d4cc2df-90bf-11f1-8d4e-85b9a01ea999",
+     "name": "Mona Kettunen",
+     "team": "d239f658-90a6-11f1-bea9-e7d7c2463142",
+     "mean": 0.7,
+     "p10": 0,
+     "p90": 3
+    }
+   ]
+  },
+  "1005923": {
+   "match": {
+    "id": "1005923",
+    "date": "2026-11-08",
+    "time": "16:00:00",
+    "venue": "Pyynikin palloiluhalli",
+    "home": {
+     "id": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "name": "Tampereen Pyrintö"
+    },
+    "away": {
+     "id": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "name": "Bisons Loimaa"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-27",
+   "published_at": "2026-10-27T20:38:56+00:00",
+   "home_win_probability": 0.68,
+   "mean_score": {
+    "d35a3d28-90a6-11f1-a47f-e7d7c2463142": 86.7,
+    "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1": 79.5
+   },
+   "margin": {
+    "mean": 7.3,
+    "p10": -11,
+    "p90": 27
+   },
+   "overtime_probability": 0.019,
+   "players": [
+    {
+     "id": "f052dc9d-ac83-11f1-8140-e359daa5ceb4",
+     "name": "Jamal West Jr.",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 21.0,
+     "p10": 13,
+     "p90": 30
+    },
+    {
+     "id": "ef3d1fa8-ac83-11f1-96a9-fb562df9b9a1",
+     "name": "Jordan Mason",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 21.2,
+     "p10": 12,
+     "p90": 30
+    },
+    {
+     "id": "52d0fe47-90bd-11f1-903d-fdb6131f8409",
+     "name": "Valtteri Mervola",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 5.3,
+     "p10": 0,
+     "p90": 11
+    },
+    {
+     "id": "fa6bf28d-90bd-11f1-87bb-a1f0b16090d5",
+     "name": "Erik Muhonen",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 11.1,
+     "p10": 4,
+     "p90": 18
+    },
+    {
+     "id": "953e165f-90bb-11f1-b3ee-2b2f17cdb034",
+     "name": "SHAWN HOPKINS",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 13.3,
+     "p10": 6,
+     "p90": 21
+    },
+    {
+     "id": "27296292-90bd-11f1-8c85-d1b26dd8807a",
+     "name": "Joona Hakamaa",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 2.9,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "9122b8a8-90bd-11f1-a737-9d9b6f578d5a",
+     "name": "Otto Räisänen",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 8.1,
+     "p10": 2,
+     "p90": 14
+    },
+    {
+     "id": "a6263fc6-bbd6-11f1-885f-6b47e880c0ea",
+     "name": "Duane Posey",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 2.2,
+     "p10": 0,
+     "p90": 7
+    },
+    {
+     "id": "19733281-90be-11f1-819d-5d5f4f976a20",
+     "name": "Kalle Mattila",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 1.2,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "94247e57-90be-11f1-b7c8-b9d3b0a6c9e2",
+     "name": "Jaakko Nieminen",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 0.5,
+     "p10": 0,
+     "p90": 2
+    },
+    {
+     "id": "a84338ea-90be-11f1-b8de-13228fe003c9",
+     "name": "Ville-Pekka Eskelinen",
+     "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
+     "mean": 0.0,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "4514784c-90bc-11f1-892c-8793bc36545e",
+     "name": "Roydell Brown",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 14.9,
+     "p10": 8,
+     "p90": 22
+    },
+    {
+     "id": "c99140c3-90bb-11f1-b302-1d8434d82986",
+     "name": "Deshon Taylor",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 17.9,
+     "p10": 9,
+     "p90": 27
+    },
+    {
+     "id": "a35a4a00-90bb-11f1-a8fd-a923156cc791",
+     "name": "Javion Ogunyemi",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 13.4,
+     "p10": 7,
+     "p90": 21
+    },
+    {
+     "id": "c8b53068-90bb-11f1-831f-1d8434d82986",
+     "name": "Aapeli Alanen",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 13.9,
+     "p10": 6,
+     "p90": 22
+    },
+    {
+     "id": "ce9eae2b-90bb-11f1-9cdf-e9ae9e26fc7d",
+     "name": "FIIFI AIDOO",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 10.9,
+     "p10": 4,
+     "p90": 18
+    },
+    {
+     "id": "f1abff67-90bc-11f1-8c2c-c13ce11da02d",
+     "name": "Ville Tahvanainen",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 3.5,
+     "p10": 0,
+     "p90": 9
+    },
+    {
+     "id": "d36d484b-90bd-11f1-af79-2feb4d029b30",
+     "name": "Ville Karhu",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 1.4,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "2457c538-a85c-11f1-bf81-1579ec539163",
+     "name": "Tehree Horn",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 1.8,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "3ad1572d-adab-11f1-9d97-739172e87e08",
+     "name": "AJ Harris II",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 1.3,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "e564c0a5-90bd-11f1-8a27-d7c486996b5f",
+     "name": "Onni Mäkynen",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 0.3,
+     "p10": 0,
+     "p90": 0
+    },
+    {
+     "id": "06148f5a-90be-11f1-b98f-63f25f046c80",
+     "name": "Niko Mykrä",
+     "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+     "mean": 0.1,
+     "p10": 0,
+     "p90": 0
+    }
+   ]
+  },
+  "1006213": {
+   "match": {
+    "id": "1006213",
+    "date": "2026-11-08",
+    "time": "15:00:00",
+    "venue": "Urhea-halli",
+    "home": {
+     "id": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "name": "HBA-Märsky"
+    },
+    "away": {
+     "id": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "name": "Tampereen Pyrintö"
+    }
+   },
+   "model": "player-sim-v1",
+   "data_cutoff": "2026-10-25",
+   "published_at": "2026-10-25T17:56:13+00:00",
+   "home_win_probability": 0.759,
+   "mean_score": {
+    "d244ed43-90a6-11f1-833b-e7d7c2463142": 78.6,
+    "d307acab-90a6-11f1-88bf-e7d7c2463142": 68.2
+   },
+   "margin": {
+    "mean": 10.5,
+    "p10": -9,
+    "p90": 29
+   },
+   "overtime_probability": 0.015,
+   "players": [
+    {
+     "id": "d5d80bed-90be-11f1-92a8-2dc165e7f1b2",
+     "name": "Tiia Talonen",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 14.4,
+     "p10": 7,
+     "p90": 22
+    },
+    {
+     "id": "e3d248a5-90be-11f1-82ef-73883e79fac1",
+     "name": "Eevi Seppä",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 11.9,
+     "p10": 5,
+     "p90": 19
+    },
+    {
+     "id": "2c6d50fe-90bf-11f1-9c4e-515875ef95f7",
+     "name": "Jessi Nenonen",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 14.6,
+     "p10": 7,
+     "p90": 23
+    },
+    {
+     "id": "0ff1d72f-90bf-11f1-be89-31ded31f16e5",
+     "name": "Aluel Machol",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 12.1,
+     "p10": 6,
+     "p90": 19
+    },
+    {
+     "id": "02f00705-90bf-11f1-8a81-afaea9d0f10f",
+     "name": "Anna Gardziella",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 4.4,
+     "p10": 0,
+     "p90": 10
+    },
+    {
+     "id": "b5fa7db0-90be-11f1-88d4-6b2027ef299b",
+     "name": "Duaa Aden",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 3.7,
+     "p10": 0,
+     "p90": 9
+    },
+    {
+     "id": "1f9bbb22-90bf-11f1-a972-7104566eb116",
+     "name": "Aino Koskela",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 3.1,
+     "p10": 0,
+     "p90": 8
+    },
+    {
+     "id": "53c1ab90-90bf-11f1-a541-0d6fa49bbe21",
+     "name": "Joella Rasanen",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 2.0,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "a0c836be-90be-11f1-911e-f55c6a1f11ab",
+     "name": "Ada Luukkanen",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 8.0,
+     "p10": 2,
+     "p90": 14
+    },
+    {
+     "id": "793f6d2f-90bf-11f1-9dbc-f9bd2f996dfd",
+     "name": "Veronika Nanje",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 1.6,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "2a5a38bc-90bf-11f1-9f47-515875ef95f7",
+     "name": "Mona Pasanen",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 1.3,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "b043f1e4-90bf-11f1-af3f-8366bf5442cb",
+     "name": "Aida Kimario",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 1.0,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "c470e1d1-90be-11f1-bdec-99f5e03a6b84",
+     "name": "Eevi Haveri",
+     "team": "d244ed43-90a6-11f1-833b-e7d7c2463142",
+     "mean": 0.4,
+     "p10": 0,
+     "p90": 1
+    },
+    {
+     "id": "f3ee9fc8-90bd-11f1-a9fa-4f8fabaf4a0e",
+     "name": "Kenisha Williams",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 15.3,
+     "p10": 8,
+     "p90": 23
+    },
+    {
+     "id": "36cc6dd8-90bc-11f1-9be0-05157c8829f2",
+     "name": "Niina Sedano",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 9.8,
+     "p10": 4,
+     "p90": 16
+    },
+    {
+     "id": "eedffa14-90bb-11f1-8d0f-51139916104b",
+     "name": "Ninni Salmi",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 11.5,
+     "p10": 4,
+     "p90": 19
+    },
+    {
+     "id": "8ca9f24f-90bd-11f1-8c77-95de893ea309",
+     "name": "Peppi Tyynilä",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 7.4,
+     "p10": 2,
+     "p90": 13
+    },
+    {
+     "id": "848420ff-90bf-11f1-99e1-df5a7344780a",
+     "name": "Martta Mattila",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 15.2,
+     "p10": 7,
+     "p90": 23
+    },
+    {
+     "id": "d967ba88-90bf-11f1-b14f-856a28018d0a",
+     "name": "Mariam Sarumi",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 1.8,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "d07fac4d-90be-11f1-a798-1550020fb2b2",
+     "name": "Nessa Etu-Seppälä",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 1.1,
+     "p10": 0,
+     "p90": 4
+    },
+    {
+     "id": "1e92d90a-90bf-11f1-bc2e-7104566eb116",
+     "name": "Alina Nikkilä",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 1.3,
+     "p10": 0,
+     "p90": 5
+    },
+    {
+     "id": "7d178d78-90bd-11f1-b25f-59500384dde4",
+     "name": "Saana Kujala",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 1.7,
+     "p10": 0,
+     "p90": 6
+    },
+    {
+     "id": "a88d047f-90be-11f1-abb8-13228fe003c9",
+     "name": "Ella Mähönen",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 0.9,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "bb4c762b-90be-11f1-80a5-6b2027ef299b",
+     "name": "Hanna Taponen",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 0.8,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "c55cb61d-90bd-11f1-b6a3-7b525a68ccc9",
+     "name": "Sara-Sofia Mikkonen",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 0.7,
+     "p10": 0,
+     "p90": 3
+    },
+    {
+     "id": "059b1020-90be-11f1-9324-63f25f046c80",
+     "name": "Sara Himanen",
+     "team": "d307acab-90a6-11f1-88bf-e7d7c2463142",
+     "mean": 0.6,
+     "p10": 0,
+     "p90": 3
+    }
+   ]
+  }
+ }
+}
