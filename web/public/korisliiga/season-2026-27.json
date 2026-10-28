@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "season_id": "huki2627",
-  "updated_at": "2026-10-28T00:03:30.741567+00:00",
+  "updated_at": "2026-10-28T12:56:36.827063+00:00",
   "source_url": "https://tulospalvelu.basket.fi/",
   "schedule": [
     {
@@ -16503,8 +16503,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005837/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-26T21:36:44Z",
-        "payload_sha256": "3f5ff0ff9858d0d95c279d1f2214696ae6735aaa2e97c481a6ff762c3d084f2f"
+        "ingested_at_utc": "2026-10-28T12:55:34Z",
+        "payload_sha256": "be1af5bf6b7fe6778e6f19d035e1e3fef613a7600f7ff6da3656d97cc6eafa14"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -17371,7 +17371,7 @@
             },
             {
               "source_player_id": "ce9eae2b-90bb-11f1-9cdf-e9ae9e26fc7d",
-              "display_name": "FIIFI AIDOO",
+              "display_name": "Fiifi Aidoo",
               "team_source_id": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
               "jersey_number": "88",
               "starter": false,
@@ -38359,8 +38359,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005888/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-26T21:38:19Z",
-        "payload_sha256": "77686ffc1eb2bd8ea716fb0b2e296009e66e73cc0da02c5aa376ed6e926db2ad"
+        "ingested_at_utc": "2026-10-28T12:55:58Z",
+        "payload_sha256": "41d03c29b1e547825b32eb4d9f5104c09a763b48c35bee9b1c3241bb617096b8"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -39336,8 +39336,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005921/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-26T21:38:24Z",
-        "payload_sha256": "26ca7d61c78bd32a4a41f8a7469e5edc9d4978858a4f88dd9d7a13c745224a2d"
+        "ingested_at_utc": "2026-10-28T12:56:04Z",
+        "payload_sha256": "4664c87ab1570d6dd8dd180f737f6b8cf72ae1a224aa7cc636efa3b91e746498"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -39691,7 +39691,7 @@
             },
             {
               "source_player_id": "953e165f-90bb-11f1-b3ee-2b2f17cdb034",
-              "display_name": "SHAWN HOPKINS",
+              "display_name": "Shawn Hopkins",
               "team_source_id": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
               "jersey_number": "11",
               "starter": true,
@@ -40436,8 +40436,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005855/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-26T21:38:29Z",
-        "payload_sha256": "841d2b1aee88138e75d4e9785ae8e3a2847b32a24a921b1518330e2586bfe1e8"
+        "ingested_at_utc": "2026-10-28T12:56:09Z",
+        "payload_sha256": "a3bf0610867724b4b9d8731a0f66d23975290dbc886d1fb07e35bba3ff9d7db3"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -40873,7 +40873,7 @@
             },
             {
               "source_player_id": "ce9eae2b-90bb-11f1-9cdf-e9ae9e26fc7d",
-              "display_name": "FIIFI AIDOO",
+              "display_name": "Fiifi Aidoo",
               "team_source_id": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
               "jersey_number": "88",
               "starter": true,
@@ -41468,7 +41468,7 @@
             },
             {
               "source_player_id": "fe6ebefa-90b9-11f1-a987-1f9f65ff4cc1",
-              "display_name": "Bojan Sarcévic",
+              "display_name": "Bojan Sarcevic",
               "team_source_id": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
               "jersey_number": "7",
               "starter": false,
@@ -41577,8 +41577,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005839/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-26T21:38:35Z",
-        "payload_sha256": "01a990f73ba569bf7d3f46178a682d29452f7d4dfae995257b879e885d86dc1e"
+        "ingested_at_utc": "2026-10-28T12:56:12Z",
+        "payload_sha256": "ac2573470587ce649de1452781898a9eac3f9a6d73c2622c9ec8f297c1272238"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -42445,7 +42445,7 @@
             },
             {
               "source_player_id": "8a49a8f9-90bd-11f1-984c-95de893ea309",
-              "display_name": "EEMI LUUKKONEN",
+              "display_name": "Eemi Luukkonen",
               "team_source_id": "d296e502-90a6-11f1-bf89-e7d7c2463142",
               "jersey_number": "7",
               "starter": false,
@@ -42677,8 +42677,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005955/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-26T21:38:40Z",
-        "payload_sha256": "9149bf51ec1ec497dc651300be5d64befabaa76fd23eba4b2ef3516cd60d12b1"
+        "ingested_at_utc": "2026-10-28T12:56:17Z",
+        "payload_sha256": "6b1a5179cfa103a92fa901ba8cb0736f63f66e62aa23cb5b3687e6e46e6ddddb"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -43654,8 +43654,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1006007/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-26T21:38:44Z",
-        "payload_sha256": "425a13b02b7071f838b434d713eeef5d86cb967998001ec71b6c32c679820ae7"
+        "ingested_at_utc": "2026-10-28T12:56:22Z",
+        "payload_sha256": "7fd8eb291a6f498caf10365c58c7844733d1d6b76cec98fa0d0e602abb409215"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -44091,7 +44091,7 @@
             },
             {
               "source_player_id": "fe6ebefa-90b9-11f1-a987-1f9f65ff4cc1",
-              "display_name": "Bojan Sarcévic",
+              "display_name": "Bojan Sarcevic",
               "team_source_id": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
               "jersey_number": "7",
               "starter": true,
@@ -44481,7 +44481,7 @@
             },
             {
               "source_player_id": "ce9eae2b-90bb-11f1-9cdf-e9ae9e26fc7d",
-              "display_name": "FIIFI AIDOO",
+              "display_name": "Fiifi Aidoo",
               "team_source_id": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
               "jersey_number": "88",
               "starter": true,
@@ -44672,8 +44672,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005973/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-26T21:38:49Z",
-        "payload_sha256": "8484a5ae6f3801d2e015c064174afc7cf412fec1830acfc1a7143fbd88a90d5a"
+        "ingested_at_utc": "2026-10-28T12:56:27Z",
+        "payload_sha256": "d7b7020bc377eda2984b761365b83fd737991296e37f9d7979802887ca23dab2"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -45499,7 +45499,7 @@
             },
             {
               "source_player_id": "ae42289d-90ba-11f1-8f7c-e7350f4a6e12",
-              "display_name": "TOPIAS KUUKKANEN",
+              "display_name": "Topias Kuukkanen",
               "team_source_id": "815439d4-b169-11f1-bc74-593eff165a09",
               "jersey_number": "23",
               "starter": true,
@@ -45772,8 +45772,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005904/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-26T21:38:54Z",
-        "payload_sha256": "8e75d5e2c8e7526f71f81e62065436591a565d92d7c3dc13acad821a207beb56"
+        "ingested_at_utc": "2026-10-28T12:56:32Z",
+        "payload_sha256": "a2b8e63c8cd9c0514f3b7ebad3e72bb62df310fde3d0f1a18588f48dbec59d50"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -46517,7 +46517,7 @@
             },
             {
               "source_player_id": "953e165f-90bb-11f1-b3ee-2b2f17cdb034",
-              "display_name": "SHAWN HOPKINS",
+              "display_name": "Shawn Hopkins",
               "team_source_id": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
               "jersey_number": "11",
               "starter": true,
@@ -46790,8 +46790,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005939/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-26T21:38:59Z",
-        "payload_sha256": "bca88f88d06737084b090dfe36764da06c21fe34128ff36c501fca50865120e1"
+        "ingested_at_utc": "2026-10-28T12:56:34Z",
+        "payload_sha256": "e4f364d53826a43745037ba539624f6ddb5b30740ff1aa023ab1f40ed16128b9"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -47022,7 +47022,7 @@
             },
             {
               "source_player_id": "29ba5392-a775-11f1-868a-6dd9293707cf",
-              "display_name": "DJ Jeffries",
+              "display_name": "Dj Jeffries",
               "team_source_id": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
               "jersey_number": "3",
               "starter": false,
@@ -50126,9 +50126,9 @@
   "summary": {
     "available_played_games": 42,
     "requested_games": 42,
-    "fetched_games": 32,
-    "failed_games": 10,
-    "cached_games": 2,
+    "fetched_games": 42,
+    "failed_games": 0,
+    "cached_games": 32,
     "valid_games": 42,
     "invalid_games": 0
   },
@@ -50970,46 +50970,5 @@
       }
     }
   },
-  "failures": [
-    {
-      "source_match_id": "1005837",
-      "error": "BasketFiError: Basket.fi request failed for getMatch: HTTP Error 521: <none>"
-    },
-    {
-      "source_match_id": "1005888",
-      "error": "BasketFiError: Basket.fi request failed for getMatch: HTTP Error 401: Unauthorized"
-    },
-    {
-      "source_match_id": "1005921",
-      "error": "BasketFiError: Basket.fi request failed for getMatch: HTTP Error 401: Unauthorized"
-    },
-    {
-      "source_match_id": "1005855",
-      "error": "BasketFiError: Basket.fi request failed for getMatch: HTTP Error 401: Unauthorized"
-    },
-    {
-      "source_match_id": "1005839",
-      "error": "BasketFiError: Basket.fi request failed for getMatch: HTTP Error 401: Unauthorized"
-    },
-    {
-      "source_match_id": "1005955",
-      "error": "BasketFiError: Basket.fi request failed for getMatch: HTTP Error 401: Unauthorized"
-    },
-    {
-      "source_match_id": "1006007",
-      "error": "BasketFiError: Basket.fi request failed for getMatch: HTTP Error 401: Unauthorized"
-    },
-    {
-      "source_match_id": "1005973",
-      "error": "BasketFiError: Basket.fi request failed for getMatch: HTTP Error 401: Unauthorized"
-    },
-    {
-      "source_match_id": "1005904",
-      "error": "BasketFiError: Basket.fi request failed for getMatch: HTTP Error 401: Unauthorized"
-    },
-    {
-      "source_match_id": "1005939",
-      "error": "BasketFiError: Basket.fi request failed for getMatch: HTTP Error 401: Unauthorized"
-    }
-  ]
+  "failures": []
 }

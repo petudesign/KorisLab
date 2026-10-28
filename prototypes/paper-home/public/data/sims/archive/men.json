@@ -3232,7 +3232,7 @@
    },
    "model": "player-sim-v1",
    "data_cutoff": "2026-10-27",
-   "published_at": "2026-10-27T20:38:56+00:00",
+   "published_at": "2026-10-28T14:57:18+02:00",
    "home_win_probability": 0.473,
    "mean_score": {
     "d33f4cac-90a6-11f1-b66d-e7d7c2463142": 88.2,
@@ -3367,7 +3367,7 @@
     },
     {
      "id": "fe6ebefa-90b9-11f1-a987-1f9f65ff4cc1",
-     "name": "Bojan Sarcévic",
+     "name": "Bojan Sarcevic",
      "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
      "mean": 9.2,
      "p10": 3,
@@ -3632,7 +3632,7 @@
    },
    "model": "player-sim-v1",
    "data_cutoff": "2026-10-27",
-   "published_at": "2026-10-27T20:38:56+00:00",
+   "published_at": "2026-10-28T14:57:18+02:00",
    "home_win_probability": 0.331,
    "mean_score": {
     "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc": 80.0,
@@ -3767,7 +3767,7 @@
     },
     {
      "id": "953e165f-90bb-11f1-b3ee-2b2f17cdb034",
-     "name": "SHAWN HOPKINS",
+     "name": "Shawn Hopkins",
      "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
      "mean": 13.1,
      "p10": 6,
@@ -3840,7 +3840,7 @@
    },
    "model": "player-sim-v1",
    "data_cutoff": "2026-10-27",
-   "published_at": "2026-10-27T20:38:56+00:00",
+   "published_at": "2026-10-28T14:57:18+02:00",
    "home_win_probability": 0.326,
    "mean_score": {
     "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1": 85.0,
@@ -3887,7 +3887,7 @@
     },
     {
      "id": "ce9eae2b-90bb-11f1-9cdf-e9ae9e26fc7d",
-     "name": "FIIFI AIDOO",
+     "name": "Fiifi Aidoo",
      "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
      "mean": 11.4,
      "p10": 5,
@@ -4888,7 +4888,7 @@
    },
    "model": "player-sim-v1",
    "data_cutoff": "2026-10-27",
-   "published_at": "2026-10-27T20:38:56+00:00",
+   "published_at": "2026-10-28T14:57:18+02:00",
    "home_win_probability": 0.746,
    "mean_score": {
     "d35a3d28-90a6-11f1-a47f-e7d7c2463142": 92.5,
@@ -4935,7 +4935,7 @@
     },
     {
      "id": "953e165f-90bb-11f1-b3ee-2b2f17cdb034",
-     "name": "SHAWN HOPKINS",
+     "name": "Shawn Hopkins",
      "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
      "mean": 14.3,
      "p10": 7,
@@ -5304,7 +5304,7 @@
    },
    "model": "player-sim-v1",
    "data_cutoff": "2026-10-27",
-   "published_at": "2026-10-27T20:38:56+00:00",
+   "published_at": "2026-10-28T14:57:18+02:00",
    "home_win_probability": 0.517,
    "mean_score": {
     "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1": 87.2,
@@ -5351,7 +5351,7 @@
     },
     {
      "id": "ce9eae2b-90bb-11f1-9cdf-e9ae9e26fc7d",
-     "name": "FIIFI AIDOO",
+     "name": "Fiifi Aidoo",
      "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
      "mean": 11.8,
      "p10": 5,
@@ -5504,7 +5504,7 @@
    },
    "model": "player-sim-v1",
    "data_cutoff": "2026-10-27",
-   "published_at": "2026-10-27T20:38:56+00:00",
+   "published_at": "2026-10-28T14:57:18+02:00",
    "home_win_probability": 0.525,
    "mean_score": {
     "d3631045-90a6-11f1-ab0a-e7d7c2463142": 83.6,
@@ -5559,7 +5559,7 @@
     },
     {
      "id": "fe6ebefa-90b9-11f1-a987-1f9f65ff4cc1",
-     "name": "Bojan Sarcévic",
+     "name": "Bojan Sarcevic",
      "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
      "mean": 8.4,
      "p10": 3,
@@ -6320,7 +6320,7 @@
    },
    "model": "player-sim-v1",
    "data_cutoff": "2026-10-27",
-   "published_at": "2026-10-27T20:38:56+00:00",
+   "published_at": "2026-10-28T14:57:18+02:00",
    "home_win_probability": 0.607,
    "mean_score": {
     "d31984cb-90a6-11f1-997e-e7d7c2463142": 88.0,
@@ -6463,7 +6463,7 @@
     },
     {
      "id": "fe6ebefa-90b9-11f1-a987-1f9f65ff4cc1",
-     "name": "Bojan Sarcévic",
+     "name": "Bojan Sarcevic",
      "team": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
      "mean": 8.6,
      "p10": 3,
@@ -7184,7 +7184,7 @@
    },
    "model": "player-sim-v1",
    "data_cutoff": "2026-10-27",
-   "published_at": "2026-10-27T20:38:56+00:00",
+   "published_at": "2026-10-28T14:57:18+02:00",
    "home_win_probability": 0.68,
    "mean_score": {
     "d35a3d28-90a6-11f1-a47f-e7d7c2463142": 86.7,
@@ -7231,7 +7231,7 @@
     },
     {
      "id": "953e165f-90bb-11f1-b3ee-2b2f17cdb034",
-     "name": "SHAWN HOPKINS",
+     "name": "Shawn Hopkins",
      "team": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
      "mean": 13.3,
      "p10": 6,
@@ -7319,7 +7319,7 @@
     },
     {
      "id": "ce9eae2b-90bb-11f1-9cdf-e9ae9e26fc7d",
-     "name": "FIIFI AIDOO",
+     "name": "Fiifi Aidoo",
      "team": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
      "mean": 10.9,
      "p10": 4,
