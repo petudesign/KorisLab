@@ -1,6 +1,6 @@
 import {useEffect} from 'react';
 import {t,useI18n} from './i18n';
-import {SITE_ORIGIN,scopeKey} from '../server/seo.mjs';
+import {SITE_ORIGIN,scopeKey,publicPath} from '../server/seo.mjs';
 export function useMetadata(title,description,scope,enabled=true,missing=false){
  const {language}=useI18n();
  useEffect(()=>{
@@ -17,7 +17,7 @@ export function useMetadata(title,description,scope,enabled=true,missing=false){
   set('description',translatedDescription);set('robots',robots);set('og:type','website',true);set('og:site_name','KorisLab',true);set('og:locale',language==='en'?'en_GB':'fi_FI',true);set('og:title',translatedTitle+' | KorisLab',true);set('og:description',translatedDescription,true);set('twitter:card','summary');set('twitter:title',translatedTitle+' | KorisLab');set('twitter:description',translatedDescription);
   let canonical=document.head.querySelector('link[rel="canonical"]'),ld=document.querySelector('#seo-structured');
   if(invalid){canonical?.remove();ld?.remove();document.head.querySelector('meta[property="og:url"]')?.remove();return;}
-  const url=SITE_ORIGIN+scopeKey(path,scope.seasonId,scope.leagueId);
+  const url=SITE_ORIGIN+publicPath(scopeKey(path,scope.seasonId,scope.leagueId));
   if(!canonical){canonical=document.createElement('link');canonical.rel='canonical';document.head.append(canonical);}canonical.href=url;set('og:url',url,true);
   // Server fact markup is retained only for its matching initial page. Never leave another player's JSON-LD behind after SPA navigation.
   if(ld?.getAttribute('data-canonical')!==url){ld?.remove();ld=document.createElement('script');ld.id='seo-structured';ld.type='application/ld+json';ld.dataset.canonical=url;ld.textContent=JSON.stringify({'@context':'https://schema.org','@type':'WebPage',url,name:translatedTitle,description:translatedDescription,inLanguage:language});document.head.append(ld);}
