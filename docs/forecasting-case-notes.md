@@ -419,3 +419,32 @@ Seuraava kokeilu kohdistuu suoraan virheanalyysin löydökseen: uusien
 kokoonpanojen joukkueille joukkuetason tuloskorjaus nykykauden otteluista, tai
 todennäköisyyksien kalibrointi. Kumpikin pitää lukita ennen 2025–26-vertailua
 samalla tavalla.
+
+## Naisten simulaattorin lukittu testi (KOR-15), 29.10.2026
+
+Sama ajallisesti oikea testi kuin miehillä (`python3 -m simulation.women_test`):
+kausi 2025–26, jokainen ottelu ennustetaan vain aiempien päivien datalla,
+kausi 2024–25 painolla 0,5. Priorit ovat lukitut v1-arvot, eli niitä ei ole
+säädetty naisten datalla. Ottelupäivät tulevat sivuston ottelutiedostoista,
+samasta lähteestä kuin Sim Studiossa. Mukana 83 ottelua, joissa kummallakin
+joukkueella oli viisi aiempaa ottelua.
+
+| Malli | Brier |
+| --- | --- |
+| Naisten lukittu piste-eromalli (women-margin-v1) | 0,1950 |
+| Elo k=32 | 0,2031 |
+| Pelaajasimulaattori v1 | 0,2103 |
+| 50/50 | 0,2500 |
+| Kotivoittojen osuus | 0,2535 |
+
+Suosikki voitti 55 ottelua 83:sta. Piste-eron keskivirhe 12,1 pistettä ja
+kokonaispisteet keskimäärin 1,8 liikaa. Kalibraatio: 0,6–0,8-ryhmässä arvio 70 %,
+toteuma 65 % (23 ottelua); 0,4–0,6-ryhmässä kotijoukkue voitti vain 37 %
+(27 ottelua), eli lähes tasaisiksi arvioiduissa otteluissa vierasjoukkue pärjäsi
+odotettua paremmin.
+
+Johtopäätös on sama kuin miehillä: simulaattori on selvästi sattumaa parempi,
+mutta ei vielä parempi kuin yksinkertaiset joukkuetason mallit. Naisten sarjassa
+erot joukkueiden välillä ovat suurempia, joten kaikki mallit osuvat paremmin
+kuin miehillä. Tallenne: `learning/forecasting/results/player-sim-women-v1.json`.
+Sim Studion naisten selitysteksti päivitettiin vastaamaan tulosta.

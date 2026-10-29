@@ -105,7 +105,7 @@ Lähteen sisältö, käyttöehdot ja riskit on kuvattu tiedostossa [`DATA_AUDIT.
 
 [Sim Studio](https://korislab.vercel.app/sim/) simuloi seuraavan kahden viikon ottelut 1 000 kertaa per ottelu. Ottelu pelataan hallinta kerrallaan oikeilla pelaajilla: data määrää, kuka toimii, mistä hän heittää, millä onnistumisella ja kenelle syöttää. Pienet otokset kutistetaan kohti sarjan keskitasoa.
 
-Mallien luotettavuus mitataan ajallisesti oikeilla testeillä, eli ennuste tehdään vain sitä edeltäneellä datalla. Parametrit lukitaan ennen vertailua. Kaudella 2025–26 (161 ottelua) miesten simulaattorin Brier oli 0,2382, Elon 0,2386 ja lukitun piste-eromallin 0,2329. Simulaattori on siis hyvin kalibroitu, mutta ei vielä ennusta voittajaa muita paremmin. Kokeet, tulokset ja päätökset on kirjattu tiedostoon [`docs/forecasting-case-notes.md`](docs/forecasting-case-notes.md). Naisten mallia ei ole vielä testattu erikseen.
+Mallien luotettavuus mitataan ajallisesti oikeilla testeillä, eli ennuste tehdään vain sitä edeltäneellä datalla. Parametrit lukitaan ennen vertailua. Kaudella 2025–26 (161 ottelua) miesten simulaattorin Brier oli 0,2382, Elon 0,2386 ja lukitun piste-eromallin 0,2329. Simulaattori on siis hyvin kalibroitu, mutta ei vielä ennusta voittajaa muita paremmin. Kokeet, tulokset ja päätökset on kirjattu tiedostoon [`docs/forecasting-case-notes.md`](docs/forecasting-case-notes.md). Naisten Korisliigan samassa testissä (2025–26, 83 ottelua) simulaattorin Brier oli 0,210, Elon 0,203 ja naisten lukitun piste-eromallin 0,195.
 
 Pelaajien liike kentällä on havainnollistus, joka perustuu pelaajien omiin heittopaikkoihin, ei seurantadataa. Oikea liike on tarkoitus tuoda myöhemmin [Vire](https://github.com/petudesign/Vire)-videoanalyysimoottorista.
 
