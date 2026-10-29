@@ -1,8 +1,8 @@
 """Parallel walk-forward runs of the player simulator, keeping each game's full margin distribution.
 
 Same rule as `simulation.backtest`: a game is predicted from games on earlier days only. Days are
-independent once their history is fixed, so they run in separate processes. `priors` overrides
-entries of `player_sim.PRIORS` for a tuning run; the defaults are the locked values.
+independent once their history is fixed, so they run in separate processes. `priors` and `form` override
+entries of `player_sim.PRIORS` and `player_sim.FORM` for a tuning run; the defaults are the locked values.
 """
 from collections import defaultdict
 from concurrent.futures import ProcessPoolExecutor
@@ -20,8 +20,9 @@ def _init(history, target):
 
 
 def _day(args):
-    day, simulations, priors = args
+    day, simulations, priors, form = args
     player_sim.PRIORS.update(priors or {})
+    player_sim.FORM.update(form or {})
     earlier = [g for g in _history if g["date"] < day] + sorted((g for g in _target if g["date"] < day), key=lambda g: g["date"])
     if not earlier:
         return {}
@@ -36,22 +37,36 @@ def _day(args):
             continue
         results = [simulator.play(seed) for seed in range(simulations)]
         margins = sorted(r["score"][game["home"]] - r["score"][away] for r in results)
-        points = defaultdict(float)
-        for result in results:
-            for pid, values in result["stats"].items():
-                points[pid] += values.get("points", 0) / simulations
+        roster = [pid for team in (game["home"], away) for pid in simulator.rosters[team]["share"]]
+        draws = {pid: sorted(r["stats"].get(pid, {}).get("points", 0) for r in results) for pid in roster}
+        points = {pid: mean(values) for pid, values in draws.items()}
         output[game["match_id"]] = {
             "home_win_probability": mean(r["score"][game["home"]] > r["score"][away] for r in results),
             "mean_margin": mean(margins), "margin_sd": pstdev(margins),
             "margin_p10": margins[int(0.1 * len(margins))], "margin_p90": margins[int(0.9 * len(margins))],
-            "mean_total": mean(sum(r["score"].values()) for r in results), "player_points": dict(points)}
+            "mean_total": mean(sum(r["score"].values()) for r in results), "player_points": points,
+            "player_intervals": {pid: [values[int(0.1 * len(values))], values[int(0.9 * len(values))]] for pid, values in draws.items()}}
     return output
 
 
-def walk_forward(history, target, simulations=400, priors=None, workers=None):
+def interval_coverage(simulated, target):
+    """Share of players who played whose actual points fell inside the simulated 80 % range (p10–p90)."""
+    inside = total = 0
+    for game in target:
+        intervals = simulated.get(game["match_id"], {}).get("player_intervals", {})
+        for team in game["record"]["teams"]:
+            for player in team["players"]:
+                low_high = intervals.get(player["source_player_id"])
+                if low_high and player.get("participated") is not False and (player.get("minutes") or 0) > 0:
+                    total += 1
+                    inside += low_high[0] <= ((player.get("stats") or {}).get("points") or 0) <= low_high[1]
+    return round(inside / total, 3) if total else None
+
+
+def walk_forward(history, target, simulations=400, priors=None, workers=None, form=None):
     days = sorted({g["date"] for g in target})
     output = {}
     with ProcessPoolExecutor(workers or os.cpu_count(), initializer=_init, initargs=(history, target)) as pool:
-        for part in pool.map(_day, [(day, simulations, priors) for day in days]):
+        for part in pool.map(_day, [(day, simulations, priors, form) for day in days]):
             output.update(part)
     return output

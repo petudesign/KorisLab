@@ -419,3 +419,41 @@ Seuraava kokeilu kohdistuu suoraan virheanalyysin löydökseen: uusien
 kokoonpanojen joukkueille joukkuetason tuloskorjaus nykykauden otteluista, tai
 todennäköisyyksien kalibrointi. Kumpikin pitää lukita ennen 2025–26-vertailua
 samalla tavalla.
+
+## Ottelukohtainen vire pelaajille ja joukkueille (KOR-16), 29.10.2026
+
+Simulaattori käytti jokaisessa simulaatiossa samoja keskiarvoja. Pelaajien
+80 %:n pistevälit olivat siksi liian kapeita: kaudella 2025–26 toteuma osui
+väliin vain 73,2 %:ssa (2024–25: 71,2 %). Simulaattoriin lisättiin "päivän vire":
+jokaiselle simuloidulle ottelulle arvotaan pelaajan heittotarkkuudelle ja
+käyttöasteelle sekä joukkueen puolustukselle log-normaali kerroin, keskiarvo 1.
+Vire arvotaan omasta satunnaislukuvirrastaan, joten nollahajonnalla tulokset
+ovat täsmälleen samat kuin v1:ssä (tarkistettu, ja sille on testi).
+
+Hajonnat valittiin kaudella 2024–25 (`python3 -m simulation.tune_form --lock v1`)
+60 yhdistelmästä: heitto 0–0,2, käyttöaste 0–0,3, puolustus 0–0,08. Sääntö
+kirjattiin ennen ajoa: Brier saa heiketä enintään 0,001, ja sen sisällä valitaan
+kattavuus lähimpänä 80 %:a. Valinta: heitto 0,2, käyttöaste 0,3, puolustus 0,04
+(2024–25: kattavuus 71,2 % → 76,2 %, Brier 0,2270 → 0,2258). Suurin kattavuus
+koko ruudukossa oli 76,2 %, eli valittu osui ruudukon reunaan.
+
+Lukittu vertailu kaudella 2025–26 (samat 161 ottelua, `--evaluate v1`):
+
+| | Ilman virettä | Vireellä |
+| --- | --- | --- |
+| Pelaajien 80 %:n välin kattavuus | 73,2 % | 77,9 % |
+| Brier | 0,2382 | 0,2419 |
+| Piste-eron z-hajonta (tavoite 1) | 0,98 | 0,86 |
+| Simuloitu piste-eron keskihajonta | 14,9 | 17,0 |
+
+Vire teki pelaajien pistevälit realistisemmiksi, mutta levitti samalla
+joukkueiden lopputuloksia liikaa. Joukkuetason vaihtelu oli jo valmiiksi oikean
+kokoinen, joten lisävaihtelu veti todennäköisyyksiä kohti 50 %:a ja heikensi
+Brieriä. Tallenteet: `learning/forecasting/model-lock-player-form-v1.json` ja
+`learning/forecasting/results/player-form-v1.json`.
+
+Päätös: tuotannossa ei käytetä virettä (`FORM` pysyy nollassa). Seuraava
+kokeiltava on vire, joka säilyttää joukkueen kokonaistason: käyttöasteen vire
+jakaa saman joukkueen heitot uudelleen pelaajien kesken, ja heittovireet
+normitetaan joukkueen sisällä keskiarvoon 1. Silloin yksittäisten pelaajien
+illat vaihtelevat, mutta joukkueen piste-eron hajonta ei kasva.
