@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "season_id": "huki2627",
-  "updated_at": "2026-10-29T01:16:54.161865+00:00",
+  "updated_at": "2026-10-29T16:53:15.358150+00:00",
   "source_url": "https://tulospalvelu.basket.fi/",
   "schedule": [
     {
@@ -16503,8 +16503,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005837/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-28T12:55:34Z",
-        "payload_sha256": "be1af5bf6b7fe6778e6f19d035e1e3fef613a7600f7ff6da3656d97cc6eafa14"
+        "ingested_at_utc": "2026-10-29T16:52:06Z",
+        "payload_sha256": "f28d32b563f4973feb6bed57c3df6bc05e984d83a31945e5922c974df4620c5e"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -17166,7 +17166,7 @@
             },
             {
               "source_player_id": "3ad1572d-adab-11f1-9d97-739172e87e08",
-              "display_name": "AJ Harris II",
+              "display_name": "Aj Harris II",
               "team_source_id": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
               "jersey_number": "12",
               "starter": false,
@@ -38359,8 +38359,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005888/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-28T12:55:58Z",
-        "payload_sha256": "41d03c29b1e547825b32eb4d9f5104c09a763b48c35bee9b1c3241bb617096b8"
+        "ingested_at_utc": "2026-10-29T16:52:31Z",
+        "payload_sha256": "2c32ef84d16ed0c6b5b0e22486159e2aacda67e9e7d4f97237b06eeb5a1c2ee0"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -39336,8 +39336,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005921/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-28T12:56:04Z",
-        "payload_sha256": "4664c87ab1570d6dd8dd180f737f6b8cf72ae1a224aa7cc636efa3b91e746498"
+        "ingested_at_utc": "2026-10-29T16:52:36Z",
+        "payload_sha256": "5b7812271d270a70c0c29a0cc7046e1bb4051da66c63c4a3cb4e4cdcfad13e4a"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -40436,8 +40436,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005855/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-28T12:56:09Z",
-        "payload_sha256": "a3bf0610867724b4b9d8731a0f66d23975290dbc886d1fb07e35bba3ff9d7db3"
+        "ingested_at_utc": "2026-10-29T16:52:41Z",
+        "payload_sha256": "90f128e6f429da0e0025d02b792debc76f3a5ca36b3b052b664720695b3aefaa"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -41577,8 +41577,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005839/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-28T12:56:12Z",
-        "payload_sha256": "ac2573470587ce649de1452781898a9eac3f9a6d73c2622c9ec8f297c1272238"
+        "ingested_at_utc": "2026-10-29T16:52:47Z",
+        "payload_sha256": "43f24c969c2d13d4ea39e530189a338e773c3c59179efff302c7d086bb56cb5a"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -42677,8 +42677,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005955/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-28T12:56:17Z",
-        "payload_sha256": "6b1a5179cfa103a92fa901ba8cb0736f63f66e62aa23cb5b3687e6e46e6ddddb"
+        "ingested_at_utc": "2026-10-29T16:52:53Z",
+        "payload_sha256": "81418e9dfb046f863f5b26f707ada772548700805ee5194b58a5f64e5736b7e8"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -43654,8 +43654,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1006007/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-28T12:56:22Z",
-        "payload_sha256": "7fd8eb291a6f498caf10365c58c7844733d1d6b76cec98fa0d0e602abb409215"
+        "ingested_at_utc": "2026-10-29T16:52:56Z",
+        "payload_sha256": "e2c25c43da98c21cab15548550c3451e6acb89000a545df9ce8e923591ac55fb"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -44672,8 +44672,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005973/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-28T12:56:27Z",
-        "payload_sha256": "d7b7020bc377eda2984b761365b83fd737991296e37f9d7979802887ca23dab2"
+        "ingested_at_utc": "2026-10-29T16:53:01Z",
+        "payload_sha256": "1917c208b11e5540a001f5ab416665e0b7295f2c916acacf57bd0e4e71462e6a"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -45772,8 +45772,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005904/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-28T12:56:32Z",
-        "payload_sha256": "a2b8e63c8cd9c0514f3b7ebad3e72bb62df310fde3d0f1a18588f48dbec59d50"
+        "ingested_at_utc": "2026-10-29T16:53:07Z",
+        "payload_sha256": "15442a56c337ce7035e379781c57346fdd7c51256bbb56957802cb21764cc32b"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -46790,8 +46790,8 @@
         "source_url": "https://tulospalvelu.basket.fi/match/1005939/statistics",
         "upstream_fixture_id": null,
         "upstream_url": "https://embed-api.eui.connect.sportradar.com/v1/embed/322/fixture_detail",
-        "ingested_at_utc": "2026-10-28T12:56:34Z",
-        "payload_sha256": "e4f364d53826a43745037ba539624f6ddb5b30740ff1aa023ab1f40ed16128b9"
+        "ingested_at_utc": "2026-10-29T16:53:13Z",
+        "payload_sha256": "c8d0898a0dcdc145e09b5a8e9b8da0ee77ef1c11ef9ef79cd0d0e030a2978eb7"
       },
       "competition": {
         "source_id": "8deffd01-90dc-11f1-9de4-814ab4ec9e3e",
@@ -50128,7 +50128,7 @@
     "requested_games": 42,
     "fetched_games": 42,
     "failed_games": 0,
-    "cached_games": 12,
+    "cached_games": 32,
     "valid_games": 42,
     "invalid_games": 0
   },
