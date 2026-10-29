@@ -184,7 +184,7 @@ function Method({league}){
   [tr('Kuinka luotettava se on','How reliable it is'),[
    league==='men'
     ?tr('Testattu ajallisesti oikein kaudella 2025–26 (161 ottelua): Brier 0,238, Elo 0,239 ja yksinkertainen piste-eromalli 0,233. Pienempi on parempi, ja kolikonheitto antaa 0,250. Malli on siis kolikkoa parempi, mutta ei vielä parempi kuin yksinkertaiset mallit.','Tested in time order on 2025–26 (161 games): Brier 0.238, against 0.239 for Elo and 0.233 for a simple margin model. Lower is better; a coin flip scores 0.250. So the model beats chance but not yet the simple models.')
-    :tr('Naisten mallia ei ole vielä testattu menneitä otteluita vastaan, joten luvut ovat suuntaa antavia.','The women’s model has not yet been tested against past games, so treat the numbers as indicative.'),
+    :tr('Testattu ajallisesti oikein kaudella 2025–26 (83 ottelua): Brier 0,210, Elo 0,203 ja naisten piste-eromalli 0,195. Pienempi on parempi, ja kolikonheitto antaa 0,250. Malli on selvästi kolikkoa parempi, mutta ei vielä parempi kuin yksinkertaiset mallit. Suosikki voitti 55 ottelua 83:sta.','Tested in time order on 2025–26 (83 games): Brier 0.210, against 0.203 for Elo and 0.195 for the women’s margin model. Lower is better; a coin flip scores 0.250. So the model clearly beats chance but not yet the simple models. The favourite won 55 of 83 games.'),
    tr('Jokaisen ennusteen toteuma näkyy sivun yläosassa.','How every forecast turned out is shown at the top of the page.')]],
  ];
  return <section className="sim-panel panel sim-method"><h3>{tr('Miten simulaatio toimii','How the simulation works')}</h3>

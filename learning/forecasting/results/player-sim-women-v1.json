@@ -1,0 +1,644 @@
+{
+  "season": "2025-26",
+  "league": "women",
+  "matches": 83,
+  "simulations_per_match": 400,
+  "evaluation_rule": "both teams have five earlier games; same-day results excluded",
+  "history": "2024-25 weight 0.5, earlier 2025-26 days weight 1",
+  "priors": {
+    "usage_minutes": 60,
+    "action": 40,
+    "zone_share": 20,
+    "two_pct": 25,
+    "three_pct": 60,
+    "ft_pct": 20,
+    "per_minute": 80,
+    "team": 150,
+    "pace": 600
+  },
+  "metrics_brier": {
+    "player_simulation": 0.2103,
+    "elo_k32": 0.2031,
+    "margin_home_locked": 0.195,
+    "home_rate": 0.2535,
+    "flat": 0.25
+  },
+  "favorites_correct": 55,
+  "margin_mae": 12.12,
+  "total_bias": 1.81,
+  "calibration": [
+    {
+      "range": "0.0-0.2",
+      "matches": 4,
+      "mean_probability": 0.152,
+      "home_win_rate": 0
+    },
+    {
+      "range": "0.2-0.4",
+      "matches": 20,
+      "mean_probability": 0.277,
+      "home_win_rate": 0.4
+    },
+    {
+      "range": "0.4-0.6",
+      "matches": 27,
+      "mean_probability": 0.482,
+      "home_win_rate": 0.37
+    },
+    {
+      "range": "0.6-0.8",
+      "matches": 23,
+      "mean_probability": 0.698,
+      "home_win_rate": 0.652
+    },
+    {
+      "range": "0.8-1.0",
+      "matches": 9,
+      "mean_probability": 0.866,
+      "home_win_rate": 0.889
+    }
+  ],
+  "predictions": [
+    {
+      "match_id": "968926",
+      "player_simulation": 0.645,
+      "home_win_probability": 0.513997891002508,
+      "margin_home_probability": 0.5754273353204382,
+      "home_won": 1
+    },
+    {
+      "match_id": "968974",
+      "player_simulation": 0.7025,
+      "home_win_probability": 0.5334169746595814,
+      "margin_home_probability": 0.7377193449872036,
+      "home_won": 1
+    },
+    {
+      "match_id": "968939",
+      "player_simulation": 0.5175,
+      "home_win_probability": 0.5905010120559571,
+      "margin_home_probability": 0.7345443108284264,
+      "home_won": 0
+    },
+    {
+      "match_id": "968963",
+      "player_simulation": 0.8975,
+      "home_win_probability": 0.6410069496524763,
+      "margin_home_probability": 0.9451023695561326,
+      "home_won": 1
+    },
+    {
+      "match_id": "968998",
+      "player_simulation": 0.765,
+      "home_win_probability": 0.5392991845533964,
+      "margin_home_probability": 0.8105663018810145,
+      "home_won": 0
+    },
+    {
+      "match_id": "968981",
+      "player_simulation": 0.45,
+      "home_win_probability": 0.6599237198032145,
+      "margin_home_probability": 0.8417943384719256,
+      "home_won": 1
+    },
+    {
+      "match_id": "968915",
+      "player_simulation": 0.505,
+      "home_win_probability": 0.37934751606202016,
+      "margin_home_probability": 0.3528408491413079,
+      "home_won": 0
+    },
+    {
+      "match_id": "968987",
+      "player_simulation": 0.365,
+      "home_win_probability": 0.3727336505647899,
+      "margin_home_probability": 0.11515688514795723,
+      "home_won": 0
+    },
+    {
+      "match_id": "969011",
+      "player_simulation": 0.36,
+      "home_win_probability": 0.6034439283561837,
+      "margin_home_probability": 0.7430864298371916,
+      "home_won": 1
+    },
+    {
+      "match_id": "968951",
+      "player_simulation": 0.4475,
+      "home_win_probability": 0.4481436657248654,
+      "margin_home_probability": 0.2796939194365472,
+      "home_won": 0
+    },
+    {
+      "match_id": "968927",
+      "player_simulation": 0.7625,
+      "home_win_probability": 0.6691700448425537,
+      "margin_home_probability": 0.912538902955168,
+      "home_won": 1
+    },
+    {
+      "match_id": "968940",
+      "player_simulation": 0.6175,
+      "home_win_probability": 0.4754320187123496,
+      "margin_home_probability": 0.5116388496098063,
+      "home_won": 0
+    },
+    {
+      "match_id": "968975",
+      "player_simulation": 0.3175,
+      "home_win_probability": 0.4693315571456789,
+      "margin_home_probability": 0.382075075757547,
+      "home_won": 0
+    },
+    {
+      "match_id": "968999",
+      "player_simulation": 0.72,
+      "home_win_probability": 0.43238569846738645,
+      "margin_home_probability": 0.6822337216599316,
+      "home_won": 1
+    },
+    {
+      "match_id": "969012",
+      "player_simulation": 0.33,
+      "home_win_probability": 0.4486393570585612,
+      "margin_home_probability": 0.47875667623440626,
+      "home_won": 1
+    },
+    {
+      "match_id": "968916",
+      "player_simulation": 0.5825,
+      "home_win_probability": 0.44686637415814257,
+      "margin_home_probability": 0.4300151232730429,
+      "home_won": 0
+    },
+    {
+      "match_id": "968964",
+      "player_simulation": 0.7525,
+      "home_win_probability": 0.5733998408548362,
+      "margin_home_probability": 0.7469465302069019,
+      "home_won": 0
+    },
+    {
+      "match_id": "968941",
+      "player_simulation": 0.4075,
+      "home_win_probability": 0.38064715100392704,
+      "margin_home_probability": 0.319968708690466,
+      "home_won": 0
+    },
+    {
+      "match_id": "968928",
+      "player_simulation": 0.7625,
+      "home_win_probability": 0.6434912899219897,
+      "margin_home_probability": 0.9053561555536217,
+      "home_won": 1
+    },
+    {
+      "match_id": "968965",
+      "player_simulation": 0.85,
+      "home_win_probability": 0.569186970390686,
+      "margin_home_probability": 0.8170526074652922,
+      "home_won": 0
+    },
+    {
+      "match_id": "969000",
+      "player_simulation": 0.775,
+      "home_win_probability": 0.5177910995440694,
+      "margin_home_probability": 0.7807601458167143,
+      "home_won": 0
+    },
+    {
+      "match_id": "968917",
+      "player_simulation": 0.415,
+      "home_win_probability": 0.518783603935599,
+      "margin_home_probability": 0.5374560833840204,
+      "home_won": 0
+    },
+    {
+      "match_id": "968952",
+      "player_simulation": 0.2,
+      "home_win_probability": 0.332912338866692,
+      "margin_home_probability": 0.09832345731181377,
+      "home_won": 0
+    },
+    {
+      "match_id": "968988",
+      "player_simulation": 0.15,
+      "home_win_probability": 0.30430797174670254,
+      "margin_home_probability": 0.0580073325072382,
+      "home_won": 0
+    },
+    {
+      "match_id": "968976",
+      "player_simulation": 0.7075,
+      "home_win_probability": 0.5397451381034761,
+      "margin_home_probability": 0.7021306721403919,
+      "home_won": 0
+    },
+    {
+      "match_id": "968966",
+      "player_simulation": 0.9275,
+      "home_win_probability": 0.7145114118131083,
+      "margin_home_probability": 0.9780363431602428,
+      "home_won": 1
+    },
+    {
+      "match_id": "969001",
+      "player_simulation": 0.7175,
+      "home_win_probability": 0.4286257705858667,
+      "margin_home_probability": 0.38998565330007084,
+      "home_won": 0
+    },
+    {
+      "match_id": "969013",
+      "player_simulation": 0.6375,
+      "home_win_probability": 0.7137175926723847,
+      "margin_home_probability": 0.9246261185385747,
+      "home_won": 1
+    },
+    {
+      "match_id": "968929",
+      "player_simulation": 0.605,
+      "home_win_probability": 0.7101942163992494,
+      "margin_home_probability": 0.8922714147440113,
+      "home_won": 0
+    },
+    {
+      "match_id": "968918",
+      "player_simulation": 0.1975,
+      "home_win_probability": 0.28540656697897315,
+      "margin_home_probability": 0.08497971260498416,
+      "home_won": 0
+    },
+    {
+      "match_id": "968977",
+      "player_simulation": 0.7525,
+      "home_win_probability": 0.7164075390316935,
+      "margin_home_probability": 0.9466219480471594,
+      "home_won": 1
+    },
+    {
+      "match_id": "968953",
+      "player_simulation": 0.2675,
+      "home_win_probability": 0.2694821336514439,
+      "margin_home_probability": 0.06593546965569784,
+      "home_won": 0
+    },
+    {
+      "match_id": "968989",
+      "player_simulation": 0.6275,
+      "home_win_probability": 0.49391866144006025,
+      "margin_home_probability": 0.6270101573287085,
+      "home_won": 1
+    },
+    {
+      "match_id": "969002",
+      "player_simulation": 0.44,
+      "home_win_probability": 0.27963581555447,
+      "margin_home_probability": 0.19656338279643226,
+      "home_won": 0
+    },
+    {
+      "match_id": "969014",
+      "player_simulation": 0.56,
+      "home_win_probability": 0.7300133123723148,
+      "margin_home_probability": 0.8775898332940686,
+      "home_won": 1
+    },
+    {
+      "match_id": "968942",
+      "player_simulation": 0.425,
+      "home_win_probability": 0.34517891605464307,
+      "margin_home_probability": 0.40253263004511686,
+      "home_won": 0
+    },
+    {
+      "match_id": "968919",
+      "player_simulation": 0.605,
+      "home_win_probability": 0.4958030747823571,
+      "margin_home_probability": 0.69091427606644,
+      "home_won": 1
+    },
+    {
+      "match_id": "968978",
+      "player_simulation": 0.8175,
+      "home_win_probability": 0.7598027138076522,
+      "margin_home_probability": 0.9588609580541232,
+      "home_won": 1
+    },
+    {
+      "match_id": "968990",
+      "player_simulation": 0.29,
+      "home_win_probability": 0.491734861505945,
+      "margin_home_probability": 0.3842815111361436,
+      "home_won": 1
+    },
+    {
+      "match_id": "968967",
+      "player_simulation": 0.855,
+      "home_win_probability": 0.6642756301413723,
+      "margin_home_probability": 0.8990065099812754,
+      "home_won": 1
+    },
+    {
+      "match_id": "968954",
+      "player_simulation": 0.275,
+      "home_win_probability": 0.4298519816980265,
+      "margin_home_probability": 0.2738343300434282,
+      "home_won": 1
+    },
+    {
+      "match_id": "968930",
+      "player_simulation": 0.455,
+      "home_win_probability": 0.42225527267927027,
+      "margin_home_probability": 0.515254094781927,
+      "home_won": 1
+    },
+    {
+      "match_id": "968968",
+      "player_simulation": 0.8225,
+      "home_win_probability": 0.7809435741319891,
+      "margin_home_probability": 0.9607040065934347,
+      "home_won": 1
+    },
+    {
+      "match_id": "968991",
+      "player_simulation": 0.43,
+      "home_win_probability": 0.4228967298196901,
+      "margin_home_probability": 0.2679932115137913,
+      "home_won": 0
+    },
+    {
+      "match_id": "968943",
+      "player_simulation": 0.7325,
+      "home_win_probability": 0.6203147984470893,
+      "margin_home_probability": 0.9194673160570392,
+      "home_won": 1
+    },
+    {
+      "match_id": "968920",
+      "player_simulation": 0.44,
+      "home_win_probability": 0.27763250340770107,
+      "margin_home_probability": 0.1917175722849011,
+      "home_won": 0
+    },
+    {
+      "match_id": "968931",
+      "player_simulation": 0.2475,
+      "home_win_probability": 0.4178853059627961,
+      "margin_home_probability": 0.3080502475236922,
+      "home_won": 1
+    },
+    {
+      "match_id": "969004",
+      "player_simulation": 0.51,
+      "home_win_probability": 0.20837579678375767,
+      "margin_home_probability": 0.18159153531564648,
+      "home_won": 0
+    },
+    {
+      "match_id": "968944",
+      "player_simulation": 0.5025,
+      "home_win_probability": 0.6317105677240129,
+      "margin_home_probability": 0.8233652164271892,
+      "home_won": 1
+    },
+    {
+      "match_id": "969005",
+      "player_simulation": 0.715,
+      "home_win_probability": 0.46132150526670823,
+      "margin_home_probability": 0.6785935977211301,
+      "home_won": 1
+    },
+    {
+      "match_id": "968979",
+      "player_simulation": 0.3175,
+      "home_win_probability": 0.48190387078143754,
+      "margin_home_probability": 0.31763036397945305,
+      "home_won": 0
+    },
+    {
+      "match_id": "968955",
+      "player_simulation": 0.205,
+      "home_win_probability": 0.4904172707243861,
+      "margin_home_probability": 0.26999873433862404,
+      "home_won": 0
+    },
+    {
+      "match_id": "968980",
+      "player_simulation": 0.565,
+      "home_win_probability": 0.5896081434346081,
+      "margin_home_probability": 0.556619268052263,
+      "home_won": 1
+    },
+    {
+      "match_id": "968992",
+      "player_simulation": 0.2,
+      "home_win_probability": 0.2632043736501871,
+      "margin_home_probability": 0.10763119773042897,
+      "home_won": 0
+    },
+    {
+      "match_id": "969015",
+      "player_simulation": 0.2475,
+      "home_win_probability": 0.5301048998908836,
+      "margin_home_probability": 0.2926780290925567,
+      "home_won": 0
+    },
+    {
+      "match_id": "969016",
+      "player_simulation": 0.42,
+      "home_win_probability": 0.5491595773688637,
+      "margin_home_probability": 0.6094506472274904,
+      "home_won": 0
+    },
+    {
+      "match_id": "968933",
+      "player_simulation": 0.8775,
+      "home_win_probability": 0.7618964134008865,
+      "margin_home_probability": 0.9604733045593604,
+      "home_won": 1
+    },
+    {
+      "match_id": "968969",
+      "player_simulation": 0.8675,
+      "home_win_probability": 0.8118596354999166,
+      "margin_home_probability": 0.9782360361698856,
+      "home_won": 1
+    },
+    {
+      "match_id": "969006",
+      "player_simulation": 0.5225,
+      "home_win_probability": 0.5263036030912926,
+      "margin_home_probability": 0.6312978257375027,
+      "home_won": 0
+    },
+    {
+      "match_id": "968945",
+      "player_simulation": 0.37,
+      "home_win_probability": 0.6436599612212417,
+      "margin_home_probability": 0.8131782079794965,
+      "home_won": 1
+    },
+    {
+      "match_id": "968921",
+      "player_simulation": 0.525,
+      "home_win_probability": 0.2696663543635445,
+      "margin_home_probability": 0.15797740284377512,
+      "home_won": 1
+    },
+    {
+      "match_id": "968956",
+      "player_simulation": 0.0675,
+      "home_win_probability": 0.17116215112958713,
+      "margin_home_probability": 0.02326755553161155,
+      "home_won": 0
+    },
+    {
+      "match_id": "968993",
+      "player_simulation": 0.325,
+      "home_win_probability": 0.21066784224028653,
+      "margin_home_probability": 0.12882227024452325,
+      "home_won": 0
+    },
+    {
+      "match_id": "968994",
+      "player_simulation": 0.25,
+      "home_win_probability": 0.20346886441066242,
+      "margin_home_probability": 0.1311664146893816,
+      "home_won": 0
+    },
+    {
+      "match_id": "969017",
+      "player_simulation": 0.7475,
+      "home_win_probability": 0.8080207994016911,
+      "margin_home_probability": 0.9533696255078423,
+      "home_won": 1
+    },
+    {
+      "match_id": "968934",
+      "player_simulation": 0.625,
+      "home_win_probability": 0.5728390615779042,
+      "margin_home_probability": 0.6481361921437274,
+      "home_won": 1
+    },
+    {
+      "match_id": "968970",
+      "player_simulation": 0.7275,
+      "home_win_probability": 0.7720460560976613,
+      "margin_home_probability": 0.9527327133690816,
+      "home_won": 0
+    },
+    {
+      "match_id": "969003",
+      "player_simulation": 0.5,
+      "home_win_probability": 0.2507351034545655,
+      "margin_home_probability": 0.20762819265263824,
+      "home_won": 1
+    },
+    {
+      "match_id": "968946",
+      "player_simulation": 0.23,
+      "home_win_probability": 0.32682879384200775,
+      "margin_home_probability": 0.26144846905740965,
+      "home_won": 1
+    },
+    {
+      "match_id": "968957",
+      "player_simulation": 0.41,
+      "home_win_probability": 0.49085930445573434,
+      "margin_home_probability": 0.45277868357742435,
+      "home_won": 0
+    },
+    {
+      "match_id": "968922",
+      "player_simulation": 0.5975,
+      "home_win_probability": 0.2870453792298678,
+      "margin_home_probability": 0.19408970738839174,
+      "home_won": 0
+    },
+    {
+      "match_id": "968958",
+      "player_simulation": 0.1925,
+      "home_win_probability": 0.1726872835580372,
+      "margin_home_probability": 0.07875554935080942,
+      "home_won": 0
+    },
+    {
+      "match_id": "968995",
+      "player_simulation": 0.2225,
+      "home_win_probability": 0.39692628164597393,
+      "margin_home_probability": 0.4259840845447518,
+      "home_won": 0
+    },
+    {
+      "match_id": "969018",
+      "player_simulation": 0.5775,
+      "home_win_probability": 0.6515241084484199,
+      "margin_home_probability": 0.6472473225919556,
+      "home_won": 1
+    },
+    {
+      "match_id": "968935",
+      "player_simulation": 0.4975,
+      "home_win_probability": 0.6939510103661753,
+      "margin_home_probability": 0.8479731253842434,
+      "home_won": 1
+    },
+    {
+      "match_id": "968923",
+      "player_simulation": 0.875,
+      "home_win_probability": 0.6771317834540176,
+      "margin_home_probability": 0.826229259659104,
+      "home_won": 1
+    },
+    {
+      "match_id": "968947",
+      "player_simulation": 0.6475,
+      "home_win_probability": 0.6935985762055514,
+      "margin_home_probability": 0.8941743752955216,
+      "home_won": 1
+    },
+    {
+      "match_id": "968982",
+      "player_simulation": 0.4525,
+      "home_win_probability": 0.5812391551524794,
+      "margin_home_probability": 0.5054775348644602,
+      "home_won": 1
+    },
+    {
+      "match_id": "969007",
+      "player_simulation": 0.305,
+      "home_win_probability": 0.23852252870429483,
+      "margin_home_probability": 0.10144610541675467,
+      "home_won": 1
+    },
+    {
+      "match_id": "969019",
+      "player_simulation": 0.4375,
+      "home_win_probability": 0.7748507098770173,
+      "margin_home_probability": 0.8469087475155773,
+      "home_won": 0
+    },
+    {
+      "match_id": "968959",
+      "player_simulation": 0.2225,
+      "home_win_probability": 0.24805497961862225,
+      "margin_home_probability": 0.10255349703821826,
+      "home_won": 0
+    },
+    {
+      "match_id": "968971",
+      "player_simulation": 0.705,
+      "home_win_probability": 0.5414688446221465,
+      "margin_home_probability": 0.7180102748554442,
+      "home_won": 1
+    },
+    {
+      "match_id": "968983",
+      "player_simulation": 0.4175,
+      "home_win_probability": 0.7124602805705041,
+      "margin_home_probability": 0.8241421431893916,
+      "home_won": 0
+    }
+  ]
+}
