@@ -1,0 +1,659 @@
+{
+ "version": "player-form-v1",
+ "selected_on": "2024-25 walk-forward, no earlier history",
+ "rule": "Brier within 0.001 of no form on 2024-25, then player 80% interval coverage closest to 0.80, then lower Brier",
+ "simulations": 400,
+ "grid": {
+  "shot": [
+   0.0,
+   0.05,
+   0.1,
+   0.15,
+   0.2
+  ],
+  "usage": [
+   0.0,
+   0.1,
+   0.2,
+   0.3
+  ],
+  "defense": [
+   0.0,
+   0.04,
+   0.08
+  ]
+ },
+ "results": [
+  {
+   "form": {
+    "shot": 0.0,
+    "usage": 0.0,
+    "defense": 0.0
+   },
+   "games": 158,
+   "brier": 0.227,
+   "coverage": 0.712
+  },
+  {
+   "form": {
+    "shot": 0.0,
+    "usage": 0.0,
+    "defense": 0.04
+   },
+   "games": 158,
+   "brier": 0.227,
+   "coverage": 0.712
+  },
+  {
+   "form": {
+    "shot": 0.0,
+    "usage": 0.0,
+    "defense": 0.08
+   },
+   "games": 158,
+   "brier": 0.2264,
+   "coverage": 0.715
+  },
+  {
+   "form": {
+    "shot": 0.0,
+    "usage": 0.1,
+    "defense": 0.0
+   },
+   "games": 158,
+   "brier": 0.2275,
+   "coverage": 0.716
+  },
+  {
+   "form": {
+    "shot": 0.0,
+    "usage": 0.1,
+    "defense": 0.04
+   },
+   "games": 158,
+   "brier": 0.2266,
+   "coverage": 0.717
+  },
+  {
+   "form": {
+    "shot": 0.0,
+    "usage": 0.1,
+    "defense": 0.08
+   },
+   "games": 158,
+   "brier": 0.2256,
+   "coverage": 0.72
+  },
+  {
+   "form": {
+    "shot": 0.0,
+    "usage": 0.2,
+    "defense": 0.0
+   },
+   "games": 158,
+   "brier": 0.226,
+   "coverage": 0.733
+  },
+  {
+   "form": {
+    "shot": 0.0,
+    "usage": 0.2,
+    "defense": 0.04
+   },
+   "games": 158,
+   "brier": 0.2271,
+   "coverage": 0.73
+  },
+  {
+   "form": {
+    "shot": 0.0,
+    "usage": 0.2,
+    "defense": 0.08
+   },
+   "games": 158,
+   "brier": 0.2273,
+   "coverage": 0.735
+  },
+  {
+   "form": {
+    "shot": 0.0,
+    "usage": 0.3,
+    "defense": 0.0
+   },
+   "games": 158,
+   "brier": 0.2273,
+   "coverage": 0.753
+  },
+  {
+   "form": {
+    "shot": 0.0,
+    "usage": 0.3,
+    "defense": 0.04
+   },
+   "games": 158,
+   "brier": 0.2271,
+   "coverage": 0.752
+  },
+  {
+   "form": {
+    "shot": 0.0,
+    "usage": 0.3,
+    "defense": 0.08
+   },
+   "games": 158,
+   "brier": 0.2279,
+   "coverage": 0.753
+  },
+  {
+   "form": {
+    "shot": 0.05,
+    "usage": 0.0,
+    "defense": 0.0
+   },
+   "games": 158,
+   "brier": 0.2271,
+   "coverage": 0.714
+  },
+  {
+   "form": {
+    "shot": 0.05,
+    "usage": 0.0,
+    "defense": 0.04
+   },
+   "games": 158,
+   "brier": 0.2266,
+   "coverage": 0.713
+  },
+  {
+   "form": {
+    "shot": 0.05,
+    "usage": 0.0,
+    "defense": 0.08
+   },
+   "games": 158,
+   "brier": 0.2273,
+   "coverage": 0.718
+  },
+  {
+   "form": {
+    "shot": 0.05,
+    "usage": 0.1,
+    "defense": 0.0
+   },
+   "games": 158,
+   "brier": 0.2263,
+   "coverage": 0.716
+  },
+  {
+   "form": {
+    "shot": 0.05,
+    "usage": 0.1,
+    "defense": 0.04
+   },
+   "games": 158,
+   "brier": 0.2276,
+   "coverage": 0.717
+  },
+  {
+   "form": {
+    "shot": 0.05,
+    "usage": 0.1,
+    "defense": 0.08
+   },
+   "games": 158,
+   "brier": 0.2276,
+   "coverage": 0.722
+  },
+  {
+   "form": {
+    "shot": 0.05,
+    "usage": 0.2,
+    "defense": 0.0
+   },
+   "games": 158,
+   "brier": 0.2265,
+   "coverage": 0.733
+  },
+  {
+   "form": {
+    "shot": 0.05,
+    "usage": 0.2,
+    "defense": 0.04
+   },
+   "games": 158,
+   "brier": 0.2302,
+   "coverage": 0.732
+  },
+  {
+   "form": {
+    "shot": 0.05,
+    "usage": 0.2,
+    "defense": 0.08
+   },
+   "games": 158,
+   "brier": 0.2293,
+   "coverage": 0.737
+  },
+  {
+   "form": {
+    "shot": 0.05,
+    "usage": 0.3,
+    "defense": 0.0
+   },
+   "games": 158,
+   "brier": 0.2251,
+   "coverage": 0.748
+  },
+  {
+   "form": {
+    "shot": 0.05,
+    "usage": 0.3,
+    "defense": 0.04
+   },
+   "games": 158,
+   "brier": 0.2268,
+   "coverage": 0.75
+  },
+  {
+   "form": {
+    "shot": 0.05,
+    "usage": 0.3,
+    "defense": 0.08
+   },
+   "games": 158,
+   "brier": 0.2268,
+   "coverage": 0.747
+  },
+  {
+   "form": {
+    "shot": 0.1,
+    "usage": 0.0,
+    "defense": 0.0
+   },
+   "games": 158,
+   "brier": 0.2259,
+   "coverage": 0.716
+  },
+  {
+   "form": {
+    "shot": 0.1,
+    "usage": 0.0,
+    "defense": 0.04
+   },
+   "games": 158,
+   "brier": 0.228,
+   "coverage": 0.719
+  },
+  {
+   "form": {
+    "shot": 0.1,
+    "usage": 0.0,
+    "defense": 0.08
+   },
+   "games": 158,
+   "brier": 0.2288,
+   "coverage": 0.716
+  },
+  {
+   "form": {
+    "shot": 0.1,
+    "usage": 0.1,
+    "defense": 0.0
+   },
+   "games": 158,
+   "brier": 0.2256,
+   "coverage": 0.72
+  },
+  {
+   "form": {
+    "shot": 0.1,
+    "usage": 0.1,
+    "defense": 0.04
+   },
+   "games": 158,
+   "brier": 0.2281,
+   "coverage": 0.723
+  },
+  {
+   "form": {
+    "shot": 0.1,
+    "usage": 0.1,
+    "defense": 0.08
+   },
+   "games": 158,
+   "brier": 0.2287,
+   "coverage": 0.724
+  },
+  {
+   "form": {
+    "shot": 0.1,
+    "usage": 0.2,
+    "defense": 0.0
+   },
+   "games": 158,
+   "brier": 0.2257,
+   "coverage": 0.737
+  },
+  {
+   "form": {
+    "shot": 0.1,
+    "usage": 0.2,
+    "defense": 0.04
+   },
+   "games": 158,
+   "brier": 0.2265,
+   "coverage": 0.735
+  },
+  {
+   "form": {
+    "shot": 0.1,
+    "usage": 0.2,
+    "defense": 0.08
+   },
+   "games": 158,
+   "brier": 0.2284,
+   "coverage": 0.738
+  },
+  {
+   "form": {
+    "shot": 0.1,
+    "usage": 0.3,
+    "defense": 0.0
+   },
+   "games": 158,
+   "brier": 0.2238,
+   "coverage": 0.752
+  },
+  {
+   "form": {
+    "shot": 0.1,
+    "usage": 0.3,
+    "defense": 0.04
+   },
+   "games": 158,
+   "brier": 0.2251,
+   "coverage": 0.752
+  },
+  {
+   "form": {
+    "shot": 0.1,
+    "usage": 0.3,
+    "defense": 0.08
+   },
+   "games": 158,
+   "brier": 0.226,
+   "coverage": 0.756
+  },
+  {
+   "form": {
+    "shot": 0.15,
+    "usage": 0.0,
+    "defense": 0.0
+   },
+   "games": 158,
+   "brier": 0.228,
+   "coverage": 0.722
+  },
+  {
+   "form": {
+    "shot": 0.15,
+    "usage": 0.0,
+    "defense": 0.04
+   },
+   "games": 158,
+   "brier": 0.2255,
+   "coverage": 0.722
+  },
+  {
+   "form": {
+    "shot": 0.15,
+    "usage": 0.0,
+    "defense": 0.08
+   },
+   "games": 158,
+   "brier": 0.2264,
+   "coverage": 0.724
+  },
+  {
+   "form": {
+    "shot": 0.15,
+    "usage": 0.1,
+    "defense": 0.0
+   },
+   "games": 158,
+   "brier": 0.2265,
+   "coverage": 0.729
+  },
+  {
+   "form": {
+    "shot": 0.15,
+    "usage": 0.1,
+    "defense": 0.04
+   },
+   "games": 158,
+   "brier": 0.2264,
+   "coverage": 0.725
+  },
+  {
+   "form": {
+    "shot": 0.15,
+    "usage": 0.1,
+    "defense": 0.08
+   },
+   "games": 158,
+   "brier": 0.2286,
+   "coverage": 0.729
+  },
+  {
+   "form": {
+    "shot": 0.15,
+    "usage": 0.2,
+    "defense": 0.0
+   },
+   "games": 158,
+   "brier": 0.2263,
+   "coverage": 0.74
+  },
+  {
+   "form": {
+    "shot": 0.15,
+    "usage": 0.2,
+    "defense": 0.04
+   },
+   "games": 158,
+   "brier": 0.2243,
+   "coverage": 0.736
+  },
+  {
+   "form": {
+    "shot": 0.15,
+    "usage": 0.2,
+    "defense": 0.08
+   },
+   "games": 158,
+   "brier": 0.2284,
+   "coverage": 0.74
+  },
+  {
+   "form": {
+    "shot": 0.15,
+    "usage": 0.3,
+    "defense": 0.0
+   },
+   "games": 158,
+   "brier": 0.2242,
+   "coverage": 0.755
+  },
+  {
+   "form": {
+    "shot": 0.15,
+    "usage": 0.3,
+    "defense": 0.04
+   },
+   "games": 158,
+   "brier": 0.2249,
+   "coverage": 0.755
+  },
+  {
+   "form": {
+    "shot": 0.15,
+    "usage": 0.3,
+    "defense": 0.08
+   },
+   "games": 158,
+   "brier": 0.2265,
+   "coverage": 0.757
+  },
+  {
+   "form": {
+    "shot": 0.2,
+    "usage": 0.0,
+    "defense": 0.0
+   },
+   "games": 158,
+   "brier": 0.2296,
+   "coverage": 0.73
+  },
+  {
+   "form": {
+    "shot": 0.2,
+    "usage": 0.0,
+    "defense": 0.04
+   },
+   "games": 158,
+   "brier": 0.2275,
+   "coverage": 0.727
+  },
+  {
+   "form": {
+    "shot": 0.2,
+    "usage": 0.0,
+    "defense": 0.08
+   },
+   "games": 158,
+   "brier": 0.2271,
+   "coverage": 0.729
+  },
+  {
+   "form": {
+    "shot": 0.2,
+    "usage": 0.1,
+    "defense": 0.0
+   },
+   "games": 158,
+   "brier": 0.2267,
+   "coverage": 0.734
+  },
+  {
+   "form": {
+    "shot": 0.2,
+    "usage": 0.1,
+    "defense": 0.04
+   },
+   "games": 158,
+   "brier": 0.2285,
+   "coverage": 0.735
+  },
+  {
+   "form": {
+    "shot": 0.2,
+    "usage": 0.1,
+    "defense": 0.08
+   },
+   "games": 158,
+   "brier": 0.2286,
+   "coverage": 0.737
+  },
+  {
+   "form": {
+    "shot": 0.2,
+    "usage": 0.2,
+    "defense": 0.0
+   },
+   "games": 158,
+   "brier": 0.2276,
+   "coverage": 0.743
+  },
+  {
+   "form": {
+    "shot": 0.2,
+    "usage": 0.2,
+    "defense": 0.04
+   },
+   "games": 158,
+   "brier": 0.2269,
+   "coverage": 0.744
+  },
+  {
+   "form": {
+    "shot": 0.2,
+    "usage": 0.2,
+    "defense": 0.08
+   },
+   "games": 158,
+   "brier": 0.2291,
+   "coverage": 0.747
+  },
+  {
+   "form": {
+    "shot": 0.2,
+    "usage": 0.3,
+    "defense": 0.0
+   },
+   "games": 158,
+   "brier": 0.2254,
+   "coverage": 0.76
+  },
+  {
+   "form": {
+    "shot": 0.2,
+    "usage": 0.3,
+    "defense": 0.04
+   },
+   "games": 158,
+   "brier": 0.2258,
+   "coverage": 0.762
+  },
+  {
+   "form": {
+    "shot": 0.2,
+    "usage": 0.3,
+    "defense": 0.08
+   },
+   "games": 158,
+   "brier": 0.2268,
+   "coverage": 0.762
+  }
+ ],
+ "baseline": {
+  "form": {
+   "shot": 0.0,
+   "usage": 0.0,
+   "defense": 0.0
+  },
+  "games": 158,
+  "brier": 0.227,
+  "coverage": 0.712
+ },
+ "selected": {
+  "form": {
+   "shot": 0.2,
+   "usage": 0.3,
+   "defense": 0.04
+  },
+  "games": 158,
+  "brier": 0.2258,
+  "coverage": 0.762
+ },
+ "form": {
+  "shot": 0.2,
+  "usage": 0.3,
+  "defense": 0.04
+ },
+ "locked_at": "2026-10-29T18:59:42+00:00",
+ "sources_sha256": {
+  "records": "2f4412eb62d4adaafb5dd4ab9f8e0533ff586d0d99c20d785c171da593b8ba72",
+  "possessions": "cc6ace466c55e16bbb438024efbb473027175e258a85596ca80dcea3d27eb017"
+ },
+ "note": "2025-26 was not read when this file was written."
+}

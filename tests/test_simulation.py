@@ -5,6 +5,7 @@ import unittest
 
 from simulation.court import shot_zone, to_left_half
 from simulation.export import publish_packs
+from simulation import player_sim
 from simulation.player_sim import GameSimulator, PlayerModel, offensive_chances
 from simulation.error_analysis import continuity, decomposition
 from simulation.evaluate import walk_forward
@@ -161,3 +162,27 @@ class EvaluationTests(unittest.TestCase):
         kept = continuity([before], [after])
         self.assertEqual(kept["a"], 1.0)
         self.assertEqual(kept["b"], 0.0)
+
+
+class FormTests(unittest.TestCase):
+    def setUp(self):
+        self.simulator = GameSimulator(PlayerModel([game(day) for day in range(1, 6)]), "a", "b")
+        self.saved = dict(player_sim.FORM)
+
+    def tearDown(self):
+        player_sim.FORM.update(self.saved)
+
+    def test_zero_form_changes_nothing(self):
+        before = [self.simulator.play(seed)["score"] for seed in range(20)]
+        player_sim.FORM.update({"shot": 0.0, "usage": 0.0, "defense": 0.0})
+        self.assertEqual(before, [self.simulator.play(seed)["score"] for seed in range(20)])
+        self.assertEqual(set(self.simulator.form["shot"].values()), {1.0})
+
+    def test_form_widens_a_shooters_range(self):
+        def spread():
+            points = [self.simulator.play(seed)["stats"].get("a1", {}).get("points", 0) for seed in range(150)]
+            mean = sum(points) / len(points)
+            return (sum((p - mean) ** 2 for p in points) / len(points)) ** 0.5
+        narrow = spread()
+        player_sim.FORM.update({"shot": 0.3, "usage": 0.3})
+        self.assertGreater(spread(), narrow)

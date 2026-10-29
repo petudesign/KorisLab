@@ -7,6 +7,7 @@ actually taken shots.
 """
 from bisect import bisect
 from collections import defaultdict
+from math import exp
 import random
 
 from simulation.court import ZONES, THREE_ZONES, shot_zone, to_left_half
@@ -17,6 +18,9 @@ REBOUNDS = ("offensive_rebound", "defensive_rebound")
 # Prior strengths: how many observations count as "league average" for a player or team.
 PRIORS = {"usage_minutes": 60, "action": 40, "zone_share": 20, "two_pct": 25, "three_pct": 60,
           "ft_pct": 20, "per_minute": 80, "team": 150, "pace": 600}
+# Game-to-game form: log-normal spread of a player's shooting and usage and a team's defence in one game.
+# Zero means every simulation uses the same averages (the locked v1 behaviour).
+FORM = {"shot": 0.0, "usage": 0.0, "defense": 0.0}
 
 
 def next_start(possession, following):
@@ -360,7 +364,7 @@ class GameSimulator:
             if rng.random() < self.team_turnover * self.defense[defense]["turnover"]:
                 log.append({"type": "turnover", "team": offense, "player": None})
                 return points, "turnover"
-            actor = weighted_choice(rng, attackers, [self.usage[p] for p in attackers])
+            actor = weighted_choice(rng, attackers, [self.usage[p] * self.form["usage"][p] for p in attackers])
             mix = self.actions[actor]
             weights = [mix[0], mix[1] * self.defense[defense]["turnover"] * self.start_turnover.get(start, 1), mix[2]]
             action = weighted_choice(rng, ACTIONS, weights)
@@ -387,7 +391,7 @@ class GameSimulator:
             zone = ZONES[bisect_choice(rng, self.zones[actor])]
             x, y = self.location(rng, actor, zone)
             three = zone in THREE_ZONES
-            probability = (self.pct[(actor, zone)] * self.defense[defense]["make"]
+            probability = (self.pct[(actor, zone)] * self.form["shot"][actor] * self.defense[defense]["make"] * self.form["defense"][defense]
                            * self.start_make.get(start, 1) * self.side[offense])
             made = rng.random() < min(0.95, max(0.02, probability))
             shot = {"type": "3pt" if three else "2pt", "team": offense, "player": actor, "zone": zone,
@@ -429,8 +433,17 @@ class GameSimulator:
         return options[int(rng.random() * len(options))] if options else (20.0, 50.0)
 
     # --- whole game ------------------------------------------------------------------------
+    def draw_form(self, seed):
+        """Separate random stream, so a zero spread leaves the game stream untouched."""
+        rng = random.Random(f"form-{seed}")
+        factor = lambda sd: exp(rng.gauss(0, sd) - sd * sd / 2) if sd else 1.0
+        players = [pid for team in (self.home, self.away) for pid in self.rosters[team]["share"]]
+        return {"shot": {pid: factor(FORM["shot"]) for pid in players}, "usage": {pid: factor(FORM["usage"]) for pid in players},
+                "defense": {team: factor(FORM["defense"]) for team in (self.home, self.away)}}
+
     def play(self, seed, keep_log=False):
         rng = random.Random(seed)
+        self.form = self.draw_form(seed)
         home, away = self.home, self.away
         score, quarters = {home: 0, away: 0}, []
         stats = defaultdict(lambda: defaultdict(int))
