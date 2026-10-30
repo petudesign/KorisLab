@@ -1,0 +1,8 @@
+/* Big screens and TVs: the layout is designed at 1366 px wide and looked right at 1920 × 1080, so everything scales from there.
+   Both dimensions must qualify, or an ultrawide monitor would run out of height. */
+@media(min-width:2240px) and (min-height:1200px){:root{--ui-zoom:1.25}}
+@media(min-width:2560px) and (min-height:1300px){:root{--ui-zoom:1.33}}
+@media(min-width:3200px) and (min-height:1700px){:root{--ui-zoom:1.67}}
+@media(min-width:3840px) and (min-height:1900px){:root{--ui-zoom:2}}
+@media(min-width:5120px) and (min-height:2600px){:root{--ui-zoom:2.67}}
+html{zoom:var(--ui-zoom,1)}

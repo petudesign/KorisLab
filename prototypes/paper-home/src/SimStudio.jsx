@@ -54,8 +54,9 @@ function Segmented({label,options,value,onChange}){
  useLayoutEffect(()=>{
   const node=group.current,measure=()=>{
    const active=node.querySelector('[aria-pressed="true"]');if(!active)return;
-   const box=node.querySelector('.sim-seg-active').getBoundingClientRect(),rect=active.getBoundingClientRect();
-   setClip(`inset(${rect.top-box.top}px ${box.right-rect.right}px ${box.bottom-rect.bottom}px ${rect.left-box.left}px round 6px)`);
+   const overlay=node.querySelector('.sim-seg-active'),box=overlay.getBoundingClientRect(),rect=active.getBoundingClientRect();
+   const px=value=>value/(box.width/overlay.offsetWidth||1);// Rects include page zoom on big screens; clip-path lengths do not.
+   setClip(`inset(${px(rect.top-box.top)}px ${px(box.right-rect.right)}px ${px(box.bottom-rect.bottom)}px ${px(rect.left-box.left)}px round 6px)`);
   };
   measure();const observer=new ResizeObserver(measure);observer.observe(node);return()=>observer.disconnect();
  },[value,options.length]);
