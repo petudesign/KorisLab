@@ -9,7 +9,7 @@ export function useMetadata(title,description,scope,enabled=true,missing=false){
   document.title=`${translatedTitle} | KorisLab`;
   const set=(key,value,property=false)=>{const attr=property?'property':'name';let el=document.head.querySelector(`meta[${attr}="${key}"]`);if(!el){el=document.createElement('meta');el.setAttribute(attr,key);document.head.append(el);}el.content=value;};
   let path=location.pathname.replace(/\/+$/,'')||'/';path=path==='/'?'/':path+'/';path=scope.canonicalPath||path;path=path.replace(/^(\/matches\/\d+\/)(data|players|preview)\/$/,'$1');
-  const internal=['/search/','/design-system/','/custom-import/','/data/','/analyysit/'].includes(path);
+  const internal=['/search/','/design-system/','/custom-import/','/data/'].includes(path);
   const query=new URLSearchParams(location.search);
   const invalid=missing||scope.section==='Sivua ei löytynyt'||query.has('season')&&!['2024-25','2025-26','2026-27'].includes(query.get('season'))||query.has('league')&&!['korisliiga','naisten-korisliiga'].includes(query.get('league'));
 

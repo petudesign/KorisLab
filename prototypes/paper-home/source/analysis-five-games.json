@@ -1,0 +1,1196 @@
+{
+ "women": {
+  "rows": [
+   {
+    "team": "Peli-Karhut",
+    "season": "2024-25",
+    "wins": 4,
+    "margin": 24.0,
+    "restGames": 21,
+    "restWinPct": 81.0
+   },
+   {
+    "team": "Tampereen Pyrintö",
+    "season": "2024-25",
+    "wins": 3,
+    "margin": -2.8,
+    "restGames": 21,
+    "restWinPct": 33.3
+   },
+   {
+    "team": "ToPo",
+    "season": "2024-25",
+    "wins": 5,
+    "margin": 21.2,
+    "restGames": 21,
+    "restWinPct": 81.0
+   },
+   {
+    "team": "HBA-Märsky",
+    "season": "2024-25",
+    "wins": 1,
+    "margin": -17.4,
+    "restGames": 21,
+    "restWinPct": 42.9
+   },
+   {
+    "team": "Tapiolan Honka",
+    "season": "2024-25",
+    "wins": 4,
+    "margin": 4.8,
+    "restGames": 21,
+    "restWinPct": 52.4
+   },
+   {
+    "team": "Espoo Basket Team",
+    "season": "2024-25",
+    "wins": 3,
+    "margin": 16.0,
+    "restGames": 21,
+    "restWinPct": 61.9
+   },
+   {
+    "team": "Forssan Alku",
+    "season": "2024-25",
+    "wins": 0,
+    "margin": -33.0,
+    "restGames": 20,
+    "restWinPct": 10.0
+   },
+   {
+    "team": "Kouvottaret",
+    "season": "2024-25",
+    "wins": 3,
+    "margin": 3.6,
+    "restGames": 21,
+    "restWinPct": 76.2
+   },
+   {
+    "team": "Vimpelin Veto",
+    "season": "2024-25",
+    "wins": 1,
+    "margin": -4.6,
+    "restGames": 20,
+    "restWinPct": 20.0
+   },
+   {
+    "team": "BC Nokia",
+    "season": "2024-25",
+    "wins": 1,
+    "margin": -7.2,
+    "restGames": 21,
+    "restWinPct": 38.1
+   },
+   {
+    "team": "Vimpelin Veto",
+    "season": "2025-26",
+    "wins": 3,
+    "margin": 2.4,
+    "restGames": 19,
+    "restWinPct": 78.9
+   },
+   {
+    "team": "Espoo Basket Team",
+    "season": "2025-26",
+    "wins": 3,
+    "margin": 2.4,
+    "restGames": 19,
+    "restWinPct": 63.2
+   },
+   {
+    "team": "Tapiolan Honka",
+    "season": "2025-26",
+    "wins": 2,
+    "margin": -10.4,
+    "restGames": 19,
+    "restWinPct": 15.8
+   },
+   {
+    "team": "HBA-Märsky",
+    "season": "2025-26",
+    "wins": 3,
+    "margin": 2.8,
+    "restGames": 19,
+    "restWinPct": 52.6
+   },
+   {
+    "team": "Kouvottaret",
+    "season": "2025-26",
+    "wins": 0,
+    "margin": -21.6,
+    "restGames": 19,
+    "restWinPct": 15.8
+   },
+   {
+    "team": "BC Nokia",
+    "season": "2025-26",
+    "wins": 1,
+    "margin": -4.6,
+    "restGames": 19,
+    "restWinPct": 47.4
+   },
+   {
+    "team": "Peli-Karhut",
+    "season": "2025-26",
+    "wins": 5,
+    "margin": 25.0,
+    "restGames": 19,
+    "restWinPct": 68.4
+   },
+   {
+    "team": "ToPo",
+    "season": "2025-26",
+    "wins": 1,
+    "margin": -5.6,
+    "restGames": 19,
+    "restWinPct": 36.8
+   },
+   {
+    "team": "Tampereen Pyrintö",
+    "season": "2025-26",
+    "wins": 4,
+    "margin": 12.8,
+    "restGames": 19,
+    "restWinPct": 73.7
+   }
+  ],
+  "teamSeasons": 19,
+  "corrMargin": 0.83,
+  "corrWins": 0.8,
+  "bySeason": {
+   "2024-25": 0.85,
+   "2025-26": 0.81
+  },
+  "withoutLowest": {
+   "team": "Forssan Alku",
+   "season": "2024-25",
+   "corrMargin": 0.8
+  },
+  "spread": 23.1,
+  "seasonLength": {
+   "teams": {
+    "2024-25": 10,
+    "2025-26": 9
+   },
+   "gamesPerTeam": [
+    24,
+    26
+   ],
+   "corrAt": {
+    "3": 0.85,
+    "5": 0.83,
+    "7": 0.81,
+    "8": 0.83,
+    "10": 0.77
+   }
+  },
+  "changes": [
+   {
+    "team": "Kouvottaret",
+    "now": {
+     "offensive_rating": 96.7,
+     "defensive_rating": 85.4,
+     "efg_pct": 42.2,
+     "offensive_rebound_pct": 35.8,
+     "turnover_pct": 19.4
+    },
+    "last": {
+     "offensive_rating": 81.8,
+     "defensive_rating": 102.6,
+     "efg_pct": 43.5,
+     "offensive_rebound_pct": 27.4,
+     "turnover_pct": 27.3
+    },
+    "games": [
+     {
+      "opponent": "ToPo",
+      "margin": 7
+     },
+     {
+      "opponent": "Tapiolan Honka",
+      "margin": 17
+     },
+     {
+      "opponent": "Tampereen Pyrintö",
+      "margin": 6
+     },
+     {
+      "opponent": "Vimpelin Veto",
+      "margin": 6
+     }
+    ],
+    "arrivals": [
+     {
+      "name": "Kelly Moten",
+      "ppg": 22.5,
+      "from": null
+     },
+     {
+      "name": "Ayana Emmanuel",
+      "ppg": 15.0,
+      "from": null
+     }
+    ],
+    "returningShare": 71,
+    "absent": [
+     {
+      "name": "Tayanna Jones Bell",
+      "ppg": 17.2,
+      "now": null
+     },
+     {
+      "name": "Raiana Brown",
+      "ppg": 14.0,
+      "now": null
+     },
+     {
+      "name": "Roosa Frimodig",
+      "ppg": 8.7,
+      "now": null
+     }
+    ],
+    "risers": [
+     {
+      "name": "Henriikka Vähäuski",
+      "from": 6.7,
+      "to": 13.2
+     }
+    ]
+   },
+   {
+    "team": "ToPo",
+    "now": {
+     "offensive_rating": 106.3,
+     "defensive_rating": 84.6,
+     "efg_pct": 52.1,
+     "offensive_rebound_pct": 34.9,
+     "turnover_pct": 22.1
+    },
+    "last": {
+     "offensive_rating": 90.2,
+     "defensive_rating": 95.4,
+     "efg_pct": 41.5,
+     "offensive_rebound_pct": 37.9,
+     "turnover_pct": 23.1
+    },
+    "games": [
+     {
+      "opponent": "Kouvottaret",
+      "margin": -7
+     },
+     {
+      "opponent": "Vimpelin Veto",
+      "margin": 48
+     },
+     {
+      "opponent": "Peli-Karhut",
+      "margin": 37
+     },
+     {
+      "opponent": "Espoo Basket Team",
+      "margin": -1
+     },
+     {
+      "opponent": "HBA-Märsky",
+      "margin": 14
+     }
+    ],
+    "arrivals": [
+     {
+      "name": "Annika Aarrejoki",
+      "ppg": 22.4,
+      "from": "Tampereen Pyrintö"
+     },
+     {
+      "name": "Ebba Hämäläinen",
+      "ppg": 10.6,
+      "from": "Tampereen Pyrintö"
+     },
+     {
+      "name": "Eva Tauriainen",
+      "ppg": 4.5,
+      "from": null
+     }
+    ],
+    "returningShare": 66,
+    "absent": [
+     {
+      "name": "Sarah Gates",
+      "ppg": 17.1,
+      "now": null
+     },
+     {
+      "name": "Jessica Wisotzki",
+      "ppg": 9.1,
+      "now": null
+     },
+     {
+      "name": "Sini Luukkonen",
+      "ppg": 7.1,
+      "now": null
+     }
+    ],
+    "risers": [
+     {
+      "name": "Kaisa Kuisma",
+      "from": 3.8,
+      "to": 11.0
+     }
+    ]
+   },
+   {
+    "team": "HBA-Märsky",
+    "now": {
+     "offensive_rating": 99.6,
+     "defensive_rating": 77.5,
+     "efg_pct": 50.0,
+     "offensive_rebound_pct": 39.2,
+     "turnover_pct": 24.0
+    },
+    "last": {
+     "offensive_rating": 91.6,
+     "defensive_rating": 85.2,
+     "efg_pct": 42.9,
+     "offensive_rebound_pct": 37.4,
+     "turnover_pct": 21.7
+    },
+    "games": [
+     {
+      "opponent": "Peli-Karhut",
+      "margin": 24
+     },
+     {
+      "opponent": "Espoo Basket Team",
+      "margin": 27
+     },
+     {
+      "opponent": "BC Nokia",
+      "margin": 39
+     },
+     {
+      "opponent": "ToPo",
+      "margin": -14
+     }
+    ],
+    "arrivals": [
+     {
+      "name": "Eevi Seppä",
+      "ppg": 9.0,
+      "from": "BC Nokia"
+     },
+     {
+      "name": "Aida Kimario",
+      "ppg": 0.8,
+      "from": null
+     }
+    ],
+    "returningShare": 84,
+    "absent": [
+     {
+      "name": "Nea Schreck",
+      "ppg": 6.3,
+      "now": "Espoo Basket Team"
+     },
+     {
+      "name": "Silja Loukola",
+      "ppg": 4.8,
+      "now": null
+     },
+     {
+      "name": "Emilia Helasuo",
+      "ppg": 4.2,
+      "now": null
+     }
+    ],
+    "risers": [
+     {
+      "name": "Veronika Nanje",
+      "from": 4.4,
+      "to": 10.7
+     },
+     {
+      "name": "Aluel Machol",
+      "from": 6.2,
+      "to": 11.2
+     }
+    ]
+   },
+   {
+    "team": "Espoo Basket Team",
+    "now": {
+     "offensive_rating": 91.3,
+     "defensive_rating": 84.0,
+     "efg_pct": 40.5,
+     "offensive_rebound_pct": 39.4,
+     "turnover_pct": 22.0
+    },
+    "last": {
+     "offensive_rating": 95.5,
+     "defensive_rating": 87.5,
+     "efg_pct": 42.8,
+     "offensive_rebound_pct": 40.0,
+     "turnover_pct": 22.1
+    },
+    "games": [
+     {
+      "opponent": "HBA-Märsky",
+      "margin": -27
+     },
+     {
+      "opponent": "BC Nokia",
+      "margin": 8
+     },
+     {
+      "opponent": "ToPo",
+      "margin": 1
+     },
+     {
+      "opponent": "Tapiolan Honka",
+      "margin": 46
+     },
+     {
+      "opponent": "Tampereen Pyrintö",
+      "margin": 5
+     }
+    ],
+    "arrivals": [
+     {
+      "name": "Nea Schreck",
+      "ppg": 14.8,
+      "from": "HBA-Märsky"
+     },
+     {
+      "name": "Adiisa Rinne",
+      "ppg": 11.0,
+      "from": null
+     },
+     {
+      "name": "Alessia Kilpeläinen",
+      "ppg": 6.0,
+      "from": null
+     }
+    ],
+    "returningShare": 56,
+    "absent": [
+     {
+      "name": "Nicole Ogun",
+      "ppg": 16.1,
+      "now": null
+     },
+     {
+      "name": "Erika Mace",
+      "ppg": 14.0,
+      "now": null
+     },
+     {
+      "name": "Venla Määttänen",
+      "ppg": 12.8,
+      "now": null
+     }
+    ],
+    "risers": [
+     {
+      "name": "Kiia Mäntylä",
+      "from": 5.2,
+      "to": 17.0
+     },
+     {
+      "name": "Emili Melnikova",
+      "from": 12.5,
+      "to": 16.8
+     }
+    ]
+   },
+   {
+    "team": "Peli-Karhut",
+    "now": {
+     "offensive_rating": 88.7,
+     "defensive_rating": 97.2,
+     "efg_pct": 44.4,
+     "offensive_rebound_pct": 32.7,
+     "turnover_pct": 24.6
+    },
+    "last": {
+     "offensive_rating": 103.4,
+     "defensive_rating": 87.5,
+     "efg_pct": 48.9,
+     "offensive_rebound_pct": 31.4,
+     "turnover_pct": 18.4
+    },
+    "games": [
+     {
+      "opponent": "HBA-Märsky",
+      "margin": -24
+     },
+     {
+      "opponent": "BC Nokia",
+      "margin": 6
+     },
+     {
+      "opponent": "ToPo",
+      "margin": -37
+     },
+     {
+      "opponent": "Tapiolan Honka",
+      "margin": 8
+     },
+     {
+      "opponent": "Tampereen Pyrintö",
+      "margin": 13
+     }
+    ],
+    "arrivals": [
+     {
+      "name": "Melannie Daley",
+      "ppg": 12.5,
+      "from": null
+     },
+     {
+      "name": "Ellie Foster",
+      "ppg": 11.2,
+      "from": null
+     },
+     {
+      "name": "Emma Lampén",
+      "ppg": 9.4,
+      "from": "Tapiolan Honka"
+     }
+    ],
+    "returningShare": 47,
+    "absent": [
+     {
+      "name": "Lauren Heard",
+      "ppg": 19.5,
+      "now": null
+     },
+     {
+      "name": "Delanie Crawford",
+      "ppg": 13.8,
+      "now": null
+     },
+     {
+      "name": "Elin Gustavsson",
+      "ppg": 10.5,
+      "now": null
+     }
+    ],
+    "risers": [
+     {
+      "name": "Elina Arike",
+      "from": 5.4,
+      "to": 10.2
+     }
+    ]
+   },
+   {
+    "team": "Vimpelin Veto",
+    "now": {
+     "offensive_rating": 84.3,
+     "defensive_rating": 103.9,
+     "efg_pct": 43.0,
+     "offensive_rebound_pct": 25.7,
+     "turnover_pct": 23.5
+    },
+    "last": {
+     "offensive_rating": 98.8,
+     "defensive_rating": 90.8,
+     "efg_pct": 44.7,
+     "offensive_rebound_pct": 35.4,
+     "turnover_pct": 18.6
+    },
+    "games": [
+     {
+      "opponent": "BC Nokia",
+      "margin": -23
+     },
+     {
+      "opponent": "ToPo",
+      "margin": -48
+     },
+     {
+      "opponent": "Tapiolan Honka",
+      "margin": -1
+     },
+     {
+      "opponent": "Tampereen Pyrintö",
+      "margin": -4
+     },
+     {
+      "opponent": "Kouvottaret",
+      "margin": -6
+     }
+    ],
+    "arrivals": [
+     {
+      "name": "Lilian Hansford",
+      "ppg": 12.8,
+      "from": null
+     },
+     {
+      "name": "Nakia Cheatham",
+      "ppg": 11.2,
+      "from": null
+     },
+     {
+      "name": "Elli Leppänen",
+      "ppg": 2.8,
+      "from": null
+     }
+    ],
+    "returningShare": 53,
+    "absent": [
+     {
+      "name": "Sara Puckett",
+      "ppg": 27.7,
+      "now": null
+     },
+     {
+      "name": "Sahara Jones",
+      "ppg": 18.6,
+      "now": null
+     },
+     {
+      "name": "Jeanae Terry",
+      "ppg": 15.2,
+      "now": null
+     }
+    ],
+    "risers": [
+     {
+      "name": "Silja Viita",
+      "from": 9.7,
+      "to": 22.2
+     },
+     {
+      "name": "Pihla Jaatinen",
+      "from": 2.4,
+      "to": 13.7
+     }
+    ]
+   }
+  ],
+  "games": 21,
+  "asOf": "2026-10-28",
+  "standings": [
+   {
+    "team": "Kouvottaret",
+    "wins": 4,
+    "losses": 0,
+    "diff": 36,
+    "lastSeason": "3–21"
+   },
+   {
+    "team": "Espoo Basket Team",
+    "wins": 4,
+    "losses": 1,
+    "diff": 33,
+    "lastSeason": "15–9"
+   },
+   {
+    "team": "HBA-Märsky",
+    "wins": 3,
+    "losses": 1,
+    "diff": 76,
+    "lastSeason": "13–11"
+   },
+   {
+    "team": "ToPo",
+    "wins": 3,
+    "losses": 2,
+    "diff": 91,
+    "lastSeason": "8–16"
+   },
+   {
+    "team": "Peli-Karhut",
+    "wins": 3,
+    "losses": 2,
+    "diff": -34,
+    "lastSeason": "18–6"
+   },
+   {
+    "team": "Tampereen Pyrintö",
+    "wins": 2,
+    "losses": 3,
+    "diff": -14,
+    "lastSeason": "18–6"
+   },
+   {
+    "team": "BC Nokia",
+    "wins": 1,
+    "losses": 3,
+    "diff": -30,
+    "lastSeason": "10–14"
+   },
+   {
+    "team": "Tapiolan Honka",
+    "wins": 1,
+    "losses": 4,
+    "diff": -76,
+    "lastSeason": "5–19"
+   },
+   {
+    "team": "Vimpelin Veto",
+    "wins": 0,
+    "losses": 5,
+    "diff": -82,
+    "lastSeason": "18–6"
+   }
+  ]
+ },
+ "men": {
+  "rows": [
+   {
+    "team": "BC Nokia",
+    "season": "2024-25",
+    "wins": 0,
+    "margin": -13.0,
+    "restGames": 27,
+    "restWinPct": 59.3
+   },
+   {
+    "team": "Kauhajoki",
+    "season": "2024-25",
+    "wins": 4,
+    "margin": 4.8,
+    "restGames": 27,
+    "restWinPct": 66.7
+   },
+   {
+    "team": "Kobrat",
+    "season": "2024-25",
+    "wins": 2,
+    "margin": -1.4,
+    "restGames": 26,
+    "restWinPct": 11.5
+   },
+   {
+    "team": "Kouvot",
+    "season": "2024-25",
+    "wins": 3,
+    "margin": 0.4,
+    "restGames": 26,
+    "restWinPct": 46.2
+   },
+   {
+    "team": "Helsinki Seagulls",
+    "season": "2024-25",
+    "wins": 4,
+    "margin": 15.4,
+    "restGames": 27,
+    "restWinPct": 85.2
+   },
+   {
+    "team": "Salon Vilpas",
+    "season": "2024-25",
+    "wins": 3,
+    "margin": 0.8,
+    "restGames": 27,
+    "restWinPct": 55.6
+   },
+   {
+    "team": "Tampereen Pyrintö",
+    "season": "2024-25",
+    "wins": 1,
+    "margin": -8.8,
+    "restGames": 27,
+    "restWinPct": 59.3
+   },
+   {
+    "team": "Kataja Basket",
+    "season": "2024-25",
+    "wins": 4,
+    "margin": 8.0,
+    "restGames": 27,
+    "restWinPct": 51.9
+   },
+   {
+    "team": "Bisons Loimaa",
+    "season": "2024-25",
+    "wins": 4,
+    "margin": 5.6,
+    "restGames": 27,
+    "restWinPct": 37.0
+   },
+   {
+    "team": "Korihait",
+    "season": "2024-25",
+    "wins": 3,
+    "margin": -4.0,
+    "restGames": 27,
+    "restWinPct": 48.1
+   },
+   {
+    "team": "Tapiolan Honka",
+    "season": "2024-25",
+    "wins": 2,
+    "margin": -3.6,
+    "restGames": 27,
+    "restWinPct": 37.0
+   },
+   {
+    "team": "KTP-Basket",
+    "season": "2024-25",
+    "wins": 0,
+    "margin": -4.2,
+    "restGames": 27,
+    "restWinPct": 40.7
+   },
+   {
+    "team": "Kobrat",
+    "season": "2025-26",
+    "wins": 1,
+    "margin": -8.8,
+    "restGames": 27,
+    "restWinPct": 18.5
+   },
+   {
+    "team": "Tapiolan Honka",
+    "season": "2025-26",
+    "wins": 2,
+    "margin": -13.8,
+    "restGames": 27,
+    "restWinPct": 63.0
+   },
+   {
+    "team": "Kouvot",
+    "season": "2025-26",
+    "wins": 2,
+    "margin": -5.6,
+    "restGames": 27,
+    "restWinPct": 37.0
+   },
+   {
+    "team": "Korihait",
+    "season": "2025-26",
+    "wins": 3,
+    "margin": 0.8,
+    "restGames": 27,
+    "restWinPct": 59.3
+   },
+   {
+    "team": "KTP-Basket",
+    "season": "2025-26",
+    "wins": 2,
+    "margin": 2.2,
+    "restGames": 27,
+    "restWinPct": 63.0
+   },
+   {
+    "team": "Kataja Basket",
+    "season": "2025-26",
+    "wins": 1,
+    "margin": -2.6,
+    "restGames": 27,
+    "restWinPct": 59.3
+   },
+   {
+    "team": "Kauhajoki",
+    "season": "2025-26",
+    "wins": 3,
+    "margin": 0.0,
+    "restGames": 27,
+    "restWinPct": 66.7
+   },
+   {
+    "team": "Tampereen Pyrintö",
+    "season": "2025-26",
+    "wins": 3,
+    "margin": 2.4,
+    "restGames": 27,
+    "restWinPct": 48.1
+   },
+   {
+    "team": "Salon Vilpas",
+    "season": "2025-26",
+    "wins": 5,
+    "margin": 21.6,
+    "restGames": 27,
+    "restWinPct": 63.0
+   },
+   {
+    "team": "Bisons Loimaa",
+    "season": "2025-26",
+    "wins": 2,
+    "margin": -0.8,
+    "restGames": 27,
+    "restWinPct": 44.4
+   },
+   {
+    "team": "Lahti Basketball",
+    "season": "2025-26",
+    "wins": 2,
+    "margin": -7.0,
+    "restGames": 27,
+    "restWinPct": 40.7
+   },
+   {
+    "team": "Helsinki Seagulls",
+    "season": "2025-26",
+    "wins": 4,
+    "margin": 11.6,
+    "restGames": 27,
+    "restWinPct": 37.0
+   }
+  ],
+  "teamSeasons": 24,
+  "corrMargin": 0.28,
+  "corrWins": 0.27,
+  "bySeason": {
+   "2024-25": 0.33,
+   "2025-26": 0.25
+  },
+  "withoutLowest": {
+   "team": "Kobrat",
+   "season": "2024-25",
+   "corrMargin": 0.31
+  },
+  "spread": 15.9,
+  "seasonLength": {
+   "teams": {
+    "2024-25": 12,
+    "2025-26": 12
+   },
+   "gamesPerTeam": [
+    31,
+    32
+   ],
+   "corrAt": {
+    "3": 0.33,
+    "5": 0.28,
+    "7": 0.3,
+    "8": 0.35,
+    "10": 0.39
+   }
+  },
+  "changes": [
+   {
+    "team": "KTP-Basket",
+    "now": {
+     "offensive_rating": 118.9,
+     "defensive_rating": 99.4,
+     "efg_pct": 55.3,
+     "offensive_rebound_pct": 33.1,
+     "turnover_pct": 18.0
+    },
+    "last": {
+     "offensive_rating": 109.3,
+     "defensive_rating": 104.2,
+     "efg_pct": 49.0,
+     "offensive_rebound_pct": 37.1,
+     "turnover_pct": 17.4
+    },
+    "games": [
+     {
+      "opponent": "Bisons Loimaa",
+      "margin": 23
+     },
+     {
+      "opponent": "Kauhajoki",
+      "margin": 6
+     },
+     {
+      "opponent": "Tampereen Pyrintö",
+      "margin": 16
+     },
+     {
+      "opponent": "Salon Vilpas",
+      "margin": 21
+     },
+     {
+      "opponent": "Korihait",
+      "margin": 11
+     },
+     {
+      "opponent": "Kouvot",
+      "margin": 6
+     },
+     {
+      "opponent": "Kouvot",
+      "margin": 24
+     }
+    ],
+    "arrivals": [
+     {
+      "name": "Mason Gillis",
+      "ppg": 25.8,
+      "from": null
+     },
+     {
+      "name": "Joel Mäntynen",
+      "ppg": 17.3,
+      "from": null
+     },
+     {
+      "name": "Zion Styles",
+      "ppg": 12.6,
+      "from": null
+     }
+    ],
+    "returningShare": 29,
+    "absent": [
+     {
+      "name": "Jayden Taylor",
+      "ppg": 19.8,
+      "now": null
+     },
+     {
+      "name": "Hannes Pöllä",
+      "ppg": 14.2,
+      "now": "Kipinä Basket"
+     },
+     {
+      "name": "Koen Sapwell",
+      "ppg": 14.2,
+      "now": null
+     }
+    ],
+    "risers": []
+   },
+   {
+    "team": "Kipinä Basket",
+    "now": {
+     "offensive_rating": 115.5,
+     "defensive_rating": 106.3,
+     "efg_pct": 56.9,
+     "offensive_rebound_pct": 25.4,
+     "turnover_pct": 15.7
+    },
+    "last": null,
+    "games": [
+     {
+      "opponent": "Korihait",
+      "margin": 24
+     },
+     {
+      "opponent": "Kouvot",
+      "margin": 9
+     },
+     {
+      "opponent": "Kauhajoki",
+      "margin": 3
+     },
+     {
+      "opponent": "Tampereen Pyrintö",
+      "margin": -5
+     },
+     {
+      "opponent": "Tapiolan Honka",
+      "margin": 9
+     },
+     {
+      "opponent": "Tapiolan Honka",
+      "margin": 2
+     },
+     {
+      "opponent": "Lahti Basketball",
+      "margin": 12
+     }
+    ],
+    "arrivals": [
+     {
+      "name": "Jalen McCoy",
+      "ppg": 21.6,
+      "from": null
+     },
+     {
+      "name": "Derrin Boyd",
+      "ppg": 18.3,
+      "from": null
+     },
+     {
+      "name": "Tristan Smith",
+      "ppg": 16.2,
+      "from": null
+     }
+    ]
+   }
+  ],
+  "games": 42,
+  "asOf": "2026-10-27",
+  "standings": [
+   {
+    "team": "KTP-Basket",
+    "wins": 7,
+    "losses": 0,
+    "diff": 107,
+    "lastSeason": "19–13"
+   },
+   {
+    "team": "Kipinä Basket",
+    "wins": 6,
+    "losses": 1,
+    "diff": 54
+   },
+   {
+    "team": "Tapiolan Honka",
+    "wins": 5,
+    "losses": 2,
+    "diff": 24,
+    "lastSeason": "19–13"
+   },
+   {
+    "team": "Salon Vilpas",
+    "wins": 4,
+    "losses": 3,
+    "diff": 35,
+    "lastSeason": "22–10"
+   },
+   {
+    "team": "Tampereen Pyrintö",
+    "wins": 4,
+    "losses": 3,
+    "diff": -1,
+    "lastSeason": "16–16"
+   },
+   {
+    "team": "Kauhajoki",
+    "wins": 3,
+    "losses": 4,
+    "diff": 7,
+    "lastSeason": "21–11"
+   },
+   {
+    "team": "Lahti Basketball",
+    "wins": 3,
+    "losses": 4,
+    "diff": -17,
+    "lastSeason": "13–19"
+   },
+   {
+    "team": "Helsinki Seagulls",
+    "wins": 3,
+    "losses": 4,
+    "diff": -29,
+    "lastSeason": "14–18"
+   },
+   {
+    "team": "Kataja Basket",
+    "wins": 2,
+    "losses": 5,
+    "diff": -23,
+    "lastSeason": "17–15"
+   },
+   {
+    "team": "Korihait",
+    "wins": 2,
+    "losses": 5,
+    "diff": -42,
+    "lastSeason": "19–13"
+   },
+   {
+    "team": "Bisons Loimaa",
+    "wins": 2,
+    "losses": 5,
+    "diff": -76,
+    "lastSeason": "14–18"
+   },
+   {
+    "team": "Kouvot",
+    "wins": 1,
+    "losses": 6,
+    "diff": -39,
+    "lastSeason": "12–20"
+   }
+  ]
+ }
+}

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readRoute,routeHref} from '../src/routing.js';
 const defaults={leagueId:'women',seasonId:'2026-27'};
 const read=url=>readRoute(defaults,new URL(url,'http://127.0.0.1:5174'));
-test('game links preserve league, season and original ID',()=>{const route={section:'Ottelut',matchId:'1000914',seasonId:'2025-26',leagueId:'men'};assert.deepEqual(read(routeHref(route)),{...route,matchPanel:undefined,playerId:undefined,teamId:undefined});});
+test('game links preserve league, season and original ID',()=>{const route={section:'Ottelut',matchId:'1000914',seasonId:'2025-26',leagueId:'men'};assert.deepEqual(read(routeHref(route)),{...route,articleId:undefined,matchPanel:undefined,playerId:undefined,teamId:undefined});});
 test('player and team deep links are routable',()=>{assert.equal(read('/players/abc/?season=2024-25').playerId,'abc');assert.equal(read('/teams/korisliiga/salon-vilpas/?season=2026-27').leagueId,'men');assert.equal(read('/teams/korisliiga/salon-vilpas/').teamId,'salon-vilpas');});
 test('legacy prototype hash links and unknown routes',()=>{assert.equal(read('/#match=1000914').matchId,'1000914');assert.equal(read('/#overview').section,'Yleiskatsaus');assert.equal(read('/does-not-exist/').section,'Sivua ei löytynyt');});
 
@@ -18,3 +18,5 @@ test('search deep links round-trip Finnish question, season and league',()=>{con
 
 test('malformed entity URLs recover to 404 instead of throwing',()=>{for(const path of ['/players/%E0%A4%A/','/teams/korisliiga/%E0%A4%A/'])assert.equal(read(path).section,'Sivua ei löytynyt');});
 test('unavailable records keep their entity route and season context',()=>{assert.equal(read('/players/not-in-this-season/?season=2025-26').section,'Pelaajat');assert.equal(read('/matches/999999999/').section,'Ottelut');assert.equal(read('/matches/123/unrecognised-panel/').section,'Sivua ei löytynyt');});
+
+test('article links are routable and unknown articles are not found',()=>{const route=read('/analyysit/viisi-ottelua/');assert.equal(route.section,'Analyysit');assert.equal(route.articleId,'viisi-ottelua');assert.ok(routeHref(route).startsWith('/analyysit/viisi-ottelua/?'));assert.equal(read('/analyysit/').section,'Analyysit');assert.equal(read('/analyysit/ei-ole/').section,'Sivua ei löytynyt');});
