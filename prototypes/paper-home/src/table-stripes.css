@@ -1,0 +1,10 @@
+/* Alternate rows only where the eye travels far from the name to the numbers. Short tables keep their plain lines.
+   nth-child follows the visible order, so sorting never breaks the rhythm. Hover and the selected team stay stronger. */
+:root{--row-stripe:#ffffff09}
+.entity-table tbody tr:nth-child(even),.match-roster tbody tr:nth-child(even),.dash-team-table tbody tr:nth-child(even),.sim-table tbody tr:nth-child(even){background:var(--row-stripe)}
+.entity-table tbody th,.entity-table tbody td,.match-roster tbody th,.match-roster tbody td,.dash-team-table tbody th,.dash-team-table tbody td,.sim-table tbody th,.sim-table tbody td{border-bottom-color:transparent}
+.entity-table tbody tr>:first-child,.match-roster tbody tr>:first-child,.dash-team-table tbody tr>:first-child,.sim-table tbody tr>:first-child{border-radius:6px 0 0 6px}
+.entity-table tbody tr>:last-child,.match-roster tbody tr>:last-child,.dash-team-table tbody tr>:last-child,.sim-table tbody tr>:last-child{border-radius:0 6px 6px 0}
+.entity-table tbody tr:hover,.match-roster tbody tr:hover,.sim-table tbody tr:hover{background:#df945b12}
+.dash-team-table tbody tr:hover{background:#df945b14}
+.dash-team-table tbody tr.selected-team{background:#df945b1a}

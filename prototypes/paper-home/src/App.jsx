@@ -26,6 +26,7 @@ import MenuOutlined from '@mui/icons-material/MenuOutlined';
 import CloseOutlined from '@mui/icons-material/CloseOutlined';
 import { DecryptedText } from './DecryptedText';
 import './motion.css';
+import './table-stripes.css';
 import { HomeSections } from './HomeSections';
 import {BrandMark} from './BrandMark';
 import { TeamLogo } from './TeamLogo';
