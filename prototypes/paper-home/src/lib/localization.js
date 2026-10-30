@@ -13,3 +13,11 @@ export function createTranslator(catalog){
  };
  return translate;
 }
+
+// First visit: Finnish if the browser lists Finnish anywhere, since many Finns run an English browser; otherwise English.
+// Search engines keep the Finnish page, so one address is not indexed in a language it does not serve by default.
+const CRAWLERS=/bot|crawl|spider|slurp|bingpreview|facebookexternalhit|google-extended|googleother/i;
+export function preferredLanguage(languages=[],agent=''){
+ if(CRAWLERS.test(agent)||!languages.length)return 'fi';
+ return languages.some(language=>/^fi\b/i.test(language))?'fi':'en';
+}

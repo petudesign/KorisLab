@@ -1,8 +1,15 @@
 import {createContext,useContext,useMemo,useState} from 'react';
 import translations from './translations.en.json';
-import {createTranslator} from './lib/localization';
+import {createTranslator,preferredLanguage} from './lib/localization';
 
-export function initialLanguage(){try{return localStorage.getItem('korislab-language')==='en'?'en':'fi';}catch{return 'fi';}}
+// A language the reader picked always wins. Without a window (build, tests) the source language stays.
+export function initialLanguage(){
+ if(typeof window==='undefined')return 'fi';
+ let saved=null;
+ try{saved=localStorage.getItem('korislab-language');}catch{}
+ if(saved==='en'||saved==='fi')return saved;
+ return preferredLanguage(navigator.languages?.length?navigator.languages:[navigator.language].filter(Boolean),navigator.userAgent);
+}
 let currentLanguage=initialLanguage();
 // Keep the context identity when a translation edit triggers Vite hot reload.
 const LanguageContext=import.meta.hot?.data.languageContext||createContext(null);
