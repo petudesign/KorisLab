@@ -35,4 +35,13 @@
 .dot-figure{position:absolute;display:block;pointer-events:none;height:500px;width:auto;top:208px;filter:drop-shadow(0 0 16px #df945b22);mask-image:linear-gradient(to bottom,#000 0%,#000 72%,transparent 94%);-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 72%,transparent 94%)}
 .dot-figure-left{left:118px}.dot-figure-right{right:96px}
 /* Phone: the figures stand behind the search field with only ball, head and shoulders above it, so the whole hero fits on the first screen. */
-@media(max-width:700px){.prototype-page .hero{--hero-dash-top:368px}.dot-figure{height:190px;top:176px}.dot-figure-left{left:-34px}.dot-figure-right{right:-34px}}
+@media(max-width:700px){.prototype-page .hero{--hero-dash-top:312px}.prototype-page .hero .hero-search{top:226px}.prototype-page .hero .hero-search>label{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}.dot-figure{height:190px;top:154px;mask-image:linear-gradient(to bottom,#000 0%,#000 47%,transparent 52%);-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 47%,transparent 52%)}.dot-figure-left{left:-12px}.dot-figure-right{right:-12px}}
+
+/* Phone home page: one search at a time. The nav's own field floats under the bar, so showing it never moves the page. */
+@media(max-width:700px){
+ .prototype-page:not(.data-page) .nav-wrapper .navigation{position:relative}
+ .prototype-page:not(.data-page) .nav-wrapper .nav-search{position:absolute;left:0;right:0;top:calc(100% + 6px);width:auto;height:44px;padding:4px 6px 4px 12px;background:linear-gradient(135deg,#262423,#1b1b1d);box-shadow:0 10px 24px #000a;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-6px);transition:opacity 180ms var(--ease-out),transform 180ms var(--ease-out),visibility 180ms}
+ .prototype-page:not(.data-page) .nav-wrapper[data-search=on] .nav-search{opacity:1;visibility:visible;pointer-events:auto;transform:none}
+ .nav-wrapper[data-search=on]::before{bottom:-56px}
+}
+@media(max-width:700px) and (prefers-reduced-motion:reduce){.prototype-page:not(.data-page) .nav-wrapper .nav-search{transform:none;transition:opacity 120ms linear,visibility 120ms}}
