@@ -167,6 +167,133 @@
    "corrMargin": 0.8
   },
   "spread": 23.1,
+  "seasonLength": {
+   "teams": {
+    "2024-25": 10,
+    "2025-26": 9
+   },
+   "gamesPerTeam": [
+    24,
+    26
+   ],
+   "corrAt": {
+    "3": 0.85,
+    "5": 0.83,
+    "7": 0.81,
+    "8": 0.83,
+    "10": 0.77
+   }
+  },
+  "changes": [
+   {
+    "team": "Kouvottaret",
+    "now": {
+     "offensive_rating": 96.7,
+     "defensive_rating": 85.4,
+     "efg_pct": 42.2,
+     "offensive_rebound_pct": 35.8,
+     "turnover_pct": 19.4
+    },
+    "last": {
+     "offensive_rating": 81.8,
+     "defensive_rating": 102.6,
+     "efg_pct": 43.5,
+     "offensive_rebound_pct": 27.4,
+     "turnover_pct": 27.3
+    },
+    "returningShare": 71
+   },
+   {
+    "team": "ToPo",
+    "now": {
+     "offensive_rating": 106.3,
+     "defensive_rating": 84.6,
+     "efg_pct": 52.1,
+     "offensive_rebound_pct": 34.9,
+     "turnover_pct": 22.1
+    },
+    "last": {
+     "offensive_rating": 90.2,
+     "defensive_rating": 95.4,
+     "efg_pct": 41.5,
+     "offensive_rebound_pct": 37.9,
+     "turnover_pct": 23.1
+    },
+    "returningShare": 66
+   },
+   {
+    "team": "HBA-Märsky",
+    "now": {
+     "offensive_rating": 99.6,
+     "defensive_rating": 77.5,
+     "efg_pct": 50.0,
+     "offensive_rebound_pct": 39.2,
+     "turnover_pct": 24.0
+    },
+    "last": {
+     "offensive_rating": 91.6,
+     "defensive_rating": 85.2,
+     "efg_pct": 42.9,
+     "offensive_rebound_pct": 37.4,
+     "turnover_pct": 21.7
+    },
+    "returningShare": 84
+   },
+   {
+    "team": "Espoo Basket Team",
+    "now": {
+     "offensive_rating": 91.3,
+     "defensive_rating": 84.0,
+     "efg_pct": 40.5,
+     "offensive_rebound_pct": 39.4,
+     "turnover_pct": 22.0
+    },
+    "last": {
+     "offensive_rating": 95.5,
+     "defensive_rating": 87.5,
+     "efg_pct": 42.8,
+     "offensive_rebound_pct": 40.0,
+     "turnover_pct": 22.1
+    },
+    "returningShare": 56
+   },
+   {
+    "team": "Peli-Karhut",
+    "now": {
+     "offensive_rating": 88.7,
+     "defensive_rating": 97.2,
+     "efg_pct": 44.4,
+     "offensive_rebound_pct": 32.7,
+     "turnover_pct": 24.6
+    },
+    "last": {
+     "offensive_rating": 103.4,
+     "defensive_rating": 87.5,
+     "efg_pct": 48.9,
+     "offensive_rebound_pct": 31.4,
+     "turnover_pct": 18.4
+    },
+    "returningShare": 47
+   },
+   {
+    "team": "Vimpelin Veto",
+    "now": {
+     "offensive_rating": 84.3,
+     "defensive_rating": 103.9,
+     "efg_pct": 43.0,
+     "offensive_rebound_pct": 25.7,
+     "turnover_pct": 23.5
+    },
+    "last": {
+     "offensive_rating": 98.8,
+     "defensive_rating": 90.8,
+     "efg_pct": 44.7,
+     "offensive_rebound_pct": 35.4,
+     "turnover_pct": 18.6
+    },
+    "returningShare": 53
+   }
+  ],
   "games": 21,
   "asOf": "2026-10-28",
   "standings": [
@@ -443,6 +570,54 @@
    "corrMargin": 0.31
   },
   "spread": 15.9,
+  "seasonLength": {
+   "teams": {
+    "2024-25": 12,
+    "2025-26": 12
+   },
+   "gamesPerTeam": [
+    31,
+    32
+   ],
+   "corrAt": {
+    "3": 0.33,
+    "5": 0.28,
+    "7": 0.3,
+    "8": 0.35,
+    "10": 0.39
+   }
+  },
+  "changes": [
+   {
+    "team": "KTP-Basket",
+    "now": {
+     "offensive_rating": 118.9,
+     "defensive_rating": 99.4,
+     "efg_pct": 55.3,
+     "offensive_rebound_pct": 33.1,
+     "turnover_pct": 18.0
+    },
+    "last": {
+     "offensive_rating": 109.3,
+     "defensive_rating": 104.2,
+     "efg_pct": 49.0,
+     "offensive_rebound_pct": 37.1,
+     "turnover_pct": 17.4
+    },
+    "returningShare": 29
+   },
+   {
+    "team": "Kipinä Basket",
+    "now": {
+     "offensive_rating": 115.5,
+     "defensive_rating": 106.3,
+     "efg_pct": 56.9,
+     "offensive_rebound_pct": 25.4,
+     "turnover_pct": 15.7
+    },
+    "last": null
+   }
+  ],
   "games": 42,
   "asOf": "2026-10-27",
   "standings": [

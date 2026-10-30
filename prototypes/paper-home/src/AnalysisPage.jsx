@@ -43,6 +43,12 @@ function StandingsTable({league}){
  return <div className="five-table-wrap"><table className="five-table five-standings"><caption>{say(`Tilanne ${date}, ${report.games} tilastoitua ottelua`,`As of ${date}, ${report.games} recorded games`)}</caption><thead><tr><th scope="col">{say('Joukkue','Team')}</th><th scope="col">{say('V–H','W–L')}</th><th scope="col">+/−</th><th scope="col">{say('Viime kausi','Last season')}</th></tr></thead><tbody>{report.standings.map(row=><tr key={row.team}><th scope="row"><span className="five-team"><TeamLogo name={row.team} className="five-logo" decorative/>{row.team}</span></th><td>{row.wins}–{row.losses}</td><td>{row.diff>0?'+':row.diff<0?'−':''}{Math.abs(row.diff)}</td><td>{row.lastSeason||say('nousija','promoted')}</td></tr>)}</tbody></table></div>;
 }
 
+function ChangesTable(){
+ const {language}=useI18n(),say=(fi,en)=>language==='fi'?fi:en,format=v=>v.toLocaleString(language==='fi'?'fi-FI':'en-GB',{minimumFractionDigits:1,maximumFractionDigits:1});
+ const pair=(row,key)=>row.last?<>{format(row.now[key])}<small>{say('viime kausi','last season')} {format(row.last[key])}</small></>:format(row.now[key]);
+ return <div className="five-table-wrap"><table className="five-table five-standings"><caption>{say('Pisteet / 100 hallintaa. Puolustuksessa pienempi on parempi.','Points per 100 possessions. On defence, lower is better.')}</caption><thead><tr><th scope="col">{say('Joukkue','Team')}</th><th scope="col">{say('Viime kauden pelaajat, % minuuteista','Last season’s players, % of minutes')}</th><th scope="col">{say('Hyökkäys','Offence')}</th><th scope="col">{say('Puolustus','Defence')}</th></tr></thead><tbody>{[...data.women.changes,...data.men.changes].map(row=><tr key={row.team}><th scope="row"><span className="five-team"><TeamLogo name={row.team} className="five-logo" decorative/>{row.team}</span></th><td>{row.returningShare!=null?`${row.returningShare} %`:say('nousija','promoted')}</td><td>{pair(row,'offensive_rating')}</td><td>{pair(row,'defensive_rating')}</td></tr>)}</tbody></table></div>;
+}
+
 function ChartData(){
  const {language}=useI18n(),say=(fi,en)=>language==='fi'?fi:en;
  const rows=[...data.women.rows.map(r=>({...r,league:say('Naiset','Women')})),...data.men.rows.map(r=>({...r,league:say('Miehet','Men')}))];
@@ -64,7 +70,9 @@ function Article({article,listHref,onList}){
     <p className="five-note">{say('Katkoviiva on 50 % voitoista. Viiva näyttää suunnan: mitä jyrkempi, sitä enemmän alku on kertonut loppukaudesta.','The dashed line is 50% wins. The sloped line shows the direction: the steeper, the more the start has said about the rest.')}</p><ChartData/></>}
    {section.table==='women'&&<StandingsTable league="women"/>}
    {section.table==='men'&&<StandingsTable league="men"/>}
+   {section.table==='changes'&&<ChangesTable/>}
    {section.bullets&&<ul>{section.bullets.map(text=><li key={text}>{text}</li>)}</ul>}
+   {(section.after||[]).map(text=><p key={text}>{text}</p>)}
   </section>)}
   <p className="analysis-method">{methodNote[lang]}</p>
  </article>;
