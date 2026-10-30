@@ -72,6 +72,11 @@ def season_length(league):
     return {"teams": teams, "gamesPerTeam": [min(games.values()), max(games.values())], "corrAt": corr_at}
 
 
+def display_name(name):
+    """Some source rows are in capitals; show them like every other name."""
+    return name.title() if name.isupper() else name
+
+
 def minutes_by_player(league, season):
     players = defaultdict(dict)
     for game in load(league, season):
@@ -79,7 +84,7 @@ def minutes_by_player(league, season):
             for player in team["players"]:
                 minutes = player.get("minutesValue") or 0
                 if minutes > 0:
-                    row = players[team["name"]].setdefault(player["id"], {"name": player["name"], "minutes": 0, "games": 0, "points": 0})
+                    row = players[team["name"]].setdefault(player["id"], {"name": display_name(player["name"]), "minutes": 0, "games": 0, "points": 0})
                     row["minutes"] += minutes
                     row["games"] += 1
                     row["points"] += (player.get("stats") or {}).get("points") or 0
@@ -92,8 +97,20 @@ def team_change(league, name):
     now, before = minutes_by_player(league, CURRENT)[name], minutes_by_player(league, COMPLETED[-1]).get(name)
     earlier, last = metrics(CURRENT), metrics(COMPLETED[-1])
     row = {"team": name, "now": {k: earlier.get(k) for k in METRICS}, "last": {k: last.get(k) for k in METRICS} if last else None}
+    row["games"] = [{"opponent": other["name"], "margin": team["score"] - other["score"]}
+                    for game in load(league, CURRENT) for team, other in sides(game) if team["name"] == name]
+    ppg = lambda p: round(p["points"] / p["games"], 1)
+    current_all, previous_all = minutes_by_player(league, CURRENT), minutes_by_player(league, COMPLETED[-1])
+    team_of = lambda rosters, pid: next((team for team, players in rosters.items() if pid in players), None)
+    # Who arrived, who has not played and who grew: picked by the numbers, so the article cannot choose favourably.
+    new = [(i, p) for i, p in now.items() if not before or i not in before]
+    row["arrivals"] = [{"name": p["name"], "ppg": ppg(p), "from": team_of(previous_all, i)} for i, p in sorted(new, key=lambda item: -ppg(item[1])) if p["games"] >= 2][:3]
     if before:
         row["returningShare"] = round(100 * sum(p["minutes"] for i, p in now.items() if i in before) / sum(p["minutes"] for p in now.values()))
+        gone = [(i, p) for i, p in before.items() if i not in now and p["games"] >= 5]
+        row["absent"] = [{"name": p["name"], "ppg": ppg(p), "now": team_of(current_all, i)} for i, p in sorted(gone, key=lambda item: -ppg(item[1]))[:3]]
+        grew = [(i, p) for i, p in now.items() if i in before and p["games"] >= 2 and ppg(p) - ppg(before[i]) >= 4]
+        row["risers"] = [{"name": p["name"], "from": ppg(before[i]), "to": ppg(p)} for i, p in sorted(grew, key=lambda item: ppg(before[item[0]]) - ppg(item[1]))[:2]]
     return row
 
 

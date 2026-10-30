@@ -201,7 +201,61 @@
      "offensive_rebound_pct": 27.4,
      "turnover_pct": 27.3
     },
-    "returningShare": 71
+    "games": [
+     {
+      "opponent": "ToPo",
+      "margin": 7
+     },
+     {
+      "opponent": "Tapiolan Honka",
+      "margin": 17
+     },
+     {
+      "opponent": "Tampereen Pyrintö",
+      "margin": 6
+     },
+     {
+      "opponent": "Vimpelin Veto",
+      "margin": 6
+     }
+    ],
+    "arrivals": [
+     {
+      "name": "Kelly Moten",
+      "ppg": 22.5,
+      "from": null
+     },
+     {
+      "name": "Ayana Emmanuel",
+      "ppg": 15.0,
+      "from": null
+     }
+    ],
+    "returningShare": 71,
+    "absent": [
+     {
+      "name": "Tayanna Jones Bell",
+      "ppg": 17.2,
+      "now": null
+     },
+     {
+      "name": "Raiana Brown",
+      "ppg": 14.0,
+      "now": null
+     },
+     {
+      "name": "Roosa Frimodig",
+      "ppg": 8.7,
+      "now": null
+     }
+    ],
+    "risers": [
+     {
+      "name": "Henriikka Vähäuski",
+      "from": 6.7,
+      "to": 13.2
+     }
+    ]
    },
    {
     "team": "ToPo",
@@ -219,7 +273,70 @@
      "offensive_rebound_pct": 37.9,
      "turnover_pct": 23.1
     },
-    "returningShare": 66
+    "games": [
+     {
+      "opponent": "Kouvottaret",
+      "margin": -7
+     },
+     {
+      "opponent": "Vimpelin Veto",
+      "margin": 48
+     },
+     {
+      "opponent": "Peli-Karhut",
+      "margin": 37
+     },
+     {
+      "opponent": "Espoo Basket Team",
+      "margin": -1
+     },
+     {
+      "opponent": "HBA-Märsky",
+      "margin": 14
+     }
+    ],
+    "arrivals": [
+     {
+      "name": "Annika Aarrejoki",
+      "ppg": 22.4,
+      "from": "Tampereen Pyrintö"
+     },
+     {
+      "name": "Ebba Hämäläinen",
+      "ppg": 10.6,
+      "from": "Tampereen Pyrintö"
+     },
+     {
+      "name": "Eva Tauriainen",
+      "ppg": 4.5,
+      "from": null
+     }
+    ],
+    "returningShare": 66,
+    "absent": [
+     {
+      "name": "Sarah Gates",
+      "ppg": 17.1,
+      "now": null
+     },
+     {
+      "name": "Jessica Wisotzki",
+      "ppg": 9.1,
+      "now": null
+     },
+     {
+      "name": "Sini Luukkonen",
+      "ppg": 7.1,
+      "now": null
+     }
+    ],
+    "risers": [
+     {
+      "name": "Kaisa Kuisma",
+      "from": 3.8,
+      "to": 11.0
+     }
+    ]
    },
    {
     "team": "HBA-Märsky",
@@ -237,7 +354,66 @@
      "offensive_rebound_pct": 37.4,
      "turnover_pct": 21.7
     },
-    "returningShare": 84
+    "games": [
+     {
+      "opponent": "Peli-Karhut",
+      "margin": 24
+     },
+     {
+      "opponent": "Espoo Basket Team",
+      "margin": 27
+     },
+     {
+      "opponent": "BC Nokia",
+      "margin": 39
+     },
+     {
+      "opponent": "ToPo",
+      "margin": -14
+     }
+    ],
+    "arrivals": [
+     {
+      "name": "Eevi Seppä",
+      "ppg": 9.0,
+      "from": "BC Nokia"
+     },
+     {
+      "name": "Aida Kimario",
+      "ppg": 0.8,
+      "from": null
+     }
+    ],
+    "returningShare": 84,
+    "absent": [
+     {
+      "name": "Nea Schreck",
+      "ppg": 6.3,
+      "now": "Espoo Basket Team"
+     },
+     {
+      "name": "Silja Loukola",
+      "ppg": 4.8,
+      "now": null
+     },
+     {
+      "name": "Emilia Helasuo",
+      "ppg": 4.2,
+      "now": null
+     }
+    ],
+    "risers": [
+     {
+      "name": "Veronika Nanje",
+      "from": 4.4,
+      "to": 10.7
+     },
+     {
+      "name": "Aluel Machol",
+      "from": 6.2,
+      "to": 11.2
+     }
+    ]
    },
    {
     "team": "Espoo Basket Team",
@@ -255,7 +431,75 @@
      "offensive_rebound_pct": 40.0,
      "turnover_pct": 22.1
     },
-    "returningShare": 56
+    "games": [
+     {
+      "opponent": "HBA-Märsky",
+      "margin": -27
+     },
+     {
+      "opponent": "BC Nokia",
+      "margin": 8
+     },
+     {
+      "opponent": "ToPo",
+      "margin": 1
+     },
+     {
+      "opponent": "Tapiolan Honka",
+      "margin": 46
+     },
+     {
+      "opponent": "Tampereen Pyrintö",
+      "margin": 5
+     }
+    ],
+    "arrivals": [
+     {
+      "name": "Nea Schreck",
+      "ppg": 14.8,
+      "from": "HBA-Märsky"
+     },
+     {
+      "name": "Adiisa Rinne",
+      "ppg": 11.0,
+      "from": null
+     },
+     {
+      "name": "Alessia Kilpeläinen",
+      "ppg": 6.0,
+      "from": null
+     }
+    ],
+    "returningShare": 56,
+    "absent": [
+     {
+      "name": "Nicole Ogun",
+      "ppg": 16.1,
+      "now": null
+     },
+     {
+      "name": "Erika Mace",
+      "ppg": 14.0,
+      "now": null
+     },
+     {
+      "name": "Venla Määttänen",
+      "ppg": 12.8,
+      "now": null
+     }
+    ],
+    "risers": [
+     {
+      "name": "Kiia Mäntylä",
+      "from": 5.2,
+      "to": 17.0
+     },
+     {
+      "name": "Emili Melnikova",
+      "from": 12.5,
+      "to": 16.8
+     }
+    ]
    },
    {
     "team": "Peli-Karhut",
@@ -273,7 +517,70 @@
      "offensive_rebound_pct": 31.4,
      "turnover_pct": 18.4
     },
-    "returningShare": 47
+    "games": [
+     {
+      "opponent": "HBA-Märsky",
+      "margin": -24
+     },
+     {
+      "opponent": "BC Nokia",
+      "margin": 6
+     },
+     {
+      "opponent": "ToPo",
+      "margin": -37
+     },
+     {
+      "opponent": "Tapiolan Honka",
+      "margin": 8
+     },
+     {
+      "opponent": "Tampereen Pyrintö",
+      "margin": 13
+     }
+    ],
+    "arrivals": [
+     {
+      "name": "Melannie Daley",
+      "ppg": 12.5,
+      "from": null
+     },
+     {
+      "name": "Ellie Foster",
+      "ppg": 11.2,
+      "from": null
+     },
+     {
+      "name": "Emma Lampén",
+      "ppg": 9.4,
+      "from": "Tapiolan Honka"
+     }
+    ],
+    "returningShare": 47,
+    "absent": [
+     {
+      "name": "Lauren Heard",
+      "ppg": 19.5,
+      "now": null
+     },
+     {
+      "name": "Delanie Crawford",
+      "ppg": 13.8,
+      "now": null
+     },
+     {
+      "name": "Elin Gustavsson",
+      "ppg": 10.5,
+      "now": null
+     }
+    ],
+    "risers": [
+     {
+      "name": "Elina Arike",
+      "from": 5.4,
+      "to": 10.2
+     }
+    ]
    },
    {
     "team": "Vimpelin Veto",
@@ -291,7 +598,75 @@
      "offensive_rebound_pct": 35.4,
      "turnover_pct": 18.6
     },
-    "returningShare": 53
+    "games": [
+     {
+      "opponent": "BC Nokia",
+      "margin": -23
+     },
+     {
+      "opponent": "ToPo",
+      "margin": -48
+     },
+     {
+      "opponent": "Tapiolan Honka",
+      "margin": -1
+     },
+     {
+      "opponent": "Tampereen Pyrintö",
+      "margin": -4
+     },
+     {
+      "opponent": "Kouvottaret",
+      "margin": -6
+     }
+    ],
+    "arrivals": [
+     {
+      "name": "Lilian Hansford",
+      "ppg": 12.8,
+      "from": null
+     },
+     {
+      "name": "Nakia Cheatham",
+      "ppg": 11.2,
+      "from": null
+     },
+     {
+      "name": "Elli Leppänen",
+      "ppg": 2.8,
+      "from": null
+     }
+    ],
+    "returningShare": 53,
+    "absent": [
+     {
+      "name": "Sara Puckett",
+      "ppg": 27.7,
+      "now": null
+     },
+     {
+      "name": "Sahara Jones",
+      "ppg": 18.6,
+      "now": null
+     },
+     {
+      "name": "Jeanae Terry",
+      "ppg": 15.2,
+      "now": null
+     }
+    ],
+    "risers": [
+     {
+      "name": "Silja Viita",
+      "from": 9.7,
+      "to": 22.2
+     },
+     {
+      "name": "Pihla Jaatinen",
+      "from": 2.4,
+      "to": 13.7
+     }
+    ]
    }
   ],
   "games": 21,
@@ -604,7 +979,72 @@
      "offensive_rebound_pct": 37.1,
      "turnover_pct": 17.4
     },
-    "returningShare": 29
+    "games": [
+     {
+      "opponent": "Bisons Loimaa",
+      "margin": 23
+     },
+     {
+      "opponent": "Kauhajoki",
+      "margin": 6
+     },
+     {
+      "opponent": "Tampereen Pyrintö",
+      "margin": 16
+     },
+     {
+      "opponent": "Salon Vilpas",
+      "margin": 21
+     },
+     {
+      "opponent": "Korihait",
+      "margin": 11
+     },
+     {
+      "opponent": "Kouvot",
+      "margin": 6
+     },
+     {
+      "opponent": "Kouvot",
+      "margin": 24
+     }
+    ],
+    "arrivals": [
+     {
+      "name": "Mason Gillis",
+      "ppg": 25.8,
+      "from": null
+     },
+     {
+      "name": "Joel Mäntynen",
+      "ppg": 17.3,
+      "from": null
+     },
+     {
+      "name": "Zion Styles",
+      "ppg": 12.6,
+      "from": null
+     }
+    ],
+    "returningShare": 29,
+    "absent": [
+     {
+      "name": "Jayden Taylor",
+      "ppg": 19.8,
+      "now": null
+     },
+     {
+      "name": "Hannes Pöllä",
+      "ppg": 14.2,
+      "now": "Kipinä Basket"
+     },
+     {
+      "name": "Koen Sapwell",
+      "ppg": 14.2,
+      "now": null
+     }
+    ],
+    "risers": []
    },
    {
     "team": "Kipinä Basket",
@@ -615,7 +1055,54 @@
      "offensive_rebound_pct": 25.4,
      "turnover_pct": 15.7
     },
-    "last": null
+    "last": null,
+    "games": [
+     {
+      "opponent": "Korihait",
+      "margin": 24
+     },
+     {
+      "opponent": "Kouvot",
+      "margin": 9
+     },
+     {
+      "opponent": "Kauhajoki",
+      "margin": 3
+     },
+     {
+      "opponent": "Tampereen Pyrintö",
+      "margin": -5
+     },
+     {
+      "opponent": "Tapiolan Honka",
+      "margin": 9
+     },
+     {
+      "opponent": "Tapiolan Honka",
+      "margin": 2
+     },
+     {
+      "opponent": "Lahti Basketball",
+      "margin": 12
+     }
+    ],
+    "arrivals": [
+     {
+      "name": "Jalen McCoy",
+      "ppg": 21.6,
+      "from": null
+     },
+     {
+      "name": "Derrin Boyd",
+      "ppg": 18.3,
+      "from": null
+     },
+     {
+      "name": "Tristan Smith",
+      "ppg": 16.2,
+      "from": null
+     }
+    ]
    }
   ],
   "games": 42,

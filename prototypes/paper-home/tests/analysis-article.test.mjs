@@ -1,7 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {fiveGamesSections,fiveGamesSummaryHtml,startGroups} from '../src/lib/fiveGamesArticle.js';
+import {fiveGamesSections,fiveGamesSummaryHtml,startGroups,teamNote} from '../src/lib/fiveGamesArticle.js';
 
 const data=JSON.parse(readFileSync(new URL('../source/analysis-five-games.json',import.meta.url)));
 const wins=(league,test)=>data[league].rows.filter(test).map(r=>Math.round(r.restWinPct));
@@ -57,10 +57,24 @@ test('team-change claims match the data',()=>{
  assert.equal(row('Kipinä Basket').now.efg_pct,56.9);
 });
 
+test('game bars and player lists match what the notes say',()=>{
+ const row=name=>[...data.women.changes,...data.men.changes].find(r=>r.team===name),margins=name=>row(name).games.map(g=>g.margin);
+ assert.deepEqual(margins('Espoo Basket Team').toSorted((a,b)=>a-b),[-27,1,5,8,46]);
+ assert.equal(margins('Espoo Basket Team').filter(m=>m!==46).reduce((a,b)=>a+b,0),-13);
+ assert.deepEqual(margins('Vimpelin Veto').slice(-3),[-1,-4,-6]);
+ assert.deepEqual(margins('ToPo').filter(m=>m<0),[-7,-1]);
+ assert.deepEqual(margins('Peli-Karhut').filter(m=>m<0),[-24,-37]);
+ assert.equal(row('Kipinä Basket').absent,undefined);
+ for(const r of [...data.women.changes,...data.men.changes])for(const p of r.absent||[])assert.ok(!r.arrivals.some(a=>a.name===p.name));
+ assert.ok(row('Peli-Karhut').absent.some(p=>p.name==='Lauren Heard'&&p.ppg===19.5));
+ assert.deepEqual(row('ToPo').arrivals.slice(0,2).map(p=>p.from),['Tampereen Pyrintö','Tampereen Pyrintö']);
+});
+
 test('both languages have the same structure and the summary is escaped',()=>{
- const shape=lang=>fiveGamesSections(data,lang).map(s=>[(s.paragraphs||[]).length,(s.bullets||[]).length,(s.after||[]).length,!!s.chart,s.table||null]);
+ const shape=lang=>fiveGamesSections(data,lang).map(s=>[(s.paragraphs||[]).length,(s.conclusions||[]).length,(s.after||[]).length,s.chart||null,s.results||null,!!s.changes]);
  assert.deepEqual(shape('fi'),shape('en'));
  assert.equal(startGroups(data).length,2);
+ for(const row of [...data.women.changes,...data.men.changes])for(const kind of ['result','change'])for(const lang of ['fi','en'])assert.ok(teamNote(row.team,kind,lang).length>10);
  const html=fiveGamesSummaryHtml(data,v=>v.replace(/</g,'&lt;'));
  assert.match(html,/<h2>Sama alku, eri loppu<\/h2>/);
  assert.match(html,/0,83/);
