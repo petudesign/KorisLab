@@ -3,6 +3,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {aggregateSeasonPlayers,playerPerGame} from '../src/lib/playerStats.ts';
 import {seasonTeams,teamSeasonSummary} from '../src/lib/teamProfiles.js';
+import {articles,fiveGamesSummaryHtml} from '../src/lib/fiveGamesArticle.js';
 import {escapeHtml as e,scopeKey,publicPath,DEFAULT_SEASON,SITE_ORIGIN,sitemap} from '../server/seo.mjs';
 // Who makes KorisLab: lets search engines and AI answers connect the site, its maker and the source code.
 const CREATOR={'@type':'Person','@id':'https://www.petu.design/#person',name:'Petteri Helttula',url:'https://www.petu.design/'};
@@ -13,6 +14,7 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const seasons=JSON.parse(readFileSync(path.join(root,'source/seasons.json')));
 const slug=n=>n.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('fi').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 const fmt=n=>Number.isFinite(n)?n.toLocaleString('fi-FI',{maximumFractionDigits:1,minimumFractionDigits:1}):'—';
+const fiveGames=JSON.parse(readFileSync(path.join(root,'source/analysis-five-games.json')));
 const manifest={defaultSeason:DEFAULT_SEASON,seasons:['2026-27','2025-26','2024-25'],pages:{}};
 const source='<p><a href="https://tulospalvelu.basket.fi/">Lähde: Basket.fi:n tulospalvelu</a>. Tilastot perustuvat tallennettuun kausiaineistoon, eivät reaaliaikaiseen syötteeseen. Puuttuva tieto merkitään viivalla.</p>';
 for(const [league,datasets] of Object.entries(seasons))for(const [season,d] of Object.entries(datasets)){
@@ -43,7 +45,11 @@ for(const [league,datasets] of Object.entries(seasons))for(const [season,d] of O
  for(const t of teams){const s=teamSeasonSummary(games,t.name);add(teamPath(t),`${t.name} · ${scope}`,`${t.name}: ${s.games} tilastoitua ottelua, ${s.wins} voittoa ja ${s.losses} tappiota kaudella ${season}.`,`<dl><dt>Pisteet / ottelu</dt><dd>${fmt(s.pointsPerGame)}</dd><dt>Päästetyt pisteet / ottelu</dt><dd>${fmt(s.allowedPerGame)}</dd></dl><h2>Pelaajat</h2><ul>${players.filter(p=>p.team===t.name).map(p=>'<li>'+link('/players/'+p.id+'/',p.name)+'</li>').join('')}</ul>`,'WebPage',{'@type':'SportsTeam',name:t.name,sport:'Basketball'});if(t.source_team_id)manifest.pages[href(`/teams/${league==='men'?'korisliiga':'naisten-korisliiga'}/${t.source_team_id}/`)]= {...manifest.pages[href(teamPath(t))],indexable:false,alias:href(teamPath(t))};}
  for(const p of players)add('/players/'+p.id+'/',`${p.name} · ${scope}`,`${p.name}, ${p.team}: ${fmt(playerPerGame(p,'points'))} pistettä, ${fmt(playerPerGame(p,'rebounds'))} levypalloa ja ${fmt(playerPerGame(p,'assists'))} syöttöä ottelua kohti. Otos ${p.games} ottelua.`,`<p>Joukkue: ${link(teamPath({name:p.team}),p.team)}. Nämä ovat valitun kauden tietoja, eivät väite pelaajan nykyisestä sopimuksesta.</p><dl><dt>Ottelut</dt><dd>${p.games}</dd><dt>PTS / ottelu</dt><dd>${fmt(playerPerGame(p,'points'))}</dd><dt>REB / ottelu</dt><dd>${fmt(playerPerGame(p,'rebounds'))}</dd><dt>AST / ottelu</dt><dd>${fmt(playerPerGame(p,'assists'))}</dd></dl><p>Keskiarvot perustuvat pelaajan pelattuihin otteluihin. Heittokartta ja syöttöanalyysi näkyvät interaktiivisessa profiilissa, kun lähdetietoja on saatavilla.</p>`,'ProfilePage',{'@type':'Person',name:p.name});
  for(const g of games){const [home,away]=['home','away'].map(side=>g.teams.find(t=>t.side===side));if(!home||!away)continue;const score=g.verified?`${home.score}–${away.score}`:'ennakko';add('/matches/'+g.id+'/',`${home.name} – ${away.name} · ${score}`,`${scope}: ${home.name} vastaan ${away.name}, ${g.date?.slice(0,10)||'päivämäärä ei aineistossa'}. ${g.verified?'Varmennettu lopputulos '+score+'.':'Ottelutilastoja ei vielä ole.'}`,`<p>${link(teamPath(home),home.name)} – ${link(teamPath(away),away.name)}</p><p>${e(g.venue||'')} · ${e(g.date||'')}</p>${g.verified?`<h2>Neljännekset</h2><p>${g.periods.map(p=>`${p.period}.: ${p.home_score}–${p.away_score}`).join(' · ')}</p>`:''}<p><a href="${e(g.sourceUrl||'https://tulospalvelu.basket.fi/')}">Ottelun lähdetilastot Basket.fi:ssä</a></p>`,'WebPage',{'@type':'SportsEvent',name:home.name+' – '+away.name,sport:'Basketball',...(g.date?{startDate:g.date}:{}),homeTeam:{'@type':'SportsTeam',name:home.name},awayTeam:{'@type':'SportsTeam',name:away.name}});}
- for(const [p,title] of [['/search/','Haku'],['/design-system/','Design system'],['/custom-import/','Custom import'],['/data/','Datan tila'],['/analyysit/','Analyysit']])add(p,title,`${title} · KorisLab`,nav,'WebPage',null,false);
+ for(const [p,title] of [['/search/','Haku'],['/design-system/','Design system'],['/custom-import/','Custom import'],['/data/','Datan tila']])add(p,title,`${title} · KorisLab`,nav,'WebPage',null,false);
+ // Articles are not tied to a season or league: only the default scope is listed and indexed.
+ const primaryScope=season===manifest.defaultSeason&&league==='women';
+ add('/analyysit/','Analyysit','KorisLabin analyysit suomalaisesta koripallosta: mitä luvuista voi päätellä ja mitä ei.',`${nav}<ul>${articles.map(a=>`<li><a href="/analyysit/${a.slug}/">${e(a.title.fi)}</a>: ${e(a.standfirst.fi)}</li>`).join('')}</ul>`,'CollectionPage',null,primaryScope);
+ for(const a of articles)add(`/analyysit/${a.slug}/`,a.title.fi,a.standfirst.fi,`${nav}${fiveGamesSummaryHtml(fiveGames,e)}`,'WebPage',{'@type':'Article',headline:a.title.fi,datePublished:a.published,author:{'@id':CREATOR['@id']},publisher:{'@id':SITE_ORIGIN+'/#organization'},inLanguage:'fi'},primaryScope);
 }
 const client=path.join(root,'dist/client');mkdirSync(path.join(client,'_seo'),{recursive:true});
 writeFileSync(path.join(client,'_seo/manifest.json'),JSON.stringify(manifest));
