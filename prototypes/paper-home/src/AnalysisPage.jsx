@@ -99,15 +99,14 @@ function ChangeCards(){
  const rows=[...data.women.changes.map(row=>({...row,league:'women'})),...data.men.changes.map(row=>({...row,league:'men'}))];
  const teamName=name=>name==='Tampereen Pyrintö'?'Pyrintö':name==='Tapiolan Honka'?'Honka':name==='Espoo Basket Team'?'EBT':name==='HBA-Märsky'?'Märsky':name==='Salon Vilpas'?'Vilpas':name==='Kipinä Basket'?'Kipinä':name==='KTP-Basket'?'KTP':name==='Lahti Basketball'?'Lahti':name;
  return <>
-  <div className="five-legend five-change-legend"><span><i className="is-last"/>{say('Viime kausi','Last season')}</span><span><i/>{say('Nyt','Now')}</span><small>{say('Oikealle on parempi. Hyökkäys ja puolustus: pisteet / 100 hallintaa.','Right is better. Offence and defence: points per 100 possessions.')}</small></div>
+  <div className="five-legend five-change-legend"><span><i className="is-last"/>{say('Viime kausi','Last season')}</span><span><i/>{say('Nyt','Now')}</span><small>{say('Oikealle on parempi. Hyökkäys ja puolustus: pisteet / 100 hallintaa. PPG: pisteitä ottelussa, poissa olevilla viime kaudelta.','Right is better. Offence and defence: points per 100 possessions. PPG: points per game, from last season for players not playing.')}</small></div>
   <div className="five-cards five-cards-wide">{rows.map(row=><article className="five-card" key={row.team} data-league={row.league}><header><TeamLogo name={row.team} className="five-logo" decorative/><h3>{row.team}</h3>{row.returningShare!=null?<p className="five-returning">{row.returningShare} %<span>{say('minuuteista viime kauden pelaajilta','of minutes from last season’s players')}</span></p>:<p className="five-returning">{say('Nousija','Promoted')}</p>}</header>
     {SCALES.map(([key,label,scale])=><ChangeBar key={key} label={label[lang]} scale={scale} now={row.now[key]} last={row.last?.[key]} language={language}/>)}
     <p className="five-card-note">{teamNote(row.team,'change',lang)}</p>
-    <PlayerChips kind="arrived" title={say('Uudet','New')} items={row.arrivals.filter(p=>p.ppg>=8).map(p=>`${p.name} ${fmt(language,p.ppg)}${p.from?` (${say('ennen','from')} ${teamName(p.from)})`:''}`)}/>
-    <PlayerChips kind="grew" title={say('Kasvanut rooli','Bigger role')} items={(row.risers||[]).map(p=>`${p.name} ${fmt(language,p.from)} → ${fmt(language,p.to)}`)}/>
-    <PlayerChips kind="absent" title={say('Ei pelannut joukkueessa tällä kaudella','Has not played for the team this season')} items={(row.absent||[]).filter(p=>p.ppg>=8).map(p=>`${p.name} ${fmt(language,p.ppg)}${p.now?` (${say('nyt','now')} ${teamName(p.now)})`:''}`)}/>
+    <PlayerChips kind="arrived" title={say('Uudet','New')} items={row.arrivals.filter(p=>p.ppg>=8).map(p=>`${p.name} ${fmt(language,p.ppg)} PPG${p.from?` (${say('ennen','from')} ${teamName(p.from)})`:''}`)}/>
+    <PlayerChips kind="grew" title={say('Kasvanut rooli','Bigger role')} items={(row.risers||[]).map(p=>`${p.name} ${fmt(language,p.from)} → ${fmt(language,p.to)} PPG`)}/>
+    <PlayerChips kind="absent" title={say('Ei pelannut joukkueessa tällä kaudella','Has not played for the team this season')} items={(row.absent||[]).filter(p=>p.ppg>=8).map(p=>`${p.name} ${fmt(language,p.ppg)} PPG${p.now?` (${say('nyt','now')} ${teamName(p.now)})`:''}`)}/>
    </article>)}</div>
-  <p className="five-note">{say('Luvut pelaajien kohdalla: pisteitä ottelussa.','Player figures: points per game.')}</p>
  </>;
 }
 
