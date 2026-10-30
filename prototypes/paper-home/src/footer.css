@@ -34,4 +34,5 @@
 
 .dot-figure{position:absolute;display:block;pointer-events:none;height:500px;width:auto;top:208px;filter:drop-shadow(0 0 16px #df945b22);mask-image:linear-gradient(to bottom,#000 0%,#000 72%,transparent 94%);-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 72%,transparent 94%)}
 .dot-figure-left{left:118px}.dot-figure-right{right:96px}
-@media(max-width:700px){.dot-figure{height:230px;top:318px}.dot-figure-left{left:-22px}.dot-figure-right{right:-30px}}
+/* Phone: the figures stand behind the search field with only ball, head and shoulders above it, so the whole hero fits on the first screen. */
+@media(max-width:700px){.prototype-page .hero{--hero-dash-top:368px}.dot-figure{height:190px;top:176px}.dot-figure-left{left:-34px}.dot-figure-right{right:-34px}}
