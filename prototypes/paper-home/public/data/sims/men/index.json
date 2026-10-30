@@ -1,67 +1,7 @@
 {
  "model": "player-sim-v1",
- "data_cutoff": "2026-10-27",
+ "data_cutoff": "2026-10-30",
  "games": [
-  {
-   "id": "1005872",
-   "date": "2026-10-30",
-   "time": "18:30:00",
-   "venue": "Luhta Areena",
-   "home": {
-    "id": "d296e502-90a6-11f1-bf89-e7d7c2463142",
-    "name": "Lahti Basketball"
-   },
-   "away": {
-    "id": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
-    "name": "Salon Vilpas"
-   },
-   "home_win_probability": 0.408
-  },
-  {
-   "id": "1005889",
-   "date": "2026-10-30",
-   "time": "18:30:00",
-   "venue": "MLL Areena",
-   "home": {
-    "id": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
-    "name": "Kouvot"
-   },
-   "away": {
-    "id": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
-    "name": "Korihait"
-   },
-   "home_win_probability": 0.474
-  },
-  {
-   "id": "1005956",
-   "date": "2026-10-30",
-   "time": "18:30:00",
-   "venue": "Steveco Areena",
-   "home": {
-    "id": "d347a09d-90a6-11f1-a259-e7d7c2463142",
-    "name": "KTP-Basket"
-   },
-   "away": {
-    "id": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
-    "name": "Tapiolan Honka"
-   },
-   "home_win_probability": 0.558
-  },
-  {
-   "id": "1005990",
-   "date": "2026-10-30",
-   "time": "18:30:00",
-   "venue": "Töölön Kisahalli",
-   "home": {
-    "id": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
-    "name": "Helsinki Seagulls"
-   },
-   "away": {
-    "id": "d35a3d28-90a6-11f1-a47f-e7d7c2463142",
-    "name": "Tampereen Pyrintö"
-   },
-   "home_win_probability": 0.33
-  },
   {
    "id": "1005856",
    "date": "2026-10-31",
@@ -75,7 +15,7 @@
     "id": "815439d4-b169-11f1-bc74-593eff165a09",
     "name": "Kipinä Basket"
    },
-   "home_win_probability": 0.325
+   "home_win_probability": 0.354
   },
   {
    "id": "1005905",
@@ -90,7 +30,7 @@
     "id": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
     "name": "Kauhajoki"
    },
-   "home_win_probability": 0.587
+   "home_win_probability": 0.564
   },
   {
    "id": "1005922",
@@ -105,7 +45,7 @@
     "id": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
     "name": "Kouvot"
    },
-   "home_win_probability": 0.746
+   "home_win_probability": 0.731
   },
   {
    "id": "1005974",
@@ -120,7 +60,7 @@
     "id": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
     "name": "Helsinki Seagulls"
    },
-   "home_win_probability": 0.772
+   "home_win_probability": 0.767
   },
   {
    "id": "1005857",
@@ -135,7 +75,7 @@
     "id": "d296e502-90a6-11f1-bf89-e7d7c2463142",
     "name": "Lahti Basketball"
    },
-   "home_win_probability": 0.516
+   "home_win_probability": 0.562
   },
   {
    "id": "1006008",
@@ -150,7 +90,7 @@
     "id": "d323c8b6-90a6-11f1-9192-e7d7c2463142",
     "name": "Kauhajoki"
    },
-   "home_win_probability": 0.526
+   "home_win_probability": 0.512
   },
   {
    "id": "1006024",
@@ -165,7 +105,7 @@
     "id": "d347a09d-90a6-11f1-a259-e7d7c2463142",
     "name": "KTP-Basket"
    },
-   "home_win_probability": 0.591
+   "home_win_probability": 0.609
   },
   {
    "id": "1005991",
@@ -180,7 +120,7 @@
     "id": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
     "name": "Kouvot"
    },
-   "home_win_probability": 0.547
+   "home_win_probability": 0.497
   },
   {
    "id": "1006025",
@@ -195,7 +135,7 @@
     "id": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
     "name": "Salon Vilpas"
    },
-   "home_win_probability": 0.598
+   "home_win_probability": 0.605
   },
   {
    "id": "1005906",
@@ -210,7 +150,7 @@
     "id": "d3631045-90a6-11f1-ab0a-e7d7c2463142",
     "name": "Korihait"
    },
-   "home_win_probability": 0.605
+   "home_win_probability": 0.611
   },
   {
    "id": "1005840",
@@ -225,7 +165,7 @@
     "id": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
     "name": "Tapiolan Honka"
    },
-   "home_win_probability": 0.408
+   "home_win_probability": 0.402
   },
   {
    "id": "1005923",
@@ -240,7 +180,52 @@
     "id": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
     "name": "Bisons Loimaa"
    },
-   "home_win_probability": 0.68
+   "home_win_probability": 0.682
+  },
+  {
+   "id": "1005957",
+   "date": "2026-11-08",
+   "time": "18:00:00",
+   "venue": "Steveco Areena",
+   "home": {
+    "id": "d347a09d-90a6-11f1-a259-e7d7c2463142",
+    "name": "KTP-Basket"
+   },
+   "away": {
+    "id": "d296e502-90a6-11f1-bf89-e7d7c2463142",
+    "name": "Lahti Basketball"
+   },
+   "home_win_probability": 0.757
+  },
+  {
+   "id": "1005975",
+   "date": "2026-11-13",
+   "time": "18:30:00",
+   "venue": "Tapiolan Liikuntahalli",
+   "home": {
+    "id": "e214cb24-90a6-11f1-976f-5b3c5c56dcf1",
+    "name": "Tapiolan Honka"
+   },
+   "away": {
+    "id": "e32a46ce-90a6-11f1-86e7-5b3c5c56dcf1",
+    "name": "Bisons Loimaa"
+   },
+   "home_win_probability": 0.715
+  },
+  {
+   "id": "1005992",
+   "date": "2026-11-13",
+   "time": "18:30:00",
+   "venue": "Töölön Kisahalli",
+   "home": {
+    "id": "f2f516ea-90aa-11f1-aba0-cfbc7c66eafc",
+    "name": "Helsinki Seagulls"
+   },
+   "away": {
+    "id": "815439d4-b169-11f1-bc74-593eff165a09",
+    "name": "Kipinä Basket"
+   },
+   "home_win_probability": 0.31
   }
  ]
 }
