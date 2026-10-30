@@ -2,6 +2,9 @@ import {useId,useMemo,useState} from 'react';
 import {useI18n} from './i18n';
 import {useMetadata} from './seo';
 import {DEFAULT_SEASON} from '../server/seo.mjs';
+import AddRounded from '@mui/icons-material/AddRounded';
+import ArrowUpwardRounded from '@mui/icons-material/ArrowUpwardRounded';
+import RemoveRounded from '@mui/icons-material/RemoveRounded';
 import {TeamLogo} from './TeamLogo';
 import {articles,fiveGamesSections,methodNote,startGroups,teamNote} from './lib/fiveGamesArticle';
 import data from '../source/analysis-five-games.json';
@@ -88,8 +91,8 @@ function ChangeBar({label,scale,now,last,language}){
 }
 // Three kinds of roster news, told apart by symbol, label and colour so a card can be scanned without reading it all.
 function PlayerChips({kind,title,items}){
- const symbol={arrived:'+',grew:'↑',absent:'−'}[kind];
- return items.length>0&&<div className="five-chips" data-kind={kind}><h4><i aria-hidden="true">{symbol}</i>{title}</h4><ul>{items.map(item=><li key={item}>{item}</li>)}</ul></div>;
+ const Icon={arrived:AddRounded,grew:ArrowUpwardRounded,absent:RemoveRounded}[kind];
+ return items.length>0&&<div className="five-chips" data-kind={kind}><h4><Icon aria-hidden="true"/>{title}</h4><ul>{items.map(item=><li key={item}>{item}</li>)}</ul></div>;
 }
 function ChangeCards(){
  const {language}=useI18n(),say=(fi,en)=>language==='fi'?fi:en,lang=language==='fi'?'fi':'en';
