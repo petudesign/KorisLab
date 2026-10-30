@@ -15,6 +15,6 @@ export function HomeFooter({onNavigate}){
    <div className="footer-data"><h3>{translate("Aineisto")}</h3><p>{translate(leagueName)}<br/>{translate(seasonLabel)}{translate(" · ")}{translate(data.aggregate.games)}{translate(" tilastoitua ottelua")}</p><a href="https://tulospalvelu.basket.fi/" target="_blank" rel="noreferrer">{translate("Basket.fi-tulospalvelu ")}<ArrowOutwardOutlined aria-hidden="true"/></a><p className="footer-data-note">{translate("Tilastot perustuvat tallennettuun kausiaineistoon.")}</p></div>
   </div>
   <p className="footer-notice">{translate("Joukkueiden ja sarjojen nimet ja logot kuuluvat omistajilleen. KorisLab ei ole Koripalloliiton, Korisliigan tai seurojen virallinen palvelu.")}</p>
-  <div className="footer-bottom"><span>{translate("© ")}{translate(new Date().getFullYear())}{translate(" Petteri Helttula")}{translate(" · ")}{link('Tietoa')}</span><button onClick={()=>window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'})}>{translate("Takaisin ylös ")}<ArrowUpwardOutlined aria-hidden="true"/></button></div>
+  <div className="footer-bottom"><span>{translate("© ")}{translate(new Date().getFullYear())}{" "}<a href="https://www.petu.design/" target="_blank" rel="noopener author">Petteri Helttula</a>{translate(" · ")}{link('Tietoa')}</span><button onClick={()=>window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'})}>{translate("Takaisin ylös ")}<ArrowUpwardOutlined aria-hidden="true"/></button></div>
  </footer>;
 }
