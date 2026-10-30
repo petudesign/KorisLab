@@ -14,7 +14,7 @@
 .nav-wrapper .nav-search-metal button:disabled{opacity:.55;cursor:default}
 .nav-wrapper .nav-search-metal svg{font-size:15px}
 @media(min-width:701px){
- .prototype-page.data-page{height:100dvh;display:flex;flex-direction:column;overflow:hidden;padding-bottom:24px}
+ .prototype-page.data-page{height:calc(100dvh / var(--ui-zoom,1));display:flex;flex-direction:column;overflow:hidden;padding-bottom:24px}
  .data-page .nav-wrapper{flex:none;position:relative;top:0;margin:0 auto}
  .data-page .canvas-wrapper.overview-wrapper{height:auto;flex:1;min-height:0;margin:0 auto}
  .data-page .overview-wrapper .canvas{width:100%;height:100%;transform:none;display:flex;flex-direction:column}
