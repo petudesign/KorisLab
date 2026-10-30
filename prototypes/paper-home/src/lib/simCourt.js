@@ -140,7 +140,9 @@ export function createSimCourt(host,{onTick}={}){
  const camera=new THREE.PerspectiveCamera(38,16/9,.1,200);
  // The tactical view is a flat, true top-down projection so counters keep their size across the court.
  const topCamera=new THREE.OrthographicCamera(-16,16,9,-9,.1,100);topCamera.position.set(0,40,0);topCamera.up.set(0,0,-1);topCamera.lookAt(0,0,0);
- const controls=new OrbitControls(camera,renderer.domElement);controls.enabled=false;controls.maxPolarAngle=Math.PI/2.1;
+ const controls=new OrbitControls(camera,renderer.domElement);controls.enabled=false;
+ renderer.domElement.style.touchAction='';// OrbitControls sets 'none', which would stop the page scrolling past the court on touch.
+ controls.maxPolarAngle=Math.PI/2.1;
  scene.add(new THREE.HemisphereLight(0xe8e8f0,0x101012,.9));
  const sun=new THREE.DirectionalLight(0xffffff,1.3);sun.position.set(-6,18,9);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);
  Object.assign(sun.shadow.camera,{left:-17,right:17,top:10,bottom:-10});scene.add(sun);
@@ -306,7 +308,7 @@ export function createSimCourt(host,{onTick}={}){
   setPlaying(value){if(value&&t>=duration){t=0;snap=true;}playing=value;},
   setSpeed(value){speed=value;},
   seek(value){t=value;snap=true;},
-  setCamera(mode){camMode=mode;controls.enabled=mode==='orbit';},
+  setCamera(mode){camMode=mode;controls.enabled=mode==='orbit';renderer.domElement.style.touchAction=mode==='orbit'?'pan-y':'';},
   dispose(){
    disposed=true;cancelAnimationFrame(frame);observer.disconnect();controls.dispose();
    scene.traverse(o=>{o.geometry?.dispose();const m=o.material;if(m){m.map?.dispose();m.dispose();}});

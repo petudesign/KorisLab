@@ -2,9 +2,12 @@ import {readFileSync,existsSync} from "node:fs";
 import {renderPage} from "./server/seo.mjs";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import {gateHover} from "./scripts/gate-hover.mjs";
 
 export default defineConfig({
   resolve: { dedupe: ["react", "react-dom"] },
+  // Touch has no hover: a tap would leave :hover stuck on. Every hover rule is gated here so none can be forgotten.
+  css: { postcss: { plugins: [gateHover] } },
   build: {
     outDir: "dist/client",
   },
