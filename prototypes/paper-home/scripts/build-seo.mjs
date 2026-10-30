@@ -9,7 +9,7 @@ import {escapeHtml as e,scopeKey,publicPath,DEFAULT_SEASON,SITE_ORIGIN,sitemap} 
 const CREATOR={'@type':'Person','@id':'https://www.petu.design/#person',name:'Petteri Helttula',url:'https://www.petu.design/'};
 const ORGANIZATION={'@type':'Organization','@id':SITE_ORIGIN+'/#organization',name:'KorisLab',url:SITE_ORIGIN+'/',
  description:'Suomalaisen koripallon analytiikkasivusto: Naisten ja Miesten Korisliigan tilastot, analyysit ja ottelusimulaatiot.',
- founder:{'@id':CREATOR['@id']},sameAs:['https://github.com/petudesign/KorisLab','https://www.petu.design/korislab/']};
+ logo:SITE_ORIGIN+'/favicon-192.png',founder:{'@id':CREATOR['@id']},sameAs:['https://github.com/petudesign/KorisLab','https://www.petu.design/korislab/']};
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const seasons=JSON.parse(readFileSync(path.join(root,'source/seasons.json')));
 const slug=n=>n.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('fi').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
