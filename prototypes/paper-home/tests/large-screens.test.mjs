@@ -5,7 +5,7 @@ import {readFileSync,readdirSync} from 'node:fs';
 const root=new URL('../',import.meta.url),read=path=>readFileSync(new URL(path,root),'utf8');
 
 test('big screens scale in rising steps and 1920 × 1080 stays at its designed size',()=>{
- const steps=[...read('src/large-screens.css').matchAll(/min-width:(\d+)px\) and \(min-height:(\d+)px\)\)\{:root\{--ui-zoom:([\d.]+)\}/g)].map(m=>m.slice(1).map(Number));
+ const steps=[...read('src/large-screens.css').matchAll(/min-width:(\d+)px\) and \(min-height:(\d+)px\)\{:root\{--ui-zoom:([\d.]+)\}/g)].map(m=>m.slice(1).map(Number));
  assert.ok(steps.length>=4);
  assert.ok(steps[0][0]>1920);
  for(let i=1;i<steps.length;i++)assert.ok(steps[i][0]>steps[i-1][0]&&steps[i][2]>steps[i-1][2]);
