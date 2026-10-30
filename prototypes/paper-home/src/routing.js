@@ -1,19 +1,22 @@
 import {useEffect,useState} from 'react';
+import {articleSlugs} from './lib/fiveGamesArticle.js';
 export const sectionPaths={'Design system':'/design-system/','Haku':'/search/','Etusivu':'/','Yleiskatsaus':'/overview/','Ottelut':'/matches/','Joukkueet':'/teams/','Pelaajat':'/players/','Kausitrendit':'/season/','Analyysit':'/analyysit/','Matchup Lab':'/matchup/','Sim Studio':'/sim/','Custom import':'/custom-import/','Datan tila':'/data/'};
 export const slug=name=>name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('fi').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 const decodeId=value=>{try{return decodeURIComponent(value);}catch{return null;}};
 export function readRoute(defaults,location=window.location){
  const query=new URLSearchParams(location.search),path=location.pathname.replace(/\/+$/,'')||'/';
  let section=Object.keys(sectionPaths).find(key=>sectionPaths[key].replace(/\/+$/,'')===path)||(path==='/'?'Etusivu':'Sivua ei löytynyt');
- let matchId,playerId,teamId,matchPanel;
+ let matchId,playerId,teamId,matchPanel,articleId;
+ const article=path.match(/^\/analyysit\/([^/]+)$/);
+ if(article){section=articleSlugs.includes(article[1])?'Analyysit':'Sivua ei löytynyt';articleId=article[1];}
  const match=path.match(/^\/matches\/(\d+)(?:\/(players|data|preview))?$/),player=path.match(/^\/players\/([^/]+)$/),team=path.match(/^\/teams\/(?:korisliiga\/|naisten-korisliiga\/)?([^/]+)$/);
  if(match){section='Ottelut';matchId=match[1];matchPanel=match[2];}else if(player){section='Pelaajat';playerId=decodeId(player[1]);if(playerId===null)section='Sivua ei löytynyt';}else if(team){section='Joukkueet';teamId=decodeId(team[1]);if(teamId===null)section='Sivua ei löytynyt';}
  else if(location.hash==='#overview')section='Yleiskatsaus';else if(location.hash==='#matches'||location.hash.startsWith('#match=')){section='Ottelut';matchId=location.hash.startsWith('#match=')?decodeId(location.hash.slice(7)):undefined;}
  const seasonId=['2024-25','2025-26','2026-27'].includes(query.get('season'))?query.get('season'):defaults.seasonId;
  const leagueId=query.has('league')?(query.get('league')==='korisliiga'?'men':'women'):path.includes('/korisliiga/')?'men':path.includes('/naisten-korisliiga/')?'women':defaults.leagueId;
- return {...(section==='Haku'?{searchQuery:query.get('q')||''}:{}),section,matchId,matchPanel,playerId,teamId,seasonId,leagueId};
+ return {...(section==='Haku'?{searchQuery:query.get('q')||''}:{}),section,matchId,matchPanel,playerId,teamId,articleId,seasonId,leagueId};
 }
-export function routeHref(route){let path=sectionPaths[route.section]||'/';if(route.matchId)path=`/matches/${encodeURIComponent(route.matchId)}/${route.matchPanel?route.matchPanel+'/':''}`;if(route.playerId)path=`/players/${encodeURIComponent(route.playerId)}/`;if(route.teamId)path=`/teams/${route.leagueId==='men'?'korisliiga':'naisten-korisliiga'}/${encodeURIComponent(route.teamId)}/`;const query=new URLSearchParams({season:route.seasonId});if(route.leagueId==='men')query.set('league','korisliiga');if(route.section==='Haku'&&route.searchQuery)query.set('q',route.searchQuery);return `${path}?${query}`;}
+export function routeHref(route){let path=sectionPaths[route.section]||'/';if(route.matchId)path=`/matches/${encodeURIComponent(route.matchId)}/${route.matchPanel?route.matchPanel+'/':''}`;if(route.playerId)path=`/players/${encodeURIComponent(route.playerId)}/`;if(route.articleId)path=`/analyysit/${encodeURIComponent(route.articleId)}/`;if(route.teamId)path=`/teams/${route.leagueId==='men'?'korisliiga':'naisten-korisliiga'}/${encodeURIComponent(route.teamId)}/`;const query=new URLSearchParams({season:route.seasonId});if(route.leagueId==='men')query.set('league','korisliiga');if(route.section==='Haku'&&route.searchQuery)query.set('q',route.searchQuery);return `${path}?${query}`;}
 // Window scroll per history entry: a new page starts at the top, Back returns to where the reader was.
 // The desktop data page scrolls its own content area; on mobile the window scrolls, so it needs this.
 let restoreY=null;
