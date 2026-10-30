@@ -31,3 +31,7 @@
 @media(max-width:700px){.player-right{width:400px;height:225px;right:-115px;top:300px}}
 
 .site-footer .footer-notice{margin:0 0 16px;font-size:11px;line-height:1.6;color:#85858f;max-width:none}.footer-bottom span a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+
+.dot-figure{position:absolute;display:block;pointer-events:none;height:500px;width:auto;top:208px;filter:drop-shadow(0 0 16px #df945b22);mask-image:linear-gradient(to bottom,#000 0%,#000 72%,transparent 94%);-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 72%,transparent 94%)}
+.dot-figure-left{left:118px}.dot-figure-right{right:96px}
+@media(max-width:700px){.dot-figure{height:230px;top:318px}.dot-figure-left{left:-22px}.dot-figure-right{right:-30px}}
