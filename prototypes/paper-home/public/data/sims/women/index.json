@@ -15,7 +15,7 @@
     "id": "d2b9fb71-90a6-11f1-a4c2-e7d7c2463142",
     "name": "BC Nokia"
    },
-   "home_win_probability": 0.633
+   "home_win_probability": 0.643
   },
   {
    "id": "1006183",
@@ -30,7 +30,7 @@
     "id": "d244ed43-90a6-11f1-833b-e7d7c2463142",
     "name": "HBA-Märsky"
    },
-   "home_win_probability": 0.181
+   "home_win_probability": 0.168
   },
   {
    "id": "1006204",
@@ -45,7 +45,7 @@
     "id": "d231065a-90a6-11f1-9f40-e7d7c2463142",
     "name": "Peli-Karhut"
    },
-   "home_win_probability": 0.295
+   "home_win_probability": 0.31
   },
   {
    "id": "1006189",
@@ -60,7 +60,7 @@
     "id": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
     "name": "Kouvottaret"
    },
-   "home_win_probability": 0.747
+   "home_win_probability": 0.743
   },
   {
    "id": "1006223",
@@ -75,7 +75,7 @@
     "id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
     "name": "Tapiolan Honka"
    },
-   "home_win_probability": 0.756
+   "home_win_probability": 0.752
   },
   {
    "id": "1006213",
@@ -90,7 +90,7 @@
     "id": "d307acab-90a6-11f1-88bf-e7d7c2463142",
     "name": "Tampereen Pyrintö"
    },
-   "home_win_probability": 0.784
+   "home_win_probability": 0.775
   }
  ]
 }
