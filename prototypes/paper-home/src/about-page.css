@@ -1,0 +1,2 @@
+.about-page{max-width:720px;margin-inline:auto;font-size:14px;line-height:1.7;color:#c8c8d0}.about-page h1{font:400 34px/1.15 'Cal Sans',sans-serif;margin:8px 0 14px;color:#ededf0}.about-lead{font-size:16px;line-height:1.55;color:#dcdce2;margin:0}.about-page section{margin-top:36px}.about-page h2{font:400 20px/1.3 'Cal Sans',sans-serif;margin:0 0 8px;color:#ededf0}.about-page p{margin:0}.about-links{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px!important}.about-links a{color:#efb786}
+@media(max-width:700px){.about-page h1{font-size:28px}}

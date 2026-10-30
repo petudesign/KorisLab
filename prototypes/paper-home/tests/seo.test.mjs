@@ -65,3 +65,11 @@ test('current-season pages use season-free public addresses, so the home page is
  assert.match(map,/<loc>https:\/\/korislab\.vercel\.app\/<\/loc>/);
  assert.doesNotMatch(map,/season=2026-27/);
 });
+
+test('the About page says what KorisLab is, without JavaScript, and is indexed once',()=>{
+ const pages=Object.entries(manifest.pages).filter(([key])=>key.startsWith('/tietoa/'));
+ assert.equal(pages.filter(([,p])=>p.indexable).length,1);
+ const home=manifest.pages[scopeKey('/tietoa/')];
+ assert.match(home.summary,/Petteri Helttulan tekemä suomalaisen koripallon analytiikkasivusto/);
+ assert.match(home.summary,/ei ole Koripalloliiton/);
+});

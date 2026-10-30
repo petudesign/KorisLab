@@ -29,3 +29,5 @@
 
 .player-right{width:686px;height:386px;left:auto;right:-67px;top:214px}
 @media(max-width:700px){.player-right{width:400px;height:225px;right:-115px;top:300px}}
+
+.site-footer .footer-notice{margin:0 0 16px;font-size:11px;line-height:1.6;color:#85858f;max-width:none}.footer-bottom span a{color:inherit;text-decoration:underline;text-underline-offset:3px}

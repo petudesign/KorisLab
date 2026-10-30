@@ -3,6 +3,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {aggregateSeasonPlayers,playerPerGame} from '../src/lib/playerStats.ts';
 import {seasonTeams,teamSeasonSummary} from '../src/lib/teamProfiles.js';
+import {about,aboutSummaryHtml} from '../src/lib/aboutContent.js';
 import {articles,fiveGamesSummaryHtml} from '../src/lib/fiveGamesArticle.js';
 import {escapeHtml as e,scopeKey,publicPath,DEFAULT_SEASON,SITE_ORIGIN,sitemap} from '../server/seo.mjs';
 // Who makes KorisLab: lets search engines and AI answers connect the site, its maker and the source code.
@@ -48,6 +49,7 @@ for(const [league,datasets] of Object.entries(seasons))for(const [season,d] of O
  for(const [p,title] of [['/search/','Haku'],['/design-system/','Design system'],['/custom-import/','Custom import'],['/data/','Datan tila']])add(p,title,`${title} · KorisLab`,nav,'WebPage',null,false);
  // Articles are not tied to a season or league: only the default scope is listed and indexed.
  const primaryScope=season===manifest.defaultSeason&&league==='women';
+ add('/tietoa/',about.title.fi,about.lead.fi,`${nav}${aboutSummaryHtml(e)}`,'AboutPage',null,primaryScope);
  add('/analyysit/','Analyysit','KorisLabin analyysit suomalaisesta koripallosta: mitä luvuista voi päätellä ja mitä ei.',`${nav}<ul>${articles.map(a=>`<li><a href="/analyysit/${a.slug}/">${e(a.title.fi)}</a>: ${e(a.standfirst.fi)}</li>`).join('')}</ul>`,'CollectionPage',null,primaryScope);
  for(const a of articles)add(`/analyysit/${a.slug}/`,a.title.fi,a.standfirst.fi,`${nav}${fiveGamesSummaryHtml(fiveGames,e)}`,'WebPage',{'@type':'Article',headline:a.title.fi,datePublished:a.published,author:{'@id':CREATOR['@id']},publisher:{'@id':SITE_ORIGIN+'/#organization'},inLanguage:'fi'},primaryScope);
 }
