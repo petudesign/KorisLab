@@ -35,7 +35,7 @@
 .dot-figure{position:absolute;display:block;pointer-events:none;height:500px;width:auto;top:208px;filter:drop-shadow(0 0 16px #df945b22);mask-image:linear-gradient(to bottom,#000 0%,#000 72%,transparent 94%);-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 72%,transparent 94%)}
 .dot-figure-left{left:118px}.dot-figure-right{right:96px}
 /* Phone: the figures stand behind the search field with only ball, head and shoulders above it, so the whole hero fits on the first screen. */
-@media(max-width:700px){.prototype-page .hero{--hero-dash-top:312px}.prototype-page .hero .hero-search{top:226px}.prototype-page .hero .hero-search>label{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}.dot-figure{height:190px;top:154px;mask-image:linear-gradient(to bottom,#000 0%,#000 47%,transparent 52%);-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 47%,transparent 52%)}.dot-figure-left{left:-12px}.dot-figure-right{right:-12px}}
+@media(max-width:700px){.prototype-page .hero{--hero-dash-top:312px}.prototype-page .hero .hero-search{top:192px}.dot-figure{height:190px;top:154px;mask-image:linear-gradient(to bottom,#000 0%,#000 47%,transparent 52%);-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 47%,transparent 52%)}.dot-figure-left{left:-12px}.dot-figure-right{right:-12px}}
 
 /* Phone home page: one search at a time. The nav's own field floats under the bar, so showing it never moves the page. */
 @media(max-width:700px){
@@ -45,3 +45,4 @@
  .nav-wrapper[data-search=on]::before{bottom:-56px}
 }
 @media(max-width:700px) and (prefers-reduced-motion:reduce){.prototype-page:not(.data-page) .nav-wrapper .nav-search{transform:none;transition:opacity 120ms linear,visibility 120ms}}
+@media(max-width:380px){.dot-figure-left{left:-24px}.dot-figure-right{right:-24px}}
