@@ -61,14 +61,17 @@ function LengthChart(){
 }
 
 // One bar per game, in order: a single blowout or two narrow losses show up without reading a number.
+// Pixels per point are shared by every team, so bars compare across rows; each row is only as tall as its own games need.
+const BAR_SCALE=0.7,BAR_LABEL=14;
 function GameBars({games,league}){
- const {language}=useI18n(),say=(fi,en)=>language==='fi'?fi:en,top=50;
- return <div className="five-bars" data-league={league} role="img" aria-label={say(`Piste-ero otteluittain: ${games.map(g=>signed(language,g.margin)).join(', ')}`,`Point difference by game: ${games.map(g=>signed(language,g.margin)).join(', ')}`)}>{games.map((g,i)=><div className="five-bar" key={i} title={`${g.opponent} ${signed(language,g.margin)}`}><span className="five-bar-up">{g.margin>0&&<><small>{signed(language,g.margin)}</small><i style={{height:`${g.margin/top*100}%`}}/></>}</span><span className="five-bar-down">{g.margin<0&&<><i style={{height:`${-g.margin/top*100}%`}}/><small>{signed(language,g.margin)}</small></>}</span></div>)}</div>;
+ const {language}=useI18n(),say=(fi,en)=>language==='fi'?fi:en;
+ const up=Math.max(0,...games.map(g=>g.margin)),down=Math.max(0,...games.map(g=>-g.margin));
+ return <div className="five-bars" data-league={league} role="img" aria-label={say(`Piste-ero otteluittain: ${games.map(g=>signed(language,g.margin)).join(', ')}`,`Point difference by game: ${games.map(g=>signed(language,g.margin)).join(', ')}`)}>{games.map((g,i)=><div className="five-bar" key={i} title={`${g.opponent} ${signed(language,g.margin)}`}><span className="five-bar-up" style={{height:up*BAR_SCALE+BAR_LABEL}}>{g.margin>0&&<><small>{signed(language,g.margin)}</small><i style={{height:g.margin*BAR_SCALE}}/></>}</span>{down>0&&<span className="five-bar-down" style={{height:down*BAR_SCALE+BAR_LABEL}}>{g.margin<0&&<><i style={{height:-g.margin*BAR_SCALE}}/><small>{signed(language,g.margin)}</small></>}</span>}</div>)}</div>;
 }
 
-function ResultCards({league}){
+function ResultRows({league}){
  const {language}=useI18n(),lang=language==='fi'?'fi':'en',report=data[league];
- return <div className="five-cards">{report.changes.map(row=>{const standing=report.standings.find(item=>item.team===row.team);return <article className="five-card" key={row.team}><header><TeamLogo name={row.team} className="five-logo" decorative/><h3>{row.team}</h3><p>{standing.wins}–{standing.losses}<span>{signed(language,standing.diff)}</span></p></header><GameBars games={row.games} league={league}/><p className="five-card-note">{teamNote(row.team,'result',lang)}</p></article>;})}</div>;
+ return <div className="five-rows">{report.changes.map(row=>{const standing=report.standings.find(item=>item.team===row.team);return <article className="five-row" key={row.team}><header><TeamLogo name={row.team} className="five-logo" decorative/><div><h3>{row.team}</h3><p>{standing.wins}–{standing.losses}<span>{signed(language,standing.diff)}</span></p></div></header><p className="five-row-note">{teamNote(row.team,'result',lang)}</p><GameBars games={row.games} league={league}/></article>;})}</div>;
 }
 
 function FullStandings({league}){
@@ -83,8 +86,10 @@ function ChangeBar({label,scale,now,last,language}){
  const at=v=>Math.max(0,Math.min(100,(v-scale[0])/(scale[1]-scale[0])*100));
  return <div className="five-change"><span>{label}</span><div className="five-change-track">{last!=null&&<b style={{left:`${Math.min(at(last),at(now))}%`,width:`${Math.abs(at(now)-at(last))}%`}}/>}{last!=null&&<i className="is-last" style={{left:`${at(last)}%`}}/>}<i style={{left:`${at(now)}%`}}/></div><strong>{last!=null&&<small>{fmt(language,last)} →</small>}{fmt(language,now)}</strong></div>;
 }
-function PlayerChips({title,items}){
- return items.length>0&&<div className="five-chips"><h4>{title}</h4><ul>{items.map(item=><li key={item}>{item}</li>)}</ul></div>;
+// Three kinds of roster news, told apart by symbol, label and colour so a card can be scanned without reading it all.
+function PlayerChips({kind,title,items}){
+ const symbol={arrived:'+',grew:'↑',absent:'−'}[kind];
+ return items.length>0&&<div className="five-chips" data-kind={kind}><h4><i aria-hidden="true">{symbol}</i>{title}</h4><ul>{items.map(item=><li key={item}>{item}</li>)}</ul></div>;
 }
 function ChangeCards(){
  const {language}=useI18n(),say=(fi,en)=>language==='fi'?fi:en,lang=language==='fi'?'fi':'en';
@@ -95,9 +100,9 @@ function ChangeCards(){
   <div className="five-cards five-cards-wide">{rows.map(row=><article className="five-card" key={row.team} data-league={row.league}><header><TeamLogo name={row.team} className="five-logo" decorative/><h3>{row.team}</h3>{row.returningShare!=null?<p className="five-returning">{row.returningShare} %<span>{say('minuuteista viime kauden pelaajilta','of minutes from last season’s players')}</span></p>:<p className="five-returning">{say('Nousija','Promoted')}</p>}</header>
     {SCALES.map(([key,label,scale])=><ChangeBar key={key} label={label[lang]} scale={scale} now={row.now[key]} last={row.last?.[key]} language={language}/>)}
     <p className="five-card-note">{teamNote(row.team,'change',lang)}</p>
-    <PlayerChips title={say('Uudet','New')} items={row.arrivals.filter(p=>p.ppg>=8).map(p=>`${p.name} ${fmt(language,p.ppg)}${p.from?` (${say('ennen','from')} ${teamName(p.from)})`:''}`)}/>
-    <PlayerChips title={say('Kasvanut rooli','Bigger role')} items={(row.risers||[]).map(p=>`${p.name} ${fmt(language,p.from)} → ${fmt(language,p.to)}`)}/>
-    <PlayerChips title={say('Ei pelannut tällä kaudella tässä joukkueessa','Has not played for this team this season')} items={(row.absent||[]).filter(p=>p.ppg>=8).map(p=>`${p.name} ${fmt(language,p.ppg)}${p.now?` (${say('nyt','now')} ${teamName(p.now)})`:''}`)}/>
+    <PlayerChips kind="arrived" title={say('Uudet','New')} items={row.arrivals.filter(p=>p.ppg>=8).map(p=>`${p.name} ${fmt(language,p.ppg)}${p.from?` (${say('ennen','from')} ${teamName(p.from)})`:''}`)}/>
+    <PlayerChips kind="grew" title={say('Kasvanut rooli','Bigger role')} items={(row.risers||[]).map(p=>`${p.name} ${fmt(language,p.from)} → ${fmt(language,p.to)}`)}/>
+    <PlayerChips kind="absent" title={say('Ei pelannut joukkueessa tällä kaudella','Has not played for the team this season')} items={(row.absent||[]).filter(p=>p.ppg>=8).map(p=>`${p.name} ${fmt(language,p.ppg)}${p.now?` (${say('nyt','now')} ${teamName(p.now)})`:''}`)}/>
    </article>)}</div>
   <p className="five-note">{say('Luvut pelaajien kohdalla: pisteitä ottelussa.','Player figures: points per game.')}</p>
  </>;
@@ -123,7 +128,7 @@ function Article({article,listHref,onList}){
     <p className="five-note">{say('Katkoviiva on 50 % voitoista. Viiva näyttää suunnan: mitä jyrkempi, sitä enemmän alku on kertonut loppukaudesta.','The dashed line is 50% wins. The sloped line shows the direction: the steeper, the more the start has said about the rest.')}</p><ChartData/></>}
    {section.chart==='starts'&&<StartsChart/>}
    {section.chart==='length'&&<LengthChart/>}
-   {section.results&&<><ResultCards league={section.results}/><FullStandings league={section.results}/></>}
+   {section.results&&<><ResultRows league={section.results}/><FullStandings league={section.results}/></>}
    {section.changes&&<ChangeCards/>}
    {(section.after||[]).map(text=><p className="analysis-after" key={text}>{text}</p>)}
    {section.conclusions&&<div className="five-conclusions">{section.conclusions.map(([title,text])=><div key={title}><h3>{title}</h3><p>{text}</p></div>)}</div>}
