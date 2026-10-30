@@ -1,6 +1,6 @@
 import {useEffect,useState} from 'react';
 import {articleSlugs} from './lib/fiveGamesArticle.js';
-export const sectionPaths={'Design system':'/design-system/','Haku':'/search/','Etusivu':'/','Yleiskatsaus':'/overview/','Ottelut':'/matches/','Joukkueet':'/teams/','Pelaajat':'/players/','Kausitrendit':'/season/','Analyysit':'/analyysit/','Matchup Lab':'/matchup/','Sim Studio':'/sim/','Custom import':'/custom-import/','Datan tila':'/data/'};
+export const sectionPaths={'Design system':'/design-system/','Haku':'/search/','Etusivu':'/','Yleiskatsaus':'/overview/','Ottelut':'/matches/','Joukkueet':'/teams/','Pelaajat':'/players/','Kausitrendit':'/season/','Analyysit':'/analyysit/','Matchup Lab':'/matchup/','Sim Studio':'/sim/','Custom import':'/custom-import/','Datan tila':'/data/','Tietoa':'/tietoa/'};
 export const slug=name=>name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('fi').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 const decodeId=value=>{try{return decodeURIComponent(value);}catch{return null;}};
 export function readRoute(defaults,location=window.location){
