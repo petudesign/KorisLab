@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {readRoute,routeHref} from '../src/routing.js';
+import {nextRoute,readRoute,routeHref} from '../src/routing.js';
 const defaults={leagueId:'women',seasonId:'2026-27'};
 const read=url=>readRoute(defaults,new URL(url,'http://127.0.0.1:5174'));
 test('game links preserve league, season and original ID',()=>{const route={section:'Ottelut',matchId:'1000914',seasonId:'2025-26',leagueId:'men'};assert.deepEqual(read(routeHref(route)),{...route,articleId:undefined,matchPanel:undefined,playerId:undefined,teamId:undefined});});
@@ -22,3 +22,6 @@ test('unavailable records keep their entity route and season context',()=>{asser
 test('article links are routable and unknown articles are not found',()=>{const route=read('/analysis/first-five-games/');assert.equal(route.section,'Analyysit');assert.equal(route.articleId,'first-five-games');assert.ok(routeHref(route).startsWith('/analysis/first-five-games/?'));assert.equal(read('/analysis/').section,'Analyysit');assert.equal(read('/analysis/ei-ole/').section,'Sivua ei löytynyt');assert.ok(routeHref({section:'Tietoa',seasonId:'2026-27',leagueId:'women'}).startsWith('/about/?'));});
 
 test('old Finnish addresses still open the right page without a server redirect',()=>{const article=read('/analyysit/viisi-ottelua/?season=2025-26');assert.equal(article.section,'Analyysit');assert.equal(article.articleId,'first-five-games');assert.equal(article.seasonId,'2025-26');assert.equal(read('/analyysit/').section,'Analyysit');assert.equal(read('/analyysit/').articleId,undefined);assert.equal(read('/tietoa/').section,'Tietoa');});
+
+test('leaving an article forgets it, so the menu opens the list and other pages get their own address',()=>{const article=read('/analysis/first-five-games/');const home=nextRoute(article,{section:'Etusivu'});assert.equal(home.articleId,undefined);assert.ok(routeHref(home).startsWith('/?'));const list=nextRoute(home,{section:'Analyysit'});assert.equal(list.articleId,undefined);assert.ok(routeHref(list).startsWith('/analysis/?'));assert.ok(routeHref(nextRoute(article,{section:'Analyysit'})).startsWith('/analysis/?'));assert.ok(routeHref({...article,section:'Etusivu'}).startsWith('/?'));});
+test('an article stays open when it is named or only the league or season changes',()=>{const list=read('/analysis/');assert.equal(nextRoute(list,{section:'Analyysit',articleId:'first-five-games'}).articleId,'first-five-games');const article=read('/analysis/first-five-games/');assert.equal(nextRoute(article,{leagueId:'men'}).articleId,'first-five-games');assert.equal(nextRoute(article,{seasonId:'2025-26'}).articleId,'first-five-games');});

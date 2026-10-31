@@ -123,6 +123,16 @@ function ChartData(){
  return <details className="five-data"><summary>{say('Näytä kaavion luvut','Show the chart’s numbers')}</summary><div className="five-table-wrap"><table className="five-table"><thead><tr><th scope="col">{say('Joukkuekausi','Team season')}</th><th scope="col">{say('Sarja','League')}</th><th scope="col">{say('Voitot / 5','Wins / 5')}</th><th scope="col">{say('+/− per ottelu','+/− per game')}</th><th scope="col">{say('V % loppukausi','W % rest')}</th></tr></thead><tbody>{rows.map(r=><tr key={`${r.league}-${r.team}-${r.season}`}><th scope="row">{r.team} {season(r.season)}</th><td>{r.league}</td><td>{r.wins}</td><td>{r.margin>0?'+':''}{r.margin}</td><td>{r.restWinPct}</td></tr>)}</tbody></table></div></details>;
 }
 
+// The article's one number per league up top, then the conclusions. The bars use the 0–1 reading the article explains.
+function Brief(){
+ const {language}=useI18n(),say=(fi,en)=>language==='fi'?fi:en,lang=language==='fi'?'fi':'en';
+ return <section className="analysis-brief"><h2>{say('Lyhyesti','In brief')}</h2>
+  <dl className="analysis-brief-stats">{['women','men'].map(league=><div key={league} data-league={league}><dt>{league==='women'?say('Naiset','Women'):say('Miehet','Men')}</dt><dd className="analysis-brief-value">{fmt(language,data[league].corrMargin,2)}</dd><dd className="analysis-brief-meta"><i aria-hidden="true"><b style={{width:`${data[league].corrMargin*100}%`}}/></i>{say(`${data[league].teamSeasons} joukkuekautta`,`${data[league].teamSeasons} team seasons`)}</dd></div>)}</dl>
+  <p className="analysis-brief-note">{say('Viiden ensimmäisen ottelun piste-eron korrelaatio loppukauden voittoprosenttiin. 1 tarkoittaisi, että alku kertoo loppukauden järjestyksen täysin, ja 0, ettei se kerro mitään.','Correlation of the point difference over the first five games with the rest-of-season win percentage. 1 would mean the start tells you the season’s order completely, and 0 that it tells you nothing.')}</p>
+  <ol>{fiveGamesBrief(lang).map(([title,text])=><li key={title}><div><strong>{title}</strong><p>{text}</p></div></li>)}</ol>
+ </section>;
+}
+
 function Article({article,listHref,onList,onNavigate}){
  const {language}=useI18n(),say=(fi,en)=>language==='fi'?fi:en,id=useId(),lang=language==='fi'?'fi':'en';
  const sections=fiveGamesSections(data,lang);
@@ -131,7 +141,7 @@ function Article({article,listHref,onList,onNavigate}){
  return <article className="analysis-article" aria-labelledby={id}>
   <nav className="analysis-crumbs" aria-label={say('Murupolku','Breadcrumb')}><ol><li><a href={listHref} onClick={onList}>{say('Analyysit','Analysis')}</a></li><li aria-current="page">{article.title[lang]}</li></ol></nav>
   <header><h1 id={id}>{article.title[lang]}</h1><p className="analysis-standfirst">{article.standfirst[lang]}</p><p className="analysis-meta">Petteri Helttula · {date}</p></header>
-  <section className="analysis-brief"><h2>{say('Lyhyesti','In brief')}</h2><ul>{fiveGamesBrief(lang).map(([title,text])=><li key={title}><strong>{title}.</strong> {text}</li>)}</ul></section>
+  <Brief/>
   {sections.map(section=><section key={section.heading}><h2>{section.heading}</h2>
    {(section.paragraphs||[]).map(text=><p key={text}>{text}</p>)}
    {section.chart==='scatter'&&<><div className="five-charts"><Scatter league="women" title={say('Naiset','Women')} labels={[['Peli-Karhut','2025-26',6,30],['Forssan Alku','2024-25',8,4]]}/><Scatter league="men" title={say('Miehet','Men')} labels={[['Helsinki Seagulls','2024-25',-8,4],['Helsinki Seagulls','2025-26',8,4]]}/></div>
