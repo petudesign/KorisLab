@@ -2,19 +2,19 @@
 .power-ranking header h3{margin:0;font-family:'Cal Sans',sans-serif;font-size:18px;font-weight:400}.power-ranking header p{margin:6px 0 12px;font-size:13px;line-height:1.5;color:#b9b9c1;max-width:68ch}
 .power-legend{list-style:none;display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 16px;padding:0;font-size:11px;color:#a6a6ad}.power-legend li{display:inline-flex;align-items:center;gap:7px}
 .power-key-dot{width:10px;height:10px;border-radius:50%;background:#c8c8d0}.power-key-line{width:26px;height:3px;border-radius:2px;background:#8f8f96}.power-key-clear{width:26px;height:6px;border-radius:3px;background:linear-gradient(90deg,var(--power-below) 50%,var(--power-above) 50%)}.power-key-open{width:26px;height:6px;border-radius:3px;background:#55555c}
-.power-head,.power-ranking li{display:grid;grid-template-columns:var(--power-cols);align-items:center;gap:10px}
+.power-head,.power-ranking ol li{display:grid;grid-template-columns:var(--power-cols);align-items:center;gap:10px}
 .power-head{padding-bottom:8px;border-bottom:1px solid #ffffff14;font-size:11px;color:#85858f}.power-head-team{grid-column:1/4}.power-head-opp,.power-head-value{text-align:right}
 .power-axis{display:grid;grid-template-columns:1fr auto 1fr;gap:6px}.power-axis b{font-weight:400}.power-axis b:nth-child(2){color:#c8c8d0}.power-axis b:last-child{text-align:right}
-.power-ranking ol{list-style:none;margin:0;padding:0}.power-ranking li{padding:9px 0;border-bottom:1px solid #ffffff0c}
+.power-ranking ol{list-style:none;margin:0;padding:0}.power-ranking ol li{padding:9px 0;border-bottom:1px solid #ffffff0c}
 .power-rank{font-size:12px;color:#85858f;font-variant-numeric:tabular-nums}.power-logo{width:26px;height:26px}.power-name{font-size:13px;color:#e6e6ea;min-width:0}.power-name small{display:block;margin-top:3px;font-size:11px;color:#8f8f96;font-variant-numeric:tabular-nums}.power-opp-inline{display:none}
 .power-track{position:relative;height:20px}.power-zero{position:absolute;left:50%;top:-9px;bottom:-9px;border-left:1px solid #ffffff2e}
 .power-range{position:absolute;top:8px;height:4px;border-radius:2px;background:#55555c}.power-dot{position:absolute;top:4px;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:#a6a6ad;box-shadow:0 0 0 2px #17171a}
 .is-above .power-range{background:#df945b66}.is-above .power-dot{background:var(--power-above)}.is-below .power-range{background:#6fa8d666}.is-below .power-dot{background:var(--power-below)}
-.power-opp{font-size:12px;text-align:right;color:#a6a6ad;font-variant-numeric:tabular-nums}.power-ranking li strong{font-size:15px;font-weight:500;text-align:right;color:#a6a6ad;font-variant-numeric:tabular-nums}.is-above strong{color:var(--power-above)!important}.is-below strong{color:var(--power-below)!important}
+.power-opp{font-size:12px;text-align:right;color:#a6a6ad;font-variant-numeric:tabular-nums}.power-ranking ol li strong{font-size:15px;font-weight:500;text-align:right;color:#a6a6ad;font-variant-numeric:tabular-nums}.is-above strong{color:var(--power-above)!important}.is-below strong{color:var(--power-below)!important}
 .power-note{margin:14px 0 0;font-size:11px;line-height:1.6;color:#85858f;max-width:90ch}
 @media(max-width:700px){
  .power-ranking{--power-cols:18px 24px minmax(0,1fr) 48px}
  .power-head{grid-template-columns:1fr}.power-head-team,.power-head-opp,.power-head-value{display:none}
  .power-track{grid-column:1/-1;grid-row:2;height:18px}.power-zero{top:-3px;bottom:-3px}.power-opp{display:none}.power-opp-inline{display:inline}
- .power-ranking li{row-gap:6px}.power-ranking li strong{grid-column:4;grid-row:1}
+ .power-ranking ol li{row-gap:6px}.power-ranking ol li strong{grid-column:4;grid-row:1}
 }
