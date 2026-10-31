@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {runInNewContext} from 'node:vm';
-import {resolvePage,renderPage,scopeKey,sitemap,publicPath} from '../server/seo.mjs';
+import {legacyPath,resolvePage,renderPage,scopeKey,sitemap,publicPath} from '../server/seo.mjs';
 const manifest=JSON.parse(readFileSync(new URL('../dist/client/_seo/manifest.json',import.meta.url)));
 const template='<html><head><title>Old</title><meta name="robots" content="noindex,follow"></head><body><div id="root"></div></body></html>';
 test('boot preserves no-JS facts without flashing a skeleton and recovers on bundle failure',()=>{
@@ -67,21 +67,45 @@ test('current-season pages use season-free public addresses, so the home page is
 });
 
 test('the About page says what KorisLab is, without JavaScript, and is indexed once',()=>{
- const pages=Object.entries(manifest.pages).filter(([key])=>key.startsWith('/tietoa/'));
+ const pages=Object.entries(manifest.pages).filter(([key])=>key.startsWith('/about/'));
  assert.equal(pages.filter(([,p])=>p.indexable).length,1);
- const home=manifest.pages[scopeKey('/tietoa/')];
+ const home=manifest.pages[scopeKey('/about/')];
  assert.match(home.summary,/Petteri Helttulan tekemä suomalaisen koripallon analytiikkasivusto/);
  assert.match(home.summary,/ei ole Koripalloliiton/);
 });
 
 test('the article has a breadcrumb trail through the list, and its team links resolve',()=>{
- const page=manifest.pages[scopeKey('/analyysit/viisi-ottelua/')],trail=page.structured['@graph'].find(n=>n['@type']==='BreadcrumbList').itemListElement;
+ const page=manifest.pages[scopeKey('/analysis/first-five-games/')],trail=page.structured['@graph'].find(n=>n['@type']==='BreadcrumbList').itemListElement;
  assert.deepEqual(trail.map(c=>c.name),['KorisLab','Analyysit','Mitä viisi ottelua kertoo?']);
  assert.deepEqual(trail.map(c=>c.position),[1,2,3]);
- assert.equal(trail[1].item,'https://korislab.vercel.app/analyysit/');
+ assert.equal(trail[1].item,'https://korislab.vercel.app/analysis/');
  assert.equal(trail[2].item,page.structured['@graph'][0].url);
  assert.match(page.summary,/<h2>Lyhyesti<\/h2>/);
  const links=[...page.summary.matchAll(/href="(\/teams\/[^"]+)"/g)].map(m=>m[1].replaceAll('&amp;','&'));
  assert.equal(links.length,16);
  for(const link of links)assert.ok(Object.keys(manifest.pages).some(key=>publicPath(key,manifest.defaultSeason)===link),link);
+});
+
+test('old Finnish addresses map to the English ones and nothing else moves',()=>{
+ const cases={'/analyysit':'/analysis/','/analyysit/':'/analysis/','/analyysit/viisi-ottelua':'/analysis/first-five-games/','/analyysit/viisi-ottelua/':'/analysis/first-five-games/','/analyysit/joku/':'/analysis/joku/','/tietoa':'/about/','/tietoa/':'/about/'};
+ for(const [from,to] of Object.entries(cases))assert.equal(legacyPath(from),to,from);
+ for(const path of ['/','/analysis/','/analysis/first-five-games/','/about/','/analyysitx/','/tietoa/x/','/teams/analyysit/'])assert.equal(legacyPath(path),null,path);
+});
+
+test('the Vercel function redirects old addresses permanently and keeps the query',async()=>{
+ const {default:handler}=await import('../.vercel/output/functions/render.func/serve.mjs');
+ const invoke=(url,method='GET')=>{const headers={};let body;const res={statusCode:200,setHeader:(key,value)=>headers[key]=value,end:value=>{body=value;}};handler({url,method,headers:{host:'korislab.vercel.app'}},res);return {status:res.statusCode,headers,body};};
+ const page=invoke('/render?__path=/analyysit/viisi-ottelua/&season=2025-26&utm_source=share');
+ assert.equal(page.status,308);assert.equal(page.headers.Location,'/analysis/first-five-games/?season=2025-26&utm_source=share');assert.equal(page.body,undefined);
+ assert.equal(invoke('/render?__path=/tietoa').headers.Location,'/about/');
+ assert.equal(invoke('/render?__path=/analyysit/','HEAD').status,308);
+ assert.equal(invoke('/render?__path=/analyysit/','POST').status,405);
+ const target=invoke('/render?__path=/analysis/first-five-games/');assert.equal(target.status,200);assert.match(target.body,/rel="canonical" href="https:\/\/korislab\.vercel\.app\/analysis\/first-five-games\/"/);
+});
+
+test('the sitemap lists only the new addresses',()=>{
+ const xml=sitemap(manifest);
+ for(const path of ['/analysis/','/analysis/first-five-games/','/about/'])assert.ok(xml.includes(`<loc>https://korislab.vercel.app${path}</loc>`),path);
+ assert.doesNotMatch(xml,/analyysit|tietoa|viisi-ottelua/);
+ assert.doesNotMatch(JSON.stringify(manifest.pages[scopeKey('/analysis/first-five-games/')]),/\/analyysit|\/tietoa|viisi-ottelua/);
 });

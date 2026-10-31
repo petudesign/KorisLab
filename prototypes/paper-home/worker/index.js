@@ -1,4 +1,4 @@
-import {renderPage,robotsText,sitemap,SITE_ORIGIN} from '../server/seo.mjs';
+import {legacyPath,renderPage,robotsText,sitemap,SITE_ORIGIN} from '../server/seo.mjs';
 const manifests=new WeakMap();
 async function loadManifest(binding,readAsset){
  if(!manifests.has(binding)){const pending=readAsset('/_seo/manifest.json').then(async r=>{if(!r.ok)throw Error('SEO manifest unavailable');return r.json();}).catch(error=>{manifests.delete(binding);throw error;});manifests.set(binding,pending);}
@@ -8,6 +8,7 @@ export default {
  async fetch(request,env){
   const url=new URL(request.url),readAsset=path=>{const target=new URL(request.url);target.pathname=path;target.search='';return env.ASSETS.fetch(new Request(target,{method:'GET'}));};
   if(!['GET','HEAD'].includes(request.method))return env.ASSETS.fetch(request);
+  const moved=legacyPath(url.pathname);if(moved)return new Response(null,{status:308,headers:{Location:moved+url.search,'Cache-Control':'public, max-age=0, must-revalidate'}});
   if(url.pathname==='/robots.txt')return new Response(request.method==='HEAD'?null:robotsText(url.origin===SITE_ORIGIN),{headers:{'Content-Type':'text/plain; charset=utf-8'}});
   if(url.pathname.startsWith('/_seo/'))return new Response(null,{status:404});
   const response=await env.ASSETS.fetch(request);

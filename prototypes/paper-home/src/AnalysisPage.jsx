@@ -149,7 +149,7 @@ function Article({article,listHref,onList,onNavigate}){
 
 export default function AnalysisPage({articleId,onNavigate}){
  const {language}=useI18n(),say=(fi,en)=>language==='fi'?fi:en,lang=language==='fi'?'fi':'en';
- const href=slug=>slug?`/analyysit/${slug}/`:'/analyysit/',open=slug=>event=>{if(!event.metaKey&&!event.ctrlKey&&!event.shiftKey){event.preventDefault();onNavigate('Analyysit',slug);}};
+ const href=slug=>slug?`/analysis/${slug}/`:'/analysis/',open=slug=>event=>{if(!event.metaKey&&!event.ctrlKey&&!event.shiftKey){event.preventDefault();onNavigate('Analyysit',slug);}};
  const article=articles.find(item=>item.slug===articleId);
  useMetadata(say('Analyysit','Analysis'),say('KorisLabin analyysit suomalaisesta koripallosta: mitä luvuista voi päätellä ja mitä ei.','KorisLab’s analysis of Finnish basketball: what the numbers can and cannot tell.'),{section:'Analyysit',seasonId:DEFAULT_SEASON,leagueId:'women'},!article);
  if(article)return <Article article={article} listHref={href()} onList={open()} onNavigate={onNavigate}/>;

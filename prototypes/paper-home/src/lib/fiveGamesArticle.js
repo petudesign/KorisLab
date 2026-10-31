@@ -2,7 +2,7 @@
 // summary say the same thing. Correlations and team numbers come from source/analysis-five-games.json, frozen at `asOf`.
 // The season the current-season numbers describe: team links stay on it after the site's default season moves on.
 export const fiveGamesSeason='2026-27';
-export const articles=[{slug:'viisi-ottelua',published:'2026-10-30',title:{fi:'Mitä viisi ottelua kertoo?',en:'What do five games tell you?'},
+export const articles=[{slug:'first-five-games',published:'2026-10-30',title:{fi:'Mitä viisi ottelua kertoo?',en:'What do five games tell you?'},
  standfirst:{fi:'Naisten Korisliigassa viiden ensimmäisen ottelun piste-ero on ennustanut loppukautta hyvin, miesten sarjassa heikosti. Siksi Kouvottarien 4–0 ja Kipinän 6–1 eivät tarkoita samaa.',
   en:'In the women’s Korisliiga the point difference over the first five games has predicted the rest of the season well, in the men’s league poorly. That is why Kouvottaret’s 4–0 and Kipinä’s 6–1 do not mean the same thing.'}}];
 export const articleSlugs=articles.map(article=>article.slug);

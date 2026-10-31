@@ -1,7 +1,7 @@
 import {readFileSync} from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {renderPage,robotsText,sitemap,SITE_ORIGIN} from './seo.mjs';
+import {legacyPath,renderPage,robotsText,sitemap,SITE_ORIGIN} from './seo.mjs';
 let manifest,template;
 export default function handler(req,res){
  // Build Output functions keep bundled files beside the entrypoint.
@@ -11,6 +11,7 @@ export default function handler(req,res){
  const route=url.searchParams.get('__path');if(route){url.pathname=route;url.searchParams.delete('__path');}
  if(!['GET','HEAD'].includes(req.method)){res.statusCode=405;res.setHeader('Allow','GET, HEAD');return res.end();}
  if(/^\/(api|assets|data|fonts|_seo)\//.test(url.pathname)){res.statusCode=404;res.setHeader('Content-Type','text/plain; charset=utf-8');return res.end(req.method==='HEAD'?undefined:'Not found');}
+ const moved=legacyPath(url.pathname);if(moved){res.statusCode=308;res.setHeader('Location',moved+url.search);res.setHeader('Cache-Control','public, max-age=0, must-revalidate');return res.end();}
  let result;
  if(url.pathname==='/robots.txt')result={status:200,body:robotsText(url.origin===SITE_ORIGIN),type:'text/plain; charset=utf-8'};
  else if(url.pathname==='/sitemap.xml')result={status:200,body:url.origin===SITE_ORIGIN?sitemap(manifest):'<?xml version="1.0"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"/>',type:'application/xml; charset=utf-8'};
