@@ -15,6 +15,11 @@
 @media(max-width:700px){
  .power-ranking{--power-cols:18px 24px minmax(0,1fr) 48px}
  .power-head{grid-template-columns:1fr}.power-head-team,.power-head-opp,.power-head-value{display:none}
- .power-track{grid-column:1/-1;grid-row:2;height:18px}.power-zero{top:-3px;bottom:-3px}.power-opp{display:none}.power-opp-inline{display:inline}
+ .power-ranking .power-track{grid-column:1/-1;grid-row:2;height:18px}.power-ranking .power-zero{top:-3px;bottom:-3px}.power-opp{display:none}.power-opp-inline{display:inline}
  .power-ranking ol li{row-gap:6px}.power-ranking ol li strong{grid-column:4;grid-row:1}
 }
+.power-summary{--power-above:#df945b;--power-below:#6fa8d6}.power-summary>header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.power-summary>header a{font-size:12px;color:#c8c8d0;text-decoration:none;white-space:nowrap}.power-summary>header a:hover{color:#efb786}
+.power-summary-axis{display:grid;grid-template-columns:1fr auto 1fr;gap:6px;margin:10px 48px 4px 128px;font-size:10px;color:#85858f}.power-summary-axis b{font-weight:400}.power-summary-axis b:nth-child(2){color:#c8c8d0}.power-summary-axis b:last-child{text-align:right}
+.power-summary ol{list-style:none;margin:0;padding:0}.power-summary li{display:grid;grid-template-columns:116px minmax(0,1fr);align-items:center;gap:12px;min-height:28px}.power-summary li>a{font-size:12px;color:#d6d6dc;text-decoration:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.power-summary li>a:hover{color:#efb786}.power-summary li.selected-team>a{color:#fff;font-weight:500}
+.power-summary button{display:grid;grid-template-columns:minmax(0,1fr) 40px;align-items:center;gap:8px;width:100%;padding:0;border:0;background:none;color:inherit;font:inherit;cursor:pointer}.power-summary button:focus-visible{outline:2px solid #df945b;outline-offset:2px;border-radius:3px}.power-summary .power-track{height:20px}.power-summary .power-zero{top:-4px;bottom:-4px}.power-summary strong{font-size:12px;font-weight:500;text-align:right;color:#a6a6ad;font-variant-numeric:tabular-nums}
+@media(max-width:700px){.power-summary li{grid-template-columns:96px minmax(0,1fr);gap:8px}.power-summary-axis{margin-left:104px}}

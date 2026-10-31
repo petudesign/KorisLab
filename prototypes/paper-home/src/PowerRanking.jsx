@@ -7,9 +7,23 @@ import {POWER_PARAMS,powerRanking,rangeVerdict,resultsFromGames} from './lib/pow
 import './power-ranking.css';
 
 const signed=n=>{const value=Math.abs(n)<.05?0:n;return `${value>0?'+':value<0?'−':''}${Math.abs(value).toLocaleString(locale(),{minimumFractionDigits:1,maximumFractionDigits:1})}`;};
+function usePowerRows(){
+ const {data,leagueId}=useSeason(),{games}=useMatches(data.matchesUrl);
+ return useMemo(()=>{const results=games?resultsFromGames(games):[];return results.length?powerRanking(results,POWER_PARAMS[leagueId]??POWER_PARAMS.men):[];},[games,leagueId]);
+}
+const OVERVIEW_ROWS=8;
+// The overview's short version: the same numbers and scale, with the explanation left to the teams page.
+export function PowerRankingSummary({selected,onChoose,fullHref,onFull,teamHref,onTeam}){
+ const {language}=useI18n(),say=(fi,en)=>language==='fi'?fi:en,rows=usePowerRows();
+ const extent=Math.max(...rows.map(r=>Math.abs(r.rating)+r.spread),1),x=v=>50+v/extent*50,shown=rows.slice(0,OVERVIEW_ROWS),rest=rows.length-shown.length;
+ return <article className="dash-card dash-ranking power-summary"><header><div><span className="dash-card-label">{say('Keskitasoon verrattuna','Compared with average')}</span><h3>{say('Vahvuusjärjestys','Power ranking')}</h3></div><a href={fullHref} onClick={onFull}>{rest>0?say(`Kaikki ${rows.length} joukkuetta`,`All ${rows.length} teams`):say('Selitys','Explanation')} →</a></header>
+  {rows.length?<><div className="power-summary-axis" aria-hidden="true"><b>{say('Heikompi','Weaker')}</b><b>{say('Keskitaso','Average')}</b><b>{say('Vahvempi','Stronger')}</b></div>
+  <ol>{shown.map(row=>{const verdict=rangeVerdict(row),low=x(row.rating-row.spread),high=x(row.rating+row.spread);return <li key={row.team} className={`is-${verdict} ${selected===row.team?'selected-team':''}`}><a href={teamHref(row.team)} onClick={event=>onTeam(event,row.team)}>{row.team}</a>
+   <button type="button" onClick={()=>onChoose(row.team)} aria-label={say(`Näytä joukkueen luvut: ${row.team}, vahvuus ${signed(row.rating)}, väli ${signed(row.rating-row.spread)} – ${signed(row.rating+row.spread)}`,`Show team numbers: ${row.team}, rating ${signed(row.rating)}, range ${signed(row.rating-row.spread)} to ${signed(row.rating+row.spread)}`)}><span className="power-track"><i className="power-zero"/><i className="power-range" style={{left:`${low}%`,width:`${high-low}%`}}/><i className="power-dot" style={{left:`${x(row.rating)}%`}}/></span><strong>{signed(row.rating)}</strong></button></li>;})}</ol></>:<p className="power-note">{say('Vahvuusjärjestys näkyy, kun otteluita on pelattu.','The ranking appears once games have been played.')}</p>}
+ </article>;
+}
 export function PowerRanking(){
- const {language}=useI18n(),say=(fi,en)=>language==='fi'?fi:en,{data,leagueId}=useSeason(),{games}=useMatches(data.matchesUrl);
- const rows=useMemo(()=>{const results=games?resultsFromGames(games):[];return results.length?powerRanking(results,POWER_PARAMS[leagueId]??POWER_PARAMS.men):[];},[games,leagueId]);
+ const {language}=useI18n(),say=(fi,en)=>language==='fi'?fi:en,rows=usePowerRows();
  if(!rows.length)return null;
  const extent=Math.max(...rows.map(r=>Math.abs(r.rating)+r.spread),1),x=v=>50+v/extent*50;
  const verdicts={above:say('selvästi keskitason yläpuolella','clearly above average'),below:say('selvästi keskitason alapuolella','clearly below average'),open:say('ero keskitasoon vielä epävarma','difference from average still unclear')};
