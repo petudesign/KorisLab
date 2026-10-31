@@ -1,5 +1,7 @@
 import {useEffect,useState} from 'react';
 import {articleSlugs} from './lib/fiveGamesArticle.js';
+// Same as the server's default scope, which leaves these out of its public addresses.
+export const CANONICAL_SCOPE={leagueId:'women',seasonId:'2026-27'};
 import {legacyPath} from '../server/seo.mjs';
 export const sectionPaths={'Design system':'/design-system/','Haku':'/search/','Etusivu':'/','Yleiskatsaus':'/overview/','Ottelut':'/matches/','Joukkueet':'/teams/','Pelaajat':'/players/','Kausitrendit':'/season/','Analyysit':'/analysis/','Matchup Lab':'/matchup/','Sim Studio':'/sim/','Custom import':'/custom-import/','Datan tila':'/data/','Tietoa':'/about/'};
 export const slug=name=>name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('fi').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
@@ -13,8 +15,10 @@ export function readRoute(defaults,location=window.location){
  const match=path.match(/^\/matches\/(\d+)(?:\/(players|data|preview))?$/),player=path.match(/^\/players\/([^/]+)$/),team=path.match(/^\/teams\/(?:korisliiga\/|naisten-korisliiga\/)?([^/]+)$/);
  if(match){section='Ottelut';matchId=match[1];matchPanel=match[2];}else if(player){section='Pelaajat';playerId=decodeId(player[1]);if(playerId===null)section='Sivua ei löytynyt';}else if(team){section='Joukkueet';teamId=decodeId(team[1]);if(teamId===null)section='Sivua ei löytynyt';}
  else if(location.hash==='#overview')section='Yleiskatsaus';else if(location.hash==='#matches'||location.hash.startsWith('#match=')){section='Ottelut';matchId=location.hash.startsWith('#match=')?decodeId(location.hash.slice(7)):undefined;}
- const seasonId=['2024-25','2025-26','2026-27'].includes(query.get('season'))?query.get('season'):defaults.seasonId;
- const leagueId=query.has('league')?(query.get('league')==='korisliiga'?'men':'women'):path.includes('/korisliiga/')?'men':path.includes('/naisten-korisliiga/')?'women':defaults.leagueId;
+ // A game, player or team address means the same thing for everyone: without a scope it is the canonical one, whatever this browser last chose.
+ const scope=match||player||team?CANONICAL_SCOPE:defaults;
+ const seasonId=['2024-25','2025-26','2026-27'].includes(query.get('season'))?query.get('season'):scope.seasonId;
+ const leagueId=query.has('league')?(query.get('league')==='korisliiga'?'men':'women'):path.includes('/korisliiga/')?'men':path.includes('/naisten-korisliiga/')?'women':scope.leagueId;
  return {...(section==='Haku'?{searchQuery:query.get('q')||''}:{}),section,matchId,matchPanel,playerId,teamId,articleId,seasonId,leagueId};
 }
 export function routeHref(route){let path=sectionPaths[route.section]||'/';if(route.matchId)path=`/matches/${encodeURIComponent(route.matchId)}/${route.matchPanel?route.matchPanel+'/':''}`;if(route.playerId)path=`/players/${encodeURIComponent(route.playerId)}/`;if(route.articleId&&route.section==='Analyysit')path=`/analysis/${encodeURIComponent(route.articleId)}/`;if(route.teamId)path=`/teams/${route.leagueId==='men'?'korisliiga':'naisten-korisliiga'}/${encodeURIComponent(route.teamId)}/`;const query=new URLSearchParams({season:route.seasonId});if(route.leagueId==='men')query.set('league','korisliiga');if(route.section==='Haku'&&route.searchQuery)query.set('q',route.searchQuery);return `${path}?${query}`;}

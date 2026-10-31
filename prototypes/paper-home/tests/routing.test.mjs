@@ -1,6 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {nextRoute,readRoute,routeHref} from '../src/routing.js';
+import {CANONICAL_SCOPE,nextRoute,readRoute,routeHref} from '../src/routing.js';
+import {DEFAULT_SEASON,publicPath,scopeKey} from '../server/seo.mjs';
 const defaults={leagueId:'women',seasonId:'2026-27'};
 const read=url=>readRoute(defaults,new URL(url,'http://127.0.0.1:5174'));
 test('game links preserve league, season and original ID',()=>{const route={section:'Ottelut',matchId:'1000914',seasonId:'2025-26',leagueId:'men'};assert.deepEqual(read(routeHref(route)),{...route,articleId:undefined,matchPanel:undefined,playerId:undefined,teamId:undefined});});
@@ -25,3 +26,12 @@ test('old Finnish addresses still open the right page without a server redirect'
 
 test('leaving an article forgets it, so the menu opens the list and other pages get their own address',()=>{const article=read('/analysis/first-five-games/');const home=nextRoute(article,{section:'Etusivu'});assert.equal(home.articleId,undefined);assert.ok(routeHref(home).startsWith('/?'));const list=nextRoute(home,{section:'Analyysit'});assert.equal(list.articleId,undefined);assert.ok(routeHref(list).startsWith('/analysis/?'));assert.ok(routeHref(nextRoute(article,{section:'Analyysit'})).startsWith('/analysis/?'));assert.ok(routeHref({...article,section:'Etusivu'}).startsWith('/?'));});
 test('an article stays open when it is named or only the league or season changes',()=>{const list=read('/analysis/');assert.equal(nextRoute(list,{section:'Analyysit',articleId:'first-five-games'}).articleId,'first-five-games');const article=read('/analysis/first-five-games/');assert.equal(nextRoute(article,{leagueId:'men'}).articleId,'first-five-games');assert.equal(nextRoute(article,{seasonId:'2025-26'}).articleId,'first-five-games');});
+
+test('a public game address opens the same scope in every browser, whatever was last selected',()=>{
+ const saved={leagueId:'men',seasonId:'2025-26'},open=url=>readRoute(saved,new URL(url,'http://127.0.0.1:5174'));
+ assert.equal(CANONICAL_SCOPE.seasonId,DEFAULT_SEASON);
+ for(const path of [publicPath(scopeKey('/matches/1006168/')),publicPath(scopeKey('/players/abc/')),publicPath(scopeKey('/teams/espoo-basket-team/'))]){const route=open(path);assert.equal(route.seasonId,DEFAULT_SEASON,path);assert.equal(route.leagueId,'women',path);}
+ const men=open(publicPath(scopeKey('/matches/1005939/',DEFAULT_SEASON,'men')));assert.equal(men.leagueId,'men');assert.equal(men.seasonId,DEFAULT_SEASON);
+ const older=open('/matches/968748/?season=2025-26&league=korisliiga');assert.deepEqual([older.seasonId,older.leagueId],['2025-26','men']);
+ const list=open('/overview/');assert.deepEqual([list.seasonId,list.leagueId],['2025-26','men']);
+});
