@@ -5,6 +5,9 @@ export const scopeKey=(path,season=DEFAULT_SEASON,league='women')=>`${path}?seas
 // Public address of a page: the current season needs no season parameter, so the home page is plain / and
 // current-season addresses stay the same while the season runs. Earlier seasons keep ?season=.
 export const publicPath=(key,defaultSeason=DEFAULT_SEASON)=>key.replace(new RegExp(`\\?season=${defaultSeason}(&|$)`),(_,rest)=>rest?'?':'');
+// Addresses that were public before the URLs moved to English. Shared links and search results still point here, so servers answer them with a permanent redirect.
+const LEGACY_PATHS=[[/^\/analyysit\/viisi-ottelua\/*$/,'/analysis/first-five-games/'],[/^\/analyysit\/*$/,'/analysis/'],[/^\/analyysit\/(.+?)\/*$/,'/analysis/$1/'],[/^\/tietoa\/*$/,'/about/']];
+export const legacyPath=pathname=>{const found=LEGACY_PATHS.find(([from])=>from.test(pathname));return found?pathname.replace(found[0],found[1]):null;};
 export function resolvePage(url,manifest){
  let path=url.pathname.replace(/\/+$/,'')||'/';path=path==='/'?'/':path+'/';
  path=path.replace(/^(\/matches\/\d+\/)(players|data|preview)\/$/,'$1');
