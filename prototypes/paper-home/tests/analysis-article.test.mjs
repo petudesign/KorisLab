@@ -1,7 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {fiveGamesSections,fiveGamesSummaryHtml,startGroups,teamNote} from '../src/lib/fiveGamesArticle.js';
+import {fiveGamesBrief,fiveGamesSections,fiveGamesSummaryHtml,startGroups,teamNote} from '../src/lib/fiveGamesArticle.js';
 
 const data=JSON.parse(readFileSync(new URL('../source/analysis-five-games.json',import.meta.url)));
 const wins=(league,test)=>data[league].rows.filter(test).map(r=>Math.round(r.restWinPct));
@@ -78,4 +78,22 @@ test('both languages have the same structure and the summary is escaped',()=>{
  const html=fiveGamesSummaryHtml(data,v=>v.replace(/</g,'&lt;'));
  assert.match(html,/<h2>Sama alku, eri loppu<\/h2>/);
  assert.match(html,/0,83/);
+});
+
+test('the brief repeats the conclusions word for word and adds nothing',()=>{
+ for(const lang of ['fi','en']){
+  const conclusions=fiveGamesSections(data,lang).find(s=>s.conclusions).conclusions,brief=fiveGamesBrief(lang);
+  assert.ok(brief.length>=2&&brief.length<=3);
+  for(const point of brief)assert.ok(conclusions.some(item=>item[0]===point[0]&&item[1]===point[1]));
+ }
+ const html=fiveGamesSummaryHtml(data,v=>v);
+ assert.ok(html.startsWith('<h2>Lyhyesti</h2><ul>'));
+ for(const [title,text] of fiveGamesBrief('fi'))assert.ok(html.indexOf(`<li>${title}: ${text}</li>`)<html.indexOf('<h2>Alkukausi'));
+});
+
+test('the summary links teams to the page of their own league',()=>{
+ const html=fiveGamesSummaryHtml(data,v=>v,(team,league)=>`/${league}/${team}/`);
+ assert.match(html,/<a href="\/women\/Kouvottaret\/">Kouvottaret<\/a>: Viime kaudella/);
+ assert.match(html,/<a href="\/men\/KTP-Basket\/">KTP-Basket<\/a>: Sarjan ainoa/);
+ assert.doesNotMatch(fiveGamesSummaryHtml(data,v=>v),/<a /);
 });

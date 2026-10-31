@@ -1,5 +1,7 @@
 // "Mitä viisi ottelua kertoo?": the article's words in one place, so the page and the server-rendered
 // summary say the same thing. Correlations and team numbers come from source/analysis-five-games.json, frozen at `asOf`.
+// The season the current-season numbers describe: team links stay on it after the site's default season moves on.
+export const fiveGamesSeason='2026-27';
 export const articles=[{slug:'viisi-ottelua',published:'2026-10-30',title:{fi:'Mitä viisi ottelua kertoo?',en:'What do five games tell you?'},
  standfirst:{fi:'Naisten Korisliigassa viiden ensimmäisen ottelun piste-ero on ennustanut loppukautta hyvin, miesten sarjassa heikosti. Siksi Kouvottarien 4–0 ja Kipinän 6–1 eivät tarkoita samaa.',
   en:'In the women’s Korisliiga the point difference over the first five games has predicted the rest of the season well, in the men’s league poorly. That is why Kouvottaret’s 4–0 and Kipinä’s 6–1 do not mean the same thing.'}}];
@@ -33,6 +35,18 @@ const notes={
 };
 export const teamNote=(team,kind,lang)=>notes[team][kind][lang==='fi'?0:1];
 
+// In order of weight: the finding first, then the limits a reader needs before the tables that follow.
+const conclusions=lang=>{
+ const say=(fi,en)=>lang==='fi'?fi:en;
+ return [
+  [say('Naisilla alku painaa','The start counts for women'),say('Naisten sarjassa alkukauden piste-eroon kannattaa suhtautua vakavasti. Miesten sarjassa viisi ottelua kertoo vielä vähän.','In the women’s league the early point difference is worth taking seriously. In the men’s league five games still say little.')],
+  [say('Aineisto on pieni','The data is small'),say('Vain kaksi kautta ja 43 joukkuekautta. Se riittää huomioon, ei sääntöön.','Only two seasons and 43 team seasons. That is enough for an observation, not a rule.')],
+  [say('Vastustajia ei ole korjattu','Opponents are not adjusted'),say('Näin aikaisin osa joukkueista on pelannut selvästi kovemman ohjelman kuin toiset.','This early, some teams have played a clearly harder schedule than others.')],
+  [say('Syytä ei tiedetä','The reason is not known'),say('Korrelaatio ei kerro syytä. Loukkaantumiset ja valmentajat eivät ole mukana.','Correlation does not give a reason. Injuries and coaches are not included.')]];
+};
+// The short version under the standfirst repeats the conclusions word for word, so it can never claim more than they do.
+export const fiveGamesBrief=lang=>conclusions(lang).slice(0,3);
+
 export function fiveGamesSections(data,lang){
  const {women:w,men:m}=data,say=(fi,en)=>lang==='fi'?fi:en,c=(v)=>n(v,lang);
  return [
@@ -55,18 +69,16 @@ export function fiveGamesSections(data,lang){
    say('Vertasin esimerkkijoukkueita viime kauteen. Tällä kaudella otteluita on vasta 4–7 ja vastustajat ovat eri, joten nämä ovat havaintoja. Ne eivät kerro, johtuuko muutos pelaajista. Pelaaja, joka ei ole pelannut tällä kaudella, voi olla poissa mistä syystä tahansa.',
     'I compared the example teams with last season. This season has only 4–7 games so far against different opponents, so these are observations. They do not say whether the players caused the change. A player who has not played this season may be out for any reason.')],
    after:[say('Yhtä kaavaa tästä ei saa. Märsky on parantunut lähes samalla kokoonpanolla ja KTP lähes uudella. Kokoonpanon vaihtuminen ei yksin kerro, kumpaan suuntaan joukkue menee.','No single pattern emerges. Märsky have improved with nearly the same roster and KTP with a nearly new one. Roster turnover alone does not say which way a team will go.')]},
-  {heading:say('Mitä tästä voi päätellä','What you can conclude'),conclusions:[
-   [say('Naisilla alku painaa','The start counts for women'),say('Naisten sarjassa alkukauden piste-eroon kannattaa suhtautua vakavasti. Miesten sarjassa viisi ottelua kertoo vielä vähän.','In the women’s league the early point difference is worth taking seriously. In the men’s league five games still say little.')],
-   [say('Aineisto on pieni','The data is small'),say('Vain kaksi kautta ja 43 joukkuekautta. Se riittää huomioon, ei sääntöön.','Only two seasons and 43 team seasons. That is enough for an observation, not a rule.')],
-   [say('Vastustajia ei ole korjattu','Opponents are not adjusted'),say('Näin aikaisin osa joukkueista on pelannut selvästi kovemman ohjelman kuin toiset.','This early, some teams have played a clearly harder schedule than others.')],
-   [say('Syytä ei tiedetä','The reason is not known'),say('Korrelaatio ei kerro syytä. Loukkaantumiset ja valmentajat eivät ole mukana.','Correlation does not give a reason. Injuries and coaches are not included.')]]},
+  {heading:say('Mitä tästä voi päätellä','What you can conclude'),conclusions:conclusions(lang)},
  ];
 }
 
 export const methodNote={fi:'Viisi ensimmäistä tilastoitua ottelua verrattuna saman kauden muihin otteluihin. Mukana joukkuekaudet, joilla on vähintään viisi ottelua lisää. Runkosarja-aineisto, mukana kauden jatkosarjat. Lähde: Basket.fi:n tulospalvelu.',en:'The first five recorded games compared with the same season’s other games. Team seasons with at least five more games are included. Regular-season data, including continuation rounds. Source: Basket.fi results service.'};
 
 // Plain text for the server-rendered page, so search engines and AI answers can read the article without JavaScript.
-export function fiveGamesSummaryHtml(data,escape){
- const list=(rows,kind)=>`<ul>${rows.map(row=>`<li>${escape(row.team)}: ${escape(teamNote(row.team,kind,'fi'))}</li>`).join('')}</ul>`;
- return fiveGamesSections(data,'fi').map(s=>`<h2>${escape(s.heading)}</h2>${(s.paragraphs||[]).map(p=>`<p>${escape(p)}</p>`).join('')}${s.results?list(data[s.results].changes,'result'):''}${s.changes?list([...data.women.changes,...data.men.changes],'change'):''}${(s.after||[]).map(p=>`<p>${escape(p)}</p>`).join('')}${s.conclusions?`<ul>${s.conclusions.map(([a,b])=>`<li>${escape(a)}: ${escape(b)}</li>`).join('')}</ul>`:''}`).join('')+`<p>${escape(methodNote.fi)}</p>`;
+export function fiveGamesSummaryHtml(data,escape,teamHref){
+ const team=(name,league)=>teamHref?`<a href="${escape(teamHref(name,league))}">${escape(name)}</a>`:escape(name);
+ const list=(leagues,kind)=>`<ul>${leagues.flatMap(league=>data[league].changes.map(row=>`<li>${team(row.team,league)}: ${escape(teamNote(row.team,kind,'fi'))}</li>`)).join('')}</ul>`;
+ const points=rows=>`<ul>${rows.map(([a,b])=>`<li>${escape(a)}: ${escape(b)}</li>`).join('')}</ul>`;
+ return `<h2>Lyhyesti</h2>${points(fiveGamesBrief('fi'))}`+fiveGamesSections(data,'fi').map(s=>`<h2>${escape(s.heading)}</h2>${(s.paragraphs||[]).map(p=>`<p>${escape(p)}</p>`).join('')}${s.results?list([s.results],'result'):''}${s.changes?list(['women','men'],'change'):''}${(s.after||[]).map(p=>`<p>${escape(p)}</p>`).join('')}${s.conclusions?points(s.conclusions):''}`).join('')+`<p>${escape(methodNote.fi)}</p>`;
 }

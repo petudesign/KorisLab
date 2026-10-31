@@ -67,7 +67,7 @@ export function App() {
  const [keyboardInput,setKeyboardInput]=useState(false);
  const showOverview=(initial='Yleiskatsaus')=>{setMobileNavOpen(false);navigate({section:typeof initial==='string'?initial:'Yleiskatsaus',matchId:undefined,playerId:undefined,teamId:undefined});};
  const openMatch=id=>{setMobileNavOpen(false);navigate({section:'Ottelut',matchId:id||undefined,matchPanel:undefined,playerId:undefined,teamId:undefined});};
- const openEntity=(section,id,seasonIdOverride)=>{setMobileNavOpen(false);navigate({section,seasonId:seasonIdOverride||route.seasonId,matchId:undefined,playerId:section==='Pelaajat'?id||undefined:undefined,teamId:section==='Joukkueet'?id||undefined:undefined,articleId:section==='Analyysit'?id||undefined:undefined});};
+ const openEntity=(section,id,seasonIdOverride,leagueIdOverride)=>{setMobileNavOpen(false);navigate({section,seasonId:seasonIdOverride||route.seasonId,leagueId:leagueIdOverride||route.leagueId,matchId:undefined,playerId:section==='Pelaajat'?id||undefined:undefined,teamId:section==='Joukkueet'?id||undefined:undefined,articleId:section==='Analyysit'?id||undefined:undefined});};
  const dashboardNavigate=label=>{if(sectionPaths[label])showOverview(label);else setPanel({kind:'nav',title:label});};
  const showHome=()=>{setMobileNavOpen(false);navigate({section:'Etusivu',matchId:undefined,playerId:undefined,teamId:undefined});};
  useMetadata(route.section==='Etusivu'?'Suomalainen koripallo, datan kautta':route.matchId?'Ottelun analyysi':route.playerId?'Pelaajatilastot':route.teamId?'Joukkuetilastot':route.section,`${leagueName} ${seasonLabel}: ${route.section.toLocaleLowerCase('fi')}, tilastot ja analyysit.`,route,!['Ottelut','Pelaajat','Joukkueet'].includes(route.section));

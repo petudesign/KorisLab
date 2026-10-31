@@ -73,3 +73,15 @@ test('the About page says what KorisLab is, without JavaScript, and is indexed o
  assert.match(home.summary,/Petteri Helttulan tekemä suomalaisen koripallon analytiikkasivusto/);
  assert.match(home.summary,/ei ole Koripalloliiton/);
 });
+
+test('the article has a breadcrumb trail through the list, and its team links resolve',()=>{
+ const page=manifest.pages[scopeKey('/analyysit/viisi-ottelua/')],trail=page.structured['@graph'].find(n=>n['@type']==='BreadcrumbList').itemListElement;
+ assert.deepEqual(trail.map(c=>c.name),['KorisLab','Analyysit','Mitä viisi ottelua kertoo?']);
+ assert.deepEqual(trail.map(c=>c.position),[1,2,3]);
+ assert.equal(trail[1].item,'https://korislab.vercel.app/analyysit/');
+ assert.equal(trail[2].item,page.structured['@graph'][0].url);
+ assert.match(page.summary,/<h2>Lyhyesti<\/h2>/);
+ const links=[...page.summary.matchAll(/href="(\/teams\/[^"]+)"/g)].map(m=>m[1].replaceAll('&amp;','&'));
+ assert.equal(links.length,16);
+ for(const link of links)assert.ok(Object.keys(manifest.pages).some(key=>publicPath(key,manifest.defaultSeason)===link),link);
+});

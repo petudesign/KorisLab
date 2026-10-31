@@ -4,7 +4,7 @@ import {fileURLToPath} from 'node:url';
 import {aggregateSeasonPlayers,playerPerGame} from '../src/lib/playerStats.ts';
 import {seasonTeams,teamSeasonSummary} from '../src/lib/teamProfiles.js';
 import {about,aboutSummaryHtml} from '../src/lib/aboutContent.js';
-import {articles,fiveGamesSummaryHtml} from '../src/lib/fiveGamesArticle.js';
+import {articles,fiveGamesSeason,fiveGamesSummaryHtml} from '../src/lib/fiveGamesArticle.js';
 import {escapeHtml as e,scopeKey,publicPath,DEFAULT_SEASON,SITE_ORIGIN,sitemap} from '../server/seo.mjs';
 // Who makes KorisLab: lets search engines and AI answers connect the site, its maker and the source code.
 const CREATOR={'@type':'Person','@id':'https://www.petu.design/#person',name:'Petteri Helttula',url:'https://www.petu.design/'};
@@ -25,9 +25,9 @@ for(const [league,datasets] of Object.entries(seasons))for(const [season,d] of O
  const players=aggregateSeasonPlayers(records),teams=seasonTeams(d,games);
  const href=p=>scopeKey(p,season,league),pub=p=>publicPath(href(p),manifest.defaultSeason),link=(p,label)=>`<a href="${e(pub(p))}">${e(label)}</a>`;
  const nav='<nav>'+[['/overview/','Yleiskatsaus'],['/matches/','Ottelut'],['/teams/','Joukkueet'],['/players/','Pelaajat'],['/season/','Kausitrendit'],['/matchup/','Matchup Lab']].map(([p,l])=>link(p,l)).join(' · ')+'</nav>';
- const add=(p,title,description,body,type='WebPage',entity=null,indexable=true)=>{
+ const add=(p,title,description,body,type='WebPage',entity=null,indexable=true,parents=[])=>{
   const url=SITE_ORIGIN+pub(p),crumbs=[{name:'KorisLab',item:SITE_ORIGIN+pub('/')}];
-  if(p!=='/')crumbs.push({name:title,item:url});
+  if(p!=='/')crumbs.push(...parents,{name:title,item:url});
   const structured={'@context':'https://schema.org','@graph':[{'@type':type,'@id':url+'#page',url,name:title,description,inLanguage:'fi',isPartOf:{'@id':SITE_ORIGIN+'/#website'},...(entity?{mainEntity:entity}:{})},{'@type':'WebSite','@id':SITE_ORIGIN+'/#website',name:'KorisLab',url:SITE_ORIGIN+'/',description:'Suomalaisen koripallon tilastot ja analyysit: Naisten Korisliiga ja Miesten Korisliiga.',publisher:{'@id':SITE_ORIGIN+'/#organization'},creator:{'@id':CREATOR['@id']},inLanguage:['fi','en']},ORGANIZATION,CREATOR,{'@type':'BreadcrumbList',itemListElement:crumbs.map((c,i)=>({'@type':'ListItem',position:i+1,...c}))}]};
   manifest.pages[href(p)]={title,description,indexable,structured,summary:`${nav}<h1>${e(title)}</h1><p>${e(description)}</p>${body}<h2>Aineisto ja laskenta</h2><p>${e(scope)} · ${d.aggregate.games} tilastoitua ottelua.${d.updatedAt?' Aineiston päivitys: '+e(d.updatedAt)+'.':''} Kausivalinta koskee kaikkia lukuja tällä sivulla. Keskiarvojen yhteydessä tarkista ottelumäärä; pieni otos ei kuvaa vakiintunutta tasoa.</p>${source}`};
  };
@@ -51,7 +51,8 @@ for(const [league,datasets] of Object.entries(seasons))for(const [season,d] of O
  const primaryScope=season===manifest.defaultSeason&&league==='women';
  add('/tietoa/',about.title.fi,about.lead.fi,`${nav}${aboutSummaryHtml(e)}`,'AboutPage',null,primaryScope);
  add('/analyysit/','Analyysit','KorisLabin analyysit suomalaisesta koripallosta: mitä luvuista voi päätellä ja mitä ei.',`${nav}<ul>${articles.map(a=>`<li><a href="/analyysit/${a.slug}/">${e(a.title.fi)}</a>: ${e(a.standfirst.fi)}</li>`).join('')}</ul>`,'CollectionPage',null,primaryScope);
- for(const a of articles)add(`/analyysit/${a.slug}/`,a.title.fi,a.standfirst.fi,`${nav}${fiveGamesSummaryHtml(fiveGames,e)}`,'WebPage',{'@type':'Article',headline:a.title.fi,datePublished:a.published,author:{'@id':CREATOR['@id']},publisher:{'@id':SITE_ORIGIN+'/#organization'},inLanguage:'fi'},primaryScope);
+ const articleTeamHref=(team,teamLeague)=>publicPath(scopeKey(`/teams/${teamLeague==='men'?'korisliiga':'naisten-korisliiga'}/${slug(team)}/`,fiveGamesSeason,teamLeague),manifest.defaultSeason);
+ for(const a of articles)add(`/analyysit/${a.slug}/`,a.title.fi,a.standfirst.fi,`${nav}${fiveGamesSummaryHtml(fiveGames,e,articleTeamHref)}`,'WebPage',{'@type':'Article',headline:a.title.fi,datePublished:a.published,author:{'@id':CREATOR['@id']},publisher:{'@id':SITE_ORIGIN+'/#organization'},inLanguage:'fi'},primaryScope,[{name:'Analyysit',item:SITE_ORIGIN+pub('/analyysit/')}]);
 }
 const client=path.join(root,'dist/client');mkdirSync(path.join(client,'_seo'),{recursive:true});
 writeFileSync(path.join(client,'_seo/manifest.json'),JSON.stringify(manifest));
