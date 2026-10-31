@@ -1,6 +1,7 @@
 import {PowerRanking} from './PowerRanking';
 import {LoadingSkeleton,StateCard} from './PageStates';
-import {t as translate,locale} from './i18n';
+import {t as translate,locale,useI18n} from './i18n';
+import {playerTitle,sectionTitle,teamTitle} from './lib/pageTitles';
 import {useMemo,useState} from 'react';
 import {useSeason} from './SeasonContext';
 import {useMatches} from './useMatches';
@@ -39,12 +40,13 @@ const historyColumns=id=>[
 ];
 export function EntityPages({section,playerId,teamId,onNavigate,onOpenMatch}){
  const context=useSeason(),{data:season,leagueId,seasonId}=context;
+ const {language}=useI18n();
  const {games,error,retry}=useMatches(season.matchesUrl);
  const players=useMemo(()=>games?aggregateSeasonPlayers(playerRecords(games)):[],[games]);
  const [query,setQuery]=useState(''),[team,setTeam]=useState('all'),[minimum,setMinimum]=useState(1);
  const playerSorting=useTableSort(playerColumns,'points'),rosterSorting=useTableSort(rosterColumns,'points'),historySorting=useTableSort(historyColumns(playerId),'date');
  const profilePlayer=players.find(p=>p.id===playerId),profileTeam=seasonTeams(season,games||[]).find(t=>t.source_team_id===teamId||slug(t.name)===teamId);
- useMetadata(profilePlayer?.name||profileTeam?.name||section,`${profilePlayer?.name||profileTeam?.name||section} · ${context.leagueName} ${context.seasonLabel}. Pelaaja- ja joukkuetilastot sekä ottelut.`,{...context,canonicalPath:profileTeam?`/teams/${leagueId==='men'?'korisliiga':'naisten-korisliiga'}/${slug(profileTeam.name)}/`:undefined},true,!!games&&!error&&!!(playerId||teamId)&&!(profilePlayer||profileTeam));
+ useMetadata(profilePlayer?playerTitle(profilePlayer.name,leagueId,seasonId,language):profileTeam?teamTitle(profileTeam.name,leagueId,seasonId,language):sectionTitle(section,leagueId,seasonId,language),`${profilePlayer?.name||profileTeam?.name||section} · ${context.leagueName} ${context.seasonLabel}. Pelaaja- ja joukkuetilastot sekä ottelut.`,{...context,canonicalPath:profileTeam?`/teams/${leagueId==='men'?'korisliiga':'naisten-korisliiga'}/${slug(profileTeam.name)}/`:undefined},true,!!games&&!error&&!!(playerId||teamId)&&!(profilePlayer||profileTeam));
  const href=(type,id)=>routeHref({section:type,leagueId,seasonId,...(type==='Pelaajat'?{playerId:id}:{teamId:id})});
  const link=(type,id,label)=><a href={href(type,id)} onClick={e=>{if(!e.metaKey&&!e.ctrlKey&&!e.shiftKey){e.preventDefault();onNavigate(type,id);}}}>{translate(label)}</a>;
  if(error)return <StateCard tone="error" title="Tilastojen lataus epäonnistui." description="Tarkista yhteys ja yritä uudelleen. Valintasi säilyvät." onAction={retry}/>;

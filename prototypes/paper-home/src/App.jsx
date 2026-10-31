@@ -1,6 +1,7 @@
 import {SearchClearButton} from './SearchClearButton';
 import {ConnectionNotice} from './PageStates';
 import {t as translate,locale,useI18n,LanguageSettings} from './i18n';
+import {homeTitle,sectionTitle} from './lib/pageTitles';
 import { lazy, Suspense, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { MetalFx } from 'metal-fx';
 import { Dithering } from '@paper-design/shaders-react';
@@ -70,7 +71,7 @@ export function App() {
  const openEntity=(section,id,seasonIdOverride,leagueIdOverride)=>{setMobileNavOpen(false);navigate({section,seasonId:seasonIdOverride||route.seasonId,leagueId:leagueIdOverride||route.leagueId,matchId:undefined,playerId:section==='Pelaajat'?id||undefined:undefined,teamId:section==='Joukkueet'?id||undefined:undefined,articleId:section==='Analyysit'?id||undefined:undefined});};
  const dashboardNavigate=label=>{if(sectionPaths[label])showOverview(label);else setPanel({kind:'nav',title:label});};
  const showHome=()=>{setMobileNavOpen(false);navigate({section:'Etusivu',matchId:undefined,playerId:undefined,teamId:undefined});};
- useMetadata(route.section==='Etusivu'?'Suomalainen koripallo, datan kautta':route.matchId?'Ottelun analyysi':route.playerId?'Pelaajatilastot':route.teamId?'Joukkuetilastot':route.section,`${leagueName} ${seasonLabel}: ${route.section.toLocaleLowerCase('fi')}, tilastot ja analyysit.`,route,!['Ottelut','Pelaajat','Joukkueet','Analyysit'].includes(route.section));
+ useMetadata(route.section==='Etusivu'?homeTitle(language):sectionTitle(route.section,route.leagueId,route.seasonId,language),`${leagueName} ${seasonLabel}: ${route.section.toLocaleLowerCase('fi')}, tilastot ja analyysit.`,route,!['Ottelut','Pelaajat','Joukkueet','Analyysit'].includes(route.section));
  const [scale,setScale]=useState(1),[query,setQuery]=useState(''),[panel,setPanel]=useState(null),[dialogContent,setDialogContent]=useState(null),[reduced,setReduced]=useState(false),[scrollState,setScrollState]=useState({left:false,right:true});
  useEffect(()=>{const resize=new ResizeObserver(([entry])=>setScale(entry.contentRect.width/1366));resize.observe(wrapper.current);const media=matchMedia('(prefers-reduced-motion: reduce)');const update=()=>setReduced(media.matches);update();media.addEventListener('change',update);return()=>{resize.disconnect();media.removeEventListener('change',update);};},[]);
  useEffect(()=>{if(panel){setDialogContent(panel);if(!dialog.current.open)dialog.current.showModal();}},[panel]);
