@@ -9,6 +9,16 @@ export const articleSlugs=articles.map(article=>article.slug);
 
 const n=(value,lang,decimals=2)=>value.toLocaleString(lang==='fi'?'fi-FI':'en-GB',{minimumFractionDigits:decimals,maximumFractionDigits:decimals});
 
+// The 95 % confidence interval of a correlation (Fisher's z), from the rows themselves because the stored figure is rounded. The team seasons are few, so it is wide.
+export function correlationInterval(rows){
+ const mean=read=>rows.reduce((total,row)=>total+read(row),0)/rows.length,x=row=>row.margin,y=row=>row.restWinPct,mx=mean(x),my=mean(y);
+ const sum=(a,b)=>rows.reduce((total,row)=>total+(a(row)-(a===x?mx:my))*(b(row)-(b===x?mx:my)),0);
+ const z=Math.atanh(sum(x,y)/Math.sqrt(sum(x,x)*sum(y,y))),margin=1.96/Math.sqrt(rows.length-3);
+ return [Math.tanh(z-margin),Math.tanh(z+margin)];
+}
+const interval=(league,lang)=>correlationInterval(league.rows).map(v=>n(v,lang).replace('-','−')).join('…');
+const asOfDate=(league,lang)=>new Date(league.asOf).toLocaleDateString(lang==='fi'?'fi-FI':'en-GB',lang==='fi'?{day:'numeric',month:'numeric'}:{day:'numeric',month:'short'});
+
 export function startGroups(data){
  const groups=[['strong',r=>r.wins>=4],['weak',r=>r.wins<=1]];
  return groups.map(([key,test])=>({key,women:data.women.rows.filter(test),men:data.men.rows.filter(test)}));
@@ -40,7 +50,7 @@ const conclusions=lang=>{
  const say=(fi,en)=>lang==='fi'?fi:en;
  return [
   [say('Naisilla alku painaa','The start counts for women'),say('Naisten sarjassa alkukauden piste-eroon kannattaa suhtautua vakavasti. Miesten sarjassa viisi ottelua kertoo vielä vähän.','In the women’s league the early point difference is worth taking seriously. In the men’s league five games still say little.')],
-  [say('Aineisto on pieni','The data is small'),say('Vain kaksi kautta ja 43 joukkuekautta. Se riittää huomioon, ei sääntöön.','Only two seasons and 43 team seasons. That is enough for an observation, not a rule.')],
+  [say('Aineisto on pieni','The data is small'),say('Vain kaksi kautta ja 43 joukkuekautta, joten luottamusvälit ovat leveitä. Se riittää huomioon, ei sääntöön.','Only two seasons and 43 team seasons, so the confidence intervals are wide. That is enough for an observation, not a rule.')],
   [say('Vastustajia ei ole korjattu','Opponents are not adjusted'),say('Näin aikaisin osa joukkueista on pelannut selvästi kovemman ohjelman kuin toiset.','This early, some teams have played a clearly harder schedule than others.')],
   [say('Syytä ei tiedetä','The reason is not known'),say('Korrelaatio ei kerro syytä. Loukkaantumiset ja valmentajat eivät ole mukana.','Correlation does not give a reason. Injuries and coaches are not included.')]];
 };
@@ -54,7 +64,9 @@ export function fiveGamesSections(data,lang){
    say(`Katsoin kaudet 2024–25 ja 2025–26: ${w.teamSeasons} joukkuekautta naisissa ja ${m.teamSeasons} miehissä. Jokaiselta joukkueelta otin viiden ensimmäisen ottelun piste-eron per ottelu ja vertasin sitä saman joukkueen voittoprosenttiin loppukaudella.`,
     `I looked at the 2024–25 and 2025–26 seasons: ${w.teamSeasons} team seasons in the women’s league and ${m.teamSeasons} in the men’s. For each team I took the point difference per game over the first five games and compared it with the same team’s win percentage in the rest of the season.`),
    say(`Korrelaatio oli naisilla ${c(w.corrMargin)} ja miehillä ${c(m.corrMargin)}. Luku 1 tarkoittaisi, että alku kertoo loppukauden järjestyksen täysin, ja 0, ettei se kerro mitään. Ero toistui molempina kausina, ja naisten luku pysyi ${c(w.withoutLowest.corrMargin)}:ssa, kun ääripää ${w.withoutLowest.team} jätettiin pois.`,
-    `The correlation was ${c(w.corrMargin)} for women and ${c(m.corrMargin)} for men. A value of 1 would mean the start tells you the season’s order completely, and 0 that it tells you nothing. The gap repeated in both seasons, and the women’s figure stayed at ${c(w.withoutLowest.corrMargin)} with the extreme case, ${w.withoutLowest.team}, left out.`)]},
+    `The correlation was ${c(w.corrMargin)} for women and ${c(m.corrMargin)} for men. A value of 1 would mean the start tells you the season’s order completely, and 0 that it tells you nothing. The gap repeated in both seasons, and the women’s figure stayed at ${c(w.withoutLowest.corrMargin)} with the extreme case, ${w.withoutLowest.team}, left out.`),
+   say(`Joukkuekausia on vähän, joten luvut ovat epävarmoja. 95 %:n luottamusväli on naisilla noin ${interval(w,lang)} ja miehillä noin ${interval(m,lang)}. Miesten väli ulottuu nollan alle, joten aineisto ei sulje pois sitäkään, ettei alku ennusta miehillä mitään. Välit myös koskettavat toisiaan, joten sarjojen ero on selvä suunta, ei tarkka mitta.`,
+    `With so few team seasons the figures are uncertain. The 95% confidence interval is about ${interval(w,lang)} for women and about ${interval(m,lang)} for men. The men’s interval reaches below zero, so the data cannot rule out that the start predicts nothing for men. The two intervals also touch, so the gap between the leagues is a clear direction, not an exact measure.`)]},
   {heading:say('Sama alku, eri loppu','Same start, different finish'),chart:'starts',paragraphs:[
    say('Miesten sarjassa Helsinki Seagulls aloitti kahtena peräkkäisenä kautena 4–1. Loppukaudella se voitti ensin 85 % otteluistaan ja seuraavalla kaudella 37 %. Naisten sarjassa yksikään joukkue, jolla oli viiden ottelun jälkeen enintään yksi voitto, ei noussut loppukaudella 50 prosenttiin. Miehissä kolme viidestä nousi.',
     'In the men’s league Helsinki Seagulls started 4–1 in two straight seasons. In the rest of the season they won 85% of their games the first time and 37% the second. In the women’s league no team with at most one win after five games reached 50% in the rest of the season. In the men’s league three of five did.')]},
@@ -63,8 +75,8 @@ export function fiveGamesSections(data,lang){
     `Not alone. The women’s league has 9–10 teams playing ${w.seasonLength.gamesPerTeam[0]}–${w.seasonLength.gamesPerTeam[1]} games each, the men’s 12 teams playing ${m.seasonLength.gamesPerTeam[0]}–${m.seasonLength.gamesPerTeam[1]}. Five games are about a fifth of the women’s season and about a sixth of the men’s, and for women they can cover more than half the opponents, for men less than half. But seven games are the same share of the men’s season as five are of the women’s, and the correlation is still ${c(m.seasonLength.corrAt['7'])}.`),
    say(`Todennäköisempi selitys on tasoero. Loppukauden voittoprosenttien hajonta oli naisilla ${n(w.spread,lang,0)} ja miehillä ${n(m.spread,lang,0)} prosenttiyksikköä. Kun joukkueet ovat kaukana toisistaan, vahvat ja heikot erottuvat nopeasti. Tätä selitystä aineisto ei todista, se vain sopii siihen.`,
     `A likelier explanation is the gap in quality. The spread of rest-of-season win percentages was ${n(w.spread,lang,0)} points for women and ${n(m.spread,lang,0)} for men. When teams are far apart, strong and weak separate quickly. The data does not prove this explanation; it only fits it.`)]},
-  {heading:say('Naisten sarja nyt','The women’s league now'),results:'women'},
-  {heading:say('Miesten sarja nyt','The men’s league now'),results:'men'},
+  {heading:say(`Naisten sarja nyt (tilanne ${asOfDate(w,lang)})`,`The women’s league now (as of ${asOfDate(w,lang)})`),results:'women'},
+  {heading:say(`Miesten sarja nyt (tilanne ${asOfDate(m,lang)})`,`The men’s league now (as of ${asOfDate(m,lang)})`),results:'men'},
   {heading:say('Mikä joukkueissa on muuttunut?','What has changed in these teams?'),changes:true,paragraphs:[
    say('Vertasin esimerkkijoukkueita viime kauteen. Tällä kaudella otteluita on vasta 4–7 ja vastustajat ovat eri, joten nämä ovat havaintoja. Ne eivät kerro, johtuuko muutos pelaajista. Pelaaja, joka ei ole pelannut tällä kaudella, voi olla poissa mistä syystä tahansa.',
     'I compared the example teams with last season. This season has only 4–7 games so far against different opponents, so these are observations. They do not say whether the players caused the change. A player who has not played this season may be out for any reason.')],

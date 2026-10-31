@@ -1,7 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {fiveGamesBrief,fiveGamesSections,fiveGamesSummaryHtml,startGroups,teamNote} from '../src/lib/fiveGamesArticle.js';
+import {correlationInterval,fiveGamesBrief,fiveGamesSections,fiveGamesSummaryHtml,startGroups,teamNote} from '../src/lib/fiveGamesArticle.js';
 
 const data=JSON.parse(readFileSync(new URL('../source/analysis-five-games.json',import.meta.url)));
 const wins=(league,test)=>data[league].rows.filter(test).map(r=>Math.round(r.restWinPct));
@@ -96,4 +96,19 @@ test('the summary links teams to the page of their own league',()=>{
  assert.match(html,/<a href="\/women\/Kouvottaret\/">Kouvottaret<\/a>: Viime kaudella/);
  assert.match(html,/<a href="\/men\/KTP-Basket\/">KTP-Basket<\/a>: Sarjan ainoa/);
  assert.doesNotMatch(fiveGamesSummaryHtml(data,v=>v),/<a /);
+});
+
+test('the uncertainty and the dates written in the article match the data',()=>{
+ const rounded=league=>correlationInterval(data[league].rows).map(v=>Math.round(v*100)/100);
+ assert.deepEqual(rounded('men'),[-0.13,0.62]);
+ assert.deepEqual(rounded('women'),[0.61,0.93]);
+ // The article says the men's interval includes zero and that the two intervals touch.
+ assert.ok(rounded('men')[0]<0&&rounded('men')[1]>=rounded('women')[0]);
+ const fi=fiveGamesSections(data,'fi'),en=fiveGamesSections(data,'en'),text=fi.flatMap(s=>s.paragraphs||[]).join(' ');
+ assert.match(text,/naisilla noin 0,61…0,93 ja miehillä noin −0,13…0,62/);
+ assert.match(en.flatMap(s=>s.paragraphs||[]).join(' '),/about 0\.61…0\.93 for women and about −0\.13…0\.62 for men/);
+ assert.equal(data.women.asOf,'2026-10-28');assert.equal(data.men.asOf,'2026-10-27');
+ assert.ok(fi.some(s=>s.heading==='Naisten sarja nyt (tilanne 28.10.)'));
+ assert.ok(fi.some(s=>s.heading==='Miesten sarja nyt (tilanne 27.10.)'));
+ assert.ok(en.some(s=>s.heading==='The women’s league now (as of 28 Oct)'));
 });

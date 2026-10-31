@@ -1,3 +1,4 @@
+import {leagueOrder} from './standings.js';
 import {normalize,mentionedPlayers,mentionedTeams,seasonFromQuery} from './basketballQuery.js';
 import {aggregateSeasonPlayers,progressivePlayerQualification} from './playerStats.ts';
 import {searchRecords} from './searchData.js';
@@ -36,7 +37,8 @@ export function factTeamRows(games){
    rows.set(own.name,row);
   }
  }
- return [...rows.values()].sort((a,b)=>b.wins/b.games-a.wins/a.games||(b.points-b.allowed)-(a.points-a.allowed)||a.name.localeCompare(b.name,'fi'));
+ const place=new Map(leagueOrder(games).map((name,index)=>[name,index]));
+ return [...rows.values()].sort((a,b)=>place.get(a.name)-place.get(b.name));
 }
 const rank=(rows,ascending)=>[...rows].filter(r=>Number.isFinite(r.value)).sort((a,b)=>(ascending?a.value-b.value:b.value-a.value)||a.name.localeCompare(b.name,'fi')).map((row,_,ordered)=>({...row,rank:1+ordered.filter(other=>ascending?other.value<row.value:other.value>row.value).length}));
 export async function resolveFactSearch(raw,{seasonId,leagueId,loadGames}){
