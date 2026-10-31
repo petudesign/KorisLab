@@ -226,6 +226,21 @@
     "name": "Kipinä Basket"
    },
    "home_win_probability": 0.31
+  },
+  {
+   "id": "1005890",
+   "date": "2026-11-14",
+   "time": "16:00:00",
+   "venue": "MLL Areena",
+   "home": {
+    "id": "d33f4cac-90a6-11f1-b66d-e7d7c2463142",
+    "name": "Kouvot"
+   },
+   "away": {
+    "id": "d350dc31-90a6-11f1-9e5e-e7d7c2463142",
+    "name": "Salon Vilpas"
+   },
+   "home_win_probability": 0.376
   }
  ]
 }
