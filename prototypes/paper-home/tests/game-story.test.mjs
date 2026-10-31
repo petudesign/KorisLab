@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {existsSync,readFileSync} from 'node:fs';
+import {existsSync,readdirSync,readFileSync} from 'node:fs';
 import test from 'node:test';
 import {gameColors,leadChanges,clockAt,eventFlag,eventLine,eventPlace,flagAlign,indexAt,statsAt,storyChapters,topPlayers,wpPercent} from '../src/lib/gameStory.js';
 
@@ -56,4 +56,28 @@ test('a turn is the moment the lead changes hands, and a tie alone is not one',(
  assert.deepEqual(leadChanges([at(0,0,0),at(1,2,0),at(2,9,0)]),[]);
  const moments=leadChanges(story.events);assert.ok(moments.length>0);
  for(const moment of moments){const i=indexAt(story.events,moment),now=story.events[i],before=story.events.slice(0,i).reverse().find(e=>e.h!==e.a);assert.notEqual(now.h>now.a,before.h>before.a);assert.notEqual(now.h,now.a);}
+});
+
+test('a long stretch is not called a run, and the biggest swing names the team it helped',()=>{
+ const game=JSON.parse(readFileSync(new URL('../public/data/stories/men-2026-27-1006023.json',import.meta.url)));
+ const fi=storyChapters(game,'fi'),en=storyChapters(game,'en');
+ const long=fi.find(chapter=>chapter.text.includes('98–86'));
+ assert.ok(long.text.includes('Kipinä Basket voitti seuraavat 37 minuuttia 98–86.'),long.text);
+ assert.ok(long.text.includes('Derrin Boyd teki niistä 35 pistettä.'),long.text);
+ assert.ok(!long.text.includes('jakson'),long.text);
+ assert.ok(en.find(chapter=>chapter.text.includes('98–86')).text.includes('won the next 37 minutes 98–86.'));
+ const last=fi.at(-1).text;
+ assert.ok(last.includes('Tapiolan Honka: voittotodennäköisyys 39 % → 46 %.'),last);
+ assert.ok(!last.includes('Kotijoukkueen'),last);
+});
+test('no game calls a long stretch a run or says a team won a stretch it lost',()=>{
+ const dir=new URL('../public/data/stories/',import.meta.url);
+ for(const file of readdirSync(dir)){
+  const game=JSON.parse(readFileSync(new URL(file,dir)));
+  storyChapters(game,'fi').slice(1,-1).forEach((chapter,i)=>{
+   const leg=game.chapters[i],own=leg.gaining==='home'?leg.home_points:leg.away_points,other=leg.gaining==='home'?leg.away_points:leg.home_points;
+   if(leg.to-leg.from>300)assert.ok(!chapter.text.includes('teki jakson'),`${file}: ${chapter.text}`);
+   if(own<=other)assert.ok(!chapter.text.includes(`${own}–${other}`),`${file}: ${chapter.text}`);
+  });
+ }
 });

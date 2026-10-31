@@ -95,6 +95,8 @@ export function clockAt(events,index,t){
  const run=Math.max(0,now.c-(t-now.t));
  return next&&next.p===now.p?Math.max(next.c,run):run;
 }
+// Up to five minutes of game time reads as a run. Past that, the sentence says how long the stretch was.
+const RUN_SECONDS=300;
 export function storyChapters(story,lang){
  const say=(fi,en)=>lang==='fi'?fi:en,team=side=>story[side].name;
  const favourite=story.pregame_home_wp>=.5?'home':'away',favouriteWp=favourite==='home'?story.pregame_home_wp:1-story.pregame_home_wp;
@@ -102,16 +104,20 @@ export function storyChapters(story,lang){
  for(const leg of story.chapters){
   const side=leg.gaining,own=side==='home'?leg.home_points:leg.away_points,other=side==='home'?leg.away_points:leg.home_points;
   const from=side==='home'?leg.wp_from:1-leg.wp_from,to=side==='home'?leg.wp_to:1-leg.wp_to;
-  const run=own>=4?say(`${team(side)} teki jakson ${own}–${other}.`,`${team(side)} went on a ${own}–${other} run.`):'';
+  const seconds=leg.to-leg.from,minutes=Math.round(seconds/60);
+  // A long stretch is not a run, and a side that scored less did not win it.
+  const run=own<4||own<=other?'':seconds<=RUN_SECONDS?say(`${team(side)} teki jakson ${own}–${other}.`,`${team(side)} went on a ${own}–${other} run.`):say(`${team(side)} voitti seuraavat ${minutes} minuuttia ${own}–${other}.`,`${team(side)} won the next ${minutes} minutes ${own}–${other}.`);
   const chance=say(`Sen voittotodennäköisyys nousi ${pct(from)} → ${pct(to)}.`,`${run?'Their':`${team(side)}’s`} win probability rose ${pct(from)} → ${pct(to)}.`);
   const points=leg.leader?.points;
-  const leader=leg.leader?.name&&points>=4?say(`${leg.leader.name} teki ${points} pistettä.`,`${leg.leader.name} scored ${points}.`):'';
+  const leader=leg.leader?.name&&points>=4?say(`${leg.leader.name} teki ${run?'niistä ':''}${points} pistettä.`,`${leg.leader.name} scored ${points}${run?' of them':''}.`):'';
   const start=story.events[indexAt(story.events,leg.from)];
   chapters.push({at:leg.from,title:`${periodLabel(start.p,lang)} ${clockText(start.c)} → ${periodLabel(leg.period_to,lang)} ${clockText(leg.clock_to)} · ${leg.score_to[0]}–${leg.score_to[1]}`,text:[run||say(`${team(side)} sai käänteen.`,''),chance,leader].filter(Boolean).join(' ')});
  }
  const play=story.biggest_play,winner=story.home.score>story.away.score?'home':'away',shot=say({'2pt':'kahden pisteen heitto','3pt':'kolmonen',free_throw:'vapaaheitto'},{'2pt':'two-pointer','3pt':'three-pointer',free_throw:'free throw'})[play.type];
  const big=Math.abs(play.wp_to-play.wp_from)>=.05;
- const swing=big?say(` Suurin yksittäinen käänne: ${shot}, ${play.player} (${periodLabel(play.period,'fi')} ${clockText(play.clock)}). Kotijoukkueen voittotodennäköisyys ${pct(play.wp_from)} → ${pct(play.wp_to)}.`,` The biggest single swing: ${shot}, ${play.player} (${periodLabel(play.period,'en')} ${clockText(play.clock)}). Home win probability ${pct(play.wp_from)} → ${pct(play.wp_to)}.`):'';
+ // Told from the side of the team that made the shot, so the numbers do not have to be turned around for the winner.
+ const playFrom=play.team==='home'?play.wp_from:1-play.wp_from,playTo=play.team==='home'?play.wp_to:1-play.wp_to;
+ const swing=big?say(` Suurin yksittäinen käänne: ${shot}, ${play.player} (${periodLabel(play.period,'fi')} ${clockText(play.clock)}). ${team(play.team)}: voittotodennäköisyys ${pct(playFrom)} → ${pct(playTo)}.`,` The biggest single swing: ${shot}, ${play.player} (${periodLabel(play.period,'en')} ${clockText(play.clock)}). ${team(play.team)}: win probability ${pct(playFrom)} → ${pct(playTo)}.`):'';
  const calm=story.chapters.length?'':say(' Ottelussa ei ollut isoja käänteitä.',' The game had no big turns.');
  chapters.push({at:story.duration,title:say(`Lopputulos ${story.home.score}–${story.away.score}`,`Final ${story.home.score}–${story.away.score}`),text:say(`${team(winner)} voitti.`,`${team(winner)} won.`)+calm+swing});
  return chapters;
