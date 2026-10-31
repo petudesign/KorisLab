@@ -15,7 +15,7 @@ const OVERVIEW_ROWS=8;
 // The overview's short version: the same numbers and scale, with the explanation left to the teams page.
 export function PowerRankingSummary({selected,onChoose,fullHref,onFull,teamHref,onTeam}){
  const {language}=useI18n(),say=(fi,en)=>language==='fi'?fi:en,rows=usePowerRows();
- const extent=Math.max(...rows.map(r=>Math.abs(r.rating)+r.spread),1),x=v=>50+v/extent*50,shown=rows.slice(0,OVERVIEW_ROWS),rest=rows.length-shown.length;
+ const extent=Math.max(...rows.map(r=>Math.abs(r.rating)+r.spread),1),x=v=>50+v/extent*50,shown=rows.length<=OVERVIEW_ROWS+1?rows:rows.slice(0,OVERVIEW_ROWS),rest=rows.length-shown.length;
  return <article className="dash-card dash-ranking power-summary"><header><div><span className="dash-card-label">{say('Keskitasoon verrattuna','Compared with average')}</span><h3>{say('Vahvuusjärjestys','Power ranking')}</h3></div><a href={fullHref} onClick={onFull}>{rest>0?say(`Kaikki ${rows.length} joukkuetta`,`All ${rows.length} teams`):say('Selitys','Explanation')} →</a></header>
   {rows.length?<><div className="power-summary-axis" aria-hidden="true"><b>{say('Heikompi','Weaker')}</b><b>{say('Keskitaso','Average')}</b><b>{say('Vahvempi','Stronger')}</b></div>
   <ol>{shown.map(row=>{const verdict=rangeVerdict(row),low=x(row.rating-row.spread),high=x(row.rating+row.spread);return <li key={row.team} className={`is-${verdict} ${selected===row.team?'selected-team':''}`}><a href={teamHref(row.team)} onClick={event=>onTeam(event,row.team)}>{row.team}</a>
