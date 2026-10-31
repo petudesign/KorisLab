@@ -6,6 +6,7 @@ import {useI18n,locale} from './i18n';
 import {useSeason} from './SeasonContext';
 import {LoadingSkeleton,StateCard} from './PageStates';
 import {createSimCourt,TEAM_COLORS} from './lib/simCourt';
+import {playerDisplayName} from './lib/playerName';
 import './sim-studio.css';
 
 // Text comes in both languages from this component's own fi/en layer.
@@ -15,8 +16,7 @@ const SPEEDS=[1,4,12,30];
 const fmt=(v,d=0)=>Number(v).toLocaleString(locale(),{minimumFractionDigits:d,maximumFractionDigits:d});
 const pct=v=>`${fmt(v*100)} %`;
 const signed=v=>v>0?`+${v}`:String(v).replace('-','−');
-const titleCase=name=>name.split(/\s+/).map(w=>w.charAt(0)+w.slice(1).toLocaleLowerCase('fi')).join(' ');
-const shortName=name=>titleCase(name.split(/\s+/).at(-1)??name);
+const shortName=name=>playerDisplayName(name.split(/\s+/).at(-1)??name);
 const dateLabel=(date,options)=>new Date(`${date}T12:00:00`).toLocaleDateString(locale(),options);
 const clock=seconds=>`${Math.floor(seconds/60)}:${String(Math.floor(seconds%60)).padStart(2,'0')}`;
 
@@ -158,7 +158,7 @@ function Players({pack,players}){
    <Segmented label={tr('Joukkue','Team')} value={team} onChange={setTeam} options={[home,away].map(x=>({value:x.id,label:x.name}))}/></div>
   <div className="sim-table-wrap"><table className="sim-table">
    <thead><tr><th>{tr('Pelaaja','Player')}</th><th>{tr('Pisteet','Points')}</th><th>{tr('80 % väli','80% range')}</th><th>20+</th><th>{tr('Syötöt','Assists')}</th><th>{tr('Levypallot','Rebounds')}</th></tr></thead>
-   <tbody>{pack.players.filter(p=>p.team===team).slice(0,10).map(p=><tr key={p.id}><th>{p.number&&<small>#{p.number} </small>}{titleCase(p.name)}</th><td>{fmt(p.points.mean,1)}</td><td><small>{p.points.p10}–{p.points.p90}</small></td><td>{pct(p.points.twenty_plus)}</td><td>{fmt(p.assists,1)}</td><td>{fmt(p.rebounds,1)}</td></tr>)}</tbody>
+   <tbody>{pack.players.filter(p=>p.team===team).slice(0,10).map(p=><tr key={p.id}><th>{p.number&&<small>#{p.number} </small>}{playerDisplayName(p.name)}</th><td>{fmt(p.points.mean,1)}</td><td><small>{p.points.p10}–{p.points.p90}</small></td><td>{pct(p.points.twenty_plus)}</td><td>{fmt(p.assists,1)}</td><td>{fmt(p.rebounds,1)}</td></tr>)}</tbody>
   </table></div>
   <h3>{tr('Syöttöparit','Assist pairs')}</h3>
   <ul className="sim-pairs">{pack.assist_pairs.slice(0,8).map(p=><li key={p.passer+p.scorer}><span><i style={{background:TEAM_COLORS[p.team===home.id?'home':'away']}}/>{players[p.passer]?.short} → {players[p.scorer]?.short}</span><b>{fmt(p.per_game,1)} {tr('/ peli','per game')}</b></li>)}</ul>

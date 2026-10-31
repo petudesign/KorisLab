@@ -1,4 +1,5 @@
 import teamColors from '../../source/team-colors.json' with {type:'json'};
+import {playerDisplayName} from './playerName.ts';
 
 // The words and numbers of a game replay, built from its data file. They say what happened, never why.
 // Only a finished game is 0 or 100 %: the model can be very sure, but it is never certain before the end.
@@ -14,6 +15,11 @@ export function gameColors(home,away){
  const first=teamColors[home]??'#c9773a';let second=teamColors[away]??'#3f8cc4';
  if(colorDistance(first,second)<SAME_LOOK)second=CLASH.find(color=>colorDistance(first,color)>=SAME_LOOK);
  return {home:first,away:second,homeInk:inkOn(first),awayInk:inkOn(second)};
+}
+// Names are shown the same way everywhere, whatever casing the source used for this game.
+export function withShownNames(story){
+ const named=(row,...keys)=>{if(!row)return row;const copy={...row};for(const key of keys)if(copy[key])copy[key]=playerDisplayName(copy[key]);return copy;};
+ return {...story,events:story.events.map(event=>named(event,'n','as','lost')),chapters:story.chapters.map(leg=>({...leg,leader:named(leg.leader,'name')})),biggest_play:named(story.biggest_play,'player')};
 }
 export const clockText=seconds=>`${Math.floor(seconds/60)}:${String(Math.floor(seconds%60)).padStart(2,'0')}`;
 export const periodLabel=(period,lang)=>period>4?(lang==='fi'?(period>11?`JA${period-10}`:'JA'):(period>11?`OT${period-10}`:'OT')):(lang==='fi'?`${period}. nelj.`:`Q${period}`);

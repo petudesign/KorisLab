@@ -3,7 +3,9 @@ import {useSeason} from './SeasonContext';
 import manifest from '../source/match-analysis.json';
 import {parseReplay} from './lib/replayStats';
 import {parseShotChart} from './lib/shotStats';
+import {playerDisplayName} from './lib/playerName';
 const cache=new Map();
+const withShownNames=(kind,data)=>kind==='replays'?{...data,events:data.events.map(e=>e.player?{...e,player:playerDisplayName(e.player)}:e)}:{...data,shots:data.shots.map(s=>s.player_name?{...s,player_name:playerDisplayName(s.player_name)}:s)};
 export function useMatchAsset(id,kind){
  const {leagueId,seasonId}=useSeason();
  const entry=manifest[`${leagueId}-${id}`],url=entry?.[kind],key=`${leagueId}-${seasonId}-${id}-${kind}`;
@@ -12,7 +14,7 @@ export function useMatchAsset(id,kind){
   let disposed=false;
   if(!url||(kind==='replays'&&entry.season!==seasonId)){setState({key,status:'missing'});return;}
   setState({key,status:'loading'});
-  if(!cache.has(key))cache.set(key,fetch(url).then(r=>{if(!r.ok)throw Error('Asset unavailable');return r.json();}).then(json=>kind==='replays'?parseReplay(json,id,seasonId):parseShotChart(json,id)).catch(error=>{cache.delete(key);throw error;}));
+  if(!cache.has(key))cache.set(key,fetch(url).then(r=>{if(!r.ok)throw Error('Asset unavailable');return r.json();}).then(json=>kind==='replays'?parseReplay(json,id,seasonId):parseShotChart(json,id)).then(data=>withShownNames(kind,data)).catch(error=>{cache.delete(key);throw error;}));
   cache.get(key).then(data=>{if(!disposed)setState({key,status:'ready',data});}).catch(()=>{if(!disposed)setState({key,status:'error'});});
   return()=>{disposed=true;};
  },[key,url,attempt]);

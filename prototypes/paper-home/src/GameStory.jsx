@@ -5,7 +5,7 @@ import ReplayRounded from '@mui/icons-material/ReplayRounded';
 import SkipNextRounded from '@mui/icons-material/SkipNextRounded';
 import {t as translate,useI18n} from './i18n';
 import {TeamLogo} from './TeamLogo';
-import {clockAt,clockText,eventFlag,eventLine,eventPlace,flagAlign,gameColors,indexAt,leadChanges,periodLabel,statsAt,storyChapters,topPlayers,wpPercent} from './lib/gameStory';
+import {clockAt,clockText,eventFlag,eventLine,eventPlace,flagAlign,gameColors,indexAt,leadChanges,periodLabel,statsAt,storyChapters,topPlayers,wpPercent,withShownNames} from './lib/gameStory';
 import stories from '../source/game-stories.json';
 import './game-story.css';
 
@@ -83,7 +83,7 @@ const Timeline=memo(function Timeline({story,t,onSeek,chapters,say}){
 export function GameStory({leagueId,seasonId,matchId}){
  const {language}=useI18n(),lang=language==='fi'?'fi':'en',say=useCallback((fi,en)=>lang==='fi'?fi:en,[lang]);
  const [story,setStory]=useState(null),[failed,setFailed]=useState(false),[t,setT]=useState(0),[playing,setPlaying]=useState(false),[speed,setSpeed]=useState(8),last=useRef(0);
- useEffect(()=>{let live=true;fetch(`/data/stories/${leagueId}-${seasonId}-${matchId}.json`).then(r=>{if(!r.ok)throw Error();return r.json();}).then(d=>{if(live)setStory(d);}).catch(()=>{if(live)setFailed(true);});return()=>{live=false;};},[leagueId,seasonId,matchId]);
+ useEffect(()=>{let live=true;fetch(`/data/stories/${leagueId}-${seasonId}-${matchId}.json`).then(r=>{if(!r.ok)throw Error();return r.json();}).then(d=>{if(live)setStory(withShownNames(d));}).catch(()=>{if(live)setFailed(true);});return()=>{live=false;};},[leagueId,seasonId,matchId]);
  useEffect(()=>{
   if(!playing||!story)return;
   let frame;last.current=performance.now();
