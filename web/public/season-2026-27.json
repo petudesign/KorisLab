@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "season_id": "huki2627",
-  "updated_at": "2026-10-31T10:35:03.282478+00:00",
+  "updated_at": "2026-10-31T15:42:10.440216+00:00",
   "source_url": "https://tulospalvelu.basket.fi/",
   "schedule": [
     {
@@ -480,12 +480,12 @@
       "home": {
         "source_team_id": "34",
         "name": "ToPo",
-        "score": null
+        "score": 0
       },
       "away": {
         "source_team_id": "8",
         "name": "BC Nokia",
-        "score": null
+        "score": 0
       }
     },
     {
