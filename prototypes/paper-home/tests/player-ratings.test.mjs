@@ -51,6 +51,10 @@ test('player types follow a few readable rules',()=>{
  assert.deepEqual(playerTypes({scoring:65,efficiency:65,threes:65,playmaking:65,rebounding:65,defense:50}),['allround']);
  assert.deepEqual(playerTypes({scoring:50,efficiency:50,threes:50,playmaking:50,rebounding:50,defense:50}),['role']);
  assert.deepEqual(playerTypes({scoring:50,efficiency:null,threes:null,playmaking:null,rebounding:50,defense:50}),[]);
+ // A league-leading scorer on 34.8 minutes a game was called a role player: scoring 73 fell just short of the old limit of 75.
+ assert.deepEqual(playerTypes({scoring:73,efficiency:85,threes:48,playmaking:45,rebounding:34,defense:72}),['scorer']);
+ assert.deepEqual(playerTypes({scoring:70,efficiency:50,threes:90,playmaking:80,rebounding:50,defense:50}),['shooter','playmaker']);
+ assert.deepEqual(playerTypes({scoring:69,efficiency:50,threes:50,playmaking:50,rebounding:50,defense:50}),['role']);
  assert.equal(ratingAxes.length,6);
 });
 

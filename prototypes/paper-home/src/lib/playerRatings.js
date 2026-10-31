@@ -121,6 +121,8 @@ export function playerTypes(r){
  else if(r.rebounding>=75)types.push('rebounder');
  if(r.scoring>=75)types.push('scorer');
  if(r.defense>=75)types.push('disruptor');
+ // Clearly above the typical regular (about the top 15 %): named if a clearer strength does not already fill both places.
+ if(r.scoring>=70&&r.scoring<75&&types.length<2)types.push('scorer');
  if(known.filter(v=>v>=60).length>=5)types.unshift('allround');
  return types.length?types.slice(0,2):['role'];
 }
