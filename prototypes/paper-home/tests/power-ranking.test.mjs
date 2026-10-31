@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import test from 'node:test';
-import {POWER_PARAMS,powerRanking,resultsFromGames} from '../src/lib/powerRating.js';
+import {POWER_PARAMS,powerRanking,rangeVerdict,resultsFromGames} from '../src/lib/powerRating.js';
 
 test('the site uses the values that were locked before the test season',()=>{
  const lock=JSON.parse(readFileSync(new URL('../../../learning/forecasting/model-lock-power-rating-v1.json',import.meta.url)));
@@ -24,4 +24,7 @@ test('every league and season gives a full table from the site data',()=>{
   assert.equal(rows.reduce((sum,row)=>sum+row.games,0),results.length*2);
   for(const row of rows)assert.ok(Number.isFinite(row.rating)&&row.spread>0&&row.wins<=row.games,row.team);
  }
+});
+test('a difference is called clear only when the whole range is on one side of average',()=>{
+ assert.equal(rangeVerdict({rating:5.5,spread:3.6}),'above');assert.equal(rangeVerdict({rating:-5,spread:3}),'below');assert.equal(rangeVerdict({rating:3,spread:4}),'open');assert.equal(rangeVerdict({rating:-3,spread:4}),'open');
 });

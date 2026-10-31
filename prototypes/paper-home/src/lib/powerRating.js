@@ -23,3 +23,5 @@ export function powerRanking(results,{shrink,home,sigma}){
  return rows.map(row=>({...row,schedule:row.games?row.opponents/row.games:0})).sort((a,b)=>b.rating-a.rating||a.team.localeCompare(b.team));
 }
 export const resultsFromGames=games=>games.filter(g=>g.verified&&g.teams?.length===2).flatMap(g=>{const h=g.teams.find(t=>t.side==='home'),a=g.teams.find(t=>t.side==='away');return h&&a&&Number.isFinite(h.score)&&Number.isFinite(a.score)?[{home:h.name,away:a.name,margin:h.score-a.score}]:[];});
+// A difference from the average team is clear only when the team's whole range is on one side of it.
+export const rangeVerdict=row=>row.rating-row.spread>0?'above':row.rating+row.spread<0?'below':'open';
