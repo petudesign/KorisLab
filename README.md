@@ -24,7 +24,7 @@ KorisLab hakee Basket.fi:n julkiset ottelutiedot, tarkistaa ne virallisia pöyt�
 
 ## Datan päivitys
 
-GitHub Actions -työ [`update-season.yml`](.github/workflows/update-season.yml) ajetaan otteluiltoina puolen tunnin välein (klo 12–23 Suomen aikaa) ja tarvittaessa käsin. Se:
+GitHub Actions -työ [`update-season.yml`](.github/workflows/update-season.yml) on ajastettu puolen tunnin välein (klo 12–23 Suomen aikaa), mutta GitHub käynnistää ajastetut ajot harvemmin, käytännössä 2–4 kertaa päivässä. Sen voi ajaa myös käsin. Se:
 
 1. ajaa testit
 2. hakee molempien sarjojen nykykauden ohjelman, pöytäkirjat, heittokartat ja pelitapahtumat (`ingestion.publish_season`)
