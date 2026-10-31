@@ -1,3 +1,4 @@
+.team-directory{margin-top:36px}.team-directory-title{margin:0 0 12px;font:400 18px/1.3 'Cal Sans',sans-serif;color:#ededf0}
 .team-directory-filter{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin:8px 0 20px}
 .team-directory-filter label{display:grid;gap:8px;color:#a4a4af;font-size:11px;width:min(360px,100%)}
 .team-directory-filter input{box-sizing:border-box;width:100%;background:#19191c;color:#e8e8eb;border:1px solid #37373d;border-radius:8px;padding:11px 13px;font:inherit;font-size:12px;outline:none}
