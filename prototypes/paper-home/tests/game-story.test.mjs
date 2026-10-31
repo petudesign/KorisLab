@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {existsSync,readFileSync} from 'node:fs';
 import test from 'node:test';
-import {gameColors,clockAt,eventFlag,eventLine,eventPlace,flagAlign,indexAt,statsAt,storyChapters,topPlayers,wpPercent} from '../src/lib/gameStory.js';
+import {gameColors,leadChanges,clockAt,eventFlag,eventLine,eventPlace,flagAlign,indexAt,statsAt,storyChapters,topPlayers,wpPercent} from '../src/lib/gameStory.js';
 
 const story=JSON.parse(readFileSync(new URL('../public/data/stories/men-2025-26-968748.json',import.meta.url)));
 
@@ -49,4 +49,11 @@ test('every team has a colour and the two teams of any game can be told apart',(
   assert.ok(game.home&&game.away,`${home} ${away}`);assert.notEqual(game.home,game.away,`${home} ${away}`);assert.ok(['#111113','#ffffff'].includes(game.awayInk));}
  const manifest=JSON.parse(readFileSync(new URL('../source/game-stories.json',import.meta.url)));
  for(const [scope,ids] of Object.entries(manifest))for(const id of ids){const game=JSON.parse(readFileSync(new URL(`../public/data/stories/${scope}-${id}.json`,import.meta.url)));assert.ok(colors[game.home.name]&&colors[game.away.name],game.home.name+game.away.name);}
+});
+test('a turn is the moment the lead changes hands, and a tie alone is not one',()=>{
+ const at=(t,h,a)=>({t,h,a});
+ assert.deepEqual(leadChanges([at(0,0,0),at(1,2,0),at(2,2,2),at(3,4,2),at(4,4,5),at(5,6,5),at(6,6,6)]),[4,5]);
+ assert.deepEqual(leadChanges([at(0,0,0),at(1,2,0),at(2,9,0)]),[]);
+ const moments=leadChanges(story.events);assert.ok(moments.length>0);
+ for(const moment of moments){const i=indexAt(story.events,moment),now=story.events[i],before=story.events.slice(0,i).reverse().find(e=>e.h!==e.a);assert.notEqual(now.h>now.a,before.h>before.a);assert.notEqual(now.h,now.a);}
 });

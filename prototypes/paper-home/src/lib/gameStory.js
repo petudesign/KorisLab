@@ -72,6 +72,16 @@ export function statsAt(events,index){
  return out;
 }
 export const topPlayers=(team,count=5)=>Object.values(team.players).sort((a,b)=>b.pts-a.pts||b.reb+b.ast-a.reb-a.ast||a.name.localeCompare(b.name)).slice(0,count);
+// The moments the lead passes from one team to the other. A tie is not a change until the other team goes ahead.
+export function leadChanges(events){
+ const moments=[];let leader=null;
+ for(const event of events){
+  const now=event.h>event.a?'h':event.a>event.h?'a':null;
+  if(now&&leader&&now!==leader)moments.push(event.t);
+  if(now)leader=now;
+ }
+ return moments;
+}
 export const indexAt=(events,t)=>{let low=0,high=events.length-1;while(low<high){const mid=Math.ceil((low+high)/2);if(events[mid].t<=t)low=mid;else high=mid-1;}return low;};
 // The clock runs between events, and never ahead of the next one.
 export function clockAt(events,index,t){
@@ -90,7 +100,8 @@ export function storyChapters(story,lang){
   const chance=say(`Sen voittotodennäköisyys nousi ${pct(from)} → ${pct(to)}.`,`${run?'Their':`${team(side)}’s`} win probability rose ${pct(from)} → ${pct(to)}.`);
   const points=leg.leader?.points;
   const leader=leg.leader?.name&&points>=4?say(`${leg.leader.name} teki ${points} pistettä.`,`${leg.leader.name} scored ${points}.`):'';
-  chapters.push({at:leg.from,title:`${periodLabel(leg.period_to,lang)} ${clockText(leg.clock_to)} · ${leg.score_to[0]}–${leg.score_to[1]}`,text:[run||say(`${team(side)} sai käänteen.`,''),chance,leader].filter(Boolean).join(' ')});
+  const start=story.events[indexAt(story.events,leg.from)];
+  chapters.push({at:leg.from,title:`${periodLabel(start.p,lang)} ${clockText(start.c)} → ${periodLabel(leg.period_to,lang)} ${clockText(leg.clock_to)} · ${leg.score_to[0]}–${leg.score_to[1]}`,text:[run||say(`${team(side)} sai käänteen.`,''),chance,leader].filter(Boolean).join(' ')});
  }
  const play=story.biggest_play,winner=story.home.score>story.away.score?'home':'away',shot=say({'2pt':'kahden pisteen heitto','3pt':'kolmonen',free_throw:'vapaaheitto'},{'2pt':'two-pointer','3pt':'three-pointer',free_throw:'free throw'})[play.type];
  const big=Math.abs(play.wp_to-play.wp_from)>=.05;

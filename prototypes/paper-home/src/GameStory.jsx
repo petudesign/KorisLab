@@ -5,7 +5,7 @@ import ReplayRounded from '@mui/icons-material/ReplayRounded';
 import SkipNextRounded from '@mui/icons-material/SkipNextRounded';
 import {t as translate,useI18n} from './i18n';
 import {TeamLogo} from './TeamLogo';
-import {clockAt,clockText,eventFlag,eventLine,eventPlace,flagAlign,gameColors,indexAt,periodLabel,statsAt,storyChapters,topPlayers,wpPercent} from './lib/gameStory';
+import {clockAt,clockText,eventFlag,eventLine,eventPlace,flagAlign,gameColors,indexAt,leadChanges,periodLabel,statsAt,storyChapters,topPlayers,wpPercent} from './lib/gameStory';
 import stories from '../source/game-stories.json';
 import './game-story.css';
 
@@ -91,13 +91,14 @@ export function GameStory({leagueId,seasonId,matchId}){
   frame=requestAnimationFrame(tick);return()=>cancelAnimationFrame(frame);
  },[playing,speed,story]);
  const chapters=useMemo(()=>story?storyChapters(story,lang):[],[story,lang]);
+ const leads=useMemo(()=>story?leadChanges(story.events):[],[story]);
  const index=story?indexAt(story.events,t):0,stats=useMemo(()=>story?statsAt(story.events,index):null,[story,index]);
  const seek=useCallback(value=>{setT(value);setPlaying(false);},[]);
  if(failed)return <p className="story-note">{say('Tarinaa ei voitu ladata.','The story could not be loaded.')}</p>;
  if(!story)return <div className="story-stage is-loading" aria-busy="true"/>;
  const event=story.events[index],teams={h:story.home.name,a:story.away.name},period=event.p,ended=t>=story.duration;
  const started=event.s||index>0,active=chapters.reduce((found,chapter,i)=>chapter.at<=t?i:found,0);
- const next=chapters.find(chapter=>chapter.at>t+1);
+ const nextLead=leads.find(at=>at>t);
  const jump=at=>{setT(at);if(at<story.duration&&!reducedMotion())setPlaying(true);else setPlaying(false);};
  const periods=[...new Set(story.events.map(e=>e.p))],periodStart=p=>story.events.find(e=>e.p===p).t;
  const line=eventLine(event,lang,teams),rows=[[say('Heitot','FG'),s=>`${s.fgm}/${s.fga}`],[say('Kolmoset','3P'),s=>`${s.tpm}/${s.tpa}`],[say('Levypallot','Rebounds'),s=>s.reb],[say('Syötöt','Assists'),s=>s.ast],[say('Menetykset','Turnovers'),s=>s.tov]];
@@ -119,13 +120,13 @@ export function GameStory({leagueId,seasonId,matchId}){
     <div className="story-tables"><Table name={story.home.name} team={stats.h} active={event.s==='h'?event.n:null} say={say} side="h"/><Table name={story.away.name} team={stats.a} active={event.s==='a'?event.n:null} say={say} side="a"/></div>
     <Court story={story} index={index} lang={lang}/>
    </div>
-   <p className="story-line" aria-live={playing?'off':'polite'}>{line?<><i className={`side-${event.s}`}/>{line}</>:started?'':say('Paina toistoa tai siirry suoraan käänteeseen.','Press play or jump straight to a turn.')}</p>
+   <p className="story-line" aria-live={playing?'off':'polite'}>{line?<><i className={`side-${event.s}`}/>{line}</>:started?'':say('Paina toistoa tai siirry kohtaan, jossa johtaja vaihtuu.','Press play or jump to where the lead changes.')}</p>
    <Timeline story={story} t={t} onSeek={seek} chapters={chapters} say={say}/>
    <div className="story-controls">
     <button type="button" className="story-play" aria-label={playing?say('Tauko','Pause'):ended?say('Toista alusta','Replay from start'):say('Toista','Play')} onClick={()=>{if(ended){setT(0);setPlaying(true);}else setPlaying(!playing);}}>{playing?<PauseRounded/>:ended?<ReplayRounded/>:<PlayArrowRounded/>}</button>
     <label className="story-select"><span className="sr-only">{say('Jakso','Period')}</span><select value={period} onChange={e=>seek(periodStart(Number(e.target.value)))}>{periods.map(p=><option key={p} value={p}>{periodLabel(p,lang)}</option>)}</select></label>
     <label className="story-select"><span className="sr-only">{say('Nopeus','Speed')}</span><select value={speed} onChange={e=>setSpeed(Number(e.target.value))}>{SPEEDS.map(s=><option key={s} value={s}>{s}×</option>)}</select></label>
-    <button type="button" className="story-next" disabled={!next} onClick={()=>next&&jump(next.at)}><SkipNextRounded/><span className="is-wide">{say('Seuraava käänne','Next turn')}</span><span className="is-narrow">{say('Käänne','Turn')}</span></button>
+    <button type="button" className="story-next" disabled={nextLead===undefined} onClick={()=>seek(nextLead)}><SkipNextRounded/><span className="is-wide">{say('Seuraava käänne','Next turn')}</span><span className="is-narrow">{say('Käänne','Turn')}</span></button>
    </div>
   </section>
   <div className="story-below">
