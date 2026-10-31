@@ -78,7 +78,8 @@ function Court({pack,games,players}){
   court.current=createSimCourt(host.current,{onTick:state=>{const now=performance.now();if(state.changed||now-lastPush>250){lastPush=now;setTick(state);}}});
   return()=>court.current.dispose();
  },[]);
- useEffect(()=>{court.current.load(players,game.log);court.current.setPlaying(!matchMedia('(prefers-reduced-motion: reduce)').matches);},[game,players]);
+ // Only a new game restarts the replay: a re-render, such as resizing the window, must not undo a pause. The roster comes with the pack, and a new pack remounts this component.
+ useEffect(()=>{court.current.load(players,game.log);court.current.setPlaying(!matchMedia('(prefers-reduced-motion: reduce)').matches);},[game]);// eslint-disable-line react-hooks/exhaustive-deps
  useEffect(()=>court.current.setSpeed(speed),[speed]);
  useEffect(()=>court.current.setCamera(camera),[camera]);
  const actions=court.current?.actions()??[];

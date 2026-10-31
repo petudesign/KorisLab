@@ -1,0 +1,80 @@
+{
+ "version": "power-rating-v1",
+ "selected_on": "2024-25",
+ "grid": {
+  "shrink": [
+   0.1,
+   0.25,
+   0.5,
+   1,
+   2,
+   3,
+   5,
+   8,
+   12,
+   20
+  ],
+  "home": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6
+  ],
+  "sigma": [
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19,
+   20
+  ]
+ },
+ "leagues": {
+  "men": {
+   "rating": {
+    "shrink": 8,
+    "home": 2,
+    "sigma": 11,
+    "brier": 0.2177,
+    "games": 158
+   },
+   "average_margin": {
+    "shrink": 12,
+    "home": 2,
+    "sigma": 10,
+    "brier": 0.2181,
+    "games": 158
+   },
+   "source_sha256": "2f4412eb62d4adaafb5dd4ab9f8e0533ff586d0d99c20d785c171da593b8ba72"
+  },
+  "women": {
+   "rating": {
+    "shrink": 0.1,
+    "home": 0,
+    "sigma": 11,
+    "brier": 0.12331,
+    "games": 100
+   },
+   "average_margin": {
+    "shrink": 1,
+    "home": 0,
+    "sigma": 12,
+    "brier": 0.13095,
+    "games": 100
+   },
+   "source_sha256": "a32438817542053adec674b73cda1fffb36eda375a502e2271432885ffafb5bd"
+  }
+ },
+ "locked_at": "2026-10-31T10:14:02+00:00",
+ "note": "2025-26 was not read when this file was written."
+}

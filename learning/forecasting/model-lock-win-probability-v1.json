@@ -1,0 +1,67 @@
+{
+ "version": "win-probability-v1",
+ "selected_on": "2024-25",
+ "grid": {
+  "sigma": [
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19,
+   20
+  ],
+  "strength": [
+   0.0,
+   0.2,
+   0.4,
+   0.6,
+   0.8,
+   1.0,
+   1.2,
+   1.4,
+   1.6,
+   1.8
+  ],
+  "home": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ]
+ },
+ "leagues": {
+  "men": {
+   "params": {
+    "sigma": 17,
+    "strength": 1.6,
+    "home": 5
+   },
+   "games": 189,
+   "brier": 0.15,
+   "source_sha256": "2f4412eb62d4adaafb5dd4ab9f8e0533ff586d0d99c20d785c171da593b8ba72",
+   "possessions_sha256": "6b5435899a47202493ab3c566bcda833bf92205b41fbec355d42069755cb7615"
+  },
+  "women": {
+   "params": {
+    "sigma": 17,
+    "strength": 1.8,
+    "home": 1
+   },
+   "games": 126,
+   "brier": 0.1012,
+   "source_sha256": "a32438817542053adec674b73cda1fffb36eda375a502e2271432885ffafb5bd",
+   "possessions_sha256": "c0671a0eabdbbefb07f44af463cd5af5768725d05655f70665a3591111c90084"
+  }
+ },
+ "note": "2025-26 was not read when this file was written.",
+ "locked_at": "2026-10-31T08:12:29+00:00"
+}

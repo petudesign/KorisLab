@@ -1,0 +1,31 @@
+{
+ "version": "power-rating-v1",
+ "season": "2025-26",
+ "rule": "both teams have 5 earlier games; same-day results excluded",
+ "leagues": {
+  "men": {
+   "rating": {
+    "games": 161,
+    "brier": 0.2343,
+    "favorites_correct": 0.596
+   },
+   "average_margin": {
+    "games": 161,
+    "brier": 0.2339,
+    "favorites_correct": 0.596
+   }
+  },
+  "women": {
+   "rating": {
+    "games": 83,
+    "brier": 0.2023,
+    "favorites_correct": 0.723
+   },
+   "average_margin": {
+    "games": 83,
+    "brier": 0.1984,
+    "favorites_correct": 0.723
+   }
+  }
+ }
+}

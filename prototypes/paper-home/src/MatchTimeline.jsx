@@ -5,7 +5,7 @@ import {eventAtTime,replayMoments} from './lib/replayStats';
 import {AssetState} from './MatchShots';
 import {TeamLogo} from './TeamLogo';
 const names={start:'Ottelu alkaa',periodEnd:'Jakson loppu','2pt':'Kahden pisteen heitto','3pt':'Kolmen pisteen heitto',freeThrow:'Vapaaheitto',assist:'Syöttö',rebound:'Levypallo',steal:'Riisto',block:'Torjunta',turnover:'Menetys',foul:'Virhe',substitution:'Vaihto',timeOut:'Aikalisä',jumpBall:'Ylösheitto'};
-const clock=e=>`${e.period<=4?`${e.period}. neljännes`:`JA ${e.period-4}`} · ${Math.floor(e.remaining/60)}:${String(Math.floor(e.remaining%60)).padStart(2,'0')}`;
+const clock=e=>`${e.period<=4?`${e.period}. neljännes`:`JA ${e.period>10?e.period-10:e.period-4}`} · ${Math.floor(e.remaining/60)}:${String(Math.floor(e.remaining%60)).padStart(2,'0')}`;
 export function MatchTimeline({game}){
  const state=useMatchAsset(game.id,'replays'),data=state.data;
  const [position,setPosition]=useState(0),[playing,setPlaying]=useState(false),[speed,setSpeed]=useState(20),[selectedIndex,setSelectedIndex]=useState(null);

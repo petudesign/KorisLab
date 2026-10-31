@@ -70,8 +70,10 @@ function makeHoop(scene,dir){
  const pad=new THREE.MeshStandardMaterial({color:0x232327,roughness:.8});
  const base=new THREE.Mesh(new THREE.BoxGeometry(1.1,1,1.3),pad);base.position.set(dir*(COURT_L/2+1.7),.5,0);base.castShadow=true;scene.add(base);
  const pole=new THREE.Mesh(new THREE.BoxGeometry(.18,3.2,.18),metal);pole.position.set(dir*(COURT_L/2+1.5),2.6,0);pole.castShadow=true;scene.add(pole);
- const arm=new THREE.Mesh(new THREE.BoxGeometry(1.95,.14,.14),metal);arm.position.set(dir*(COURT_L/2+.55),3.75,0);scene.add(arm);
- const boardX=dir*(COURT_L/2-1.2);
+  const boardX=dir*(COURT_L/2-1.2);
+ // The arm runs from the pole all the way to the backboard.
+ const armEnd=Math.abs(boardX)-.02,armStart=COURT_L/2+1.5;
+ const arm=new THREE.Mesh(new THREE.BoxGeometry(armStart-armEnd,.14,.14),metal);arm.position.set(dir*(armStart+armEnd)/2,3.75,0);scene.add(arm);
  const board=new THREE.Mesh(new THREE.BoxGeometry(.04,1.05,1.8),new THREE.MeshStandardMaterial({color:0xffffff,transparent:true,opacity:.28,roughness:.1}));
  board.position.set(boardX,3.425,0);scene.add(board);
  const line=new THREE.LineBasicMaterial({color:0xf3f3f4});

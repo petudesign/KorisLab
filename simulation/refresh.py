@@ -89,7 +89,10 @@ def refresh_league(league, args, now):
     if records and not season_games:
         # Never publish packs that silently fall back to last season's rosters.
         raise SystemExit(f"No {league} {season} possessions from {len(records)} verified games: {excluded[:3]}")
-    games += join_season(records, season_games, weight, site_dates(league, season))
+    current = join_season(records, season_games, weight, site_dates(league, season))
+    games += current
+    from simulation.game_story import write_stories  # game_story reads this module's helpers.
+    write_stories(league, season, current)
     report[season] = {"games": len(season_games), "verified": len(records),
                       "excluded": [{"match_id": e["match_id"], "reason": e["reason"]} for e in excluded]}
     games.sort(key=lambda game: (game["date"], game["match_id"]))

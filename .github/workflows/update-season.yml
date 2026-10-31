@@ -65,7 +65,7 @@ jobs:
       - name: Commit the public snapshot
         run: |
           git add web/public/season-2026-27.json web/public/shots web/public/quarters-2026-27.json web/public/assists-2026-27.json web/public/player-shots-2026-27.json web/public/replays web/public/korisliiga
-          git add prototypes/paper-home/source/seasons.json prototypes/paper-home/source/match-analysis.json prototypes/paper-home/source/player-analysis.json prototypes/paper-home/public/data
+          git add prototypes/paper-home/public/data/stories prototypes/paper-home/source/game-stories.json prototypes/paper-home/source/seasons.json prototypes/paper-home/source/match-analysis.json prototypes/paper-home/source/player-analysis.json prototypes/paper-home/public/data
           if git diff --cached --quiet; then exit 0; fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

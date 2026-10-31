@@ -11,6 +11,7 @@ from simulation.error_analysis import continuity, decomposition
 from simulation.evaluate import walk_forward
 from simulation.track import HELSINKI, attach_results, record_forecasts, summarize
 from simulation.tune import evaluable
+from simulation.win_probability import game_states, home_win_probability, seconds_left
 
 
 def event(team, player, kind, clock, **fields):
@@ -186,3 +187,74 @@ class FormTests(unittest.TestCase):
         narrow = spread()
         player_sim.FORM.update({"shot": 0.3, "usage": 0.3})
         self.assertGreater(spread(), narrow)
+
+
+class GameStoryTests(unittest.TestCase):
+    def rows(self):
+        shot = {"type": "2pt", "team": "H", "player": "p1", "clock": 500.0, "made": True, "x": 10, "y": 60}
+        assist = {"type": "assist", "team": "H", "player": "p2", "clock": 500.0}
+        loss = {"type": "turnover", "team": "H", "player": "p2", "clock": 480.0}
+        steal = {"type": "steal", "team": "A", "player": "p3", "clock": 480.0}
+        free_throws = [{"type": "free_throw", "team": "A", "player": "p3", "clock": 400.0, "made": True, "subtype": "1Of2"}, {"type": "free_throw", "team": "A", "player": "p3", "clock": 400.0, "made": False, "subtype": "2Of2"}]
+        row = lambda event, h, a: {"period": 1, "clock": event["clock"], "elapsed": 600 - event["clock"], "event": event, "home_points": h, "away_points": a, "wp": 0.5}
+        return [row(shot, 2, 0), row(assist, 2, 0), row(loss, 2, 0), row(steal, 2, 0), row(free_throws[0], 2, 1), row(free_throws[1], 2, 1)]
+
+    def test_one_moment_is_one_line_and_time_only_moves_forward(self):
+        from simulation.game_story import replay_events
+        events = replay_events(self.rows(), "H", {"p1": "Yksi", "p2": "Kaksi", "p3": "Kolme"})
+        self.assertEqual([e["k"] for e in events], ["2pt", "steal", "free_throw", "free_throw"])
+        self.assertEqual(events[0]["as"], "Kaksi")
+        self.assertEqual((events[1]["n"], events[1]["lost"], events[1]["s"]), ("Kolme", "Kaksi", "a"))
+        self.assertTrue(all(a["t"] < b["t"] for a, b in zip(events, events[1:])))
+
+    def test_home_end_follows_the_home_shots(self):
+        from simulation.game_story import attacking_ends
+        shot = lambda team, x: {"type": "2pt", "team": team, "x": x}
+        game = {"home": "H", "possessions": [{"period": 1, "events": [shot("H", 5), shot("A", 95)]}, {"period": 3, "events": [shot("H", 95), shot("H", 90), shot("A", 8)]}]}
+        self.assertEqual(attacking_ends(game), {"1": "L", "3": "R"})
+
+    def test_every_game_of_the_season_builds_and_reaches_its_final(self):
+        from simulation.game_story import build_story, locked_params
+        from simulation.win_probability import expected_inputs, load
+        games, _ = load("men", "2025-26")
+        gaps, params = expected_inputs(games), locked_params("men")
+        for game in games:
+            story = build_story(game, gaps[game["match_id"]], "men", "2025-26", params)
+            self.assertEqual((story["events"][-1]["h"], story["events"][-1]["a"]), (story["home"]["score"], story["away"]["score"]))
+            self.assertTrue(all(a["t"] < b["t"] for a, b in zip(story["events"], story["events"][1:])))
+
+
+class PowerRatingTests(unittest.TestCase):
+    def test_worked_example_matches_the_site(self):
+        from simulation.power_rating import fit
+        ratings, variance = fit([("A", "B", 10)], 1, 0)
+        self.assertAlmostEqual(ratings["A"], 10 / 3)
+        self.assertAlmostEqual(ratings["B"], -10 / 3)
+        self.assertAlmostEqual(variance["A"], 2 / 3)
+
+    def test_a_game_is_never_predicted_from_its_own_day(self):
+        from simulation.power_rating import gaps
+        record = lambda a, b, x, y: {"record": {"teams": [{"source_id": a, "score": x}, {"source_id": b, "score": y}]}, "home": a}
+        games = [{**record("A", "B", 90, 70), "date": f"2025-01-{d:02d}", "match_id": str(d)} for d in range(1, 7)] + [{**record("A", "B", 50, 90), "date": "2025-01-07", "match_id": "7"}]
+        rows = gaps(games, lambda results, shrink, home: ({"A": len(results), "B": 0}, None), 1, 0)
+        self.assertEqual([(m, g) for m, g, _ in rows], [("6", 5), ("7", 6)])
+
+
+class WinProbabilityTests(unittest.TestCase):
+    def test_probability_follows_margin_clock_and_expectation(self):
+        self.assertEqual(home_win_probability(3, 0, 0, 14), 1.0)
+        self.assertEqual(home_win_probability(0, 0, 0, 14), 0.5)
+        self.assertGreater(home_win_probability(6, 120, 0, 14), home_win_probability(6, 1800, 0, 14))
+        self.assertGreater(home_win_probability(0, 2400, 4, 14), 0.5)
+        self.assertEqual(seconds_left(11, 120), 120)
+
+    def test_states_cross_quarters_inside_a_possession_and_end_on_the_real_score(self):
+        record = {"game": {"periods": [{"period": 1, "home_score": 3, "away_score": 2}, {"period": 2, "home_score": 2, "away_score": 0}]},
+                  "teams": [{"source_id": "a", "score": 5}, {"source_id": "b", "score": 2}]}
+        possessions = [{"period": 1, "events": [{"type": "2pt", "team": "a", "made": True, "clock": 300.0}, {"type": "2pt", "team": "b", "made": True, "clock": 200.0}]},
+                       {"period": 1, "events": [{"type": "foul", "team": "b", "clock": 1.0}, {"type": "2pt", "team": "a", "made": True, "clock": 590.0}]}]
+        states = game_states({"record": record, "home": "a", "possessions": possessions})
+        scored = [s for s in states if s[4] and s[4]["type"] == "2pt"]
+        self.assertEqual([s[0] for s in scored], [1, 1, 2])
+        self.assertEqual(states[-1][3], 3)  # The technical point in quarter one is settled at its end, and the final matches.
+        self.assertEqual(next(s for s in states if s[0] == 2)[3], 1)
