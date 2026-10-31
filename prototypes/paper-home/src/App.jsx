@@ -33,7 +33,7 @@ import { HomeSections } from './HomeSections';
 import {BrandMark} from './BrandMark';
 import { TeamLogo } from './TeamLogo';
 import { OverviewDashboard } from './OverviewDashboard';
-import {useRoutes,routeHref,sectionPaths,takeScrollRestore} from './routing';
+import {CANONICAL_SCOPE,useRoutes,routeHref,sectionPaths,takeScrollRestore} from './routing';
 import {useMatches} from './useMatches';
 import {recentResults} from './lib/recentResults';
 import {slug} from './routing';
@@ -42,7 +42,7 @@ import { SeasonContext, getSeason, leagues, seasonIds } from './SeasonContext';
 const asset = name => '/assets/' + name + '.png';
 const nav = [['Yleiskatsaus',GridViewOutlined],['Ottelut',SportsBasketballOutlined],['Joukkueet',GroupsOutlined],['Pelaajat',PersonOutlined],['Kausitrendit',BarChartOutlined],['Analyysit',ArticleOutlined]];
 const logoIds={'Vimpelin Veto':'01M4JY38MCJ9HYJQSQN7XB5KS6','Tapiolan Honka':'01M4JY48TXE0MM7Z3AEWRGHS3N','Espoo Basket Team':'01M4JYR36RCHZ2W52CKVWP505N','HBA-Märsky':'01M4JYSG66K44Q3ESDFBA94DM7','BC Nokia':'01M4JZ22GP1M2QGKCGHSCXASM8','Peli-Karhut':'01M4JZ3A0N7K2RNBX6F1WD9B1D'};
-function savedSelection(){try{const saved=JSON.parse(localStorage.getItem('korislab-prototype-season')||'null');if(saved&&leagues[saved.leagueId]&&seasonIds.includes(saved.seasonId))return saved;}catch{}return {leagueId:'women',seasonId:'2025-26'};}
+function savedSelection(){try{const saved=JSON.parse(localStorage.getItem('korislab-prototype-season')||'null');if(saved&&leagues[saved.leagueId]&&seasonIds.includes(saved.seasonId))return saved;}catch{}return CANONICAL_SCOPE;}
 export function App() {
  const {language}=useI18n();
  const {route,navigate}=useRoutes(savedSelection());
