@@ -3,6 +3,7 @@ import {t} from './i18n';
 import {useSeason} from './SeasonContext';
 import {routeHref} from './routing';
 import {BrandMark} from './BrandMark';
+import {canReloadForRelease,markReload} from './lib/staleRelease';
 import './page-states.css';
 
 export function LoadingSkeleton({variant='list',label='Ladataan tietoja…'}){
@@ -23,7 +24,8 @@ export function ConnectionNotice(){
 }
 function UnexpectedError(){return <main className="unexpected-error"><a href="/" className="error-brand" aria-label={t('KorisLab etusivu')}><BrandMark/></a><StateCard tone="error" title="Sivun avaaminen epäonnistui" description="Tapahtui odottamaton virhe. Kokeile ladata sivu uudelleen." actionLabel="Lataa sivu uudelleen" onAction={()=>window.location.reload()}><a href="/">{t('Takaisin etusivulle')}</a></StateCard></main>;}
 export class AppErrorBoundary extends Component{
- state={failed:false};
- static getDerivedStateFromError(){return {failed:true};}
- render(){return this.state.failed?<UnexpectedError/>:this.props.children;}
+ state={failed:false,reloading:false};
+ static getDerivedStateFromError(error){return {failed:true,reloading:canReloadForRelease(error,{storage:sessionStorage,online:navigator.onLine})};}
+ componentDidCatch(){if(this.state.reloading){markReload(sessionStorage);location.reload();}}
+ render(){return this.state.reloading?null:this.state.failed?<UnexpectedError/>:this.props.children;}
 }
