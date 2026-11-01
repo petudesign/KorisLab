@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {runInNewContext} from 'node:vm';
 import {legacyPath,resolvePage,renderPage,scopeKey,sitemap,publicPath} from '../server/seo.mjs';
+import {homeTitle,playerTitle,sectionTitle,teamTitle} from '../src/lib/pageTitles.js';
 const manifest=JSON.parse(readFileSync(new URL('../dist/client/_seo/manifest.json',import.meta.url)));
 const template='<html><head><title>Old</title><meta name="robots" content="noindex,follow"></head><body><div id="root"></div></body></html>';
 test('boot preserves no-JS facts without flashing a skeleton and recovers on bundle failure',()=>{
@@ -108,4 +109,18 @@ test('the sitemap lists only the new addresses',()=>{
  for(const path of ['/analysis/','/analysis/first-five-games/','/about/'])assert.ok(xml.includes(`<loc>https://korislab.vercel.app${path}</loc>`),path);
  assert.doesNotMatch(xml,/analyysit|tietoa|viisi-ottelua/);
  assert.doesNotMatch(JSON.stringify(manifest.pages[scopeKey('/analysis/first-five-games/')]),/\/analyysit|\/tietoa|viisi-ottelua/);
+});
+test('search titles name the competition and what the page holds',()=>{
+ assert.equal(homeTitle(),'Korisliiga-tilastot ja analyysit');
+ assert.equal(sectionTitle('Pelaajat','men','2026-27'),'Korisliiga 2026–27: pelaajatilastot');
+ assert.equal(sectionTitle('Pelaajat','women','2026-27'),'Naisten Korisliiga 2026–27: pelaajatilastot');
+ assert.equal(teamTitle('Tapiolan Honka','men','2026-27'),'Tapiolan Honka: tilastot ja ottelut, Korisliiga 2026–27');
+ assert.equal(playerTitle('Alvar Peltoniemi','men','2026-27'),'Alvar Peltoniemi: tilastot, Korisliiga 2026–27');
+ assert.equal(sectionTitle('Haku','men','2026-27'),'Haku');
+});
+test('the server sends the same titles the loaded page sets',()=>{
+ const page=(path,season,league)=>manifest.pages[scopeKey(path,season,league)];
+ assert.equal(page('/','2026-27','women').title,homeTitle());
+ assert.equal(page('/players/','2026-27','men').title,sectionTitle('Pelaajat','men','2026-27'));
+ assert.equal(page('/teams/korisliiga/tapiolan-honka/','2026-27','men').title,teamTitle('Tapiolan Honka','men','2026-27'));
 });
