@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {fetchMatches,visibleMatchState} from '../src/lib/matchRequest.js';
+import {fetchMatches,sharedRequests,visibleMatchState} from '../src/lib/matchRequest.js';
 import {canReloadForRelease,isMissingPageFile,markReload} from '../src/lib/staleRelease.js';
 test('match requests distinguish failed HTTP and malformed data from a valid empty season',async()=>{
  await assert.rejects(fetchMatches('/bad',undefined,async()=>({ok:false})),/request failed/);
@@ -32,4 +32,14 @@ test('a page file missing after a release reloads once, and only that error does
  assert.equal(canReloadForRelease(missing,{storage,now:1_030_000}),false);
  assert.equal(canReloadForRelease(missing,{storage,now:1_060_000}),true);
  assert.equal(canReloadForRelease(missing,{storage:{getItem(){throw new Error('blocked');}},now:1_000_000}),false);
+});
+
+test('callers of the same match file share one request and a failure can be retried',async()=>{
+ let calls=0;
+ const load=sharedRequests(async url=>{calls++;if(calls===1)throw new Error('Offline');return url;});
+ const results=await Promise.allSettled([load('/a'),load('/a'),load('/a')]);
+ assert.equal(calls,1);
+ assert.ok(results.every(r=>r.status==='rejected'));
+ assert.equal(await load('/a'),'/a');
+ assert.equal(calls,2);
 });
