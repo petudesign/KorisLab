@@ -1,5 +1,4 @@
 import {createContext,useContext,useMemo,useState} from 'react';
-import translations from './translations.en.json';
 import {createTranslator,preferredLanguage} from './lib/localization';
 
 // A language the reader picked always wins. Without a window (build, tests) the source language stays.
@@ -14,7 +13,14 @@ let currentLanguage=initialLanguage();
 // Keep the context identity when a translation edit triggers Vite hot reload.
 const LanguageContext=import.meta.hot?.data.languageContext||createContext(null);
 if(import.meta.hot)import.meta.hot.dispose(data=>{data.languageContext=LanguageContext;});
-const translate=createTranslator(translations);
+// Source text is Finnish, so Finnish readers never download the English catalogue.
+let translate=value=>value;
+let catalogue=null;
+export function loadLanguage(language=currentLanguage){
+ if(language!=='en')return Promise.resolve();
+ catalogue??=import('./translations.en.json').then(({default:entries})=>{translate=createTranslator(entries);}).catch(error=>{catalogue=null;throw error;});
+ return catalogue;
+}
 // Localize presentation only; routing, identifiers and source data stay unchanged.
 export const t=value=>translate(value,currentLanguage);
 export const locale=()=>currentLanguage==='en'?'en-GB':'fi-FI';
@@ -25,10 +31,12 @@ export function LanguageProvider({children}){
  const [language,setState]=useState(currentLanguage);
  const setLanguage=next=>{
   if(!['fi','en'].includes(next))return;
-  currentLanguage=next;
-  document.documentElement.lang=next;
-  try{localStorage.setItem('korislab-language',next);}catch{}
-  setState(next);
+  loadLanguage(next).then(()=>{
+   currentLanguage=next;
+   document.documentElement.lang=next;
+   try{localStorage.setItem('korislab-language',next);}catch{}
+   setState(next);
+  },()=>{});
  };
  document.documentElement.lang=language;
  const value=useMemo(()=>({language,setLanguage}),[language]);
