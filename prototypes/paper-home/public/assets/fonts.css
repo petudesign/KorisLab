@@ -3,33 +3,33 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(/assets/ijxXs53kQsE1Y5J-lI1wubXnlQH-1-E1LhaU1dJRZZaHU0slfybi9GQwiTv06bjtugLjdPqK3d9XKDqRc2jrJlC4ZRsgxqxP-aVoJVvq06I.ttf) format('truetype');
+  src: url(/assets/bitcount-400.woff2) format('woff2');
 }
 @font-face {
   font-family: 'Cal Sans';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(/assets/fdN99sWUv3gWqXxqqSBb.ttf) format('truetype');
+  src: url(/assets/cal-sans-400.woff2) format('woff2');
 }
 @font-face {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(/assets/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZg.ttf) format('truetype');
+  src: url(/assets/inter-400.woff2) format('woff2');
 }
 @font-face {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url(/assets/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuI6fMZg.ttf) format('truetype');
+  src: url(/assets/inter-500.woff2) format('woff2');
 }
 @font-face {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url(/assets/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYMZg.ttf) format('truetype');
+  src: url(/assets/inter-600.woff2) format('woff2');
 }

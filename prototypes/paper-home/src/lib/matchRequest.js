@@ -14,6 +14,14 @@ export async function fetchMatches(url,signal,request=fetch){
   })};
  });
 }
+// Callers asking for the same key while a request runs share it; a finished request is forgotten so a retry can start anew.
+export function sharedRequests(load){
+ const pending=new Map();
+ return key=>{
+  if(!pending.has(key))pending.set(key,Promise.resolve().then(()=>load(key)).finally(()=>pending.delete(key)));
+  return pending.get(key);
+ };
+}
 export function visibleMatchState(state,url,cache){
  return state.url===url?state:{games:cache.get(url)||null,error:false};
 }
