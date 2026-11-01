@@ -2,7 +2,7 @@ import {SearchClearButton} from './SearchClearButton';
 import {ConnectionNotice} from './PageStates';
 import {t as translate,locale,useI18n,LanguageSettings} from './i18n';
 import {homeTitle,sectionTitle} from './lib/pageTitles';
-import { lazy, Suspense, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { MetalFx } from 'metal-fx';
 import { Dithering } from '@paper-design/shaders-react';
 import './premium-effects.css';
