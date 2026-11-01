@@ -1,37 +1,7 @@
 {
  "model": "player-sim-v1",
- "data_cutoff": "2026-10-31",
+ "data_cutoff": "2026-11-01",
  "games": [
-  {
-   "id": "1006183",
-   "date": "2026-11-01",
-   "time": "14:00:00",
-   "venue": "Tapiolan Liikuntahalli",
-   "home": {
-    "id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
-    "name": "Tapiolan Honka"
-   },
-   "away": {
-    "id": "d244ed43-90a6-11f1-833b-e7d7c2463142",
-    "name": "HBA-Märsky"
-   },
-   "home_win_probability": 0.171
-  },
-  {
-   "id": "1006204",
-   "date": "2026-11-01",
-   "time": "17:00:00",
-   "venue": "MLL Areena",
-   "home": {
-    "id": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
-    "name": "Kouvottaret"
-   },
-   "away": {
-    "id": "d231065a-90a6-11f1-9f40-e7d7c2463142",
-    "name": "Peli-Karhut"
-   },
-   "home_win_probability": 0.313
-  },
   {
    "id": "1006189",
    "date": "2026-11-07",
@@ -45,7 +15,7 @@
     "id": "d2569c80-90a6-11f1-b52d-e7d7c2463142",
     "name": "Kouvottaret"
    },
-   "home_win_probability": 0.746
+   "home_win_probability": 0.731
   },
   {
    "id": "1006223",
@@ -60,7 +30,7 @@
     "id": "d239f658-90a6-11f1-bea9-e7d7c2463142",
     "name": "Tapiolan Honka"
    },
-   "home_win_probability": 0.748
+   "home_win_probability": 0.747
   },
   {
    "id": "1006213",
@@ -75,7 +45,7 @@
     "id": "d307acab-90a6-11f1-88bf-e7d7c2463142",
     "name": "Tampereen Pyrintö"
    },
-   "home_win_probability": 0.789
+   "home_win_probability": 0.797
   }
  ]
 }
