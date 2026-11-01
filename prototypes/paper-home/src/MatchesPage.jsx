@@ -1,6 +1,7 @@
 import {GameStory,hasStory} from './GameStory';
 import {LoadingSkeleton,StateCard} from './PageStates';
-import {t as translate,locale} from './i18n';
+import {t as translate,locale,useI18n} from './i18n';
+import {matchTitle,sectionTitle} from './lib/pageTitles';
 import {useEffect,useId,useState} from 'react';
 import ArrowBackOutlined from '@mui/icons-material/ArrowBackOutlined';
 import ChevronRightOutlined from '@mui/icons-material/ChevronRightOutlined';
@@ -24,9 +25,10 @@ const crest=t=><TeamLogo assetId={logos[t.name]} name={t.name}/>;
 
 export function MatchesPage({matchId,matchPanel,onTabChange,onOpenMatch,onEntityNavigate}){
  const {data:season,leagueId,seasonId,leagueName,seasonLabel}=useSeason();
+ const {language}=useI18n();
  const {games,error,retry}=useMatches(season.matchesUrl);
  const selected=games?.find(g=>g.id===matchId),selectedTeams=selected?pair(selected):null;
- useMetadata(selectedTeams?`${selectedTeams[0].name} – ${selectedTeams[1].name}`:'Ottelut',selectedTeams?`${leagueName} ${seasonLabel}: ${selectedTeams[0].name} vastaan ${selectedTeams[1].name}. ${selected.verified?'Lopputulos '+selectedTeams[0].score+'–'+selectedTeams[1].score+'. Ottelutilastot ja pelaajat.':'Otteluohjelma ja ennakkotiedot.'}`:`${leagueName} ${seasonLabel}: otteluohjelma, tulokset ja otteluanalyysit.`,{leagueId,seasonId},true,!!games&&!error&&!!matchId&&!selected);
+ useMetadata(selectedTeams?matchTitle(selectedTeams[0].name,selectedTeams[1].name,selected.verified?`${selectedTeams[0].score}–${selectedTeams[1].score}`:null,language):sectionTitle('Ottelut',leagueId,seasonId,language),selectedTeams?`${leagueName} ${seasonLabel}: ${selectedTeams[0].name} vastaan ${selectedTeams[1].name}. ${selected.verified?'Lopputulos '+selectedTeams[0].score+'–'+selectedTeams[1].score+'. Ottelutilastot ja pelaajat.':'Otteluohjelma ja ennakkotiedot.'}`:`${leagueName} ${seasonLabel}: otteluohjelma, tulokset ja otteluanalyysit.`,{leagueId,seasonId},true,!!games&&!error&&!!matchId&&!selected);
  const [query,setQuery]=useState(''),[team,setTeam]=useState('all'),[sort,setSort]=useState('newest'),[limit,setLimit]=useState(30),[status,setStatus]=useState('all');
  if(error)return <StateCard tone="error" title="Otteluiden lataus epäonnistui." description="Tarkista yhteys ja yritä uudelleen. Valintasi säilyvät." onAction={retry}/>;
  if(!games)return <LoadingSkeleton variant={matchId?'profile':'list'} label="Ladataan otteluita…"/>;

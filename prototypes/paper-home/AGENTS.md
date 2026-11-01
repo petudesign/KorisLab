@@ -230,4 +230,6 @@ Kieli ensikäynnillä: lukijan tallentama valinta voittaa aina. Muuten suomi, jo
 
 Isot ruudut: koko käyttöliittymä skaalataan CSS zoomilla (src/large-screens.css) yli 2240 px leveillä ja riittävän korkeilla ruuduilla, jotta 4K ja telkkari näyttävät samalta kuin 1920 × 1080. Alle sen mikään ei muutu. Zoomin alla viewport-korkeudet jaetaan --ui-zoomilla, ja getBoundingClientRect sisältää zoomin, joten mittauksesta CSS-arvoksi vietävä luku pitää jakaa sillä (ks. Segmented).
 
+Sivujen otsikot tulevat yhdestä paikasta (src/lib/pageTitles.js), jota sekä palvelimen build-seo että selaimen useMetadata käyttävät, koska Google lukee otsikon JavaScriptin ajon jälkeen. Otsikossa on hakusana ja sarja: "Korisliiga 2026–27: pelaajatilastot". Miesten sarja on otsikoissa pelkkä Korisliiga, koska sillä sitä haetaan. Etusivun näkyvä pääotsikko "Suomalainen koripallo, datan kautta" säilyy.
+
 Julkaisun aikana auki ollut välilehti ei löydä korvattuja sivutiedostoja. AppErrorBoundary lataa sivun silloin kerran uudelleen (src/lib/staleRelease.js), enintään kerran minuutissa; muuten näkyy tavallinen virhesivu. Ei uudelleenlatausta ilman verkkoyhteyttä. Sama koskee vain sivutason lazy-latauksia, ei Custom importin Excel-lukijaa.
