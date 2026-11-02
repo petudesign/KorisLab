@@ -3,7 +3,7 @@ import {articleSlugs} from './lib/fiveGamesArticle.js';
 // Same as the server's default scope, which leaves these out of its public addresses.
 export const CANONICAL_SCOPE={leagueId:'women',seasonId:'2026-27'};
 import {legacyPath} from '../server/seo.mjs';
-export const sectionPaths={'Design system':'/design-system/','Haku':'/search/','Etusivu':'/','Yleiskatsaus':'/overview/','Ottelut':'/matches/','Joukkueet':'/teams/','Pelaajat':'/players/','Kausitrendit':'/season/','Analyysit':'/analysis/','Matchup Lab':'/matchup/','Samankaltaiset':'/similar/','Sim Studio':'/sim/','Custom import':'/custom-import/','Datan tila':'/data/','Tietoa':'/about/'};
+export const sectionPaths={'Design system':'/design-system/','Haku':'/search/','Etusivu':'/','Yleiskatsaus':'/overview/','Ottelut':'/matches/','Joukkueet':'/teams/','Pelaajat':'/players/','Kausitrendit':'/season/','Analyysit':'/analysis/','Matchup Lab':'/matchup/','Samankaltaiset':'/similar/','Sim Studio':'/sim/','Custom import':'/custom-import/','Tietoa':'/about/'};
 export const slug=name=>name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('fi').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 const decodeId=value=>{try{return decodeURIComponent(value);}catch{return null;}};
 export function readRoute(defaults,location=window.location){
