@@ -22,17 +22,20 @@ function MatchExtreme({label,result,kind,leagueId,seasonId,onOpenMatch}) {
  </a>;
 }
 
-function TeamRank({context,info}) {
- const previous=info?.previousRank,current=context.currentRank;
- const movement=Number.isFinite(previous)&&Number.isFinite(current)?previous-current:null;
+// The official brief gives last season's final place, playoffs included. The league table is regular season only.
+// The change compares regular season with regular season, so two different rankings are never subtracted.
+function TeamRank({context,info,finished}) {
+ const official=info?.previousRank,regular=context.previousRegularRank,current=context.currentRank;
+ const previous=official??regular,previousIsFinal=official!=null;
+ const movement=Number.isFinite(regular)&&Number.isFinite(current)?regular-current:null;
  return <article className="dash-card team-intel-card team-intel-rank">
   <h4 className="team-intel-title">{translate("Sarjasijoitus")}</h4>
   <div className="team-rank-pair">
-   <div className="team-rank-current"><span>{translate("Nyt")}</span><strong>{translate(current?`#${current}`:'—')}</strong>{context.games>0&&<small>{translate(context.wins)}{translate("–")}{translate(context.losses)}{translate(" voittoa–tappiota")}</small>}</div>
-   <div className="team-rank-previous"><span>{translate("Edellinen kausi")}</span><strong className={typeof previous==='string'?'team-rank-text':undefined}>{translate(Number.isFinite(previous)?`#${previous}`:previous||'—')}</strong></div>
+   <div className="team-rank-current"><span>{translate(finished?"Runkosarja":"Nyt")}</span><strong>{translate(current?`#${current}`:'—')}</strong>{context.games>0&&<small>{translate(context.wins)}{translate("–")}{translate(context.losses)}{translate(" voittoa–tappiota")}</small>}</div>
+   <div className="team-rank-previous"><span>{translate(previous==null?"Edellinen kausi":previousIsFinal?"Edellinen kausi, lopullinen":"Edellinen kausi, runkosarja")}</span><strong className={typeof previous==='string'?'team-rank-text':undefined}>{translate(Number.isFinite(previous)?`#${previous}`:previous||'—')}</strong>{previousIsFinal&&Number.isFinite(regular)&&<small>{translate("Runkosarjassa #")}{translate(regular)}</small>}</div>
   </div>
-  {Number.isFinite(movement)&&<div className={`team-rank-change ${movement>0?'up':movement<0?'down':'same'}`}>{movement===0?translate('Sama sijoitus kuin edellisellä kaudella'):<><span>{translate('Sijoitusmuutos')}</span><b>{movement>0?'+':''}{translate(movement)}</b></>}</div>}
-  <p className="team-intel-note team-intel-bottom">{translate("Alustava sijoitus kirjatuista tuloksista")}{translate(" · ")}{translate(context.games)}{translate(" ottelua")}{context.standingsCount>0&&<>{translate(" · ")}{translate(context.standingsCount)}{translate(" joukkuetta vertailussa")}</>}</p>
+  {Number.isFinite(movement)&&<div className={`team-rank-change ${movement>0?'up':movement<0?'down':'same'}`}>{movement===0?translate('Sama runkosarjasijoitus kuin edellisellä kaudella'):<><span>{translate('Muutos runkosarjassa')}</span><b>{movement>0?'+':''}{translate(movement)}</b></>}</div>}
+  <p className="team-intel-note team-intel-bottom">{translate(finished?"Runkosarjan sijoitus kirjatuista tuloksista":"Alustava sijoitus kirjatuista tuloksista")}{translate(" · ")}{translate(context.games)}{translate(" ottelua")}{context.standingsCount>0&&<>{translate(" · ")}{translate(context.standingsCount)}{translate(" joukkuetta vertailussa")}</>}{previousIsFinal&&<>{translate(" · ")}{translate("Lopullinen sijoitus sisältää pudotuspelit")}</>}</p>
  </article>;
 }
 
@@ -107,7 +110,7 @@ export function TeamSeasonIntel({team,games,onOpenMatch}) {
     <MatchExtreme label="Suurin voitto" result={context.biggestWin} kind="win" leagueId={leagueId} seasonId={seasonId} onOpenMatch={onOpenMatch}/>
     <MatchExtreme label="Suurin tappio" result={context.biggestLoss} kind="loss" leagueId={leagueId} seasonId={seasonId} onOpenMatch={onOpenMatch}/>
    </article>
-   <TeamRank context={context} info={info}/>
+   <TeamRank context={context} info={info} finished={index>0}/>
    <CoachInfo info={info}/>
    <RosterChange context={context} previousPending={!!previousSeason&&!previousState.games&&!previousState.error} previousError={previousState.error}/>
    <BudgetInfo info={info} sourceUrl={seasonInfo?.sourceUrl} updatedAt={seasonInfo?.updatedAt}/>

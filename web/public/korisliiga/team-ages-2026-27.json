@@ -1,0 +1,92 @@
+{
+  "schema_version": "0.1",
+  "league_id": "korisliiga",
+  "season_id": "2026-27",
+  "updated_at": "2026-11-02T15:33:50Z",
+  "teams": {
+    "Bisons Loimaa": {
+      "average_age": 28.4,
+      "roster_average_age": 25.9,
+      "known_minutes_share": 0.937,
+      "players_known": 11,
+      "players": 12
+    },
+    "Helsinki Seagulls": {
+      "average_age": 29.1,
+      "roster_average_age": 27.7,
+      "known_minutes_share": 1.0,
+      "players_known": 11,
+      "players": 11
+    },
+    "KTP-Basket": {
+      "average_age": 26.9,
+      "roster_average_age": 26.2,
+      "known_minutes_share": 1.0,
+      "players_known": 10,
+      "players": 10
+    },
+    "Kataja Basket": {
+      "average_age": 25.9,
+      "roster_average_age": 24.6,
+      "known_minutes_share": 0.951,
+      "players_known": 12,
+      "players": 13
+    },
+    "Kauhajoki": {
+      "average_age": 25.1,
+      "roster_average_age": 25.2,
+      "known_minutes_share": 1.0,
+      "players_known": 12,
+      "players": 12
+    },
+    "Kipinä Basket": {
+      "average_age": 25.9,
+      "roster_average_age": 25.0,
+      "known_minutes_share": 1.0,
+      "players_known": 13,
+      "players": 13
+    },
+    "Korihait": {
+      "average_age": 27.2,
+      "roster_average_age": 27.0,
+      "known_minutes_share": 1.0,
+      "players_known": 11,
+      "players": 11
+    },
+    "Kouvot": {
+      "average_age": 23.7,
+      "roster_average_age": 23.2,
+      "known_minutes_share": 1.0,
+      "players_known": 10,
+      "players": 10
+    },
+    "Lahti Basketball": {
+      "average_age": 25.1,
+      "roster_average_age": 24.7,
+      "known_minutes_share": 1.0,
+      "players_known": 10,
+      "players": 10
+    },
+    "Salon Vilpas": {
+      "average_age": 26.7,
+      "roster_average_age": 26.5,
+      "known_minutes_share": 0.865,
+      "players_known": 11,
+      "players": 12
+    },
+    "Tampereen Pyrintö": {
+      "average_age": 24.3,
+      "roster_average_age": 23.4,
+      "known_minutes_share": 1.0,
+      "players_known": 11,
+      "players": 11
+    },
+    "Tapiolan Honka": {
+      "average_age": 24.6,
+      "roster_average_age": 24.2,
+      "known_minutes_share": 1.0,
+      "players_known": 12,
+      "players": 12
+    }
+  }
+}

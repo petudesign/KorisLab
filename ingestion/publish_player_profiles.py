@@ -14,6 +14,7 @@ from ingestion.basketfi import BasketFiClient
 
 
 ROOT = Path(__file__).resolve().parents[1]
+PUBLIC_BIRTH_YEAR_MIN_AGE = 19
 SEASONS = (
     {
         "league_id": "naisten-korisliiga", "season_id": "2024-25",
@@ -202,6 +203,56 @@ def fetch_rosters(
             time.sleep(1)
     return roster_by_id, contexts, failures
 
+def birth_year_value(row: dict[str, Any]) -> int | None:
+    try:
+        year = int(str(row.get("birthyear")).strip())
+    except ValueError:
+        return None
+    return year if 1950 <= year <= date.today().year else None
+
+
+# A year alone cannot show that someone has turned 18, so the public profile waits a year.
+# Everyone still counts towards their team's average age, which does not reveal any one player.
+def public_birth_year(year: int | None, current_year: int) -> int | None:
+    return year if year is not None and current_year - year >= PUBLIC_BIRTH_YEAR_MIN_AGE else None
+
+
+def team_ages(records: list[dict[str, Any]], birth_years: dict[str, int], season_id: str) -> dict[str, dict[str, Any]]:
+    season_start = int(season_id[:4])
+    teams: dict[str, dict[str, Any]] = {}
+    for record in records:
+        for team in record.get("teams", []):
+            name = text(team.get("name"))
+            if not name:
+                continue
+            row = teams.setdefault(name, {"minutes": 0.0, "known_minutes": 0.0, "weighted_age": 0.0, "ages": {}, "players": set()})
+            for player in team.get("players", []):
+                player_id = text(player.get("source_player_id"))
+                try:
+                    minutes = float(player.get("minutes") or 0)
+                except (TypeError, ValueError):
+                    minutes = 0.0
+                if not player_id or minutes <= 0:
+                    continue
+                row["minutes"] += minutes
+                row["players"].add(player_id)
+                year = birth_years.get(player_id)
+                if year is not None:
+                    row["known_minutes"] += minutes
+                    row["weighted_age"] += minutes * (season_start - year)
+                    row["ages"][player_id] = season_start - year
+    return {
+        name: {
+            "average_age": round(row["weighted_age"] / row["known_minutes"], 1),
+            "roster_average_age": round(sum(row["ages"].values()) / len(row["ages"]), 1),
+            "known_minutes_share": round(row["known_minutes"] / row["minutes"], 3),
+            "players_known": len(row["ages"]),
+            "players": len(row["players"]),
+        }
+        for name, row in sorted(teams.items()) if row["known_minutes"] > 0
+    }
+
+
 def collect_player_profiles(
     records: list[dict[str, Any]],
     team_ids_by_name: dict[str, list[str]],
@@ -211,6 +262,7 @@ def collect_player_profiles(
     season_id: str,
     roster_failures: dict[str, str],
 ) -> tuple[dict[str, dict[str, Any]], dict[str, Any]]:
+    new_values = lambda: {"position_fi": set(), "position_en": set(), "height_cm": set(), "birth_year": set(), "nationality": set()}
     collected: dict[str, dict[str, set[Any]]] = {}
     matched_appearances = 0
     total_appearances = 0
@@ -242,14 +294,17 @@ def collect_player_profiles(
                     continue
                 total_appearances += 1
                 player_key = canonical(name)
-                matches = [row for row in candidate_rows
-                           if canonical(full_name(row)) == player_key
-                           and roster_row_overlaps(row, season_id, when)]
+                named = [row for row in candidate_rows if canonical(full_name(row)) == player_key]
+                # A birth year does not depend on when the player was on the roster, unlike the other fields.
+                years = {year for row in named if (year := birth_year_value(row)) is not None}
+                if years:
+                    collected.setdefault(player_id, new_values())["birth_year"].update(years)
+                matches = [row for row in named if roster_row_overlaps(row, season_id, when)]
                 if not matches:
                     unmatched_names.add(name)
                     continue
                 matched_appearances += 1
-                values = collected.setdefault(player_id, {"position_fi": set(), "position_en": set(), "height_cm": set(), "nationality": set()})
+                values = collected.setdefault(player_id, new_values())
                 for row in matches:
                     fi, en = position_labels(row)
                     if fi:
@@ -271,6 +326,7 @@ def collect_player_profiles(
         # Stable bio fields are shown only when all matching Basket.fi roster
         # records agree. Roles may vary; preserve those as a season-level list.
         height_values = sorted(values["height_cm"])
+        birth_year_values = sorted(values["birth_year"])
         nationality_values = sorted(values["nationality"])
         positions_fi = sorted(values["position_fi"])
         positions_en = sorted(values["position_en"])
@@ -278,6 +334,7 @@ def collect_player_profiles(
             "positions_fi": positions_fi,
             "positions_en": positions_en,
             "height_cm": height_values[0] if len(height_values) == 1 else None,
+            "birth_year": birth_year_values[0] if len(birth_year_values) == 1 else None,
             "nationality": nationality_values[0] if len(nationality_values) == 1 else None,
         }
         if any(profile.values()):
@@ -317,24 +374,30 @@ def main() -> None:
         season_results.append({"config": config, "records": records, "profiles": profiles,
                                "coverage": coverage, "player_ids": player_ids})
         for player_id, profile in profiles.items():
-            values = stable_values.setdefault((config["league_id"], player_id), {"height_cm": set(), "nationality": set()})
+            values = stable_values.setdefault((config["league_id"], player_id), {"height_cm": set(), "birth_year": set(), "nationality": set()})
             if profile["height_cm"] is not None:
                 values["height_cm"].add(profile["height_cm"])
             if profile["nationality"] is not None:
                 values["nationality"].add(profile["nationality"])
+            if profile["birth_year"] is not None:
+                values["birth_year"].add(profile["birth_year"])
 
     for result in season_results:
         config = result["config"]
         profiles = result["profiles"]
         for player_id in result["player_ids"]:
             profile = profiles.setdefault(player_id, {
-                "positions_fi": [], "positions_en": [], "height_cm": None, "nationality": None,
+                "positions_fi": [], "positions_en": [], "height_cm": None, "birth_year": None, "nationality": None,
             })
             stable = stable_values.get((config["league_id"], player_id), {})
-            for field in ("height_cm", "nationality"):
+            for field in ("height_cm", "birth_year", "nationality"):
                 values = stable.get(field, set())
                 if profile[field] is None and len(values) == 1:
                     profile[field] = next(iter(values))
+        birth_years = {player_id: profile["birth_year"] for player_id, profile in profiles.items() if profile["birth_year"] is not None}
+        ages = team_ages(result["records"], birth_years, config["season_id"])
+        for profile in profiles.values():
+            profile["birth_year"] = public_birth_year(profile["birth_year"], date.today().year)
         profiles = {player_id: profile for player_id, profile in profiles.items() if any(profile.values())}
         coverage = result["coverage"]
         coverage["players_in_season"] = len(result["player_ids"])
@@ -352,6 +415,13 @@ def main() -> None:
         }
         destination = output_dir / f"player-profiles-{config['season_id']}.json"
         destination.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        (output_dir / f"team-ages-{config['season_id']}.json").write_text(json.dumps({
+            "schema_version": "0.1",
+            "league_id": config["league_id"],
+            "season_id": config["season_id"],
+            "updated_at": output["updated_at"],
+            "teams": ages,
+        }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         print(f"{config['league_id']} {config['season_id']}: {len(profiles)} profiles; "
               f"matched {coverage['matched_appearances']}/{coverage['total_appearances']} appearances "
               f"({coverage['matched_player_rate']:.0%}); wrote {destination.relative_to(ROOT)}", flush=True)

@@ -1,0 +1,78 @@
+{
+  "schema_version": "0.1",
+  "league_id": "naisten-korisliiga",
+  "season_id": "2024-25",
+  "updated_at": "2026-11-02T15:33:50Z",
+  "teams": {
+    "BC Nokia": {
+      "average_age": 21.5,
+      "roster_average_age": 20.4,
+      "known_minutes_share": 0.401,
+      "players_known": 7,
+      "players": 17
+    },
+    "Espoo Basket Team": {
+      "average_age": 19.8,
+      "roster_average_age": 18.8,
+      "known_minutes_share": 0.371,
+      "players_known": 6,
+      "players": 14
+    },
+    "Forssan Alku": {
+      "average_age": 23.8,
+      "roster_average_age": 24.0,
+      "known_minutes_share": 0.53,
+      "players_known": 4,
+      "players": 15
+    },
+    "HBA-Märsky": {
+      "average_age": 16.6,
+      "roster_average_age": 16.8,
+      "known_minutes_share": 0.616,
+      "players_known": 10,
+      "players": 15
+    },
+    "Kouvottaret": {
+      "average_age": 21.6,
+      "roster_average_age": 20.2,
+      "known_minutes_share": 0.225,
+      "players_known": 4,
+      "players": 12
+    },
+    "Peli-Karhut": {
+      "average_age": 29.4,
+      "roster_average_age": 26.3,
+      "known_minutes_share": 0.24,
+      "players_known": 3,
+      "players": 16
+    },
+    "Tampereen Pyrintö": {
+      "average_age": 21.4,
+      "roster_average_age": 19.1,
+      "known_minutes_share": 0.612,
+      "players_known": 13,
+      "players": 19
+    },
+    "Tapiolan Honka": {
+      "average_age": 23.9,
+      "roster_average_age": 23.3,
+      "known_minutes_share": 0.357,
+      "players_known": 3,
+      "players": 12
+    },
+    "ToPo": {
+      "average_age": 22.1,
+      "roster_average_age": 22.2,
+      "known_minutes_share": 0.409,
+      "players_known": 5,
+      "players": 12
+    },
+    "Vimpelin Veto": {
+      "average_age": 23.2,
+      "roster_average_age": 23.0,
+      "known_minutes_share": 0.48,
+      "players_known": 7,
+      "players": 19
+    }
+  }
+}

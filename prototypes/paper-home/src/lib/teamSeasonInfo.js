@@ -1,3 +1,4 @@
+import {leagueOrder} from './standings.js';
 // Values transcribed from the Finnish Basketball Association's official
 // 2026–27 Korisliiga season briefs. A dash in the source is kept as null.
 const women = {
@@ -108,11 +109,13 @@ export function teamSeasonContext(games, previousGames, teamName) {
       records.set(name,row);
     }
   }
-  const standings = [...records.values()].sort((a,b)=>b.wins/Math.max(1,b.games)-a.wins/Math.max(1,a.games)||b.diff-a.diff||a.name.localeCompare(b.name,'fi'));
-  const currentRank = standings.findIndex(row=>row.name===teamName)+1 || null;
+  // The same order as the standings table, so a team's rank reads the same everywhere.
+  const standings = leagueOrder(played);
+  const currentRank = standings.indexOf(teamName)+1 || null;
+  const previousRegularRank = Array.isArray(previousGames) ? leagueOrder(previousGames).indexOf(teamName)+1 || null : null;
   const currentRecord = records.get(teamName) || {wins:0,losses:0};
 
-  if (!Array.isArray(previousGames)) return {games:results.length,biggestWin:wins[0]||null,biggestLoss:losses[0]||null,currentRank,standingsCount:standings.length,wins:currentRecord.wins,losses:currentRecord.losses,roster:null};
+  if (!Array.isArray(previousGames)) return {games:results.length,biggestWin:wins[0]||null,biggestLoss:losses[0]||null,currentRank,previousRegularRank,standingsCount:standings.length,wins:currentRecord.wins,losses:currentRecord.losses,roster:null};
   const currentRoster = playerRoster(games,teamName), previousRoster = playerRoster(previousGames,teamName), previousLeague = allPlayers(previousGames);
   const returning = [...currentRoster.byId.values()].filter(player=>findPlayer(player,previousRoster));
   const movedIn = [...currentRoster.byId.values()].filter(player=>{
@@ -121,5 +124,5 @@ export function teamSeasonContext(games, previousGames, teamName) {
   });
   const newToLeagueData = [...currentRoster.byId.values()].filter(player=>!findPlayer(player,previousLeague));
   const notYetSeen = [...previousRoster.byId.values()].filter(player=>!findPlayer(player,currentRoster));
-  return {games:results.length,biggestWin:wins[0]||null,biggestLoss:losses[0]||null,currentRank,standingsCount:standings.length,wins:currentRecord.wins,losses:currentRecord.losses,roster:{current:currentRoster.byId.size,previous:previousRoster.byId.size,returning:returning.length,joined:currentRoster.byId.size-returning.length,movedIn:movedIn.length,newToLeagueData:newToLeagueData.length,notYetSeen:notYetSeen.length}};
+  return {games:results.length,biggestWin:wins[0]||null,biggestLoss:losses[0]||null,currentRank,previousRegularRank,standingsCount:standings.length,wins:currentRecord.wins,losses:currentRecord.losses,roster:{current:currentRoster.byId.size,previous:previousRoster.byId.size,returning:returning.length,joined:currentRoster.byId.size-returning.length,movedIn:movedIn.length,newToLeagueData:newToLeagueData.length,notYetSeen:notYetSeen.length}};
 }

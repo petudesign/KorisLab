@@ -3,14 +3,14 @@
   "league_id": "naisten-korisliiga",
   "season_id": "2026-27",
   "source_url": "https://tulospalvelu.basket.fi/",
-  "updated_at": "2026-10-06T09:06:43Z",
+  "updated_at": "2026-11-02T15:33:50Z",
   "coverage": {
-    "matched_appearances": 79,
-    "total_appearances": 82,
-    "matched_player_rate": 0.9634,
-    "profiles_with_data": 81,
+    "matched_appearances": 449,
+    "total_appearances": 473,
+    "matched_player_rate": 0.9493,
+    "profiles_with_data": 108,
     "roster_fetch_failures": {},
-    "players_in_season": 82
+    "players_in_season": 109
   },
   "players": {
     "1f88c5bf-90bf-11f1-9595-7104566eb116": {
@@ -21,6 +21,7 @@
         "Guard"
       ],
       "height_cm": 160,
+      "birth_year": null,
       "nationality": "FI"
     },
     "224b3798-bb2b-11f1-9366-df82ac1db881": {
@@ -31,6 +32,7 @@
         "Guard"
       ],
       "height_cm": 176,
+      "birth_year": 2000,
       "nationality": "US"
     },
     "3f014d7d-90bd-11f1-a152-b9351c62770e": {
@@ -41,6 +43,7 @@
         "Guard"
       ],
       "height_cm": 172,
+      "birth_year": 2001,
       "nationality": "FI"
     },
     "5abd665b-90bd-11f1-bba0-6dc09d38f92b": {
@@ -51,6 +54,7 @@
         "Center"
       ],
       "height_cm": 185,
+      "birth_year": 2002,
       "nationality": "FI"
     },
     "5fb8fa0f-90bf-11f1-b0c5-3dc68df8a35d": {
@@ -61,6 +65,7 @@
         "Guard"
       ],
       "height_cm": 170,
+      "birth_year": null,
       "nationality": "FI"
     },
     "688f4311-90bd-11f1-8224-73575e376a6e": {
@@ -71,6 +76,7 @@
         "Center"
       ],
       "height_cm": 181,
+      "birth_year": 2002,
       "nationality": "FI"
     },
     "80bde8fc-90bc-11f1-a469-6724e60b9a02": {
@@ -81,6 +87,7 @@
         "Forward"
       ],
       "height_cm": 175,
+      "birth_year": 1999,
       "nationality": "FI"
     },
     "c38e5848-90bd-11f1-9b11-7b525a68ccc9": {
@@ -91,6 +98,7 @@
         "Center"
       ],
       "height_cm": 183,
+      "birth_year": 2003,
       "nationality": "FI"
     },
     "d051fa0d-bb2a-11f1-8672-87bafd9c4eb1": {
@@ -101,6 +109,7 @@
         "Guard"
       ],
       "height_cm": 173,
+      "birth_year": 1993,
       "nationality": "US"
     },
     "1df670a7-90bc-11f1-98ff-e9ae9e26fc7d": {
@@ -111,6 +120,7 @@
         "Guard"
       ],
       "height_cm": 170,
+      "birth_year": 1997,
       "nationality": "FI"
     },
     "24afa711-90bc-11f1-ae99-b9351c62770e": {
@@ -121,6 +131,7 @@
         "Guard"
       ],
       "height_cm": 172,
+      "birth_year": 1997,
       "nationality": "FI"
     },
     "295fd067-90bd-11f1-bcf0-d1b26dd8807a": {
@@ -131,6 +142,7 @@
         "Guard"
       ],
       "height_cm": 163,
+      "birth_year": 2001,
       "nationality": "FI"
     },
     "3eb16fdc-90bd-11f1-a2bc-b9351c62770e": {
@@ -141,6 +153,7 @@
         "Guard"
       ],
       "height_cm": 172,
+      "birth_year": 2001,
       "nationality": "FI"
     },
     "5682f31f-90bb-11f1-adf1-d7ea4c2d0ca3": {
@@ -151,6 +164,7 @@
         "Forward"
       ],
       "height_cm": 180,
+      "birth_year": 1994,
       "nationality": "FI"
     },
     "6aa00ee4-90bf-11f1-a4cd-4fc2adf4ab8e": {
@@ -161,6 +175,7 @@
         "Center"
       ],
       "height_cm": 187,
+      "birth_year": null,
       "nationality": "FI"
     },
     "9b566fe8-90bc-11f1-9632-d14817461866": {
@@ -171,6 +186,7 @@
         "Forward"
       ],
       "height_cm": 177,
+      "birth_year": 1999,
       "nationality": "FI"
     },
     "a7972221-90be-11f1-a4ca-13228fe003c9": {
@@ -181,6 +197,7 @@
         "Forward"
       ],
       "height_cm": 181,
+      "birth_year": 2007,
       "nationality": "FI"
     },
     "dfe80f45-90bd-11f1-be7c-6be1da1f835c": {
@@ -191,6 +208,7 @@
         "Forward"
       ],
       "height_cm": 180,
+      "birth_year": 2004,
       "nationality": "FI"
     },
     "e68d85b2-90bd-11f1-ba0f-d7c486996b5f": {
@@ -201,6 +219,7 @@
         "Center"
       ],
       "height_cm": 183,
+      "birth_year": 2004,
       "nationality": "FI"
     },
     "250bf49e-90bf-11f1-bc38-3b6494574767": {
@@ -211,6 +230,7 @@
         "Guard"
       ],
       "height_cm": 171,
+      "birth_year": null,
       "nationality": "FI"
     },
     "4e4313fa-90bd-11f1-aa24-d925956b0a39": {
@@ -221,6 +241,7 @@
         "Center"
       ],
       "height_cm": 185,
+      "birth_year": 2001,
       "nationality": "FI"
     },
     "68451ce5-90bd-11f1-b9da-73575e376a6e": {
@@ -231,6 +252,7 @@
         "Guard"
       ],
       "height_cm": 174,
+      "birth_year": 2002,
       "nationality": "FI"
     },
     "78f56213-90be-11f1-bea6-9339b75ea0b9": {
@@ -241,6 +263,7 @@
         "Forward"
       ],
       "height_cm": 173,
+      "birth_year": 2006,
       "nationality": "FI"
     },
     "86a6fd5c-b0e7-11f1-9faa-b9639d00cd21": {
@@ -251,6 +274,7 @@
         "Center"
       ],
       "height_cm": 188,
+      "birth_year": 2003,
       "nationality": "US"
     },
     "9b18fc96-90bb-11f1-8441-35d7afbe70b8": {
@@ -261,6 +285,7 @@
         "Guard"
       ],
       "height_cm": 165,
+      "birth_year": 1995,
       "nationality": "FI"
     },
     "a08bb81c-90bd-11f1-842e-277bedfa33ca": {
@@ -271,6 +296,7 @@
         "Guard"
       ],
       "height_cm": 170,
+      "birth_year": 2003,
       "nationality": "FI"
     },
     "aee15430-90bd-11f1-9f98-37aaf0479419": {
@@ -281,6 +307,7 @@
         "Forward"
       ],
       "height_cm": 176,
+      "birth_year": 2003,
       "nationality": "FI"
     },
     "dbe2c474-90be-11f1-83ff-73883e79fac1": {
@@ -291,6 +318,7 @@
         "Guard"
       ],
       "height_cm": 171,
+      "birth_year": 2007,
       "nationality": "FI"
     },
     "fd586bdf-ae00-11f1-baf7-1b746f567d9d": {
@@ -301,6 +329,7 @@
         "Forward"
       ],
       "height_cm": 182,
+      "birth_year": 2002,
       "nationality": "US"
     },
     "fe4ac659-ae00-11f1-9afb-adc603652717": {
@@ -311,6 +340,7 @@
         "Forward"
       ],
       "height_cm": 188,
+      "birth_year": 2003,
       "nationality": "US"
     },
     "5f19357c-90bc-11f1-9f21-9f45eff23255": {
@@ -321,6 +351,7 @@
         "Guard"
       ],
       "height_cm": 173,
+      "birth_year": 1998,
       "nationality": "US"
     },
     "72f884e7-90bf-11f1-9198-f3e0ee38e95c": {
@@ -331,6 +362,7 @@
         "Guard"
       ],
       "height_cm": 180,
+      "birth_year": null,
       "nationality": "FI"
     },
     "84fd45d0-90bf-11f1-9edc-df5a7344780a": {
@@ -341,6 +373,7 @@
         "Guard"
       ],
       "height_cm": 174,
+      "birth_year": null,
       "nationality": "FI"
     },
     "8e8bd0ae-b968-11f1-bba6-b31538bf0c7b": {
@@ -351,6 +384,7 @@
         "Forward"
       ],
       "height_cm": 183,
+      "birth_year": 2000,
       "nationality": "US"
     },
     "93dacbdf-90be-11f1-8ee4-b9d3b0a6c9e2": {
@@ -361,6 +395,7 @@
         "Guard"
       ],
       "height_cm": 180,
+      "birth_year": 2006,
       "nationality": "FI"
     },
     "a10da6f8-90be-11f1-9492-f55c6a1f11ab": {
@@ -371,6 +406,7 @@
         "Center"
       ],
       "height_cm": 184,
+      "birth_year": 2007,
       "nationality": "FI"
     },
     "cadfb0d4-90be-11f1-94a8-699532503340": {
@@ -381,6 +417,7 @@
         "Guard"
       ],
       "height_cm": 173,
+      "birth_year": 2007,
       "nationality": "FI"
     },
     "ce076870-90bf-11f1-b89b-057c596d8bba": {
@@ -391,6 +428,7 @@
         "Guard"
       ],
       "height_cm": 171,
+      "birth_year": null,
       "nationality": "FI"
     },
     "cf28d5ff-b968-11f1-a300-9bd9497afdf3": {
@@ -401,7 +439,15 @@
         "Center"
       ],
       "height_cm": 193,
+      "birth_year": 2003,
       "nationality": "US"
+    },
+    "da2b5a61-90bd-11f1-ae42-23575df7f55b": {
+      "positions_fi": [],
+      "positions_en": [],
+      "height_cm": 173,
+      "birth_year": 2004,
+      "nationality": "FI"
     },
     "f1bb247c-90bd-11f1-ac51-4f8fabaf4a0e": {
       "positions_fi": [
@@ -411,6 +457,7 @@
         "Guard"
       ],
       "height_cm": 177,
+      "birth_year": 2004,
       "nationality": "FI"
     },
     "072bebf0-90be-11f1-9991-63f25f046c80": {
@@ -421,6 +468,7 @@
         "Forward"
       ],
       "height_cm": 185,
+      "birth_year": 2004,
       "nationality": "FI"
     },
     "119b31d8-90bd-11f1-b34c-7b8c3a749dc5": {
@@ -431,6 +479,7 @@
         "Guard"
       ],
       "height_cm": 173,
+      "birth_year": 2000,
       "nationality": "FI"
     },
     "6dc845fc-bb09-11f1-b847-4bfc5aa83a90": {
@@ -441,6 +490,7 @@
         "Forward"
       ],
       "height_cm": 181,
+      "birth_year": 2001,
       "nationality": "US"
     },
     "c55056c3-90bd-11f1-8e05-7b525a68ccc9": {
@@ -451,6 +501,7 @@
         "Center"
       ],
       "height_cm": 185,
+      "birth_year": 2003,
       "nationality": "FI"
     },
     "c570bb13-90bd-11f1-8a85-7b525a68ccc9": {
@@ -461,6 +512,7 @@
         "Guard"
       ],
       "height_cm": 175,
+      "birth_year": 2003,
       "nationality": "FI"
     },
     "d42257a7-90bc-11f1-a912-ada88c48e62e": {
@@ -471,6 +523,7 @@
         "Forward"
       ],
       "height_cm": 183,
+      "birth_year": 2000,
       "nationality": "FI"
     },
     "dcab331a-90be-11f1-a9fd-73883e79fac1": {
@@ -481,6 +534,7 @@
         "Forward"
       ],
       "height_cm": 173,
+      "birth_year": 2007,
       "nationality": "FI"
     },
     "f0d1592d-90be-11f1-a323-713ca2bbccaa": {
@@ -491,6 +545,7 @@
         "Forward"
       ],
       "height_cm": 171,
+      "birth_year": null,
       "nationality": "FI"
     },
     "02f00705-90bf-11f1-8a81-afaea9d0f10f": {
@@ -501,6 +556,7 @@
         "Forward"
       ],
       "height_cm": 186,
+      "birth_year": null,
       "nationality": "FI"
     },
     "0ff1d72f-90bf-11f1-be89-31ded31f16e5": {
@@ -511,6 +567,7 @@
         "Center"
       ],
       "height_cm": 191,
+      "birth_year": null,
       "nationality": "FI"
     },
     "1f9bbb22-90bf-11f1-a972-7104566eb116": {
@@ -521,6 +578,7 @@
         "Guard"
       ],
       "height_cm": 177,
+      "birth_year": null,
       "nationality": "FI"
     },
     "2c6d50fe-90bf-11f1-9c4e-515875ef95f7": {
@@ -531,6 +589,7 @@
         "Guard"
       ],
       "height_cm": 181,
+      "birth_year": null,
       "nationality": "FI"
     },
     "53c1ab90-90bf-11f1-a541-0d6fa49bbe21": {
@@ -541,6 +600,7 @@
         "Forward"
       ],
       "height_cm": 193,
+      "birth_year": null,
       "nationality": "FI"
     },
     "793f6d2f-90bf-11f1-9dbc-f9bd2f996dfd": {
@@ -551,12 +611,14 @@
         "Forward"
       ],
       "height_cm": 180,
+      "birth_year": null,
       "nationality": "FI"
     },
     "b043f1e4-90bf-11f1-af3f-8366bf5442cb": {
       "positions_fi": [],
       "positions_en": [],
       "height_cm": 173,
+      "birth_year": null,
       "nationality": "FI"
     },
     "b5fa7db0-90be-11f1-88d4-6b2027ef299b": {
@@ -567,6 +629,7 @@
         "Center"
       ],
       "height_cm": 197,
+      "birth_year": 2007,
       "nationality": "FI"
     },
     "c470e1d1-90be-11f1-bdec-99f5e03a6b84": {
@@ -577,6 +640,7 @@
         "Forward"
       ],
       "height_cm": 188,
+      "birth_year": 2007,
       "nationality": "FI"
     },
     "d5d80bed-90be-11f1-92a8-2dc165e7f1b2": {
@@ -587,6 +651,7 @@
         "Guard"
       ],
       "height_cm": 177,
+      "birth_year": 2007,
       "nationality": "FI"
     },
     "e3d248a5-90be-11f1-82ef-73883e79fac1": {
@@ -597,6 +662,7 @@
         "Forward"
       ],
       "height_cm": 184,
+      "birth_year": 2007,
       "nationality": "FI"
     },
     "1e92d90a-90bf-11f1-bc2e-7104566eb116": {
@@ -607,6 +673,7 @@
         "Center"
       ],
       "height_cm": 183,
+      "birth_year": null,
       "nationality": "FI"
     },
     "36cc6dd8-90bc-11f1-9be0-05157c8829f2": {
@@ -617,6 +684,7 @@
         "Forward"
       ],
       "height_cm": 175,
+      "birth_year": 1998,
       "nationality": "FI"
     },
     "7d178d78-90bd-11f1-b25f-59500384dde4": {
@@ -627,6 +695,7 @@
         "Forward"
       ],
       "height_cm": 184,
+      "birth_year": 2002,
       "nationality": "FI"
     },
     "848420ff-90bf-11f1-99e1-df5a7344780a": {
@@ -637,6 +706,7 @@
         "Forward"
       ],
       "height_cm": 181,
+      "birth_year": null,
       "nationality": "FI"
     },
     "8ca9f24f-90bd-11f1-8c77-95de893ea309": {
@@ -647,6 +717,7 @@
         "Guard"
       ],
       "height_cm": 173,
+      "birth_year": 2003,
       "nationality": "FI"
     },
     "a88d047f-90be-11f1-abb8-13228fe003c9": {
@@ -657,6 +728,7 @@
         "Forward"
       ],
       "height_cm": 178,
+      "birth_year": 2007,
       "nationality": "FI"
     },
     "bb4c762b-90be-11f1-80a5-6b2027ef299b": {
@@ -667,6 +739,7 @@
         "Center"
       ],
       "height_cm": 188,
+      "birth_year": 2007,
       "nationality": "FI"
     },
     "d07fac4d-90be-11f1-a798-1550020fb2b2": {
@@ -677,6 +750,7 @@
         "Forward"
       ],
       "height_cm": 182,
+      "birth_year": 2007,
       "nationality": "FI"
     },
     "eedffa14-90bb-11f1-8d0f-51139916104b": {
@@ -687,6 +761,7 @@
         "Forward"
       ],
       "height_cm": 185,
+      "birth_year": 1996,
       "nationality": "FI"
     },
     "f3ee9fc8-90bd-11f1-a9fa-4f8fabaf4a0e": {
@@ -697,6 +772,7 @@
         "Guard"
       ],
       "height_cm": 177,
+      "birth_year": 2004,
       "nationality": "FI"
     },
     "10cdb07f-90bd-11f1-9539-7b8c3a749dc5": {
@@ -706,7 +782,8 @@
       "positions_en": [
         "Forward"
       ],
-      "height_cm": 176,
+      "height_cm": 179,
+      "birth_year": 2000,
       "nationality": "FI"
     },
     "19c35381-90be-11f1-8d32-5d5f4f976a20": {
@@ -717,6 +794,7 @@
         "Center"
       ],
       "height_cm": 189,
+      "birth_year": 2005,
       "nationality": "FI"
     },
     "295047b1-90bd-11f1-8b04-d1b26dd8807a": {
@@ -727,6 +805,7 @@
         "Guard"
       ],
       "height_cm": 174,
+      "birth_year": 2001,
       "nationality": "FI"
     },
     "2aabf0c9-90bf-11f1-8a9b-515875ef95f7": {
@@ -737,6 +816,7 @@
         "Guard"
       ],
       "height_cm": 174,
+      "birth_year": null,
       "nationality": "FI"
     },
     "45d4e94b-90bd-11f1-bfd6-c73957d2f288": {
@@ -747,6 +827,7 @@
         "Guard"
       ],
       "height_cm": 172,
+      "birth_year": 2001,
       "nationality": "FI"
     },
     "4d4cc2df-90bf-11f1-8d4e-85b9a01ea999": {
@@ -757,6 +838,7 @@
         "Center"
       ],
       "height_cm": 183,
+      "birth_year": null,
       "nationality": "FI"
     },
     "540c2922-90bf-11f1-a71e-0d6fa49bbe21": {
@@ -767,6 +849,7 @@
         "Forward"
       ],
       "height_cm": 179,
+      "birth_year": null,
       "nationality": "FI"
     },
     "6c0d90ce-90be-11f1-b03f-8b7b745739af": {
@@ -777,6 +860,7 @@
         "Guard"
       ],
       "height_cm": 166,
+      "birth_year": 2006,
       "nationality": "FI"
     },
     "7a24b37e-90be-11f1-beed-9339b75ea0b9": {
@@ -787,7 +871,15 @@
         "Forward"
       ],
       "height_cm": 176,
+      "birth_year": 2006,
       "nationality": "FI"
+    },
+    "bdffb17d-90bc-11f1-bdfe-916f627ff7ec": {
+      "positions_fi": [],
+      "positions_en": [],
+      "height_cm": null,
+      "birth_year": 1999,
+      "nationality": null
     },
     "bf77ac5d-90bf-11f1-8197-7f2d70fdcfec": {
       "positions_fi": [
@@ -797,18 +889,288 @@
         "Forward"
       ],
       "height_cm": 175,
+      "birth_year": null,
       "nationality": "FI"
     },
     "f1ed659b-90bd-11f1-8508-4f8fabaf4a0e": {
       "positions_fi": [],
       "positions_en": [],
       "height_cm": 168,
+      "birth_year": 2004,
       "nationality": "FI"
     },
-    "da2b5a61-90bd-11f1-ae42-23575df7f55b": {
+    "02439126-90bd-11f1-9900-e9a336bf1467": {
+      "positions_fi": [
+        "Laitahyökkääjä"
+      ],
+      "positions_en": [
+        "Forward"
+      ],
+      "height_cm": 178,
+      "birth_year": 2000,
+      "nationality": "FI"
+    },
+    "164ac9ef-90bf-11f1-9b48-1f5ab6163e2c": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 171,
+      "birth_year": null,
+      "nationality": "FI"
+    },
+    "167e643c-90bf-11f1-bf87-1f5ab6163e2c": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 176,
+      "birth_year": null,
+      "nationality": "FI"
+    },
+    "1d9109ea-90bf-11f1-8624-7104566eb116": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 174,
+      "birth_year": null,
+      "nationality": "FI"
+    },
+    "2ae72529-90bf-11f1-92ca-515875ef95f7": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 176,
+      "birth_year": null,
+      "nationality": "FI"
+    },
+    "517a716f-90be-11f1-b1eb-699532503340": {
+      "positions_fi": [],
+      "positions_en": [],
+      "height_cm": 187,
+      "birth_year": 2006,
+      "nationality": "FI"
+    },
+    "57fddf41-90be-11f1-8d52-174497ca91c8": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 171,
+      "birth_year": 2006,
+      "nationality": "FI"
+    },
+    "5e2b874e-90be-11f1-8aad-2ffd388e433c": {
+      "positions_fi": [
+        "Sentteri"
+      ],
+      "positions_en": [
+        "Center"
+      ],
+      "height_cm": 186,
+      "birth_year": 2006,
+      "nationality": "FI"
+    },
+    "ec7ed40e-90bd-11f1-889f-5bafc2773088": {
+      "positions_fi": [
+        "Laitahyökkääjä"
+      ],
+      "positions_en": [
+        "Forward"
+      ],
+      "height_cm": 183,
+      "birth_year": 2004,
+      "nationality": "FI"
+    },
+    "fd847bc7-90be-11f1-87ba-31ded31f16e5": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 178,
+      "birth_year": null,
+      "nationality": "FI"
+    },
+    "417f1240-90be-11f1-93d6-2ffd388e433c": {
+      "positions_fi": [
+        "Laitahyökkääjä"
+      ],
+      "positions_en": [
+        "Forward"
+      ],
+      "height_cm": 176,
+      "birth_year": 2005,
+      "nationality": "FI"
+    },
+    "47408b55-bb09-11f1-bdcf-117fb8a9e697": {
+      "positions_fi": [
+        "Laitahyökkääjä"
+      ],
+      "positions_en": [
+        "Forward"
+      ],
+      "height_cm": 180,
+      "birth_year": 2003,
+      "nationality": "US"
+    },
+    "53467fc8-90bd-11f1-884e-fdb6131f8409": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 169,
+      "birth_year": 2002,
+      "nationality": "FI"
+    },
+    "9962115c-90be-11f1-94e3-839d4a76272d": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 168,
+      "birth_year": 2006,
+      "nationality": "FI"
+    },
+    "1652de90-90bf-11f1-bbd7-1f5ab6163e2c": {
+      "positions_fi": [
+        "Laitahyökkääjä"
+      ],
+      "positions_en": [
+        "Forward"
+      ],
+      "height_cm": 180,
+      "birth_year": null,
+      "nationality": "FI"
+    },
+    "fc8cb5f3-90be-11f1-b858-31ded31f16e5": {
+      "positions_fi": [
+        "Laitahyökkääjä"
+      ],
+      "positions_en": [
+        "Forward"
+      ],
+      "height_cm": 182,
+      "birth_year": null,
+      "nationality": "FI"
+    },
+    "a7cfdab7-90be-11f1-8a54-13228fe003c9": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 179,
+      "birth_year": 2007,
+      "nationality": "FI"
+    },
+    "059b1020-90be-11f1-9324-63f25f046c80": {
       "positions_fi": [],
       "positions_en": [],
       "height_cm": 173,
+      "birth_year": 2004,
+      "nationality": "FI"
+    },
+    "c55cb61d-90bd-11f1-b6a3-7b525a68ccc9": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 165,
+      "birth_year": 2003,
+      "nationality": "FI"
+    },
+    "d967ba88-90bf-11f1-b14f-856a28018d0a": {
+      "positions_fi": [
+        "Laitahyökkääjä"
+      ],
+      "positions_en": [
+        "Forward"
+      ],
+      "height_cm": 174,
+      "birth_year": null,
+      "nationality": "FI"
+    },
+    "2a5a38bc-90bf-11f1-9f47-515875ef95f7": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 166,
+      "birth_year": null,
+      "nationality": "FI"
+    },
+    "a0c836be-90be-11f1-911e-f55c6a1f11ab": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 182,
+      "birth_year": 2007,
+      "nationality": "FI"
+    },
+    "aa19fed0-90bf-11f1-a3d8-d9c0ec8b687c": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 164,
+      "birth_year": null,
+      "nationality": "FI"
+    },
+    "b918b97b-90bf-11f1-a817-a3988146f1e6": {
+      "positions_fi": [
+        "Takapelaaja"
+      ],
+      "positions_en": [
+        "Guard"
+      ],
+      "height_cm": 173,
+      "birth_year": null,
+      "nationality": "FI"
+    },
+    "9ca4d6c6-90ba-11f1-997d-c7817cb4e90e": {
+      "positions_fi": [],
+      "positions_en": [],
+      "height_cm": 174,
+      "birth_year": 1991,
+      "nationality": "FI"
+    },
+    "beba103f-90bf-11f1-86a5-7f2d70fdcfec": {
+      "positions_fi": [
+        "Laitahyökkääjä"
+      ],
+      "positions_en": [
+        "Forward"
+      ],
+      "height_cm": 187,
+      "birth_year": null,
       "nationality": "FI"
     }
   }

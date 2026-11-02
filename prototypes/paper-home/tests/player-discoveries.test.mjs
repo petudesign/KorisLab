@@ -1,6 +1,8 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
 import {discoveryQualification,seasonOutliers,playersToWatch} from '../src/lib/playerDiscoveries.js';
+import {aggregateSeasonPlayers} from '../src/lib/playerStats.ts';
 const player=(id,overrides={})=>({id,name:id,team:'Team',games:3,minutes:80,points:0,rebounds:0,assists:0,steals:0,twoPA:0,threePA:0,twoPM:0,threePM:0,...overrides});
 
 test('per-game outliers follow production and name the change per game',()=>{
@@ -58,4 +60,13 @@ test('a game with lost minutes does not remove a player from the comparison',()=
  const result=seasonOutliers([current],[prior]);
  assert.equal(result.rows[0].metric,'assists');
  assert.ok(Number.isFinite(result.rows[0].strength));
+});
+test('real seasons never show one stat on more than two cards, and two only when they move opposite ways if possible',()=>{
+ const rows=file=>{const games=JSON.parse(readFileSync(new URL(`../public/data/${file}-matches.json`,import.meta.url)));return aggregateSeasonPlayers(games.filter(g=>g.verified).map(g=>({game:{source_id:g.id},teams:g.teams.map(t=>({...t,source_id:t.id,home_away:t.side,players:t.players.map(p=>({...p,source_player_id:p.id,display_name:p.name,minutes:p.minutesValue}))}))})));};
+ for(const league of ['men','women']){
+  const {rows:shown}=seasonOutliers(rows(`${league}-2026-27`),rows(`${league}-2025-26`));
+  const counts={};for(const row of shown)counts[row.metric]=(counts[row.metric]||0)+1;
+  assert.ok(Object.values(counts).every(count=>count<=2),JSON.stringify(counts));
+  assert.equal(new Set(shown.map(row=>row.player.id)).size,shown.length);
+ }
 });

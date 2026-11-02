@@ -3,7 +3,7 @@ import {articleSlugs} from './lib/fiveGamesArticle.js';
 // Same as the server's default scope, which leaves these out of its public addresses.
 export const CANONICAL_SCOPE={leagueId:'women',seasonId:'2026-27'};
 import {legacyPath} from '../server/seo.mjs';
-export const sectionPaths={'Design system':'/design-system/','Haku':'/search/','Etusivu':'/','Yleiskatsaus':'/overview/','Ottelut':'/matches/','Joukkueet':'/teams/','Pelaajat':'/players/','Kausitrendit':'/season/','Analyysit':'/analysis/','Matchup Lab':'/matchup/','Sim Studio':'/sim/','Custom import':'/custom-import/','Datan tila':'/data/','Tietoa':'/about/'};
+export const sectionPaths={'Design system':'/design-system/','Haku':'/search/','Etusivu':'/','Yleiskatsaus':'/overview/','Ottelut':'/matches/','Joukkueet':'/teams/','Pelaajat':'/players/','Kausitrendit':'/season/','Analyysit':'/analysis/','Matchup Lab':'/matchup/','Samankaltaiset':'/similar/','Sim Studio':'/sim/','Custom import':'/custom-import/','Datan tila':'/data/','Tietoa':'/about/'};
 export const slug=name=>name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('fi').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 const decodeId=value=>{try{return decodeURIComponent(value);}catch{return null;}};
 export function readRoute(defaults,location=window.location){
@@ -23,6 +23,8 @@ export function readRoute(defaults,location=window.location){
 }
 export function routeHref(route){let path=sectionPaths[route.section]||'/';if(route.matchId)path=`/matches/${encodeURIComponent(route.matchId)}/${route.matchPanel?route.matchPanel+'/':''}`;if(route.playerId)path=`/players/${encodeURIComponent(route.playerId)}/`;if(route.articleId&&route.section==='Analyysit')path=`/analysis/${encodeURIComponent(route.articleId)}/`;if(route.teamId)path=`/teams/${route.leagueId==='men'?'korisliiga':'naisten-korisliiga'}/${encodeURIComponent(route.teamId)}/`;const query=new URLSearchParams({season:route.seasonId});if(route.leagueId==='men')query.set('league','korisliiga');if(route.section==='Haku'&&route.searchQuery)query.set('q',route.searchQuery);return `${path}?${query}`;}
 // Moving to a section opens its front page: an article is kept only when the move names it, or stays in place (a league or season change).
+// Opens an address that carries more than the route does, keeping Back and the scroll position working.
+export function goTo(href){history.replaceState({...history.state,scrollY:window.scrollY},'');history.pushState(null,'',href);dispatchEvent(new PopStateEvent('popstate'));}
 export const nextRoute=(route,next)=>({...route,...next,...('section' in next&&!('articleId' in next)?{articleId:undefined}:{})});
 // Window scroll per history entry: a new page starts at the top, Back returns to where the reader was.
 // The desktop data page scrolls its own content area; on mobile the window scrolls, so it needs this.

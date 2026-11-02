@@ -118,12 +118,12 @@ export function MatchupLab({ initialPlayerA, initialPlayerB }: { initialPlayerA?
   const supportsOnOff = seasonId === "2025-26" || leagueId === "korisliiga" && seasonId === "2024-25";
   const { tr, language } = useI18n();
   const [kind, setKind] = useState<ComparisonKind>(initialPlayerA || initialPlayerB || new URLSearchParams(window.location.search).has("playerA") ? "players" : "teams");
-  const [mode, setMode] = useState<Mode>("entities");
+  const [mode, setMode] = useState<Mode>(() => { const asked = new URLSearchParams(window.location.search).get("mode"); return asked === "onoff" || asked === "appearance" ? asked : "entities"; });
   const [basis, setBasis] = useState<"game" | "40">("game");
   const [shooting, setShooting] = useState(false);
-  const [firstId, setFirstId] = useState(initialPlayerA ?? new URLSearchParams(window.location.search).get("playerA") ?? "");
+  const [firstId, setFirstId] = useState(initialPlayerA ?? new URLSearchParams(window.location.search).get("playerA") ?? new URLSearchParams(window.location.search).get("team") ?? "");
   const [secondId, setSecondId] = useState(initialPlayerB ?? new URLSearchParams(window.location.search).get("playerB") ?? "");
-  const [playerId, setPlayerId] = useState("");
+  const [playerId, setPlayerId] = useState(() => new URLSearchParams(window.location.search).get("player") ?? "");
   const [firstSeason, setFirstSeason] = useState<SeasonId | "earlier">(seasonId === "2026-27" ? "2025-26" : "2024-25");
   const [secondSeason, setSecondSeason] = useState<SeasonId>(seasonId === "2026-27" ? "2026-27" : "2025-26");
   const [records, setRecords] = useState<Partial<Record<SeasonId, SeasonMatchRecord[]>> | null>(null);
