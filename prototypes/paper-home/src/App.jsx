@@ -31,6 +31,7 @@ import { DecryptedText } from './DecryptedText';
 import './motion.css';
 import './mobile-native.css';
 import './table-stripes.css';
+import './stat-cards.css';
 import './large-screens.css';
 import { HomeSections } from './HomeSections';
 import {BrandMark} from './BrandMark';

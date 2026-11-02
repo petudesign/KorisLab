@@ -1,0 +1,6 @@
+/* One look for every card that lifts out one big number: the same dots in the same corner.
+   Charts, tables, comparisons and the many metric cards on a profile stay plain, so the dots keep their meaning. */
+.overview-dashboard :is(.season-highlight,.discovery-card,.season-stat,.dash-metrics>.dash-metric,.player-best,.match-key-metrics>.dash-card){position:relative;isolation:isolate;overflow:hidden}
+.overview-dashboard :is(.season-highlight,.discovery-card,.season-stat,.dash-metrics>.dash-metric,.player-best,.match-key-metrics>.dash-card)::before{content:'';position:absolute;inset:0;width:auto;height:auto;z-index:-1;pointer-events:none;background-image:radial-gradient(circle,var(--stat-dot,#df945b) .65px,transparent .9px);background-size:4px 4px;opacity:.22;mask-image:radial-gradient(ellipse at 100% 80%,#000,transparent 68%)}
+.overview-dashboard :is(.season-highlight,.player-best){--stat-dot:var(--highlight-accent)}
+.overview-dashboard .discovery-card{--stat-dot:var(--discovery-accent)}
