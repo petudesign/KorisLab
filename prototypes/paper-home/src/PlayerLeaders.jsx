@@ -8,9 +8,9 @@ const definitions=[
  {metric:'assists',label:'Syötöt / ottelu',unit:'AST/G',accent:'#44d17a'},
  {metric:'rebounds',label:'Levypallot / ottelu',unit:'REB/G',accent:'#91b4c8'},
  {metric:'steals',label:'Riistot / ottelu',unit:'STL/G',accent:'#44d17a'},
- {metric:'efficiencyPer40',label:'Tehokkuus / 40 min',unit:'Eff/40',accent:'#df945b'},
+ {metric:'efficiency',label:'Tehokkuus / ottelu',unit:'EFF/G',accent:'#df945b'},
  {metric:'trueShootingPct',label:'Pisteiden tehokkuus',unit:'TS %',accent:'#91b4c8'},
- {metric:'attemptsPer40',label:'Heittomäärä / 40 min',unit:'FGA/40',accent:'#df945b'},
+ {metric:'usagePct',label:'Osuus hyökkäyksistä',unit:'USG %',accent:'#df945b'},
  {metric:'minutes',label:'Peliminuutit kaudella',unit:'MIN',accent:'#44d17a'},
 ];
 export function PlayerLeaders({players,games,link}){
@@ -26,5 +26,5 @@ export function PlayerLeaders({players,games,link}){
    <HighlightTrend games={playerRecentGames(games,p.id,metric)} metric={metric} average={trendAverage} unit={metric==='minutes'?'MIN / ottelu':unit}/>
    </>:<p className="player-leader-empty">{translate("Ei riittävää tilastoaineistoa.")}</p>)}
   </article>;
- }))}</div><p className="player-leaders-method" title={translate("Liigan KA lasketaan kaikista pelanneista: per-game luvut ottelukertapainotettuina, per-40 luvut kokonaisminuuteista ja TS % yhteenlasketuista heitoista. Minuuttikortissa liigan KA on kokonaisminuuttien keskiarvo per pelaaja, käyrän vertailutaso minuutteja per ottelu.")}>{translate("Kärjet: vähintään ")}{translate(minimumGames)} {translate(minimumGames===1?'ottelu':'ottelua')}{translate(" ja ")}{translate(minimumGames*15)}{translate(" min. Käyrät: viimeiset enintään 5 ottelua. MIN: kauden kokonaisminuutit, ilman otosrajaa.")}</p></section>;
+ }))}</div><p className="player-leaders-method" title={translate("Liigan KA lasketaan kaikista pelanneista: per-game luvut ottelukertapainotettuina ja TS % yhteenlasketuista heitoista. USG % kertoo, kuinka suuren osan joukkueen hyökkäyksistä pelaaja käyttää kentällä heitoilla, vapaaheitoilla ja menetyksillä; siihen lasketaan vain ottelut, joiden peliajat ovat täydelliset. Minuuttikortissa liigan KA on kokonaisminuuttien keskiarvo per pelaaja, käyrän vertailutaso minuutteja per ottelu.")}>{translate("Kärjet: vähintään ")}{translate(minimumGames)} {translate(minimumGames===1?'ottelu':'ottelua')}{translate(" ja ")}{translate(minimumGames*15)}{translate(" min. Käyrät: viimeiset enintään 5 ottelua. MIN: kauden kokonaisminuutit, ilman otosrajaa.")}</p></section>;
 }

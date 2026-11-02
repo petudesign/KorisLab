@@ -42,7 +42,40 @@ export type SeasonPlayerRow = {
   blocksReceived: number | null;
   plusMinus: number | null;
   efficiency: number;
+  knownMinutes: number;
+  minutesGames: number;
+  usageGames: number;
+  usagePlays: number;
+  usageTeamPlays: number;
+  usageMinutes: number;
+  usageTeamMinutes: number;
 };
+
+// A full game is 200 team minutes. Below this the source has lost minutes, which would inflate usage.
+const USAGE_MINIMUM_TEAM_MINUTES = 199;
+type UsageStats = { two_pa?: number | null; three_pa?: number | null; fta?: number | null; turnovers?: number | null };
+type UsagePlayer = { minutes?: unknown; minutesValue?: unknown; participated?: boolean; stats: UsageStats };
+
+const usagePlayerMinutes = (player: UsagePlayer) => player.minutesValue ?? player.minutes;
+
+function usagePlays(stats: UsageStats | undefined) {
+  if (stats?.two_pa == null || stats.three_pa == null || stats.fta == null || stats.turnovers == null) return null;
+  return stats.two_pa + stats.three_pa + 0.44 * stats.fta + stats.turnovers;
+}
+
+export function playerGameUsage(team: { stats?: UsageStats; players: UsagePlayer[] }, player: UsagePlayer) {
+  const minutes = usagePlayerMinutes(player);
+  const plays = usagePlays(player.stats), teamPlays = usagePlays(team.stats);
+  if (typeof minutes !== "number" || !(minutes > 0) || plays == null || teamPlays == null || teamPlays <= 0) return null;
+  let teamMinutes = 0;
+  for (const teammate of team.players) {
+    const value = usagePlayerMinutes(teammate);
+    if (typeof value === "number" && Number.isFinite(value)) teamMinutes += value;
+    else if (teammate.participated === true) return null;
+  }
+  if (teamMinutes < USAGE_MINIMUM_TEAM_MINUTES) return null;
+  return { usageGames: 1, usagePlays: plays, usageTeamPlays: teamPlays, usageMinutes: minutes, usageTeamMinutes: teamMinutes };
+}
 
 export function aggregateSeasonPlayers(records: SeasonMatchRecord[]) {
   const rows = new Map<string, SeasonPlayerRow>();
@@ -74,11 +107,22 @@ export function aggregateSeasonPlayers(records: SeasonMatchRecord[]) {
           blocksReceived: 0,
           plusMinus: 0,
           efficiency: 0,
+          knownMinutes: 0,
+          minutesGames: 0,
+          usageGames: 0,
+          usagePlays: 0,
+          usageTeamPlays: 0,
+          usageMinutes: 0,
+          usageTeamMinutes: 0,
         };
         const stats = player.stats;
         row.games += 1;
         if (player.starter) row.starts += 1;
         row.minutes += minutes;
+        if (typeof minutes === "number" && Number.isFinite(minutes)) {
+          row.knownMinutes += minutes;
+          row.minutesGames += 1;
+        }
         row.points += stats.points ?? 0;
         row.twoPM += stats.two_pm ?? 0;
         row.twoPA += stats.two_pa ?? 0;
@@ -94,11 +138,32 @@ export function aggregateSeasonPlayers(records: SeasonMatchRecord[]) {
         row.blocksReceived = row.blocksReceived == null || stats.blocks_received == null ? null : row.blocksReceived + stats.blocks_received;
         row.plusMinus = row.plusMinus == null || stats.plus_minus == null ? null : row.plusMinus + stats.plus_minus;
         row.efficiency += stats.efficiency ?? 0;
+        const usage = playerGameUsage(team as Parameters<typeof playerGameUsage>[0], player as UsagePlayer);
+        if (usage) {
+          row.usageGames += usage.usageGames;
+          row.usagePlays += usage.usagePlays;
+          row.usageTeamPlays += usage.usageTeamPlays;
+          row.usageMinutes += usage.usageMinutes;
+          row.usageTeamMinutes += usage.usageTeamMinutes;
+        }
         rows.set(id, row);
       }
     }
   }
   return Array.from(rows.values()).filter((player) => player.games > 0);
+}
+
+// Season minutes for sample limits only. A game with lost minutes must not drop a player from counting-stat leaders,
+// so those games are estimated from the player's known average.
+export function playerQualifyingMinutes(player: Pick<SeasonPlayerRow, "minutes" | "games"> & Partial<Pick<SeasonPlayerRow, "knownMinutes" | "minutesGames">>) {
+  if (Number.isFinite(player.minutes)) return player.minutes;
+  return player.minutesGames ? (player.knownMinutes! / player.minutesGames) * player.games : Number.NaN;
+}
+
+// Share of the team's possessions the player used while on the floor. Only games with complete minutes count.
+export function playerUsagePct(player: Pick<SeasonPlayerRow, "usagePlays" | "usageTeamPlays" | "usageMinutes" | "usageTeamMinutes">) {
+  if (!(player.usageMinutes > 0) || !(player.usageTeamPlays > 0)) return null;
+  return (100 * player.usagePlays * (player.usageTeamMinutes / 5)) / (player.usageMinutes * player.usageTeamPlays);
 }
 
 export function playerPerGame(player: SeasonPlayerRow, stat: keyof Pick<SeasonPlayerRow, "points" | "rebounds" | "assists" | "steals" | "blocks" | "blocksReceived" | "plusMinus">) {

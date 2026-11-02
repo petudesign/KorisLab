@@ -16,12 +16,12 @@ test('team ratings use shared possessions, retain only the last five played game
  const missing=game(8);delete missing.teams[1].stats.fta;
  assert.equal(teamRecentMetrics([missing],'Home')[0].offensive,null);
 });
-test('all original 16 player metrics are included; zero-attempt percentages and missing stats are not zeroes',()=>{
+test('all 16 player metrics are included; zero-attempt percentages and missing stats are not zeroes',()=>{
  assert.equal(profileMetrics.length,16);
  const [row]=playerProfileHistory([game(1)],'p');
  assert.equal(row.assistTurnover,2);
  assert.equal(row.efficiency,30);
- assert.equal(row.attempts,18);
+ assert.equal(row.usage,null);
  assert.ok(Math.abs(row.effectiveFieldGoals-100*6/9)<1e-10);
  assert.ok(Math.abs(row.trueShooting-100*12/18)<1e-10);
  assert.equal(row.freeThrows,null);

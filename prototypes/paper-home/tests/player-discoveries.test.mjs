@@ -3,12 +3,12 @@ import assert from 'node:assert/strict';
 import {discoveryQualification,seasonOutliers,playersToWatch} from '../src/lib/playerDiscoveries.js';
 const player=(id,overrides={})=>({id,name:id,team:'Team',games:3,minutes:80,points:0,rebounds:0,assists:0,steals:0,twoPA:0,threePA:0,twoPM:0,threePM:0,...overrides});
 
-test('playing-time growth alone is not mistaken for improved per-40 production',()=>{
+test('per-game outliers follow production and name the change per game',()=>{
  const prior=player('A',{games:10,minutes:150,assists:30,rebounds:40});
  const current=player('A',{games:3,minutes:90,assists:18,rebounds:24});
  const result=seasonOutliers([current],[prior]);
- assert.equal(result.rows.length,1);assert.equal(result.rows[0].metric,'minutes');
- assert.equal(result.rows[0].delta,15);assert.equal(result.rows[0].identity,'id');
+ assert.equal(result.rows.length,1);assert.equal(result.rows[0].metric,'assists');
+ assert.equal(result.rows[0].delta,3);assert.equal(result.rows[0].unit,'AST / O');assert.equal(result.rows[0].identity,'id');
 });
 test('missing history and ambiguous identical names cannot become season comparisons',()=>{
  const old=player('old',{name:'Same Name',games:10,minutes:300,assists:12});
@@ -51,4 +51,11 @@ test('up and down changes are both shown without repeating a player',()=>{
  assert.ok(result.rows.some(r=>r.direction==='up'));
  assert.ok(result.rows.some(r=>r.direction==='down'));
  assert.equal(new Set(result.rows.map(r=>r.player.id)).size,result.rows.length);
+});
+test('a game with lost minutes does not remove a player from the comparison',()=>{
+ const prior=player('A',{games:10,minutes:300,assists:20});
+ const current=player('A',{games:6,minutes:Number.NaN,knownMinutes:150,minutesGames:5,assists:30});
+ const result=seasonOutliers([current],[prior]);
+ assert.equal(result.rows[0].metric,'assists');
+ assert.ok(Number.isFinite(result.rows[0].strength));
 });

@@ -1,3 +1,4 @@
+import {playerGameUsage,playerQualifyingMinutes,playerUsagePct} from './playerStats.ts';
 export function playerLeader(players, metric) {
  const eligible=players.filter(p=>p.games>0&&Number.isFinite(p[metric]));
  const leader=[...eligible].sort((a,b)=>b[metric]/b.games-a[metric]/a.games||b.games-a.games||a.name.localeCompare(b.name,'fi'))[0];
@@ -8,7 +9,7 @@ export function playerRecentGames(games,id,metric) {
  return games.filter(g=>g.verified).flatMap(g=>{
   const row=g.teams.flatMap(t=>t.players).find(p=>p.id===id&&(p.minutesValue>0||p.participated===true));
   if(!row)return [];
-  const value=['points','assists','rebounds','steals'].includes(metric)?row.stats[metric]:metric==='minutes'?row.minutesValue:playerMetric({games:1,minutes:row.minutesValue??Number.NaN,points:row.stats.points,twoPA:row.stats.two_pa,threePA:row.stats.three_pa,fta:row.stats.fta,efficiency:row.stats.efficiency},metric);
+  const value=metric==='usagePct'?playerUsagePct(playerGameUsage(g.teams.find(t=>t.players.includes(row)),row)??{}):['points','assists','rebounds','steals','efficiency'].includes(metric)?row.stats[metric]:metric==='minutes'?row.minutesValue:playerMetric({games:1,minutes:row.minutesValue??Number.NaN,points:row.stats.points,twoPA:row.stats.two_pa,threePA:row.stats.three_pa,fta:row.stats.fta,efficiency:row.stats.efficiency},metric);
   if(!Number.isFinite(value))return [];
   const home=g.teams.find(t=>t.side==='home'),away=g.teams.find(t=>t.side==='away');
   return [{id:g.id,date:g.date,home:home.name,away:away.name,homeScore:home.score,awayScore:away.score,[metric]:value}];
@@ -16,10 +17,11 @@ export function playerRecentGames(games,id,metric) {
 }
 
 export function playerMetric(player,metric){
- if(['points','assists','rebounds','steals'].includes(metric))return player.games>0&&Number.isFinite(player[metric])?player[metric]/player.games:null;
+ if(['points','assists','rebounds','steals','efficiency'].includes(metric))return player.games>0&&Number.isFinite(player[metric])?player[metric]/player.games:null;
  if(metric==='minutes')return Number.isFinite(player.minutes)?player.minutes:null;
  if(metric==='efficiencyPer40')return player.minutes>0&&Number.isFinite(player.efficiency)?40*player.efficiency/player.minutes:null;
  if(metric==='attemptsPer40')return player.minutes>0&&Number.isFinite(player.twoPA)&&Number.isFinite(player.threePA)?40*(player.twoPA+player.threePA)/player.minutes:null;
+ if(metric==='usagePct')return playerUsagePct(player);
  if(metric==='trueShootingPct'){
   const attempts=player.twoPA+player.threePA+.44*player.fta;
   return attempts>0?100*player.points/(2*attempts):null;
@@ -27,7 +29,7 @@ export function playerMetric(player,metric){
  return null;
 }
 export function metricLeader(players,metric,minimumGames){
- const eligible=players.filter(p=>Number.isFinite(playerMetric(p,metric))&&(metric==='minutes'||p.games>=minimumGames&&p.minutes>=minimumGames*15));
+ const eligible=players.filter(p=>Number.isFinite(playerMetric(p,metric))&&(metric==='minutes'||(metric==='usagePct'?p.usageGames>=minimumGames&&p.usageMinutes>=minimumGames*15:p.games>=minimumGames&&playerQualifyingMinutes(p)>=minimumGames*15)));
  const leader=[...eligible].sort((a,b)=>playerMetric(b,metric)-playerMetric(a,metric)||b.games-a.games||a.name.localeCompare(b.name,'fi'))[0];
  const available=players.filter(p=>p.games>0&&Number.isFinite(playerMetric(p,metric)));
  const total=key=>available.reduce((sum,p)=>sum+p[key],0),appearances=total('games');
@@ -37,6 +39,7 @@ export function metricLeader(players,metric,minimumGames){
   else if(metric==='efficiencyPer40')average=40*total('efficiency')/total('minutes');
   else if(metric==='attemptsPer40')average=40*(total('twoPA')+total('threePA'))/total('minutes');
   else if(metric==='trueShootingPct')average=100*total('points')/(2*(total('twoPA')+total('threePA')+.44*total('fta')));
+  else if(metric==='usagePct')average=available.reduce((sum,p)=>sum+playerUsagePct(p)*p.usageMinutes,0)/total('usageMinutes');
   else average=total(metric)/appearances;
  }
  return {leader,average,trendAverage:metric==='minutes'&&appearances?total('minutes')/appearances:average};

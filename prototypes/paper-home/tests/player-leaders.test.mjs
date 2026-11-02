@@ -31,3 +31,14 @@ test('derived leaders qualify meaningful samples and league rates use their unde
  assert.equal(playerRecentGames([g],'a','efficiencyPer40')[0].efficiencyPer40,32);
  assert.equal(playerRecentGames([g],'a','minutes')[0].minutes,30);
 });
+
+test('a game with lost minutes keeps a player on per-game leaders but never fakes season minutes',async()=>{
+ const {metricLeader}=await import('../src/lib/playerLeaders.js');
+ const lost={id:'lost',name:'Lost',games:10,minutes:Number.NaN,knownMinutes:270,minutesGames:9,points:300,efficiency:200,assists:80,rebounds:0,steals:0,twoPA:0,threePA:0,fta:0};
+ const other={id:'other',name:'Other',games:10,minutes:300,knownMinutes:300,minutesGames:10,points:100,efficiency:100,assists:10,rebounds:0,steals:0,twoPA:0,threePA:0,fta:0};
+ const benched={id:'bench',name:'Bench',games:10,minutes:Number.NaN,knownMinutes:45,minutesGames:9,points:900,efficiency:900,assists:90,rebounds:0,steals:0,twoPA:0,threePA:0,fta:0};
+ assert.equal(metricLeader([lost,other],'assists',3).leader.id,'lost');
+ assert.equal(metricLeader([lost,other],'efficiency',3).leader.id,'lost');
+ assert.equal(metricLeader([lost,other],'minutes',3).leader.id,'other');
+ assert.equal(metricLeader([lost,other,benched],'assists',8).leader.id,'lost');
+});

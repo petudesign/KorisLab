@@ -1,4 +1,4 @@
-import {playerPerGame,playerFgPctFromTotals,playerFtPctFromTotals,playerEfGPctFromTotals,playerTrueShootingPctFromTotals,playerEfficiencyPer40,playerAssistTurnoverRatio,playerAttemptsPer40} from './playerStats.ts';
+import {playerPerGame,playerFgPctFromTotals,playerFtPctFromTotals,playerEfGPctFromTotals,playerTrueShootingPctFromTotals,playerEfficiencyPer40,playerAssistTurnoverRatio,playerGameUsage,playerUsagePct} from './playerStats.ts';
 
 const perGame=key=>p=>playerPerGame(p,key);
 export const profileMetrics=[
@@ -17,7 +17,7 @@ export const profileMetrics=[
  {key:'fieldGoals',label:'Heittotarkkuus',unit:'FG %',read:playerFgPctFromTotals,note:'Kenttäheitot',pooled:true},
  {key:'effectiveFieldGoals',label:'Heittojen tehokkuus',unit:'eFG %',read:playerEfGPctFromTotals,note:'Kolmosten lisäarvo huomioitu',pooled:true},
  {key:'trueShooting',label:'Pisteiden tehokkuus',unit:'TS %',read:playerTrueShootingPctFromTotals,note:'Kenttäheitot ja vapaaheitot',pooled:true},
- {key:'attempts',label:'Heittomäärä',unit:'FGA / 40',read:playerAttemptsPer40,note:'Kenttäheittoyritykset / 40 min'},
+ {key:'usage',label:'Osuus hyökkäyksistä',unit:'USG %',read:playerUsagePct,note:'Heitot, vapaaheitot ja menetykset kentällä'},
 ];
 
 export function profileLeagueBenchmarks(players,games){
@@ -38,7 +38,7 @@ export function playerProfileHistory(games,id){
   const team=g.teams.find(t=>t.players.some(p=>p.id===id&&(p.minutesValue>0||p.participated===true)));
   if(!team)return [];
   const player=team.players.find(p=>p.id===id),stats=player.stats;
-  const sample={games:1,minutes:player.minutesValue??Number.NaN,points:stats.points,assists:stats.assists,rebounds:stats.rebounds,steals:stats.steals,blocks:stats.blocks,blocksReceived:stats.blocks_received,plusMinus:stats.plus_minus,turnovers:stats.turnovers,twoPM:stats.two_pm,twoPA:stats.two_pa,threePM:stats.three_pm,threePA:stats.three_pa,ftm:stats.ftm,fta:stats.fta,efficiency:stats.efficiency};
+  const sample={games:1,minutes:player.minutesValue??Number.NaN,points:stats.points,assists:stats.assists,rebounds:stats.rebounds,steals:stats.steals,blocks:stats.blocks,blocksReceived:stats.blocks_received,plusMinus:stats.plus_minus,turnovers:stats.turnovers,twoPM:stats.two_pm,twoPA:stats.two_pa,threePM:stats.three_pm,threePA:stats.three_pa,ftm:stats.ftm,fta:stats.fta,efficiency:stats.efficiency,...playerGameUsage(team,player)};
   const home=g.teams.find(t=>t.side==='home'),away=g.teams.find(t=>t.side==='away');
   return [{id:g.id,date:g.date,home:home.name,away:away.name,homeScore:home.score,awayScore:away.score,...Object.fromEntries(profileMetrics.filter(d=>!d.noTrend).map(d=>[d.key,d.read(sample)]))}];
  }).sort((a,b)=>new Date(a.date)-new Date(b.date)||String(a.id).localeCompare(String(b.id))).slice(-5);
