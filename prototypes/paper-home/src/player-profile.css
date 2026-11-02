@@ -44,15 +44,15 @@
 .player-trophy-scope{display:block;color:#777783;font-size:8px;margin-top:13px;line-height:1.4}
 @media(min-width:701px) and (max-width:1100px){.player-profile-banner{flex-wrap:wrap}.player-trophy-cabinet{flex-basis:100%}.player-trophy-cabinet ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:700px){.player-profile-banner{flex-wrap:wrap;gap:14px;padding:16px}.player-profile-bio{gap:10px 16px;margin:11px 0}.player-profile-bio dd{font-size:10px}.player-profile-bio dt{font-size:8px}.player-trophy-cabinet{flex-basis:100%;padding:12px}.player-trophy-cabinet ul{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.player-trophy-cabinet h4{font-size:13px;margin-bottom:9px}.player-trophy-cabinet li strong{font-size:10px}.player-trophy-cabinet li svg{font-size:18px}.player-trophy-scope{margin-top:10px}.overview-dashboard .player-profile-metric{padding:12px;gap:7px}.player-profile-metric>strong{font-size:25px}.player-profile-metric .highlight-trend svg{height:32px}.player-profile-metric-note{min-height:20px}.player-profile-metrics{gap:8px}}
-.player-profile-metric>strong.above-average{color:#86cea1}
-.player-profile-metric>strong.below-average{color:#c3938f}
+.player-profile-metric>strong.above-average{color:var(--color-positive)}
+.player-profile-metric>strong.below-average{color:var(--color-negative)}
 .entity-shot-totals .shot-made-count{display:inline;color:#69cc90;background:none;height:auto;font-weight:550}
 .entity-shot-totals .shot-attempt-count{font-size:inherit;color:#9696a2}
 .entity-profile .player-game-score{display:inline-flex;align-items:center;gap:5px;margin-left:10px;font-variant-numeric:tabular-nums;color:#898995}
 .player-game-score b{font-weight:500}
 .player-game-score b.winner{color:#eeeeF3;font-weight:550}
 .entity-profile .player-game-result{display:inline-flex;align-items:center;justify-content:center;width:19px;height:19px;border-radius:4px;margin-right:8px;font-size:9px;background:#ffffff07;color:#9898a4;border:1px solid #ffffff08}
-.entity-profile .player-game-won .player-game-result{background:#44d17a12;color:#74ce97;border-color:#44d17a20}
+.entity-profile .player-game-won .player-game-result{background:color-mix(in srgb,var(--color-positive) 10%,transparent);color:var(--color-positive);border-color:color-mix(in srgb,var(--color-positive) 20%,transparent)}
 
 .player-profile-team-row{display:flex;align-items:center;flex-wrap:wrap;gap:7px 10px}
 .player-profile-team{display:inline-flex;align-items:center;gap:9px;min-width:0}

@@ -81,7 +81,7 @@
 .entity-game-links .entity-game-meta{display:flex;flex-direction:column;align-items:flex-start;gap:8px;font-size:10px;color:#8f8f9b;text-align:left}
 .entity-game-meta small{font-size:10px;color:#aaaab4}
 .entity-game-result{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:4px;font-size:9px;background:#ffffff07;color:#9898a4;border:1px solid #ffffff08}
-.entity-game-result.won{background:#44d17a12;color:#74ce97;border-color:#44d17a20}
+.entity-game-result.won{background:color-mix(in srgb,var(--color-positive) 10%,transparent);color:var(--color-positive);border-color:color-mix(in srgb,var(--color-positive) 20%,transparent)}
 .entity-game-links .entity-game-pair{display:grid;gap:9px;text-align:left}
 .entity-game-team{display:grid;grid-template-columns:26px minmax(0,1fr) 38px;align-items:center;gap:10px;color:#c6c6cf}
 .entity-game-logo{display:flex;align-items:center;justify-content:center;width:26px;height:26px}

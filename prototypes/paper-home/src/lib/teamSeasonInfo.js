@@ -114,8 +114,12 @@ export function teamSeasonContext(games, previousGames, teamName) {
   const currentRank = standings.indexOf(teamName)+1 || null;
   const previousRegularRank = Array.isArray(previousGames) ? leagueOrder(previousGames).indexOf(teamName)+1 || null : null;
   const currentRecord = records.get(teamName) || {wins:0,losses:0};
+  const closest = [...results].sort((a,b)=>Math.abs(a.margin)-Math.abs(b.margin)||latestTie(a,b))[0]||null;
+  // The team and the ones right next to it in the table, three rows at the ends of it too.
+  const start = currentRank ? Math.max(0,Math.min(currentRank-2,standings.length-3)) : 0;
+  const nearby = currentRank ? standings.slice(start,start+3).map((name,index)=>({name,rank:start+index+1,wins:records.get(name)?.wins??0,losses:records.get(name)?.losses??0})) : [];
 
-  if (!Array.isArray(previousGames)) return {games:results.length,biggestWin:wins[0]||null,biggestLoss:losses[0]||null,currentRank,previousRegularRank,standingsCount:standings.length,wins:currentRecord.wins,losses:currentRecord.losses,roster:null};
+  if (!Array.isArray(previousGames)) return {games:results.length,biggestWin:wins[0]||null,biggestLoss:losses[0]||null,currentRank,previousRegularRank,closest,nearby,standingsCount:standings.length,wins:currentRecord.wins,losses:currentRecord.losses,roster:null};
   const currentRoster = playerRoster(games,teamName), previousRoster = playerRoster(previousGames,teamName), previousLeague = allPlayers(previousGames);
   const returning = [...currentRoster.byId.values()].filter(player=>findPlayer(player,previousRoster));
   const movedIn = [...currentRoster.byId.values()].filter(player=>{
@@ -124,5 +128,5 @@ export function teamSeasonContext(games, previousGames, teamName) {
   });
   const newToLeagueData = [...currentRoster.byId.values()].filter(player=>!findPlayer(player,previousLeague));
   const notYetSeen = [...previousRoster.byId.values()].filter(player=>!findPlayer(player,currentRoster));
-  return {games:results.length,biggestWin:wins[0]||null,biggestLoss:losses[0]||null,currentRank,previousRegularRank,standingsCount:standings.length,wins:currentRecord.wins,losses:currentRecord.losses,roster:{current:currentRoster.byId.size,previous:previousRoster.byId.size,returning:returning.length,joined:currentRoster.byId.size-returning.length,movedIn:movedIn.length,newToLeagueData:newToLeagueData.length,notYetSeen:notYetSeen.length}};
+  return {games:results.length,biggestWin:wins[0]||null,biggestLoss:losses[0]||null,currentRank,previousRegularRank,closest,nearby,standingsCount:standings.length,wins:currentRecord.wins,losses:currentRecord.losses,roster:{current:currentRoster.byId.size,previous:previousRoster.byId.size,returning:returning.length,joined:currentRoster.byId.size-returning.length,movedIn:movedIn.length,newToLeagueData:newToLeagueData.length,notYetSeen:notYetSeen.length}};
 }

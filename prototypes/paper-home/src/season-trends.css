@@ -37,5 +37,5 @@
 .season-chart-readout b.season-readout-score{font-size:16px;font-weight:500;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:#929297}
 .season-readout-score .is-winner{font-weight:600;color:#f3f3f4}
 @media(max-width:700px){.season-readout-team{font-size:13px}}
-.season-stat-change.is-up b{color:#44d17a}
-.season-stat-change.is-down b{color:#df945b}
+.season-stat-change.is-up b{color:var(--color-positive)}
+.season-stat-change.is-down b{color:var(--color-negative)}

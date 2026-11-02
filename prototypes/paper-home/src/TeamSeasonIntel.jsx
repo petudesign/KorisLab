@@ -2,7 +2,7 @@ import {useMemo} from 'react';
 import {useSeason,seasonIds,getSeason} from './SeasonContext';
 import {useMatches} from './useMatches';
 import {teamSeasonContext,teamSeasonInfo} from './lib/teamSeasonInfo';
-import {routeHref} from './routing';
+import {routeHref,slug} from './routing';
 import {TeamLogo} from './TeamLogo';
 import {t as translate,locale,ordinal} from './i18n';
 import './team-season-intel.css';
@@ -24,7 +24,7 @@ function MatchExtreme({label,result,kind,leagueId,seasonId,onOpenMatch}) {
 
 // The official brief gives last season's final place, playoffs included. The league table is regular season only.
 // The change compares regular season with regular season, so two different rankings are never subtracted.
-function TeamRank({context,info,finished}) {
+function TeamRank({context,info,finished,leagueId,seasonId}) {
  const official=info?.previousRank,regular=context.previousRegularRank,current=context.currentRank;
  const previous=official??regular,previousIsFinal=official!=null;
  const movement=Number.isFinite(regular)&&Number.isFinite(current)?regular-current:null;
@@ -35,6 +35,7 @@ function TeamRank({context,info,finished}) {
    <div className="team-rank-previous"><span>{translate(previous==null?"Edellinen kausi":previousIsFinal?"Edellinen kausi, lopullinen":"Edellinen kausi, runkosarja")}</span><strong className={typeof previous==='string'?'team-rank-text':undefined}>{translate(Number.isFinite(previous)?`#${previous}`:previous||'—')}</strong>{previousIsFinal&&Number.isFinite(regular)&&<small>{translate("Runkosarjassa #")}{translate(regular)}</small>}</div>
   </div>
   {Number.isFinite(movement)&&<div className={`team-rank-change ${movement>0?'up':movement<0?'down':'same'}`}>{movement===0?translate('Sama runkosarjasijoitus kuin edellisellä kaudella'):<><span>{translate('Muutos runkosarjassa')}</span><b>{movement>0?'+':''}{translate(movement)}</b></>}</div>}
+  {context.nearby?.length>0&&<ol className="team-rank-table" aria-label={translate("Lähimmät joukkueet sarjataulukossa")}>{context.nearby.map(row=><li key={row.name} className={row.rank===current?'is-own':''}><span>{translate(row.rank)}{translate(".")}</span><a href={routeHref({section:'Joukkueet',teamId:slug(row.name),leagueId,seasonId})}>{translate(row.name)}</a><span>{translate(row.wins)}{translate("–")}{translate(row.losses)}</span></li>)}</ol>}
   <p className="team-intel-note team-intel-bottom">{translate(finished?"Runkosarjan sijoitus kirjatuista tuloksista":"Alustava sijoitus kirjatuista tuloksista")}{translate(" · ")}{translate(context.games)}{translate(" ottelua")}{context.standingsCount>0&&<>{translate(" · ")}{translate(context.standingsCount)}{translate(" joukkuetta vertailussa")}</>}{previousIsFinal&&<>{translate(" · ")}{translate("Lopullinen sijoitus sisältää pudotuspelit")}</>}</p>
  </article>;
 }
@@ -109,8 +110,9 @@ export function TeamSeasonIntel({team,games,onOpenMatch}) {
     <h4 className="team-intel-title">{translate("Otteluiden ääripäät")}</h4>
     <MatchExtreme label="Suurin voitto" result={context.biggestWin} kind="win" leagueId={leagueId} seasonId={seasonId} onOpenMatch={onOpenMatch}/>
     <MatchExtreme label="Suurin tappio" result={context.biggestLoss} kind="loss" leagueId={leagueId} seasonId={seasonId} onOpenMatch={onOpenMatch}/>
+    {context.closest&&context.closest.id!==context.biggestWin?.id&&context.closest.id!==context.biggestLoss?.id&&<MatchExtreme label="Tiukin ottelu" result={context.closest} kind={context.closest.margin>0?'win':'loss'} leagueId={leagueId} seasonId={seasonId} onOpenMatch={onOpenMatch}/>}
    </article>
-   <TeamRank context={context} info={info} finished={index>0}/>
+   <TeamRank context={context} info={info} finished={index>0} leagueId={leagueId} seasonId={seasonId}/>
    <CoachInfo info={info}/>
    <RosterChange context={context} previousPending={!!previousSeason&&!previousState.games&&!previousState.error} previousError={previousState.error}/>
    <BudgetInfo info={info} sourceUrl={seasonInfo?.sourceUrl} updatedAt={seasonInfo?.updatedAt}/>

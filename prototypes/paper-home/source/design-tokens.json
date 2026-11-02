@@ -47,12 +47,22 @@
   {
     "name": "--color-positive",
     "type": "color",
-    "value": "#44d17a"
+    "value": "#7ee787"
   },
   {
     "name": "--color-negative",
     "type": "color",
-    "value": "#e18b8b"
+    "value": "#e5484d"
+  },
+  {
+    "name": "--color-team-a",
+    "type": "color",
+    "value": "#df945b"
+  },
+  {
+    "name": "--color-team-b",
+    "type": "color",
+    "value": "#7ee787"
   },
   {
     "name": "--color-series-blue",

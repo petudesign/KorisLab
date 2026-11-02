@@ -17,7 +17,7 @@
 .dash-team-table tbody th a:hover,.dash-team-table tbody th a:focus-visible{color:#efb786;text-decoration:underline;text-underline-offset:3px}
 .dash-team-table .team-table-rank{color:#7e7e8c;width:24px;text-align:left}
 .dash-team-table tbody tr:first-child .team-table-rank{color:#dfaa79}
-.dash-team-table .positive{color:#dfaa79}
+.dash-team-table .positive{color:var(--color-positive)}.dash-team-table .negative{color:var(--color-negative)}
 .team-table-note{font-size:8px;line-height:1.5;color:#858590;margin:12px 0 0}
 .dashboard-expanded .dash-team-table table{font-size:13px}
 .dashboard-expanded .dash-team-table th,.dashboard-expanded .dash-team-table td{padding:12px 8px}

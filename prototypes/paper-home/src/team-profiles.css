@@ -20,11 +20,11 @@
 .team-card-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:21px 0 17px}
 .team-card-metrics span{display:block;color:#9696a1;font-size:9px;line-height:1.5}
 .team-card-metrics strong{display:block;color:#e8e8ed;font-size:25px;letter-spacing:-.04em;font-weight:550;font-variant-numeric:tabular-nums;margin-top:5px}
-.team-card-metrics .positive{color:#44d17a}
+.team-card-metrics .positive{color:var(--color-positive)}.team-card-metrics .negative{color:var(--color-negative)}
 .team-profile-card footer{display:flex;align-items:center;justify-content:space-between;gap:8px;padding-top:14px;border-top:1px solid #ffffff08}
 .team-form{display:inline-flex;gap:4px;align-items:center;flex-wrap:wrap}
 .team-form>span{display:inline-flex;width:21px;height:21px;align-items:center;justify-content:center;border-radius:5px;font-size:9px;font-weight:500;border:1px solid #ffffff08}
-.team-form .won{background:#44d17a12;color:#6ccf91;border-color:#44d17a20}
+.team-form .won{background:color-mix(in srgb,var(--color-positive) 10%,transparent);color:var(--color-positive);border-color:color-mix(in srgb,var(--color-positive) 20%,transparent)}
 .team-form .lost{background:#ffffff04;color:#95959f}
 .team-form small{color:#858590;font-size:10px}
 .team-profile-open{font-size:10px;white-space:nowrap}
