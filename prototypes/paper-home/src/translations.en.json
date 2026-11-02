@@ -1582,5 +1582,8 @@
   "Muutos runkosarjassa": "Regular season change",
   "Runkosarjan sijoitus kirjatuista tuloksista": "Regular season place from recorded results",
   "Lopullinen sijoitus sisältää pudotuspelit": "The final place includes the playoffs",
-  "Ikä": "Age"
+  "Ikä": "Age",
+  " · Vertailu koko kauteen ": " · Compared with the whole of ",
+  ". Kesken olevan kauden luvut voivat vielä muuttua.": ". A season under way can still change.",
+  "Voittaja": "Winner"
 }

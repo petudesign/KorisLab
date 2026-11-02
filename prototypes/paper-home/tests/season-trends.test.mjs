@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {seasonTrend,phaseValue} from '../src/lib/seasonTrends.js';
+import {seasonTrend,phaseValue,seasonCards} from '../src/lib/seasonTrends.js';
 const game=(id,date,score,opponent,stats={})=>({id,date,verified:true,teams:[{name:'A',side:'home',score,stats:{two_pm:4,three_pm:2,two_pa:10,three_pa:5,fta:4,offensive_rebounds:3,turnovers:2,...stats}},{name:'B',side:'away',score:opponent,stats:{two_pm:3,three_pm:1,two_pa:12,three_pa:4,fta:2,offensive_rebounds:2,turnovers:3}}]});
 test('orders actual games, excludes future games and rolls only last five observations',()=>{
  const games=Array.from({length:6},(_,i)=>game(String(i),`2025-10-0${i+1}`,10*(i+1),20)).reverse();
@@ -20,4 +20,13 @@ test('net rating uses shared possessions; undefined inputs stay missing',()=>{
  g.teams[0].stats.three_pa=null;assert.equal(seasonTrend([g],'A','net')[0].value,null);
  assert.equal(phaseValue({games:0},'points'),null);
  assert.equal(phaseValue({games:2,totals:{points:160}},'points'),80);
+});
+test('season cards put each number beside the previous season, and leave the change out without one',()=>{
+ const season=(games,points,scale=1)=>({games,league:{totals:{points,rebounds:10*scale,assists:5,steals:1,turnovers:2,blocks:1,two_pa:10,two_pm:5,three_pa:10,three_pm:2},metrics:{offensive_rating:100*scale}}});
+ const cards=seasonCards(season(10,1600),season(20,3000,2));
+ const points=cards.find(card=>card.key==='points');
+ assert.equal(points.value,80);assert.equal(points.prior,75);assert.equal(points.delta,5);
+ assert.equal(cards.find(card=>card.key==='ortg').delta,-100);
+ assert.equal(cards.length,8);
+ assert.ok(seasonCards(season(10,1600),null).every(card=>card.delta===null&&card.prior===null));
 });

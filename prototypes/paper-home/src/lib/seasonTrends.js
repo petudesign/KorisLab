@@ -14,3 +14,13 @@ export function seasonTrend(games,teamName,metric){
  return rows.map((row,i)=>{const window=rows.slice(Math.max(0,i-4),i+1).filter(r=>Number.isFinite(r.value));const denominator=window.reduce((n,r)=>n+r.denominator,0);return {...row,window:window.length,rolling:denominator>0?window.reduce((n,r)=>n+r.numerator,0)/denominator:null};});
 }
 export function phaseValue(team,key){if(!team||!team.games)return null;if(key==='ortg')return team.metrics.offensive_rating;if(key==='drtg')return team.metrics.defensive_rating;if(key==='fg'){const s=team.totals,attempts=s.two_pa+s.three_pa;return attempts>0?100*(s.two_pm+s.three_pm)/attempts:null;}return Number.isFinite(team.totals[key])?team.totals[key]/team.games:null;}
+// The season cards' numbers next to the whole previous season. A season still under way is early, so the change is only a pointer.
+export const SEASON_CARDS=[['points','Pisteet'],['rebounds','Levypallot'],['assists','Syötöt'],['steals','Riistot'],['turnovers','Menetykset'],['blocks','Torjunnat'],['ortg','Hyökkäys\u00adtehokkuus'],['fg','Heitto\u00adprosentti']];
+const summaryValue=(aggregate,key)=>aggregate?phaseValue({...aggregate.league,games:2*aggregate.games},key):null;
+export function seasonCards(aggregate,previous){
+ return SEASON_CARDS.map(([key,label])=>{
+  const value=summaryValue(aggregate,key),prior=summaryValue(previous,key);
+  return {key,label,value,prior,delta:Number.isFinite(value)&&Number.isFinite(prior)?value-prior:null};
+ });
+}
+
