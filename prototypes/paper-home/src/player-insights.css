@@ -9,7 +9,7 @@
 .player-insight-method p{margin:8px 0 0;max-width:72ch}
 .player-insight-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;margin:0 0 20px}
 .player-insight-pair .player-insight{margin:0}
-.player-split-card{--home-ink:#df945b;--away-ink:#44d17a}
+.player-split-card{--home-ink:var(--color-team-a);--away-ink:var(--color-team-b)}
 .player-split-card .comparison-legend{margin:0 0 6px}
 .player-split-card .comparison-legend small{display:block;margin-top:3px;font-size:10px;color:#9797a2}
 .player-split-card .comparison-legend span:last-child{text-align:right}

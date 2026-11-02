@@ -14,8 +14,8 @@
 .team-extreme-row+.team-extreme-row{border-top:1px solid #ffffff0a;margin-top:4px;padding-top:16px}
 .team-extreme-label{font-size:11px;color:var(--color-text-secondary)}
 .team-extreme-margin{justify-self:end;font-size:11px;font-weight:500;font-variant-numeric:tabular-nums;color:var(--color-text-muted)}
-.team-extreme-row.win .team-extreme-margin{color:#74ce97}
-.team-extreme-row.loss .team-extreme-margin{color:#c99a94}
+.team-extreme-row.win .team-extreme-margin{color:var(--color-positive)}
+.team-extreme-row.loss .team-extreme-margin{color:var(--color-negative)}
 .team-extreme-score{grid-column:2;grid-row:2;justify-self:end;display:flex;align-items:baseline;gap:6px;font-size:28px;font-weight:550;letter-spacing:-.04em;line-height:1.15;font-variant-numeric:tabular-nums}
 .team-extreme-score b{font:inherit;color:var(--color-text-muted)}
 .team-extreme-score b.winner{color:var(--color-text)}
@@ -40,8 +40,8 @@
 .team-rank-pair small{color:var(--color-text-muted);font-size:10px;font-variant-numeric:tabular-nums;line-height:1.5}
 .team-rank-change{display:flex;align-items:center;align-self:flex-start;gap:12px;margin:20px 0 16px;padding:6px 8px;border-radius:6px;background:#ffffff04;color:var(--color-text-secondary);font-size:11px;line-height:1.4}
 .team-rank-change b{font-weight:500;font-variant-numeric:tabular-nums}
-.team-rank-change.up{color:#74ce97;background:#44d17a0b}
-.team-rank-change.down{color:#c99a94;background:#e18b8b08}
+.team-rank-change.up{color:var(--color-positive);background:color-mix(in srgb,var(--color-positive) 8%,transparent)}
+.team-rank-change.down{color:var(--color-negative);background:color-mix(in srgb,var(--color-negative) 8%,transparent)}
 /* The continuity bar is a count breakdown, not a performance score. */
 .team-roster-count{display:flex;align-items:start;justify-content:space-between;gap:24px}
 .team-roster-count>div{display:flex;flex-direction:column;gap:8px;min-width:0}
@@ -50,12 +50,12 @@
 .team-roster-count .team-roster-previous{align-items:flex-end;text-align:right;flex:none}
 .team-roster-previous strong{font-size:28px;color:var(--color-text-secondary);line-height:1.43}
 .team-roster-continuity{margin:20px 0 16px}
-.team-roster-track{height:5px;overflow:hidden;border-radius:4px;background:#df945b;display:flex}
-.team-roster-track i{display:block;flex:none;background:#74ce97;height:100%;border-right:2px solid var(--color-surface)}
+.team-roster-track{height:5px;overflow:hidden;border-radius:4px;background:var(--color-team-a);display:flex}
+.team-roster-track i{display:block;flex:none;background:var(--color-team-b);height:100%;border-right:2px solid var(--color-surface)}
 .team-roster-key{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin:12px 0 0}
 .team-roster-key>div{display:flex;align-items:start;justify-content:space-between;gap:12px}
 .team-roster-key dt{font-size:11px;line-height:1.5;color:var(--color-text-secondary)}
-.team-roster-key dd{margin:0;font-size:18px;font-weight:550;letter-spacing:-.04em;font-variant-numeric:tabular-nums;color:#74ce97}
+.team-roster-key dd{margin:0;font-size:18px;font-weight:550;letter-spacing:-.04em;font-variant-numeric:tabular-nums;color:var(--color-team-b)}
 .team-roster-key>div:last-child dd{color:var(--color-primary)}
 .team-roster-breakdown{display:grid;gap:10px;margin:0 0 16px;padding-top:16px;border-top:1px solid #ffffff0a}
 .team-roster-breakdown>div{display:flex;justify-content:space-between;align-items:baseline;gap:20px}
@@ -129,3 +129,11 @@
  .team-season-intel-grid.has-official-info .team-intel-budget{grid-column:span 1}
  .team-budget-amount{font-size:28px}
 }
+.team-intel-extremes{display:flex;flex-direction:column}
+.team-intel-extremes .team-extreme-row{flex:1;align-content:center}
+.team-extreme-row.close .team-extreme-margin{color:var(--color-text-secondary)}
+.team-rank-table{list-style:none;display:grid;gap:2px;margin:16px 0 0;padding:12px 0 0;border-top:1px solid #ffffff0a;font-size:12px;font-variant-numeric:tabular-nums}
+.team-rank-table li{display:grid;grid-template-columns:26px minmax(0,1fr) auto;gap:8px;align-items:center;padding:6px 8px;border-radius:6px;color:var(--color-text-secondary)}
+.team-rank-table li.is-own{background:#ffffff08;color:var(--color-text);font-weight:600}
+.team-rank-table a{color:inherit;text-decoration:none;min-width:0}
+.team-rank-table a:hover{color:var(--color-primary)}

@@ -51,7 +51,7 @@ export function PlayerSeasonBests({games,player,onOpenMatch}){
  </section>;
 }
 
-const SHOT_COLORS={two:'#df945b',three:'#44d17a',free:'#91b4c8'};
+const SHOT_COLORS={two:'#df945b',three:'#e8dcc8',free:'#6db8e8'};
 export function PlayerSeasonShots({player,players}){
  const {language}=useI18n(),say=(fi,en)=>language==='fi'?fi:en;
  const {rows,points}=useMemo(()=>shotBreakdown(player,players),[player,players]);
@@ -111,7 +111,7 @@ export function PlayerBaskets({player}){
  const {language}=useI18n(),say=(fi,en)=>language==='fi'?fi:en,{leagueId,seasonId}=useSeason(),{data}=useSharedJson(`/data/player-events/${leagueId}-${seasonId}.json`);
  const row=data?.players[player.id],total=row?basketTotal(row.baskets):0;
  if(!total)return null;
- const kinds=[['assisted',say('Syötetyt','Assisted'),'#df945b'],['rebound',say('Levypallon jälkeen','After a rebound'),'#44d17a'],['other',say('Muut','Other'),'#91b4c8']];
+ const kinds=[['assisted',say('Syötetyt','Assisted'),'#df945b'],['rebound',say('Levypallon jälkeen','After a rebound'),'#e8dcc8'],['other',say('Muut','Other'),'#6db8e8']];
  return <article className="dash-card player-insight">
   <header className="player-insight-heading"><h3>{say('Miten korit syntyvät','How the baskets came')}</h3><span className="player-analysis-coverage">{row.games} / {player.games} {say('ottelua','games')}</span></header>
   <div className="player-basket-bar" aria-hidden="true">{kinds.map(([key,,color])=>{const count=row.baskets[key].two+row.baskets[key].three;return count?<i key={key} style={{flexGrow:count,background:color}}/>:null;})}</div>
