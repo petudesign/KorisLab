@@ -22,3 +22,20 @@
 @media(max-width:700px){.season-summary-metrics .season-stat{padding:15px;min-height:119px}.season-summary-metrics .season-stat strong{font-size:30px;margin:10px 0 8px}.season-summary-metrics .season-stat small{font-size:9px}.season-trends>.dash-card{padding:18px}.season-phase-row:not(.season-phase-labels){padding:10px 4px}.season-phase-labels{padding:10px 4px}}
 @media(prefers-reduced-motion:reduce){.season-controls select,.season-three-grid button{transition:none}}
 
+.season-stat-row{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;min-width:0}
+.season-summary-metrics .season-stat .season-stat-row>strong{flex:none}
+.season-summary-metrics .season-stat-change{display:grid;justify-items:end;gap:2px;margin-bottom:12px;text-align:right;font-size:13px;color:#c5c5ce}
+.season-stat-change b{font-weight:500;font-variant-numeric:tabular-nums}
+.season-summary-metrics .season-stat-change small{font-size:10px;color:#96949f;white-space:nowrap;font-variant-numeric:tabular-nums}
+@media(max-width:700px){.season-stat-row{flex-direction:column;align-items:flex-start;gap:0}.season-summary-metrics .season-stat-change{justify-items:start;margin:0 0 8px;text-align:left}}
+.season-chart-readout{align-items:center;font-size:11px}
+.season-readout-game{display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px;min-width:0}
+.season-readout-game>small{font-size:11px;color:#9999a5;font-variant-numeric:tabular-nums}
+.season-readout-team{display:inline-flex;align-items:center;gap:7px;min-width:0;font-size:14px;color:#929297}
+.season-readout-team svg,.season-readout-team img,.season-readout-team .team-logo-fallback{width:24px;height:24px;object-fit:contain;flex:none}
+.season-readout-team.is-winner{font-weight:600;color:#f3f3f4}
+.season-chart-readout b.season-readout-score{font-size:16px;font-weight:500;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:#929297}
+.season-readout-score .is-winner{font-weight:600;color:#f3f3f4}
+@media(max-width:700px){.season-readout-team{font-size:13px}}
+.season-stat-change.is-up b{color:#44d17a}
+.season-stat-change.is-down b{color:#df945b}
