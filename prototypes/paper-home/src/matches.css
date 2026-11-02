@@ -33,3 +33,9 @@
 .overview-dashboard .match-tabs button[aria-pressed=true]{background:#28231e;border-color:#77533b;color:#f3f3f4}
 .overview-dashboard .match-tabs button:focus-visible{outline:2px solid #df945b;outline-offset:2px}
 @media(max-width:700px){.match-tabs{display:flex}.overview-dashboard .match-tabs button{flex:1;padding:9px 4px;font-size:12px!important}}
+/* The same dots as the highlight cards, at the team ends only, so the score stays on a clean ground. */
+.overview-dashboard .match-scoreboard{position:relative;isolation:isolate;overflow:hidden}
+.match-scoreboard::before,.match-scoreboard::after{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background-size:4px 4px;opacity:.24}
+.match-scoreboard::before{background-image:radial-gradient(circle,var(--home-ink) .65px,transparent .9px);mask-image:radial-gradient(ellipse 34% 120% at 0 100%,#000,transparent)}
+.match-scoreboard::after{background-image:radial-gradient(circle,var(--away-ink) .65px,transparent .9px);mask-image:radial-gradient(ellipse 34% 120% at 100% 100%,#000,transparent)}
+@media(max-width:700px){.match-scoreboard::before,.match-scoreboard::after{opacity:.14}}

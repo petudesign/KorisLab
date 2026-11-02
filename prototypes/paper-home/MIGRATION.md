@@ -20,7 +20,7 @@ Uusi toteutus on erillinen `prototypes/paper-home`-sovellus. Alkuperäinen `web`
 3. Joukkueprofiilin kaikki analyysit: pelitapa, jaksovertailu, heittojakauma, pelaajat, vastustaja-/otteluvertailut.
 4. Overview'n kaikki alkuperäiset graafit, TeamStyleMap/TeamGameSplit ja kausitrendit (ThreePointStory/SeasonPhaseComparison).
 5. Playoff-aineistot ja sarjavalinnan koko laajuus sekä nykyisen kauden päivitysputken yhdistäminen. Nyt käytössä erilliset tallennetut runkosarjakopiot.
-6. Custom import, Datan tila, asetukset/kieli, analyysiartikkelit/Sanity, kysymyshaku. Näitä ei merkitä valmiiksi pelkän reitin olemassaolon perusteella.
+6. Custom import, asetukset/kieli, analyysiartikkelit/Sanity, kysymyshaku. Näitä ei merkitä valmiiksi pelkän reitin olemassaolon perusteella.
 7. Tuotannon SEO: esirenderöidyt/SSR-metat, JSON-LD, sitemap/robots, analyysien metat, 404/redirectit, kaikkien vanhojen URLien vastaavuus. Indexointi vasta julkaisun yhteydessä.
 8. Alkuperäisen web-sovelluksen toiminnalliset vertailut/testit, hakukone-/mobiilitarkistukset ja julkaisumuutos erillisenä päätöksenä.
 
