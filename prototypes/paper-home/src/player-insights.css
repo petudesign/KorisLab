@@ -161,3 +161,4 @@
 .similar-mark{flex:none;width:12px;height:0;border-top:2px solid #df945b}
 .similar-mark.is-second{border-top:2px dashed #91b4c8}
 @media(max-width:1100px){.similar-hero{grid-template-columns:minmax(0,1fr)}.similar-hero .similar-radar{max-width:300px;margin:0 auto}}
+.similar-suggestion .discovery-card-top>span::first-letter{text-transform:uppercase}
