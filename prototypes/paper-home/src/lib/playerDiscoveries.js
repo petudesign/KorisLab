@@ -18,6 +18,7 @@ export function discoveryQualification(players){
  const games=Math.max(2,Math.ceil(mostGames/3));
  return {games,minutes:games*15,early:mostGames<8};
 }
+const MAX_SAME_STAT=2;
 export function seasonOutliers(players,previous,limit=4){
  const qualification=discoveryQualification(players),byId=new Map(previous.map(p=>[p.id,p]));
  const oldNames=uniqueNames(previous),currentNames=uniqueNames(players),candidates=[];
@@ -34,15 +35,18 @@ export function seasonOutliers(players,previous,limit=4){
   }
  }
  // Keep both directions and different players; do not force an unqualified decline.
+ // One stat may fill two cards at most, and two only as a rise and a fall if another stat can take the place.
  const selected=[],ids=new Set();
- for(const direction of ['up','down']){
-  for(const row of candidates.filter(c=>c.direction===direction).sort(order)){
-   if(ids.has(row.player.id))continue;
-   selected.push(row);ids.add(row.player.id);
-   if(selected.filter(c=>c.direction===direction).length>=Math.ceil(limit/2))break;
-  }
+ const sameStat=row=>selected.filter(c=>c.metric===row.metric);
+ const fits=row=>!ids.has(row.player.id)&&sameStat(row).length<MAX_SAME_STAT;
+ const varied=row=>fits(row)&&!sameStat(row).some(c=>c.direction===row.direction);
+ const take=row=>{selected.push(row);ids.add(row.player.id);};
+ const ordered=candidates.sort(order);
+ for(const allowed of [varied,fits])for(const direction of ['up','down'])for(const row of ordered.filter(c=>c.direction===direction)){
+  if(selected.filter(c=>c.direction===direction).length>=Math.ceil(limit/2))break;
+  if(allowed(row))take(row);
  }
- for(const row of candidates.sort(order))if(selected.length<limit&&!ids.has(row.player.id)){selected.push(row);ids.add(row.player.id);}
+ for(const allowed of [varied,fits])for(const row of ordered)if(selected.length<limit&&allowed(row))take(row);
  return {rows:selected.slice(0,limit),qualification};
 }
 

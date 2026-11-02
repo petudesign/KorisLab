@@ -80,10 +80,18 @@ const Timeline=memo(function Timeline({story,t,onSeek,chapters,say}){
  </div>;
 });
 
+// scrollIntoView would also move the page frame on desktop, where only the content area scrolls.
+function showFromTop(element,gap=12){
+ let box=element.parentElement;
+ while(box&&!(/auto|scroll/.test(getComputedStyle(box).overflowY)&&box.scrollHeight>box.clientHeight))box=box.parentElement;
+ const top=element.getBoundingClientRect().top;
+ if(box)box.scrollTop+=top-box.getBoundingClientRect().top-gap;else window.scrollBy(0,top-gap);
+}
 export function GameStory({leagueId,seasonId,matchId}){
  const {language}=useI18n(),lang=language==='fi'?'fi':'en',say=useCallback((fi,en)=>lang==='fi'?fi:en,[lang]);
- const [story,setStory]=useState(null),[failed,setFailed]=useState(false),[t,setT]=useState(0),[playing,setPlaying]=useState(false),[speed,setSpeed]=useState(8),last=useRef(0);
- useEffect(()=>{let live=true;fetch(`/data/stories/${leagueId}-${seasonId}-${matchId}.json`).then(r=>{if(!r.ok)throw Error();return r.json();}).then(d=>{if(live)setStory(withShownNames(d));}).catch(()=>{if(live)setFailed(true);});return()=>{live=false;};},[leagueId,seasonId,matchId]);
+ const [story,setStory]=useState(null),[failed,setFailed]=useState(false),[t,setT]=useState(0),[playing,setPlaying]=useState(false),[speed,setSpeed]=useState(8),[scrollToStory,setScrollToStory]=useState(false),last=useRef(0),root=useRef(null);
+ useEffect(()=>{if(scrollToStory&&root.current){showFromTop(root.current);setScrollToStory(false);}},[scrollToStory,story]);
+ useEffect(()=>{let live=true;fetch(`/data/stories/${leagueId}-${seasonId}-${matchId}.json`).then(r=>{if(!r.ok)throw Error();return r.json();}).then(d=>{if(live){setStory(withShownNames(d));const at=Number(new URLSearchParams(location.search).get('t'));if(at>0){setT(Math.min(at,d.duration));setPlaying(false);setScrollToStory(true);}}}).catch(()=>{if(live)setFailed(true);});return()=>{live=false;};},[leagueId,seasonId,matchId]);
  useEffect(()=>{
   if(!playing||!story)return;
   let frame;last.current=performance.now();
@@ -104,7 +112,7 @@ export function GameStory({leagueId,seasonId,matchId}){
  const line=eventLine(event,lang,teams),rows=[[say('Heitot','FG'),s=>`${s.fgm}/${s.fga}`],[say('Kolmoset','3P'),s=>`${s.tpm}/${s.tpa}`],[say('Levypallot','Rebounds'),s=>s.reb],[say('Syötöt','Assists'),s=>s.ast],[say('Menetykset','Turnovers'),s=>s.tov]];
  const homeWp=wpPercent(event.w),awayWp=100-homeWp;
  const colors=gameColors(story.home.name,story.away.name);
- return <div className="story" style={{'--story-home':colors.home,'--story-away':colors.away,'--story-home-ink':colors.homeInk,'--story-away-ink':colors.awayInk}}>
+ return <div ref={root} className="story" style={{'--story-home':colors.home,'--story-away':colors.away,'--story-home-ink':colors.homeInk,'--story-away-ink':colors.awayInk}}>
   <header className="story-heading"><h3>{translate('Ottelun tarina')}</h3><p>{say('Katso ottelu tapahtuma kerrallaan tai hyppää suoraan käänteisiin.','Watch the game play by play or jump straight to the turns.')}</p></header>
   <section className="story-stage" aria-label={say('Ottelun toisto','Game replay')}>
    <header className="story-score">

@@ -43,13 +43,14 @@ def sync(prototype):
                 (f"player-shots-{season}.json", f"/data/analysis/{league}-{season}-shots.json"),
                 (f"assists-{season}.json", f"/data/analysis/{league}-{season}-assists.json"),
                 (f"player-profiles-{season}.json", f"/data/profiles/{league}-{season}.json"),
+                (f"team-ages-{season}.json", f"/data/team-ages/{league}-{season}.json"),
             ]:
                 original = public / source_name
                 if original.exists():
                     target = prototype / "public" / destination.lstrip("/")
                     target.parent.mkdir(parents=True, exist_ok=True)
                     shutil.copyfile(original, target)
-                    if "profiles" not in source_name:
+                    if "profiles" not in source_name and "team-ages" not in source_name:
                         kind = "shots" if source_name.startswith("player-shots") else "assists"
                         player_manifest.setdefault(f"{league}-{season}", {})[kind] = destination
             for match in snapshot["matches"]:

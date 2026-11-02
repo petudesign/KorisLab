@@ -7,6 +7,7 @@ const SECTIONS={
  Ottelut:{fi:'ottelut ja tulokset',en:'games and results'},
  Kausitrendit:{fi:'kausitrendit',en:'season trends'},
  'Matchup Lab':{fi:'Matchup Lab',en:'Matchup Lab'},
+ Samankaltaiset:{fi:'samankaltaiset pelaajat',en:'similar players'},
  'Sim Studio':{fi:'Sim Studio',en:'Sim Studio'},
 };
 const competition=(leagueId,seasonId,lang)=>`${LEAGUES[leagueId][lang]} ${seasonId.replace('-','–')}`;

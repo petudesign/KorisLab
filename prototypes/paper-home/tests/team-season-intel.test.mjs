@@ -1,6 +1,8 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
 import {teamSeasonContext,teamSeasonInfo} from '../src/lib/teamSeasonInfo.js';
+import {leagueOrder} from '../src/lib/standings.js';
 
 const player=(id,name,minutesValue=20)=>({id,name,minutesValue});
 const team=(name,score,players=[])=>({id:name,name,score,players});
@@ -43,4 +45,14 @@ test('official season briefs identify both leagues and use team payroll costs as
  assert.ok(teamSeasonInfo.men['2026-27'].sourceUrl.includes('basket.fi'));
  assert.equal(teamSeasonInfo.women['2026-27'].teams['HBA-Märsky'].budget,null);
  assert.equal(teamSeasonInfo.men['2026-27'].teams['Salon Vilpas'].payroll,495800);
+});
+test('rank follows the standings order, and last season’s regular place sits beside the official final place',()=>{
+ const season=file=>JSON.parse(readFileSync(new URL(`../public/data/${file}-matches.json`,import.meta.url)));
+ const current=season('women-2026-27'),previous=season('women-2025-26');
+ const context=teamSeasonContext(current,previous,'BC Nokia');
+ assert.equal(context.previousRegularRank,leagueOrder(previous).indexOf('BC Nokia')+1);
+ assert.equal(context.currentRank,leagueOrder(current).indexOf('BC Nokia')+1);
+ assert.equal(teamSeasonContext(current,null,'BC Nokia').previousRegularRank,null);
+ assert.equal(teamSeasonContext(previous,null,'BC Nokia').currentRank,context.previousRegularRank);
+ assert.equal(teamSeasonInfo.women['2026-27'].teams['BC Nokia'].previousRank,4);
 });
