@@ -240,6 +240,8 @@ Kauden parhaat (profiili) ja Kauden parhaat ottelut (Pelaajat-sivu) lasketaan sr
 
 Datan tila poistettiin valikosta 2.11.2026, koska sivua ei koskaan toteutettu. Ottelukortin pistekuvio on poikkeus säännöstä "ei ditheriä datakortteihin": se on sama CSS-pistekuvio kuin nostokorteissa, vain reunoilla, ja lopputulos keskellä pysyy puhtaalla pohjalla.
 
+Pistekuvio: jokaisessa kortissa, jonka päätehtävä on nostaa esiin yksi iso luku, on sama CSS-pistekuvio samassa kulmassa (src/stat-cards.css). Tämä korvaa aiemmat maininnat ditheristä vain nostokorteissa. Kaaviot, taulukot, vertailut ja profiilien mittarikortit pysyvät ilman kuviota, jotta se säilyttää merkityksensä. Väri on oranssi, ellei kortin väri kerro merkitystä, kuten nousua ja laskua. Kausitrendien korteista poistettiin ikonit ja hehkut. Ottelun lopputuloskortissa kuvio on molemmissa alakulmissa.
+
 Yhtenäisyys: uusi osio rakennetaan samalla sivulla jo olevista rakenteista, kuten Kauden parhaat ottelut Kauden yllättäjien otsikosta, korteista ja väreistä. Tarkista otsikon fontti, koko, täytteet sekä lukujen koko- ja värihierarkia vierekkäin viereisen osion kanssa ennen kuin näytät sen. Ei omia otsikkotyylejä eikä tasapaksuja listoja, joissa kaikki luvut ovat samannäköisiä. Joukkueiden keski-ikä vertaillaan Joukkueet-sivun Ikä-näkymässä, koska se on joukkueen ominaisuus eikä kauden tilanne.
 
 Sivujen otsikot tulevat yhdestä paikasta (src/lib/pageTitles.js), jota sekä palvelimen build-seo että selaimen useMetadata käyttävät, koska Google lukee otsikon JavaScriptin ajon jälkeen. Otsikossa on hakusana ja sarja: "Korisliiga 2026–27: pelaajatilastot". Miesten sarja on otsikoissa pelkkä Korisliiga, koska sillä sitä haetaan. Etusivun näkyvä pääotsikko "Suomalainen koripallo, datan kautta" säilyy.

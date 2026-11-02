@@ -5,11 +5,7 @@
 @media(max-width:700px){.season-chart svg text{font-size:23px}.season-chart svg circle[role=button]{r:18px}}
 
 /* Kausitrendien oma hierarkia säilyttää yhteisen tumman korttipinnan. */
-.season-summary-metrics .season-stat{position:relative;overflow:hidden;background:linear-gradient(145deg,#1d1d21,#151518);border-color:#ffffff0e;border-top-color:color-mix(in srgb,var(--stat-accent) 32%,#29292e);padding:18px 20px;min-height:126px}
-.season-stat:after{content:'';position:absolute;width:115px;height:115px;right:-40px;bottom:-68px;background:radial-gradient(ellipse,color-mix(in srgb,var(--stat-accent) 12%,transparent),transparent 68%);pointer-events:none}
-.season-stat-heading{display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:23px}
-.season-stat-heading>span{font-size:12px;color:#c4c3cc;line-height:1.35}
-.season-stat-heading>svg{width:18px;height:18px;flex-shrink:0;color:var(--stat-accent);opacity:.8}
+.season-summary-metrics .season-stat{padding:18px 20px;min-height:126px}
 .season-summary-metrics .season-stat strong{font-size:35px;line-height:1.1;margin:12px 0 10px;letter-spacing:-.04em;color:#f0eff3}
 .season-summary-metrics .season-stat small{font-size:10px;color:#96949f;line-height:1.5}
 .season-trends>.dash-card{background:linear-gradient(145deg,#1b1b1f,#151518);border-color:#ffffff10;padding:24px}
@@ -23,8 +19,6 @@
 .season-three-grid button{background:linear-gradient(135deg,#242428,#1c1c20);border-color:#ffffff0c;box-shadow:inset 0 1px 0 #ffffff04,0 3px 10px #0002;transition:background-color 140ms,border-color 140ms}
 .season-three-grid button>span:not(.season-three-bar){color:#dddce3}.season-three-grid button strong{font-size:23px;letter-spacing:-.03em}.season-three-grid button small{color:#96949f;letter-spacing:0}
 .season-distance-bins>div{padding:10px 0;margin:5px 0;border-bottom:1px solid #ffffff05}.season-distance-bins>div:last-child{border:0}
-@media(max-width:700px){.season-summary-metrics .season-stat{padding:15px;min-height:119px}.season-stat-heading>span{font-size:11px}.season-stat-heading>svg{width:16px;height:16px}.season-summary-metrics .season-stat strong{font-size:30px;margin:10px 0 8px}.season-summary-metrics .season-stat small{font-size:9px}.season-trends>.dash-card{padding:18px}.season-phase-row:not(.season-phase-labels){padding:10px 4px}.season-phase-labels{padding:10px 4px}}
+@media(max-width:700px){.season-summary-metrics .season-stat{padding:15px;min-height:119px}.season-summary-metrics .season-stat strong{font-size:30px;margin:10px 0 8px}.season-summary-metrics .season-stat small{font-size:9px}.season-trends>.dash-card{padding:18px}.season-phase-row:not(.season-phase-labels){padding:10px 4px}.season-phase-labels{padding:10px 4px}}
 @media(prefers-reduced-motion:reduce){.season-controls select,.season-three-grid button{transition:none}}
-.season-stat-heading>span{min-width:0;overflow-wrap:anywhere;flex:1}.season-stat-heading{min-height:32px}
 
-.season-stat-heading>span{overflow-wrap:normal;hyphens:manual}
