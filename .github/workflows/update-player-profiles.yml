@@ -1,0 +1,48 @@
+name: Refresh player details and team ages
+
+# Run by hand every few weeks. Rosters change rarely mid-season, and this job
+# reads every team roster from six seasons, so it stays out of the frequent
+# results refresh to keep the load on Basket.fi small.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: current-season-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Refresh player details and team ages
+        run: python -m ingestion.publish_player_profiles
+      - name: Sync the new KorisLab data
+        run: python prototypes/paper-home/scripts/sync-data.py
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+          package-manager-cache: false
+      - name: Verify the new site before committing data
+        working-directory: prototypes/paper-home
+        run: |
+          npm install --global pnpm@11.25.0
+          pnpm install --frozen-lockfile
+          pnpm run build
+          pnpm test
+      - name: Commit the player details
+        run: |
+          git add web/public/player-profiles-*.json web/public/team-ages-*.json web/public/korisliiga
+          git add prototypes/paper-home/source prototypes/paper-home/public/data
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update player details and team ages"
+          git push
